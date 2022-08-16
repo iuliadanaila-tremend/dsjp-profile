@@ -1,0 +1,18 @@
+uuid: 70834e73-64a1-48ff-9a9a-f4c33886ee42
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.dsj_national_coalition
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: group.dsj_national_coalition
+target_entity_type_id: group
+target_bundle: dsj_national_coalition
+default_langcode: site_default
+language_alterable: false

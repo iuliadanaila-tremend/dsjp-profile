@@ -1,0 +1,31 @@
+display:
+  default:
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Apstiprināt
+          reset_button_label: Attīrīt
+          exposed_sorts_label: 'Kārtot pēc'
+          sort_desc_label: Dilst.
+      pager:
+        options:
+          expose:
+            items_per_page_options_all_label: '- Visi -'
+          tags:
+            previous: '‹ iepriekšējā'
+            next: 'nākamā ›'
+            first: '« pirmā'
+            last: 'pēdējā »'
+      fields:
+        simplenews_issue:
+          label: 'Jaunumu liste'
+        status:
+          label: Publicēts
+        created:
+          label: Atjaunināts
+      filters:
+        simplenews_issue_target_id_1:
+          expose:
+            label: 'Jaunumu liste'
+  page_1:
+    display_title: Lapa

@@ -1,0 +1,12 @@
+uuid: a7b7aeb6-e051-48b7-baee-4e27c38cc753
+langcode: en
+status: true
+dependencies: {  }
+id: dsj_private_group
+label: 'Community private group'
+description: 'This is a closed group. Users can only join by requesting membership and the content in the group is hidden from non members.'
+new_revision: false
+creator_membership: true
+creator_wizard: false
+creator_roles:
+  - dsj_private_group-dsj_manager

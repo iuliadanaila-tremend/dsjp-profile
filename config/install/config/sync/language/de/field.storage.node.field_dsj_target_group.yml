@@ -1,0 +1,42 @@
+settings:
+  allowed_values:
+    -
+      label: 'Leistungsstarke Personen'
+    -
+      label: Nichtmuttersprachler
+    -
+      label: 'Personen, die eine berufliche Umschulung benötigen'
+    -
+      label: 'Personen im Tertiärbereich (EQR 6)'
+    -
+      label: 'Personen, die die Primarschule abgeschlossen haben'
+    -
+      label: 'Personen im Sekundarbereich/in der Pflichtschulbildung'
+    -
+      label: 'Personen mit Hochschulabschluss (EQR 7)'
+    -
+      label: 'Personen im Primarbereich'
+    -
+      label: 'Personen mit 0-3 Jahren Berufserfahrung'
+    -
+      label: 'Personen mit Hochschulabschluss (EQR 8)'
+    -
+      label: 'Personen, die die Sekundar-/Pflichtschulbildung abgeschlossen haben'
+    -
+      label: 'Personen im Tertiärbereich (EQR 7)'
+    -
+      label: 'Personen im Tertiärbereich (EQR 8)'
+    -
+      label: Migranten
+    -
+      label: 'Personen mit 3-10 Jahren Berufserfahrung'
+    -
+      label: 'Personen mit mehr als 10 Jahren Berufserfahrung'
+    -
+      label: 'Personen mit Lernbehinderung'
+    -
+      label: Muttersprachler
+    -
+      label: 'Personen mit Hochschulabschluss (EQR 6)'
+    -
+      label: 'Leistungsschwache Personen'

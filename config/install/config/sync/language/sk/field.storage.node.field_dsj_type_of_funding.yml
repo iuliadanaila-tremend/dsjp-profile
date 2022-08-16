@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Verejné
+    -
+      label: Súkromný
+    -
+      label: 'Kolektívne financovanie'
+    -
+      label: Verejno-súkromný

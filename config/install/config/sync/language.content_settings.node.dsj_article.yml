@@ -1,0 +1,18 @@
+uuid: 2e81a9a9-dda2-4d81-a536-308a39284dfe
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.dsj_article
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+id: node.dsj_article
+target_entity_type_id: node
+target_bundle: dsj_article
+default_langcode: site_default
+language_alterable: false

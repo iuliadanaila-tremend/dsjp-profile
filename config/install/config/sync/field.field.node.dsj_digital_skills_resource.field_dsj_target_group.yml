@@ -1,0 +1,23 @@
+uuid: 5aa6abb7-51b8-4388-8e06-fa06d4c3184f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dsj_target_group
+    - node.type.dsj_digital_skills_resource
+  module:
+    - options
+_core:
+  default_config_hash: r120pS-h_m36jwsgdIMvcHd_t-3rgIT8DQu9ko-Eivs
+id: node.dsj_digital_skills_resource.field_dsj_target_group
+field_name: field_dsj_target_group
+entity_type: node
+bundle: dsj_digital_skills_resource
+label: 'Target group'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

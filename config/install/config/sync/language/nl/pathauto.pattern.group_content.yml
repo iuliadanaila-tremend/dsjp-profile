@@ -1,0 +1,4 @@
+label: Groepsinhoud
+relationships:
+  'group_content:langcode:language':
+    label: Taal

@@ -1,0 +1,12 @@
+settings:
+  allowed_values:
+    -
+      label: 'EU:n institutionaalinen aloite'
+    -
+      label: 'Kansallinen aloite'
+    -
+      label: 'Alueellinen aloite'
+    -
+      label: 'Paikallinen aloite'
+    -
+      label: 'Kansainvälinen aloite'

@@ -1,0 +1,20 @@
+uuid: f578c6a0-a610-43b0-bb8b-581e67e7d436
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.message.mail_body
+    - field.field.message.dsj_content_subscribe.field_user
+    - message.template.dsj_content_subscribe
+id: message.dsj_content_subscribe.mail_body
+targetEntityType: message
+bundle: dsj_content_subscribe
+mode: mail_body
+content:
+  partial_1:
+    weight: 0
+    region: content
+hidden:
+  field_user: true
+  partial_0: true
+  search_api_excerpt: true

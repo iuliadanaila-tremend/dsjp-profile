@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Βασικά
+    -
+      label: Ενδιάμεση
+    -
+      label: Προχωρημένο
+    -
+      label: 'Ψηφιακός εμπειρογνώμονας'

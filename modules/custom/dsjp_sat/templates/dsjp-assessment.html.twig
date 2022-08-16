@@ -1,0 +1,58 @@
+{% if overall and start_date %}
+  <div class="assessment-header">
+{% endif %}
+
+{% if start_date is empty %}
+<div class="assessment-summary-wrapper">
+{% endif %}
+
+{% if overall and skills is not empty %}
+  <div class="assessment-overall">
+    <div class="content">  
+      <span>{{ 'Your digital profile is '|t }}</span>
+      <span class="profile-level"> {{ level_map[overall] }}</span>
+    </div>
+    {% if start_date %}
+      <div class="assessment-date">
+        {{ 'This assessment was taken on @date'|t({'@date': start_date}) }}
+      </div>
+    {% endif %}
+  </div>
+{% endif %}
+
+{% if overall and start_date %}
+  {% if assessment_links %}
+    <div class="assessment-links">
+      {% if assessment_links.download %}
+        {{ assessment_links.download }}
+      {% endif %}
+      {% if assessment_links.retake %}
+        {{ assessment_links.retake }}
+      {% endif %}
+      <div class="assessment-toggler">
+        <div class="toggle hide-button">{{ 'Hide details'|t }}<span class="icon"></span></div>
+        <div class="toggle show-button">{{ 'See details'|t }}<span class="icon"></span></div>
+      </div>
+    </div>
+  {% endif %}
+  </div>
+{% endif %}
+
+{% if skills %}
+  {% for name, skill in skills %}
+    <div class="assessment-skill">
+      <div class="content">  
+        <div class="skill-icon icon-{{ name|lower|split(' ')[0] }}"></div>
+        <div class="skill-name">{{ name }}</div>
+        <div class="skill-level">
+          <span class="level">{{ 'Level @level '|t({'@level': skill}) }}</span>{{'@level_name'|t({'@level_name': level_map[skill]})}}
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+{% endif %}
+
+{% if start_date is empty %}
+</div>
+{% endif %}
+

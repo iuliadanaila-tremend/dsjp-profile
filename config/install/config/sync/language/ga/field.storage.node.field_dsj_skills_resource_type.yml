@@ -1,0 +1,12 @@
+settings:
+  allowed_values:
+    -
+      label: 'Uirlis féinmheasúnaithe'
+    -
+      label: Modheolaíocht
+    -
+      label: 'Curaclaim oiliúna'
+    -
+      label: Cás-staidéar
+    -
+      label: 'Ábhar eile oiliúna'

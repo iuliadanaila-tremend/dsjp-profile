@@ -1,0 +1,6 @@
+settings:
+  allowed_values:
+    -
+      label: 'Jediná ponuka'
+    -
+      label: Databáza

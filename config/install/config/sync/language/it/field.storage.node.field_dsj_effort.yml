@@ -1,0 +1,8 @@
+settings:
+  allowed_values:
+    -
+      label: 'Tempo parziale leggero'
+    -
+      label: 'A tempo pieno'
+    -
+      label: 'Tempo parziale intensivo'

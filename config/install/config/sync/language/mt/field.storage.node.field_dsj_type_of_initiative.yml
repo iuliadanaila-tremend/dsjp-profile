@@ -1,0 +1,12 @@
+settings:
+  allowed_values:
+    -
+      label: 'Inizjattiva istituzzjonali tal-UE'
+    -
+      label: 'Inizjattiva nazzjonali'
+    -
+      label: 'Inizjattiva reġjonali'
+    -
+      label: 'Inizjattiva lokali'
+    -
+      label: 'Inizjattiva internazzjonali'

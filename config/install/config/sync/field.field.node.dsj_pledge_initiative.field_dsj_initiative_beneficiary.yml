@@ -1,0 +1,27 @@
+uuid: c565aa04-ba75-4aa0-a30b-af3e86bcbe17
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dsj_initiative_beneficiary
+    - node.type.dsj_pledge_initiative
+  module:
+    - dsjp_pledge
+    - tmgmt_content
+third_party_settings:
+  tmgmt_content:
+    excluded: false
+id: node.dsj_pledge_initiative.field_dsj_initiative_beneficiary
+field_name: field_dsj_initiative_beneficiary
+entity_type: node
+bundle: dsj_pledge_initiative
+label: Beneficiary
+description: ''
+required: true
+translatable: false
+default_value:
+  - {  }
+  - {  }
+default_value_callback: ''
+settings: {  }
+field_type: dsj_initiative_beneficiary

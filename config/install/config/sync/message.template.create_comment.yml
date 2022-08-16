@@ -1,0 +1,25 @@
+uuid: 8227c5f8-83bb-4c00-a77a-c2de9e9d61fa
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.full_html
+    - filter.format.plain_text
+_core:
+  default_config_hash: mLS_gNnnK_b3kadePvyy8mV9XDJBqhJBl_9WprlBFI0
+template: create_comment
+label: 'Create comment'
+description: 'Comment created.'
+text:
+  -
+    value: "[message:field_comment_reference:entity:author] commented on [message:field_comment_reference:entity:entity:title]\r\n"
+    format: plain_text
+  -
+    value: "<p>Comment by: [message:field_comment_reference:entity:author] on [message:field_comment_reference:entity:entity:title]</p>\r\n\r\n<p>Comment: [message:field_comment_reference:entity:body]</p>\r\n\r\n<p>Url: [message:field_comment_reference:entity:url]</p>\r\n\r\n<p>Timestamp: [message:field_comment_reference:entity:created]</p>\r\n"
+    format: full_html
+settings:
+  'token options':
+    clear: false
+    'token replace': true
+  purge_override: false
+  purge_methods: {  }

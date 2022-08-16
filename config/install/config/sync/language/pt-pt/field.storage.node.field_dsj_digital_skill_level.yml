@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Básicos
+    -
+      label: Intermédio
+    -
+      label: Avançado
+    -
+      label: 'Perito em Ciências Digitais'

@@ -1,0 +1,12 @@
+settings:
+  allowed_values:
+    -
+      label: 'ES institucinė iniciatyva'
+    -
+      label: 'Nacionalinė iniciatyva'
+    -
+      label: 'Regioninė iniciatyva'
+    -
+      label: 'Vietos iniciatyva'
+    -
+      label: 'Tarptautinė iniciatyva'

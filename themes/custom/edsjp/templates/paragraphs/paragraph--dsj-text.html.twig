@@ -1,0 +1,27 @@
+{% set dsj_title = content.field_dsj_title|render  %}
+{% extends "@paragraphs/paragraph.html.twig" %}
+{% block content %}
+  <div class="ecl-container">
+    <div class="ecl-row">
+      <div class="ecl-col-xl-12">
+        {% if dsj_title %}
+          <h2 class="ecl-u-type-heading-2">
+            {{ dsj_title }}
+          </h2>
+        {% endif %}
+
+        <div class="ecl-row">
+          <div class="ecl-col-12">
+            {{ content | without('field_dsj_title', 'field_dsj_see_more_link') }}
+
+            {% if content.field_dsj_see_more_link | render %}
+              <div class="listing-more-link">
+                {{ content.field_dsj_see_more_link }}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

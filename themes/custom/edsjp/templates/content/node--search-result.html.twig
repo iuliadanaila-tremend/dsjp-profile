@@ -1,0 +1,25 @@
+{% set classes = [
+  'node',
+  node.isPromoted() ? 'node--promoted',
+  node.isSticky() ? 'node--sticky',
+  not node.isPublished() ? 'node--unpublished',
+  node.bundle|clean_class,
+  node.bundle|clean_class ~ '--' ~ view_mode|clean_class,
+  'node' ~ '--' ~ view_mode|clean_class,
+  'node' ~ '--' ~ node.bundle|clean_class,
+  term_type ? node.bundle|clean_class ~ '--' ~ term_type|clean_class,
+] %}
+<article{{ attributes.addClass(classes) }}>
+  {{ title_prefix }}
+  {% if not page %}
+    <h2{{ title_attributes }}>
+      <a href="{{ url }}" rel="bookmark" title="{{ title }}">{{ label }}</a>
+    </h2>
+  {% endif %}
+  {{ title_suffix }}
+
+  <div{{ content_attributes }}>
+    <p>{{ content }}</p>
+    {{ ct_pill }}
+  </div>
+</article>

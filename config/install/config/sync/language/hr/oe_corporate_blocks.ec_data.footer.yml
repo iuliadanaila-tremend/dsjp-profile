@@ -1,0 +1,78 @@
+corporate_site_link:
+  href: 'https://ec.europa.eu/info/index_hr'
+  label: 'Internetske stranice Europske komisije'
+class_navigation:
+  -
+    href: 'https://ec.europa.eu/info/strategy_hr'
+    label: Strategija
+  -
+    href: 'https://ec.europa.eu/info/about-european-commission_hr'
+    label: 'O Europskoj komisiji'
+  -
+    href: 'https://ec.europa.eu/info/business-economy-euro_hr'
+    label: 'Poslovanje, gospodarstvo, euro'
+  -
+    href: 'https://ec.europa.eu/info/live-work-travel-eu_hr'
+    label: 'Život, rad, putovanje u EU-u'
+  -
+    href: 'https://ec.europa.eu/info/law_hr'
+    label: Pravo
+  -
+    href: 'https://ec.europa.eu/info/funding-tenders_hr'
+    label: 'Financiranje, natječaji'
+  -
+    href: 'https://ec.europa.eu/info/research-and-innovation_hr'
+    label: 'Istraživanje i inovacije'
+  -
+    href: 'https://ec.europa.eu/info/energy-climate-change-environment_hr'
+    label: 'Energija, klimatske promjene i okoliš'
+  -
+    href: 'https://ec.europa.eu/info/education_hr'
+    label: Obrazovanje
+  -
+    href: 'https://ec.europa.eu/info/aid-development-cooperation-fundamental-rights_hr'
+    label: 'Pomoć, razvojna suradnja, temeljna prava'
+  -
+    href: 'https://ec.europa.eu/info/food-farming-fisheries_hr'
+    label: 'Hrana, poljoprivreda, ribarstvo'
+  -
+    href: 'https://ec.europa.eu/info/eu-regional-and-urban-development_hr'
+    label: 'Regionalni i urbani razvoj EU-a'
+  -
+    href: 'https://ec.europa.eu/info/jobs-european-commission_hr'
+    label: 'Radna mjesta u Europskoj komisiji'
+  -
+    href: 'https://ec.europa.eu/info/statistics_hr'
+    label: Statistike
+  -
+    href: 'https://ec.europa.eu/commission/presscorner/home/hr'
+    label: Novosti
+  -
+    href: 'https://ec.europa.eu/info/events_hr'
+    label: Događanja
+  -
+    href: 'https://ec.europa.eu/info/publications_hr'
+    label: Publikacije
+service_navigation:
+  -
+    href: 'https://ec.europa.eu/info/about-european-commission/contact_hr'
+    label: 'Obratite se Europskoj komisiji'
+  -
+    href: 'https://europa.eu/european-union/contact/social-networks_hr#n:+i:4+e:1+t:+s'
+    label: 'Pratite Europsku komisiju na društvenim mrežama'
+  -
+    href: 'https://ec.europa.eu/info/resources-partners_hr'
+    label: 'Resursi za partnere'
+legal_navigation:
+  -
+    href: 'https://ec.europa.eu/info/language-policy_hr'
+    label: 'Jezična politika'
+  -
+    href: 'https://ec.europa.eu/info/cookies_hr'
+    label: Kolačići
+  -
+    href: 'https://ec.europa.eu/info/privacy-policy_hr'
+    label: 'Politika zaštite privatnosti'
+  -
+    href: 'https://ec.europa.eu/info/legal-notice_hr'
+    label: 'Pravna obavijest'

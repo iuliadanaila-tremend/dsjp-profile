@@ -1,0 +1,24 @@
+settings:
+  allowed_values:
+    0:
+      label: Kursus
+    1:
+      label: Programmimoodul
+    2:
+      label: Juhendamine
+    4:
+      label: Õpipoisiõpe
+    5:
+      label: Õppekülastus
+    6:
+      label: 'Lühike õppeprogramm'
+    7:
+      label: Praktika
+    8:
+      label: Haridusprogramm
+    9:
+      label: Klass
+    10:
+      label: 'Õppimine üldkasuliku töö kaudu'
+    11:
+      label: Lõputöö

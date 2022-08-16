@@ -1,0 +1,11 @@
+name: dsjp_coalition
+type: module
+description: Integration with national coalitions websites.
+package: Custom
+core: 8.x
+core_version_requirement: ^8 || ^9
+php: 7.3
+dependencies:
+  - group:group
+  - drupal:migrate
+  - drupal:migrate_file

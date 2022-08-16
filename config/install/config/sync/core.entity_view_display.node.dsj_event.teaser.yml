@@ -1,0 +1,124 @@
+uuid: ff1844c0-dbaf-4f00-a1e2-ea66be8f80d3
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.dsj_event.body
+    - field.field.node.dsj_event.field_dsj_author
+    - field.field.node.dsj_event.field_dsj_comments
+    - field.field.node.dsj_event.field_dsj_date
+    - field.field.node.dsj_event.field_dsj_digital_skill_level
+    - field.field.node.dsj_event.field_dsj_digital_technology
+    - field.field.node.dsj_event.field_dsj_event_coordinates
+    - field.field.node.dsj_event.field_dsj_event_location
+    - field.field.node.dsj_event.field_dsj_event_setting
+    - field.field.node.dsj_event.field_dsj_event_timezone
+    - field.field.node.dsj_event.field_dsj_external_id
+    - field.field.node.dsj_event.field_dsj_geographic_scope
+    - field.field.node.dsj_event.field_dsj_image
+    - field.field.node.dsj_event.field_dsj_industry
+    - field.field.node.dsj_event.field_dsj_meta_tags
+    - field.field.node.dsj_event.field_dsj_organization
+    - field.field.node.dsj_event.field_dsj_publish_in_core
+    - field.field.node.dsj_event.field_dsj_representative_image
+    - field.field.node.dsj_event.field_dsj_target_audience
+    - field.field.node.dsj_event.field_dsj_target_language
+    - field.field.node.dsj_event.field_dsj_type_of_initiative
+    - field.field.node.dsj_event.field_dsj_website_link
+    - image.style.thumbnail_100x100_crop
+    - node.type.dsj_event
+  module:
+    - datetime_range
+    - field_group
+    - image
+    - user
+third_party_settings:
+  field_group:
+    group_image_group:
+      children: {  }
+      label: 'Image group'
+      parent_name: ''
+      region: hidden
+      weight: 2
+      format_type: html_element
+      format_settings:
+        classes: article-image
+        id: ''
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+    group_container:
+      children: {  }
+      label: Container
+      parent_name: ''
+      region: hidden
+      weight: 27
+      format_type: html_element
+      format_settings:
+        classes: article-container
+        id: ''
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+id: node.dsj_event.teaser
+targetEntityType: node
+bundle: dsj_event
+mode: teaser
+content:
+  field_dsj_date:
+    type: daterange_default
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: dsj_long_custom_date
+      separator: '-'
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_dsj_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: content
+      image_style: thumbnail_100x100_crop
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  body: true
+  content_moderation_control: true
+  field_dsj_author: true
+  field_dsj_comments: true
+  field_dsj_country: true
+  field_dsj_digital_skill_level: true
+  field_dsj_digital_technology: true
+  field_dsj_event_coordinates: true
+  field_dsj_event_location: true
+  field_dsj_event_setting: true
+  field_dsj_event_timezone: true
+  field_dsj_external_id: true
+  field_dsj_geographic_scope: true
+  field_dsj_industry: true
+  field_dsj_meta_tags: true
+  field_dsj_organization: true
+  field_dsj_publish_in_core: true
+  field_dsj_representative_image: true
+  field_dsj_target_audience: true
+  field_dsj_target_language: true
+  field_dsj_type_of_initiative: true
+  field_dsj_website_link: true
+  flag_subscribe_node: true
+  flag_voting: true
+  langcode: true
+  links: true
+  private_message_link: true
+  search_api_excerpt: true

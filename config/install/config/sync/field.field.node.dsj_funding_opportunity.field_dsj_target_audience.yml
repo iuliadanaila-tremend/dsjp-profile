@@ -1,0 +1,21 @@
+uuid: bc825ee8-67ed-4144-8413-78a4dc8805f4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dsj_target_audience
+    - node.type.dsj_funding_opportunity
+  module:
+    - options
+id: node.dsj_funding_opportunity.field_dsj_target_audience
+field_name: field_dsj_target_audience
+entity_type: node
+bundle: dsj_funding_opportunity
+label: 'Target audience'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

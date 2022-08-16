@@ -1,0 +1,69 @@
+contact_title: 'Contatta l''UE'
+contact:
+  -
+    label: 'Telefonaci allo 00 800 6 7 8 9 10 11'
+  -
+    href: 'https://europa.eu/european-union/contact/call-us_it'
+    label: 'Scegli altre opzioni telefoniche'
+  -
+    href: 'https://europa.eu/european-union/contact/write-to-us_it'
+    label: 'Scrivici - compila il modulo di contatto'
+  -
+    href: 'https://europa.eu/european-union/contact/meet-us_it'
+    label: 'Vieni a trovarci nell''ufficio dell''UE più vicino'
+social_media:
+  -
+    label: 'Cerca i canali dell''UE sui social media'
+    href: 'https://europa.eu/european-union/contact/social-networks_it'
+institution_links_title: 'Istituzioni dell’UE'
+institution_links:
+  0:
+    label: 'Parlamento europeo'
+    href: 'http://www.europarl.europa.eu/portal/it'
+  1:
+    label: 'Consiglio europeo'
+    href: 'http://www.consilium.europa.eu/it/european-council/'
+  2:
+    href: 'http://www.consilium.europa.eu/it/home/'
+  3:
+    label: 'Commissione europea'
+    href: 'https://ec.europa.eu/commission/index_it'
+  4:
+    label: 'Corte di giustizia dell''Unione europea (CGUE)'
+    href: 'http://curia.europa.eu/jcms/jcms/j_6/it/'
+  5:
+    label: 'Banca centrale europea (BCE)'
+    href: 'https://www.ecb.europa.eu/home/languagepolicy/html/index.it.html'
+  6:
+    label: 'Corte dei conti europea'
+    href: 'http://www.eca.europa.eu/it'
+  7:
+    label: 'Servizio europeo per l’azione esterna (SEAE)'
+    href: 'http://eeas.europa.eu/index_it.htm'
+  8:
+    label: 'Comitato economico e sociale europeo (CESE)'
+    href: 'http://www.eesc.europa.eu/?i=portal.it.home'
+  9:
+    label: 'Comitato europeo delle regioni (CdR)'
+    href: 'http://cor.europa.eu/it/'
+  10:
+    label: 'Banca europea per gli investimenti (BEI)'
+  12:
+    label: 'Garante europeo della protezione dei dati (GEPD)'
+    href: 'https://secure.edps.europa.eu/EDPSWEB/edps/EDPS?lang=it'
+legal_links:
+  -
+    label: 'Informazioni sul sito'
+    href: 'https://europa.eu/european-union/abouteuropa_it'
+  -
+    label: 'Politica linguistica'
+    href: 'https://europa.eu/european-union/abouteuropa/language-policy_it'
+  -
+    label: 'Politica in materia di privacy'
+    href: 'https://europa.eu/european-union/abouteuropa/privacy-policy_it'
+  -
+    label: 'Note legali'
+    href: 'https://europa.eu/european-union/abouteuropa/legal_notices_it'
+  -
+    label: Cookie
+    href: 'https://europa.eu/european-union/abouteuropa/cookies_it'

@@ -1,0 +1,292 @@
+#block-pledgeorganization {
+  * {
+    color: $gray-650;
+  }
+
+  border: 1px solid $gray-500;
+  border-radius: $border-radius * 1.5;
+  background: $body-bg;
+  padding: $grid-gutter-width-mobile * 1.5;
+
+  .field--name {
+    &-label {
+      margin-bottom: $grid-gutter-width-mobile;
+      line-height: $font-size-3xl;
+      font-size: $font-size-2xl;
+    }
+
+    &-field-group-description {
+      margin-bottom: $grid-gutter-width-mobile * 1.5;
+    }
+  }
+
+  .paragraph--type--dsj-organisation-contact {
+    .organisation-item {
+      border-bottom: 1px solid $border-gray;
+      padding-bottom: 14px;
+
+      &:not(:first-of-type) {
+        padding-top: 14px;
+      }
+    }
+  }
+
+  .paragraph--type--dsj-organisation-contact,
+  .field--name-field-dsj-contact-pledges {
+    .organisation-item {
+      @include media-breakpoint-between(md, lg) {
+        flex-direction: column;
+      }
+
+      display: flex;
+      padding-top: 14px;
+
+      .organisation-title,
+      .organisation-content {
+        flex-basis: 50%;
+        font-size: $font-size-sm;
+      }
+
+      .organisation-title {
+        font-family: $font-ec-square-medium;
+
+        &::before {
+          margin-right: $grid-gutter-width / 8;
+          padding-left: 0;
+        }
+      }
+    }
+
+    .organisation-title {
+      @extend %pledge-icons-settings;
+    }
+
+    .organisation-link {
+      .organisation-title {
+        @include icon(world-globe);
+      }
+    }
+
+    .organisation-contact {
+      .organisation-title {
+        @include icon(calendar-filled);
+      }
+    }
+
+    .organisation-contact-pledges {
+      .organisation-title {
+        @include icon(email);
+
+        position: relative;
+        padding-left: $grid-gutter-width-mobile * 1.5;
+        flex-basis: calc(50% - #{$grid-gutter-width-mobile * 1.5});
+
+        &::before {
+          @include position(absolute, 2px null null 0);
+
+          font-size: $font-size-sm;
+        }
+      }
+    }
+
+    .organisation-content {
+      a {
+        text-decoration: underline;
+        color: $latest-category-color;
+      }
+    }
+  }
+
+  .ecl {
+    p {
+      margin-bottom: $grid-gutter-width;
+      font-size: $font-size-base !important;
+      line-height: 1.5 !important;
+    }
+  }
+}
+
+/* organisation view page */
+.group--dsj-organization {
+  .page-node-type-dsj-pledge & {
+    .field--name-field-dsj-group-image {
+      margin-bottom: $grid-gutter-width;
+    }
+  }
+
+  .title-row {
+    @include media-breakpoint-down(md) {
+      .group-actions {
+        width: unset;
+      }
+    }
+
+    @include media-breakpoint-down(xs) {
+      flex-direction: column;
+
+      > .row-wrapper {
+        order: 2;
+      }
+
+      .group-actions {
+        order: 1;
+        margin-top: 0;
+      }
+    }
+
+    border-bottom: unset;
+    margin-bottom: 0;
+
+    .row-wrapper {
+      display: flex;
+    }
+  }
+
+  .organisation-details {
+    h2 {
+      font-weight: 500;
+    }
+  }
+}
+
+/* organisations listings */
+.view-display-id-user_pledge_organisations,
+.view-dsj-pledge-organizations {
+  .status-field {
+    padding-bottom: $grid-gutter-width-mobile * 1.5;
+    color: $primary-hover;
+  }
+
+  .views-row {
+    @include media-breakpoint-down(xs) {
+      flex-direction: column;
+    }
+
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: $grid-gutter-width-mobile * 1.5;
+    padding: $grid-gutter-width-mobile * 1.5;
+    border-radius: $pledge-border-radius;
+    border: 1px solid $gray-400;
+    background-color: $body-bg;
+
+    .group-content {
+      .title-wrapper {
+        @include media-breakpoint-down(xs) {
+          padding: 0;
+        }
+
+        display: flex;
+        margin-bottom: $grid-gutter-width-mobile * 1.5;
+        padding-right: $grid-gutter-width / 1.5;
+        font-family: $font-ec-square-medium !important;
+
+        .field--name-label {
+          width: unset;
+        }
+      }
+    }
+
+    .group-actions {
+      flex-direction: column;
+      width: unset;
+
+      .membership-request-link {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+
+        a {
+          display: block;
+          padding: $line-height-xl / 2 $line-height-xl;
+          text-align: center;
+          line-height: $line-height-sm;
+          font-size: $font-size-sm;
+
+          &.link-leave {
+            &:hover {
+              background-color: unset;
+              border-color: $primary-hover;
+              color: $primary-hover;
+            }
+          }
+
+          &.ecl-button--primary {
+            &:hover {
+              background-color: $primary-hover;
+              color: $body-bg;
+            }
+          }
+        }
+      }
+
+      .more-link {
+        display: inline-block;
+
+        a {
+          @include icon(right-arrow);
+
+          position: relative;
+          margin-top: $grid-gutter-width / 2;
+          padding-right: 20px;
+          line-height: $line-height-lg;
+          font-family: $font-ec-square-medium !important;
+          font-size: $font-size-md;
+          text-align: right;
+          color: $primary !important;
+
+          &:hover {
+            color: $primary-hover !important;
+          }
+
+          &::before {
+            @include position(absolute, 2px 0 null null);
+
+            font-size: $font-size-xs;
+            color: $primary-hover;
+          }
+        }
+
+        &:hover {
+          a {
+            color: $primary-hover !important;
+
+            &::before {
+              color: $primary-hover !important;
+            }
+          }
+        }
+
+        &:focus {
+          color: $primary !important;
+        }
+
+        &:disabled {
+          color: $primary-disabled !important;
+        }
+      }
+    }
+  }
+
+  .field--name-field-dsj-country {
+    @include icon(location);
+
+    display: flex;
+    padding-bottom: $grid-gutter-width-mobile * 1.5;
+
+    &::before {
+      margin-right: $grid-gutter-width / 3.2;
+      color: $blue-450;
+    }
+
+    .field__label,
+    .field__items {
+      display: inline-block;
+    }
+
+    .field__item {
+      padding-left: $grid-gutter-width-mobile / 8;
+    }
+  }
+}

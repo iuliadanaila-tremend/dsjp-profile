@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: 'Blended Learning'
+    -
+      label: 'Zum Standort'
+    -
+      label: 'Virtuelles Leben'
+    -
+      label: 'Virtuell voraufgezeichnet'

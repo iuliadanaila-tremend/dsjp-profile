@@ -1,0 +1,10 @@
+uuid: ec8897bd-b442-46bd-9ea9-c43e1454a8ce
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.listing_wide
+label: 'Listing wide'
+targetEntityType: node
+cache: true

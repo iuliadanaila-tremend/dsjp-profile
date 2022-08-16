@@ -1,0 +1,12 @@
+services:
+  dsjp_views.normalizer.entity_reference:
+    class: Drupal\dsjp_views\Normalizer\EntityReferenceNormalizer
+    arguments: [ '@entity_type.manager' ]
+    tags:
+      - { name: normalizer, priority: 10 }
+
+  dsjp_views.normalizer.node_normalizer:
+    class: Drupal\dsjp_views\Normalizer\NodeNormalizer
+    arguments: [ '@entity_type.manager', '@entity_type.repository', '@entity_field.manager' ]
+    tags:
+      - { name: normalizer, priority: 10 }

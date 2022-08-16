@@ -1,0 +1,326 @@
+body {
+  @include font(16px, $line-height-lg, $font-family-base);
+
+  background-color: $gray;
+  color: $gray-800;
+}
+
+cite,
+footer {
+  @include font($font-size-sm, $line-height-lg, $font-family-base);
+}
+
+a {
+  color: $blue;
+  font-family: $font-ec-square-regular !important;
+  font-weight: normal;
+
+  &:hover {
+    color: $blue-100;
+  }
+
+  &:active,
+  &:focus {
+    color: $blue-500;
+  }
+
+  &:disabled {
+    color: $gray;
+  }
+}
+
+/* override ecl default style */
+.ecl-link,
+.ecl a:is([class*=ecl-u-]),
+.ecl a:not([class*=ecl-],[class*=wt-]) {
+  color: $blue;
+
+  &:hover {
+    color: $blue-100;
+  }
+
+  &:active,
+  &:focus {
+    color: $blue-500;
+  }
+
+  &:disabled {
+    color: $gray;
+  }
+}
+
+summary:focus {
+  outline: 0;
+}
+
+h1 {
+  font-size: $h1-font-size;
+  font-weight: normal;
+  line-height: $line-height-3xl;
+
+  .node--full & {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    margin: .375rem 0 1.25rem;
+    color: $primary;
+
+    span {
+      display: block;
+      width: 100%;
+    }
+  }
+
+  .node--listing & {
+    font-weight: 500;
+  }
+
+  body:not(.path-node) & {
+    font-family: $font-ec-square-medium !important;
+    margin: 2rem 0;
+  }
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+}
+
+p {
+  word-break: break-word;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* Submissions tab - My account */
+.view-webform-submissions {
+  .view-rows {
+    table {
+      min-width: 100%;
+      border-spacing: 0;
+      border-collapse: collapse;
+
+      thead,
+      tbody {
+        line-height: $line-height-xl;
+        font-family: $font-ec-square-regular;
+        color: $gray-650;
+        font-size: $font-size-base;
+
+        th,
+        td {
+          padding: $grid-gutter-width/1.15 $grid-gutter-width/3.2 $grid-gutter-width/1.6;
+          font-weight: normal;
+
+          a {
+            color: $gray-650;
+          }
+        }
+
+        td {
+          border-bottom: 1px solid $gray-400;
+        }
+      }
+
+      thead {
+        background-color: $body-bg;
+        border-bottom: 1px solid $gray-400;
+        text-align: left;
+      }
+
+      tbody {
+        .views-field-view-webform-submission {
+          a {
+            @include border-radius(6px);
+            color: $body-bg;
+            background-color: $secondary-default;
+            padding: $grid-gutter-width/2.6 $grid-gutter-width/1.3;
+
+            &:hover {
+              background-color: $secondary-hover;
+            }
+
+            &:active {
+              background-color: $secondary-active;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.webform-results-table {
+  td {
+    @include media-breakpoint-down(lg) {
+      max-width: 50px;
+    }
+    max-width: 100px;
+    white-space: initial;
+  }
+}
+
+/* Submission oppened */
+.webform-submission {
+  background-color: $body-bg;
+  padding: $grid-gutter-width;
+  color: $gray-650;
+
+  .webform-submission-information {
+    padding-bottom: $grid-gutter-width * .75;
+    border-bottom: 1px solid $gray-400;
+
+    summary {
+      font-size: $font-size-2xl;
+      line-height: $line-height-xs *2;
+      font-family: $font-ec-square-medium;
+    }
+  }
+}
+
+/* Details page bg - Organisation, Article,
+   Resource, Initiative, Funding opportunitie */
+
+.node--dsj-skills-intelligence,
+.node--dsj-funding-opportunity,
+.node--dsj-organization,
+.node--dsj-initiative,
+.node--dsj-digital-skills-resource,
+.node--dsj-article,
+.node--dsj-strategy,
+.node--dsj-good-practice,
+.node--dsj-training-offer,
+.node--dsj-national-coalition,
+.node--dsj-page {
+  &.node--full {
+    .node--content {
+      @include border-radius(6px);
+      background: linear-gradient(
+        168.53deg,
+        rgba(255, 255, 255, .6) 0%,
+        $white 97.46%
+      );
+      padding: 1rem;
+
+      @media (min-width: $min-md-width) {
+        padding: 1.875rem;
+      }
+
+      .field--name-body {
+        & > p {
+          word-break: break-word;
+        }
+      }
+    }
+  }
+}
+
+/* spacing under the images - details pages */
+.node--full {
+  .field--name-field-dsj-image {
+    margin-bottom: ($grid-gutter-width * 1.5rem) / $grid-gutter-width;
+  }
+}
+
+#block-dsj-filter-results-button {
+  @include media-breakpoint-down(sm) {
+    @include position(absolute, -50px $grid-gutter-width / 2 null 50%);
+  }
+}
+
+.toggle-facet-filters {
+  @include media-breakpoint-down(sm) {
+    @include icon(filter);
+    transition-duration: .5s;
+    display: block;
+    padding-left: $grid-gutter-width / 4;
+    cursor: pointer;
+
+    &::before {
+      @include position(absolute, 11px null null 20px);
+      color: $body-bg;
+    }
+
+    a {
+      padding-left: 40px !important;
+    }
+
+    &.is-open {
+      @include icon(remove);
+      @include position(fixed, 175px $grid-gutter-width null null);
+      transition-duration: .5s;
+      font-size: $font-size-md;
+      z-index: $zindex-tooltip + 2;
+      left: unset;
+      bottom: unset;
+      background-color: $gray-200;
+      width: $grid-gutter-width;
+      height: $grid-gutter-width;
+      color: $dark;
+      border-radius: 50%;
+      padding: 0;
+      display: flex;
+      align-content: center;
+      justify-content: center;
+
+      &::before {
+        line-height: $grid-gutter-width;
+        position: static;
+        color: $dark;
+      }
+
+      a {
+        display: none;
+      }
+    }
+
+    a {
+      display: block;
+      text-align: center;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+  }
+
+  display: none;
+
+  &.is-visible {
+    @include media-breakpoint-down(sm) {
+      display: block;
+    }
+  }
+
+  a {
+    @include border-radius(6px);
+    background-color: $header-second-bgcolor;
+    color: $body-bg;
+    padding: .75rem 1.5625rem;
+    font-weight: bold;
+    font-size: $font-size-sm;
+    line-height: $line-height-sm;
+  }
+}
+
+.ecl-breadcrumb-core__current-page {
+  .placeholder {
+    margin-right: $grid-gutter-width / 4;
+    margin-left: $grid-gutter-width / 4;
+  }
+}
+
+.simplenews-subscriber-form {
+
+  .ecl-checkbox {
+
+    .ecl-checkbox__input:disabled + .ecl-checkbox__label {
+      color: $secondary;
+    }
+  }
+}

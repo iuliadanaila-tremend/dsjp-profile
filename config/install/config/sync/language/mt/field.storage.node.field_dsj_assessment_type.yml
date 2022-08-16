@@ -1,0 +1,14 @@
+settings:
+  allowed_values:
+    -
+      label: 'Ibbażat fuq ix-xogħol'
+    -
+      label: 'Ibbażat fuq il-proġett'
+    -
+      label: Preżenzjali
+    -
+      label: Onlajn
+    -
+      label: Imħallat
+    -
+      label: 'Ibbażat fuq ir-Riċerka fil-Laboratorju'

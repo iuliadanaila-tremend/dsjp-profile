@@ -1,0 +1,21 @@
+uuid: 2cb80044-8a74-4216-bb98-fa3b1c786721
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_dsj_topology_of_competence
+field_name: field_dsj_topology_of_competence
+entity_type: node
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

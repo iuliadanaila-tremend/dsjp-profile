@@ -1,0 +1,22 @@
+uuid: ec168571-52ce-4fc9-bec3-06468e21b053
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.message.mail_subject
+    - field.field.message.dsj_first_discussion.field_node_reference
+    - message.template.dsj_first_discussion
+  module:
+    - user
+id: message.dsj_first_discussion.mail_subject
+targetEntityType: message
+bundle: dsj_first_discussion
+mode: mail_subject
+content:
+  partial_0:
+    weight: 0
+    region: content
+hidden:
+  field_node_reference: true
+  partial_1: true
+  search_api_excerpt: true

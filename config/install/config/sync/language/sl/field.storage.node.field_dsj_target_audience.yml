@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: 'Digitalna znanja in spretnosti za delovno silo.'
+    -
+      label: 'Digitalna znanja in spretnosti za strokovnjake na področju IKT in druge digitalne strokovnjake.'
+    -
+      label: 'Digitalna znanja in spretnosti v izobraževanju.'
+    -
+      label: 'Digitalna znanja in spretnosti za vse'

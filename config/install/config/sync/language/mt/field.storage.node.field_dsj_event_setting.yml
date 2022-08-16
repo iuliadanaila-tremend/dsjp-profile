@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Imħallat
+    -
+      label: 'Fuq il-post'
+    -
+      label: 'Ħajja virtwali'
+    -
+      label: 'Irrekordjat minn qabel Virtwali'

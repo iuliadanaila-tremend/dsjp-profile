@@ -1,0 +1,6 @@
+settings:
+  allowed_values:
+    -
+      label: 'Offerta unika'
+    -
+      label: 'Bażi tad-data'

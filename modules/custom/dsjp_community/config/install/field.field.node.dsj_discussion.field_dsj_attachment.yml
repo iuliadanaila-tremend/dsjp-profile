@@ -1,0 +1,27 @@
+uuid: 29af36fb-e89d-4e73-b026-b4ddf2be6998
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dsj_attachment
+    - node.type.dsj_discussion
+  module:
+    - file
+id: node.dsj_discussion.field_dsj_attachment
+field_name: field_dsj_attachment
+entity_type: node
+bundle: dsj_discussion
+label: Attachments
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'txt doc docx pdf jpg jpeg gif png'
+  max_filesize: ''
+  description_field: false
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: file

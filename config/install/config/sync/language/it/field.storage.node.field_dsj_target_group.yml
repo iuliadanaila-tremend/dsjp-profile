@@ -1,0 +1,42 @@
+settings:
+  allowed_values:
+    -
+      label: 'Persone con ottimi risultati'
+    -
+      label: 'Non madrelingua'
+    -
+      label: 'Persone che necessitano di riqualificazione professionale'
+    -
+      label: 'Persone nell&#39;istruzione terziaria (EQF 6)'
+    -
+      label: 'Persone che hanno completato il ciclo di istruzione primaria'
+    -
+      label: 'Persone nell&#39;istruzione secondaria/obbligatoria'
+    -
+      label: 'Persone che hanno completato il ciclo di istruzione terziaria (EQF 7)'
+    -
+      label: 'Persone nell&#39;istruzione primaria'
+    -
+      label: 'Persone con 0-3 anni di esperienza professionale'
+    -
+      label: 'Persone che hanno completato il ciclo di istruzione terziaria (EQF 8)'
+    -
+      label: 'Persone che hanno completato il ciclo di istruzione secondaria/obbligatoria'
+    -
+      label: 'Persone nell&#39;istruzione terziaria (EQF 7)'
+    -
+      label: 'Persone nell&#39;istruzione terziaria (EQF 8)'
+    -
+      label: Migranti
+    -
+      label: 'Persone con 3-10 anni di esperienza professionale'
+    -
+      label: 'Persone con 10 + anni di esperienza professionale'
+    -
+      label: 'Persone con difficoltà di apprendimento'
+    -
+      label: Madrelingua
+    -
+      label: 'Persone che hanno completato il ciclo di istruzione terziaria (EQF 6)'
+    -
+      label: 'Persone con risultati insufficienti'

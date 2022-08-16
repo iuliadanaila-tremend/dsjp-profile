@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Publiska
+    -
+      label: Privāta
+    -
+      label: 'Kolektīvā finansēšana'
+    -
+      label: 'Publiskā un privātā sektora'

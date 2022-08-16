@@ -1,0 +1,20 @@
+uuid: 1534c6ba-6c58-4301-af59-cdd8267d6c41
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.webtools_social_feed
+id: media.webtools_social_feed.name
+field_name: name
+entity_type: media
+bundle: webtools_social_feed
+label: Name
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: ''
+default_value_callback: ''
+settings: {  }
+field_type: string

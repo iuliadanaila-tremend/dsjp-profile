@@ -1,0 +1,58 @@
+uuid: e0bfba7f-33ea-4894-8bfe-f003c4ccf781
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.group.teaser
+    - field.field.group.community_private_grou.field_group_description
+    - field.field.group.community_private_grou.field_group_image
+    - group.type.community_private_grou
+  module:
+    - smart_trim
+id: group.community_private_grou.teaser
+targetEntityType: group
+bundle: community_private_grou
+mode: teaser
+content:
+  field_group_description:
+    weight: 2
+    label: hidden
+    settings:
+      trim_length: 100
+      trim_type: chars
+      trim_suffix: ''
+      wrap_class: trimmed
+      more_text: More
+      more_class: more-link
+      trim_options:
+        text: true
+        trim_zero: true
+      wrap_output: false
+      more_link: false
+      summary_handler: full
+    third_party_settings: {  }
+    type: smart_trim
+    region: content
+  field_group_image:
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: media_library
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  label:
+    label: hidden
+    type: string
+    weight: 1
+    region: content
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+hidden:
+  changed: true
+  created: true
+  langcode: true
+  search_api_excerpt: true
+  uid: true

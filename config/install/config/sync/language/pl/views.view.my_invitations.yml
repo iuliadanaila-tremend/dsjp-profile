@@ -1,0 +1,51 @@
+display:
+  default:
+    display_title: Główny
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Zastosuj
+          reset_button_label: Resetuj
+          exposed_sorts_label: 'Sortuj po'
+          sort_asc_label: Rosnąco
+          sort_desc_label: Malejąco
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'Elementów na stronę'
+            items_per_page_options_all_label: '- Wszystko -'
+            offset_label: Przesunięcie
+      fields:
+        gid:
+          label: Grupa
+          separator: ', '
+        group_roles:
+          label: Role
+          separator: ', '
+        uid:
+          label: 'Zaproszono przez'
+          separator: ', '
+        created:
+          separator: ', '
+        id:
+          separator: ', '
+        nothing:
+          label: Akceptuj
+          alter:
+            text: Akceptuj
+        nothing_1:
+          label: Odrzuć
+          alter:
+            text: Odrzuć
+        dropbutton:
+          label: Operacje
+      empty:
+        area_text_custom:
+          content: 'Brak dostępnych zaproszeń.'
+      arguments:
+        entity_id:
+          exception:
+            title: Wszystko
+      title: Zaproszenia
+  page_1:
+    display_title: Strona

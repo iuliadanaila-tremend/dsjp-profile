@@ -1,0 +1,5 @@
+dsjp_sat.user_self_assessments:
+  title: 'Assessment Results'
+  route_name: view.dsj_assessments.page_1
+  base_route: entity.user.canonical
+  weight: 10

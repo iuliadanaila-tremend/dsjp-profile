@@ -1,0 +1,50 @@
+settings:
+  allowed_values:
+    -
+      label: Bułgarski
+    -
+      label: Chorwacki
+    -
+      label: Czeski
+    -
+      label: Duński
+    -
+      label: Holenderski
+    -
+      label: Angielski
+    -
+      label: Estoński
+    -
+      label: Fiński
+    -
+      label: Francuskie
+    -
+      label: Niemiecki
+    -
+      label: Greckie
+    -
+      label: Węgierski
+    -
+      label: Irlandzki
+    -
+      label: Włoski
+    -
+      label: Łotewski
+    -
+      label: Litewski
+    -
+      label: Maltański
+    -
+      label: Polskie
+    -
+      label: Portugalski
+    -
+      label: Rumuński
+    -
+      label: Słowacki
+    -
+      label: Słoweński
+    -
+      label: Hiszpański
+    -
+      label: Szwedzki

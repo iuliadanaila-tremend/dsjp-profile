@@ -1,0 +1,24 @@
+settings:
+  allowed_values:
+    -
+      label: 'laboratoriniai/imitaciniai/praktiniai užsiėmimai'
+    -
+      label: 'darbo patirtis'
+    -
+      label: 'savanoriška veikla'
+    -
+      label: 'moksliniai tyrimai'
+    -
+      label: 'savarankiškas mokymasis'
+    -
+      label: 'E. mokymo kursai'
+    -
+      label: stažuotė
+    -
+      label: pameistrystė
+    -
+      label: 'praktinis užsiėmimas, seminaras arba konferencija'
+    -
+      label: 'mokymo programa'
+    -
+      label: 'pamokos klasėje'

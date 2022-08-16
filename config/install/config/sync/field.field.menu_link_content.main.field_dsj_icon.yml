@@ -1,0 +1,45 @@
+uuid: 138d851d-f375-4032-92e6-1c7232f7a6cf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.menu_link_content.field_dsj_icon
+    - system.menu.main
+  module:
+    - content_translation
+    - image
+third_party_settings:
+  content_translation:
+    translation_sync:
+      alt: alt
+      title: title
+      file: '0'
+id: menu_link_content.main.field_dsj_icon
+field_name: field_dsj_icon
+entity_type: menu_link_content
+bundle: main
+label: Icon
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: menu-icons
+  file_extensions: 'png gif jpg jpeg'
+  max_filesize: ''
+  max_resolution: ''
+  min_resolution: ''
+  alt_field: false
+  alt_field_required: true
+  title_field: false
+  title_field_required: false
+  default_image:
+    uuid: ''
+    alt: ''
+    title: ''
+    width: null
+    height: null
+field_type: image

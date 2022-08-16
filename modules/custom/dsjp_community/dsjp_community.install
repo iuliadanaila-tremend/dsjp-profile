@@ -1,0 +1,60 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the dsjp_community module.
+ */
+
+use Drupal\Core\File\FileSystemInterface;
+
+/**
+ * Add the mentions type to the schema.
+ */
+function dsjp_community_update_8001() {
+  $config_factory = \Drupal::configFactory();
+  $config = $config_factory->getEditable('filters.dsj_filter_mentions.settings.mentions_filter');
+  $config->set('UserMention', 'UserMention');
+}
+
+/**
+ * Move all discussion files to private.
+ */
+function dsjp_community_update_8003() {
+  // Load the attachment field storage and change the uri scheme to private.
+  $field_storages = \Drupal::entityTypeManager()->getStorage('field_storage_config')->loadByProperties([
+    'type' => 'file',
+    'field_name' => 'field_dsj_attachment',
+  ]);
+
+  if (!empty($field_storages)) {
+    /** @var \Drupal\field\Entity\FieldStorageConfig $field_storage */
+    $field_storage = reset($field_storages);
+    $field_storage->setSetting('uri_scheme', 'private');
+    $field_storage->enforceIsNew(FALSE);
+    $field_storage->save();
+  }
+  // Load all discussions.
+  $nodes = \Drupal::entityTypeManager()->getStorage('node')->loadByProperties([
+    'type' => 'dsj_discussion',
+  ]);
+  if (!empty($nodes)) {
+    foreach ($nodes as $node) {
+      $attachments = $node->get('field_dsj_attachment')->referencedEntities();
+      // For each attachment, change the file uri to be private and move the
+      // file to it's new directory.
+      if (!empty($attachments)) {
+        /** @var \Drupal\file\Entity\File $attachment */
+        foreach ($attachments as $attachment) {
+          $uri = $attachment->getFileUri();
+          $path = str_replace('public:', 'private:', $uri);
+          $attachment->setFileUri($path);
+          $attachment->save();
+          $directory = \Drupal::service('file_system')->dirname($uri);
+          if (\Drupal::service('file_system')->prepareDirectory($directory, FileSystemInterface::CREATE_DIRECTORY | FileSystemInterface::MODIFY_PERMISSIONS)) {
+            file_move($attachment, $path, FileSystemInterface::EXISTS_RENAME);
+          }
+        }
+      }
+    }
+  }
+}

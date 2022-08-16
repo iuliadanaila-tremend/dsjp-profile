@@ -1,0 +1,13 @@
+type: module
+core_version_requirement: ^8 || ^9
+name: 'SPARQL field test'
+description: 'Testing module for SPARQL entity fields.'
+package: Testing
+dependencies:
+- datetime
+- sparql_test:sparql_test
+
+# Information added by Drupal.org packaging script on 2022-01-07
+version: '8.x-1.0-alpha10'
+project: 'sparql_entity_storage'
+datestamp: 1641547946

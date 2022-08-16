@@ -1,0 +1,4 @@
+label: Közzétéve
+settings:
+  on_label: Aktív
+  off_label: Inaktív

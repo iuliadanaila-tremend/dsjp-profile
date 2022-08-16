@@ -1,0 +1,34 @@
+settings:
+  allowed_values:
+    -
+      label: 'Informativni pregled'
+    -
+      label: Napoved
+    -
+      label: 'Splošne smernice'
+    -
+      label: 'Splošne informacije'
+    -
+      label: Revija
+    -
+      label: 'Nacionalni načrt'
+    -
+      label: Novice
+    -
+      label: Novica
+    -
+      label: Bilten
+    -
+      label: Predstavitev
+    -
+      label: 'Promocijsko gradivo'
+    -
+      label: Poročilo
+    -
+      label: Razpored
+    -
+      label: 'Znanstveni prispevek'
+    -
+      label: Študija
+    -
+      label: 'Delovni dokument'

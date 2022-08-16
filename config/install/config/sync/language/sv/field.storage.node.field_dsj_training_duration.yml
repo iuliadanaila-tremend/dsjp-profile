@@ -1,0 +1,14 @@
+settings:
+  allowed_values:
+    -
+      label: 'Upp till 1 vecka'
+    -
+      label: 'Upp till 4 veckor'
+    -
+      label: 'Upp till 3 månader'
+    -
+      label: 'Upp till 6 månader'
+    -
+      label: 'Upp till ett år'
+    -
+      label: 'Flera år'

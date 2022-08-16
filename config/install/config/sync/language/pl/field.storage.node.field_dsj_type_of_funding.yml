@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Publiczne
+    -
+      label: Prywatny
+    -
+      label: 'Finansowania społecznościowego'
+    -
+      label: Publiczno-prywatne

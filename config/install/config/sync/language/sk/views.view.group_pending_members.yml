@@ -1,0 +1,41 @@
+display:
+  default:
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Použiť
+          reset_button_label: Reset
+          exposed_sorts_label: 'Zoradiť podľa'
+          sort_asc_label: Vzostupne
+          sort_desc_label: Zostupne
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'Položiek na stránku'
+            items_per_page_options_all_label: '- Všetko -'
+            offset_label: 'Zobraziť od'
+          tags:
+            previous: ‹‹
+            next: ››
+      fields:
+        name:
+          label: Názov
+          separator: ', '
+        created:
+          separator: ', '
+        gid:
+          separator: ', '
+        id:
+          label: ID
+          separator: ', '
+        dropbutton:
+          label: Operácie
+      arguments:
+        gid:
+          exception:
+            title: Všetko
+  page_1:
+    display_title: Stránka
+    display_options:
+      menu:
+        title: 'Žiadosti o členstvo'

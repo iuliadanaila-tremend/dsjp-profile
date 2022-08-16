@@ -1,0 +1,29 @@
+uuid: 2417b12e-f0c7-40ce-9593-b883b2ace109
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dsj_geographic_scope
+    - node.type.dsj_good_practice
+    - taxonomy.vocabulary.dsj_country
+id: node.dsj_good_practice.field_dsj_geographic_scope
+field_name: field_dsj_geographic_scope
+entity_type: node
+bundle: dsj_good_practice
+label: 'Geographic scope - Country'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      dsj_country: dsj_country
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

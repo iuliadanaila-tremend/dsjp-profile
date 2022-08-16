@@ -1,0 +1,47 @@
+<div class="initiative-education">
+  <div class="initiative-header">
+    {{ 'Digital Skills in Education'|t }}
+    <a class="button" href="{{ education.url }}">{{ 'New initiative'|t }}</a>
+  </div>
+  {% if education.initiatives %}
+    {{ education.initiatives }}
+  {% else %}
+    <div class="initiative-description">{{ 'Developing high level digital skill for ICT professionals in all industry sectors.'|t }}</div>
+  {% endif %}
+</div>
+
+<div class="initiative-labour-force">
+  <div class="initiative-header">
+    {{ 'Digital Skills for Labour Force'|t }}
+    <a class="button" href="{{ labour_force.url }}">{{ 'New initiative'|t }}</a>
+  </div>
+  {% if labour_force.initiatives %}
+    {{ labour_force.initiatives }}
+  {% else %}
+    <div class="initiative-description">{{ 'Transforming teaching and learning of digital skills in a lifelong learning perspective, including the training of teachers.'|t }}</div>
+  {% endif %}
+</div>
+
+<div class="initiative-ict">
+  <div class="initiative-header">
+    {{ 'Digital Skills for ICT Professionals'|t }}
+    <a class="button" href="{{ ict_professionals.url }}">{{ 'New initiative'|t }}</a>
+  </div>
+  {% if ict_professionals.initiatives %}
+    {{ ict_professionals.initiatives }}
+  {% else %}
+    <div class="initiative-description">{{ 'Developing digital skills for the digital economy, e.g. upskilling and reskilling workers, job seekes; actions on career advice and guidance.'|t }}</div>
+  {% endif %}
+</div>
+
+<div class="initiative-other">
+  <div class="initiative-header">
+    {{ 'Digital Skills for All Citizens'|t }}
+      <a class="button" href="{{ other.url }}">{{ 'New initiative'|t }}</a>
+  </div>
+  {% if other.initiatives %}
+    {{ other.initiatives }}
+  {% else %}
+    <div class="initiative-description">{{ 'Developing digital skills to enable all citizens to be active in our digital society.'|t }}</div>
+  {% endif %}
+</div>

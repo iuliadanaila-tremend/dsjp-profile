@@ -1,0 +1,8 @@
+settings:
+  allowed_values:
+    -
+      label: Deltidslys
+    -
+      label: 'Fuld tid'
+    -
+      label: 'Delvis tidskrævende'

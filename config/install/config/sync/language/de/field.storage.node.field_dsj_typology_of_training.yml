@@ -1,0 +1,24 @@
+settings:
+  allowed_values:
+    0:
+      label: Kurs
+    1:
+      label: Programmmodul
+    2:
+      label: Anleitung
+    4:
+      label: Ausbildung
+    5:
+      label: Studienbesuch
+    6:
+      label: Kurzlernprogramm
+    7:
+      label: Praktika
+    8:
+      label: Bildungsprogramm
+    9:
+      label: Klasse
+    10:
+      label: 'Lernen durch Engagement'
+    11:
+      label: These

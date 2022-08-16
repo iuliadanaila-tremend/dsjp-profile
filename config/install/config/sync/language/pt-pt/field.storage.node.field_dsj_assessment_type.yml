@@ -1,0 +1,14 @@
+settings:
+  allowed_values:
+    -
+      label: 'No trabalho'
+    -
+      label: 'Assentes em projetos'
+    -
+      label: Presencial
+    -
+      label: 'Em linha'
+    -
+      label: Misto
+    -
+      label: Investigal-Lab

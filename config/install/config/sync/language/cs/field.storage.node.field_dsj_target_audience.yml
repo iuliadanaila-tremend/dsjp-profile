@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: 'Digitální dovednosti pro pracovní sílu.'
+    -
+      label: 'Digitální dovednosti pro odborníky v oblasti informačních a komunikačních technologií a další digitální odborníky.'
+    -
+      label: 'Digitální dovednosti ve vzdělávání.'
+    -
+      label: 'Digitální dovednosti pro všechny'

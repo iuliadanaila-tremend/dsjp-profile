@@ -1,0 +1,10 @@
+uuid: 0c545c13-1400-4903-b398-105f83d6f0ef
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.calendar_listing
+label: 'Calendar listing'
+targetEntityType: node
+cache: true

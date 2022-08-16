@@ -1,0 +1,18 @@
+uuid: f5ed2f61-7e23-447f-a867-4ea43161fc70
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.dsj_testimonial
+id: paragraph.dsj_testimonial.created
+field_name: created
+entity_type: paragraph
+bundle: dsj_testimonial
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

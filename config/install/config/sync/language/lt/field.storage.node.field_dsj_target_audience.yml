@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: 'Darbo jėgos skaitmeniniai įgūdžiai.'
+    -
+      label: 'IRT specialistų ir kitų skaitmeninių technologijų specialistų skaitmeniniai įgūdžiai.'
+    -
+      label: 'Skaitmeniniai įgūdžiai švietimo srityje.'
+    -
+      label: 'Skaitmeniniai įgūdžiai visiems'

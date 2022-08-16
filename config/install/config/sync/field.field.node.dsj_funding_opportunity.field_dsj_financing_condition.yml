@@ -1,0 +1,21 @@
+uuid: ac0b3fee-7785-4753-b5cf-a728962e9613
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dsj_financing_condition
+    - node.type.dsj_funding_opportunity
+  module:
+    - text
+id: node.dsj_funding_opportunity.field_dsj_financing_condition
+field_name: field_dsj_financing_condition
+entity_type: node
+bundle: dsj_funding_opportunity
+label: 'Financing conditions'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

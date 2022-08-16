@@ -1,0 +1,55 @@
+<?php
+
+/**
+ * @file
+ * The Webtools Global Banner module file.
+ */
+
+declare(strict_types = 1);
+
+use Drupal\Component\Serialization\Json;
+use Drupal\Core\Cache\CacheableMetadata;
+
+/**
+ * Implements hook_page_top().
+ *
+ * We inject the globan JSON snippet in the page top area because the banner
+ * markup is injected in the same HTML element that contains the JSON.
+ * Because of this, we cannot place the JSON in the page head element.
+ */
+function oe_webtools_globan_page_top(array &$page_top): void {
+  if (\Drupal::service('router.admin_context')->isAdminRoute()) {
+    return;
+  }
+
+  /** @var \Drupal\Core\Config\ConfigFactoryInterface $config */
+  $config = \Drupal::config('oe_webtools_globan.settings');
+
+  // Add cache dependency on the globan settings config so that page cache is
+  // invalidated properly.
+  $existing_cache = CacheableMetadata::createFromRenderArray($page_top);
+  $existing_cache->addCacheableDependency($config);
+  $existing_cache->applyTo($page_top);
+
+  $page_top['#attached']['library'][] = 'oe_webtools/drupal.webtools-smartloader';
+  $configuration = [
+    'utility' => 'globan',
+    'theme' => $config->get('background_theme') ?? 'light',
+    'logo' => $config->get('display_eu_flag') ?? TRUE,
+    'link' => $config->get('display_eu_institutions_links') ?? TRUE,
+    'mode' => $config->get('sticky') ?? FALSE,
+  ];
+  if ($config->get('override_page_lang')) {
+    $configuration['lang'] = $config->get('override_page_lang');
+  }
+  if (is_int($config->get('zindex'))) {
+    $configuration['zindex'] = $config->get('zindex');
+  }
+
+  $page_top['globan'] = [
+    '#type' => 'html_tag',
+    '#tag' => 'script',
+    '#value' => Json::encode($configuration),
+    '#attributes' => ['type' => 'application/json'],
+  ];
+}

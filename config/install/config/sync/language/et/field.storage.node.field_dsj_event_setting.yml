@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Kombineeritud
+    -
+      label: Asukoht
+    -
+      label: 'Virtuaalne elu'
+    -
+      label: 'Virtuaalne eelsalvestatud'

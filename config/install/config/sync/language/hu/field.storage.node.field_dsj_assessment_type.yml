@@ -1,0 +1,12 @@
+settings:
+  allowed_values:
+    0:
+      label: Munkaalapú
+    1:
+      label: Projektalapú
+    2:
+      label: Személyes
+    4:
+      label: Vegyes
+    5:
+      label: 'Kutatáson/laboratóriumi munkán alapuló'

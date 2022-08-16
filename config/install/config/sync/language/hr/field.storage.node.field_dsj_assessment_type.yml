@@ -1,0 +1,14 @@
+settings:
+  allowed_values:
+    -
+      label: Rad
+    -
+      label: 'Temeljeni na projektu'
+    -
+      label: 'Uz obveznu prisutnost'
+    -
+      label: 'Na internetu'
+    -
+      label: Kombinirano
+    -
+      label: 'Temeljeni na istraživačkom laboratoriju'

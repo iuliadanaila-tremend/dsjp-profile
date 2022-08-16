@@ -1,0 +1,24 @@
+settings:
+  allowed_values:
+    -
+      label: 'rad u laboratoriju/simulacijski/praktični rad'
+    -
+      label: 'radno iskustvo'
+    -
+      label: volontiranje
+    -
+      label: istraživanja
+    -
+      label: 'samostalno učenje'
+    -
+      label: 'rad u okviru e-učenja'
+    -
+      label: praksa
+    -
+      label: naukovanje
+    -
+      label: 'radionica, seminar ili konferencija'
+    -
+      label: 'obrazovni program'
+    -
+      label: 'rad u učionici'

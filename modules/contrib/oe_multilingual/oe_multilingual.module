@@ -1,0 +1,156 @@
+<?php
+
+/**
+ * @file
+ * Multilingual module.
+ */
+
+declare(strict_types = 1);
+
+use Drupal\Component\Gettext\PoStreamReader;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\TypedData\TranslatableInterface;
+use Drupal\Core\Url;
+use Drupal\language\Entity\ConfigurableLanguage;
+
+/**
+ * Implements hook_language_switch_links_alter().
+ *
+ * Replaces the language links labels with the native language version.
+ */
+function oe_multilingual_language_switch_links_alter(array &$links, string $type, Url $url): void {
+  /** @var \Drupal\Core\Language\LanguageInterface[] $original_languages */
+  $original_languages = \Drupal::service('language_manager')->getNativeLanguages();
+  foreach ($links as $code => &$link) {
+    if (isset($original_languages[$code])) {
+      $link['title'] = $original_languages[$code]->getName();
+    }
+  }
+}
+
+/**
+ * Implements hook_language_fallback_candidates_alter().
+ *
+ * - Disable default language fallback logic: the default Drupal behavior
+ * will return all available languages and then choose the first one
+ * ordered alphabetically.
+ * - Return the entity's original language as the default fallback language.
+ */
+function oe_multilingual_language_fallback_candidates_alter(array &$candidates, array $context): void {
+  $operation = $context['operation'];
+
+  // The default fallback language for any entity is the language it was
+  // originally written on.
+  if ($operation === 'entity_upcast' || $operation === 'entity_view') {
+    $attempted_langcode = $context['langcode'];
+    if ($context['data'] instanceof TranslatableInterface) {
+      $candidates = [$attempted_langcode => $attempted_langcode];
+      $entity = $context['data'];
+      $default_language = $entity->getUntranslated()->language()->getId();
+      $candidates[$default_language] = $default_language;
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_language_selection_page_content().
+ *
+ * Replaces the language links labels with the native language version.
+ */
+function oe_multilingual_preprocess_language_selection_page_content(&$variables): void {
+  /** @var \Drupal\Core\Language\LanguageInterface[] $original_languages */
+  $original_languages = \Drupal::service('language_manager')->getNativeLanguages();
+  foreach ($variables['language_links']['#items'] as $langcode => &$item) {
+    if (isset($original_languages[$langcode])) {
+      $item['#title'] = $original_languages[$langcode]->getName();
+    }
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_insert() for the configurable language entities.
+ *
+ * Whenever a language entity is created, we need to ensure we create its
+ * translation so that we have the correct native name for it.
+ */
+function oe_multilingual_configurable_language_insert(EntityInterface $entity) {
+  if (\Drupal::isConfigSyncing() || isset($GLOBALS['install_state'])) {
+    // We only want to trigger this if the language is not created as part of
+    // a site install or config sync. In those cases, we import the string
+    // translations which will create the language overrides.
+    return;
+  }
+
+  $reader = new PoStreamReader();
+  $reader->setLangcode($entity->getId());
+  $file = drupal_get_path('module', 'oe_multilingual') . "/translations/oe_multilingual-{$entity->getId()}.po";
+  if (!file_exists($file)) {
+    return;
+  }
+  $reader->setURI($file);
+  try {
+    $reader->open();
+  }
+  catch (\Exception $exception) {
+    // If something goes wrong with the the reader, we return and do nothing.
+    return;
+  }
+
+  while ($item = $reader->readItem()) {
+    if ($item->getSource() === $entity->getName()) {
+      /** @var \Drupal\language\ConfigurableLanguageInterface $config */
+      $config = \Drupal::languageManager()->getLanguageConfigOverride($entity->getId(), 'language.entity.' . $entity->id());
+      $config->set('label', $item->getTranslation());
+      $config->save();
+      break;
+    }
+  }
+}
+
+/**
+ * Implements hook_locale_translation_projects_alter().
+ */
+function oe_multilingual_locale_translation_projects_alter(&$projects) {
+  $projects['oe_multilingual']['info']['interface translation server pattern'] = drupal_get_path('module', 'oe_multilingual') . '/translations/%project-%language.po';
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * Add a category selection to language entity form.
+ */
+function oe_multilingual_form_language_admin_edit_form_alter(&$form, FormStateInterface $form_state): void {
+  /** @var \Drupal\language\Entity\ConfigurableLanguage $language */
+  $language = $form_state->getFormObject()->getEntity();
+  $form['category'] = [
+    '#type' => 'select',
+    '#title' => t('Category'),
+    '#required' => TRUE,
+    '#options' => [
+      'eu' => t('EU'),
+      'non_eu' => t('Non-EU'),
+    ],
+    '#default_value' => $language->getThirdPartySetting('oe_multilingual', 'category'),
+  ];
+
+  $form['#entity_builders'][] = 'oe_multilingual_form_language_edit_form_builder';
+}
+
+/**
+ * Entity form builder for the language edit form.
+ *
+ * Saves the language category into the language settings.
+ *
+ * @param string $entity_type
+ *   The name of the entity type.
+ * @param \Drupal\language\Entity\ConfigurableLanguage $language
+ *   The language entity.
+ * @param array $form
+ *   The form array.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   The form state.
+ */
+function oe_multilingual_form_language_edit_form_builder(string $entity_type, ConfigurableLanguage $language, array &$form, FormStateInterface $form_state): void {
+  $language->setThirdPartySetting('oe_multilingual', 'category', $form_state->getValue('category'));
+}

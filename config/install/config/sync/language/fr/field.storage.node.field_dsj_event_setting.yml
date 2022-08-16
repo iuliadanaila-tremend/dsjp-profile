@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Mélangées
+    -
+      label: 'Sur la localisation'
+    -
+      label: 'Direct virtuel'
+    -
+      label: 'Pré-enregistrement virtuel'

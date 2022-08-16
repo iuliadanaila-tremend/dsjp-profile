@@ -1,0 +1,28 @@
+uuid: a82a667a-d7d0-4155-946e-8d6dc0260627
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.message.mail_subject
+    - field.field.message.user_register.field_published
+    - field.field.message.user_register.field_user
+    - message.template.user_register
+  module:
+    - user
+_core:
+  default_config_hash: g95gkyD3TcAGZb440M51BIe3F3YyJ_R0Cqu3oYyd2po
+id: message.user_register.mail_subject
+targetEntityType: message
+bundle: user_register
+mode: mail_subject
+content:
+  partial_0:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_published: true
+  field_user: true
+  partial_1: true
+  search_api_excerpt: true

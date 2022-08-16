@@ -1,0 +1,21 @@
+uuid: 4b8d2a8b-43ad-4f5a-b7df-087448c9beb8
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: user.field_dsj_city
+field_name: field_dsj_city
+entity_type: user
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

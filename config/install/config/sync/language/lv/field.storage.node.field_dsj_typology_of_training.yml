@@ -1,0 +1,24 @@
+settings:
+  allowed_values:
+    0:
+      label: Kurss
+    1:
+      label: 'Programmas modulis'
+    2:
+      label: Mentorēšana
+    4:
+      label: Māceklība
+    5:
+      label: 'Izpētes vizīte'
+    6:
+      label: 'Īstermiņa mācību programma'
+    7:
+      label: Stažēšanās
+    8:
+      label: 'Izglītības programma'
+    9:
+      label: Klase
+    10:
+      label: 'Mācīšanās sabiedriskajā darbā'
+    11:
+      label: Disertācija

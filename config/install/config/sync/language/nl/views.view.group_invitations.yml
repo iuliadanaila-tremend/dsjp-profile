@@ -1,0 +1,46 @@
+display:
+  default:
+    display_title: Hoofd
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Toepassen
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sorteren op'
+          sort_asc_label: Oplopend
+          sort_desc_label: Aflopend
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'Items per pagina'
+            items_per_page_options_all_label: '- Alle -'
+            offset_label: Startpunt
+      fields:
+        invitee_mail:
+          label: E-mail
+          separator: ', '
+        name:
+          separator: ', '
+        group_roles:
+          label: Rollen
+          separator: ', '
+        uid:
+          label: 'Uitgenodigd door'
+          separator: ', '
+        created:
+          separator: ', '
+        dropbutton:
+          label: Bewerkingen
+      empty:
+        area_text_custom:
+          content: 'Geen uitnodigingen beschikbaar.'
+      arguments:
+        gid:
+          exception:
+            title: Alle
+      title: Uitnodigingen
+  page_1:
+    display_title: Pagina
+    display_options:
+      menu:
+        title: Uitnodigingen

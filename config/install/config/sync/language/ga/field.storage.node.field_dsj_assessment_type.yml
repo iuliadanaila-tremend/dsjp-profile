@@ -1,0 +1,14 @@
+settings:
+  allowed_values:
+    -
+      label: Obairbhunaithe
+    -
+      label: Tionscadalbhunaithe
+    -
+      label: 'Cur i láthair'
+    -
+      label: 'Ar líne'
+    -
+      label: Cumaiscthe
+    -
+      label: 'Bunaithe ar thaighde-Saotharlann'

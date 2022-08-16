@@ -1,0 +1,33 @@
+{% set classes = [
+  'paragraph',
+  'paragraph--type--' ~ (paragraph.bundle|clean_class),
+  'paragraph--id--' ~ paragraph.id(),
+  view_mode ? 'paragraph--view-mode--' ~ (view_mode|clean_class),
+  not paragraph.isPublished() ? 'paragraph--unpublished'
+] %}
+<div {{ attributes.addClass(classes) }}>
+  <div class="ecl-container">
+    {% if content.field_dsj_image %}
+      <div class="image image-desktop">
+        {{ content.field_dsj_image }}
+      </div>
+    {% endif %}
+    {% if content.field_dsj_mobile_image %}
+      <div class="image image-mobile">
+        {{ content.field_dsj_mobile_image }}
+      </div>
+    {% endif %}
+    <div class="content-banner">
+      {% if content.field_dsj_title %}
+        <div class="title">
+          {{ content|without('field_dsj_image', 'field_dsj_mobile_image', 'field_dsj_see_more_link') }}
+        </div>
+      {% endif %}
+      {% if content.field_dsj_see_more_link|render %}
+        <div class="see-more-link">
+          {{ content.field_dsj_see_more_link }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>

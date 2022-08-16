@@ -1,0 +1,20 @@
+display:
+  default:
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Apply
+          reset_button_label: Ponastavi
+      fields:
+        gid:
+          label: Skupina
+        group_roles:
+          label: Vloge
+        dropbutton:
+          label: Operacije
+      arguments:
+        entity_id:
+          exception:
+            title: Vsi
+  page_1:
+    display_title: Stran

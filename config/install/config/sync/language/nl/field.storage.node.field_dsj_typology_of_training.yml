@@ -1,0 +1,26 @@
+settings:
+  allowed_values:
+    -
+      label: Opleiding
+    -
+      label: Programmamodule
+    -
+      label: Begeleiding
+    -
+      label: MOOC’S
+    -
+      label: Leerlingplaats
+    -
+      label: Studiebezoek
+    -
+      label: 'Kort leerprogramma'
+    -
+      label: Stage
+    -
+      label: Onderwijsprogramma
+    -
+      label: Klasse
+    -
+      label: Serviceonderwijs
+    -
+      label: Proefschrift

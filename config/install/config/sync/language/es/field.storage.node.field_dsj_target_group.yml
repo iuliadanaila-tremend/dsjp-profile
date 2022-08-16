@@ -1,0 +1,42 @@
+settings:
+  allowed_values:
+    -
+      label: 'Alumnos de elevado rendimiento'
+    -
+      label: 'Hablantes no nativos'
+    -
+      label: 'Personas que necesitan un reciclaje profesional'
+    -
+      label: 'Personas que cursan enseñanza superior (EQF 6)'
+    -
+      label: 'Personas que han finalizado la enseñanza primaria'
+    -
+      label: 'Personas que cursan enseñanza secundaria/obligatoria'
+    -
+      label: 'Personas que han finalizado la enseñanza superior (EQF 7)'
+    -
+      label: 'Personas que cursan enseñanza primaria'
+    -
+      label: 'Personas con una experiencia laboral de 0 a 3 años'
+    -
+      label: 'Personas que han finalizado la enseñanza superior (EQF 8)'
+    -
+      label: 'Personas que han finalizado la enseñanza secundaria/obligatoria'
+    -
+      label: 'Personas que cursan enseñanza superior (EQF 7)'
+    -
+      label: 'Personas que cursan enseñanza superior (EQF 8)'
+    -
+      label: Migrantes
+    -
+      label: 'Personas con una experiencia laboral de 3 a 10 años'
+    -
+      label: 'Personas con una experiencia laboral de más de 10 años'
+    -
+      label: 'Personas con dificultades de aprendizaje'
+    -
+      label: 'Hablantes nativos'
+    -
+      label: 'Personas que han finalizado la enseñanza superior (EQF 6)'
+    -
+      label: 'Alumnos de bajo rendimiento'

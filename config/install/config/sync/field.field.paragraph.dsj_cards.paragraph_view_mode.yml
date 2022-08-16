@@ -1,0 +1,21 @@
+uuid: eb5ecfcd-1f1a-4146-9c7c-b227a070b342
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.paragraph_view_mode
+    - paragraphs.paragraphs_type.dsj_cards
+  module:
+    - paragraph_view_mode
+id: paragraph.dsj_cards.paragraph_view_mode
+field_name: paragraph_view_mode
+entity_type: paragraph
+bundle: dsj_cards
+label: 'View mode'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: paragraph_view_mode

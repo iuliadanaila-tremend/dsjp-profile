@@ -1,0 +1,8 @@
+settings:
+  allowed_values:
+    0:
+      label: Publiek
+    1:
+      label: Particulier
+    3:
+      label: Publiek-private

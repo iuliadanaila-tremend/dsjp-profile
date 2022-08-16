@@ -1,0 +1,40 @@
+settings:
+  allowed_values:
+    0:
+      label: 'Dirbtinis intelektas'
+    1:
+      label: 'Kibernetinis saugumas'
+    2:
+      label: 'Daiktų internetas'
+    3:
+      label: 'Didieji duomenys'
+    4:
+      label: 'Blokų grandinė'
+    5:
+      label: Robotika
+    6:
+      label: 'Padidinta realybė'
+    7:
+      label: 'Virtualioji realybė'
+    8:
+      label: 'Našioji kompiuterija'
+    9:
+      label: 'Mašinų mokymasis'
+    10:
+      label: 'Debesijos kompiuterija'
+    12:
+      label: Telekomunikacijos
+    13:
+      label: 'Belaidis ryšys'
+    14:
+      label: 'Kvantinis skaičiavimas'
+    15:
+      label: 'Programinė įranga'
+    16:
+      label: 'Mobiliųjų programų kūrimas'
+    17:
+      label: 'Žiniatinklio kūrimas'
+    18:
+      label: Mikroelektronika
+    19:
+      label: 'Skaitmeniniai įgūdžiai'

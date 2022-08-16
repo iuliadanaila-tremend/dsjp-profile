@@ -1,0 +1,24 @@
+settings:
+  allowed_values:
+    -
+      label: laborator/simulare/practică
+    -
+      label: 'experiență profesională'
+    -
+      label: voluntariat
+    -
+      label: cercetare
+    -
+      label: 'studiu individual'
+    -
+      label: 'cursuri de e-learning'
+    -
+      label: stagiu
+    -
+      label: ucenicie
+    -
+      label: 'atelier, seminar sau conferință'
+    -
+      label: 'program educațional'
+    -
+      label: 'curs în clasă'

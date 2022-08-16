@@ -1,0 +1,3 @@
+administer rdf skos language mapping:
+  title: 'Administer RDF SKOS language_mapping configuration'
+  description: 'Allows to access the administration form to configure language mapping between Drupal language codes and the ones present in Skos concepts and concept schemes.'

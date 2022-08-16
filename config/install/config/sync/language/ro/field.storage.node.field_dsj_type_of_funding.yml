@@ -1,0 +1,8 @@
+settings:
+  allowed_values:
+    1:
+      label: Privat
+    2:
+      label: 'Finanțare participativă'
+    3:
+      label: Public-privat

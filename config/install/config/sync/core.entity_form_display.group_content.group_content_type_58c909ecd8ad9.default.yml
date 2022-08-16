@@ -1,0 +1,44 @@
+uuid: c4710552-ceec-4498-9dc1-e146b6dc95d8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.group_content.group_content_type_58c909ecd8ad9.field_dsj_request_message
+    - field.field.group_content.group_content_type_58c909ecd8ad9.grequest_status
+    - field.field.group_content.group_content_type_58c909ecd8ad9.grequest_updated_by
+    - group.content_type.group_content_type_58c909ecd8ad9
+id: group_content.group_content_type_58c909ecd8ad9.default
+targetEntityType: group_content
+bundle: group_content_type_58c909ecd8ad9
+mode: default
+content:
+  entity_id:
+    type: entity_reference_autocomplete
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_dsj_request_message:
+    type: string_textarea
+    weight: 2
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 0
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+hidden:
+  grequest_status: true
+  grequest_updated_by: true
+  path: true
+  uid: true

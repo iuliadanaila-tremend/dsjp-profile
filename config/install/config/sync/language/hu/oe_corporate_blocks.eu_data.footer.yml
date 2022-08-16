@@ -1,0 +1,71 @@
+contact_title: Kapcsolatfelvétel
+contact:
+  -
+    label: 'Hívjon minket! Telefonszámunk 00 800 6 7 8 9 10 11'
+  -
+    href: 'https://europa.eu/european-union/contact/call-us_hu'
+    label: 'Válasszon a többi telefonos kapcsolatfelvételi lehetőség közül!'
+  -
+    href: 'https://europa.eu/european-union/contact/write-to-us_hu'
+    label: 'Írjon nekünk kapcsolatfelvételi űrlapunk kitöltésével!'
+  -
+    href: 'https://europa.eu/european-union/contact/meet-us_hu'
+    label: 'Jöjjön el személyesen helyi irodáink valamelyikébe!'
+social_media_title: 'Közösségi média'
+social_media:
+  -
+    label: 'Kövesse az EU közösségi oldalait'
+    href: 'https://europa.eu/european-union/contact/social-networks_hu'
+institution_links_title: 'Uniós intézmények'
+institution_links:
+  0:
+    label: 'Európai Parlament'
+    href: 'http://www.europarl.europa.eu/portal/hu'
+  1:
+    label: 'Európai Tanács'
+    href: 'http://www.consilium.europa.eu/hu/european-council/'
+  2:
+    label: 'Az Európai Unió Tanácsa'
+    href: 'http://www.consilium.europa.eu/hu/home/'
+  3:
+    label: 'Európai Bizottság'
+    href: 'https://ec.europa.eu/commission/index_hu'
+  4:
+    label: 'Az Európai Unió Bírósága (EUB)'
+    href: 'http://curia.europa.eu/jcms/jcms/j_6/hu/'
+  5:
+    label: 'Európai Központi Bank (EKB)'
+    href: 'https://www.ecb.europa.eu/home/languagepolicy/html/index.hu.html'
+  6:
+    label: 'Európai Számvevőszék'
+    href: 'http://www.eca.europa.eu/hu'
+  7:
+    label: 'Európai Külügyi Szolgálat (EKSZ)'
+    href: 'http://eeas.europa.eu/index_hu.htm'
+  8:
+    href: 'http://www.eesc.europa.eu/?i=portal.hu.home'
+  9:
+    label: 'Régiók Európai Bizottsága'
+    href: 'http://cor.europa.eu/hu/'
+  10:
+    label: 'Európai Beruházási Bank (EBB)'
+  12:
+    label: 'Európai adatvédelmi biztos'
+    href: 'https://secure.edps.europa.eu/EDPSWEB/edps/EDPS?lang=hu'
+legal_links_title: 'Jogi nyilatkozat'
+legal_links:
+  -
+    label: 'A honlapról'
+    href: 'https://europa.eu/european-union/abouteuropa_hu'
+  -
+    label: Nyelvpolitika
+    href: 'https://europa.eu/european-union/abouteuropa/language-policy_hu'
+  -
+    label: Adatvédelem
+    href: 'https://europa.eu/european-union/abouteuropa/privacy-policy_hu'
+  -
+    label: 'Jogi nyilatkozat'
+    href: 'https://europa.eu/european-union/abouteuropa/legal_notices_hu'
+  -
+    label: Cookie-k
+    href: 'https://europa.eu/european-union/abouteuropa/cookies_hu'

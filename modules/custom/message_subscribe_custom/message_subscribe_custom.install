@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Install hooks for the Message Subscribe Custom module.
+ */
+
+/**
+ * Implements hook_install().
+ *
+ * Adds the message_digest_interval to user.
+ */
+function message_subscribe_custom_install() {
+  // Add the `message_digest_interval` field to the user form.
+  $display = \Drupal::service('entity_display.repository')->getFormDisplay('user', 'user', 'default');
+  if (!$display->getComponent('message_digest_interval')) {
+    $settings = [
+      'type' => 'options_select',
+      'settings' => [],
+    ];
+    $display->setComponent('message_digest_interval', $settings);
+    $display->save();
+  }
+}

@@ -1,0 +1,12 @@
+{% if links %}
+  <div class="follow-us">
+    <div class="links">
+      <div class="links-title">
+        {{ 'Follow us on social media'|t }}
+      </div>
+      {% for key,link in links %}
+        <a href="{{ link }}"><i class="icon icon-{{ key }}"></i></a>
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}

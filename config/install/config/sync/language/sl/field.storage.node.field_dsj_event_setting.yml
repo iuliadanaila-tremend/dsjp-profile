@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Mešani
+    -
+      label: 'O lokaciji'
+    -
+      label: 'Virtualni živec'
+    -
+      label: 'Virtualno predhodno posneto'

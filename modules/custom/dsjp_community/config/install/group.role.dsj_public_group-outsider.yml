@@ -1,0 +1,20 @@
+uuid: 64396748-2942-45eb-914d-4bd2ab7aea21
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.dsj_public_group
+id: dsj_public_group-outsider
+label: Outsider
+weight: -101
+internal: true
+audience: outsider
+group_type: dsj_public_group
+permissions_ui: true
+permissions:
+  - 'join group'
+  - 'request group membership'
+  - 'view group'
+  - 'view group_membership content'
+  - 'view group_node:dsj_discussion content'
+  - 'view group_node:dsj_discussion entity'

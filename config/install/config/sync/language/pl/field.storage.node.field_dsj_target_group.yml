@@ -1,0 +1,42 @@
+settings:
+  allowed_values:
+    -
+      label: Specjaliści
+    -
+      label: 'Osoby niebędące rodzimymi użytkownikami języka'
+    -
+      label: 'Osoby wymagające przekwalifikowania zawodowego'
+    -
+      label: 'Osoby na studiach pierwszego stopnia (ERK 6)'
+    -
+      label: 'Osoby, które ukończyły szkołę podstawową'
+    -
+      label: 'Osoby uczące się w szkole średniej/w ramach obowiązku szkolnego'
+    -
+      label: 'Osoby, które ukończyły studia drugiego stopnia oraz które posiadają dyplom ukończenia jednolitych studiów magisterskich (ERK 7)'
+    -
+      label: 'Osoby uczące się w szkole podstawowej'
+    -
+      label: 'Osoby z doświadczeniem zawodowym od 0 do 3 lat'
+    -
+      label: 'Osoby, które posiadają dyplom doktorski (ERK 8)'
+    -
+      label: 'Osoby, które ukończyły szkołę średnią/spełniły obowiązek szkolny'
+    -
+      label: 'Osoby na studiach drugiego stopnia (ERK 7)'
+    -
+      label: 'Osoby z wykształceniem wyższym (EQF 8)'
+    -
+      label: Migranci
+    -
+      label: 'Osoby z doświadczeniem zawodowym od 3 do 10 lat'
+    -
+      label: 'Osoby z doświadczeniem zawodowym powyżej 10 lat'
+    -
+      label: 'Osoby niepełnosprawne intelektualnie'
+    -
+      label: 'Rodzimi użytkownicy języka'
+    -
+      label: 'Osoby, które ukończyły studia pierwszego stopnia (ERK 6)'
+    -
+      label: 'Osoby osiągające słabe wyniki w nauce'

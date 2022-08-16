@@ -1,0 +1,17 @@
+dsjp_pledge.user_pledges:
+  title: My Pledges
+  route_name: view.pledges.user_pledges
+  base_route: entity.user.canonical
+  weight: 4
+
+dsjp_pledge.user_pledge_organisations:
+  title: My Organisation
+  route_name: view.groups.user_pledge_organisations
+  base_route: entity.user.canonical
+  weight: 4
+
+dsjp_pledge.initiative_type_description_config_form:
+  title: 'Initiative Type description'
+  route_name: dsjp_pledge.initiative_type_description_config_form
+  base_route: dsjp_pledge.initiative_type_description_config_form
+  weight: 0

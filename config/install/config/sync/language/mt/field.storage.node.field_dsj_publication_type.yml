@@ -1,0 +1,34 @@
+settings:
+  allowed_values:
+    -
+      label: 'Skeda informattiva'
+    -
+      label: Tbassir
+    -
+      label: 'Linji gwida ġenerali'
+    -
+      label: 'Informazzjoni ġenerali'
+    -
+      label: Magażin
+    -
+      label: 'Pjan nazzjonali'
+    -
+      label: 'Avviżi tal-aħbarijiet'
+    -
+      label: 'Artiklu tal-aħbarijiet'
+    -
+      label: Bullettin
+    -
+      label: Preżentazzjoni
+    -
+      label: 'Materjal promozzjonali'
+    -
+      label: Rapport
+    -
+      label: L-iskeda
+    -
+      label: 'Dokument xjentifiku'
+    -
+      label: Studju
+    -
+      label: 'Dokument ta’ ħidma'

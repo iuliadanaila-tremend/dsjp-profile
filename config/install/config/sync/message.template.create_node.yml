@@ -1,0 +1,25 @@
+uuid: 4976b77c-630d-407a-b98f-95b2e80622bb
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.full_html
+    - filter.format.plain_text
+_core:
+  default_config_hash: K3MkHCUpz0E91JmRy7ZtP3vI9qqKoLhMNCUbnYm-yCk
+template: create_node
+label: 'Create node'
+description: 'Node was created.'
+text:
+  -
+    value: "[message:field_node_reference:entity:title] created [message:field_node_reference:entity:content-type:name]\r\n"
+    format: plain_text
+  -
+    value: "<h2>[message:field_node_reference:entity:content-type:name] created</h2>\r\n\r\n<p>Title: [message:field_node_reference:entity:title]<br />\r\nAuthor:&nbsp;[message:field_node_reference:entity:author]<br />\r\nTimestamp:&nbsp;[message:field_node_reference:entity:created]</p>\r\n\r\n<p>[message:field_node_reference:entity:summary] ...</p>\r\n\r\n<p>Read more:&nbsp;[message:field_node_reference:entity:url]</p>\r\n"
+    format: full_html
+settings:
+  'token options':
+    clear: false
+    'token replace': true
+  purge_override: false
+  purge_methods: {  }

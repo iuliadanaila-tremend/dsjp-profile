@@ -1,0 +1,12 @@
+uuid: 9bf2b981-4273-48d2-b698-583ad06d34a4
+langcode: en
+status: true
+dependencies:
+  config:
+    - flag.flag.subscribe_node
+id: flagging.subscribe_node.default
+targetEntityType: flagging
+bundle: subscribe_node
+mode: default
+content: {  }
+hidden: {  }

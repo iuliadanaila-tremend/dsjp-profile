@@ -1,0 +1,48 @@
+display:
+  default:
+    display_title: Mester
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Alkalmaz
+          reset_button_label: Alaphelyzet
+          exposed_sorts_label: Rendezés
+          sort_asc_label: Növekvő
+          sort_desc_label: Csökkenő
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'Elemek száma oldalanként'
+            items_per_page_options_all_label: '– Mind –'
+            offset_label: Eltolás
+      fields:
+        invitee_mail:
+          label: E-mail
+          separator: ', '
+        name:
+          separator: ', '
+        group_roles:
+          label: Szerepkörök
+          separator: ', '
+        uid:
+          label: Meghívta
+          separator: ', '
+        created:
+          separator: ', '
+        delete_group_content:
+          admin_label: 'Tagi kapcsolat eltávolítása'
+        dropbutton:
+          label: Műveletek
+      empty:
+        area_text_custom:
+          content: 'Nincs elérhető meghívás.'
+      arguments:
+        gid:
+          exception:
+            title: Mind
+      title: Meghívások
+  page_1:
+    display_title: Oldal
+    display_options:
+      menu:
+        title: Meghívások

@@ -1,0 +1,47 @@
+<?php
+
+/**
+ * @file
+ * Provides install and update functionality for pledges migration.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function dsjp_pledge_migration_schema() {
+  $schema['dsj_pledge_users'] = [
+    'description' => 'Contains the pledge users and their data.',
+    'fields' => [
+      'id' => [
+        'type' => 'serial',
+        'description' => 'Unique ID.',
+      ],
+      'mail' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'description' => 'User email.',
+      ],
+      'pid' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'description' => 'The external pledge ids.',
+      ],
+      'oid' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'description' => 'The external organisation ids.',
+      ],
+      'piid' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'description' => 'The external pledge initiative ids.',
+      ],
+    ],
+    'indexes' => [
+      'primary_key' => ['id'],
+    ],
+  ];
+
+  return $schema;
+}

@@ -1,0 +1,16 @@
+{% if back_url %}
+  <a href="{{ back_url }}" title="pm-back"></a>
+{% endif %}
+{{ content.members }}
+{% if content.delete_link %}
+  <span class="trigger-delete-visibility">:</span>
+  {{ content.delete_link }}
+{% endif %}
+{% if message_block %}
+  {{ message_block }}
+{% endif %}
+{{ content.private_messages }}
+{% if current_user %}
+  {{ current_user }}
+{% endif %}
+{{ content|without('private_messages', 'members', 'delete_link') }}

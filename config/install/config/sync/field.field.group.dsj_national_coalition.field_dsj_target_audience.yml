@@ -1,0 +1,21 @@
+uuid: 4e9cb354-12b4-4463-8850-637a30185ac1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_dsj_target_audience
+    - group.type.dsj_national_coalition
+  module:
+    - options
+id: group.dsj_national_coalition.field_dsj_target_audience
+field_name: field_dsj_target_audience
+entity_type: group
+bundle: dsj_national_coalition
+label: 'Target audience'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

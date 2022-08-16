@@ -1,0 +1,24 @@
+settings:
+  allowed_values:
+    0:
+      label: Cúrsa
+    1:
+      label: 'Modúl an chláir'
+    2:
+      label: Meantóireacht
+    4:
+      label: Printíseacht
+    5:
+      label: 'Cuairt staidéir'
+    6:
+      label: 'Clár gearrfhoghlama'
+    7:
+      label: Intéirneacht
+    8:
+      label: 'Clár oideachais'
+    9:
+      label: Aicme
+    10:
+      label: 'Foghlaim seirbhíse'
+    11:
+      label: Tráchtas

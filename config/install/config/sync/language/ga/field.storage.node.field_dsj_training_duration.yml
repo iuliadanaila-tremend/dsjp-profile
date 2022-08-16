@@ -1,0 +1,14 @@
+settings:
+  allowed_values:
+    -
+      label: 'Suas le 1 seachtain'
+    -
+      label: 'Suas le 4 seachtaine'
+    -
+      label: 'Suas le 3 mhí'
+    -
+      label: 'Suas le 6 mhí'
+    -
+      label: 'Suas le bliain'
+    -
+      label: 'Blianta iolracha'

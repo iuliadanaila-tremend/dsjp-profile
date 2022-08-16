@@ -1,0 +1,164 @@
+id: dsj_coalition_drupal_dsj_strategy
+label: 'Drupal Coalitions Strategies content migration'
+source:
+  plugin: embedded_data
+  data_rows: {}
+  ids:
+    id:
+      type: integer
+    gid:
+      type: integer
+process:
+  uid: constants/group_owner
+  created:
+    plugin: format_date
+    from_format: 'Y-m-d\TH:i:sP'
+    to_timezone: 'GMT'
+    to_format: 'U'
+    source: created
+  changed:
+    plugin: format_date
+    from_format: 'Y-m-d\TH:i:sP'
+    to_timezone: 'GMT'
+    to_format: 'U'
+    source: changed
+  title: title
+  body/value:
+    -
+      plugin: extract
+      source: body
+      index:
+        - value
+    -
+      plugin: text_image_extractor
+      source: body/value
+  body/format:
+    plugin: default_value
+    default_value: full_html
+  field_dsj_author:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: field_dsj_author
+    -
+      plugin: get
+      source: field_dsj_author
+  field_dsj_budget: field_dsj_budget
+  field_dsj_digital_skill_level: field_dsj_digital_skill_level
+  field_dsj_digital_technology: field_dsj_digital_technology
+  field_dsj_file_for_download:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: field_dsj_file_for_download/id
+    -
+      plugin: extract
+      source: field_dsj_file_for_download
+      index:
+        - uri
+        - url
+    -
+      plugin: concat
+      source:
+        - constants/file_location
+        - field_dsj_file_for_download/uri/url
+    -
+      plugin: file_import
+      field: field_dsj_file_for_download
+      destination: constants/file_destination
+      rename: true
+      uid: '@uid'
+      skip_on_error: TRUE
+  field_dsj_geographic_scope:
+    plugin: sub_process
+    source: field_dsj_geographic_scope
+    process:
+      target_id:
+        plugin: custom_field_entity_lookup
+        entity_type: taxonomy_term
+        bundle_key: vid
+        bundle: dsj_country
+        value_field: field_dsj_country_code
+        source: field_dsj_country_code
+  field_dsj_type_of_initiative: field_dsj_type_of_initiative
+  field_dsj_latest_update_strategy:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: field_dsj_latest_update_strategy
+    -
+      plugin: get
+      source: field_dsj_latest_update_strategy
+  field_dsj_organization:
+    plugin: sub_process
+    source: field_dsj_organization
+    process:
+      target_id:
+        plugin: entity_lookup
+        entity_type: node
+        value_key: title
+        source: title
+  field_dsj_publish_in_core: field_dsj_publish_in_core
+  field_dsj_stakeholder: field_dsj_stakeholder
+  field_dsj_strategy_state_of_play:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: field_dsj_strategy_state_of_play
+    -
+      plugin: get
+      source: field_dsj_strategy_state_of_play
+  field_dsj_target_audience: field_dsj_target_audience
+  field_dsj_timeline_roadmap:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: field_dsj_timeline_roadmap
+    -
+      plugin: get
+      source: field_dsj_timeline_roadmap
+  field_dsj_target_language: field_dsj_target_language
+  field_dsj_website_link:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: field_dsj_website_link
+    -
+      plugin: get
+      source: field_dsj_website_link
+  field_dsj_image:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: field_dsj_image/id
+    -
+      plugin: extract
+      source: field_dsj_image
+      index:
+        - uri
+        - url
+    -
+      plugin: concat
+      source:
+        - constants/file_location
+        - field_dsj_image/uri/url
+    -
+      plugin: file_import
+      field: field_dsj_image
+      destination: constants/file_destination
+      rename: true
+      uid: '@uid'
+      skip_on_error: TRUE
+  langcode:
+    plugin: default_value
+    source: constants/language
+    default_value: und
+  status:
+    plugin: default_value
+    default_value: 0
+  moderation_state:
+    plugin: default_value
+    default_value: imported
+destination:
+  plugin: entity:node
+  default_bundle: dsj_strategy

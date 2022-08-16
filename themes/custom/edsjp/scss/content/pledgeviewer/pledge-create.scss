@@ -1,0 +1,520 @@
+@import "pledge-variables";
+
+.node-dsj-pledge-form,
+.node-dsj-pledge-edit-form,
+.node-dsj-pledge-initiative-form,
+.node-dsj-pledge-initiative-edit-form,
+.group-dsj-organization-add-form,
+.group-dsj-organization-edit-form {
+  @include media-breakpoint-down(md) {
+    padding: $grid-gutter-width / 1.6;
+  }
+
+  padding: $grid-gutter-width;
+  background-color: $body-bg;
+
+  * {
+    &:not(.ecl-button) {
+      color: $gray-650;
+    }
+
+    font-family: $font-ec-square-regular;
+  }
+
+  label {
+    display: block;
+    font-size: $font-size-base;
+    font-weight: 600;
+  }
+
+  input,
+  textarea,
+  .ecl-datepicker,
+  .ecl-form-group,
+  .filter-wrapper label,
+  .ecl-text-input {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    border-color: $gray-400;
+
+    &:hover,
+    &:active,
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+  .field--name-field-dsj-date {
+    .ecl-datepicker__icon {
+      display: none;
+    }
+
+    .ecl-datepicker__field,
+    .ui-timepicker-input {
+      min-width: unset;
+      background-image: none;
+    }
+
+    fieldset {
+      .fieldset-wrapper {
+        h4 {
+          margin-bottom: $grid-gutter-width / 3.2;
+        }
+      }
+
+      div[id*="edit-field-dsj-date"],
+      div[id*="edit-menu"] {
+        @include media-breakpoint-up(md) {
+          display: flex;
+          justify-content: space-between;
+
+          .form-item {
+            margin-top: 0 !important;
+            flex-basis: 48%;
+
+            .ecl-form-group {
+              margin: 0 !important;
+            }
+          }
+        }
+
+        .ecl-form-group {
+          &:first-of-type {
+            margin-top: 0 !important;
+          }
+        }
+      }
+    }
+  }
+
+  .field--name-field-dsj-group-image {
+    @include custom-attachment-form;
+  }
+
+  .chosen-container {
+    .chosen-results {
+      li {
+        padding: $grid-gutter-width / 3.2;
+
+        &.highlighted {
+          background-image: unset;
+          background-color: transparentize($primary-disabled, 0.9);
+          color: $gray-650;
+        }
+      }
+    }
+  }
+
+  input,
+  .chosen-choices {
+    background-color: unset !important;
+    padding: $grid-gutter-width / 4 $grid-gutter-width / 2 !important;
+    line-height: $line-height-xl;
+    font-size: $font-size-base;
+    border-color: $gray-400;
+
+    &:-webkit-autofill,
+    &:active {
+      border-color: $gray-400;
+      box-shadow: unset;
+    }
+
+    &:focus {
+      box-shadow: unset;
+    }
+  }
+
+  .chosen-choices {
+    @include icon(keyboard_arrow_down);
+    @include border-radius(6px);
+
+    position: relative;
+    border-color: $gray-400;
+    box-shadow: unset;
+    background-image: unset;
+
+    &:hover {
+      border-color: $primary;
+    }
+
+    &::before {
+      @include position(absolute, 50% $grid-gutter-width / 2 null null);
+
+      transform: translateY(-50%);
+      font-size: $font-size-xl;
+      color: $blue-450;
+    }
+
+    .search-field {
+      height: $line-height-xl;
+
+      input[type="text"] {
+        padding: 0 !important;
+      }
+    }
+  }
+
+  .chosen-container {
+    &.chosen-container-active {
+      .chosen-single {
+        border-color: $gray-400;
+      }
+    }
+
+    &.form-select {
+      width: 100% !important;
+
+      .chosen-single {
+        @include icon(keyboard_arrow_down);
+
+        background-image: unset;
+        box-shadow: unset;
+        height: $line-height-xl * 1.75;
+        padding: $grid-gutter-width / 4 $grid-gutter-width / 2 !important;
+        font-size: $font-size-base;
+        border-color: $gray-400;
+
+        &::before {
+          @include position(absolute, 50% $grid-gutter-width / 2 null null);
+
+          transform: translateY(-50%);
+          font-size: $font-size-xl;
+          color: $blue-450;
+        }
+
+        &:hover {
+          border-color: $primary;
+        }
+
+        > div {
+          b {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  #edit_field_dsj_geographic_scope_chosen {
+    width: 100% !important;
+  }
+
+  #edit-body-wrapper {
+    .cke {
+      @include border-radius(3px);
+
+      border-color: $gray-400;
+      padding: 2px;
+
+      &:hover,
+      &:active {
+        border-color: $primary;
+      }
+
+      .cke_top {
+        @include border-radius(3px 3px 0 0);
+
+        background-color: $gray-400;
+        border: unset;
+
+        .cke_combo_text,
+        .cke_button_label {
+          font-weight: 600;
+          font-size: $font-size-sm;
+          color: $gray-650;
+        }
+      }
+
+      .cke_bottom {
+        display: none;
+      }
+    }
+  }
+
+  #edit-field-dsj-submitted-date-wrapper,
+  #edit-field-dsj-approved-date-wrapper,
+  #edit-field-dsj-cancel-wrapper,
+  #edit-actions,
+  #edit-group-authoring-information,
+  #edit-group-pledge-information,
+  .js-form-type-vertical-tabs {
+    @include border-radius(6px);
+
+    margin: 0 !important;
+    padding: $grid-gutter-width 0 0;
+    background-color: $body-bg;
+  }
+
+  .ecl-form-group,
+  #edit-group-pledge-information summary {
+    margin-bottom: 0 !important;
+  }
+
+  .vertical-tabs {
+    margin: 0;
+    width: 100%;
+    border: unset;
+
+    &__menu {
+      margin-left: 0;
+      float: none;
+      border: unset;
+
+      &-item {
+        border: unset;
+        background-color: unset;
+        color: $gray-650;
+        font-weight: 600;
+
+        &.is-selected {
+          a,
+          .vertical-tabs__menu-item-title {
+            padding-left: 0;
+            font-weight: 600;
+            font-size: $font-size-base;
+            color: $gray-650;
+          }
+        }
+
+        .vertical-tabs__menu-item-summary {
+          display: inline-block;
+          padding-left: 5px;
+        }
+      }
+    }
+
+    &__panes,
+    &__pane {
+      padding: 0;
+    }
+
+    .menu-parent-select {
+      &:not(#edit_menu_menu_parent_chosen) {
+        padding: $grid-gutter-width / 4 $grid-gutter-width / 2;
+        background: 98% / 22px url('../assets/images/icons/keyboard_arrow_down.svg') no-repeat;
+      }
+
+      @include border-radius(4px);
+
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      width: 100%;
+      border-color: $gray-100;
+      line-height: $line-height-xl;
+      font-size: $font-size-base;
+      outline: none;
+
+      &:hover {
+        border-color: $primary;
+      }
+    }
+  }
+
+  .field-multiple-table {
+    thead {
+      .label {
+        text-align: left;
+      }
+    }
+  }
+
+  table[id*="field-dsj-initiative-beneficiary"] {
+    td {
+      &:not(.field-multiple-drag) {
+        fieldset {
+          .fieldset-wrapper {
+            display: flex;
+            padding: $grid-gutter-width / 2 0;
+
+            .js-form-item {
+              margin-top: 0 !important;
+
+              input {
+                color: $gray-650;
+                opacity: 1;
+              }
+            }
+
+            .js-form-type-checkbox {
+              width: 20px;
+              padding-top: $grid-gutter-width / 4;
+            }
+
+            .ecl-form-group--text-input {
+              input {
+                border: none !important;
+              }
+            }
+          }
+        }
+
+        .js-form-type-number {
+          margin: 0 !important;
+        }
+      }
+    }
+  }
+
+  #edit-actions {
+    button {
+      margin-right: $line-height-xl;
+      font-size: $font-size-base;
+    }
+
+    #edit-submit {
+      border: 1px solid $primary-default;
+      background-color: $primary-default;
+      color: $body-bg;
+    }
+
+    #edit-preview {
+      border: 1px solid $primary-default;
+      background-color: unset;
+      color: $primary-default;
+    }
+  }
+}
+
+.group-dsj-organization-add-form,
+.group-dsj-organization-edit-form {
+  #field-dsj-contact-values {
+    th.field-label {
+      display: flex;
+    }
+  }
+
+  .paragraphs-dropdown {
+    &.open {
+      .paragraphs-dropdown-actions {
+        display: flex;
+
+        button {
+          white-space: nowrap;
+          margin: $grid-gutter-width / 2;
+        }
+      }
+    }
+  }
+}
+
+.node-dsj-pledge-initiative-form,
+.node-dsj-pledge-initiative-edit-form {
+  display: flex;
+  flex-flow: row wrap;
+  gap: $grid-gutter-width;
+
+  > .js-form-item {
+    padding-top: 0;
+  }
+
+  #edit-actions {
+    padding-top: 0;
+  }
+
+  .field--type-text-with-summary,
+  #edit-title-wrapper,
+  #edit-footer {
+    margin-top: 0 !important;
+
+    .js-form-item,
+    .js-form-wrapper {
+      margin-top: 0 !important;
+    }
+  }
+
+  #methodology-wrapper {
+    .field--type-list-string {
+      display: block !important;
+    }
+  }
+
+  .field--type-list-string,
+  #methodology-wrapper,
+  #performance-wrapper {
+    @include media-breakpoint-down(sm) {
+      flex-basis: 100%;
+    }
+
+    flex-basis: calc(50% - #{$grid-gutter-width / 2});
+    margin-top: 0 !important;
+
+    .chosen-choices,
+    .js-form-item {
+      margin-top: 0 !important;
+    }
+  }
+}
+
+.menu-link-form {
+  .js-form-wrapper {
+    display: flex;
+    flex-flow: row wrap;
+    gap: $grid-gutter-width;
+
+    > .js-form-item {
+      @include media-breakpoint-down(sm) {
+        flex-basis: 100%;
+      }
+
+      flex-basis: calc(50% - #{$grid-gutter-width / 2});
+      margin-top: 0 !important;
+    }
+  }
+}
+
+#edit-moderation-state-wrapper {
+  .form-wrapper {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    gap: $grid-gutter-width;
+
+    .container-inline {
+      @include media-breakpoint-down(sm) {
+        flex-basis: 100%;
+      }
+
+      flex-basis: calc(50% - #{$grid-gutter-width / 2});
+      margin-top: 0 !important;
+    }
+  }
+}
+
+.node-dsj-pledge-form,
+.node-dsj-pledge-edit-form {
+  & > .ecl {
+    &:first-child {
+      border-bottom: 1px solid $gray-400;
+      padding-bottom: $grid-gutter-width-mobile * 1.5;
+
+      h2 {
+        @include font(
+            $h2-font-size,
+            $line-height-2xl,
+            $font-ec-square-medium,
+            normal,
+            true
+        );
+      }
+    }
+  }
+}
+
+.group-dsj-organization-add-form {
+  .field-multiple-table {
+    &[id*="field-dsj-contact-values"] {
+      thead {
+        h4 {
+          margin: 0;
+        }
+      }
+
+      .paragraph-type--dsj-organisation-contact {
+        .js-form-wrapper {
+          margin-top: 0 !important;
+        }
+      }
+    }
+  }
+}

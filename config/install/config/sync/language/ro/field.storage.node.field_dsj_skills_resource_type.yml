@@ -1,0 +1,12 @@
+settings:
+  allowed_values:
+    -
+      label: 'Instrumentul de autoevaluare'
+    -
+      label: Metodologie
+    -
+      label: 'Programe de formare'
+    -
+      label: 'Studiu de caz'
+    -
+      label: 'Alte materiale de formare'

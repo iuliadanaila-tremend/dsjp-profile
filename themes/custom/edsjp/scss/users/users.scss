@@ -1,0 +1,738 @@
+.user {
+  p[data-letters] {
+    margin: 0;
+  }
+
+  p[data-letters] {
+    &.is-anonymous {
+      &::before {
+        background-color: $gray-400;
+      }
+    }
+
+    &.is-logged-in {
+      &::before {
+        background-color: $primary-disabled;
+      }
+    }
+
+    &::before {
+      content: attr(data-letters);
+
+      display: inline-block;
+      width: 36px;
+      height: 36px;
+      line-height: 36px;
+      vertical-align: middle;
+
+      border: 2px solid $gray-200;
+      border-radius: 50%;
+      background-color: $primary-disabled;
+
+      font-family: $font-ec-square-medium;
+      text-align: center;
+      font-size: $font-size-base;
+      color: $gray-650;
+    }
+  }
+
+  &.user--compact {
+    .field--name-field-dsj-picture {
+      img {
+        border: 2px solid $gray-400;
+      }
+    }
+  }
+
+  &.user--compact,
+  &.user--token {
+    align-items: center;
+    display: flex;
+    height: 36px;
+
+    .field--name-user-picture {
+      a {
+        display: block;
+        line-height: 0;
+      }
+    }
+
+    img {
+      border-radius: 50%;
+      height: 36px;
+      width: 36px;
+    }
+
+    .user-name {
+      line-height: 32px;
+      margin-left: 10px;
+      color: $gray-650;
+
+      a {
+        color: $gray-650;
+
+        &:hover {
+          color: $blue;
+        }
+      }
+    }
+  }
+
+  &.user--listitem {
+    @include border-radius(4px);
+
+    background-color: $body-bg;
+    padding: 1.5rem;
+
+    .field--name-user-picture {
+      margin-bottom: 1rem;
+
+      @media all and (min-width: $min-md-width) {
+        margin: 0 1.25rem 0 0;
+      }
+
+      img {
+        @include border-radius(100%);
+
+        display: block;
+        min-width: 72px;
+      }
+    }
+
+    .term--countries {
+      margin-bottom: 1rem;
+
+      @media all and (min-width: $min-md-width) {
+        margin-bottom: 0;
+      }
+    }
+
+    .user-info {
+      a {
+        display: block;
+        font-size: $font-size-2md;
+        line-height: $line-height-lg;
+        margin-bottom: .5rem;
+      }
+
+      div {
+        font-size: $font-size-sm;
+        line-height: $line-height-sm;
+      }
+    }
+  }
+
+  &.user--full {
+    @include media-breakpoint-down(sm) {
+      margin-bottom: $grid-gutter-width;
+      padding: $grid-gutter-width/3 $grid-gutter-width/3 $grid-gutter-width * 3
+      $grid-gutter-width/3;
+    }
+
+    @include border-radius(6px);
+
+    background-color: $body-bg;
+    padding: 1.5rem;
+    margin-bottom: $grid-gutter-width * 4;
+    position: relative;
+
+    p {
+      margin: 0;
+    }
+
+    .header {
+      @include media-breakpoint-down(sm) {
+        border-bottom: 2px solid $gray;
+      }
+
+      align-items: center;
+      border-bottom: 1px solid $gray-400;
+      display: flex;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.25rem;
+    }
+
+    .avatar {
+      img {
+        @include border-radius(50%);
+        max-width: 80px;
+        max-height: 80px;
+      }
+
+      p[data-letters]:before {
+        width: 72px;
+        height: 72px;
+        font-size: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+    .info {
+      padding-left: 1rem;
+
+      p {
+        margin: 0;
+      }
+    }
+
+    .name {
+      @include media-breakpoint-down(sm) {
+        font-size: $font-size-base;
+        font-family: $font-ec-square-medium;
+      }
+
+      color: $blue;
+      font-size: $font-size-2xl;
+      line-height: $line-height-2xl;
+      margin-bottom: 1.25rem;
+    }
+
+    .job-title {
+      font-size: $font-size-sm;
+      line-height: $line-height-sm;
+      color: $gray-800;
+    }
+
+    .content {
+      @include media-breakpoint-down(sm) {
+        border-bottom: 2px solid $gray;
+      }
+
+      .private_message_link_wrapper {
+        @include position(absolute, 0 0 null null);
+        @include media-breakpoint-down(sm) {
+          @include position(absolute, auto null 0 null);
+          font-size: $font-size-sm;
+          left: 50%;
+          transform: translateX(-50%);
+          width: fit-content;
+          margin-bottom: $grid-gutter-width * .87;
+        }
+
+        background-color: $primary;
+        display: inline;
+        border-radius: $border-radius-lg;
+        margin: $grid-gutter-width * 1.25 $grid-gutter-width * .75 0 0;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $primary-hover;
+        }
+
+        a {
+          @include media-breakpoint-down(sm) {
+            padding: $grid-gutter-width/2.6 $grid-gutter-width * 2.2;
+          }
+
+          display: inline-block;
+          padding: $grid-gutter-width/2.6 $grid-gutter-width/1.28;
+          color: $body-bg;
+        }
+      }
+
+      h3 {
+        @include media-breakpoint-down(sm) {
+          display: none;
+        }
+
+        color: $gray-900;
+        margin: 0 0 1.5rem;
+        font-weight: normal;
+        font-size: $font-size-xl;
+        line-height: $line-height-2xl;
+      }
+
+      .field {
+        @include media-breakpoint-down(sm) {
+          display: grid;
+          grid-template-columns: 60% 40%;
+        }
+        font-family: $font-ec-square-medium;
+        margin-bottom: 1.5rem;
+        display: grid;
+        grid-template-columns: 30% 70%;
+
+        > .field__label {
+          @include media-breakpoint-down(md) {
+            width: 100%;
+            margin-bottom: 5px;
+          }
+          width: 40%;
+        }
+
+        > .field__label:last-child {
+          @include media-breakpoint-down(sm) {
+            margin-bottom: 10px;
+          }
+        }
+
+        > .field__item,
+        > .field__items {
+          @include media-breakpoint-down(md) {
+            width: 100%;
+          }
+          width: 60%;
+          font-family: $font-family-base;
+          font-weight: normal;
+
+          a {
+            padding-right: 0;
+            font-family: $font-ec-square-medium;
+            word-break: break-word;
+          }
+
+          * {
+            font-family: $font-family-base;
+            display: inline-block;
+            padding-right: 10px;
+          }
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        a {
+          font-family: $font-ec-square-medium;
+        }
+      }
+    }
+  }
+
+  &.user--listing {
+    .profile-link {
+      .field--name-field-dsj-picture {
+        img {
+          border-radius: 100%;
+          border: 2px solid $gray-200;
+        }
+      }
+    }
+  }
+
+  &.author-picture {
+    .field--name-field-dsj-picture {
+      img {
+        border-radius: 100%;
+      }
+    }
+  }
+}
+
+.user-form:not(.user-register-form) {
+  .horizontal-tabs {
+    border-width: 0;
+  }
+
+  .horizontal-tabs-list {
+    @include media-breakpoint-up(sm) {
+      display: flex;
+    }
+
+    background-color: transparent;
+  }
+
+  .horizontal-tab-button {
+    background-color: transparent;
+    border-bottom-color: $gray-400;
+    border-right-width: 0;
+    float: none;
+
+    a {
+      color: $accent;
+      border-bottom: 3px solid transparent;
+      font-size: $font-size-sm;
+      line-height: $line-height-sm;
+
+      &:hover,
+      &:active {
+        background-color: transparent;
+      }
+    }
+
+    strong {
+      font-weight: normal;
+    }
+
+    &.selected {
+      a {
+        border-bottom-color: $primary;
+        color: $primary;
+      }
+    }
+  }
+
+  details.horizontal-tabs-pane {
+    padding: 0;
+  }
+
+  .user-form-section {
+    @include border-radius($border-radius-lg);
+
+    background-color: $body-bg;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+    padding: 1rem 0 0;
+
+    @media all and (min-width: $min-sm-width) {
+      margin-bottom: 0;
+      padding: 1rem 2rem 2rem;
+
+      &:first-of-type {
+        @include border-bottom-radius($border-radius-lg);
+      }
+    }
+
+    &:not(:first-of-type) {
+      margin-top: 2rem;
+    }
+
+    > div {
+      @include media-breakpoint-up(sm) {
+        width: calc(100% - 4rem);
+      }
+
+      flex: 0 0 100%;
+
+    }
+
+    .form--item-account-info > div {
+      width: 100%;
+    }
+
+    @include media-breakpoint-up(sm) {
+      .field--name-field-dsj-firstname,
+      .field--name-field-dsj-bio,
+      .field--name-field-dsj-country,
+      .field--name-field-dsj-i-am-interested-in,
+      .field--name-field-dsj-job-title {
+        margin-right: 1.5rem !important;
+      }
+
+      .field--name-field-dsj-firstname,
+      .field--name-field-dsj-lastname,
+      .field--name-field-dsj-bio,
+      .field--name-field-dsj-website-link,
+      .field--name-field-dsj-job-title,
+      .field--name-field-dsj-organisation,
+      .field--name-field-dsj-country,
+      .field--name-field-dsj-city,
+      .field--name-field-dsj-i-am-interested-in,
+      .field--name-field-dsj-skill-level-interest,
+      .field--name-field-role-in-organisation {
+        flex: 0 0 calc(50% - .75rem);
+      }
+    }
+
+    .field--name-field-dsj-bio {
+      div {
+        textarea {
+          @include media-breakpoint-down(xs) {
+            height: auto;
+          }
+
+          height: $grid-gutter-width * 6.8;
+          overflow-y: auto;
+          box-sizing: border-box;
+          resize: none;
+
+          &::-webkit-scrollbar {
+            width: 8px;
+          }
+
+          &::-webkit-scrollbar-track {
+            background-color: $border-gray;
+            border-radius: 8px;
+            padding: 2px;
+            margin: 0 24px;
+          }
+
+          &::-webkit-scrollbar-thumb {
+            background-color: $body-bg;
+            border-radius: 4px;
+            border: 2px solid $border-gray;
+            margin: 0 10px;
+          }
+        }
+      }
+    }
+
+    .form-item-pass {
+      margin: 0 !important;
+    }
+  }
+
+  h3 {
+    font-size: $font-size-xl;
+    line-height: $line-height-2xl;
+    margin-top: 0;
+  }
+
+  .ecl-form-group {
+    margin: 0 !important;
+
+    &:last-child {
+      margin-bottom: 0 !important;
+    }
+  }
+
+  .ecl-u-mv-m {
+    margin: 1rem 0 !important;
+  }
+
+  .ecl-select__container {
+    width: 100%;
+  }
+
+  summary {
+    margin: 1rem 0;
+  }
+
+  label {
+    color: $purple-900;
+    line-height: $line-height-sm;
+    margin-bottom: .5rem;
+  }
+
+  input,
+  select,
+  .ecl-select__multiple .ecl-select__multiple-toggle[readonly],
+  textarea {
+    font-size: $font-size-sm;
+    padding: .875rem 1rem;
+    width: 100%;
+  }
+
+  .ecl-select__icon {
+    height: 46px;
+  }
+
+  .ecl-checkbox {
+    label {
+      margin-bottom: 0;
+    }
+  }
+
+  .field--name-field-dsj-picture {
+    text-align: center;
+
+    input {
+      width: auto;
+    }
+
+    img {
+      border-radius: 100%;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .file {
+      display: none;
+    }
+
+    .file-size {
+      display: none;
+    }
+  }
+
+  .form--item-account-info {
+    display: flex;
+    flex: 0 0 100%;
+    flex-direction: column;
+  }
+}
+
+/* User - Subscribe Tab */
+.view-subscribe-node {
+  table {
+    width: 100%;
+
+    tr {
+      @include media-breakpoint-down(sm) {
+        flex-wrap: wrap;
+      }
+      @include border-radius(6px);
+      background: $body-bg;
+      border: 1px solid rgba(194, 208, 226, .5);
+      box-shadow: 0 0 5px rgba(22, 70, 143, .05);
+      padding: 1.125rem;
+      display: flex;
+      margin-bottom: 1.5rem;
+      align-items: center;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      .views-field-title {
+        font-size: $font-size-2md;
+        line-height: $line-height-lg;
+        width: 80%;
+      }
+
+      .views-field-rendered-entity {
+        @include media-breakpoint-down(sm) {
+          flex: 1;
+        }
+      }
+
+      .views-field-link-flag {
+        width: 20%;
+        text-align: right;
+
+        a {
+          @include border-radius(6px);
+          background-color: $body-bg;
+          font-family: $font-ec-square-medium;
+          color: $primary;
+          font-size: $font-size-sm;
+          line-height: $line-height-base;
+          padding: .55rem 2rem;
+          display: inline-block;
+          border: 1px solid $primary;
+
+          &:hover {
+            color: $body-bg;
+            background-color: $blue;
+          }
+        }
+
+        .js-flag-message {
+          display: none;
+        }
+
+        .flag-waiting {
+          display: flex;
+          flex-direction: row-reverse;
+          align-items: center;
+        }
+      }
+
+      td {
+        padding: 0;
+
+        &:first-child {
+          width: 80%;
+        }
+
+        &:last-child {
+          @include media-breakpoint-down(sm) {
+            width: 100%;
+          }
+          width: 20%;
+        }
+      }
+    }
+  }
+
+  &-page-links {
+    margin-top: 1.5rem;
+
+    a {
+      @include border-radius(6px);
+      background-color: $blue;
+      color: $body-bg;
+      padding: .75rem 1.5625rem;
+      font-size: $font-size-sm;
+      line-height: $line-height-sm;
+      font-family: $font-ec-square-medium;
+      display: inline-block;
+
+      &:hover {
+        background: $blue-300;
+        color: $body-bg;
+      }
+    }
+  }
+
+  .node {
+    &--content {
+      display: flex;
+      align-items: center;
+    }
+
+    &--title {
+      padding-left: 1rem;
+      margin: 0;
+      min-height: auto;
+
+      a {
+        color: $primary;
+      }
+    }
+
+    .field--name-field-dsj-image {
+      img {
+        @include border-radius($border-radius-sm);
+        min-width: 100px;
+        height: 100px;
+      }
+    }
+  }
+}
+
+/* User - Edit Tab */
+.ui-accordion .ui-accordion-header {
+  font-size: $font-size-xl;
+  line-height: $line-height-2xl;
+  margin: .625rem 0;
+
+  &.ui-state-active {
+    background-color: $blue;
+    border: 0;
+
+    a {
+      color: $body-bg;
+    }
+  }
+
+  &:focus {
+    outline: 0;
+  }
+
+  a {
+    color: $gray-800;
+    font-family: $font-ec-square-medium;
+  }
+}
+
+.private_message_link_wrapper {
+  margin-top: $grid-gutter-width;
+}
+
+.user-dashboard-intro {
+  margin-bottom: $grid-gutter-width;
+}
+
+.user-dashboard-intro,
+details.form-wrapper {
+  @include border-radius(6px);
+
+  padding: 1rem;
+
+  @media (min-width: $min-md-width) {
+    padding: 1.875rem;
+  }
+
+  summary {
+    font-size: $font-size-lg;
+    padding-bottom: $grid-gutter-width / 2;
+    margin-bottom: $grid-gutter-width;
+    border-bottom: 1px solid $gray-300;
+  }
+}
+
+details.form-wrapper {
+  background: linear-gradient(
+    168.53deg,
+    transparentize($body-bg, .4) 0%,
+    $body-bg 97.46%
+  );
+}
+
+.user-dashboard-intro {
+  background-color: transparentize($primary-disabled, 0.9);
+}

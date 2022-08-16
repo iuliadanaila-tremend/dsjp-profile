@@ -1,0 +1,37 @@
+{% extends "@paragraphs/paragraph.html.twig" %}
+{% if content.field_dsj_see_more_link | render %}
+  {% set ctaLink = content.field_dsj_see_more_link[0]['#title'] %}
+{% endif %}
+{% block paragraph %}
+  {% block content %}
+    <div class="node--content">
+      {% if content.field_dsj_card_image | render %}
+        <div class="card-image">
+          {% if ctaLink %}
+            <a href="{{ ctaLink }}">
+          {% endif %}
+          {{ content.field_dsj_card_image }}
+          {% if ctaLink %}
+            </a>
+          {% endif %}
+        </div>
+      {% endif %}
+      {% if content.field_dsj_title | render %}
+        <div class="card-title">
+          {% if ctaLink %}
+            <a href="{{ ctaLink }}">{{ content.field_dsj_title }}</a>
+          {% else %}
+            <h3>{{ content.field_dsj_title }}</h3>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+    {% if ctaLink %}
+      <div class="node--footer">
+        <div class="more-link">
+          <a href="{{ ctaLink }}">{{ 'View more' | t }}</a>
+        </div>
+      </div>
+    {% endif %}
+  {% endblock %}
+{% endblock paragraph %}

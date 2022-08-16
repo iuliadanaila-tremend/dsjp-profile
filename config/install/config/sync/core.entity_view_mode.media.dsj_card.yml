@@ -1,0 +1,10 @@
+uuid: bf836927-56e8-4e9d-86e1-e81b8d64f28d
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.dsj_card
+label: Card
+targetEntityType: media
+cache: true

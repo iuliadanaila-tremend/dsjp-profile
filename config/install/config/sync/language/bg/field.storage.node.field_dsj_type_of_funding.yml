@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Публичен
+    -
+      label: Частен
+    -
+      label: 'Колективно финансиране'
+    -
+      label: Публично-частна

@@ -1,0 +1,10 @@
+uuid: d968b7c8-f24c-48ae-9f7b-35097123309b
+langcode: en
+status: true
+dependencies: {  }
+id: dsj_map_component
+label: 'Map component'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

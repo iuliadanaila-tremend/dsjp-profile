@@ -1,0 +1,16 @@
+{%
+set classes = [
+'region',
+'region-' ~ region|clean_class,
+]
+%}
+{% if content %}
+    <div{{ attributes.addClass(['region', 'region-content']) }}>
+      {% if dashboard_info %}
+        <div class="user-dashboard-intro">
+          {{ dashboard_info }}
+        </div>
+      {% endif %}
+        {{ content }}
+    </div>
+{% endif %}

@@ -1,0 +1,14 @@
+uuid: c86736d9-eb6a-4c7c-b729-336022168d26
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.dsj_content_editor
+  module:
+    - user
+id: user_remove_role_action.dsj_content_editor
+label: 'Remove the Content Editor role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: dsj_content_editor

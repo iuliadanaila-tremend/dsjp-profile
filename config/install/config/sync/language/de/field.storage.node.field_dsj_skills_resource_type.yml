@@ -1,0 +1,12 @@
+settings:
+  allowed_values:
+    -
+      label: Selbstbewertungsinstrument
+    -
+      label: Methodik
+    -
+      label: Ausbildungslehrpläne
+    -
+      label: Fallstudie
+    -
+      label: 'Sonstiges Schulungsmaterial'

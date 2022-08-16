@@ -1,0 +1,55 @@
+{% set classes = [
+  'node',
+  node.isPromoted() ? 'node--promoted',
+  node.isSticky() ? 'node--sticky',
+  not node.isPublished() ? 'node--unpublished',
+  node.bundle|clean_class,
+  node.bundle|clean_class ~ '--' ~ view_mode|clean_class,
+  'node' ~ '--' ~ view_mode|clean_class,
+  'node' ~ '--' ~ node.bundle|clean_class,
+  content.flag_subscribe_node and logged_in ? 'node--subscribe',
+  term_type ? node.bundle|clean_class ~ '--' ~ term_type|clean_class,
+] %}
+<article{{ attributes.addClass(classes) }}>
+
+  <div class="node--content">
+    <div class="page-header">
+      <div class="upper">
+        {{ title_prefix }}
+        <h1{{ title_attributes }}>
+          {{ node.title.value }}
+        </h1>
+        {{ title_suffix }}
+        {% if content.flag_subscribe_node and logged_in %}
+          <div class="subscribe">
+            {{ content.flag_subscribe_node }}
+          </div>
+        {% endif %}
+      </div>
+      {% include '@edsjp/content/partials/author-extended-info.html.twig' %}
+    </div>
+
+    {% if display_submitted %}
+    <div{{ content_attributes }}>
+      {{ content | without('flag_voting', 'flag_subscribe_node', 'field_dsj_comments', 'field_dsj_author') }}
+    </div>
+
+    {% if content.flag_voting or socialShare %}
+      <div class="voteShare-container">
+        {% if content.flag_voting %}
+          <div class="voting">{{ content.flag_voting }}</div>
+        {% endif %}
+
+        {% if socialShare %}
+          <div class="sharing">{{ socialShare }}</div>
+        {% endif %}
+      </div>
+    {% endif %}
+
+  </div>
+
+  {% include '@edsjp/content/partials/comments-area.html.twig' %}
+
+</article>
+
+{% endif %}

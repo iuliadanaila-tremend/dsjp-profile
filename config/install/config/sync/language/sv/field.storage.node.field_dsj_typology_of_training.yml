@@ -1,0 +1,24 @@
+settings:
+  allowed_values:
+    0:
+      label: Kurs
+    1:
+      label: Programmodul
+    2:
+      label: Handledning
+    4:
+      label: Lärlingsutbildning
+    5:
+      label: Studiebesök
+    6:
+      label: 'Kortare utbildning'
+    7:
+      label: Praktik
+    8:
+      label: Utbildningsprogram
+    9:
+      label: Klass
+    10:
+      label: Tjänsteutbildning
+    11:
+      label: Avhandling

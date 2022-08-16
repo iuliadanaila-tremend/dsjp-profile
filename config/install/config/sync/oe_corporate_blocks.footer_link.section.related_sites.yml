@@ -1,0 +1,9 @@
+uuid: f80afcf5-56f5-4eb6-b04d-8446770b6285
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: usrWAVOG_O8YknKMzuT5kgABsQKfSEtRrC5Ze5BSi7A
+id: related_sites
+label: 'Related sites'
+weight: -8

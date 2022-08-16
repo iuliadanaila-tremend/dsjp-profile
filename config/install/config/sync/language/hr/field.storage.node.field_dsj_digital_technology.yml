@@ -1,0 +1,38 @@
+settings:
+  allowed_values:
+    0:
+      label: 'Umjetna inteligencija'
+    1:
+      label: Kibersigurnost
+    2:
+      label: 'Internet stvari'
+    3:
+      label: 'Velike količine podataka,'
+    4:
+      label: 'Lanac blokova'
+    5:
+      label: Robotika
+    6:
+      label: 'Proširena stvarnost'
+    7:
+      label: 'Virtualna stvarnost'
+    8:
+      label: 'Računalstvo visokih performansi'
+    9:
+      label: 'Strojno učenje'
+    10:
+      label: 'Računalstvo u oblaku'
+    12:
+      label: Telekomunikacije
+    14:
+      label: 'Kvantno računalstvo'
+    15:
+      label: Softver
+    16:
+      label: 'Razvoj mobilnih aplikacija'
+    17:
+      label: 'Razvoj web-mjesta'
+    18:
+      label: Mikroelektronika
+    19:
+      label: 'Digitalne vještine'

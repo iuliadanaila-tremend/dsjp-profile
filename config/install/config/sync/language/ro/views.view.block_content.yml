@@ -1,0 +1,46 @@
+label: 'Librărie bloc personalizat'
+description: 'Găsiți și gestionați blocurile personalizate.'
+display:
+  default:
+    display_title: Master
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Apply
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      pager:
+        options:
+          tags:
+            previous: '‹ Previous'
+            next: 'Next ›'
+          expose:
+            items_per_page_label: 'Items per page'
+            items_per_page_options_all_label: '- All -'
+            offset_label: Offset
+      fields:
+        info:
+          label: 'Descrierea blocului'
+          separator: ', '
+        type:
+          label: 'Tipul blocului'
+          separator: ', '
+        changed:
+          label: Updated
+        operations:
+          label: Operations
+      filters:
+        info:
+          expose:
+            label: 'Descrierea blocului'
+        type:
+          expose:
+            label: 'Tipul blocului'
+      title: 'Librărie bloc personalizat'
+  page_1:
+    display_title: Page
+    display_options:
+      menu:
+        title: 'Librărie bloc personalizat'

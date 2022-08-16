@@ -1,0 +1,25 @@
+{% if content %}
+  <article{{ attributes.addClass('user', 'user--listing') }}>
+   <div class ="content-wrapper-left-side">
+      <a href="{{ path('entity.user.canonical', {'user': user.id}) }}" class="profile-link">
+        {{ author_avatar }}
+      </a>
+
+      <div class="user-details">
+        {% if user.isAnonymous %}
+          {{ author_name }}
+        {% else %}
+          <a href="{{ path('entity.user.canonical', {'user': user.id}) }}" class="profile-link">
+            {{ author_name }}
+          </a>
+        {% endif %}
+
+        {{ content.group_dsj_user_details }}
+      </div>
+    </div>
+
+    <div class ="content-wrapper-right-side">
+      {{ content|without('group_dsj_user_details', 'field_dsj_picture') }}
+    <div>
+  </article>
+{% endif %}

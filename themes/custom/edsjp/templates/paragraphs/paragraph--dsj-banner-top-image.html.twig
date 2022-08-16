@@ -1,0 +1,39 @@
+{% extends '@paragraphs/paragraph.html.twig' %}
+{% block paragraph %}
+  {% block content %}
+    <div id="{{ attributes.id }}" class="paragraph--type--dsj-banner-top-image paragraph--view-mode--default">
+      {% if content.field_dsj_image %}
+        <div class="banner--image">
+          {{ content.field_dsj_image }}
+        </div>
+      {% endif %}
+      {% if content.field_dsj_mobile_image %}
+        <div class="banner--image image-mobile">
+          {{ content.field_dsj_mobile_image }}
+        </div>
+      {% endif %}
+      {% if content.field_dsj_title|render %}
+        <div class="banner--title">
+          {{ content.field_dsj_title }}
+        </div>
+      {% endif %}
+      <div class="banner-description">
+        {% if content.field_dsj_subtitle|render %}
+          <div class="banner--subtitle">
+            {{ content.field_dsj_subtitle }}
+          </div>
+        {% endif %}
+        {% if content.field_dsj_body|render %}
+          <div class="banner--body">
+            {{ content.field_dsj_body }}
+          </div>
+        {% endif %}
+      </div>
+      {% if content.field_dsj_cta|render %}
+        <div class="banner--cta">
+          {{ content.field_dsj_cta }}
+        </div>
+      {% endif %}
+    </div>
+  {% endblock %}
+{% endblock %}

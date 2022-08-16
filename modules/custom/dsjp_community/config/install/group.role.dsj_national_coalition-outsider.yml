@@ -1,0 +1,14 @@
+uuid: 14ee68e1-d254-4511-b6ea-90d19e9d7a00
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.dsj_national_coalition
+id: dsj_national_coalition-outsider
+label: Outsider
+weight: -101
+internal: true
+audience: outsider
+group_type: dsj_national_coalition
+permissions_ui: true
+permissions: {  }

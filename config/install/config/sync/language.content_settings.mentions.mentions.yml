@@ -1,0 +1,17 @@
+uuid: d83f60e6-543a-43d8-bc91-c8715010e1f1
+langcode: en
+status: true
+dependencies:
+  module:
+    - content_translation
+    - mentions
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: mentions.mentions
+target_entity_type_id: mentions
+target_bundle: mentions
+default_langcode: site_default
+language_alterable: false

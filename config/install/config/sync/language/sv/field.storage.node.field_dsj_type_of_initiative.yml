@@ -1,0 +1,12 @@
+settings:
+  allowed_values:
+    -
+      label: 'EU:s institutionella initiativ'
+    -
+      label: 'Nationellt initiativ'
+    -
+      label: 'Regionalt initiativ'
+    -
+      label: 'Lokalt initiativ'
+    -
+      label: 'Internationellt initiativ'

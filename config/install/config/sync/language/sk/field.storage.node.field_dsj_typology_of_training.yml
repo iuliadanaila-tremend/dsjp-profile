@@ -1,0 +1,24 @@
+settings:
+  allowed_values:
+    0:
+      label: Kurz
+    1:
+      label: 'Programový modul'
+    2:
+      label: Mentorstvo
+    4:
+      label: 'Učňovská príprava'
+    5:
+      label: 'Študijná návšteva'
+    6:
+      label: 'Krátky program vzdelávania'
+    7:
+      label: Stáž
+    8:
+      label: 'Vzdelávací program'
+    9:
+      label: Trieda
+    10:
+      label: 'Vzdelávanie v oblasti služieb'
+    11:
+      label: 'Záverečná práca'

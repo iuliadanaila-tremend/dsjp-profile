@@ -1,0 +1,40 @@
+display:
+  default:
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Apply
+          reset_button_label: Reset
+      fields:
+        title:
+          label: Title
+        type:
+          label: 'Content type'
+        status:
+          label: Status
+          settings:
+            format_custom_true: Published
+        changed:
+          label: Updated
+        dropbutton:
+          label: Operations
+      filters:
+        status:
+          group_info:
+            group_items:
+              1:
+                title: Published
+        type:
+          expose:
+            label: 'Content type'
+      arguments:
+        gid:
+          exception:
+            title: All
+  block_1:
+    display_options:
+      fields:
+        title:
+          label: Title
+  page_1:
+    display_title: Page

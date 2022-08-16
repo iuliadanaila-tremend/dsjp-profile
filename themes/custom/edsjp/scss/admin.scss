@@ -1,0 +1,441 @@
+/* ADMIN PAGE VARIABLES */
+$tabs-line-height: 20px;
+
+.ecl-container {
+  a {
+    text-decoration: none;
+
+    &:focus-visible,
+    &:focus,
+    &:active {
+      outline: none;
+    }
+
+    strong {
+      font-family: $font-ec-square-regular;
+    }
+
+    &:hover {
+      color: $blue-100;
+    }
+
+    &:active,
+    &:focus {
+      color: $primary;
+    }
+  }
+}
+
+.node--full {
+  &.dsj-landing-page {
+    a {
+      text-decoration: none !important;
+    }
+  }
+
+  .field--name-body,
+  .paragraph--type--dsj-text {
+    p, li {
+      a {
+        /* override ecl default style */
+        text-decoration: underline !important;
+        font-family: $font-ec-square-regular;
+        color: $primary;
+      }
+    }
+  }
+}
+
+/*============ TABS ============*/
+.ecl-navigation-list {
+  display: inline-block;
+  padding: 0 1rem .75rem !important;
+  line-height: $tabs-line-height;
+
+  &.ecl-u-border-color-grey-25 {
+    border-color: $gray-400 !important;
+  }
+
+  li {
+    padding: .75rem !important;
+  }
+
+  .ecl-link {
+    @include font(
+      $font-size-md,
+      $line-height-lg,
+      inherit,
+      $font-weight-normal,
+      true
+    );
+    color: $gray-400;
+
+    &:hover {
+      text-decoration: none;
+      color: $gray-900;
+    }
+  }
+
+  &__item {
+    display: inline-block !important;
+    margin-top: 0 !important;
+
+    &--active {
+      @include media-breakpoint-down(sm) {
+        border-bottom-width: 0 !important;
+      }
+      border-bottom-width: 3px !important;
+
+      .ecl-link {
+        color: $gray-900;
+        font-family: $font-ec-square-medium !important;
+      }
+    }
+  }
+}
+
+.ecl-form-group {
+  @include margin(1.5rem 0 !important);
+
+  &.js-form-type-radio {
+    @include margin(.625rem 0 !important);
+  }
+}
+
+.container-inline div {
+  display: inline-flex;
+}
+
+.ui-menu .ui-menu-item-wrapper {
+  font-size: $font-size-xs;
+}
+
+/*============ TEXT FIELDS ============*/
+.ecl-checkbox__label,
+.ecl-form-label {
+  @include margin(null null .625rem);
+  @include font($font-size-sm, normal, $font-ec-square-regular, bold);
+  color: $secondary;
+  display: block;
+  white-space: normal; /* override ecl style*/
+}
+
+#edit-legal {
+  .ecl-checkbox {
+    .ecl-checkbox__input {
+      &:disabled + .ecl-checkbox__label {
+        color: $gray-800;
+      }
+    }
+  }
+
+  .form-item {
+    table {
+      @include media-breakpoint-down(sm) {
+        width: 100%;
+      }
+
+      tr {
+        @include media-breakpoint-down(sm) {
+          display: flex;
+          flex-wrap: wrap;
+        }
+
+        td {
+          &:not(:last-child) {
+            @include media-breakpoint-down(sm) {
+              flex: 1;
+            }
+          }
+
+          &:last-child {
+            @include media-breakpoint-down(sm) {
+              width: 100% !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Added style for all types of inputs */
+.ecl-select,
+.ecl-text-area,
+#{$all-text-inputs} {
+  @include margin(0 !important);
+  @include padding(1rem !important); /* override _text-input ecl style */
+  @include border-radius(4px);
+  @include font($font-size-xs, $line-height-sm, inherit, normal);
+  /* override _text-input ecl style */
+  background-color: $body-bg;
+  border: 1px solid;
+  border-color: $gray-100;
+  color: $secondary;
+  box-shadow: none;
+
+  &:hover {
+    /* override _text-input ecl style */
+    border-color: $primary;
+    -webkit-box-shadow: 0 0 0 1000px $body-bg inset;
+  }
+}
+
+/* Added style on active/focus/hover */
+
+.ecl-select,
+.ecl-text-area,
+#{$all-text-inputs} {
+  &:hover {
+    outline: 0;
+  }
+
+  &:active,
+  &:focus {
+    outline: 0;
+    border: 1px solid $primary;
+    background-color: $body-bg;
+  }
+}
+
+/* Disabled input */
+input:disabled {
+  background-color: rgba(194, 208, 226, .1) !important;
+  border: 1px solid $gray-100 !important;
+  opacity: 0.5;
+}
+
+/* Change Autocomplete styles in Chrome*/
+form {
+  input:-webkit-autofill,
+  textarea:-webkit-autofill,
+  select:-webkit-autofill {
+    border: 1px solid;
+    border-color: $body-color;
+    -webkit-box-shadow: 0 0 0 1000px $body-bg inset;
+  }
+}
+
+/* SELECT */
+.ecl-select {
+  @include margin(0 !important);
+
+  &__icon {
+    background: none;
+    height: 42px;
+    transition: transform .2s ease-in;
+    transform: rotate(0);
+    width: 40px;
+    z-index: $zindex-dropdown;
+
+    .open & {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__icon-shape {
+    fill: $body-color;
+    width: 11px;
+  }
+
+  &:focus + &__icon,
+  &:hover + &__icon {
+    background: none;
+  }
+
+  &__container--m {
+    @include margin(0 !important);
+  }
+}
+
+.field--widget-options-select {
+  .ecl-select__icon {
+    display: none;
+  }
+}
+
+.ecl-select__multiple .ecl-select__multiple-toggle[readonly] {
+  border-color: $gray-100;
+  color: $gray-100;
+}
+
+/* CHECKBOX */
+.ecl-checkbox {
+  @include checkbox(checkbox);
+}
+
+/* RADIO BUTTONS */
+.ecl-radio {
+  @include checkbox(radio);
+}
+
+input[type='date']::-webkit-calendar-picker-indicator {
+  color: $body-color;
+}
+
+/*============ VERTICAL TABS ============*/
+.vertical-tabs {
+  @include margin(1em 0 1em 15.5em);
+
+  &__menu {
+    @include border-radius(4px);
+    @include margin(0 0 0 -15.5em);
+    border: 1px solid $primary;
+
+    &-item {
+      @include border-width(0);
+      @include margin(null null null -1px);
+      background: none;
+      border-bottom: 1px solid $primary;
+
+      &:last-child {
+        @include border-width(0);
+      }
+
+      &.is-selected {
+        background: $primary;
+
+        a,
+        .vertical-tabs__menu-item-title {
+          color: $body-bg;
+        }
+      }
+
+      a {
+        @include font($font-size-sm, $line-height-sm, inherit, null);
+        color: $secondary;
+
+        &:hover {
+          outline: 0 none;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  &__panes {
+    @include padding(15px);
+  }
+}
+
+/*============ ECL - TABLE ============*/
+.ecl-table {
+  &__head {
+    font-family: $font-family-base;
+
+    .label {
+      @include margin(0);
+    }
+  }
+
+  &__cell {
+    @include padding(0 !important);
+  }
+}
+
+/*============ BUTTONS ============*/
+.ecl-button {
+  @include border-radius(6px);
+  @include margin(15px null);
+  @include padding(12px 25px);
+  @include font($font-size-sm, $line-height-sm, $font-family-base, 600);
+  cursor: pointer;
+
+  &:focus {
+    @include padding(12px 25px);/* override ecl default style */
+
+    border: unset;
+  }
+
+  &--primary {
+    background: $primary;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    &:focus,
+    &:active {
+      background: $blue-100;
+      outline: 0;
+    }
+
+    &:hover {
+      background: $blue-300;
+    }
+
+    &:disabled {
+      background: $blue-300;
+    }
+  }
+}
+
+fieldset {
+  border: 0;
+  padding: 0;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.views-exposed-form.bef-exposed-form.ecl-form {
+  border-radius: $border-radius-lg;
+  background-color: $body-bg;
+  margin-bottom: $grid-gutter-width-mobile;
+  padding: 0 $grid-gutter-width-mobile * 1.5;
+  display: grid;
+  align-items: flex-end;
+  grid-template-columns: 50% 50%;
+
+  div#edit-created,
+  div#edit-changed {
+    display: flex;
+  }
+
+  > div {
+    margin-right: $grid-gutter-width / 2 !important;
+
+    > .ecl-u-mv-m {
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      width: 100%;
+
+      .ecl-form-group {
+        align-items: flex-end;
+      }
+    }
+  }
+
+  .chosen-container {
+    height: 50px;
+    width: 100% !important;
+  }
+
+  .chosen-single,
+  .chosen-choices {
+    @include border-radius($border-radius-lg);
+    height: 100%;
+    padding: $grid-gutter-width / 8 $grid-gutter-width / 4
+  }
+}
+
+.path-admin {
+  input[type="text"],
+  select {
+    width: 100%;
+  }
+}
+
+/* override d9 _message.scss */
+.ecl-message--success {
+  border: 2px solid #467a39;
+  background: $gray;
+
+  .ecl-message__close {
+    .ecl-button__label,
+    .ecl-button__icon {
+      color: $black;
+    }
+  }
+}

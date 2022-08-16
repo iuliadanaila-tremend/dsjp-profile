@@ -1,0 +1,10 @@
+uuid: be5055d0-23c4-4e31-9f17-e5101716f141
+langcode: en
+status: true
+dependencies: {  }
+id: dsj_top_banner
+label: 'Top Banner'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

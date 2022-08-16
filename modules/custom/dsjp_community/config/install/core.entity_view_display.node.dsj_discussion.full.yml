@@ -1,0 +1,73 @@
+uuid: b52ffadb-ffae-4c4f-9fd8-b5aa8d2bb631
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_display.comment.dsj_comment.default
+    - core.entity_view_mode.node.full
+    - field.field.node.dsj_discussion.body
+    - field.field.node.dsj_discussion.field_dsj_attachment
+    - field.field.node.dsj_discussion.field_dsj_comments
+    - field.field.node.dsj_discussion.field_dsj_digital_technology
+    - field.field.node.dsj_discussion.field_dsj_publish_in_core
+    - node.type.dsj_discussion
+  module:
+    - ajax_comments
+    - comment
+    - file
+    - text
+    - user
+_core:
+  default_config_hash: '-mRA9q4xXBAZUu94aW0wb13jf8ZoVuhGVzJkZpcsctk'
+id: node.dsj_discussion.full
+targetEntityType: node
+bundle: dsj_discussion
+mode: full
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  content_moderation_control:
+    weight: -20
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_dsj_attachment:
+    type: file_default
+    weight: 1
+    region: content
+    label: hidden
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+  field_dsj_comments:
+    weight: 2
+    label: hidden
+    settings:
+      pager_id: 0
+      view_mode: default
+    third_party_settings:
+      ajax_comments:
+        enable_ajax_comments: '1'
+    type: comment_default
+    region: content
+  flag_subscribe_node:
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  flag_voting:
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_dsj_digital_technology: true
+  field_dsj_publish_in_core: true
+  langcode: true
+  links: true
+  search_api_excerpt: true

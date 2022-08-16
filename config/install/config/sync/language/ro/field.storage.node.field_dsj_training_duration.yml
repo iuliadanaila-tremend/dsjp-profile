@@ -1,0 +1,14 @@
+settings:
+  allowed_values:
+    -
+      label: 'Până la 1 săptămână'
+    -
+      label: 'Până la 4 săptămâni'
+    -
+      label: 'Până la 3 luni'
+    -
+      label: 'Până la 6 luni'
+    -
+      label: 'Până la un an'
+    -
+      label: 'Ani multipli'

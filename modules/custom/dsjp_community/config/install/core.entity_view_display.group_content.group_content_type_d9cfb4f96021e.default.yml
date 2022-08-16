@@ -1,0 +1,25 @@
+uuid: 19cc940c-d5b6-4840-bd8b-189d93b5367c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.group_content.group_content_type_d9cfb4f96021e.group_roles
+    - group.content_type.group_content_type_d9cfb4f96021e
+id: group_content.group_content_type_d9cfb4f96021e.default
+targetEntityType: group_content
+bundle: group_content_type_d9cfb4f96021e
+mode: default
+content:
+  group_roles:
+    label: above
+    type: entity_reference_label
+    settings:
+      link: false
+    weight: -4
+    third_party_settings: {  }
+    region: content
+hidden:
+  entity_id: true
+  langcode: true
+  search_api_excerpt: true
+  uid: true

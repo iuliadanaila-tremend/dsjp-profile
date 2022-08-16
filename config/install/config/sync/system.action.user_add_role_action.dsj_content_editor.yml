@@ -1,0 +1,14 @@
+uuid: ec134a5d-8fc0-4746-85a2-f46f6eb8ffe1
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.dsj_content_editor
+  module:
+    - user
+id: user_add_role_action.dsj_content_editor
+label: 'Add the Content Editor role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: dsj_content_editor

@@ -1,0 +1,24 @@
+settings:
+  allowed_values:
+    -
+      label: 'laboratóriumi óra/szimuláció/gyakorlati óra'
+    -
+      label: 'szakmai tapasztalat'
+    -
+      label: önkéntesség
+    -
+      label: kutatás
+    -
+      label: 'egyéni tanulás'
+    -
+      label: e-tanóra
+    -
+      label: 'szakmai gyakorlat'
+    -
+      label: 'tanulószerződéses gyakorlati képzés'
+    -
+      label: 'workshop, szeminárium vagy konferencia'
+    -
+      label: 'oktatási program'
+    -
+      label: 'tantermi óra'

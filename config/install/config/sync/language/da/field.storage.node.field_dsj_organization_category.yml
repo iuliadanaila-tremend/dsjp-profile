@@ -1,0 +1,24 @@
+settings:
+  allowed_values:
+    1:
+      label: 'Offentlig institution'
+    2:
+      label: 'Udbyder af formel uddannelse'
+    3:
+      label: Erhvervspolitik
+    4:
+      label: 'Offentlig-private partnerskaber'
+    5:
+      label: Andre
+    6:
+      label: Fagforening
+    7:
+      label: Tænketanke
+    8:
+      label: Sammenslutning
+    9:
+      label: 'Åben læringsplatform'
+    10:
+      label: Interessegruppe
+    11:
+      label: 'Politisk beslutningstager'

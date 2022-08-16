@@ -1,0 +1,9 @@
+{% set classes = [
+  'field',
+  'field--name-' ~ field_name|clean_class,
+] %}
+<div{{ attributes.addClass(classes) }}>
+  {% for item in items %}
+    {{ item.content }}
+  {% endfor %}
+</div>

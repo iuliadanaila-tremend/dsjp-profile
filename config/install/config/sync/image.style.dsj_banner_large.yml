@@ -1,0 +1,15 @@
+uuid: 4972b363-a189-4cbf-9a3e-b33f8ad21fd6
+langcode: en
+status: true
+dependencies: {  }
+name: dsj_banner_large
+label: 'Banner Large'
+effects:
+  dae154ef-b77d-4a5d-8aaf-8aefb2147c19:
+    uuid: dae154ef-b77d-4a5d-8aaf-8aefb2147c19
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 960
+      height: 320
+      anchor: center-center

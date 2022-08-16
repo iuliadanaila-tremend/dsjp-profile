@@ -1,0 +1,8 @@
+settings:
+  allowed_values:
+    -
+      label: 'Éclairage à temps partiel'
+    -
+      label: 'Temps plein'
+    -
+      label: 'Travail intensif à temps partiel'

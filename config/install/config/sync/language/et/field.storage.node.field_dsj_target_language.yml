@@ -1,0 +1,50 @@
+settings:
+  allowed_values:
+    -
+      label: Bulgaaria
+    -
+      label: Horvaatia
+    -
+      label: Tšehhi
+    -
+      label: Taani
+    -
+      label: Hollandi
+    -
+      label: Inglise
+    -
+      label: Eesti
+    -
+      label: Soome
+    -
+      label: Prantsuse
+    -
+      label: Saksa
+    -
+      label: Kreeka
+    -
+      label: Ungari
+    -
+      label: Iiri
+    -
+      label: Itaalia
+    -
+      label: Läti
+    -
+      label: Leedu
+    -
+      label: Malta
+    -
+      label: Poola
+    -
+      label: Portugali
+    -
+      label: Rumeenia
+    -
+      label: Slovaki
+    -
+      label: Sloveenia
+    -
+      label: Hispaania
+    -
+      label: Rootsi

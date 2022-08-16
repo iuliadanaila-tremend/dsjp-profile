@@ -1,0 +1,4 @@
+services:
+  oe_corporate_site_info.site_information:
+    class: Drupal\oe_corporate_site_info\SiteInformation
+    arguments: ['@entity_type.manager', '@config.factory']

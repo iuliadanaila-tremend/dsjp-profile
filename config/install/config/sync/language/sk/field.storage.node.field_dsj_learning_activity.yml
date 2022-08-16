@@ -1,0 +1,24 @@
+settings:
+  allowed_values:
+    -
+      label: 'laboratórium/simulácia/praktická práca na kurzoch'
+    -
+      label: 'pracovné skúsenosti'
+    -
+      label: dobrovoľníctvo
+    -
+      label: výskum
+    -
+      label: 'samomotivovaná štúdia'
+    -
+      label: 'kurzy elektronického vzdelávania'
+    -
+      label: stáž
+    -
+      label: 'učňovská príprava'
+    -
+      label: 'seminár, seminár alebo konferencia'
+    -
+      label: 'vzdelávací program'
+    -
+      label: 'kurzy v triedach'

@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: 'Digitálne zručnosti pre pracovnú silu.'
+    -
+      label: 'Digitálne zručnosti pre odborníkov v oblasti IKT a iných odborníkov v oblasti digitálnych technológií.'
+    -
+      label: 'Digitálne zručnosti vo vzdelávaní.'
+    -
+      label: 'Digitálne zručnosti pre všetkých'

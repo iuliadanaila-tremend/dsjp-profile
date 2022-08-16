@@ -1,0 +1,36 @@
+settings:
+  allowed_values:
+    0:
+      label: Tekoäly
+    1:
+      label: Kyberturvallisuus
+    2:
+      label: 'Esineiden internet'
+    3:
+      label: Massadata
+    4:
+      label: Lohkoketju
+    5:
+      label: Robotiikka
+    6:
+      label: 'Laajennettu todellisuus'
+    7:
+      label: Virtuaalitodellisuus
+    8:
+      label: Suurteholaskenta
+    9:
+      label: Koneoppiminen
+    10:
+      label: Pilvipalvelut
+    12:
+      label: Televiestintä
+    14:
+      label: Kvanttilaskenta
+    15:
+      label: Ohjelmisto
+    16:
+      label: 'Mobiilisovellusten kehittäminen'
+    18:
+      label: Mikroelektroniikka
+    19:
+      label: 'Digitaaliset taidot'

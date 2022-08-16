@@ -1,0 +1,33 @@
+uuid: f018ca8a-9be4-4fdc-aa6b-6831c59cd09e
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_dsj_digital_skill_level
+field_name: field_dsj_digital_skill_level
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: basic
+      label: Basic
+    -
+      value: intermediate
+      label: Intermediate
+    -
+      value: advanced
+      label: Advanced
+    -
+      value: digital_expert
+      label: 'Digital Expert'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

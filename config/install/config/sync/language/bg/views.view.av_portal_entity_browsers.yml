@@ -1,0 +1,34 @@
+display:
+  default:
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Apply
+          reset_button_label: Reset
+      filters:
+        search:
+          expose:
+            label: Search
+        type:
+          expose:
+            label: Type
+  all:
+    display_title: All
+  photos:
+    display_options:
+      filters:
+        search:
+          expose:
+            label: Search
+        type:
+          expose:
+            label: Type
+  videos:
+    display_options:
+      filters:
+        search:
+          expose:
+            label: Search
+        type:
+          expose:
+            label: Type

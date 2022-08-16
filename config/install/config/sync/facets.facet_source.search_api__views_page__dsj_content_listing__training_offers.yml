@@ -1,0 +1,9 @@
+uuid: db635d62-6e97-4753-8329-cbff88cb0f17
+langcode: en
+status: true
+dependencies: {  }
+id: search_api__views_page__dsj_content_listing__training_offers
+name: 'search_api:views_page__dsj_content_listing__training_offers'
+filter_key: null
+url_processor: query_string
+breadcrumb: {  }

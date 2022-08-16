@@ -1,0 +1,23 @@
+uuid: b9a21f98-61e8-4401-9c82-afbc8e8cee5e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group_content.grequest_status
+    - group.content_type.group_content_type_2fa828719c5f0
+id: group_content.group_content_type_2fa828719c5f0.grequest_status
+field_name: grequest_status
+entity_type: group_content
+bundle: group_content_type_2fa828719c5f0
+label: 'Request status'
+description: ''
+required: true
+translatable: true
+default_value: 0
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

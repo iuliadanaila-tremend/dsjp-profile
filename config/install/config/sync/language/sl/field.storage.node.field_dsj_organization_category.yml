@@ -1,0 +1,26 @@
+settings:
+  allowed_values:
+    -
+      label: 'NEVLADNE ORGANIZACIJE'
+    -
+      label: 'Javna institucija'
+    -
+      label: 'Ponudnik formalnega izobraževanja in usposabljanja'
+    -
+      label: Podjetništvo/industrija
+    -
+      label: 'Javno-zasebno partnerstvo'
+    -
+      label: Drugo
+    -
+      label: 'Delovno združenje'
+    -
+      label: 'Možganski trusti'
+    -
+      label: Združenje
+    -
+      label: 'Platforma za odprto učenje'
+    -
+      label: 'Interesna skupina'
+    -
+      label: 'Oblikovalec politik'

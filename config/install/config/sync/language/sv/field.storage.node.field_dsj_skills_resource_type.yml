@@ -1,0 +1,12 @@
+settings:
+  allowed_values:
+    -
+      label: Självbedömningsverktyg
+    -
+      label: Metod
+    -
+      label: Undervisningsplaner
+    -
+      label: Fallstudie
+    -
+      label: 'Annat utbildningsmaterial'

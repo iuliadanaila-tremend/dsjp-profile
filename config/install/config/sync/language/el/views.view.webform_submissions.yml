@@ -1,0 +1,108 @@
+display:
+  default:
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Apply
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      pager:
+        options:
+          tags:
+            previous: ‹‹
+            next: ››
+          expose:
+            items_per_page_label: 'Items per page'
+            items_per_page_options_all_label: '- All -'
+            offset_label: Offset
+      fields:
+        sid:
+          separator: ', '
+        in_draft:
+          separator: ', '
+        created:
+          label: Created
+          separator: ', '
+        remote_addr:
+          label: 'IP address'
+          separator: ', '
+        view_webform_submission:
+          label: Operations
+      arguments:
+        in_draft:
+          exception:
+            title: All
+  embed_administer:
+    display_options:
+      fields:
+        webform_submission_bulk_form:
+          action_title: Action
+        sid:
+          separator: ', '
+        in_draft:
+          separator: ', '
+        sticky:
+          separator: ', '
+        locked:
+          separator: ', '
+        created:
+          label: Created
+          separator: ', '
+        completed:
+          label: Completed
+          separator: ', '
+        remote_addr:
+          label: 'IP address'
+          separator: ', '
+        operations:
+          label: Operations
+  embed_manage:
+    display_options:
+      fields:
+        webform_submission_bulk_form:
+          action_title: Action
+        sid:
+          separator: ', '
+        in_draft:
+          separator: ', '
+        sticky:
+          separator: ', '
+        locked:
+          separator: ', '
+        created:
+          label: Created
+          separator: ', '
+        completed:
+          label: Completed
+          separator: ', '
+        remote_addr:
+          label: 'IP address'
+          separator: ', '
+        view_webform_submission:
+          label: Operations
+        edit_webform_submission:
+          label: Operations
+  embed_review:
+    display_options:
+      fields:
+        sid:
+          separator: ', '
+        in_draft:
+          separator: ', '
+        sticky:
+          separator: ', '
+        locked:
+          separator: ', '
+        created:
+          label: Created
+          separator: ', '
+        completed:
+          label: Completed
+          separator: ', '
+        remote_addr:
+          label: 'IP address'
+          separator: ', '
+        view_webform_submission:
+          label: Operations

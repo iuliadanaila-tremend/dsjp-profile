@@ -1,0 +1,42 @@
+settings:
+  allowed_values:
+    -
+      label: 'Osobe s visokim rezultatima'
+    -
+      label: 'Strani govornici'
+    -
+      label: 'Osobe kojima je potrebna prekvalifikacija za zapošljavanje'
+    -
+      label: 'Osobe koje se tercijarno obrazuju (6. razina Europskoga kvalifikacijskog okvira)'
+    -
+      label: 'Osobe koje su završile primarno obrazovanje'
+    -
+      label: 'Osobe koje se sekundarno/obvezno obrazuju'
+    -
+      label: 'Osobe koje su završile tercijarno obrazovanje (7. Europski kvalifikacijski okvir)'
+    -
+      label: 'Osobe koje se primarno obrazuju'
+    -
+      label: 'Osobe koje imaju do 3 godine radnog iskustva'
+    -
+      label: 'Osobe koje su završile tercijarno obrazovanje (8 EQF)'
+    -
+      label: 'Osobe koje su završile sekundarno obrazovanje'
+    -
+      label: 'Osobe sa završenim tercijarnim obrazovanjem (7 EQF)'
+    -
+      label: 'Osobe u tercijarnom obrazovanju (8 EQF)'
+    -
+      label: Migranti
+    -
+      label: 'Osobe koje imaju od 3 do 10 godina radnog iskustva'
+    -
+      label: 'Osobe koje imaju više od 10 godina radnog iskustva'
+    -
+      label: 'Osobe s teškoćama u učenju'
+    -
+      label: 'Izvorni govornici'
+    -
+      label: 'Osobe koje su završile tercijarno obrazovanje (6. razina Europskoga kvalifikacijskog okvira)'
+    -
+      label: 'Osobe s lošim rezultatima'

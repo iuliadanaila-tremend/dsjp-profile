@@ -1,0 +1,22 @@
+framework:
+  css:
+    theme:
+      css/style.css: { minified: true }
+  js:
+    js/main.js: {}
+    js/time_ago.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+    - select2/select2
+
+flags:
+  css:
+    component:
+      /libraries/flag-icons/css/flag-icon.css: {}
+
+private_message:
+  js:
+    js/private_message.js: {}
+  dependencies:
+    - core/jquery

@@ -1,0 +1,233 @@
+<?php
+
+/**
+ * @file
+ * OpenEuropa Media module.
+ */
+
+declare(strict_types = 1);
+
+use Drupal\Component\Utility\Crypt;
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Access\AccessResultAllowed;
+use Drupal\Core\Cache\CacheableMetadata;
+use Drupal\Core\Config\Entity\ConfigEntityInterface;
+use Drupal\Core\Config\StorageInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\media\MediaInterface;
+use Drupal\oe_media\Status;
+use Drupal\views\ViewExecutable;
+
+/**
+ * Implements hook_media_source_info_alter().
+ *
+ * Adding Daily Motion to the list of providers
+ * exposed by the OEmbed video source plugin.
+ */
+function oe_media_media_source_info_alter(array &$sources): void {
+  $sources['oembed:video']['providers'] = ['YouTube', 'Vimeo', 'Dailymotion'];
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_access().
+ *
+ * Ensure that Document media access is derived from the nodes that reference
+ * them.
+ *
+ * @deprecated in 1.8.0 and will be removed from 2.0.0.
+ */
+function oe_media_media_access(EntityInterface $entity, string $operation, AccountInterface $account) {
+  if ($operation === 'view' && !$entity->isPublished() && $account->hasPermission('view any unpublished media')) {
+    return AccessResult::allowed()->cachePerPermissions()->addCacheableDependency($entity);
+  }
+
+  if ($entity->bundle() !== 'document' || $operation !== 'view') {
+    return AccessResult::neutral();
+  }
+
+  $entity_type_manager = \Drupal::entityTypeManager();
+  $cache = new CacheableMetadata();
+  $cache->addCacheTags(['node_list']);
+
+  // Getting fields which could have references to 'document' media type.
+  $fields = $entity_type_manager->getStorage('field_config')->loadByProperties([
+    'entity_type' => 'node',
+    'field_type' => 'entity_reference',
+  ]);
+
+  $field_referenced_to_media = [];
+  /** @var \Drupal\field\Entity\FieldConfig $field */
+  foreach ($fields as $field) {
+    $field_settings = $field->getSettings();
+    if ($field_settings['handler'] === 'default:media' && in_array('document', $field_settings['handler_settings']['target_bundles'])) {
+      $field_referenced_to_media[] = $field->getName();
+    }
+  }
+
+  // Get all the nodes which use this media entity.
+  $query = $entity_type_manager->getStorage('node')->getQuery('OR');
+  foreach ($field_referenced_to_media as $field_name) {
+    $query->condition($field_name, $entity->id());
+  }
+  $ids = $query->execute();
+
+  if (!$ids) {
+    return AccessResult::neutral()->addCacheableDependency($cache);
+  }
+
+  $referencing_node_entities = $entity_type_manager->getStorage('node')->loadMultiple($ids);
+
+  // Check access on the referencing nodes. If at least one of these returns
+  // access, we allow access as well. Otherwise, we deny it.
+  foreach ($referencing_node_entities as $node) {
+    $access = $node->access($operation, $account, TRUE);
+    $cache->addCacheableDependency($access);
+    if ($access instanceof AccessResultAllowed) {
+      // We only allow access if the user also can view media entities in
+      // general.
+      $view = AccessResult::allowedIfHasPermission($account, 'view media');
+      return $access->andIf($view)->addCacheableDependency($cache);
+    }
+  }
+
+  // When denying access, we still allow access to users who can either
+  // administer media or own the media entity itself.
+  if ($account->hasPermission('administer media')) {
+    return AccessResult::neutral()->addCacheableDependency($cache);
+  }
+
+  if ($account->id() === $entity->getOwnerId()) {
+    return AccessResult::neutral()->addCacheableDependency($cache);
+  }
+
+  return AccessResult::forbidden()->addCacheableDependency($cache);
+}
+
+/**
+ * Implements hook_views_plugins_filter_alter().
+ */
+function oe_media_views_plugins_filter_alter(array &$plugins) {
+  if (isset($plugins['media_status'])) {
+    $plugins['media_status']['class'] = Status::class;
+  }
+}
+
+/**
+ * Implements hook_views_query_substitutions().
+ */
+function oe_media_views_query_substitutions(ViewExecutable $view) {
+  $account = \Drupal::currentUser();
+  return [
+    '***VIEW_ANY_UNPUBLISHED_MEDIA***' => (int) $account->hasPermission('view any unpublished media'),
+  ];
+}
+
+/**
+ * Implements hook_entity_type_alter().
+ */
+function oe_media_entity_type_alter(array &$entity_types) {
+  /** @var \Drupal\Core\Entity\EntityTypeInterface $media */
+  $media = $entity_types['media'];
+  $media->addConstraint('DocumentMedia');
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function oe_media_form_media_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  // Alter only the Document media type.
+  $bundle = $form_state->getFormObject()->getEntity()->bundle();
+  if ($bundle === 'document') {
+    /** @var \Drupal\oe_media\DocumentMediaFormHandler $handler */
+    $handler = \Drupal::service('oe_media.document_media_form_handler');
+    $handler->formAlter($form, $form_state);
+  }
+}
+
+/**
+ * Implements hook_inline_entity_form_entity_form_alter().
+ */
+function oe_media_inline_entity_form_entity_form_alter(array &$entity_form, FormStateInterface &$form_state) {
+  /** @var \Drupal\Core\Entity\ContentEntityInterface $entity */
+  $entity = $entity_form['#entity'];
+  if ($entity instanceof MediaInterface && $entity->bundle() === 'document') {
+    /** @var \Drupal\oe_media\DocumentMediaFormHandler $handler */
+    $handler = \Drupal::service('oe_media.document_media_form_handler');
+    $handler->formAlter($entity_form, $form_state);
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_presave() for the Media entity.
+ */
+function media_media_presave(MediaInterface $media) {
+  if ($media->bundle() === 'document') {
+    // Default the file type to local if one is not set.
+    if ($media->get('oe_media_file_type')->isEmpty()) {
+      $media->set('oe_media_file_type', 'local');
+    }
+
+    // For documents, ensure that when saving, only the relevant field keeps
+    // the value depending on the document type selected.
+    $type = $media->get('oe_media_file_type')->value;
+    $clear_map = [
+      'remote' => 'oe_media_file',
+      'local' => 'oe_media_remote_file',
+    ];
+
+    if (isset($clear_map[$type])) {
+      $media->set($clear_map[$type], NULL);
+    }
+  }
+}
+
+/**
+ * Loads a config array from storage, determines the entity type and imports it.
+ *
+ * @param string $name
+ *   The config name.
+ * @param \Drupal\Core\Config\StorageInterface $storage
+ *   The configuration storage where the file is located.
+ * @param bool $create_if_missing
+ *   If the configuration entity should be created if not found. Defaults to
+ *   TRUE.
+ * @param bool $update_if_exists
+ *   If the configuration entity should be updated if found. Defaults to TRUE.
+ */
+function _oe_media_import_config_from_file(string $name, StorageInterface $storage, bool $create_if_missing = TRUE, bool $update_if_exists = TRUE): void {
+  $config_manager = \Drupal::service('config.manager');
+  $entity_type_manager = \Drupal::entityTypeManager();
+
+  $config = $storage->read($name);
+  if (!$config) {
+    throw new \LogicException(sprintf('The configuration value named %s was not found in the storage.', $name));
+  }
+
+  $entity_type = $config_manager->getEntityTypeIdByName($name);
+  /** @var \Drupal\Core\Config\Entity\ConfigEntityStorageInterface $entity_storage */
+  $entity_storage = $entity_type_manager->getStorage($entity_type);
+  $id_key = $entity_storage->getEntityType()->getKey('id');
+  $entity = $entity_storage->load($config[$id_key]);
+  if (!$entity instanceof ConfigEntityInterface) {
+    if (!$create_if_missing) {
+      throw new \LogicException(sprintf('The configuration entity "%s" was not found.', $config[$id_key]));
+    }
+
+    // When we create a new config, it usually means that we are also shipping
+    // it in the config/install folder so we want to make sure it gets the hash
+    // so Drupal treats it as a shipped config. This means that it gets exposed
+    // to be translated via the locale system as well.
+    $config['_core']['default_config_hash'] = Crypt::hashBase64(serialize($config));
+    $entity = $entity_storage->createFromStorageRecord($config);
+    $entity->save();
+
+    return;
+  }
+  if (!$update_if_exists) {
+    return;
+  }
+  $entity = $entity_storage->updateFromStorageRecord($entity, $config);
+  $entity->save();
+}

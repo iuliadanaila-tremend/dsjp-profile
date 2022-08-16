@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Yhdistelmä
+    -
+      label: Sijainti
+    -
+      label: 'Virtuaalinen elin'
+    -
+      label: 'Virtuaalinen ennakkoon tallennettu'

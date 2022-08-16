@@ -1,0 +1,10 @@
+uuid: ac3a4499-ac97-4eb0-981d-a371753a104b
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.group_thumbnail
+label: 'Group Thumbnail'
+targetEntityType: media
+cache: true

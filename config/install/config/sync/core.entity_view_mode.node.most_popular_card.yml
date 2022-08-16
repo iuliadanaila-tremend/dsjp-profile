@@ -1,0 +1,10 @@
+uuid: e462c0b0-2d21-4464-92e5-2523728c345f
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.most_popular_card
+label: 'Most Popular Card'
+targetEntityType: node
+cache: true

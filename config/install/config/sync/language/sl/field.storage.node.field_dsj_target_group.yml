@@ -1,0 +1,42 @@
+settings:
+  allowed_values:
+    -
+      label: 'Učenci z dobrimi učnimi dosežki'
+    -
+      label: 'Nematerni govorci'
+    -
+      label: 'Osebe, ki za zaposlitev potrebujejo preusposabljanje'
+    -
+      label: 'Osebe v terciarnem izobraževanju (EOK 6)'
+    -
+      label: 'Osebe, ki so zaključile primarno izobraževanje'
+    -
+      label: 'Osebe v sekundarnem/obveznem izobraževanju'
+    -
+      label: 'Osebe, ki so zaključile terciarno izobraževanje (EOK 7)'
+    -
+      label: 'Osebe v primarnem izobraževanju'
+    -
+      label: 'Osebe z 0-3 let delovnih izkušenj'
+    -
+      label: 'Osebe, ki so zaključile terciarno izobraževanje (EOK 8)'
+    -
+      label: 'Osebe, ki so zaključile sekundarno/obvezno izobraževanje'
+    -
+      label: 'Osebe v terciarnem izobraževanju (EOK 7)'
+    -
+      label: 'Osebe v terciarnem izobraževanju (EOK 8)'
+    -
+      label: Migranti
+    -
+      label: 'Osebe s 3-10 let delovnih izkušenj'
+    -
+      label: 'Osebe z 10 ali več let delovnih izkušenj'
+    -
+      label: 'Osebe z učnimi težavami'
+    -
+      label: 'Materni govorci'
+    -
+      label: 'Osebe, ki so zaključile terciarno izobraževanje (EOK 6)'
+    -
+      label: 'Učenci s slabimi učnimi dosežki'

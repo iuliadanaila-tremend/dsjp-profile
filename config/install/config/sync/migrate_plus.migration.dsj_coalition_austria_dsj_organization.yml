@@ -1,0 +1,90 @@
+uuid: cfc59c76-a557-4567-9c07-0a98679da536
+langcode: en
+status: true
+dependencies: {  }
+id: dsj_coalition_austria_dsj_organization
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: null
+migration_group: default
+label: 'Austria Coalition Organization content migration'
+source:
+  plugin: embedded_data
+  data_rows: {  }
+  ids:
+    recordIdentifier:
+      type: string
+    gid:
+      type: integer
+process:
+  uid: constants/group_owner
+  created:
+    plugin: format_date
+    from_format: 'Y-m-d H:i:s'
+    to_format: U
+    to_timezone: GMT
+    source: recordCreationDate
+  changed:
+    plugin: format_date
+    from_format: 'Y-m-d H:i:s'
+    to_format: U
+    to_timezone: GMT
+    source: recordModificationDate
+  title: title
+  body/value: body
+  body/format:
+    plugin: default_value
+    default_value: full_html
+  field_dsj_author: author
+  field_dsj_digital_skill_level: digitalSkillLevel
+  field_dsj_digital_technology: digitalTechnology
+  countries:
+    plugin: deepen
+    source: geographicCoverage
+  field_dsj_geographic_scope:
+    plugin: sub_process
+    source: '@countries'
+    process:
+      target_id:
+        plugin: custom_field_entity_lookup
+        entity_type: taxonomy_term
+        bundle_key: vid
+        bundle: dsj_country
+        value_field: field_dsj_country_code
+        source: value
+  field_dsj_organization_category: category
+  field_dsj_industry: industry
+  field_dsj_target_audience: targetAudience
+  field_dsj_publish_in_core:
+    plugin: default_value
+    default_value: 1
+  field_dsj_website_link: website
+  field_dsj_image:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: image
+    -
+      plugin: file_import
+      field: image
+      destination: constants/file_destination
+      rename: true
+      uid: '@uid'
+      skip_on_error: true
+  field_dsj_nc_member: nationalCoalitionMember
+  field_dsj_external_id: recordIdentifier
+  langcode:
+    plugin: default_value
+    source: constants/language
+    default_value: und
+  status:
+    plugin: default_value
+    default_value: 0
+  moderation_state:
+    plugin: default_value
+    default_value: imported
+destination:
+  plugin: 'entity:node'
+  default_bundle: dsj_organization
+migration_dependencies: null

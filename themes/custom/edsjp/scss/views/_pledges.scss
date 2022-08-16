@@ -1,0 +1,235 @@
+@import "../content/pledgeviewer/pledge-variables";
+
+.view-pledges {
+  .view {
+    &-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: $grid-gutter-width;
+      font-family: $font-ec-square-medium !important;
+      font-size: $font-size-2xl;
+
+      a {
+        border-radius: 6px;
+        padding: 12px 24px;
+        background-color: $primary-default;
+        font-family: $font-ec-square-medium !important;
+        font-size: $font-size-base;
+        color: $body-bg;
+
+        &:hover {
+          background-color: $primary-hover;
+        }
+      }
+    }
+
+    &-rows {
+      .views-row {
+        margin-bottom: $grid-gutter-width-mobile * 1.5;
+        border: 1px solid $gray-400;
+        border-radius: 6px;
+
+        .dsj-pledge {
+          h2 {
+            margin-top: 0;
+
+            span {
+              color: $primary;
+            }
+          }
+
+          .status {
+            margin-bottom: $grid-gutter-width / 2;
+            font-size: $font-size-base;
+            color: $primary-hover;
+          }
+
+          .content {
+            .ecl {
+              p {
+                &:last-of-type {
+                  position: relative;
+
+                  &::after {
+                    display: inline-block;
+                    content: "...";
+                  }
+                }
+              }
+            }
+          }
+
+          .more-link {
+            a {
+              font-family: $font-ec-square-medium !important;
+            }
+          }
+
+          .article-footer {
+            @include media-breakpoint-down(sm) {
+              flex-direction: column;
+            }
+
+            display: flex;
+            margin-top: $grid-gutter-width / 2;
+
+            .initiatives-type {
+              @include media-breakpoint-down(sm) {
+                flex-basis: 100%;
+                flex-direction: column;
+              }
+
+              display: flex;
+              flex-wrap: wrap;
+              flex-basis: 75%;
+            }
+
+            .more-link {
+              @include media-breakpoint-down(sm) {
+                flex-basis: 100%;
+                flex-direction: column;
+                align-self: flex-start;
+                text-align: left;
+              }
+
+              margin-bottom: $grid-gutter-width / 2;
+              flex-basis: 25%;
+              align-self: flex-end;
+              text-align: right;
+            }
+          }
+
+          .type {
+            &-initiative {
+              display: inline-block;
+              flex-basis: calc(50% - #{$grid-gutter-width / 2});
+              margin-right: $grid-gutter-width / 2;
+              padding-bottom: $grid-gutter-width / 2;
+              line-height: $grid-gutter-width;
+              vertical-align: middle;
+              font-size: $font-size-sm;
+
+              .initiative-type-wrapper {
+                position: relative;
+                display: inline-block;
+
+                &::before {
+                  display: inline-block;
+                  width: $grid-gutter-width;
+                  height: $grid-gutter-width;
+                  line-height: $grid-gutter-width;
+                  vertical-align: middle;
+                  margin-right: $grid-gutter-width / 4;
+                  border-radius: 100%;
+                  text-align: center;
+                  font-size: $font-size-base * 1.1875;
+                  color: $body-bg;
+                }
+
+                &::after {
+                  @include position(absolute, 40px null null 4px);
+
+                  display: none;
+
+                  z-index: 0;
+                  content: "";
+                  transform: rotate(45deg);
+                  width: $grid-gutter-width-mobile * 1.5;
+                  height: $grid-gutter-width-mobile * 1.5;
+                  background-color: $gray-650;
+                  border-radius: $pledge-border-radius / 2;
+                }
+
+                &:hover {
+                  cursor: pointer;
+
+                  .tooltip,
+                  &::after {
+                    display: block;
+                  }
+                }
+                .tooltip {
+                  @include position(absolute, 44px null null -19px);
+
+                  display: none;
+
+                  z-index: 10;
+                  width: 164px;
+                  max-height: 200px;
+                  overflow-y: auto;
+                  border-radius: $pledge-border-radius;
+                  padding: $grid-gutter-width / 4 $grid-gutter-width / 3.2;
+                  background-color: $gray-650;
+                  font-size: $font-size-xs;
+                  line-height: 1.4;
+                  color: $gray-400;
+
+                  &::-webkit-scrollbar {
+                    width: $grid-gutter-width / 4;
+                    border-top-right-radius: $pledge-border-radius / 2;
+                    border-bottom-right-radius: $pledge-border-radius / 2;
+                  }
+
+                  &::-webkit-scrollbar-track {
+                    background-color: $gray-650;
+                    width: $grid-gutter-width / 8;
+                    border-top-right-radius: $pledge-border-radius / 2;
+                    border-bottom-right-radius: $pledge-border-radius / 2;
+                  }
+
+                  &::-webkit-scrollbar-thumb {
+                    background-color: $body-bg;
+                    border-radius: $pledge-border-radius / 2;
+                    border: 1px solid $gray-400;
+                    width: $grid-gutter-width / 8;
+                  }
+                }
+              }
+            }
+
+            &-education {
+              .initiative-type-wrapper {
+                @include icon(education);
+
+                &::before {
+                  background-color: $education-color;
+                }
+              }
+            }
+
+            &-labour_force {
+              .initiative-type-wrapper {
+                @include icon(labour-force);
+
+                &::before {
+                  background-color: $labour-force-color;
+                }
+              }
+            }
+
+            &-ict_professionals {
+              .initiative-type-wrapper {
+                @include icon(ict-professional);
+
+                &::before {
+                  background-color: $ict-color;
+                }
+              }
+            }
+
+            &-other {
+              .initiative-type-wrapper {
+                @include icon(citizens);
+
+                &::before {
+                  background-color: $other-color;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

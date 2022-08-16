@@ -1,0 +1,18 @@
+uuid: 4ed31155-c053-4f2e-b107-57cd2148df51
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.dsj_listing
+id: node.dsj_listing.title
+field_name: title
+entity_type: node
+bundle: dsj_listing
+label: Title
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,11 @@
+uuid: 93ec36f7-5775-44fa-a6e5-edcd8113d803
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: xUUXdr-1GiBw09eANHE3hudaG-qV6NvnN3nozLqZIE8
+id: pt-pt
+label: Portuguese
+direction: ltr
+weight: 18
+locked: false

@@ -1,0 +1,30 @@
+.view {
+  &-content,
+  &-comment,
+  &-media,
+  &-media-library,
+  &-moderated-content {
+    .js-form-item,
+    .form-item,
+    .js-form-type-select,
+    .form-item-type,
+    .js-form-item-type,
+    .ecl-form-group,
+    .ecl-form-group--select,
+    .form-item-action,
+    .js-form-item-action {
+      max-width: 380px;
+      width: 100%;
+
+      .form-select {
+        @include dropdown-styling($filter: false);
+
+        .chosen-single {
+          span {
+            color: $gray-800;
+          }
+        }
+      }
+    }
+  }
+}

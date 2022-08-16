@@ -1,0 +1,24 @@
+uuid: e4ecb0d6-5614-4e35-bfa2-7e0e4b793171
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_dsj_form_of_funding_code
+    - taxonomy.vocabulary.dsj_form_of_funding
+  module:
+    - tmgmt_content
+third_party_settings:
+  tmgmt_content:
+    excluded: true
+id: taxonomy_term.dsj_form_of_funding.field_dsj_form_of_funding_code
+field_name: field_dsj_form_of_funding_code
+entity_type: taxonomy_term
+bundle: dsj_form_of_funding
+label: 'Form of funding code'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

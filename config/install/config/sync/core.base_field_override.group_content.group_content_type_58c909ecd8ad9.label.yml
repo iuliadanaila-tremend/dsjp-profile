@@ -1,0 +1,18 @@
+uuid: 3fa6a1d1-dbee-419f-9a40-b1b90ff18040
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.content_type.group_content_type_58c909ecd8ad9
+id: group_content.group_content_type_58c909ecd8ad9.label
+field_name: label
+entity_type: group_content
+bundle: group_content_type_58c909ecd8ad9
+label: Title
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

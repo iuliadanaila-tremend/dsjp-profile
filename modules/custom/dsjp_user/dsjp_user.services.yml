@@ -1,0 +1,5 @@
+services:
+  dsjp_user.route_subscriber:
+    class: Drupal\dsjp_user\Routing\RouteSubscriber
+    tags:
+      - { name: event_subscriber }

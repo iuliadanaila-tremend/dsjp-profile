@@ -1,0 +1,53 @@
+label: Tilaajat
+display:
+  default:
+    display_title: Isäntä
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Käytä
+          reset_button_label: Palauta
+          exposed_sorts_label: Lajittele
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      pager:
+        options:
+          tags:
+            previous: '‹ edellinen'
+            next: 'seuraava ›'
+            first: '« ensimmäinen'
+            last: 'viimeinen »'
+          expose:
+            items_per_page_label: 'Merkintöjä sivua kohti'
+            items_per_page_options_all_label: '- Kaikki -'
+            offset_label: Offset
+      fields:
+        mail:
+          label: Sähköpostiosoite
+        user_name:
+          label: Käyttäjätunnus
+        subscriptions_target_id:
+          label: Tilaukset
+          separator: ', '
+        status:
+          label: Voimassa
+        created:
+          label: Luotu
+        operations:
+          label: Toimenpiteet
+      filters:
+        mail:
+          expose:
+            label: Sähköpostiosoite
+        subscriptions_target_id:
+          expose:
+            label: Uutiskirjeet
+        status:
+          expose:
+            label: Voimassa
+        subscriptions_status:
+          expose:
+            label: Tila
+      title: Tilaajat
+  page_1:
+    display_title: Sivu

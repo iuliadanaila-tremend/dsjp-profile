@@ -1,0 +1,8 @@
+settings:
+  allowed_values:
+    -
+      label: 'Deeltijds light'
+    -
+      label: Voltijds
+    -
+      label: 'Deeltijds intensief'

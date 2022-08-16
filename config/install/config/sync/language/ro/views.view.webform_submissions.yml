@@ -1,0 +1,149 @@
+display:
+  default:
+    display_title: Master
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Apply
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      pager:
+        options:
+          tags:
+            previous: ‹‹
+            next: ››
+            first: '« First'
+            last: 'Last »'
+          expose:
+            items_per_page_label: 'Items per page'
+            items_per_page_options_all_label: '- All -'
+            offset_label: Offset
+      fields:
+        sid:
+          separator: ', '
+        in_draft:
+          label: Proiect
+          separator: ', '
+        created:
+          label: Creat
+          separator: ', '
+        remote_addr:
+          label: 'Adresă IP'
+          separator: ', '
+        view_webform_submission:
+          label: Operations
+          text: afişează
+      header:
+        result:
+          content: 'Afișare @start - @end din @total'
+      arguments:
+        in_draft:
+          exception:
+            title: All
+  embed_administer:
+    display_options:
+      fields:
+        webform_submission_bulk_form:
+          action_title: Action
+        sid:
+          separator: ', '
+        in_draft:
+          label: Proiect
+          separator: ', '
+        sticky:
+          label: Lipicios
+          separator: ', '
+        locked:
+          label: Blocat
+          separator: ', '
+        created:
+          label: Creat
+          separator: ', '
+        completed:
+          label: Finalizată
+          separator: ', '
+        remote_addr:
+          label: 'Adresă IP'
+          separator: ', '
+        operations:
+          label: Operations
+      filters:
+        sticky:
+          expose:
+            label: Lipicios
+        locked:
+          expose:
+            label: Blocat
+  embed_manage:
+    display_options:
+      fields:
+        webform_submission_bulk_form:
+          action_title: Action
+        sid:
+          separator: ', '
+        in_draft:
+          label: Proiect
+          separator: ', '
+        sticky:
+          label: Lipicios
+          separator: ', '
+        locked:
+          label: Blocat
+          separator: ', '
+        created:
+          label: Creat
+          separator: ', '
+        completed:
+          label: Finalizată
+          separator: ', '
+        remote_addr:
+          label: 'Adresă IP'
+          separator: ', '
+        view_webform_submission:
+          label: Operations
+          text: afişează
+        edit_webform_submission:
+          label: Operations
+          text: modifică
+      filters:
+        sticky:
+          expose:
+            label: Lipicios
+        locked:
+          expose:
+            label: Blocat
+  embed_review:
+    display_options:
+      fields:
+        sid:
+          separator: ', '
+        in_draft:
+          label: Proiect
+          separator: ', '
+        sticky:
+          label: Lipicios
+          separator: ', '
+        locked:
+          label: Blocat
+          separator: ', '
+        created:
+          label: Creat
+          separator: ', '
+        completed:
+          label: Finalizată
+          separator: ', '
+        remote_addr:
+          label: 'Adresă IP'
+          separator: ', '
+        view_webform_submission:
+          label: Operations
+          text: afişează
+      filters:
+        sticky:
+          expose:
+            label: Lipicios
+        locked:
+          expose:
+            label: Blocat

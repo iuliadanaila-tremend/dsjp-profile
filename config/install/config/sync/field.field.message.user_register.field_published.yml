@@ -1,0 +1,25 @@
+uuid: 1be1cc0d-8acc-4add-86b8-a128a7d7dd9f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.message.field_published
+    - message.template.user_register
+_core:
+  default_config_hash: th4FjZDQuhDMYr-XU473SAz87w1GW9PcSnrLMfWbdyU
+id: message.user_register.field_published
+field_name: field_published
+entity_type: message
+bundle: user_register
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Active
+  off_label: Inactive
+field_type: boolean

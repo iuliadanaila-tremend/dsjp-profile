@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Veřejné
+    -
+      label: Soukromý
+    -
+      label: 'Skupinové financování'
+    -
+      label: 'Veřejný a soukromý'

@@ -1,0 +1,467 @@
+.item-list {
+
+  > ul {
+    @include make-row();
+    list-style: none;
+    padding: 0;
+    margin-top: 0;
+  }
+
+  li {
+    @include make-col-ready();
+    box-sizing: border-box;
+    margin-bottom: $grid-gutter-width;
+
+    .node--content {
+      padding: $grid-gutter-width / 1.5 $grid-gutter-width / 1.5 $grid-gutter-width / 3;
+    }
+
+    .image-area {
+
+      .field {
+        padding: 0;
+      }
+    }
+
+    .text-area {
+      width: 100%;
+    }
+
+    div.more-link {
+      @include media-breakpoint-down(sm) {
+        display: none;
+      }
+
+      text-align: right;
+      width: 100%;
+      margin: 0 $grid-gutter-width / 1.5 $grid-gutter-width / 1.5;
+
+      a {
+        @include icon(right-arrow);
+        padding-right: $grid-gutter-width / 1.5;
+        color: $primary;
+        position: relative;
+
+        &::before {
+          @include position(absolute, 2px 0 null null);
+          font-size: $font-size-xs;
+        }
+      }
+    }
+  }
+
+  &.item--columned {
+
+    li {
+      @include media-breakpoint-down(md) {
+        @include make-col(12);
+      }
+
+      @include make-col(6);
+
+      .node--content {
+        flex-direction: column;
+        width: 100%;
+        overflow: hidden;
+      }
+
+      .image-area {
+        margin: (-$grid-gutter-width / 3) (-$grid-gutter-width / 3) 0;
+        overflow: hidden;
+
+        img {
+          @include border-radius($border-radius-lg * 1.5);
+          display: block;
+        }
+      }
+    }
+  }
+
+  &.item--wide {
+
+    li {
+      @include make-col(12);
+
+      .node--content {
+        @include media-breakpoint-down(sm) {
+          padding: $grid-gutter-width / 1.5;
+        }
+        flex-direction: row;
+        width: 100%;
+
+        h3 {
+          margin: 0 0 12px;
+        }
+      }
+
+      .text-area {
+        @include media-breakpoint-down(sm) {
+          order: 2;
+
+          .node--footer {
+            border-top: 1px solid $gray-200;
+            margin-top: $grid-gutter-width / 3;
+            padding-top: $grid-gutter-width / 3;
+            width: auto;
+          }
+        }
+      }
+
+      .image-area {
+        @include media-breakpoint-down(sm) {
+          display: none;
+        }
+
+        order: 2;
+        width: 130px;
+        padding-left: $grid-gutter-width;
+
+        img {
+          @include border-radius($border-radius-lg);
+          border: 1px solid $gray-200;
+          height: auto;
+        }
+
+        & + .text-area {
+          h3 {
+            @include media-breakpoint-down(sm) {
+              align-items: center;
+              display: flex;
+              height: 50px;
+            }
+          }
+
+          .field--name-field-dsj-digital-technology,
+          .node--footer,
+          .field--name-body {
+            @include media-breakpoint-down(sm) {
+              margin-top: $grid-gutter-width / 2;
+            }
+          }
+        }
+      }
+    }
+
+    &.item--img-right {
+
+      .text-area {
+        order: 2;
+      }
+
+      .image-area {
+        order: 1;
+        padding-left: 0;
+        padding-right: $grid-gutter-width / 2;
+      }
+    }
+  }
+
+  .node {
+
+    &--listing-wide,
+    &--listing {
+      box-shadow: none !important;
+      border-radius: $border-radius-lg !important;
+      padding: 0 !important;
+      box-sizing: border-box;
+      align-items: flex-start !important;
+      flex-wrap: wrap;
+      background-color: $body-bg;
+      height: 100%;
+      align-content: space-between;
+      display: flex;
+    }
+
+    &--content {
+      display: flex;
+      width: 100%;
+
+      h3 {
+        font-size: $font-size-2md;
+        overflow: hidden;
+        margin-top: 5px;
+        margin-bottom: $grid-gutter-width / 3;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+
+        a {
+          word-break: break-word;
+          font-weight: bold;
+          color: $primary;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+
+        .field__items {
+          padding-top: $grid-gutter-width / 3;
+          font-size: $font-size-sm;
+          color: $gray;
+          font-weight: normal;
+        }
+      }
+
+      .user--compact {
+        @include media-breakpoint-down(sm) {
+          padding: 0;
+        }
+
+        padding: 0 0 $grid-gutter-width / 3;
+
+        .user-name {
+          position: relative;
+        }
+
+        a {
+          color: $gray-100;
+          font-size: $font-size-sm;
+        }
+      }
+
+      .field--name-body {
+
+        p {
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+
+          &:nth-child(n+2) {
+            display: none;
+          }
+        }
+      }
+    }
+
+    &--footer {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: $grid-gutter-width / 1.5 $grid-gutter-width / 1.5 $grid-gutter-width / 3;
+    }
+
+    &--dsj-funding-opportunity {
+      .node--footer {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        padding-top: 0;
+        padding-bottom: $grid-gutter-width / 2;
+
+        .more-link {
+          display: inline-flex;
+          align-items: center;
+          justify-content: flex-end;
+          margin: 0;
+          width: unset;
+        }
+
+        .field--name-field-dsj-form-of-funding {
+          display: inline-flex;
+          padding-top: 0;
+
+          .field__label {
+            display: none;
+          }
+
+          .field__item {
+            $icon-size: 20px;
+            
+            display: flex;
+            justify-content: flex-start;
+
+            a {
+              padding-left: $grid-gutter-width / 3;
+            }
+
+            &::before {
+              background-color: $gray-100;
+              content: '';
+              -webkit-mask: url('../assets/images/icons/funding-icon.svg') no-repeat center;
+              mask: url('../assets/images/icons/funding-icon.svg') no-repeat center;
+              background-size: cover;
+              width: $icon-size;
+              height: $icon-size;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  div[class^='field field--name-field-dsj'] {
+    position: relative;
+    padding-left: $grid-gutter-width / 1.5;
+    margin-top: 5px;
+    box-sizing: border-box;
+    font-size: $font-size-sm;
+
+    &::before {
+      @include position(absolute, 3px null null 0);
+      color: $gray-400;
+    }
+  }
+
+  .field--name-field-dsj {
+
+    &-image {
+      margin-bottom: 16px;
+    }
+
+    &-form-of-funding {
+      padding-left: 0 !important;
+      padding-top: $grid-gutter-width / 2;
+      font-size: $font-size-xs;
+      color: $gray-100;
+
+      * {
+        display: inline-block;
+      }
+    }
+
+    &-picture {
+      margin-top: 0 !important;
+      padding-left: 0 !important;
+      height: 36px;
+    }
+
+    &-event-setting {
+      @include icon(location);
+
+      .field__item {
+        display: inline-block;
+      }
+    }
+
+    &-event-location {
+      @include icon(location);
+    }
+
+    &-date {
+      @include icon(clock);
+    }
+
+    &-digital-technology {
+      display: flex;
+      flex-wrap: wrap;
+      font-size: $font-size-sm;
+      margin-bottom: 10px;
+      padding-left: 0 !important;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      .field__item {
+        display: inline-block;
+        margin-right: 10px;
+
+        .view-display-id-funding-opportunities & {
+          &::after {
+            content: '|';
+            display: inline-block;
+            padding: 0 $grid-gutter-width / 1.5;
+          }
+        }
+      }
+
+      a {
+        color: $gray-100;
+      }
+    }
+
+    &-geographic-scope {
+      @include icon(location);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      .field__item,
+      a {
+        display: inline-block;
+        color: $dark;
+      }
+
+      .field__item {
+        &::after {
+          content: ', ';
+        }
+
+        &:last-child {
+
+          &::after {
+            display: none;
+          }
+        }
+      }
+    }
+
+    &-author {
+      font-size: $font-size-sm;
+      color: $black;
+      font-weight: normal;
+      padding-left: 0;
+
+      a {
+        color: $black;
+      }
+    }
+
+    &-type-of-training {
+      @include icon(bookmark);
+    }
+
+    &-training-duration {
+      @include media-breakpoint-down(sm) {
+        display: none;
+      }
+      @include icon(clock);
+    }
+
+    &-typology-of-training {
+      @include icon(bookmark);
+    }
+
+    &-assessment-type,
+    &-training-setting,
+    &-website-link {
+      @include icon(globe);
+    }
+
+    &-digital-technology {
+      color: $gray-400;
+    }
+  }
+}
+
+.view-dsj-discussions,
+.view-dsj-content-listing {
+  padding-top: $grid-gutter-width;
+
+  .view-header {
+    margin-bottom: $grid-gutter-width;
+  }
+}
+
+.view-dsj-discussions {
+  &.view-display-id-dsj_latest_two {
+    padding-top: 0;
+  }
+}
+
+.item-list {
+  li {
+    div[class^='field field--name-field-dsj'] {
+      margin-top: 0;
+    }
+
+    .dsj-training-offer--listing-wide {
+      div.more-link {
+        margin: 0;
+        width: auto;
+      }
+    }
+  }
+}

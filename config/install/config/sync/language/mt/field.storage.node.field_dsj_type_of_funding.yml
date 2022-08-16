@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Pubbliku
+    -
+      label: Privat
+    -
+      label: 'Finanzjament kollettiv'
+    -
+      label: Pubbliku-privat

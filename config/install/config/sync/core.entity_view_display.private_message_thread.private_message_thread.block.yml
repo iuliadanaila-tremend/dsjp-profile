@@ -1,0 +1,40 @@
+uuid: b5322782-4d82-43a8-85dc-dd42d8fcdef9
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.private_message_thread.block
+  module:
+    - dsjp_private_message
+    - private_message
+_core:
+  default_config_hash: UW70Shyu4Z_hAePqer7HsVOLh52E0vjLlb8dJaPT3hg
+id: private_message_thread.private_message_thread.block
+targetEntityType: private_message_thread
+bundle: private_message_thread
+mode: block
+content:
+  members:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: private_message
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  private_messages:
+    type: entity_reference_delta_view
+    label: hidden
+    settings:
+      view_mode: block
+      number_of_entities: '1'
+      link: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  delete_link: true
+  last_message: true
+  private_message_form: true
+  search_api_excerpt: true

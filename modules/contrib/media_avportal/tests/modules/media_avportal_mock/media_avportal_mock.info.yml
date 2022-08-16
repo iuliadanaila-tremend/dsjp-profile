@@ -1,0 +1,9 @@
+name: 'Media AV Portal Mock'
+description: 'Provides a middleware for the returning mocked responses from AV Portal. Do not use this in production.'
+core_version_requirement: ^9.2
+type: module
+
+# Information added by Drupal.org packaging script on 2022-03-07
+version: '8.x-1.0-beta14'
+project: 'media_avportal'
+datestamp: 1646650234

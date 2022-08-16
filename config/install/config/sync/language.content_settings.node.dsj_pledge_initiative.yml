@@ -1,0 +1,11 @@
+uuid: baaf8e80-9ca1-409c-9a26-0194ff8a2c5a
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.dsj_pledge_initiative
+id: node.dsj_pledge_initiative
+target_entity_type_id: node
+target_bundle: dsj_pledge_initiative
+default_langcode: site_default
+language_alterable: false

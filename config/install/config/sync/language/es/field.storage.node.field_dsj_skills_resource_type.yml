@@ -1,0 +1,12 @@
+settings:
+  allowed_values:
+    -
+      label: 'Herramienta de autoevaluación'
+    -
+      label: Metodología
+    -
+      label: 'Programas de formación'
+    -
+      label: 'Caso práctico'
+    -
+      label: 'Otro material de formación'

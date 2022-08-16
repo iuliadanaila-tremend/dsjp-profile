@@ -1,0 +1,11 @@
+name: OpenEuropa Theme News Content
+type: module
+description: Companion module for the OE Content News module
+package: OpenEuropa
+core_version_requirement: ^9.2
+dependencies:
+  - extra_field:extra_field
+  - oe_content_news:oe_content_news
+  - oe_theme:oe_theme_helper
+  - oe_theme:oe_theme_content_entity_contact
+  - ui_patterns:ui_patterns_field_group

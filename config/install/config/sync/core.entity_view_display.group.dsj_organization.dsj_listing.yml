@@ -1,0 +1,71 @@
+uuid: 8f1e763e-2ee0-41ac-b7cd-4637a93630d1
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.group.dsj_listing
+    - field.field.group.dsj_organization.field_dsj_contact
+    - field.field.group.dsj_organization.field_dsj_contact_email_pledges
+    - field.field.group.dsj_organization.field_dsj_contact_person_pledges
+    - field.field.group.dsj_organization.field_dsj_country
+    - field.field.group.dsj_organization.field_dsj_endorse
+    - field.field.group.dsj_organization.field_dsj_geographic_sphere
+    - field.field.group.dsj_organization.field_dsj_group_image
+    - field.field.group.dsj_organization.field_dsj_is_pledger
+    - field.field.group.dsj_organization.field_dsj_number_of_employees
+    - field.field.group.dsj_organization.field_dsj_organization_category
+    - field.field.group.dsj_organization.field_dsj_role
+    - field.field.group.dsj_organization.field_dsj_target_sector
+    - field.field.group.dsj_organization.field_dsj_town
+    - field.field.group.dsj_organization.field_group_description
+    - group.type.dsj_organization
+id: group.dsj_organization.dsj_listing
+targetEntityType: group
+bundle: dsj_organization
+mode: dsj_listing
+content:
+  field_dsj_country:
+    type: entity_reference_label
+    label: inline
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_dsj_is_pledger:
+    type: boolean
+    label: hidden
+    settings:
+      format: custom
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  label:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  changed: true
+  content_moderation_control: true
+  created: true
+  field_dsj_contact: true
+  field_dsj_contact_email_pledges: true
+  field_dsj_contact_person_pledges: true
+  field_dsj_endorse: true
+  field_dsj_geographic_sphere: true
+  field_dsj_group_image: true
+  field_dsj_number_of_employees: true
+  field_dsj_organization_category: true
+  field_dsj_role: true
+  field_dsj_target_sector: true
+  field_dsj_town: true
+  field_group_description: true
+  langcode: true
+  search_api_excerpt: true
+  uid: true

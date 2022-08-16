@@ -1,0 +1,22 @@
+uuid: 3047652b-232e-4595-a81d-fbe68a794676
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.dsj_listing
+id: node.dsj_listing.sticky
+field_name: sticky
+entity_type: node
+bundle: dsj_listing
+label: 'Sticky at top of lists'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,28 @@
+
+.content-moderation-entity-moderation-form {
+  .entity-moderation-form {
+    grid-template-columns: repeat(3, minmax(130px, 1fr));
+    display: grid;
+    padding-left: 0;
+
+    @include media-breakpoint-down(lg) {
+      display: flex;
+    }
+  }
+}
+
+.field--name-moderation-state {
+  .chosen-container {
+    .chosen-drop {
+      display: flex;
+      flex-direction: column;
+
+      .chosen-results {
+
+        li {
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+}

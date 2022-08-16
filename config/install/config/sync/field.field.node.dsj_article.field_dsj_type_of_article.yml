@@ -1,0 +1,33 @@
+uuid: 1de32c0e-9c26-4e62-80e3-ba41f09d7d1c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dsj_type_of_article
+    - node.type.dsj_article
+    - taxonomy.vocabulary.dsj_type_of_article
+  content:
+    - 'taxonomy_term:dsj_type_of_article:dfc34ce3-057e-4d70-9170-989d425d23bd'
+id: node.dsj_article.field_dsj_type_of_article
+field_name: field_dsj_type_of_article
+entity_type: node
+bundle: dsj_article
+label: 'Type of article'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    target_uuid: dfc34ce3-057e-4d70-9170-989d425d23bd
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      dsj_type_of_article: dsj_type_of_article
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

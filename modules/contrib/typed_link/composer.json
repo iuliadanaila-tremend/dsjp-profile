@@ -1,0 +1,20 @@
+{
+  "name": "drupal/typed_link",
+  "type": "drupal-module",
+  "description": "This module provides a link field with a drop down.",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/typed_link",
+  "authors": [
+    {
+      "name": "Bryan Heisler (geekygnr)",
+      "homepage": "https://www.drupal.org/u/geekygnr",
+      "role": "Maintainer"
+    }
+  ],
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/typed_link",
+    "source": "http://cgit.drupalcode.org/typed_link"
+  },
+  "require-dev": {}
+}

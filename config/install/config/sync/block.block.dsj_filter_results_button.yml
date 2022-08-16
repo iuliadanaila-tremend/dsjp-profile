@@ -1,0 +1,31 @@
+uuid: 4271577e-d41a-46eb-9602-4d503e3abbe1
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_visibility_groups.block_visibility_group.edsjp_content_listing
+  module:
+    - block_visibility_groups
+    - dsjp_content
+  theme:
+    - edsjp
+id: dsj_filter_results_button
+theme: edsjp
+region: content
+weight: -12
+provider: null
+plugin: dsjp_filter_results_btn_block
+settings:
+  id: dsjp_filter_results_btn_block
+  label: 'Filter results button'
+  label_display: '0'
+  provider: dsjp_content
+  text: 'Filter your results'
+  filter_results:
+    text: 'Filter your results'
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    context_mapping: {  }
+    block_visibility_group: edsjp_content_listing

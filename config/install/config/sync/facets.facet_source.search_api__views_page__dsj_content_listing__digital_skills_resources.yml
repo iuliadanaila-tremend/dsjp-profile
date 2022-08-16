@@ -1,0 +1,12 @@
+uuid: fdc82fb2-9f8e-4fe0-9bff-be0aa0cab5ec
+langcode: en
+status: true
+dependencies: {  }
+id: search_api__views_page__dsj_content_listing__digital_skills_resources
+name: 'search_api:views_page__dsj_content_listing__digital_skills_resources'
+filter_key: ''
+url_processor: query_string
+breadcrumb:
+  active: false
+  before: true
+  group: false

@@ -1,0 +1,26 @@
+settings:
+  allowed_values:
+    -
+      label: 'ORGANIZZAZZJONI MHUX GOVERNATTIVA'
+    -
+      label: 'Istituzzjoni pubblika'
+    -
+      label: 'Fornitur tal-Edukazzjoni u t-Taħriġ Formali'
+    -
+      label: Intrapriża/Industrija
+    -
+      label: 'Sħubiji pubbliċi-privati'
+    -
+      label: Oħrajn
+    -
+      label: 'Unjoni tax-xogħol'
+    -
+      label: 'Grupp ta’ studju'
+    -
+      label: Assoċjazzjoni
+    -
+      label: 'Pjattaforma ta’ tagħlim miftuħ'
+    -
+      label: 'Grupp ta’ Interess'
+    -
+      label: 'Persuna li tfassal il-politika'

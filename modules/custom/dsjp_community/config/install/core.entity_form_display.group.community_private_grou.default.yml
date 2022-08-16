@@ -1,0 +1,55 @@
+uuid: f957c735-542f-44be-ba4a-70776190b776
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.group.community_private_grou.field_group_description
+    - field.field.group.community_private_grou.field_group_image
+    - group.type.community_private_grou
+  module:
+    - media_library
+    - path
+    - text
+id: group.community_private_grou.default
+targetEntityType: group
+bundle: community_private_grou
+mode: default
+content:
+  field_group_description:
+    weight: 31
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_group_image:
+    weight: 32
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+    type: media_library_widget
+    region: content
+  label:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  uid: true

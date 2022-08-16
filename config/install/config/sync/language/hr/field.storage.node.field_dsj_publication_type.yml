@@ -1,0 +1,34 @@
+settings:
+  allowed_values:
+    -
+      label: 'Informativni članak'
+    -
+      label: Prognoza
+    -
+      label: 'Opće smjernice'
+    -
+      label: 'Opće informacije'
+    -
+      label: Časopis
+    -
+      label: 'Nacionalni plan'
+    -
+      label: 'Priopćenja o novostima'
+    -
+      label: Članak
+    -
+      label: Bilten
+    -
+      label: Prezentacija
+    -
+      label: 'Promidžbeni materijal'
+    -
+      label: Izvješće
+    -
+      label: Raspored
+    -
+      label: 'Znanstveni rad'
+    -
+      label: Studija
+    -
+      label: 'Radni dokument'

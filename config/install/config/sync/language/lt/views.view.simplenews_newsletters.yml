@@ -1,0 +1,33 @@
+display:
+  default:
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Pritaikyti
+          reset_button_label: Išvalyti
+          exposed_sorts_label: 'Rikiuoti pagal'
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'Vienetų kiekis puslapyje'
+            items_per_page_options_all_label: '- Visos -'
+          tags:
+            previous: '‹ ankstesnis'
+            next: 'kitas  ›'
+            first: '« pirmas'
+            last: 'paskutinis  »'
+      fields:
+        node_bulk_form:
+          action_title: 'Su pasirinktais'
+        simplenews_issue:
+          label: Naujienlaiškis
+        status:
+          label: Paskelbtas
+        created:
+          label: Atnaujinta
+      filters:
+        simplenews_issue_target_id_1:
+          expose:
+            label: Naujienlaiškis
+  page_1:
+    display_title: Puslapis

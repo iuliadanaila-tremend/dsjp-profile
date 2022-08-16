@@ -1,0 +1,28 @@
+uuid: 15ae760a-ff77-4259-ad10-e3451132a675
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.message.field_node_reference
+    - message.template.dsj_first_discussion
+    - node.type.dsj_discussion
+id: message.dsj_first_discussion.field_node_reference
+field_name: field_node_reference
+entity_type: message
+bundle: dsj_first_discussion
+label: 'Node reference'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      dsj_discussion: dsj_discussion
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

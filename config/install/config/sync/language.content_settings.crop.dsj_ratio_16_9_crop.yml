@@ -1,0 +1,11 @@
+uuid: c3e29352-e74d-4ddb-8684-22d469dfbf3a
+langcode: en
+status: true
+dependencies:
+  config:
+    - crop.type.dsj_ratio_16_9_crop
+id: crop.dsj_ratio_16_9_crop
+target_entity_type_id: crop
+target_bundle: dsj_ratio_16_9_crop
+default_langcode: site_default
+language_alterable: false

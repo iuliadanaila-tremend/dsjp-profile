@@ -1,0 +1,62 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the module.
+ */
+
+declare(strict_types = 1);
+
+use Drupal\language_selection_page\Plugin\LanguageNegotiation\LanguageNegotiationLanguageSelectionPage;
+
+/**
+ * Implements hook_install().
+ */
+function oe_multilingual_selection_page_install($is_syncing): void {
+  if ($is_syncing) {
+    // If config is syncing, we do nothing here.
+    return;
+  }
+
+  // Configure selection page language negotiation method.
+  \Drupal::configFactory()
+    ->getEditable('language_selection_page.negotiation')
+    ->set('path', '/select-language')
+    ->set('type', 'standalone')
+    ->set('ignore_neutral', FALSE)
+    ->set('blacklisted_paths', [
+      '/admin',
+      '/user',
+      '/admin/*',
+      '/admin*',
+      '/node/add/*',
+      '/node/*/edit',
+      '/sites/*/files/*',
+      '/system/files',
+      '/system/files/*',
+    ])->save();
+
+  /** @var \Drupal\oe_multilingual\LanguageNegotiationSetterInterface $setter */
+  $setter = \Drupal::service('oe_multilingual.language_negotiation_setter');
+
+  // Add language selection page negotiation method.
+  // Since this is an optional module setting configuration in its
+  // hook_install() might cause unexpected behaviors.
+  // We are discussing implications in the following ticket:
+  // https://webgate.ec.europa.eu/CITnet/jira/browse/OPENEUROPA-600
+  $setter->addInterfaceSettings([
+    LanguageNegotiationLanguageSelectionPage::METHOD_ID => -18,
+  ]);
+}
+
+/**
+ * Add files directory to blacklisted paths.
+ */
+function oe_multilingual_selection_page_update_8001() {
+  $config = \Drupal::configFactory()
+    ->getEditable('language_selection_page.negotiation');
+  $blacklist = $config->get('blacklisted_paths');
+  $blacklist[] = '/sites/*/files/*';
+  $config->set('blacklisted_paths', $blacklist);
+  $config->save();
+}

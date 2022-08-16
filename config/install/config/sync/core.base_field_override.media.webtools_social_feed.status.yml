@@ -1,0 +1,22 @@
+uuid: 997078d2-f6cf-43d3-98cb-da77f2d24580
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.webtools_social_feed
+id: media.webtools_social_feed.status
+field_name: status
+entity_type: media
+bundle: webtools_social_feed
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

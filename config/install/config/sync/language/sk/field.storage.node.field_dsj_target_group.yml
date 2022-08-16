@@ -1,0 +1,42 @@
+settings:
+  allowed_values:
+    -
+      label: 'Vysoké Achievers'
+    -
+      label: 'Nenárodní rečníci'
+    -
+      label: 'Osoby, ktoré si vyžadujú rekvalifikáciu v zamestnaní'
+    -
+      label: 'Osoby terciárneho vzdelávania (EQF 6)'
+    -
+      label: 'Osoby, ktoré ukončili základné vzdelanie'
+    -
+      label: 'Osoby v stredoškolskom/povinnom vzdelávaní'
+    -
+      label: 'Osoby, ktoré ukončili terciárne vzdelanie (EQF 7)'
+    -
+      label: 'Osoby v základnom vzdelávaní'
+    -
+      label: 'Osoby s 0 – 3-ročnou praxou'
+    -
+      label: 'Osoby, ktoré ukončili terciárne vzdelanie (EQF 8)'
+    -
+      label: 'Osoby, ktoré ukončili stredoškolské/povinné vzdelanie'
+    -
+      label: 'Osoby terciárneho vzdelávania (EQF 7)'
+    -
+      label: 'Osoby terciárneho vzdelávania (EQF 8)'
+    -
+      label: Migranti
+    -
+      label: 'Osoby s 3 – 10-ročnou praxou'
+    -
+      label: 'Osoby s 10+ročnou praxou'
+    -
+      label: 'Osoby s poruchou učenia'
+    -
+      label: 'Autori pôvodných hovorcov'
+    -
+      label: 'Osoby, ktoré ukončili terciárne vzdelanie (EQF 6)'
+    -
+      label: 'Spoločnosť low Achievers'

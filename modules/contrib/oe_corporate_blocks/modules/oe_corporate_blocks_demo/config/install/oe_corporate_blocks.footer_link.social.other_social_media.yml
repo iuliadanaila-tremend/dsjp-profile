@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: other_social_media
+label: 'Custom Other social media'
+social_network: ''
+url: 'https://european-union.europa.eu/contact-eu/social-media-channels_en'
+weight: -8

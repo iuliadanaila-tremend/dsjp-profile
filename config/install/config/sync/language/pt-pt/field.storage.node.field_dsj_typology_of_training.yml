@@ -1,0 +1,24 @@
+settings:
+  allowed_values:
+    0:
+      label: Curso
+    1:
+      label: 'Módulo de programa'
+    2:
+      label: Mentoria
+    4:
+      label: Aprendizagem
+    5:
+      label: 'Visita de estudo'
+    6:
+      label: 'Programa curto de aprendizagem'
+    7:
+      label: Estágio
+    8:
+      label: 'Programa educativo'
+    9:
+      label: Classe
+    10:
+      label: 'Aprendizagem assente em serviço comunitário'
+    11:
+      label: Tese

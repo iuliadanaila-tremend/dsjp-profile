@@ -1,0 +1,21 @@
+uuid: 8c2edeb6-6abd-4d19-9fce-0655e01a3e0d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_group_description
+    - group.type.community_private_grou
+  module:
+    - text
+id: group.community_private_grou.field_group_description
+field_name: field_group_description
+entity_type: group
+bundle: community_private_grou
+label: 'Group description'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

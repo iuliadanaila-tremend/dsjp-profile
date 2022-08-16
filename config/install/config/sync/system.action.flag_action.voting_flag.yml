@@ -1,0 +1,15 @@
+uuid: 9436470a-1039-4c6a-aa11-f7b3bcf00114
+langcode: en
+status: true
+dependencies:
+  config:
+    - flag.flag.voting
+  module:
+    - flag
+id: flag_action.voting_flag
+label: Like
+type: node
+plugin: 'flag_action:voting_flag'
+configuration:
+  flag_id: voting
+  flag_action: flag

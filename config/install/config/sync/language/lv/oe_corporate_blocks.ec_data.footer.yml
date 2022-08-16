@@ -1,0 +1,78 @@
+corporate_site_link:
+  href: 'https://ec.europa.eu/info/index_lv'
+  label: 'Eiropas Komisijas tīmekļa vietne'
+class_navigation:
+  -
+    href: 'https://ec.europa.eu/info/strategy_lv'
+    label: Stratēģija
+  -
+    href: 'https://ec.europa.eu/info/about-european-commission_lv'
+    label: 'Par Eiropas Komisiju'
+  -
+    href: 'https://ec.europa.eu/info/business-economy-euro_lv'
+    label: 'Uzņēmējdarbība, ekonomika, eiro'
+  -
+    href: 'https://ec.europa.eu/info/live-work-travel-eu_lv'
+    label: 'Dzīve, darbs un ceļošana ES'
+  -
+    href: 'https://ec.europa.eu/info/law_lv'
+    label: 'Tiesību akti'
+  -
+    href: 'https://ec.europa.eu/info/funding-tenders_lv'
+    label: 'Finansējums un konkursi'
+  -
+    href: 'https://ec.europa.eu/info/research-and-innovation_lv'
+    label: 'Pētniecība un inovācija'
+  -
+    href: 'https://ec.europa.eu/info/energy-climate-change-environment_lv'
+    label: 'Enerģētika, klimata pārmaiņas un apkārtējā vide'
+  -
+    href: 'https://ec.europa.eu/info/education_lv'
+    label: Izglītība
+  -
+    href: 'https://ec.europa.eu/info/aid-development-cooperation-fundamental-rights_lv'
+    label: 'Palīdzība, attīstības sadarbība un pamattiesības'
+  -
+    href: 'https://ec.europa.eu/info/food-farming-fisheries_lv'
+    label: 'Pārtika, lauksaimniecība, zivsaimniecība'
+  -
+    href: 'https://ec.europa.eu/info/eu-regional-and-urban-development_lv'
+    label: 'ES reģionālā attīstība un pilsētattīstība'
+  -
+    href: 'https://ec.europa.eu/info/jobs-european-commission_lv'
+    label: 'Darbs Eiropas Komisijā'
+  -
+    href: 'https://ec.europa.eu/info/statistics_lv'
+    label: Statistika
+  -
+    href: 'https://ec.europa.eu/commission/presscorner/home/lv'
+    label: Jaunumi
+  -
+    href: 'https://ec.europa.eu/info/events_lv'
+    label: Notikumi
+  -
+    href: 'https://ec.europa.eu/info/publications_lv'
+    label: Publikācijas
+service_navigation:
+  -
+    href: 'https://ec.europa.eu/info/about-european-commission/contact_lv'
+    label: 'Saziņa ar Eiropas Komisiju'
+  -
+    href: 'https://europa.eu/european-union/contact/social-networks_lv#n:+i:4+e:1+t:+s'
+    label: 'Sekojiet Eiropas Komisijai sociālajos medijos'
+  -
+    href: 'https://ec.europa.eu/info/resources-partners_lv'
+    label: 'Resursi partneriem'
+legal_navigation:
+  -
+    href: 'https://ec.europa.eu/info/language-policy_lv'
+    label: 'Valodu politika'
+  -
+    href: 'https://ec.europa.eu/info/cookies_lv'
+    label: Sīkdatnes
+  -
+    href: 'https://ec.europa.eu/info/privacy-policy_lv'
+    label: 'Privātuma aizsardzība'
+  -
+    href: 'https://ec.europa.eu/info/legal-notice_lv'
+    label: 'Juridisks paziņojums'

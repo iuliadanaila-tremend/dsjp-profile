@@ -1,0 +1,26 @@
+settings:
+  allowed_values:
+    -
+      label: Tanfolyam
+    -
+      label: Programmodul
+    -
+      label: Mentorálás
+    -
+      label: 'VIRTUÁLIS SZABADEGYETEM'
+    -
+      label: 'Tanulószerződéses gyakorlati képzés'
+    -
+      label: 'Szakmai látogatás'
+    -
+      label: 'Rövid tanulási program'
+    -
+      label: 'Szakmai gyakorlat'
+    -
+      label: 'Oktatási program'
+    -
+      label: Osztály
+    -
+      label: 'Közösségi szolgálat'
+    -
+      label: 'Doktori értekezés'

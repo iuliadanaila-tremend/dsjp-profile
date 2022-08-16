@@ -1,0 +1,18 @@
+uuid: c8c923a7-633b-4923-8408-683ab2198d66
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.dsj_cards
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+id: paragraph.dsj_cards
+target_entity_type_id: paragraph
+target_bundle: dsj_cards
+default_langcode: site_default
+language_alterable: true

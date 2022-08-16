@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Δημόσιες
+    -
+      label: Ιδιωτικό
+    -
+      label: Πληθοχρηματοδότηση
+    -
+      label: 'Δημόσιου-ιδιωτικού τομέα'

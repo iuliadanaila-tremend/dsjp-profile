@@ -1,0 +1,10 @@
+uuid: 6cc794fe-0f04-4a2e-910f-b5384e753830
+langcode: en
+status: true
+dependencies: {  }
+id: dsj_widget
+label: Widget
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

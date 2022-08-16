@@ -1,0 +1,19 @@
+<a href="{{ url }}" class="title-wrapper">
+  {{ content }}
+</a>
+<div class="group-actions">
+  <div class="membership-request-link">
+    {% if member %}
+      {% if logged_in %}
+        <a href="{{ path(membership_path, {'group': group.id()}) }}" class="link-subscribe">{{ 'Subscribe to this group' | t }}</a>
+      {% else %}
+        <a href="{{ url('user.login', {}, {'query': {'returnto': path(membership_path, {'group': group.id()})}})|render }}" class="link-subscribe">{{ 'Subscribe to this group' | t }}</a>
+      {% endif %}
+    {% else %}
+     <a href="{{ path('entity.group.leave', {'group': group.id()}) }}" class="link-leave">{{ 'Leave group' | t }}</a>
+    {% endif %}
+  </div>
+  <div class="more-link">
+    <a href="{{ url }}">{{ 'Read more'|t }}</a>
+  </div>
+</div>

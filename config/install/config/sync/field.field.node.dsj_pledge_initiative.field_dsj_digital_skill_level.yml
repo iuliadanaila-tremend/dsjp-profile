@@ -1,0 +1,25 @@
+uuid: 2a3602e7-dde8-47a5-a025-e3638a488511
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dsj_digital_skill_level
+    - node.type.dsj_pledge_initiative
+  module:
+    - options
+    - tmgmt_content
+third_party_settings:
+  tmgmt_content:
+    excluded: false
+id: node.dsj_pledge_initiative.field_dsj_digital_skill_level
+field_name: field_dsj_digital_skill_level
+entity_type: node
+bundle: dsj_pledge_initiative
+label: 'Digital skill level'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

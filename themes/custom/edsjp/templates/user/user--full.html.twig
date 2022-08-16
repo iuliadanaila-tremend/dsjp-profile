@@ -1,0 +1,20 @@
+{% if content %}
+  <article{{ attributes.addClass('user', 'user--full') }}>
+    <div class="header">
+      <div class="avatar">
+      {{ author_avatar }}
+      </div>
+      <div class="info">
+        <p class="name">{{ author_name }}</p>
+      </div>
+      {% if is_pledger %}
+        <div class="is-pledge-badge">
+          <div class="is-pledger"></div>
+        </div>
+      {% endif %}
+    </div>
+    <div class="content">
+    {{ content|without('field_dsj_picture') }}
+    </div>
+  </article>
+{% endif %}

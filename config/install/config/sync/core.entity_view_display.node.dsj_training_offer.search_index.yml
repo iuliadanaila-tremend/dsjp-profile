@@ -1,0 +1,225 @@
+uuid: 687a74d0-94d8-49da-a7f8-bb431df956f9
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_index
+    - field.field.node.dsj_training_offer.body
+    - field.field.node.dsj_training_offer.field_dsj_assessment_type
+    - field.field.node.dsj_training_offer.field_dsj_author
+    - field.field.node.dsj_training_offer.field_dsj_comments
+    - field.field.node.dsj_training_offer.field_dsj_credential_offered
+    - field.field.node.dsj_training_offer.field_dsj_digital_skill_level
+    - field.field.node.dsj_training_offer.field_dsj_digital_technology
+    - field.field.node.dsj_training_offer.field_dsj_effort
+    - field.field.node.dsj_training_offer.field_dsj_external_id
+    - field.field.node.dsj_training_offer.field_dsj_geographic_scope
+    - field.field.node.dsj_training_offer.field_dsj_image
+    - field.field.node.dsj_training_offer.field_dsj_industry
+    - field.field.node.dsj_training_offer.field_dsj_is_certificate_free
+    - field.field.node.dsj_training_offer.field_dsj_is_course_free
+    - field.field.node.dsj_training_offer.field_dsj_learning_activity
+    - field.field.node.dsj_training_offer.field_dsj_meta_tags
+    - field.field.node.dsj_training_offer.field_dsj_organization
+    - field.field.node.dsj_training_offer.field_dsj_publish_in_core
+    - field.field.node.dsj_training_offer.field_dsj_representative_image
+    - field.field.node.dsj_training_offer.field_dsj_self_paced_course
+    - field.field.node.dsj_training_offer.field_dsj_target_audience
+    - field.field.node.dsj_training_offer.field_dsj_target_group
+    - field.field.node.dsj_training_offer.field_dsj_target_language
+    - field.field.node.dsj_training_offer.field_dsj_training_duration
+    - field.field.node.dsj_training_offer.field_dsj_training_start_date
+    - field.field.node.dsj_training_offer.field_dsj_type_of_initiative
+    - field.field.node.dsj_training_offer.field_dsj_type_of_training
+    - field.field.node.dsj_training_offer.field_dsj_typology_of_training
+    - field.field.node.dsj_training_offer.field_dsj_website_link
+    - node.type.dsj_training_offer
+  module:
+    - options
+    - text
+    - typed_link
+    - user
+    - yearonly
+id: node.dsj_training_offer.search_index
+targetEntityType: node
+bundle: dsj_training_offer
+mode: search_index
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_dsj_assessment_type:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 14
+    region: content
+  field_dsj_credential_offered:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_dsj_digital_skill_level:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 15
+    region: content
+  field_dsj_digital_technology:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 20
+    region: content
+  field_dsj_effort:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_dsj_industry:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 12
+    region: content
+  field_dsj_is_certificate_free:
+    type: boolean
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  field_dsj_is_course_free:
+    type: boolean
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 9
+    region: content
+  field_dsj_learning_activity:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 19
+    region: content
+  field_dsj_organization:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  field_dsj_self_paced_course:
+    type: boolean
+    label: hidden
+    settings:
+      format: yes-no
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 18
+    region: content
+  field_dsj_target_audience:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 13
+    region: content
+  field_dsj_target_group:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_dsj_target_language:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_dsj_training_duration:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 17
+    region: content
+  field_dsj_training_start_date:
+    type: yearonly_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  field_dsj_type_of_initiative:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 16
+    region: content
+  field_dsj_type_of_training:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_dsj_typology_of_training:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_dsj_website_link:
+    type: typed_link
+    label: hidden
+    settings:
+      trim_length: 150
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  content_moderation_control: true
+  field_dsj_author: true
+  field_dsj_comments: true
+  field_dsj_external_id: true
+  field_dsj_geographic_scope: true
+  field_dsj_image: true
+  field_dsj_meta_tags: true
+  field_dsj_publish_in_core: true
+  field_dsj_representative_image: true
+  flag_subscribe_node: true
+  flag_voting: true
+  langcode: true
+  links: true
+  private_message_link: true
+  search_api_excerpt: true

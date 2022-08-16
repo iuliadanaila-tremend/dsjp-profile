@@ -1,0 +1,11 @@
+uuid: b0c18bd0-81a7-4d39-8a84-d9d35c8c4403
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: J3hXR5PoLhEV37WVQiKmd77fdZUTksmOUucNpNEEZ1E
+id: cs
+label: Czech
+direction: ltr
+weight: 1
+locked: false

@@ -1,0 +1,9 @@
+name: OpenEuropa Corporate blocks Demo
+core_version_requirement: ^9.2
+type: module
+
+config_devel:
+  install:
+  - block.block.footer_block
+  - block.block.eufooterblock
+  - block.block.languageswitcher

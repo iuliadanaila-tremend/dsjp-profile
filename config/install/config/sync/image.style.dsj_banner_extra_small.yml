@@ -1,0 +1,15 @@
+uuid: 9d785890-e4b4-470d-a53d-26f1a7d1bd94
+langcode: en
+status: true
+dependencies: {  }
+name: dsj_banner_extra_small
+label: 'Banner Extra Small'
+effects:
+  50938ee9-9979-4b5c-8471-e54d2b957f1e:
+    uuid: 50938ee9-9979-4b5c-8471-e54d2b957f1e
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 320
+      height: 240
+      anchor: center-center

@@ -1,0 +1,163 @@
+uuid: 6edd2b85-fc63-4a82-88e6-5eb0c20634cb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.group.dsj_national_coalition.field_dsj_api_url
+    - field.field.group.dsj_national_coalition.field_dsj_body
+    - field.field.group.dsj_national_coalition.field_dsj_content_language
+    - field.field.group.dsj_national_coalition.field_dsj_digital_technology
+    - field.field.group.dsj_national_coalition.field_dsj_flag
+    - field.field.group.dsj_national_coalition.field_dsj_source_type
+    - field.field.group.dsj_national_coalition.field_dsj_target_audience
+    - field.field.group.dsj_national_coalition.field_dsj_website_link
+    - group.type.dsj_national_coalition
+    - image.style.thumbnail
+  module:
+    - field_group
+    - image
+    - maxlength
+    - path
+    - text
+    - typed_link
+third_party_settings:
+  field_group:
+    group_group_settings:
+      children:
+        - group_details
+        - group_integration_details
+      parent_name: ''
+      weight: 1
+      format_type: tabs
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        effect: none
+        direction: vertical
+      label: 'Group settings'
+    group_integration_details:
+      children:
+        - field_dsj_api_url
+        - field_dsj_source_type
+        - field_dsj_content_language
+      parent_name: group_group_settings
+      weight: 4
+      format_type: tab
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        required_fields: true
+        description: ''
+      label: 'Integration details'
+    group_details:
+      children:
+        - field_dsj_body
+        - langcode
+        - path
+        - field_dsj_flag
+        - field_dsj_digital_technology
+        - field_dsj_target_audience
+        - field_dsj_website_link
+      parent_name: group_group_settings
+      weight: 3
+      format_type: tab
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        required_fields: true
+        description: ''
+      label: Details
+id: group.dsj_national_coalition.default
+targetEntityType: group
+bundle: dsj_national_coalition
+mode: default
+content:
+  field_dsj_api_url:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_dsj_body:
+    weight: 6
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+    type: text_textarea_with_summary
+    region: content
+  field_dsj_content_language:
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_dsj_digital_technology:
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_dsj_flag:
+    weight: 9
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+  field_dsj_source_type:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_dsj_target_audience:
+    weight: 11
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_dsj_website_link:
+    weight: 12
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: typed_link
+    region: content
+  label:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 200
+      placeholder: ''
+    third_party_settings:
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+  langcode:
+    type: language_select
+    weight: 7
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  uid: true

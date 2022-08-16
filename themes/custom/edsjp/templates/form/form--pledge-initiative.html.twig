@@ -1,0 +1,31 @@
+{% set initiative_type = element['initiative_type']['#value'] %}
+{% if initiative_type == 'education' %}
+<div class="initiative-education">
+  <div class="initiative-header">
+    {{ 'Digital Skills in Education'|t }}
+  </div>
+  <div class="initiative-description">{{ 'Transforming teaching and learning of digital skills in a lifelong learning perspective, including the training of teachers.'|t }}</div>
+</div>
+{% elseif initiative_type == 'labour_force' %}
+<div class="initiative-labour-force">
+  <div class="initiative-header">
+    {{ 'Digital Skills for Labour Force'|t }}
+  </div>
+  <div class="initiative-description">{{ 'Developing digital skills for the digital economy, e.g. upskilling and reskilling workers, job seekes; actions on career advice and guidance.'|t }}</div>
+</div>
+{% elseif initiative_type == 'ict_professionals' %}
+<div class="initiative-ict">
+  <div class="initiative-header">
+    {{ 'Digital Skills for ICT Professionals'|t }}
+  </div>
+  <div class="initiative-description">{{ 'Developing high level digital skill for ICT professionals in all industry sectors.'|t }}</div>
+</div>
+{% elseif initiative_type == 'other' %}
+<div class="initiative-other">
+  <div class="initiative-header">
+    {{ 'Digital Skills for All Citizens'|t }}
+  </div>
+  <div class="initiative-description">{{ 'Developing digital skills to enable all citizens to be active in our digital society.'|t }}</div>
+</div>
+{% endif %}
+<form{{ attributes.addClass('ecl-form') }}>{{ children }}</form>

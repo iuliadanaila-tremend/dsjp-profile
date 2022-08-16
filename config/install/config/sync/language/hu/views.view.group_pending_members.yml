@@ -1,0 +1,43 @@
+display:
+  default:
+    display_title: Mester
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Alkalmaz
+          reset_button_label: Alaphelyzet
+          exposed_sorts_label: Rendezés
+          sort_asc_label: Növekvő
+          sort_desc_label: Csökkenő
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'Elemek száma oldalanként'
+            items_per_page_options_all_label: '– Mind –'
+            offset_label: Eltolás
+          tags:
+            previous: ‹‹
+            next: ››
+      fields:
+        name:
+          label: Név
+          separator: ', '
+        created:
+          separator: ', '
+        gid:
+          label: Szülőcsoport
+          separator: ', '
+        id:
+          label: Azonosító
+          separator: ', '
+        dropbutton:
+          label: Műveletek
+      arguments:
+        gid:
+          exception:
+            title: Mind
+  page_1:
+    display_title: Oldal
+    display_options:
+      menu:
+        title: 'Tagsági kérelmek'

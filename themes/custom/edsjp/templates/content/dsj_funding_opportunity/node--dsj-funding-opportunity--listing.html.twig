@@ -1,0 +1,28 @@
+{% set classes = [
+    'node',
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    node.bundle|clean_class,
+    node.bundle|clean_class ~ '--' ~ view_mode|clean_class,
+    'node' ~ '--' ~ view_mode|clean_class,
+    'node' ~ '--' ~ node.bundle|clean_class,
+    term_type ? node.bundle|clean_class ~ '--' ~ term_type|clean_class,
+] %}
+<article{{ attributes.addClass(classes) }}>
+    <div class="node--content" {{ content_attributes }}>
+        <div class="image-area">
+            {{ content.field_dsj_image }}
+        </div>
+        <div class="text-area">
+            {{ title_prefix }}
+            <h3{{ title_attributes }}>
+                <a href="{{ url }}" rel="bookmark" title="{{ title }}">{{ title }}</a>
+            </h3>
+            {{ title_suffix }}
+            <div class="article-date">{{ node.getCreatedTime|format_date('custom', 'd F Y') }}</div>
+            {{ content | without('field_dsj_image') }}
+        </div>
+    </div>
+    <div class="more-link"><a href="{{ url }}" class="more-link">{% trans %}Read more{% endtrans %}</a></div>
+</article>

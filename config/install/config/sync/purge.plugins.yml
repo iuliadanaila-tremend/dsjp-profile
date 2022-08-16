@@ -1,0 +1,5 @@
+purgers:
+  -
+    instance_id: a30a25affa
+    plugin_id: dropsolid_purge
+    order_index: 2

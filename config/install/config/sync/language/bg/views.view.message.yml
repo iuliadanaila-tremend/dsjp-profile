@@ -1,0 +1,24 @@
+label: Message
+display:
+  default:
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Apply
+          reset_button_label: Reset
+      pager:
+        options:
+          tags:
+            previous: '‹ previous'
+            next: 'next ›'
+            first: '« first'
+            last: 'last »'
+      fields:
+        uid:
+          label: Author
+      title: Message
+  page_1:
+    display_title: Page
+    display_options:
+      menu:
+        title: Message

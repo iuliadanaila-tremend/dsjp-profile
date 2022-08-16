@@ -1,0 +1,10 @@
+uuid: 27c1e61f-f12a-4860-88fd-3370e809d0b5
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: user.listing
+label: Listing
+targetEntityType: user
+cache: true

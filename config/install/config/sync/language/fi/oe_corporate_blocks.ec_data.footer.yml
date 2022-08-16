@@ -1,0 +1,78 @@
+corporate_site_link:
+  href: 'https://ec.europa.eu/info/index_fi'
+  label: 'Euroopan komission verkkosivusto'
+class_navigation:
+  -
+    href: 'https://ec.europa.eu/info/strategy_fi'
+    label: 'EU:n strategia'
+  -
+    href: 'https://ec.europa.eu/info/about-european-commission_fi'
+    label: 'Perustietoa Euroopan komissiosta'
+  -
+    href: 'https://ec.europa.eu/info/business-economy-euro_fi'
+    label: 'Yritystoiminta, talous, euro'
+  -
+    href: 'https://ec.europa.eu/info/live-work-travel-eu_fi'
+    label: 'Asuminen, työnteko ja matkustaminen EU:ssa'
+  -
+    href: 'https://ec.europa.eu/info/law_fi'
+    label: Lainsäädäntö
+  -
+    href: 'https://ec.europa.eu/info/funding-tenders_fi'
+    label: 'Rahoitus, avustukset ja tarjouskilpailut'
+  -
+    href: 'https://ec.europa.eu/info/research-and-innovation_fi'
+    label: 'Tutkimus ja innovointi'
+  -
+    href: 'https://ec.europa.eu/info/energy-climate-change-environment_fi'
+    label: 'Energia, ilmastonmuutos ja ympäristö'
+  -
+    href: 'https://ec.europa.eu/info/education_fi'
+    label: Koulutus
+  -
+    href: 'https://ec.europa.eu/info/aid-development-cooperation-fundamental-rights_fi'
+    label: 'Kansainvälinen apu, kehitysyhteistyö ja perusoikeudet'
+  -
+    href: 'https://ec.europa.eu/info/food-farming-fisheries_fi'
+    label: 'Elintarvikkeet, maatalous, kalatalous'
+  -
+    href: 'https://ec.europa.eu/info/eu-regional-and-urban-development_fi'
+    label: 'EU:n tuki alueille ja kaupungeille'
+  -
+    href: 'https://ec.europa.eu/info/jobs-european-commission_fi'
+    label: 'Työpaikat EU:n toimielimissä'
+  -
+    href: 'https://ec.europa.eu/info/statistics_fi'
+    label: Tilastot
+  -
+    href: 'https://ec.europa.eu/commission/presscorner/home/fi'
+    label: Uutiset
+  -
+    href: 'https://ec.europa.eu/info/events_fi'
+    label: Tapahtumat
+  -
+    href: 'https://ec.europa.eu/info/publications_fi'
+    label: Julkaisut
+service_navigation:
+  -
+    href: 'https://ec.europa.eu/info/about-european-commission/contact_fi'
+    label: 'Yhteydenotot Euroopan komissioon'
+  -
+    href: 'https://europa.eu/european-union/contact/social-networks_fi#n:+i:4+e:1+t:+s'
+    label: 'Seuraa Euroopan komissiota sosiaalisessa mediassa'
+  -
+    href: 'https://ec.europa.eu/info/resources-partners_fi'
+    label: 'Apuvälineitä yhteistyökumppaneille'
+legal_navigation:
+  -
+    href: 'https://ec.europa.eu/info/language-policy_fi'
+    label: Kielipolitiikka
+  -
+    href: 'https://ec.europa.eu/info/cookies_fi'
+    label: Evästeet
+  -
+    href: 'https://ec.europa.eu/info/privacy-policy_fi'
+    label: Tietosuojaperiaatteet
+  -
+    href: 'https://ec.europa.eu/info/legal-notice_fi'
+    label: 'Oikeudellinen huomautus'

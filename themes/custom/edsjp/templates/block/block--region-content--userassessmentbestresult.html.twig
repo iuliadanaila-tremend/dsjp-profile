@@ -1,0 +1,19 @@
+{#
+/**
+ * @file
+ * Theme override for blocks in the content region.
+ *
+ * @see ./core/modules/system/templates/block.html.twig
+ */
+#}
+
+<div{{ attributes }}>
+  {{ title_prefix }}
+  {% if label and content|render|striptags|trim is not empty %}
+    <h2{{ title_attributes }}>{{ label }}</h2>
+  {% endif %}
+  {{ title_suffix }}
+  {% block content %}
+    {{ content }}
+  {% endblock %}
+</div>

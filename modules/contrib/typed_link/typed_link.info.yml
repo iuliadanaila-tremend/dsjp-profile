@@ -1,0 +1,13 @@
+name: Typed Link
+type: module
+description: A field that takes a link and a type. Used to assign a category to a link for theming purposes.
+package: Field types
+core: 8.x
+core_version_requirement: ^8 || ^9
+dependencies:
+  - drupal:field
+
+# Information added by Drupal.org packaging script on 2021-07-28
+version: '2.0.0'
+project: 'typed_link'
+datestamp: 1627495670

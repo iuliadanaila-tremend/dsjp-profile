@@ -1,0 +1,14 @@
+settings:
+  allowed_values:
+    -
+      label: 'Na pracovisku'
+    -
+      label: 'Na základe projektu'
+    -
+      label: Súčasné
+    -
+      label: Elektronicky
+    -
+      label: Zmiešané
+    -
+      label: 'Laboratórium založené na výskume'

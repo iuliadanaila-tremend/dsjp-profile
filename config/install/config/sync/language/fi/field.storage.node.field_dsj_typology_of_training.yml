@@ -1,0 +1,24 @@
+settings:
+  allowed_values:
+    0:
+      label: Kurssi
+    1:
+      label: Ohjelmamoduuli
+    2:
+      label: Mentorointi
+    4:
+      label: Oppisopimuskoulutus
+    5:
+      label: Tutustumisvierailu
+    6:
+      label: 'Lyhyt koulutusohjelma'
+    7:
+      label: Harjoittelu
+    8:
+      label: Koulutusohjelma
+    9:
+      label: Luokka
+    10:
+      label: Palveluoppiminen
+    11:
+      label: Väitöskirja

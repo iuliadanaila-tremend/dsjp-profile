@@ -1,0 +1,6 @@
+services:
+  custom_breadcrumb.breadcrumb_article:
+    class: Drupal\dsjp_content\Breadcrumb\ArticleBreadcrumbBuilder
+    arguments: ['@entity_type.manager', '@system.breadcrumb.default', '@entity.repository']
+    tags:
+      - { name: breadcrumb_builder, priority: 10003 }

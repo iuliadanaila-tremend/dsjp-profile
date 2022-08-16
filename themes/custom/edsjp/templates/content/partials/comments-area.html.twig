@@ -1,0 +1,10 @@
+<div class="node--comments">
+  {{ content.field_dsj_comments }}
+  {% if logged_in == false %}
+    <div class="user-page-links">
+      {{ '<a href=":login">Log in to comment</a>'|t({
+        ':login': url('user.login', {}, {'query': {'returnto': url}})|render,
+      }) }}
+    </div>
+  {% endif %}
+</div>

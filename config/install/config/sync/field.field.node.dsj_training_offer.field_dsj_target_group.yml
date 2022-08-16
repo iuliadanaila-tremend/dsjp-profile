@@ -1,0 +1,21 @@
+uuid: 5ec435a5-c681-40dc-93e7-06b22d72300c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dsj_target_group
+    - node.type.dsj_training_offer
+  module:
+    - options
+id: node.dsj_training_offer.field_dsj_target_group
+field_name: field_dsj_target_group
+entity_type: node
+bundle: dsj_training_offer
+label: 'Target group'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

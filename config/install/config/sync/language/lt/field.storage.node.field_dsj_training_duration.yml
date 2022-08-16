@@ -1,0 +1,14 @@
+settings:
+  allowed_values:
+    -
+      label: 'Iki 1 savaitės'
+    -
+      label: 'Iki 4 savaičių'
+    -
+      label: 'Iki 3 mėnesių'
+    -
+      label: 'Iki 6 mėnesių'
+    -
+      label: 'Iki vienerių metų'
+    -
+      label: 'Keleri metai'

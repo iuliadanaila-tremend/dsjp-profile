@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Grundläggande
+    -
+      label: Förmedlande
+    -
+      label: Avancerad
+    -
+      label: 'Digital expert'

@@ -1,0 +1,5 @@
+dsjp_private_message.private_messages:
+  title: 'Private Messages'
+  route_name: view.dsj_private_messages.private_messages_page
+  base_route: entity.user.canonical
+  weight: 4

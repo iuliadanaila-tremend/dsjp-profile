@@ -1,0 +1,21 @@
+uuid: 3a938d1d-3031-4d94-8bfd-022f492d049b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dsj_digital_skill_level
+    - node.type.dsj_strategy
+  module:
+    - options
+id: node.dsj_strategy.field_dsj_digital_skill_level
+field_name: field_dsj_digital_skill_level
+entity_type: node
+bundle: dsj_strategy
+label: 'Digital skill level'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

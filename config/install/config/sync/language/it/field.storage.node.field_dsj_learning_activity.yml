@@ -1,0 +1,24 @@
+settings:
+  allowed_values:
+    -
+      label: 'attività in laboratorio/simulazione/esercitazione'
+    -
+      label: 'esperienza lavorativa'
+    -
+      label: volontariato
+    -
+      label: ricerca
+    -
+      label: 'studio autonomo'
+    -
+      label: 'corso online'
+    -
+      label: tirocinio
+    -
+      label: apprendistato
+    -
+      label: 'workshop, seminario o conferenza'
+    -
+      label: 'programma di istruzione'
+    -
+      label: 'attività in classe'

@@ -1,0 +1,18 @@
+uuid: 6c417b33-db0d-456d-9141-107a61d08e49
+langcode: en
+status: true
+dependencies:
+  module:
+    - group
+id: group.field_dsj_contact_email_pledges
+field_name: field_dsj_contact_email_pledges
+entity_type: group
+type: email
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

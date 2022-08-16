@@ -1,0 +1,18 @@
+uuid: e1278634-cdb4-47d6-a140-3952c54516b3
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.content_type.group_content_type_ec4009ca39d94
+id: group_content.group_content_type_ec4009ca39d94.label
+field_name: label
+entity_type: group_content
+bundle: group_content_type_ec4009ca39d94
+label: Title
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

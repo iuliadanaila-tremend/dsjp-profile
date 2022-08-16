@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Grundlæggende
+    -
+      label: Mellemprodukt
+    -
+      label: Avanceret
+    -
+      label: 'Digital ekspert'

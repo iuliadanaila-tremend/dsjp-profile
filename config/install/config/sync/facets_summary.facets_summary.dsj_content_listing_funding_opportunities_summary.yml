@@ -1,0 +1,60 @@
+uuid: 937b8eb4-0259-4209-a87b-2be5fa869855
+langcode: en
+status: true
+dependencies:
+  config:
+    - search_api.index.main_content
+    - views.view.dsj_content_listing
+  module:
+    - search_api
+id: dsj_content_listing_funding_opportunities_summary
+name: Summary
+facet_source_id: 'search_api:views_page__dsj_content_listing__funding_opportunities'
+processor_configs:
+  hide_when_not_rendered:
+    processor_id: hide_when_not_rendered
+    weights:
+      build: '-5'
+    settings: {  }
+  reset_facets:
+    processor_id: reset_facets
+    weights:
+      build: '-8'
+    settings:
+      link_text: 'Clear all filters'
+  show_summary_with_reset:
+    processor_id: show_summary_with_reset
+    weights:
+      build: '-7'
+    settings: {  }
+facets:
+  dsj_funding_opportunities_form_of_funding:
+    checked: true
+    label: 'Form Of Funding'
+    separator: ''
+    show_count: false
+    weight: 0
+  dsj_funding_opportunities_geographic_scope:
+    checked: true
+    label: Country
+    separator: ''
+    show_count: false
+    weight: 0
+  dsj_funding_opportunities_target_audience:
+    checked: true
+    label: 'Target audience'
+    separator: ''
+    show_count: false
+    weight: 0
+  dsj_funding_opportunities_type_of_initiative:
+    checked: true
+    label: 'Type of initiative'
+    separator: ''
+    show_count: false
+    weight: 0
+  dsj_funding_opportunities_digital_technology:
+    checked: true
+    label: Tags
+    separator: ''
+    show_count: false
+    weight: 0

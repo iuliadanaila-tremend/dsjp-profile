@@ -1,0 +1,185 @@
+// stylelint-enable value-keyword-case
+
+// grid-gutter-width = 30px
+
+$max-mobile-width: 767px;
+$min-sm-width: 768px;
+$max-sm-width: 995px;
+$min-md-width: 996px;
+$max-md-width: 1139px;
+$min-lg-width: 1140px;
+
+$font-ec-square-medium: 'EC Square Sans Medium';
+$font-ec-square-regular: 'EC Square Sans Regular';
+$font-ec-square-light: 'EC Square Sans Light';
+
+$font-family-base: $font-ec-square-regular;
+
+$font-size-base: 1rem; // 16px
+$font-size-xs: .75rem; // 12px
+$font-size-sm: .875rem; // 14px
+$font-size-md: .9375rem; // 15px
+$font-size-2md: 1.125rem; // 18px
+$font-size-lg: 1.25rem; // 20px
+$font-size-2lg: 1.33rem; // 21px
+$font-size-xl: 1.375rem; // 22px
+$font-size-2xl: 1.5rem; // 24px
+$font-size-3xl: 1.75rem; //28px
+$font-size-4xl: 2rem; // 32px
+$font-size-5xl: 2.5rem; // 40px
+
+$line-height-base: 18px;
+$line-height-xs: 14px;
+$line-height-sm: 16px;
+
+$line-height-lg: 22px;
+$line-height-xl: 24px;
+$line-height-2xl: 26px;
+$line-height-3xl: 33px;
+$line-height-4xl: 44px;
+
+$h1-font-size: $font-size-base * 1.75;
+$h2-font-size: $font-size-2xl;
+
+// Set colors
+$theme-colors: (
+  'primary': #170072,
+  'secondary': #c15075,
+  'third': #45338e,
+  'third-light': #7466aa,
+  'fourth': #a299c7,
+);
+
+$blue: theme-color('primary');
+$blue-25: #bfd0e4;
+$blue-75: #4073af;
+$blue-100: #004494;
+$blue-120: #003776;
+$blue-200: #29abe2;
+$blue-250: #5b7cfd;
+$blue-300: #003d84;
+$blue-400: #27659d;
+$blue-450: #9cbdd6;
+$blue-500: #464acd;
+
+$map-background: #e0ecfd;
+
+$gray: #f5f7f9;
+$gray-100: #9caab9;
+$gray-200: #f2f5f9;
+$gray-400: #c2d0e2;
+$gray-500: rgba(156, 170, 185, .5);
+$gray-600: #535764;
+$gray-650: #404040;
+$gray-700: #9f9f9f;
+$gray-800: #333;
+$gray-900: #313131;
+$variant-medium-gray: #cfcfcf;
+
+$gray-dropdown-hover: #f6f5f9;
+$gray-private-message: #4d4d4d;
+$border-white: #f5f5f5;
+$border-radius-default: $border-radius * 1.5;
+
+$border-gray: #ccc;
+$orange: #f1853d;
+$yellow: #f3cc00;
+$white: #fff;
+$warning: $yellow;
+$warning-hover: #ffbe17;
+
+$purple: #9b66ff;
+$purple-900: #331133;
+
+$teal: #1ac0c6;
+$red: #f01421;
+
+$primary: $blue;
+$primary-light: $blue-100;
+$secondary: $gray-800;
+$accent: $purple-900;
+
+$body-color: $gray;
+
+/* Z-index */
+$zindex-dropdown: 10;
+$zindex-sticky: 20;
+$zindex-fixed: 30;
+$zindex-modal-backdrop: 40;
+$zindex-modal: 50;
+$zindex-popover: 60;
+$zindex-tooltip: 70;
+$zindex-popup: 110;
+
+$grid-gutter-width: 2rem;
+$grid-gutter-width-mobile: $grid-gutter-width / 2;
+
+// Grid breakpoints
+//
+// Define the minimum dimensions at which your layout will change,
+// adapting to different screen sizes, for use in media queries.
+
+$grid-breakpoints: (
+  xxxs: 0,
+  xxs: 340px,
+  xs: 365px,
+  sm: 480px,
+  md: 768px,
+  lg: 996px,
+  xl: 1140px,
+);
+
+// Grid containers
+//
+// Define the maximum width of `.container` for different screen sizes.
+
+$container-max-widths: (
+  sm: 100%,
+  md: 768px,
+  lg: 996px,
+  xl: 1140px,
+);
+
+$header-primary-bgcolor: #7c1ab6;
+$header-second-bgcolor: #451a90;
+
+// header custom colors
+$default-category-color: #c77391;
+$actions-category-color: $yellow;
+$opportunities-category-color: theme-color('secondary');
+$inspiration-category-color: #00afa0;
+$latest-category-color: theme-color('third');
+$community-category-color: #ff755b;
+$organisations-category-color: #9987df;
+
+$latest-color: #be93fd;
+
+// pills hover colors
+$actions-hover-color: #f37500;
+$opportunities-hover-color: #a01947;
+$inspiration-hover-color: #0484ad;
+$latest-hover-color: theme-color('third');
+$community-hover-color: #cd7391;
+$organisations-hover-color: theme-color('third-light');
+
+// nav menu colors
+$nav-link-color: #402583;
+$nav-link-hover-color: #250f7a;
+
+// design system color states
+$primary-default: theme-color('third-light');
+$primary-hover: theme-color('third');
+$primary-active: $primary;
+$primary-disabled: theme-color('fourth');
+
+$secondary-default: #da96ac;
+$secondary-hover: #cd7391;
+$secondary-active: theme-color('secondary');
+$secondary-disabled: #e6b9c8;
+
+$neutral-default: $gray-400;
+$neutral-hover: $blue-25;
+$neutral-active: #7fa1c9;
+$neutral-disabled: rgba(194, 208, 226, .7);
+
+$online-green: #73cc00;

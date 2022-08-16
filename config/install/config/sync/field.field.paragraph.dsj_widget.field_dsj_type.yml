@@ -1,0 +1,21 @@
+uuid: 57dda03e-4570-4951-8d4c-091325f0ec27
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_dsj_type
+    - paragraphs.paragraphs_type.dsj_widget
+  module:
+    - options
+id: paragraph.dsj_widget.field_dsj_type
+field_name: field_dsj_type
+entity_type: paragraph
+bundle: dsj_widget
+label: Type
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

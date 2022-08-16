@@ -1,0 +1,20 @@
+uuid: 1fb20858-2cfa-4b80-96e6-22363a042ab4
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.webtools_social_feed
+id: media.webtools_social_feed.uid
+field_name: uid
+entity_type: media
+bundle: webtools_social_feed
+label: 'Authored by'
+description: 'The user ID of the author.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: 'Drupal\media\Entity\Media::getDefaultEntityOwner'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

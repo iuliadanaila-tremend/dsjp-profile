@@ -1,0 +1,104 @@
+{#
+/**
+ * @file
+ * Theme override for the corporate European Commission Standardised footer block.
+ *
+ * Available variables:
+ * - site_owner: Site's owner.
+ * - site_specific_footer: renderable array for site specific footer links
+ * - corporate_footer: renderable array for corporate footer links
+ * @see ./module/contrib/oe_corporate_blocks/templates/oe-corporate-blocks-ec-footer.html.twig
+ */
+#}
+
+{% set _top_left_column = [] %}
+{% set _top_right_column = [] %}
+
+{# First we parse the other_links, we make a simple grid. #}
+{% for section in site_specific_footer.other_links %}
+  {% if loop.index is odd %}
+    {% set _top_left_column = _top_left_column|merge([{
+      'title': section.label,
+      'title_with_separator': true,
+      'links': ecl_footer_links(section.links),
+    }]) %}
+  {% else %}
+    {% set _top_right_column = _top_right_column|merge([{
+      'title': section.label,
+      'title_with_separator': true,
+      'links': ecl_footer_links(section.links),
+    }]) %}
+  {% endif %}
+{% endfor %}
+
+{# When follow section is present. #}
+{% if site_specific_footer.social_links is not empty %}
+  {# If section numbers are odd, then we flip the last row so to have the follow as first. #}
+  {% if _top_left_column|length > _top_right_column|length %}
+    {% set _last_in_top_left_column = _top_left_column|last %}
+
+    {# Compensate for bug in twig where _top_left_column[1:] returns empty if _top_left_column|length is 1. #}
+    {% if _last_in_top_left_column is empty %}
+      {% set _last_in_top_left_column = _top_left_column[0] %}
+      {% set _top_left_column = [] %}
+    {% endif %}
+
+    {% set _top_left_column = _top_left_column[:_top_left_column|length - 1] %}
+    {% set _top_right_column = _top_right_column|merge([_last_in_top_left_column]) %}
+
+  {% endif %}
+
+  {# Follow section must always be the last on the left. #}
+  {% set _top_left_column = _top_left_column|merge([{
+    'title': 'Follow us'|t,
+    'title_with_separator': true,
+    'links': ecl_footer_links(site_specific_footer.social_links),
+    'links_inline': true,
+  }]) %}
+{% endif %}
+
+{% block content %}
+  {# Populate the top row with the site identity and the custom links. #}
+  {% set _top_row = [
+    [
+      {
+        'title': {
+        'link': {
+          'label': site_specific_footer.site_identity,
+          'path': url('<front>'),
+        }
+      },
+        'description': site_owner ? 'This site is managed by the @name'|t({'@name': site_owner}),
+      }
+    ],
+    _top_left_column,
+    _top_right_column
+  ] %}
+
+  {# Populate the bottom row with the corporate links. #}
+  {% set _bottom_row = [
+    [
+      {
+        'title': {
+        'link': {
+          'label': corporate_footer.corporate_site_link.label,
+          'path': corporate_footer.corporate_site_link.href,
+        },
+      },
+      }
+    ],
+    [
+      {
+        'links': ecl_footer_links(corporate_footer.service_navigation),
+      }
+    ],
+    [
+      {
+        'links': ecl_footer_links(corporate_footer.legal_navigation),
+      }
+    ],
+  ] %}
+  {% include '@ecl-twig/footer-standardised' with {
+    'rows': [ _top_row, _bottom_row],
+  } %}
+{% endblock %}

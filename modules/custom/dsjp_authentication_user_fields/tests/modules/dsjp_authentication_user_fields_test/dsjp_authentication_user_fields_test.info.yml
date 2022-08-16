@@ -1,0 +1,9 @@
+name: 'Authentication User Fields'
+description: 'Custom Test Authentication User Fields'
+package: Custom
+type: module
+core: 8.x
+php: 7.3
+core_version_requirement: ^8 || ^9
+dependencies:
+  - drupal:dsjp_authentication_user_fields

@@ -1,0 +1,22 @@
+uuid: db750a82-8614-4093-a9b3-04e8cecfba13
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.dsj_cards_block
+id: block_content.dsj_cards_block.status
+field_name: status
+entity_type: block_content
+bundle: dsj_cards_block
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

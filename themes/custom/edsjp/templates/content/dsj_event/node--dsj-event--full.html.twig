@@ -1,0 +1,112 @@
+{% set classes = [
+  'node',
+  node.isPromoted() ? 'node--promoted',
+  node.isSticky() ? 'node--sticky',
+  not node.isPublished() ? 'node--unpublished',
+  node.bundle|clean_class,
+  node.bundle|clean_class ~ '--' ~ view_mode|clean_class,
+  'node' ~ '--' ~ view_mode|clean_class,
+  'node' ~ '--' ~ node.bundle|clean_class,
+  content.flag_subscribe_node and logged_in ? 'node--subscribe',
+  term_type ? node.bundle|clean_class ~ '--' ~ term_type|clean_class,
+] %}
+<article{{ attributes.addClass(classes) }}>
+  <div class="node--content" {{ content_attributes }}>
+    {% if content.content_moderation_control %}
+      {{ content.content_moderation_control }}
+    {% endif %}
+    <header>
+      {% if node.field_dsj_date.value %}
+        {% set month = node.field_dsj_date.value | date('M') %}
+        {% set day = node.field_dsj_date.value | date('d') %}
+        {% set timezone = '' %}
+        {% if node.field_dsj_event_timezone.value %}
+          {% set timezone = node.field_dsj_event_timezone.value %}
+        {% endif %}
+        {% set fulltime = node.field_dsj_date.value | date('l d F Y h:i A') %}
+        {% set endTime = node.field_dsj_date.end_date | date('l d F Y h:i A') %}
+
+        <div class="upper">
+          <div class="ecl-u-d-flex">
+            <div class="event-date ecl-u-mr-l">
+              <div class="event-date--month ecl-u-pa-2xs">
+                <div class="marker"></div>
+                <div class="marker"></div>
+                <div class="marker"></div>
+
+                <span>{{ month }}</span>
+              </div>
+              <div class="event-date--day ecl-u-pa-xs">{{ day }}</div>
+            </div>
+
+            <div>
+              {% set timestamp = node.field_dsj_date.value | date('U') %}
+              {% if date(timestamp) > date() %}
+                <span class="upcoming">{{ 'Upcoming' | t }}</span>
+              {% endif %}
+
+              {{ title_prefix }}
+              <h1{{ title_attributes }}>
+                {{ node.title.value }}
+              </h1>
+              {{ title_suffix }}
+              {% if event_data %}
+                <div class="event-location ecl-u-d-flex ecl-u-align-items-center">
+                  <span class="icon icon-location ecl-u-mr-xs"></span>
+
+                  {{ event_data }}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+          {% if content.flag_subscribe_node and logged_in %}
+            <div class="subscribe">
+              {{ content.flag_subscribe_node }}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+    </header>
+
+    <div{{ content_attributes }}>
+      {% if content.field_dsj_event_location %}
+        <div class="ecl-row field--name-djs-event-data">
+          <div class="ecl-col-s-12">
+            <div class="event-entry event-time no-icon">{{ content.field_dsj_date }}</div>
+          </div>
+          {#  <div class="ecl-col-s-3 text-right">#}
+            {#<a href="" class="event-entry event-calendar"><span
+                  class="icon icon-event-calendar"></span> {% trans %}Add to calendar{% endtrans %}</a>#}
+          {#  </div>#}
+        </div>
+      {% endif %}
+
+      <div class="field--name-djs-event-featured-media">{{ content.field_dsj_image }}</div>
+
+      {% if node.body.value %}
+        <div class="event-body">
+          {{ content.body }}
+        </div>
+      {% endif %}
+
+      <div class="bordered-field-list">
+        {{ content|without('field_dsj_event_timezone', 'content_moderation_control', 'field_dsj_event_location', 'body', 'flag_voting', 'flag_subscribe_node', 'field_dsj_comments', 'field_dsj_image', 'field_dsj_date') }}
+      </div>
+
+      {% if content.flag_voting or socialShare %}
+        <div class="voteShare-container">
+          {% if content.flag_voting %}
+            <div class="voting">{{ content.flag_voting }}</div>
+          {% endif %}
+
+          {% if socialShare %}
+            <div class="sharing">{{ socialShare }}</div>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  {% include '@edsjp/content/partials/comments-area.html.twig' %}
+
+</article>

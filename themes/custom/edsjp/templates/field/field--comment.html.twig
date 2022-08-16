@@ -1,0 +1,18 @@
+<div class="node--comments">
+  {% if view_all_link %}
+    {{ view_all_link }}
+  {% endif %}
+  <section{{ attributes.addClass('node-oe-news-field-comments') }}>
+    {% if comments and not label_hidden %}
+      {{ title_prefix }}
+      <h2{{ title_attributes }}>{{ label }}</h2>
+      {{ title_suffix }}
+    {% endif %}
+
+    {{ comments }}
+
+    {% if comment_form %}
+      {{ comment_form }}
+    {% endif %}
+  </section>
+</div>

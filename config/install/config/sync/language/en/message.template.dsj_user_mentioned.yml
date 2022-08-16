@@ -1,0 +1,7 @@
+text:
+  -
+    value: "You have been mentioned.\r\n"
+    format: plain_text
+  -
+    value: "<p>Visit this page to see the mention:&nbsp;<a href=\"[message:field_node_reference:entity:url]\">[message:field_node_reference:entity:title]</a></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>&nbsp;Kind regards,&nbsp;</p>\r\n\r\n<p>The Platform team&nbsp;</p>\r\n\r\n<p><a href=\"[site:url]\">www.digitalskillsjobs.eu</a>&nbsp;</p>\r\n<img alt=\"footer\" data-align=\"center\" data-entity-type=\"file\" data-entity-uuid=\"bbc159f8-4af0-46c2-8931-532fff4dbece\" height=\"114\" src=\"/sites/default/files/2021-10/unnamed.png\" width=\"884\" />"
+    format: full_html

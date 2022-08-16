@@ -1,0 +1,9 @@
+display:
+  default:
+    display_options:
+      filters:
+        langcode:
+          expose:
+            label: Language
+  page_1:
+    display_title: Page

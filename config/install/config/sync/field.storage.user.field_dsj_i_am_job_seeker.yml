@@ -1,0 +1,18 @@
+uuid: ec49c2f6-a42b-4563-85b8-f35a8e33e3ec
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: user.field_dsj_i_am_job_seeker
+field_name: field_dsj_i_am_job_seeker
+entity_type: user
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

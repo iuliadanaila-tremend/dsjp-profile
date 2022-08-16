@@ -1,0 +1,6 @@
+dsjp_community.userlist:
+  path: '/mentions/userlist'
+  defaults:
+    _controller: '\Drupal\dsjp_community\Controller\MentionsUserList::userList'
+  requirements:
+    _role: 'authenticated'

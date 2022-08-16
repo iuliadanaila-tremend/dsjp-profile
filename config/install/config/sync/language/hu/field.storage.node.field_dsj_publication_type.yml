@@ -1,0 +1,34 @@
+settings:
+  allowed_values:
+    -
+      label: Tájékoztató
+    -
+      label: Előrejelzés
+    -
+      label: 'Általános iránymutatások'
+    -
+      label: 'Általános információk'
+    -
+      label: Folyóirat
+    -
+      label: 'Nemzeti terv'
+    -
+      label: Hírek
+    -
+      label: Újságcikk
+    -
+      label: Hírlevél
+    -
+      label: Bemutatás
+    -
+      label: 'Promóciós anyag'
+    -
+      label: Jelentés
+    -
+      label: Ütemterv
+    -
+      label: 'Tudományos cikk'
+    -
+      label: Tanulmány
+    -
+      label: Munkadokumentum

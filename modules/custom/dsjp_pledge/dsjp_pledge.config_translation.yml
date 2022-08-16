@@ -1,0 +1,5 @@
+dsjp_pledge.initiative_type_description_config_form:
+  title: 'Initiative Type Description Config Form'
+  base_route_name: dsjp_pledge.initiative_type_description_config_form
+  names:
+    - dsjp_pledge.initiative_type_description_config

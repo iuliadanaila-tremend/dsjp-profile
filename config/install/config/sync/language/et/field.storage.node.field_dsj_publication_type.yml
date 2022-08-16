@@ -1,0 +1,34 @@
+settings:
+  allowed_values:
+    -
+      label: Teabeleht
+    -
+      label: Prognoos
+    -
+      label: Üldsuunised
+    -
+      label: 'Üldine teave'
+    -
+      label: Ajakiri
+    -
+      label: 'Riiklik kava'
+    -
+      label: Uudisteated
+    -
+      label: Uudislugu
+    -
+      label: Uudiskiri
+    -
+      label: Tutvustus
+    -
+      label: Reklaammaterjal
+    -
+      label: Aruanne
+    -
+      label: 'Ajakava,'
+    -
+      label: Teadustöö
+    -
+      label: Uuring
+    -
+      label: Töödokument

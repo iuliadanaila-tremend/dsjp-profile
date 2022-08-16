@@ -1,0 +1,24 @@
+settings:
+  allowed_values:
+    -
+      label: 'cours de laboratoire/simulation/pratique'
+    -
+      label: 'expérience professionnelle'
+    -
+      label: volontariat
+    -
+      label: recherche
+    -
+      label: 'étude automotivée'
+    -
+      label: 'cours d’apprentissage en ligne'
+    -
+      label: stage
+    -
+      label: apprentissage;
+    -
+      label: 'atelier, séminaire ou conférence'
+    -
+      label: 'programme éducatif'
+    -
+      label: 'cours de classe'

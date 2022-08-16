@@ -1,0 +1,34 @@
+settings:
+  allowed_values:
+    -
+      label: 'Zestawienie informacji'
+    -
+      label: Prognoza
+    -
+      label: 'Ogólne wytyczne'
+    -
+      label: 'Ogólne informacje'
+    -
+      label: Magazyn
+    -
+      label: 'Krajowy plan'
+    -
+      label: 'Komunikaty prasowe'
+    -
+      label: Artykuł
+    -
+      label: Biuletyn
+    -
+      label: Prezentacja
+    -
+      label: 'Materiały promocyjne'
+    -
+      label: Sprawozdanie
+    -
+      label: Harmonogram
+    -
+      label: 'Artykuł naukowy'
+    -
+      label: Analiza
+    -
+      label: 'Dokument roboczy'

@@ -1,0 +1,7 @@
+name: dsjp_pledge_migration
+type: module
+description: Custom pledge migration related functionalities.
+package: Custom
+core: 8.x
+core_version_requirement: ^8 || ^9
+php: 7.3

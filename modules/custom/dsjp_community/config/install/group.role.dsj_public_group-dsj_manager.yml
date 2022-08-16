@@ -1,0 +1,28 @@
+uuid: 9ab711b0-ac03-4b56-8872-a2f258e791a1
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.dsj_public_group
+id: dsj_public_group-dsj_manager
+label: 'Group manager'
+weight: 6
+internal: false
+audience: member
+group_type: dsj_public_group
+permissions_ui: true
+permissions:
+  - 'access group_node overview'
+  - 'administer members'
+  - 'create group_node:dsj_discussion entity'
+  - 'delete any group_node:dsj_discussion entity'
+  - 'delete group'
+  - 'delete own group_node:dsj_discussion entity'
+  - 'edit group'
+  - 'leave group'
+  - 'update own group_membership content'
+  - 'update own group_node:dsj_discussion entity'
+  - 'view group'
+  - 'view group_membership content'
+  - 'view group_node:dsj_discussion content'
+  - 'view group_node:dsj_discussion entity'

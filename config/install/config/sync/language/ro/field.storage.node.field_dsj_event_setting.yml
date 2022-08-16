@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Mixtă
+    -
+      label: 'În ceea ce privește locația'
+    -
+      label: 'Transmisiune virtuală'
+    -
+      label: 'Virtuală preînregistrată'

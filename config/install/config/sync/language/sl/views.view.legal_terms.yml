@@ -1,0 +1,17 @@
+display:
+  default:
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Apply
+          reset_button_label: Ponastavi
+      fields:
+        language:
+          label: Jezik
+        revision:
+          label: različice
+  page_1:
+    display_title: Stran
+    display_options:
+      tab_options:
+        description: 'Pravni pogoji'

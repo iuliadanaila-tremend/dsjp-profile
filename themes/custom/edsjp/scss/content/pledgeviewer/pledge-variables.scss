@@ -1,0 +1,37 @@
+$education-color: $inspiration-category-color;
+$ict-color: $community-category-color;
+$labour-force-color: $secondary-hover;
+$other-color: $primary-default;
+$pledge-border-radius: $border-radius-lg * 1.25;
+
+%pledge-icons-settings {
+  &::before {
+    margin-right: $grid-gutter-width / 4;
+    padding: 0 0 $grid-gutter-width / 8 $grid-gutter-width / 16;
+    vertical-align: middle;
+    font-size: $font-size-2md;
+    color: $blue-450;
+  }
+}
+
+%is-type {
+  display: inline-block;
+  border-radius: 6px;
+  padding: $grid-gutter-width / 4 $line-height-xl / 2;
+  font-family: $font-ec-square-medium;
+  font-size: $font-size-sm;
+}
+
+%is-member {
+  @extend %is-type;
+
+  background-color: $secondary-default;
+  color: $body-bg;
+}
+
+%is-pledger {
+  @extend %is-type;
+
+  background-color: $yellow;
+  color: $gray-650;
+}

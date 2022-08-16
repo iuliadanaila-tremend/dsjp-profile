@@ -1,0 +1,21 @@
+uuid: 626ad52a-adbd-46ee-92a7-6a11bba11286
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_dsj_text
+    - paragraphs.paragraphs_type.dsj_testimonial
+  module:
+    - text
+id: paragraph.dsj_testimonial.field_dsj_text
+field_name: field_dsj_text
+entity_type: paragraph
+bundle: dsj_testimonial
+label: Text
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

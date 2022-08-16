@@ -1,0 +1,42 @@
+settings:
+  allowed_values:
+    -
+      label: 'Hyvin suoriutuvat'
+    -
+      label: 'Ei-syntyperäiset puhujat'
+    -
+      label: 'Uudelleenkoulutusta tarvitsevat'
+    -
+      label: 'Korkea-asteen koulutuksessa olevat (EQF 6)'
+    -
+      label: 'Alemman perusasteen koulutuksen suorittaneet'
+    -
+      label: 'Ylemmän perusasteen ja keskiasteen koulutuksessa olevat/oppivelvollisuuttaan suorittavat'
+    -
+      label: 'Korkea-asteen tutkinnon suorittaneet (EQF 7)'
+    -
+      label: 'Alemman perusasteen koulutuksessa olevat'
+    -
+      label: '0-3 vuoden työkokemuksen omaavat'
+    -
+      label: 'Korkea-asteen tutkinnon suorittaneet (EQF 8)'
+    -
+      label: 'Ylemmän perusasteen ja keskiasteen koulutuksen/oppivelvollisuuden suorittaneet'
+    -
+      label: 'Korkea-asteen tutkinnon suorittaneet (EQF 7)'
+    -
+      label: 'Korkea-asteen tutkinnon suorittaneet (EQF 8)'
+    -
+      label: Maahanmuuttajat
+    -
+      label: 'Henkilöt, joilla on 3-10 vuoden työkokemus'
+    -
+      label: 'Yli 10 vuoden työkokemuksen omaavat'
+    -
+      label: 'Oppimisvaikeuksista kärsivät henkilöt'
+    -
+      label: 'Syntyperäiset puhujat'
+    -
+      label: 'Korkea-asteen koulutuksen suorittaneet (EQF 6)'
+    -
+      label: 'Heikosti suoriutuvat'

@@ -1,0 +1,77 @@
+display:
+  default:
+    display_title: Główny
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Zastosuj
+          reset_button_label: Resetuj
+          exposed_sorts_label: 'Sortuj po'
+          sort_asc_label: Rosnąco
+          sort_desc_label: Malejąco
+      pager:
+        options:
+          tags:
+            previous: ‹‹
+            next: ››
+            first: '« Pierwsza'
+            last: 'Ostatnia »'
+          expose:
+            items_per_page_label: 'Elementów na stronę'
+            items_per_page_options_all_label: '- Wszystko -'
+            offset_label: Przesunięcie
+      fields:
+        title:
+          label: Tytuł
+          separator: ', '
+        type:
+          label: 'Rodzaj zawartości'
+          separator: ', '
+        status:
+          label: Status
+          settings:
+            format_custom_true: Opublikowane
+            format_custom_false: Nieopublikowany
+          separator: ', '
+        changed:
+          label: Uaktualniono
+          separator: ', '
+        edit_node:
+          text: 'Edytuj węzeł'
+        delete_node:
+          text: 'Usuń węzeł'
+        dropbutton:
+          label: Operacje
+      filters:
+        status:
+          expose:
+            label: 'Status publikacji'
+          group_info:
+            label: 'Status publikacji'
+            group_items:
+              1:
+                title: Opublikowane
+              2:
+                title: Nieopublikowany
+        type:
+          expose:
+            label: 'Rodzaj zawartości'
+      empty:
+        area_text_custom:
+          content: 'Brak zawartości.'
+      arguments:
+        gid:
+          exception:
+            title: Wszystko
+      title: Węzły
+  block_1:
+    display_options:
+      fields:
+        title:
+          label: Tytuł
+          separator: ', '
+  page_1:
+    display_title: Strona
+    display_options:
+      menu:
+        title: Węzły

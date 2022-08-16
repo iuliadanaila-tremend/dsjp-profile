@@ -1,0 +1,10 @@
+uuid: 9cbc34e1-6ebd-4bd5-ae35-7e4cde5efa28
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.subscription_list
+label: 'Subscription list'
+targetEntityType: node
+cache: true

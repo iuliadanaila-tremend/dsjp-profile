@@ -1,0 +1,22 @@
+uuid: 2f0efee4-112d-4f5a-b0f4-2a67c4de12f2
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraph_view_mode
+    - paragraphs
+id: paragraph.paragraph_view_mode
+field_name: paragraph_view_mode
+entity_type: paragraph
+type: paragraph_view_mode
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: paragraph_view_mode
+locked: true
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

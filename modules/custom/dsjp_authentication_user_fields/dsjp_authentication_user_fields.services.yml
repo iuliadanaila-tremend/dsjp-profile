@@ -1,0 +1,5 @@
+services:
+  dsjp_authentication_user_fields.event_subscriber:
+    class: Drupal\dsjp_authentication_user_fields\EventSubscriber\EuLoginAttributesToUserFieldsSubscriber
+    tags:
+      - { name: event_subscriber }

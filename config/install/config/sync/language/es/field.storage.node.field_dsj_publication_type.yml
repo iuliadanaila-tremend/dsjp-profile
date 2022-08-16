@@ -1,0 +1,34 @@
+settings:
+  allowed_values:
+    -
+      label: 'Ficha informativa'
+    -
+      label: Previsiones
+    -
+      label: 'Directrices generales'
+    -
+      label: 'Información general'
+    -
+      label: Revista
+    -
+      label: 'Plan nacional'
+    -
+      label: 'Comunicados de prensa'
+    -
+      label: Noticias
+    -
+      label: Boletín
+    -
+      label: Presentación
+    -
+      label: 'Material de promoción'
+    -
+      label: Informe
+    -
+      label: Calendario
+    -
+      label: 'Documento científico'
+    -
+      label: Estudio
+    -
+      label: 'Documento de trabajo'

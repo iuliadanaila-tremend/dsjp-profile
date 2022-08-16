@@ -1,0 +1,22 @@
+uuid: 64e1b157-96b5-40e8-8d6b-8aa1c04a0594
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.dsj_grouped_cards
+id: paragraph.dsj_grouped_cards.status
+field_name: status
+entity_type: paragraph
+bundle: dsj_grouped_cards
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

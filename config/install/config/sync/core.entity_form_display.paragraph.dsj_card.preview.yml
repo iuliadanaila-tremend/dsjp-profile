@@ -1,0 +1,46 @@
+uuid: 1591a9b7-f83a-4a4e-8317-85f42f73acaa
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.paragraph.preview
+    - field.field.paragraph.dsj_card.field_dsj_image
+    - field.field.paragraph.dsj_card.field_dsj_link
+    - field.field.paragraph.dsj_card.field_dsj_subtitle
+    - field.field.paragraph.dsj_card.field_dsj_title
+    - paragraphs.paragraphs_type.dsj_card
+  module:
+    - link
+    - media_library
+id: paragraph.dsj_card.preview
+targetEntityType: paragraph
+bundle: dsj_card
+mode: preview
+content:
+  field_dsj_image:
+    type: media_library_widget
+    weight: 2
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_dsj_link:
+    type: link_default
+    weight: 1
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_dsj_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  field_dsj_subtitle: true
+  status: true

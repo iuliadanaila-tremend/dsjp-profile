@@ -1,0 +1,7 @@
+dsjp_translation_mock.endpoint:
+  path: '/translation-mock'
+  defaults:
+    _controller: '\Drupal\dsjp_translation_mock\Controller\TranslationMock::callback'
+  methods: [POST]
+  requirements:
+    _permission: 'access content'

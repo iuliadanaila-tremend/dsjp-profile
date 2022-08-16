@@ -1,0 +1,37 @@
+uuid: f801f792-5b14-49e5-94fd-1c2d98002a2b
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_result
+    - field.field.node.dsj_discussion.body
+    - field.field.node.dsj_discussion.field_dsj_attachment
+    - field.field.node.dsj_discussion.field_dsj_comments
+    - field.field.node.dsj_discussion.field_dsj_digital_technology
+    - field.field.node.dsj_discussion.field_dsj_publish_in_core
+    - node.type.dsj_discussion
+  module:
+    - user
+_core:
+  default_config_hash: '-mRA9q4xXBAZUu94aW0wb13jf8ZoVuhGVzJkZpcsctk'
+id: node.dsj_discussion.search_result
+targetEntityType: node
+bundle: dsj_discussion
+mode: search_result
+content:
+  search_api_excerpt:
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  body: true
+  content_moderation_control: true
+  field_dsj_attachment: true
+  field_dsj_comments: true
+  field_dsj_digital_technology: true
+  field_dsj_publish_in_core: true
+  flag_subscribe_node: true
+  flag_voting: true
+  langcode: true
+  links: true

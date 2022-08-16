@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Pubblico
+    -
+      label: Privato
+    -
+      label: 'Lending crowdfunding'
+    -
+      label: Pubblico-privato

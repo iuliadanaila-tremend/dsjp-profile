@@ -1,0 +1,25 @@
+uuid: 8d8071d2-7f7c-4489-8a22-668abbfd4b6a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dsj_header_color
+    - node.type.dsj_landing_page
+  module:
+    - options
+    - tmgmt_content
+third_party_settings:
+  tmgmt_content:
+    excluded: false
+id: node.dsj_landing_page.field_dsj_header_color
+field_name: field_dsj_header_color
+entity_type: node
+bundle: dsj_landing_page
+label: 'Header color'
+description: 'Select a color type to use on the page header, leave empty to use the default one.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,36 @@
+uuid: a3402f6c-c379-42e0-81d6-59d887e34fa7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.dsj_blank_cards.field_dsj_blank_card
+    - field.field.paragraph.dsj_blank_cards.field_dsj_title
+    - field.field.paragraph.dsj_blank_cards.paragraph_view_mode
+    - paragraphs.paragraphs_type.dsj_blank_cards
+  module:
+    - entity_reference_revisions
+id: paragraph.dsj_blank_cards.default
+targetEntityType: paragraph
+bundle: dsj_blank_cards
+mode: default
+content:
+  field_dsj_blank_card:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_dsj_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  paragraph_view_mode: true
+  search_api_excerpt: true

@@ -1,0 +1,14 @@
+settings:
+  allowed_values:
+    -
+      label: 'Jusqu’à 1 semaine'
+    -
+      label: 'Jusqu’à 4 semaines'
+    -
+      label: 'Jusqu’à 3 mois'
+    -
+      label: 'Jusqu’à 6 mois'
+    -
+      label: 'Jusqu’à un an'
+    -
+      label: 'Plusieurs années'

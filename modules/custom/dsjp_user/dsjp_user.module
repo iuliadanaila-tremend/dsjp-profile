@@ -1,0 +1,563 @@
+<?php
+
+/**
+ * @file
+ * Provides custom functionality for dsjp_user module.
+ */
+
+use Drupal\comment\CommentInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Link;
+use Drupal\Core\Render\BubbleableMetadata;
+use Drupal\Core\Url;
+use Drupal\legal\AcceptedInterface;
+use Drupal\legal\Entity\Accepted;
+use Drupal\message\Entity\Message;
+use Drupal\simplenews\Entity\Subscriber;
+use Drupal\simplenews\SubscriberInterface;
+use Drupal\user\Entity\User;
+use Drupal\user\UserInterface;
+
+/**
+ * Implements hook_module_implements_alter().
+ */
+function dsjp_user_module_implements_alter(&$implementations, $hook) {
+  switch ($hook) {
+    // Make sure that form_alter of this module runs after legal's one.
+    case 'form_alter':
+      $group = $implementations['dsjp_user'];
+      unset($implementations['dsjp_user']);
+      $implementations['dsjp_user'] = $group;
+      break;
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function dsjp_user_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if ($form_id == 'legal_admin_terms') {
+    // Add a new checkbox that sets the optional legal checkboxes' required
+    // status to true or false.
+    $conditions = _dsjp_user_get_legal_conditions();
+
+    $extras_count = ((count($conditions['extras']) < 10) ? 10 : count($conditions['extras']));
+    for ($counter = 1; $counter <= $extras_count; $counter++) {
+      $form['extras']['extras-' . $counter]['#weight'] = $counter;
+      $form['extras']['extras-' . $counter . '-required'] = [
+        '#type' => 'checkbox',
+        '#title' => t('Required'),
+        '#weight' => $counter,
+        '#default_value' => $conditions['extras-description']['extras-' . $counter . '-required'] ?? 0,
+      ];
+      $form['extras']['extras-' . $counter . '-description'] = [
+        '#type' => 'text_format',
+        '#title' => t('Description'),
+        '#weight' => $counter,
+        '#format' => 'full_html',
+        '#default_value' => isset($conditions['extras-description']['extras-' . $counter . '-description']) ? $conditions['extras-description']['extras-' . $counter . '-description']['value'] : '',
+      ];
+    }
+  }
+  elseif ($form_id === 'user_login_form') {
+    // If we are on user login form, alter the eu login url in order to redirect
+    // the user after login.
+    $current_query = \Drupal::requestStack()->getCurrentRequest()->query;
+    /** @var \Drupal\Core\Url $url */
+    if ($current_query->get('destination')) {
+      $url = $form['cas_login_link']['#url'];
+      $url->setOption('query', [
+        'returnto' => $current_query->get('destination'),
+      ]);
+      $form['cas_login_link']['#url'] = $url;
+    }
+  }
+  if (isset($form['legal'])) {
+    $conditions = _dsjp_user_get_legal_conditions();
+    // Make sure we have a default value for the checkbox.
+    $text = t('I agree with the Digital Skills and Jobs Platform <a href=":url">Terms of Service</a>', [
+      ':url' => Url::fromUserInput('/terms-of-service')->toString(),
+    ]);
+    if (!empty($conditions['tos'])) {
+      $description = !empty($conditions['tos']['tos_checkbox_description']) ? $conditions['tos']['tos_checkbox_description'] : '';
+      if (!empty($description)) {
+        // Add the description prefix for the main checkbox.
+        $form['legal']['legal_accept']['#prefix'] = '<div class="legal-checkbox-prefix">' . $description . '</div>';
+      }
+      if (!empty($conditions['tos']['tos_checkbox_text'])) {
+        // Because we save the text from a textarea, we need to remove the
+        // unneeded tags from the checkbox text.
+        $text = trim(strip_tags($conditions['tos']['tos_checkbox_text'], '<a>'));
+      }
+    }
+    // Make sure that the main checkbox is the first one.
+    $form['legal']['legal_accept']['#weight'] = -1;
+    $form['legal']['legal_accept']['#title'] = $text;
+    $conditions = _dsjp_user_get_legal_conditions();
+    $conditions['extras'] = array_filter($conditions['extras']);
+    $uid = isset($form['uid']) ? $form['uid']['#value'] : \Drupal::routeMatch()->getRawParameter('user');
+    foreach ($conditions['extras'] as $key => $label) {
+      // Set the required status of each checkbox.
+      $form['legal'][$key]['#required'] = $conditions['extras-description'][$key . '-required'];
+      if ($conditions['extras-description'][$key . '-required'] == 0) {
+        // Remove the disabled attribute and value set by legal module.
+        $form['legal'][$key]['#attributes'] = [];
+        unset($form['legal'][$key]['#value']);
+        // Set the default value of each optional checkbox.
+        $accept = legal_get_accept($uid);
+        if (isset($accept['legal_id']) && $accept['version'] == $conditions['version']) {
+          $legal = Accepted::load($accept['legal_id']);
+          if ($legal instanceof AcceptedInterface) {
+            $extras = $legal->get('extra_checkboxes')->value;
+            if (!empty($extras)) {
+              $extras = json_decode($extras, TRUE);
+              $form['legal'][$key]['#default_value'] = $extras[$key] ?? 0;
+            }
+          }
+        }
+      }
+    }
+    if (isset($form['actions'])) {
+      $form['actions']['submit']['#submit'][] = 'dsjp_user_legal_profiling_submit';
+    }
+    else {
+      $form['#submit'][] = 'dsjp_user_legal_profiling_submit';
+      // User registration notification.
+      $form['#submit'][] = 'dsjp_user_registration_notification';
+    }
+  }
+  if ($form_id == 'simplenews_subscriber_account_form' || $form_id == 'simplenews_subscriber_page_form') {
+    $form['actions']['submit']['#value'] = t('Subscribe');
+    // Add the privacy policy checkbox.
+    $form['privacy_policy'] = [
+      '#type' => 'checkbox',
+      '#title' => t('In order to subscribe to the Digital Skills and Job Digest, please agree with the <a href=":url">Data Privacy Statement</a>.', [
+        ':url' => Url::fromUserInput('/privacy-policy-newsletter')->toString(),
+      ]),
+      '#required' => TRUE,
+      '#default_value' => 1,
+    ];
+    // Hide the subscription checkboxes.
+    $form['subscriptions']['#access'] = FALSE;
+    if (!\Drupal::currentUser()->isAnonymous()) {
+      $subscriber = Subscriber::loadByMail(\Drupal::currentUser()->getEmail());
+      $form['actions']['submit']['#value'] = t('Subscribe');
+      if ($subscriber instanceof SubscriberInterface) {
+        // If the current user is is subscribed, make sure that the submit
+        // button will trigger the unsubscribe functionality.
+        if ($subscriber->isSubscribed('default')) {
+          $form['subscriptions']['widget']['#default_value'] = [];
+          $form['actions']['submit']['#value'] = t('Unsubscribe');
+          // Keep the privacy policy checkbox checked when the user is
+          // unsubscribing.
+          $form['privacy_policy']['#disabled'] = TRUE;
+        }
+        else {
+          $form['subscriptions']['widget']['#default_value'] = array_keys($form['subscriptions']['widget']['#options']);
+          $form['privacy_policy']['#default_value'] = 0;
+        }
+      }
+      else {
+        $form['subscriptions']['widget']['#default_value'] = array_keys($form['subscriptions']['widget']['#options']);
+        $form['privacy_policy']['#default_value'] = 0;
+      }
+    }
+    // If the user is anonymous, we keep the subscriptions checked.
+    else {
+      $form['subscriptions']['widget']['#default_value'] = array_keys($form['subscriptions']['widget']['#options']);
+      $form['privacy_policy']['#default_value'] = 0;
+      $route = \Drupal::routeMatch();
+      $snid = $route->getRawParameter('snid');
+      $subscriber = Subscriber::load($snid);
+      $timestamp = $route->getRawParameter('timestamp');
+      $hash = $route->getRawParameter('hash');
+      if ($subscriber && $subscriber->isSubscribed('default') && $hash == simplenews_generate_hash($subscriber->getMail(), 'manage', $timestamp)) {
+        $form['subscriptions']['widget']['#default_value'] = [];
+        $form['actions']['submit']['#value'] = t('Unsubscribe');
+        // Keep the privacy policy checkbox checked when the user is
+        // unsubscribing.
+        $form['privacy_policy']['#default_value'] = 1;
+        $form['privacy_policy']['#disabled'] = TRUE;
+      }
+    }
+  }
+  _dsjp_user_alter_subscriptions_block($form, $form_state, $form_id);
+}
+
+/**
+ * Form alter for user subscriptions block(anonymous users).
+ */
+function _dsjp_user_alter_subscriptions_block(array &$form, FormStateInterface $form_state, $form_id) {
+  if (strpos($form_id, 'simplenews_subscriptions_block_') === 0) {
+    $form['actions']['submit']['#value'] = t('Subscribe');
+    $form['privacy_policy'] = [
+      '#type' => 'checkbox',
+      '#title' => t('In order to subscribe to the Digital Skills and Job Digest, please agree with the <a href=":url">Data Privacy Statement</a>.', [
+        ':url' => Url::fromUserInput('/privacy-policy-newsletter')->toString(),
+      ]),
+      '#required' => TRUE,
+      '#default_value' => 1,
+    ];
+    // Hide the subscription checkboxes.
+    $form['subscriptions']['#access'] = FALSE;
+    $form['actions']['unsubscribe'] = [
+      '#type' => 'submit',
+      '#value' => t('Unsubscribe'),
+      '#name' => 'unsubscribe',
+      '#submit' => ['dsjp_user_newsletter_subscription_block_unsubscribe_submit'],
+      '#weight' => 100,
+    ];
+    $form['subscriptions']['widget']['#default_value'] = array_keys($form['subscriptions']['widget']['#options']);
+    $form['privacy_policy']['#default_value'] = 0;
+  }
+}
+
+/**
+ * Submit callback for user unsubscribe.
+ */
+function dsjp_user_newsletter_subscription_block_unsubscribe_submit(array &$form, FormStateInterface $form_state) {
+  $params['from'] = \Drupal::service('simplenews.mailer')->getFrom();
+  $mail = $form_state->getValue('mail');
+  $subscriber = Subscriber::loadByMail($mail[0]['value']);
+  if ($subscriber instanceof SubscriberInterface) {
+    $params['context']['simplenews_subscriber'] = $subscriber;
+    \Drupal::service('plugin.manager.mail')->mail('simplenews', 'validate', $subscriber->getMail(), $subscriber->getLangcode(), $params, $params['from']['address']);
+  }
+  \Drupal::messenger()->addStatus(t('If %mail is subscribed, an email will be sent with a link to manage your subscriptions.', [
+    '%mail' => $mail,
+  ]));
+}
+
+/**
+ * Legal terms new user submission callback.
+ */
+function dsjp_user_registration_notification(&$form, FormStateInterface $form_state) {
+  $uid = $form_state->getValue('uid');
+  $user = User::load($uid);
+  // Check if the user is new. A new user will always have the registration
+  // status set to created.
+  $registration_status = $user->get('field_dsj_registration_status')->getString();
+  if ($registration_status == 'created') {
+    $message = Message::create([
+      'template' => 'user_register',
+      'uid' => $form_state->getValue('uid'),
+    ]);
+    $message->set('field_user', $form_state->getValue('uid'));
+    $message->save();
+    $notifier = \Drupal::service('message_notify.sender');
+    $notifier->send($message);
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function dsjp_user_preprocess_form_element(&$variables) {
+  if (isset($variables['element']['#type']) && $variables['element']['#type'] == 'checkbox' &&
+    isset($variables['element']['#name']) &&
+    in_array($variables['element']['#name'], ['extras-1', 'extras-2'])) {
+    $conditions = _dsjp_user_get_legal_conditions();
+    if (isset($conditions['extras-description'][$variables['element']['#name'] . '-description'])) {
+      $condition = $conditions['extras-description'][$variables['element']['#name'] . '-description'];
+      $variables['description_display'] = 'before';
+      $variables['description']['content'] = [
+        '#type' => 'processed_text',
+        '#text' => $condition['value'],
+        '#format' => 'full_html',
+      ];
+    }
+  }
+}
+
+/**
+ * Gets the conditions available from legal module.
+ *
+ * @return array
+ *   The conditions array.
+ */
+function _dsjp_user_get_legal_conditions() {
+  $langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
+
+  return legal_get_conditions($langcode);
+}
+
+/**
+ * Submit callback for forms containing the legal checkboxes.
+ */
+function dsjp_user_legal_profiling_submit(&$form, FormStateInterface $form_state) {
+  // For each condition that is not required, save an event log.
+  $conditions = _dsjp_user_get_legal_conditions();
+  $entity = legal_get_accept($form_state->getValue('uid'));
+  if (isset($entity['legal_id'])) {
+    $legal = Accepted::load($entity['legal_id']);
+    if ($legal instanceof AcceptedInterface) {
+      $extras = $legal->get('extra_checkboxes')->value ?? [];
+      if (!empty($extras)) {
+        $extras = json_decode($extras, TRUE);
+      }
+      foreach ($conditions['extras'] as $key => $label) {
+        if (!empty($label)) {
+          if ($conditions['extras-description'][$key . '-required'] == 0) {
+            $extras[$key] = $form_state->getValue($key);
+          }
+        }
+      }
+      $legal->get('extra_checkboxes')->setValue(json_encode($extras));
+      $legal->save();
+    }
+  }
+}
+
+/**
+ * Implements hook_field_widget_form_alter().
+ */
+function dsjp_user_field_widget_form_alter(&$element, FormStateInterface $form_state, $context) {
+  if ($context['items']->getName() === 'field_dsj_organisation' && $element['#entity_type'] === 'user') {
+    // Add the autocomplete functionality controller on the organisaton field.
+    $element['value']['#autocomplete_route_name'] = 'dsjp_user.organisation_autocomplete';
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function dsjp_user_preprocess_field(&$variables) {
+  if ($variables['field_name'] === 'field_dsj_organisation' && $variables['element']['#object'] instanceof UserInterface) {
+    // For every value available on the organisation field, create a link that
+    // will redirect the user to the organisations list page with the keywords
+    // filter set with the field value. This link will replace the default value
+    // of the field.
+    if (!empty($variables['items'])) {
+      foreach ($variables['items'] as $key => $data) {
+        $label = $data['content']['#context']['value'];
+        $url = Url::fromRoute('view.dsj_content_listing.organizations', [], [
+          'query' => [
+            'keywords' => $label,
+          ],
+        ]);
+        $link = Link::fromTextAndUrl($label, $url);
+        $variables['items'][$key]['content'] = $link->toRenderable();
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_entity_insert().
+ */
+function dsjp_user_entity_insert(EntityInterface $entity) {
+  $uids = [];
+
+  // If the user accepts the legal terms, we reindex the data only for that
+  // specific user.
+  if ($entity->bundle() == 'legal_accepted') {
+    $uid = $entity->get('uid')->getValue();
+    $uids[] = $uid[0]['target_id'];
+  }
+  // Trigger an update on each user so that they will get reindexed with the new
+  // legal checkboxes values.
+  if (in_array($entity->bundle(), ['legal_conditions', 'legal_accepted'])) {
+    $users = User::loadMultiple($uids);
+    foreach ($users as $user) {
+      $user->save();
+    }
+  }
+  // Send a notification the first the a user subscribes to a content.
+  elseif ($entity->bundle() == 'subscribe_node') {
+    $uid = $entity->get('uid')->getString();
+    $user = User::load($uid);
+    if ($user instanceof UserInterface) {
+      $content_notification_status = $user->get('field_dsj_content_subscription')->getValue();
+      if (empty($content_notification_status) || $content_notification_status[0]['value'] != 1) {
+        $message = Message::create([
+          'template' => 'dsj_content_subscribe',
+          'uid' => $user->id(),
+        ]);
+        $message->set('field_user', $user->id());
+        $message->save();
+        $notifier = \Drupal::service('message_notify.sender');
+        $notifier->send($message);
+        $user->set('field_dsj_content_subscription', 1);
+        $user->save();
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_token_info().
+ */
+function dsjp_user_token_info() {
+  // Create a custom token for the user first name as it is not provided by
+  // default.
+  $token['tokens']['user']['user_firstname'] = [
+    'name' => t('User firstname'),
+    'description' => t('User firstname field value.'),
+  ];
+  $token['tokens']['user']['user_fullname'] = [
+    'name' => t('User fullname'),
+    'description' => t('User fullname.'),
+  ];
+
+  return $token;
+}
+
+/**
+ * Implements hook_tokens().
+ */
+function dsjp_user_tokens($type, $tokens, array $data, array $options, BubbleableMetadata $bubbleable_metadata) {
+  $replacements = [];
+  if (isset($data['user']) && $type == 'user') {
+    foreach ($tokens as $name => $original) {
+      if ($name == 'user_firstname') {
+        $first_name = $data['user']->get('field_dsj_firstname')->getValue();
+        $replacements[$original] = !empty($first_name[0]['value']) ? $first_name[0]['value'] : '';
+      }
+      if ($name == 'user_fullname') {
+        $first_name = $data['user']->get('field_dsj_firstname')->getString();
+        $last_name = $data['user']->get('field_dsj_lastname')->getString();
+        $replacements[$original] = $first_name . ' ' . $last_name;
+      }
+    }
+  }
+
+  return $replacements;
+}
+
+/**
+ * Checks if the user has it's profile completed or not.
+ *
+ * @param \Drupal\Core\Entity\EntityInterface $user
+ *   The user entity.
+ *
+ * @return bool
+ *   Return TRUE if the profile is completed, FALSE otherwise.
+ */
+function _dsjp_user_profile_completed(EntityInterface $user) {
+  $fields = [
+    'field_dsj_i_am_interested_in',
+    'field_dsj_skill_level_interest',
+    'message_digest_interval',
+    'field_dsj_country',
+  ];
+  // If one of the fields is empty, the user did not complete its profile.
+  foreach ($fields as $field) {
+    if (empty($user->get($field)->getValue())) {
+      return FALSE;
+    }
+  }
+
+  return TRUE;
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_presave().
+ */
+function dsjp_user_user_presave(EntityInterface $entity) {
+  $completed = _dsjp_user_profile_completed($entity);
+  // Whenever a profile is saved, check if the profile is completed and update
+  // the field status if needed.
+  if ($completed) {
+    $entity->set('field_dsj_registration_status', 'complete');
+  }
+}
+
+/**
+ * Implements hook_cron().
+ */
+function dsjp_user_cron() {
+  // Get all the users having the registration status empty, created or
+  // incomplete, excluding the anonymous user and the ones with step 2.
+  $query = \Drupal::entityQuery('user')
+    ->condition('uid', 0, '>')
+    ->condition('field_dsj_notification_step', 2, '!=');
+  $or_group = $query->orConditionGroup();
+  $or_group
+    ->condition('field_dsj_registration_status', ['created', 'incomplete'], 'IN')
+    ->notExists('field_dsj_registration_status');
+  $query->condition($or_group);
+  $uids = $query->execute();
+  $conditions = legal_get_conditions();
+  if (!empty($uids)) {
+    foreach ($uids as $uid) {
+      // Do nothing if the user did not accept the latest version of legal terms
+      // and conditions.
+      $last_accept = legal_get_accept($uid);
+      if (empty($last_accept) || !legal_version_check($uid, $conditions['version'], $conditions['revision'], $last_accept)) {
+        continue;
+      }
+      $new_status = '';
+      $new_step = 0;
+      $user = User::load($uid);
+      $step = $user->get('field_dsj_notification_step')->getString();
+      $created_time = $user->getCreatedTime();
+      // If the user profile is completed or step is 2, we just update the field
+      // status.
+      if (_dsjp_user_profile_completed($user) || $step == 2) {
+        $new_status = 'complete';
+      }
+      // Check if 24h/7 days have passed since the creation time. Also, make
+      // sure that maximum of 8 days have passed.
+      elseif (time() - $created_time < 691200) {
+        $registration_status = $user->get('field_dsj_registration_status')->getString();
+        // If the status is not complete, 24 hours have passed and the
+        // notification step is empty or 0, notify the user and update the
+        // status to "incomplete" and the step to 1.
+        if (($registration_status != 'complete') && time() - $created_time > 86400 && ($step == 0 || empty($step))) {
+          $new_status = 'incomplete';
+          $new_step = 1;
+        }
+        // If the status is not complete, 7 days have passed and the
+        // notification step is not 2, notify the user and update status to
+        // "incomplete" and the step to 2.
+        elseif (($registration_status != 'complete') && time() - $created_time > 604800 && $step != 2) {
+          $new_status = 'incomplete';
+          $new_step = 2;
+        }
+      }
+      // If there is a new status, update the user profile and notify it.
+      if (!empty($new_status)) {
+        $user->set('field_dsj_registration_status', $new_status);
+        if ($new_step != '') {
+          $user->set('field_dsj_notification_step', $new_step);
+        }
+        $user->save();
+        if ($new_status != 'complete') {
+          $message = Message::create([
+            'template' => 'dsj_user_notification',
+            'uid' => $user->id(),
+          ]);
+          $message->set('field_user', $user->id());
+          $message->save();
+          $notifier = \Drupal::service('message_notify.sender');
+          $notifier->send($message);
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_comment_links_alter().
+ */
+function dsjp_user_comment_links_alter(array &$links, CommentInterface $entity, array &$context) {
+  // Roles having access to edit & delete comments.
+  $roles_to_check = [
+    'administrator',
+    'community_manager',
+    'dsj_reviewer',
+  ];
+  // If the current user is not the comment owner or it doesn't have one of the
+  // administrator, community manager or reviewer role, remove the delete and
+  // edit links.
+  $intersect = array_intersect($roles_to_check, \Drupal::currentUser()->getRoles());
+  if ($entity->getOwnerId() != \Drupal::currentUser()->id() && count($intersect) == 0) {
+    if (isset($links['comment']['#links']['comment-delete'])) {
+      unset($links['comment']['#links']['comment-delete']);
+    }
+    if (isset($links['comment']['#links']['comment-edit'])) {
+      unset($links['comment']['#links']['comment-edit']);
+    }
+  }
+}

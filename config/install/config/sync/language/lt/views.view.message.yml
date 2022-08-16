@@ -1,0 +1,38 @@
+label: Žinutė
+display:
+  default:
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Pritaikyti
+          reset_button_label: Išvalyti
+          exposed_sorts_label: 'Rikiuoti pagal'
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'Vienetų kiekis puslapyje'
+            items_per_page_options_all_label: '- Visos -'
+          tags:
+            previous: '‹ ankstesnis'
+            next: 'kitas  ›'
+            first: '« pirmas'
+            last: 'paskutinis  »'
+      fields:
+        message_bulk_form_1:
+          action_title: 'Su pasirinktais'
+        mid:
+          label: 'Žinutės ID'
+        get_text:
+          label: 'Žinutės tekstas'
+        uid:
+          label: Autorius
+      filters:
+        template:
+          expose:
+            label: Šablonas
+      title: Žinutė
+  page_1:
+    display_title: Puslapis
+    display_options:
+      menu:
+        title: Žinutė

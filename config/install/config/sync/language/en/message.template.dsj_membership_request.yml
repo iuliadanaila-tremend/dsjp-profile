@@ -1,0 +1,4 @@
+text:
+  -
+    value: "<p>New membership request.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>[message:field_dsj_group_content:entity:field_dsj_request_message:value]</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>[message:field_dsj_group_content:entity:group:url]</p>\r\n"
+    format: full_html

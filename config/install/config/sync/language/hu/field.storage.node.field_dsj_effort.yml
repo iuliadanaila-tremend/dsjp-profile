@@ -1,0 +1,8 @@
+settings:
+  allowed_values:
+    -
+      label: 'Kevésbé intenzív részmunkaidő'
+    -
+      label: 'Teljes munkaidő'
+    -
+      label: 'Intenzív részmunkaidő'

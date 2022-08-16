@@ -1,0 +1,19 @@
+<div{{ attributes }}>
+
+  <div{{ content_attributes }}>
+
+    {% if content.field_dsj_group_image %}
+      <a href="{{ url }}">
+        {{ content.field_dsj_group_image }}
+      </a>
+    {% endif %}
+
+    <a href="{{ url }}">
+      {{ content.label }}
+    </a>
+
+    {{ content|without('label', 'field_dsj_group_image') }}
+
+  </div>
+
+</div>

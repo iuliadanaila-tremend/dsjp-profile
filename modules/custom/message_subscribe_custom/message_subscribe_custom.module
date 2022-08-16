@@ -1,0 +1,169 @@
+<?php
+
+/**
+ * @file
+ * Holds hook implementation for the Message Subscribe Custom module.
+ */
+
+use Drupal\Core\Entity\ContentEntityBase;
+use Drupal\node\Entity\Node;
+use Drupal\comment\Entity\Comment;
+use Drupal\message\Entity\Message;
+use Drupal\Core\Entity\FieldableEntityInterface;
+use Drupal\Core\Field\FieldStorageDefinitionInterface;
+use Drupal\message_digest\Plugin\Notifier\DigestInterface;
+
+/**
+ * Implements callback_allowed_values_function().
+ */
+function message_subscribe_custom_allowed_values_callback(
+  FieldStorageDefinitionInterface $definition,
+  FieldableEntityInterface $entity = NULL,
+  &$cacheable = NULL
+) {
+  $values = [];
+  /** @var \Drupal\message_notify\Plugin\Notifier\Manager $notifier_manager */
+  $notifier_manager = \Drupal::service('plugin.message_notify.notifier.manager');
+  foreach ($notifier_manager->getDefinitions() as $plugin_id => $plugin_definition) {
+    /** @var \Drupal\message_notify\Plugin\Notifier\MessageNotifierInterface $notifier */
+    $notifier = $notifier_manager->createInstance($plugin_id, []);
+    if ($notifier instanceof DigestInterface) {
+      $values[$plugin_id] = $plugin_definition['title'];
+    }
+  }
+
+  return $values;
+}
+
+/**
+ * Implements hook_message_subscribe_get_subscribers_alter().
+ *
+ * Alter the subscribers list.
+ */
+function message_subscribe_custom_message_subscribe_get_subscribers_alter(array &$uids, array $values) {
+  if (empty($uids)) {
+    // Nobody is subscribed to the content.
+    return;
+  }
+
+  $digest_mapping = [];
+  $accounts = \Drupal::entityTypeManager()
+    ->getStorage('user')
+    ->loadMultiple(array_keys($uids));
+
+  foreach ($accounts as $account) {
+    $digest_mapping[$account->id()] = $account->message_digest_interval->value ?: "message_digest:daily";
+  }
+
+  /** @var \Drupal\message_subscribe\Subscribers\DeliveryCandidateInterface $delivery_candidate */
+  foreach ($uids as $uid => $delivery_candidate) {
+    if (isset($digest_mapping[$uid]) && $digest_mapping[$uid]) {
+      // Completely replace all notifiers with the digest one.
+      $delivery_candidate->setNotifiers([$digest_mapping[$uid]]);
+    }
+  }
+
+  return $uids;
+}
+
+/**
+ * Implements hook_node_insert().
+ */
+function message_subscribe_custom_node_insert(Node $node) {
+  $subscribers = \Drupal::service('message_subscribe.subscribers');
+
+  $template = $node->isPublished() ? 'publish_node' : 'create_node';
+  $message = Message::create(
+    ['template' => $template]
+  );
+  $message->set('field_node_reference', $node);
+  $message->set('field_published', $node->isPublished());
+  $message->save();
+
+  // Do nothing more for unpublished nodes.
+  if (!$node->isPublished()) {
+    return;
+  }
+
+  // Queue messages to notify all the node subscribers about published node.
+  $subscribers->sendMessage($node, $message);
+}
+
+/**
+ * Implements hook_node_update().
+ */
+function message_subscribe_custom_node_update(Node $node) {
+  $subscribers = \Drupal::service('message_subscribe.subscribers');
+
+  // Match publication status of message to status of source entity.
+  message_subscribe_custom_update_message_status($node);
+
+  // See if this is a newly-published node.
+  if (!$node->isPublished()) {
+    return;
+  }
+
+  $template = !empty($node->original) && !$node->original->isPublished() ? 'publish_node' : 'update_node';
+
+  $message = Message::create([
+    'template' => $template,
+  ]);
+
+  $message->set('field_node_reference', $node);
+  $message->set('field_published', $node->isPublished());
+  $message->save();
+
+  // Do nothing more for unpublished node.
+  if (!$node->isPublished()) {
+    return;
+  }
+
+  // Queue messages to the regular node subscribers about changes in published
+  // nodes.
+  $subscribers->sendMessage($node, $message);
+}
+
+/**
+ * Implements hook_comment_insert().
+ */
+function message_subscribe_custom_comment_insert(Comment $comment) {
+  $subscribers = \Drupal::service('message_subscribe.subscribers');
+
+  $message = Message::create(
+    ['template' => 'create_comment']
+  );
+  $message->set('field_comment_reference', $comment);
+  $message->set('field_published', $comment->isPublished());
+  $message->save();
+
+  // Queue messages to notify all the node subscribers about new comment.
+  $subscribers->sendMessage($comment, $message);
+}
+
+/**
+ * Set message entity published field when it changes in the related entity.
+ *
+ * @param \Drupal\Core\Entity\ContentEntityBase $entity
+ *   The entity object.
+ */
+function message_subscribe_custom_update_message_status(ContentEntityBase $entity) {
+  if (!empty($entity->original) && $entity->isPublished() == $entity->original->isPublished()) {
+    return;
+  }
+  $query = \Drupal::entityQuery('message');
+  $field = 'field_' . $entity->getEntityType()->id() . '_reference';
+  $query->condition($field . '.target_id', $entity->id());
+
+  $results = $query->execute();
+  if (empty($results)) {
+    return;
+  }
+  $messages = Message::loadMultiple($results);
+  foreach ($messages as $message) {
+    // Do nothing if the message is related to user mentions.
+    if ($message->getTemplate()->id() != 'dsj_user_mentioned' && $message->hasField('field_published')) {
+      $message->set('field_published', $entity->isPublished());
+      $message->save();
+    }
+  }
+}

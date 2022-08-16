@@ -1,0 +1,42 @@
+settings:
+  allowed_values:
+    -
+      label: Högpresterande
+    -
+      label: Icke-modersmålstalare
+    -
+      label: 'Personer som behöver omskolning'
+    -
+      label: 'Personer inom tertiär utbildning (EQF 6)'
+    -
+      label: 'Personer som har fullföljt primärutbildning'
+    -
+      label: 'Personer inom sekundär/obligatorisk utbildning'
+    -
+      label: 'Personer som har fullföljt tertiär utbildning (EQF 7)'
+    -
+      label: 'Personer inom primärutbildning'
+    -
+      label: 'Personer med 0–3 års arbetslivserfarenhet'
+    -
+      label: 'Personer som har fullföljt tertiär utbildning (EQF 8)'
+    -
+      label: 'Personer som har fullföljt sekundär/obligatorisk utbildning'
+    -
+      label: 'Personer inom tertiär utbildning (EQF 7)'
+    -
+      label: 'Personer inom tertiär utbildning (EQF 8)'
+    -
+      label: Migranter
+    -
+      label: 'Personer med 3–10 års arbetslivserfarenhet'
+    -
+      label: 'Personer med över 10 års arbetslivserfarenhet'
+    -
+      label: 'Personer med inlärningssvårighet'
+    -
+      label: Modersmålstalare
+    -
+      label: 'Personer som har fullföljt tertiär utbildning (EQF 6)'
+    -
+      label: Lågpresterande

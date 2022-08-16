@@ -1,0 +1,49 @@
+uuid: 0ac3b212-8224-4678-8fc5-2ee41fc35839
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.dsj_text.field_dsj_see_more_link
+    - field.field.paragraph.dsj_text.field_dsj_text
+    - field.field.paragraph.dsj_text.field_dsj_title
+    - paragraphs.paragraphs_type.dsj_text
+  module:
+    - link
+    - text
+id: paragraph.dsj_text.default
+targetEntityType: paragraph
+bundle: dsj_text
+mode: default
+content:
+  field_dsj_see_more_link:
+    type: link_default
+    weight: 11
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_dsj_text:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_dsj_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

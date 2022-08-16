@@ -1,0 +1,25 @@
+uuid: abe4345c-b055-42d4-9639-4cf811dec013
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - oe_theme
+_core:
+  default_config_hash: srD-xdd3JdU8nrH08J0aENrUFBrCU-vuGT6BX9FLIpQ
+id: oe_theme_site_branding
+theme: oe_theme
+region: site_header
+weight: 0
+provider: null
+plugin: system_branding_block
+settings:
+  id: system_branding_block
+  label: 'Site branding'
+  label_display: '0'
+  provider: system
+  use_site_logo: true
+  use_site_name: true
+  use_site_slogan: false
+visibility: {  }

@@ -1,0 +1,445 @@
+<?php
+
+/**
+ * @file
+ * Provides main functionality for dsjp_private_message module.
+ */
+
+use Drupal\Core\Ajax\AjaxResponse;
+use Drupal\Core\Ajax\RedirectCommand;
+use Drupal\Core\Breadcrumb\Breadcrumb;
+use Drupal\Core\Cache\Cache;
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Link;
+use Drupal\Core\Render\BubbleableMetadata;
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Url;
+use Drupal\private_message\Entity\PrivateMessageThread;
+use Drupal\private_message\Entity\PrivateMessageThreadInterface;
+use Drupal\user\Entity\User;
+use Drupal\views\Plugin\views\query\QueryPluginBase;
+use Drupal\views\ViewExecutable;
+
+/**
+ * Implements hook_form_alter().
+ */
+function dsjp_private_message_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if (strpos($form_id, 'views_form_dsj_private_messages_block_private_message') === 0) {
+    $form['header']['views_bulk_operations_bulk_form']['action']['#default_value'] = 0;
+    unset($form['header']['views_bulk_operations_bulk_form']['select_all']);
+    unset($form['actions']);
+    // Make sure the input checkboxes are always unchecked by default.
+    if (isset($form['views_bulk_operations_bulk_form'])) {
+      $inputs = array_filter($form['views_bulk_operations_bulk_form'], function ($key) {
+        return is_numeric($key);
+      }, ARRAY_FILTER_USE_KEY);
+      foreach ($inputs as $index => $input) {
+        $form['views_bulk_operations_bulk_form'][$index]['#default_value'] = FALSE;
+      }
+    }
+    // Add the span prefix for the three dots.
+    $form['header']['views_bulk_operations_bulk_form']['actions']['#prefix'] = '<span class="trigger-submit-events"></span>';
+    $form['header']['views_bulk_operations_bulk_form']['actions']['#attributes']['class'][] = 'hidden';
+    // Make sure that the redirect url will not break the page, replacing the
+    // thread argument id with %2A.
+    $url = Url::fromRoute('view.dsj_private_messages.private_messages_page', [
+      'user' => \Drupal::currentUser()->id(),
+      'arg_1' => 'last',
+    ]);
+    $form['#action'] = $url->toString();
+  }
+  elseif ($form_id === 'private_message_add_form') {
+    $form['actions']['submit']['#value'] = t('Send');
+    $form['actions']['submit']['#submit'][] = 'dsjp_private_message_add_submit';
+    $form['message']['widget'][0]['#allowed_formats'] = ['basic_html'];
+    $form['#title'] = t('Create conversation');
+    if (isset($form['members'])) {
+      $form['members']['widget']['#description'] = '';
+    }
+    // Hide the members field if the recipient is available in the url.
+    $uid = \Drupal::requestStack()->getCurrentRequest()->query->get('recipient');
+    if (!empty($uid)) {
+      $user = User::load($uid);
+      $firstname = $user->get('field_dsj_firstname')->getString();
+      $lastname = $user->get('field_dsj_lastname')->getString();
+      $text = t('Contact @username', [
+        '@username' => $firstname . ' ' . $lastname,
+      ]);
+      $form['members']['#prefix'] = '<div class="contact-user-name">' . $text . '</div>';
+      $form['members']['widget']['#attributes']['class'][] = 'hidden';
+    }
+    // Add an ajax submit in order to keep the modal form open when errors are
+    // triggered.
+    $form['#prefix'] = '<div id="pm-add-form-wrapper">';
+    $form['#suffix'] = '</div>';
+    $form['actions']['submit']['#ajax'] = [
+      'callback' => 'dsjp_private_message_pm_add_submit',
+      'wrapper' => 'pm-add-form-wrapper',
+    ];
+    array_unshift($form['#validate'], 'dsjp_private_message_pm_validate');
+  }
+}
+
+/**
+ * Validate callback for private message add form.
+ */
+function dsjp_private_message_pm_validate(&$form, FormStateInterface $form_state) {
+  $message = $form_state->getValue('message');
+  if (!empty($message[0]['value'])) {
+    $message = str_replace('&nbsp;', '', $message[0]['value']);
+    $message = trim(strip_tags($message));
+    if (empty($message)) {
+      $form_state->setErrorByName('message', t('Message should not be empty.'));
+    }
+  }
+
+}
+
+/**
+ * Ajax submit controller for private message add form.
+ */
+function dsjp_private_message_pm_add_submit(&$form, FormStateInterface $form_state) {
+  if (!empty($form_state->getErrors())) {
+    return $form;
+  }
+  else {
+    $response = new AjaxResponse();
+    $url = Url::fromRoute('view.dsj_private_messages.private_messages_page', [
+      'user' => \Drupal::currentUser()->id(),
+      'arg_1' => 'last',
+    ]);
+    $response->addCommand(new RedirectCommand($url->toString()));
+    Cache::invalidateTags(['config:views.view.dsj_private_messages:' . \Drupal::currentUser()->id()]);
+    return $response;
+  }
+}
+
+/**
+ * Submit handler for private message add form.
+ */
+function dsjp_private_message_add_submit(&$form, FormStateInterface $form_state) {
+  // Redirect the user to the custom private message page.
+  $redirect = $form_state->getRedirect();
+  if ($redirect instanceof Url) {
+    $parameters = $redirect->getRouteParameters();
+    $url = Url::fromRoute('view.dsj_private_messages.private_messages_page', [
+      'user' => \Drupal::currentUser()->id(),
+      'arg_1' => $parameters['private_message_thread'] ?? 'last',
+    ]);
+    $form_state->setRedirectUrl($url);
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_view_alter().
+ */
+function dsjp_private_message_private_message_thread_view_alter(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display) {
+  // Remove the data toggler for loading other threads for block view mode.
+  if ($build['#view_mode'] == 'block') {
+    $build['#prefix'] = '<div class="private-message-thread-' . $build['#view_mode'] . '" data-thread-id="' . $entity->id() . '" data-last-update="' . $entity->get('updated')->value . '">';
+  }
+  // Invalidate the cache for the my messages & notifications block.
+  elseif ($build['#view_mode'] == 'default') {
+    $current_user = \Drupal::currentUser()->id();
+    Cache::invalidateTags([
+      'config:views.view.dsj_private_messages:' . $current_user,
+      'private_message_thread:' . $entity->id() . ':view:uid:' . $current_user,
+      'private_message_inbox_block:uid:' . $current_user,
+      'private_message_notification_block:uid:' . $current_user,
+      'config:block.block.dsj_private_message_notification',
+    ]);
+    \Drupal::service('user.data')->set(
+      'dsjp_private_message',
+      $current_user,
+      'last_thread_' . $entity->id() . '_view',
+      \Drupal::service('datetime.time')->getRequestTime(),
+    );
+    // Force this update in order to have the new values in notifications block.
+    \Drupal::service('user.data')->set(
+      'private_message',
+      $current_user,
+      'last_notification_check_timestamp',
+      \Drupal::service('datetime.time')->getRequestTime(),
+    );
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function dsjp_private_message_preprocess_field_multiple_value_form(&$variables) {
+  if ($variables['element']['#field_name'] == 'members') {
+    // Hide the add more button for now.
+    if (isset($variables['button'])) {
+      unset($variables['button']);
+    }
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_view_alter().
+ */
+function dsjp_private_message_private_message_view_alter(array &$build, EntityInterface $entity, $view_mode) {
+  if ($view_mode == 'full') {
+    $id = $entity->id();
+    $owner = $entity->getOwnerId();
+    // Because the load previous messages is using ajax requests, we make the
+    // check based on the current logged in user instead of the route parameter.
+    $class = 'align-' . ($owner == \Drupal::currentUser()->id() ? 'right' : 'left');
+    $build['#prefix'] = '<div id="private-message-' . $id . '" data-message-id="' . $id . '" class="private-message private-message-' . $view_mode . ' ' . $class . '">';
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_view_alter().
+ */
+function dsjp_private_message_user_view_alter(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display) {
+  if (isset($build['private_message_link'])) {
+    // If we already have a thread created, redirect the user to the private
+    // messages page on the given thread.
+    $url_parameters = $build['private_message_link']['#url']->getRouteParameters();
+    if (!empty($url_parameters['private_message_thread'])) {
+      $url = Url::fromRoute('view.dsj_private_messages.private_messages_page', [
+        'user' => \Drupal::currentUser()->id(),
+        'arg_1' => $url_parameters['private_message_thread'],
+      ]);
+      $build['private_message_link']['#url'] = $url;
+    }
+    else {
+      $build['private_message_link']['#attributes']['class'] = ['use-ajax'];
+      $build['private_message_link']['#attributes']['data-dialog-type'] = 'modal';
+    }
+    $build['private_message_link']['#title'] = t('Send message');
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function dsjp_private_message_form_views_bulk_operations_confirm_action_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if (Drupal::routeMatch()->getRawParameter('display_id') == 'block_private_messages') {
+    // Create the list of thread members to delete.
+    $form['#title'] = t('Private Message');
+    $uid = \Drupal::currentUser()->id();
+    $tempstore = 'views_bulk_operations_dsj_private_messages_block_private_messages';
+    $temp_data = \Drupal::service('tempstore.private')->get($tempstore)->get($uid);
+    if (!empty($temp_data['list'])) {
+      foreach ($temp_data['list'] as $data) {
+        $thread = PrivateMessageThread::load($data[0]);
+        if ($thread instanceof PrivateMessageThreadInterface) {
+          $members = $thread->getMembers();
+          foreach ($members as $member) {
+            if ($uid != $member->id()) {
+              $firstname = $member->get('field_dsj_firstname')->getString();
+              $lastname = $member->get('field_dsj_lastname')->getString();
+              $thread_member[] = $firstname . ' ' . $lastname;
+            }
+          }
+        }
+      }
+    }
+    if (!empty($thread_member)) {
+      // Change the list with the text warning the user about deletion.
+      $form['list'] = [
+        '#type' => 'html_tag',
+        '#tag' => 'div',
+        '#attributes' => [
+          'class' => 'confirm-delete-private-messages',
+        ],
+        'child1' => [
+          '#type' => 'html_tag',
+          '#tag' => 'div',
+          '#value' => t('Delete conversation with @users?', [
+            '@users' => implode(', ', $thread_member),
+          ]),
+        ],
+        'child2' => [
+          '#type' => 'html_tag',
+          '#tag' => 'div',
+          '#value' => t('Are you sure you want to delete this conversation? You will <span>not be able to undo</span> this action.'),
+        ],
+      ];
+    }
+    $form['actions']['submit']['#value'] = t('Delete conversation');
+    array_unshift($form['actions']['submit']['#submit'], 'dsjp_private_message_bulk_delete_submit');
+  }
+}
+
+/**
+ * Submit callback for vbo private message delete.
+ */
+function dsjp_private_message_bulk_delete_submit(array &$form, FormStateInterface $form_state) {
+  $uid = \Drupal::currentUser()->id();
+  $tempstore = 'views_bulk_operations_dsj_private_messages_block_private_messages';
+  $temp_data = \Drupal::service('tempstore.private')->get($tempstore)->get($uid);
+  if (!empty($temp_data['list'])) {
+    foreach ($temp_data['list'] as $data) {
+      $thread = PrivateMessageThread::load($data[0]);
+      if ($thread instanceof PrivateMessageThreadInterface) {
+        $members = $thread->getMembers();
+        foreach ($members as $member) {
+          Cache::invalidateTags(['config:views.view.dsj_private_messages:' . $member->id()]);
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function dsjp_private_message_form_private_message_thread_delete_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $form['#title'] = t('Private Messages');
+  $form['actions']['submit']['#value'] = t('Delete conversation');
+  $form['actions']['cancel']['#url'] = Url::fromRoute('view.dsj_private_messages.private_messages_page', [
+    'user' => \Drupal::currentUser()->id(),
+    'arg_1' => 'last',
+  ]);
+  $thread = \Drupal::routeMatch()->getParameter('private_message_thread');
+  if ($thread instanceof PrivateMessageThreadInterface) {
+    $members = $thread->getMembers();
+    foreach ($members as $member) {
+      if ($member->id() != \Drupal::currentUser()->id()) {
+        $firstname = $member->get('field_dsj_firstname')->getString();
+        $lastname = $member->get('field_dsj_lastname')->getString();
+        $thread_member = $firstname . ' ' . $lastname;
+      }
+    }
+    // Change the description of the page with the delete warning.
+    if (!empty($thread_member)) {
+      $form['description'] = [
+        '#type' => 'html_tag',
+        '#tag' => 'div',
+        '#attributes' => [
+          'class' => 'confirm-delete-private-messages',
+        ],
+        'child1' => [
+          '#type' => 'html_tag',
+          '#tag' => 'div',
+          '#value' => t('Delete conversation with @user?', [
+            '@user' => $thread_member,
+          ]),
+        ],
+        'child2' => [
+          '#type' => 'html_tag',
+          '#tag' => 'div',
+          '#value' => t('Are you sure you want to delete this conversation? You will <span>not be able to undo</span> this action.'),
+        ],
+      ];
+    }
+  }
+  $form['actions']['submit']['#submit'][] = 'dsjp_private_message_pm_delete_submit';
+}
+
+/**
+ * Submit callback for private message single page delete form.
+ */
+function dsjp_private_message_pm_delete_submit(&$form, FormStateInterface $form_state) {
+  $form_state->setRedirect('view.dsj_private_messages.private_messages_page', [
+    'user' => \Drupal::currentUser()->id(),
+    'arg_1' => 'last',
+  ]);
+}
+
+/**
+ * Implements hook_system_breadcrumb_alter().
+ */
+function dsjp_private_message_system_breadcrumb_alter(Breadcrumb &$breadcrumb, RouteMatchInterface $route_match, array $context) {
+  // Add another breadcrumb link for the "My account" when we are on VBO confirm
+  // deletion form for private messages.
+  if ($route_match->getRouteName() == 'views_bulk_operations.confirm' && $route_match->getRawParameter('display_id') == 'block_private_messages') {
+    $breadcrumb->addLink(Link::createFromRoute(t('My account'), 'entity.user.canonical', [
+      'user' => \Drupal::currentUser()->id(),
+    ]));
+  }
+}
+
+/**
+ * Implements hook_views_query_alter().
+ */
+function dsjp_private_message_views_query_alter(ViewExecutable $view, QueryPluginBase $query) {
+  // Filter the private message view in order to show only the threads that are
+  // not deleted.
+  if ($view->id() == 'dsj_private_messages') {
+    $definition = [
+      'table' => 'pm_thread_history',
+      'field' => 'thread_id',
+      'left_table' => 'private_message_threads',
+      'left_field' => 'id',
+      'extra' => 'pm_thread_history.delete_timestamp = 0 OR pm_thread_history.delete_timestamp < private_message_threads.updated',
+    ];
+    $join = Drupal::service('plugin.manager.views.join')->createInstance('standard', $definition);
+    $query->addRelationship('pm_thread_history', $join, 'pm_thread_history');
+    if ($uid = \Drupal::routeMatch()->getRawParameter('user')) {
+      $query->where[0]['conditions'][] = [
+        'field' => 'pm_thread_history.uid',
+        'value' => $uid,
+        'operator' => '=',
+      ];
+    }
+  }
+}
+
+/**
+ * Implements hook_token_info().
+ */
+function dsjp_private_message_token_info() {
+  $token['tokens']['private_message']['dsj_thread_url'] = [
+    'name' => t('Thread Url'),
+    'description' => t('Thread url for user the message was sent to.'),
+  ];
+  $token['tokens']['private_message']['sender_fullname'] = [
+    'name' => t('Sender Fullname'),
+    'description' => t('Full name of the user who sent the message.'),
+  ];
+
+  return $token;
+}
+
+/**
+ * Implements hook_tokens().
+ */
+function dsjp_private_message_tokens($type, $tokens, array $data, array $options, BubbleableMetadata $bubbleable_metadata) {
+  $replacements = [];
+  if ($type == 'private_message') {
+    if (isset($data['user'])) {
+      foreach ($tokens as $name => $original) {
+        if ($name == 'dsj_thread_url') {
+          $url = Url::fromRoute('view.dsj_private_messages.private_messages_page', [
+            'user' => $data['user']->id(),
+            'arg_1' => 'last',
+          ], [
+            'absolute' => TRUE,
+          ]);
+          $replacements[$original] = $url->toString();
+        }
+        elseif ($name == 'sender_fullname') {
+          $private_message = $data['private_message'];
+          $owner = $private_message->getOwner();
+          $names = _edsjp_get_user_fullname($owner);
+          if (!empty($names) && count($names) > 1) {
+            $fullname = $names[0] . ' ' . $names[1];
+          }
+          else {
+            $fullname = $owner->getAccountName();
+          }
+          $replacements[$original] = $fullname;
+        }
+      }
+    }
+  }
+
+  return $replacements;
+}
+
+/**
+ * Implements hook_tokens_alter().
+ */
+function dsjp_private_message_tokens_alter(array &$replacements, array $context, BubbleableMetadata $bubbleable_metadata) {
+  if (isset($replacements['[private_message:message]'])) {
+    // Remove p tags from PM mail.
+    $replacements['[private_message:message]'] = preg_replace('/<\/?p>/', '', $replacements['[private_message:message]']);
+  }
+}

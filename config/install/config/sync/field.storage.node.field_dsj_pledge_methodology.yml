@@ -1,0 +1,21 @@
+uuid: 4e23dd55-1002-41d8-ad33-b8719a8d79cf
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_dsj_pledge_methodology
+field_name: field_dsj_pledge_methodology
+entity_type: node
+type: list_string
+settings:
+  allowed_values: null
+  allowed_values_function: dsjp_pledge_methodology_field_values
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

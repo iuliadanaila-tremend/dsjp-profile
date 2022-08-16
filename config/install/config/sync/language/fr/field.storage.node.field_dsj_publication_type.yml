@@ -1,0 +1,34 @@
+settings:
+  allowed_values:
+    -
+      label: 'Fiche d’information'
+    -
+      label: Prévisions
+    -
+      label: 'Lignes directrices générales'
+    -
+      label: 'Informations générales'
+    -
+      label: Revue
+    -
+      label: 'Plan national'
+    -
+      label: Annonces
+    -
+      label: Article
+    -
+      label: 'Bulletin d’information'
+    -
+      label: Présentation
+    -
+      label: 'Matériel promotionnel'
+    -
+      label: Rapport
+    -
+      label: Annexe
+    -
+      label: 'Article scientifique'
+    -
+      label: Étude
+    -
+      label: 'Document de travail'

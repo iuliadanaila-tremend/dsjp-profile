@@ -1,0 +1,12 @@
+settings:
+  allowed_values:
+    -
+      label: 'Orodje za samoocenjevanje'
+    -
+      label: Metodologija
+    -
+      label: 'Programi usposabljanja'
+    -
+      label: 'Študija primera'
+    -
+      label: 'Drugo gradivo za usposabljanje'

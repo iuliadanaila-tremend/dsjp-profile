@@ -1,0 +1,50 @@
+{% set classes = [
+  'node',
+  node.isPromoted() ? 'node--promoted',
+  node.isSticky() ? 'node--sticky',
+  not node.isPublished() ? 'node--unpublished',
+  node.bundle|clean_class,
+  node.bundle|clean_class ~ '--' ~ view_mode|clean_class,
+  'node' ~ '--' ~ view_mode|clean_class,
+  'node' ~ '--' ~ node.bundle|clean_class,
+  term_type ? node.bundle|clean_class ~ '--' ~ term_type|clean_class,
+] %}
+<article{{ attributes.addClass(classes) }}>
+  <div class="notification-subscribe">
+    {{ content.flag_subscribe_node }}
+  </div>
+  {{ title_prefix }}
+  {% if not page %}
+    <h2{{ title_attributes }}>
+      <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+    </h2>
+  {% endif %}
+  {{ title_suffix }}
+
+  {% if display_submitted %}
+    {% include '@edsjp/content/partials/author-extended-info.html.twig' %}
+  {% endif %}
+
+  <div{{ content_attributes }}>
+      {{ content | without('flag_voting', 'flag_subscribe_node', 'field_dsj_comments') }}
+  </div>
+
+  {% if content.flag_voting or socialShare %}
+    <div class="voteShare-container">
+      {% if content.flag_voting %}
+        <div class="voting">{{ content.flag_voting }}</div>
+      {% endif %}
+
+      {% if socialShare %}
+        <div class="sharing">{{ socialShare }}</div>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  {% if content.field_dsj_comments %}
+    <div class="node--comments">
+      {{ content.field_dsj_comments }}
+    </div>
+  {% endif %}
+
+</article>

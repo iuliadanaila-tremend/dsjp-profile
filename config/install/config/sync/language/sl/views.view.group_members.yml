@@ -1,0 +1,26 @@
+display:
+  default:
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Apply
+          reset_button_label: Ponastavi
+      fields:
+        name:
+          label: Uporabnik
+        group_roles:
+          label: Vloge
+        changed:
+          label: Posodobljeno
+        dropbutton:
+          label: Operacije
+      arguments:
+        gid:
+          exception:
+            title: Vsi
+      title: 'Members Admin'
+  page_1:
+    display_title: Stran
+    display_options:
+      menu:
+        title: 'Members Admin'

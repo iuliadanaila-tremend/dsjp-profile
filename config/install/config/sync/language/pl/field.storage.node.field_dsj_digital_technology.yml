@@ -1,0 +1,40 @@
+settings:
+  allowed_values:
+    0:
+      label: 'Sztuczna inteligencja'
+    1:
+      label: Cyberbezpieczeństwo
+    2:
+      label: 'Internet rzeczy'
+    3:
+      label: 'Duże zbiory danych,'
+    4:
+      label: 'Łańcuch bloków'
+    5:
+      label: Robotyka
+    6:
+      label: 'Poszerzona rzeczywistość'
+    7:
+      label: 'Wirtualna rzeczywistość'
+    8:
+      label: 'Obliczenia wielkiej skali'
+    9:
+      label: 'Uczenie maszynowe'
+    10:
+      label: 'Chmura obliczeniowa'
+    12:
+      label: Telekomunikacja
+    13:
+      label: Wi-Fi
+    14:
+      label: 'Obliczenia kwantowe'
+    15:
+      label: Oprogramowanie
+    16:
+      label: 'Rozwój aplikacji mobilnych'
+    17:
+      label: 'Rozwój sieci'
+    18:
+      label: Mikroelektronika
+    19:
+      label: 'Umiejętności cyfrowe'

@@ -1,0 +1,8 @@
+uuid: 43e820ce-31c8-42d9-bb18-2aa9fa734349
+langcode: en
+status: true
+dependencies: {  }
+id: cover_image
+label: 'Cover Image'
+revision: 0
+description: ''

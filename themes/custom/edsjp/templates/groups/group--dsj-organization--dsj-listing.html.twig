@@ -1,0 +1,19 @@
+<div class="group-content">
+  <a href="{{ url }}" class="title-wrapper">
+    {{ content|without('field_dsj_is_pledger', 'current_state', 'field_dsj_country') }}
+    <div class="is-pledge-badge">
+      {{ content.field_dsj_is_pledger }}
+    </div>
+  </a>
+  {% if content.current_state %}
+    <div class="status-field">
+      Status:  {{ content.current_state }}
+    </div>
+  {% endif %}
+  {{ content.field_dsj_country }}
+</div>
+<div class="group-actions">
+  <div class="more-link">
+    <a href="{{ url }}">{{ 'Read more'|t }}</a>
+  </div>
+</div>

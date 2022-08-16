@@ -1,0 +1,98 @@
+<div class="initiative-details">
+  <div class="content-text">
+    {{ label }}
+    {% if content.body %}
+      {{ content.body }}
+    {% endif %}
+    <div class="more-button-wrapper">
+      <div class="more-button-tooltip">
+        <div>
+          <a href="{{ url('entity.node.edit_form', {"node" : node.id }) }}">{{ 'Edit initiative'|t }}</a>
+          <a href="{{ url('dsjp_pledge.initiative_update', {"node" : node.id }) }}">{{ 'Update status'|t }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="content-table">
+    <div class="table-wrapper">
+      <div class="content-header">
+        <div class="header-cell">
+          {{ 'Initative name'|t }}
+        </div>
+        <div class="header-cell">
+          {{ 'Pillar'|t }}
+        </div>
+        <div class="header-cell">
+          {{ 'Type'|t }}
+        </div>
+        <div class="header-cell">
+          {{ 'Methodology'|t }}
+        </div>
+      </div>
+      <div class="content-body">
+        <div class="body-cell">
+          {{ label }}
+        </div>
+        <div class="body-cell">
+          {% if content.field_dsj_initiative_type %}
+            <span class="pillar-icon" id="pledge-pillar-{{ content.field_dsj_initiative_type|render|striptags|trim }}">.</span>
+          {% endif %}
+        </div>
+        <div class="body-cell">
+          {% if content.field_dsj_action_type %}
+            {{ content.field_dsj_action_type }}
+          {% endif %}
+        </div>
+        <div class="body-cell">
+          {% if content.field_dsj_methodology %}
+            {{ content.field_dsj_methodology }}
+          {% else %}
+            -
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="title">Initiative status</div>
+  <div class="content-table">
+    <div class="table-wrapper">
+      <div class="content-header">
+        <div class="header-cell">
+          {{ 'Initiative status'|t }}
+        </div>
+        <div class="header-cell">
+          {{ 'Quantity'|t }}
+        </div>
+        <div class="header-cell">
+          {{ 'Target'|t }}
+        </div>
+        <div class="header-cell">
+          {{ 'Place'|t }}
+        </div>
+      </div>
+      <div class="content-body">
+        <div class="body-cell">
+          {% if percentage %}
+            {{ percentage }}%
+          {% else %}
+            0%
+          {% endif %}
+        </div>
+        <div class="body-cell">
+          {% if quantity %}
+            {{ quantity }}
+          {% else %}
+            0
+          {% endif %}
+        </div>
+        <div class="body-cell">
+          {{ content.field_dsj_quantity }}
+        </div>
+        <div class="body-cell">
+          -
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

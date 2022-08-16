@@ -1,0 +1,24 @@
+uuid: eed16016-b55f-4159-95f6-680291439521
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dsj_external_id
+    - node.type.dsj_event
+  module:
+    - tmgmt_content
+third_party_settings:
+  tmgmt_content:
+    excluded: false
+id: node.dsj_event.field_dsj_external_id
+field_name: field_dsj_external_id
+entity_type: node
+bundle: dsj_event
+label: 'External ID'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

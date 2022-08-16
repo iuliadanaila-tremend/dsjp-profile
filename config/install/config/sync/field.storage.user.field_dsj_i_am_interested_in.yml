@@ -1,0 +1,81 @@
+uuid: cb8403fa-5339-4ee0-9b46-4cd5034d93c5
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - user
+id: user.field_dsj_i_am_interested_in
+field_name: field_dsj_i_am_interested_in
+entity_type: user
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: 'http://data.europa.eu/uxp/3030'
+      label: 'Artificial Intelligence'
+    -
+      value: 'http://data.europa.eu/uxp/c_04ae3ba8'
+      label: Cybersecurity
+    -
+      value: 'http://data.europa.eu/uxp/c_b12a760a'
+      label: 'Internet of Things'
+    -
+      value: 'http://data.europa.eu/uxp/c_bf1e2c81'
+      label: 'Big Data'
+    -
+      value: 'http://data.europa.eu/uxp/c_ab84e157'
+      label: Blockchain
+    -
+      value: 'http://data.europa.eu/uxp/3740'
+      label: Robotics
+    -
+      value: 'http://data.europa.eu/uxp/det_66'
+      label: 'Augmented Reality'
+    -
+      value: 'http://data.europa.eu/uxp/6261'
+      label: 'Virtual Reality'
+    -
+      value: 'http://data.europa.eu/uxp/det_72'
+      label: 'High Performance Computing'
+    -
+      value: 'http://data.europa.eu/uxp/det_69'
+      label: 'Machine Learning'
+    -
+      value: 'http://data.europa.eu/uxp/c_433922a6'
+      label: 'Cloud Computing'
+    -
+      value: 'http://data.europa.eu/uxp/det_33'
+      label: 5G
+    -
+      value: 'http://data.europa.eu/uxp/4424'
+      label: Telecommunications
+    -
+      value: 'http://data.europa.eu/uxp/det_346'
+      label: WiFi
+    -
+      value: 'http://data.europa.eu/uxp/det_73'
+      label: 'Quantum Computing'
+    -
+      value: 'http://data.europa.eu/uxp/1696'
+      label: Software
+    -
+      value: 'http://data.europa.eu/uxp/det_75'
+      label: 'Mobile Application Development'
+    -
+      value: 'http://data.europa.eu/uxp/det_74'
+      label: 'Web Development'
+    -
+      value: 'http://data.europa.eu/uxp/3876'
+      label: Microelectronics
+    -
+      value: 'http://data.europa.eu/uxp/437655'
+      label: 'Digital Skills'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

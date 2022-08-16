@@ -1,0 +1,34 @@
+settings:
+  allowed_values:
+    -
+      label: Informatieblad
+    -
+      label: Prognose
+    -
+      label: 'Algemene richtsnoeren'
+    -
+      label: 'Algemene informatie'
+    -
+      label: Tijdschrift
+    -
+      label: 'Nationaal plan'
+    -
+      label: Nieuwsberichten
+    -
+      label: Nieuwsartikel
+    -
+      label: Nieuwsbrief
+    -
+      label: Presentatie
+    -
+      label: Promotiemateriaal
+    -
+      label: Verslag
+    -
+      label: Tijdschema
+    -
+      label: 'Wetenschappelijk artikel'
+    -
+      label: Studie
+    -
+      label: Werkdocument

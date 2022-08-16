@@ -1,0 +1,11 @@
+filter_settings.dsj_filter_mentions:
+  type: filter
+  label: 'Mentions Filter settings'
+  mapping:
+    mentions_filter:
+      type: sequence
+      label: 'Mentions Type'
+      sequence:
+        type: string
+        label: 'Mention'
+        

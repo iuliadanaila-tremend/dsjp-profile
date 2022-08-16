@@ -1,0 +1,104 @@
+entity_type_groups:
+  media:
+    document:
+      advanced: advanced
+  node:
+    dsj_article:
+      basic: basic
+      advanced: advanced
+      open_graph: open_graph
+      twitter_cards: twitter_cards
+      schema_article: schema_article
+      schema_web_page: schema_web_page
+    dsj_digital_skills_resource:
+      basic: basic
+      advanced: advanced
+      open_graph: open_graph
+      twitter_cards: twitter_cards
+      schema_web_page: schema_web_page
+    dsj_discussion:
+      basic: basic
+      advanced: advanced
+      open_graph: open_graph
+      twitter_cards: twitter_cards
+      schema_web_page: schema_web_page
+    dsj_event:
+      basic: basic
+      advanced: advanced
+      open_graph: open_graph
+      twitter_cards: twitter_cards
+      schema_event: schema_event
+      schema_web_page: schema_web_page
+    dsj_funding_opportunity:
+      basic: basic
+      advanced: advanced
+      open_graph: open_graph
+      twitter_cards: twitter_cards
+      schema_web_page: schema_web_page
+    dsj_good_practice:
+      basic: basic
+      advanced: advanced
+      open_graph: open_graph
+      twitter_cards: twitter_cards
+      schema_web_page: schema_web_page
+    dsj_initiative:
+      basic: basic
+      advanced: advanced
+      open_graph: open_graph
+      twitter_cards: twitter_cards
+      schema_web_page: schema_web_page
+    dsj_landing_page:
+      basic: basic
+      advanced: advanced
+      open_graph: open_graph
+      twitter_cards: twitter_cards
+      schema_web_page: schema_web_page
+    dsj_listing:
+      basic: basic
+      advanced: advanced
+      open_graph: open_graph
+      twitter_cards: twitter_cards
+      schema_web_page: schema_web_page
+    dsj_national_coalition:
+      basic: basic
+      advanced: advanced
+      open_graph: open_graph
+      twitter_cards: twitter_cards
+      schema_web_page: schema_web_page
+    dsj_organization:
+      basic: basic
+      advanced: advanced
+      open_graph: open_graph
+      twitter_cards: twitter_cards
+      schema_web_page: schema_web_page
+    dsj_page:
+      basic: basic
+      advanced: advanced
+      open_graph: open_graph
+      twitter_cards: twitter_cards
+      schema_web_page: schema_web_page
+    dsj_skills_intelligence:
+      basic: basic
+      advanced: advanced
+      open_graph: open_graph
+      twitter_cards: twitter_cards
+      schema_web_page: schema_web_page
+    dsj_strategy:
+      basic: basic
+      advanced: advanced
+      open_graph: open_graph
+      twitter_cards: twitter_cards
+      schema_web_page: schema_web_page
+    dsj_training_offer:
+      basic: basic
+      advanced: advanced
+      open_graph: open_graph
+      twitter_cards: twitter_cards
+      schema_course: schema_course
+      schema_web_page: schema_web_page
+  taxonomy_term:
+    dsj_type_of_article:
+      basic: basic
+      advanced: advanced
+      open_graph: open_graph
+      twitter_cards: twitter_cards

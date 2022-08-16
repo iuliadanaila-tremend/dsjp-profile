@@ -1,0 +1,22 @@
+uuid: fdc08555-f7ce-4cf6-86a6-406674fe1d99
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.dsj_top_banner
+id: paragraph.dsj_top_banner.status
+field_name: status
+entity_type: paragraph
+bundle: dsj_top_banner
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

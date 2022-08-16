@@ -1,0 +1,28 @@
+display:
+  default:
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Pritaikyti
+          reset_button_label: Išvalyti
+          exposed_sorts_label: 'Rikiuoti pagal'
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'Vienetų kiekis puslapyje'
+            items_per_page_options_all_label: '- Visos -'
+      fields:
+        version:
+          label: Versija
+        language:
+          label: Kalba
+        revision:
+          label: Versija
+        conditions:
+          label: 'Terminai ir Sąlygos'
+        extras:
+          label: 'Papildomi pasirenkami langeliai'
+        changes:
+          label: Pakeitimai
+  page_1:
+    display_title: Puslapis

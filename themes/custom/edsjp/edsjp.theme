@@ -1,0 +1,259 @@
+<?php
+
+/**
+ * @file
+ * OpenEuropa sub-theme.
+ *
+ * Place your custom PHP code in this file.
+ */
+
+use Drupal\block\BlockInterface;
+use Drupal\block\Entity\Block;
+use Drupal\Core\Block\BlockPluginInterface;
+use Drupal\Core\Url;
+use Drupal\views\Plugin\views\cache\CachePluginBase;
+use Drupal\views\ViewExecutable;
+
+$fileSystem = Drupal::service('file_system');
+
+// Include all files from the includes directory.
+$includes_path = $fileSystem->dirname(__FILE__) . '/includes/*.inc';
+foreach (glob($includes_path) as $filename) {
+  require_once $fileSystem->dirname(__FILE__) . '/includes/' . $fileSystem->basename($filename);
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function edsjp_theme_suggestions_page_alter(array &$suggestions, array $variables): void {
+  $route = \Drupal::routeMatch();
+  if ($route->getRouteName() === 'entity.node.latest_version') {
+    $suggestions[] = 'page__node__' . $route->getParameter('node')->bundle();
+    $suggestions[] = 'page__node__latest__' . $route->getParameter('node')->bundle();
+  }
+}
+
+/**
+ * Implements hook_views_post_render().
+ *
+ * @see media_library_views_post_render
+ */
+function edsjp_views_post_render(ViewExecutable $view, &$output, CachePluginBase $cache) {
+  // Media library styling is not added in the oe_theme so it needs to be added
+  // here in order to have the modal work properly.
+  if ($view->id() === 'media_library') {
+    $output['#attached']['library'][] = 'seven/media_library';
+  }
+}
+
+/**
+ * Recursive prepare menu items.
+ *
+ * @param array $menu_items
+ *   Array of menu items.
+ *
+ * @return array[]
+ *   Return array of menu items prepared for twig.
+ */
+function edsjp_map_menu_items(array $menu_items) {
+  return array_map(function ($item) {
+    if (isset($item['below'])) {
+      return [
+        'label' => $item['title'],
+        'path' => $item['url'],
+        'is_current' => $item['in_active_trail'],
+        'content' => $item['content'],
+        'children' => !empty($item['below']) ? edsjp_map_menu_items($item['below']) : [],
+      ];
+    }
+  }, $menu_items);
+}
+
+/**
+ * Implements hook_preprocess_menu__main().
+ */
+function edsjp_preprocess_menu(array &$variables): void {
+  if ($variables['menu_name'] == 'main') {
+    // Massage data to be compliant with ECL navigation menu data structure.
+    $variables['links'] = edsjp_map_menu_items($variables['items']);
+    $block = \Drupal::service('plugin.manager.block')->createInstance('cta_button', []);
+    if ($block instanceof BlockPluginInterface) {
+      $variables['cta_button_block'] = $block->build();
+    }
+  }
+  // Set the returnto query parameter for user login/logout header link.
+  elseif ($variables['menu_name'] == 'account') {
+    // Make sure that the menu gets cached based on the current page.
+    $variables['#cache']['contexts'][] = 'url.path';
+    foreach ($variables['items'] as $key => &$item) {
+      if ($key == 'user.logout') {
+        $query = [
+          'returnto' => \Drupal::requestStack()->getCurrentRequest()->getRequestUri(),
+        ];
+        $item['url']->setOption('query', $query);
+      }
+    }
+    if (!\Drupal::currentUser()->isAnonymous()) {
+      $key = array_search('user.logout', array_keys($variables['items']));
+      $new_link = $variables['items']['user.page'];
+      $new_link['url'] = Url::fromRoute('view.dsj_private_messages.private_messages_page', [
+        'user' => \Drupal::currentUser()->id(),
+        'arg_1' => 'last',
+      ]);
+      unset($new_link['original_link']);
+      $new_link['title'] = t('Messages');
+      $new_items = array_slice($variables['items'], 0, $key, TRUE) + ['messages.page' => $new_link] + array_slice($variables['items'], $key, NULL, TRUE);
+      $variables['items'] = $new_items;
+      $block = Block::load('dsj_private_message_notification');
+      if ($block instanceof BlockInterface) {
+        $variables['items']['messages.page']['pm_notification_block'] = \Drupal::entityTypeManager()->getViewBuilder('block')->view($block);
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function edsjp_theme_suggestions_select_alter(array &$suggestions, array $variables) {
+  if (isset($variables['element']['#field_name'])) {
+    $suggestions[] = 'select__' . $variables['element']['#field_name'];
+  }
+}
+
+/**
+ * Implements hook_page_attachments_alter().
+ */
+function edsjp_page_attachments_alter(array &$attachments) {
+  $attachments['#attached']['html_head'][] = [
+    [
+      '#type'  => 'html_tag',
+      '#tag'   => 'script',
+      '#value' => "<script>
+                   (function(h,e,a,t,m,p) {
+                   m=e.createElement(a);m.async=!0;m.src=t;
+                   p=e.getElementsByTagName(a)[0];p.parentNode.insertBefore(m,p);
+                   })(window,document,'script','https://u.heatmap.it/log.js');
+                   </script>",
+    ],
+    'edsjp-heatmap',
+  ];
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function edsjp_theme_suggestions_views_view_alter(array &$suggestions, array $variables) {
+  $ids = [
+    'dsj_reports',
+    'dsj_reports_comments',
+    'dsj_reports_users',
+    'dsj_reports_content_proposal_submissions',
+    'dsj_reports_imported_content',
+  ];
+  if (isset($variables['view']) && in_array($variables['view']->id(), $ids)) {
+    $suggestions[] = 'views_view__reports';
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function edsjp_theme_suggestions_slick_alter(array &$suggestions, array $variables) {
+  if (isset($variables['element']['#settings']['bundle'])) {
+    $suggestions[] = 'slick__' . $variables['element']['#settings']['bundle'];
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function edsjp_theme_suggestions_slick_vanilla_alter(array &$suggestions, array $variables) {
+  if (isset($variables['element']['#settings']['bundle'])) {
+    $suggestions[] = 'slick_vanilla__' . $variables['element']['#settings']['bundle'];
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function edsjp_theme_suggestions_private_message_thread_alter(array &$suggestions, array $variables) {
+  $suggestions[] = 'private_message_thread__' . $variables['elements']['#view_mode'];
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function edsjp_preprocess_page(&$variables) {
+  if (\Drupal::routeMatch()->getRouteName() == 'view.dsj_private_messages.private_messages_page') {
+    $variables['#attached']['library'][] = 'edsjp/private_message';
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function edsjp_preprocess_html(&$variables) {
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  if ($route_name == 'view.dsj_private_messages.private_messages_page' ||
+    $route_name == 'entity.private_message_thread.delete_form' ||
+    ($route_name == 'views_bulk_operations.confirm' && \Drupal::routeMatch()->getRawParameter('display_id') == 'block_private_messages')) {
+    $variables['attributes']['class'][] = 'private-messages-page';
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function edsjp_theme_suggestions_input_alter(array &$suggestions, array $variables) {
+  if (isset($variables['element']) && $variables['element']['#type'] == 'file') {
+    if (strpos($variables['element']['#id'], 'dsj-attachments') !== FALSE) {
+      $suggestions[] = 'input__file__attachments';
+    }
+    elseif (strpos($variables['element']['#id'], 'dsj-group-image') !== FALSE) {
+      $suggestions[] = 'input__file__group_image';
+    }
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function edsjp_theme_suggestions_form_alter(array &$suggestions, array $variables) {
+  if (isset($variables['element']) && isset($variables['element']['#form_id']) && in_array($variables['element']['#form_id'], [
+    'node_dsj_pledge_initiative_form',
+    'node_dsj_pledge_initiative_edit_form',
+  ])) {
+    $suggestions[] = 'form__pledge_initiative';
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function edsjp_theme_suggestions_bef_links_alter(array &$suggestions, array $variables) {
+  if (isset($variables['element']['#name']) && $variables['element']['#name'] == 'initiative_type') {
+    $suggestions[] = 'bef_links__initiative_type';
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function edsjp_preprocess_bef_links(&$variables) {
+  if (isset($variables['element']['#name']) && $variables['element']['#name'] == 'initiative_type') {
+    foreach ($variables['children'] as $key) {
+      $class = str_replace(' ', '-', mb_strtolower($variables['element'][$key]['#title']));
+      $variables['element'][$key]['#name'] = $variables['element'][$key]['#title'];
+      $variables['element'][$key]['#class'] = $class;
+      $variables['element'][$key]['#title'] = '';
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess().
+ */
+function edsjp_preprocess(&$variables, $hook) {
+  $variables['base_path'] = base_path();
+}

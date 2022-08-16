@@ -1,0 +1,26 @@
+settings:
+  allowed_values:
+    -
+      label: NVO
+    -
+      label: 'Viešoji įstaiga'
+    -
+      label: 'Formaliojo švietimo ir mokymo paslaugų teikėjas'
+    -
+      label: Įmonės/pramonė
+    -
+      label: 'Viešojo ir privačiojo sektorių partnerystė'
+    -
+      label: Kita
+    -
+      label: 'Darbo sąjunga'
+    -
+      label: 'Tyrimų institucijos'
+    -
+      label: Asociacija
+    -
+      label: 'Atviroji mokymosi platforma'
+    -
+      label: 'Interesų grupė'
+    -
+      label: Politikas

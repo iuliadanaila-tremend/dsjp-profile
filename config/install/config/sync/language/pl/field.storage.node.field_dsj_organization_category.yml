@@ -1,0 +1,26 @@
+settings:
+  allowed_values:
+    -
+      label: 'ORGANIZACJE POZARZĄDOWE'
+    -
+      label: 'Instytucja publiczna'
+    -
+      label: 'Organizator kształcenia i szkolenia formalnego'
+    -
+      label: Przedsiębiorstwo/Przemysł
+    -
+      label: 'Partnerstwo publiczno-prywatne'
+    -
+      label: Inne
+    -
+      label: 'Unia Pracy'
+    -
+      label: 'Zespoły ekspertów'
+    -
+      label: Stowarzyszenie
+    -
+      label: 'Otwarta platforma uczenia się'
+    -
+      label: 'Grupa zainteresowań'
+    -
+      label: Decydent

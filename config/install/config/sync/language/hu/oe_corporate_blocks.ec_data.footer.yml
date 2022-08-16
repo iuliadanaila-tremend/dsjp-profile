@@ -1,0 +1,78 @@
+corporate_site_link:
+  href: 'https://ec.europa.eu/info/index_hu'
+  label: 'Az Európai Bizottság honlapja'
+class_navigation:
+  -
+    href: 'https://ec.europa.eu/info/strategy_hu'
+    label: Stratégia
+  -
+    href: 'https://ec.europa.eu/info/about-european-commission_hu'
+    label: 'Az Európai Bizottságról'
+  -
+    href: 'https://ec.europa.eu/info/business-economy-euro_hu'
+    label: 'Vállalkozások, gazdaság, euró'
+  -
+    href: 'https://ec.europa.eu/info/live-work-travel-eu_hu'
+    label: 'Élet, munka, utazás az EU-ban'
+  -
+    href: 'https://ec.europa.eu/info/law_hu'
+    label: Jogszabályok
+  -
+    href: 'https://ec.europa.eu/info/funding-tenders_hu'
+    label: 'Finanszírozási lehetőségek, felhívások'
+  -
+    href: 'https://ec.europa.eu/info/research-and-innovation_hu'
+    label: 'Kutatás és innováció'
+  -
+    href: 'https://ec.europa.eu/info/energy-climate-change-environment_hu'
+    label: 'Energiaunió, éghajlat-politika, környezet'
+  -
+    href: 'https://ec.europa.eu/info/education_hu'
+    label: Oktatás
+  -
+    href: 'https://ec.europa.eu/info/aid-development-cooperation-fundamental-rights_hu'
+    label: 'Segítségnyújtás, fejlesztési együttműködés, alapvető jogok'
+  -
+    href: 'https://ec.europa.eu/info/food-farming-fisheries_hu'
+    label: 'Élelmiszeripar, mezőgazdaság, halászat'
+  -
+    href: 'https://ec.europa.eu/info/eu-regional-and-urban-development_hu'
+    label: 'Uniós regionális és várospolitika'
+  -
+    href: 'https://ec.europa.eu/info/jobs-european-commission_hu'
+    label: 'Álláslehetőségek az Európai Bizottságnál'
+  -
+    href: 'https://ec.europa.eu/info/statistics_hu'
+    label: Statisztikák
+  -
+    href: 'https://ec.europa.eu/commission/presscorner/home/hu'
+    label: Hírek
+  -
+    href: 'https://ec.europa.eu/info/events_hu'
+    label: Események
+  -
+    href: 'https://ec.europa.eu/info/publications_hu'
+    label: Kiadványok
+service_navigation:
+  -
+    href: 'https://ec.europa.eu/info/about-european-commission/contact_hu'
+    label: 'Fel szeretné venni a kapcsolatot az Európai Bizottsággal?'
+  -
+    href: 'https://europa.eu/european-union/contact/social-networks_hu#n:+i:4+e:1+t:+s'
+    label: 'Az Európai Bizottság a közösségi média felületein'
+  -
+    href: 'https://ec.europa.eu/info/resources-partners_hu'
+    label: 'Erőforrások, segédeszközök'
+legal_navigation:
+  -
+    href: 'https://ec.europa.eu/info/language-policy_hu'
+    label: Nyelvpolitika
+  -
+    href: 'https://ec.europa.eu/info/cookies_hu'
+    label: Cookie-k
+  -
+    href: 'https://ec.europa.eu/info/privacy-policy_hu'
+    label: Adatvédelem
+  -
+    href: 'https://ec.europa.eu/info/legal-notice_hu'
+    label: 'Jogi nyilatkozat'

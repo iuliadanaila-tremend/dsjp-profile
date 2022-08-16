@@ -1,0 +1,6 @@
+my_messages_block:
+  js:
+    js/my_messages_block.js: { }
+  dependencies:
+    - core/jquery
+    - core/drupal

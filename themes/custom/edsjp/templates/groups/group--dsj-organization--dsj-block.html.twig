@@ -1,0 +1,37 @@
+<div{{ attributes }}>
+
+  <div{{ content_attributes }}>
+
+    {% if content.field_dsj_group_image %}
+      <a href="{{ url }}">
+        {{ content.field_dsj_group_image }}
+      </a>
+    {% endif %}
+
+    <a href="{{ url }}">
+      {{ content.label }}
+    </a>
+
+    {{ content|without('label', 'field_dsj_group_image', 'field_dsj_contact_person_pledges', 'field_dsj_contact_email_pledges') }}
+    {% if content.field_dsj_contact_person_pledges|render|striptags|trim or content.field_dsj_contact_email_pledges|render|striptags|trim %}
+      <div class="field field--name-field-dsj-contact-pledges">
+        <div class="organisation-contact-pledges organisation-item">
+        <div class="organisation-title">
+          {{'Contact person for Pledges'|t}}
+        </div>
+
+          <div class="organisation-content">
+            <div class="organisation-contact-name">
+              {{ content.field_dsj_contact_person_pledges }}
+            </div>
+            <div class="organisation-contact-email">
+              {{ content.field_dsj_contact_email_pledges }}
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+
+  </div>
+
+</div>

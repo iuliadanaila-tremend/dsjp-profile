@@ -1,0 +1,14 @@
+settings:
+  allowed_values:
+    -
+      label: 'Na delovnem mestu'
+    -
+      label: 'Na podlagi projekta'
+    -
+      label: Splošni
+    -
+      label: Spletno
+    -
+      label: Mešani
+    -
+      label: 'Na podlagi raziskav/laboratorijskih preskusov'

@@ -1,0 +1,12 @@
+settings:
+  allowed_values:
+    -
+      label: 'Alat za samoprocjenu'
+    -
+      label: Metodologija
+    -
+      label: 'Kurikulumi osposobljavanja'
+    -
+      label: 'Studija slučaja'
+    -
+      label: 'Ostali materijali za osposobljavanje'

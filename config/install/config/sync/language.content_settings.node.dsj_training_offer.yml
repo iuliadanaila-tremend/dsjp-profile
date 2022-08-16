@@ -1,0 +1,18 @@
+uuid: 1b578f34-76cc-4753-9185-2439181eedfa
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.dsj_training_offer
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+id: node.dsj_training_offer
+target_entity_type_id: node
+target_bundle: dsj_training_offer
+default_langcode: site_default
+language_alterable: false

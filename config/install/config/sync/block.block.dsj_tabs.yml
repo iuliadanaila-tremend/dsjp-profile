@@ -1,0 +1,29 @@
+uuid: ea504d44-532b-4281-8ca6-c6fcec5c6f0c
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - edsjp
+_core:
+  default_config_hash: PnhvOOg3dp0eO7NMXGJQijwuDBdEqDF2hag3eVvSMzk
+id: dsj_tabs
+theme: edsjp
+region: content
+weight: -13
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: Tabs
+  label_display: '0'
+  provider: core
+  primary: true
+  secondary: true
+visibility:
+  request_path:
+    id: request_path
+    negate: true
+    context_mapping: {  }
+    pages: "/post/*/edit\r\n/post/*/delete\r\n/user/*/profile\r\n/group/*/edit"

@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: 'Digitale Kompetenzen der Arbeitskräfte.'
+    -
+      label: 'Digitale Kompetenzen von IKT-Fachkräften und anderen digitalen Fachleuten.'
+    -
+      label: 'Digitale Kompetenzen im Bildungswesen.'
+    -
+      label: 'Digitale Kompetenzen für alle'

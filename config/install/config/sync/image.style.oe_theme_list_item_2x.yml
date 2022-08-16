@@ -1,0 +1,17 @@
+uuid: bf64a16f-fd1e-4c09-bda8-a81521c38d84
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: ESC9MGLxVc0UWsOnE9-CWutDMyDMJf4_Y9sQtpBuK2w
+name: oe_theme_list_item_2x
+label: 'List item 2x'
+effects:
+  62060233-b261-48dd-9556-8cff0803b385:
+    uuid: 62060233-b261-48dd-9556-8cff0803b385
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 180
+      height: 180
+      anchor: center-center

@@ -1,0 +1,60 @@
+uuid: 62b19580-c6bf-453d-b8b0-8306e8ace0c6
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.dsj_banner
+    - field.field.media.image.oe_media_image
+    - media.type.image
+    - responsive_image.styles.dsj_banner
+  module:
+    - blazy
+_core:
+  default_config_hash: Io7rEAP7BEHAdpaOQIYMsl7N7Cpqh8MHlFFOf-jQbfI
+id: media.image.dsj_banner
+targetEntityType: media
+bundle: image
+mode: dsj_banner
+content:
+  oe_media_image:
+    type: blazy
+    label: hidden
+    settings:
+      caption:
+        title: '0'
+        alt: '0'
+      icon: ''
+      layout: ''
+      view_mode: ''
+      cache: 0
+      current_view_mode: dsj_banner
+      skin: ''
+      fx: ''
+      style: ''
+      background: false
+      box_caption: ''
+      box_caption_custom: ''
+      box_media_style: ''
+      responsive_image_style: dsj_banner
+      box_style: ''
+      image_style: ''
+      media_switch: ''
+      ratio: ''
+      thumbnail_style: ''
+      _uri: ''
+      breakpoints: {  }
+      sizes: ''
+      grid_header: ''
+      grid: 0
+      grid_medium: 0
+      grid_small: 0
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  langcode: true
+  name: true
+  search_api_excerpt: true
+  thumbnail: true
+  uid: true

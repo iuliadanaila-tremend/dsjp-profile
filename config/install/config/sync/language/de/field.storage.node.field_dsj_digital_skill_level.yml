@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Grundkenntnisse
+    -
+      label: Zwischenprodukt
+    -
+      label: Fortgeschritten
+    -
+      label: Digitalexperte

@@ -1,0 +1,12 @@
+settings:
+  allowed_values:
+    -
+      label: 'ELi institutsiooniline algatus'
+    -
+      label: 'Riiklik algatus'
+    -
+      label: 'Piirkondlik algatus'
+    -
+      label: 'Kohalik algatus'
+    -
+      label: 'Rahvusvaheline algatus'

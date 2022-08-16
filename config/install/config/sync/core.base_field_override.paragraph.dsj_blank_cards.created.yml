@@ -1,0 +1,18 @@
+uuid: 3a2cd4be-66b1-4133-a93e-76a6a3bf2046
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.dsj_blank_cards
+id: paragraph.dsj_blank_cards.created
+field_name: created
+entity_type: paragraph
+bundle: dsj_blank_cards
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

@@ -1,0 +1,14 @@
+settings:
+  allowed_values:
+    -
+      label: 'Sa ġimgħa (1)'
+    -
+      label: 'Sa 4 ġimgħat'
+    -
+      label: 'Sa 3 xhur'
+    -
+      label: 'Sa 6 xhur'
+    -
+      label: 'Sa sena'
+    -
+      label: 'Snin multipli'

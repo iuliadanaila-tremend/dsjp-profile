@@ -1,0 +1,19 @@
+uuid: e2eae7d0-3486-46b6-b534-4ca4036c6a3f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dsj_author
+    - node.type.dsj_strategy
+id: node.dsj_strategy.field_dsj_author
+field_name: field_dsj_author
+entity_type: node
+bundle: dsj_strategy
+label: Author
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

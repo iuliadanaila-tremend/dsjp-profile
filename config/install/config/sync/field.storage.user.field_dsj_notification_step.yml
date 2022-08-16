@@ -1,0 +1,20 @@
+uuid: 926405b0-868f-46a6-8e29-40474b950ed7
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: user.field_dsj_notification_step
+field_name: field_dsj_notification_step
+entity_type: user
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

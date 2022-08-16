@@ -1,0 +1,8 @@
+uuid: b7b561f1-28d1-49d5-b5a9-165d8e68d184
+langcode: en
+status: true
+dependencies: {  }
+name: Country
+vid: dsj_country
+description: ''
+weight: 0

@@ -1,0 +1,6 @@
+dsjp_translation.translation_callback:
+  path: '/translation/callback'
+  defaults:
+    _controller: '\Drupal\dsjp_translation\Controller\EtranslationController::callback'
+  requirements:
+    _permission: 'access content'

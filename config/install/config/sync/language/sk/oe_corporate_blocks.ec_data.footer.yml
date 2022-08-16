@@ -1,0 +1,78 @@
+corporate_site_link:
+  href: 'https://ec.europa.eu/info/index_sk'
+  label: 'Internetové stránky Európskej komisie'
+class_navigation:
+  -
+    href: 'https://ec.europa.eu/info/strategy_sk'
+    label: Stratégia
+  -
+    href: 'https://ec.europa.eu/info/about-european-commission_sk'
+    label: 'O Európskej komisii'
+  -
+    href: 'https://ec.europa.eu/info/business-economy-euro_sk'
+    label: 'Podnikanie, hospodárstvo, euro'
+  -
+    href: 'https://ec.europa.eu/info/live-work-travel-eu_sk'
+    label: 'Život, práca a cestovanie v EÚ'
+  -
+    href: 'https://ec.europa.eu/info/law_sk'
+    label: Právo
+  -
+    href: 'https://ec.europa.eu/info/funding-tenders_sk'
+    label: 'Financovanie, verejné súťaže'
+  -
+    href: 'https://ec.europa.eu/info/research-and-innovation_sk'
+    label: 'Výskum a inovácie'
+  -
+    href: 'https://ec.europa.eu/info/energy-climate-change-environment_sk'
+    label: 'Energetika, zmena klímy, životné prostredie'
+  -
+    href: 'https://ec.europa.eu/info/education_sk'
+    label: Vzdelávanie
+  -
+    href: 'https://ec.europa.eu/info/aid-development-cooperation-fundamental-rights_sk'
+    label: 'Pomoc, rozvojová spolupráca, základné práva'
+  -
+    href: 'https://ec.europa.eu/info/food-farming-fisheries_sk'
+    label: 'Potraviny, poľnohospodárstvo, rybárstvo'
+  -
+    href: 'https://ec.europa.eu/info/eu-regional-and-urban-development_sk'
+    label: 'Investície EÚ do regiónov a miest'
+  -
+    href: 'https://ec.europa.eu/info/jobs-european-commission_sk'
+    label: 'Pracovné miesta v Európskej komisii'
+  -
+    href: 'https://ec.europa.eu/info/statistics_sk'
+    label: Štatistiky
+  -
+    href: 'https://ec.europa.eu/commission/presscorner/home/sk'
+    label: Aktuality
+  -
+    href: 'https://ec.europa.eu/info/events_sk'
+    label: Udalosti
+  -
+    href: 'https://ec.europa.eu/info/publications_sk'
+    label: Publikácie
+service_navigation:
+  -
+    href: 'https://ec.europa.eu/info/about-european-commission/contact_sk'
+    label: 'Kontakty na Európsku komisiu'
+  -
+    href: 'https://europa.eu/european-union/contact/social-networks_sk#n:+i:4+e:1+t:+s'
+    label: "Sledujte Európsku komisiu na\_sociálnych médiách"
+  -
+    href: 'https://ec.europa.eu/info/resources-partners_sk'
+    label: 'Materiály pre partnerov'
+legal_navigation:
+  -
+    href: 'https://ec.europa.eu/info/language-policy_sk'
+    label: 'Jazyková politika'
+  -
+    href: 'https://ec.europa.eu/info/cookies_sk'
+    label: 'Súbory cookies'
+  -
+    href: 'https://ec.europa.eu/info/privacy-policy_sk'
+    label: 'Politika ochrany osobných údajov'
+  -
+    href: 'https://ec.europa.eu/info/legal-notice_sk'
+    label: 'Právne upozornenie'

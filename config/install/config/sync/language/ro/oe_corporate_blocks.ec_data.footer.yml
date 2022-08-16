@@ -1,0 +1,78 @@
+corporate_site_link:
+  href: 'https://ec.europa.eu/info/index_ro'
+  label: 'Site-ul Comisiei Europene'
+class_navigation:
+  -
+    href: 'https://ec.europa.eu/info/strategy_ro'
+    label: Strategie
+  -
+    href: 'https://ec.europa.eu/info/about-european-commission_ro'
+    label: 'Despre Comisia Europeană'
+  -
+    href: 'https://ec.europa.eu/info/business-economy-euro_ro'
+    label: 'Întreprinderi, economie, moneda euro'
+  -
+    href: 'https://ec.europa.eu/info/live-work-travel-eu_ro'
+    label: 'Viața, munca și călătoriile în UE'
+  -
+    href: 'https://ec.europa.eu/info/law_ro'
+    label: Reglementare
+  -
+    href: 'https://ec.europa.eu/info/funding-tenders_ro'
+    label: 'Finanțare, licitații'
+  -
+    href: 'https://ec.europa.eu/info/research-and-innovation_ro'
+    label: 'Cercetare și inovare'
+  -
+    href: 'https://ec.europa.eu/info/energy-climate-change-environment_ro'
+    label: 'Energie, schimbări climatice, mediu'
+  -
+    href: 'https://ec.europa.eu/info/education_ro'
+    label: Educație
+  -
+    href: 'https://ec.europa.eu/info/aid-development-cooperation-fundamental-rights_ro'
+    label: 'Ajutor extern, cooperare pentru dezvoltare, drepturi fundamentale'
+  -
+    href: 'https://ec.europa.eu/info/food-farming-fisheries_ro'
+    label: 'Alimentație, agricultură, pescuit'
+  -
+    href: 'https://ec.europa.eu/info/eu-regional-and-urban-development_ro'
+    label: 'Dezvoltare regională și urbană în UE'
+  -
+    href: 'https://ec.europa.eu/info/jobs-european-commission_ro'
+    label: 'Posturi la Comisia Europeană'
+  -
+    href: 'https://ec.europa.eu/info/statistics_ro'
+    label: Statistici
+  -
+    href: 'https://ec.europa.eu/commission/presscorner/home/ro'
+    label: Noutăți
+  -
+    href: 'https://ec.europa.eu/info/events_ro'
+    label: Evenimente
+  -
+    href: 'https://ec.europa.eu/info/publications_ro'
+    label: Publicații
+service_navigation:
+  -
+    href: 'https://ec.europa.eu/info/about-european-commission/contact_ro'
+    label: 'Contactați Comisia Europeană'
+  -
+    href: 'https://europa.eu/european-union/contact/social-networks_ro#n:+i:4+e:1+t:+s'
+    label: 'Urmăriți Comisia Europeană pe platformele de comunicare socială'
+  -
+    href: 'https://ec.europa.eu/info/resources-partners_ro'
+    label: 'Resurse pentru parteneri'
+legal_navigation:
+  -
+    href: 'https://ec.europa.eu/info/language-policy_ro'
+    label: 'Politica lingvistică'
+  -
+    href: 'https://ec.europa.eu/info/cookies_ro'
+    label: Cookie-urile
+  -
+    href: 'https://ec.europa.eu/info/privacy-policy_ro'
+    label: 'Politica de confidențialitate'
+  -
+    href: 'https://ec.europa.eu/info/legal-notice_ro'
+    label: 'Aviz juridic'

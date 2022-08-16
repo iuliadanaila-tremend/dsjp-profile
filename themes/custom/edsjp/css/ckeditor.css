@@ -1,0 +1,22 @@
+/* Custom css file for ckeditor */
+#private-message-ckeditor {
+  overflow-y: auto;
+}
+
+#private-message-ckeditor::-webkit-scrollbar {
+  width: 8px;
+}
+
+#private-message-ckeditor::-webkit-scrollbar-track {
+  background-color: #cccccc;
+  border-radius: 8px;
+  padding: 2px;
+  margin: 0 24px;
+}
+
+#private-message-ckeditor::-webkit-scrollbar-thumb {
+  background-color: #fff;
+  border-radius: 4px;
+  border: 2px solid #cccccc;
+  margin: 0 10px;
+}

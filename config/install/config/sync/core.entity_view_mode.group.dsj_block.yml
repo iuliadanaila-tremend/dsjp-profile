@@ -1,0 +1,10 @@
+uuid: 300c14d6-d4b3-4170-b10c-6123382b8eed
+langcode: en
+status: true
+dependencies:
+  module:
+    - group
+id: group.dsj_block
+label: Block
+targetEntityType: group
+cache: true

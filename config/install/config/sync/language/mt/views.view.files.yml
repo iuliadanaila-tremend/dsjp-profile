@@ -1,0 +1,7 @@
+display:
+  default:
+    display_options:
+      fields:
+        status:
+          settings:
+            format_custom_true: Permanenti

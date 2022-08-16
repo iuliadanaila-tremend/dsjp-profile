@@ -1,0 +1,4 @@
+error_handling:
+  message_prevent_normal_login: 'This account must log in using <a href="[cas:login-url]">EU Login</a>.'
+  message_restrict_password_management: 'The requested account is associated with EU Login and its password cannot be managed from this website.'
+login_link_label: 'Iniciar Sessão no CAS'

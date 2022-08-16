@@ -1,0 +1,12 @@
+settings:
+  allowed_values:
+    -
+      label: 'Pašnovērtējuma rīks'
+    -
+      label: Metodika
+    -
+      label: 'Mācību programmas'
+    -
+      label: 'Gadījumu izpēte'
+    -
+      label: 'Citi mācību materiāli'

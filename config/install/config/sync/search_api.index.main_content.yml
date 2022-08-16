@@ -1,0 +1,701 @@
+uuid: 31120dc1-1f72-4121-affb-f567d5c18dc6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dsj_assessment_type
+    - field.storage.user.field_dsj_bio
+
+    - field.storage.user.field_dsj_city
+    - field.storage.user.field_dsj_country
+    - field.storage.group.field_dsj_country
+    - field.storage.node.field_dsj_date
+    - field.storage.node.field_dsj_digital_skill_level
+    - field.storage.node.field_dsj_digital_technology
+    - field.storage.node.field_dsj_form_of_funding
+    - field.storage.node.field_dsj_geographic_scope
+    - field.storage.user.field_dsj_i_am_interested_in
+    - field.storage.node.field_dsj_industry
+    - field.storage.node.field_dsj_is_certificate_free
+    - field.storage.node.field_dsj_is_course_free
+    - field.storage.group.field_dsj_is_pledger
+    - field.storage.user.field_dsj_job_title
+    - field.storage.node.field_dsj_latest_update_strategy
+    - field.storage.node.field_dsj_nc_member
+    - field.storage.user.field_dsj_organisation
+    - field.storage.node.field_dsj_organization
+    - field.storage.node.field_dsj_organization_category
+    - field.storage.node.field_dsj_publication_type
+    - field.storage.node.field_dsj_skills_resource_type
+    - field.storage.node.field_dsj_target_audience
+    - field.storage.node.field_dsj_target_group
+    - field.storage.node.field_dsj_target_language
+    - field.storage.node.field_dsj_training_duration
+    - field.storage.node.field_dsj_training_start_date
+    - field.storage.node.field_dsj_type_of_article
+    - field.storage.node.field_dsj_type_of_funding
+    - field.storage.node.field_dsj_type_of_initiative
+    - field.storage.node.field_dsj_type_of_training
+    - field.storage.node.field_dsj_typology_of_training
+    - field.storage.group.field_group_description
+    - search_api.server.solr
+    - core.entity_view_mode.group.search_index
+    - core.entity_view_mode.node.search_index
+  module:
+    - search_api_solr
+    - node
+    - taxonomy
+    - dsjp_authentication_user_fields
+    - group
+    - user
+    - search_api
+    - dsjp_content
+    - dsjp_user
+third_party_settings:
+  search_api_solr:
+    finalize: false
+    commit_before_finalize: false
+    commit_after_finalize: false
+    debug_finalize: false
+    highlighter:
+      maxAnalyzedChars: 51200
+      fragmenter: gap
+      usePhraseHighlighter: true
+      highlightMultiTerm: true
+      preserveMulti: false
+      regex:
+        slop: 0.5
+        pattern: blank
+        maxAnalyzedChars: 10000
+      highlight:
+        mergeContiguous: false
+        requireFieldMatch: false
+        snippets: 3
+        fragsize: 0
+    mlt:
+      mintf: 1
+      mindf: 1
+      maxdf: 0
+      maxdfpct: 0
+      minwl: 0
+      maxwl: 0
+      maxqt: 100
+      maxntp: 2000
+      boost: false
+      interestingTerms: none
+    term_modifiers:
+      slop: 3
+      fuzzy: 1
+    advanced:
+      index_prefix: ''
+      collection: ''
+      timezone: ''
+    multilingual:
+      limit_to_content_language: false
+      include_language_independent: true
+id: main_content
+name: 'Main Content'
+description: ''
+read_only: false
+field_settings:
+  changed:
+    label: Changed
+    datasource_id: 'entity:node'
+    property_path: changed
+    type: date
+    dependencies:
+      module:
+        - node
+  created:
+    label: 'Authored on'
+    datasource_id: 'entity:node'
+    property_path: created
+    type: date
+    dependencies:
+      module:
+        - node
+  description:
+    label: Description
+    datasource_id: 'entity:taxonomy_term'
+    property_path: description
+    type: text
+    dependencies:
+      module:
+        - taxonomy
+  field_dsj_assessment_type:
+    label: 'Assessment type'
+    datasource_id: 'entity:node'
+    property_path: field_dsj_assessment_type
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_dsj_assessment_type
+  field_dsj_bio:
+    label: Bio
+    datasource_id: 'entity:user'
+    property_path: field_dsj_bio
+    type: text
+    dependencies:
+      config:
+        - field.storage.user.field_dsj_bio
+  field_dsj_city:
+    label: City
+    datasource_id: 'entity:user'
+    property_path: field_dsj_city
+    type: string
+    dependencies:
+      config:
+        - field.storage.user.field_dsj_city
+  field_dsj_country:
+    label: Country
+    datasource_id: 'entity:user'
+    property_path: field_dsj_country
+    type: string
+    dependencies:
+      config:
+        - field.storage.user.field_dsj_country
+  field_dsj_country_1:
+    label: 'Geographic Scope - Country'
+    datasource_id: 'entity:group'
+    property_path: field_dsj_country
+    type: integer
+    dependencies:
+      config:
+        - field.storage.group.field_dsj_country
+  field_dsj_date:
+    label: Date
+    datasource_id: 'entity:node'
+    property_path: field_dsj_date
+    type: date
+    dependencies:
+      config:
+        - field.storage.node.field_dsj_date
+  field_dsj_date_end_value:
+    label: 'Date » End date value'
+    datasource_id: 'entity:node'
+    property_path: 'field_dsj_date:end_value'
+    type: date
+    dependencies:
+      config:
+        - field.storage.node.field_dsj_date
+  field_dsj_date_upcoming:
+    label: 'Upcoming Date'
+    datasource_id: 'entity:node'
+    property_path: field_dsj_date
+    type: date
+    dependencies:
+      config:
+        - field.storage.node.field_dsj_date
+  field_dsj_digital_skill_level:
+    label: 'Digital Skill level'
+    datasource_id: 'entity:node'
+    property_path: field_dsj_digital_skill_level
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_dsj_digital_skill_level
+  field_dsj_digital_technology:
+    label: 'Digital technology / specialisation'
+    datasource_id: 'entity:node'
+    property_path: field_dsj_digital_technology
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_dsj_digital_technology
+  field_dsj_firstname:
+    label: 'First Name'
+    datasource_id: 'entity:user'
+    property_path: field_dsj_firstname
+    type: text
+    dependencies:
+      module:
+        - dsjp_authentication_user_fields
+  field_dsj_form_of_funding:
+    label: 'Form of funding'
+    datasource_id: 'entity:node'
+    property_path: field_dsj_form_of_funding
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_dsj_form_of_funding
+  field_dsj_geographic_scope:
+    label: 'Geographic scope - Country'
+    datasource_id: 'entity:node'
+    property_path: field_dsj_geographic_scope
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_dsj_geographic_scope
+  field_dsj_i_am_interested_in:
+    label: 'Digital Technology'
+    datasource_id: 'entity:user'
+    property_path: field_dsj_i_am_interested_in
+    type: string
+    dependencies:
+      config:
+        - field.storage.user.field_dsj_i_am_interested_in
+  field_dsj_industry:
+    label: 'Industry - field of education and training'
+    datasource_id: 'entity:node'
+    property_path: field_dsj_industry
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_dsj_industry
+  field_dsj_is_certificate_free:
+    label: 'Is the certificate / credential free'
+    datasource_id: 'entity:node'
+    property_path: field_dsj_is_certificate_free
+    type: boolean
+    dependencies:
+      config:
+        - field.storage.node.field_dsj_is_certificate_free
+  field_dsj_is_course_free:
+    label: 'Is this course free'
+    datasource_id: 'entity:node'
+    property_path: field_dsj_is_course_free
+    type: boolean
+    dependencies:
+      config:
+        - field.storage.node.field_dsj_is_course_free
+  field_dsj_is_pledger:
+    label: 'Is Pledger'
+    datasource_id: 'entity:group'
+    property_path: field_dsj_is_pledger
+    type: boolean
+    dependencies:
+      config:
+        - field.storage.group.field_dsj_is_pledger
+  field_dsj_job_title:
+    label: 'Job title'
+    datasource_id: 'entity:user'
+    property_path: field_dsj_job_title
+    type: text
+    boost: 0.5
+    dependencies:
+      config:
+        - field.storage.user.field_dsj_job_title
+  field_dsj_lastname:
+    label: 'Last Name'
+    datasource_id: 'entity:user'
+    property_path: field_dsj_lastname
+    type: text
+    dependencies:
+      module:
+        - dsjp_authentication_user_fields
+  field_dsj_latest_update_strategy:
+    label: 'Latest update of strategy'
+    datasource_id: 'entity:node'
+    property_path: field_dsj_latest_update_strategy
+    type: date
+    dependencies:
+      config:
+        - field.storage.node.field_dsj_latest_update_strategy
+  field_dsj_nc_member:
+    label: 'National coalition member'
+    datasource_id: 'entity:node'
+    property_path: field_dsj_nc_member
+    type: boolean
+    dependencies:
+      config:
+        - field.storage.node.field_dsj_nc_member
+  field_dsj_organisation:
+    label: Organisation
+    datasource_id: 'entity:user'
+    property_path: field_dsj_organisation
+    type: string
+    dependencies:
+      config:
+        - field.storage.user.field_dsj_organisation
+  field_dsj_organization:
+    label: Organisation
+    datasource_id: 'entity:node'
+    property_path: field_dsj_organization
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_dsj_organization
+  field_dsj_organization_category:
+    label: 'Organisation category'
+    datasource_id: 'entity:node'
+    property_path: field_dsj_organization_category
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_dsj_organization_category
+  field_dsj_publication_type:
+    label: 'Publication type'
+    datasource_id: 'entity:node'
+    property_path: field_dsj_publication_type
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_dsj_publication_type
+  field_dsj_skills_resource_type:
+    label: 'Skills resource type'
+    datasource_id: 'entity:node'
+    property_path: field_dsj_skills_resource_type
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_dsj_skills_resource_type
+  field_dsj_target_audience:
+    label: 'Target audience'
+    datasource_id: 'entity:node'
+    property_path: field_dsj_target_audience
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_dsj_target_audience
+  field_dsj_target_group:
+    label: 'Target Group'
+    datasource_id: 'entity:node'
+    property_path: field_dsj_target_group
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_dsj_target_group
+  field_dsj_target_language:
+    label: 'Target language'
+    datasource_id: 'entity:node'
+    property_path: field_dsj_target_language
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_dsj_target_language
+  field_dsj_training_duration:
+    label: 'Training duration'
+    datasource_id: 'entity:node'
+    property_path: field_dsj_training_duration
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_dsj_training_duration
+  field_dsj_training_start_date:
+    label: 'Training start date'
+    datasource_id: 'entity:node'
+    property_path: field_dsj_training_start_date
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_dsj_training_start_date
+  field_dsj_type_of_article:
+    label: 'Type of article'
+    datasource_id: 'entity:node'
+    property_path: field_dsj_type_of_article
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_dsj_type_of_article
+  field_dsj_type_of_funding:
+    label: 'Type of funding'
+    datasource_id: 'entity:node'
+    property_path: field_dsj_type_of_funding
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_dsj_type_of_funding
+  field_dsj_type_of_initiative:
+    label: 'Type of initiative'
+    datasource_id: 'entity:node'
+    property_path: field_dsj_type_of_initiative
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_dsj_type_of_initiative
+  field_dsj_type_of_training:
+    label: 'Type of Training'
+    datasource_id: 'entity:node'
+    property_path: field_dsj_type_of_training
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_dsj_type_of_training
+  field_dsj_typology_of_training:
+    label: 'Typology of training opportunties'
+    datasource_id: 'entity:node'
+    property_path: field_dsj_typology_of_training
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_dsj_typology_of_training
+  field_dsj_typology_of_training_search:
+    label: 'Typology of training opportunties'
+    datasource_id: 'entity:node'
+    property_path: field_dsj_typology_of_training
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_dsj_typology_of_training
+  field_group_description:
+    label: 'Organization description'
+    datasource_id: 'entity:group'
+    property_path: field_group_description
+    type: text
+    dependencies:
+      config:
+        - field.storage.group.field_group_description
+  form_of_funding:
+    label: 'Form of funding - Search'
+    datasource_id: 'entity:node'
+    property_path: 'field_dsj_form_of_funding:entity:name'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_dsj_form_of_funding
+      module:
+        - taxonomy
+  label:
+    label: Title
+    datasource_id: 'entity:group'
+    property_path: label
+    type: text
+    dependencies:
+      module:
+        - group
+  langcode:
+    label: Language
+    datasource_id: 'entity:node'
+    property_path: langcode
+    type: string
+    dependencies:
+      module:
+        - node
+  language_with_fallback:
+    label: 'Language (with fallback)'
+    property_path: language_with_fallback
+    type: string
+  name:
+    label: Name
+    datasource_id: 'entity:taxonomy_term'
+    property_path: name
+    type: string
+    dependencies:
+      module:
+        - taxonomy
+  nid:
+    label: ID
+    datasource_id: 'entity:node'
+    property_path: nid
+    type: integer
+    dependencies:
+      module:
+        - node
+  node_grants:
+    label: 'Node access information'
+    property_path: search_api_node_grants
+    type: string
+    indexed_locked: true
+    type_locked: true
+    hidden: true
+  organization_title:
+    label: 'Organisation Title'
+    datasource_id: 'entity:node'
+    property_path: 'field_dsj_organization:entity:title'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_dsj_organization
+      module:
+        - node
+  rendered_item:
+    label: 'Rendered HTML output'
+    property_path: rendered_item
+    type: text
+    configuration:
+      roles:
+        anonymous: anonymous
+      view_mode:
+        'entity:group':
+          dsj_organization: search_index
+        'entity:node':
+          dsj_article: search_index
+          dsj_digital_skills_resource: search_index
+          dsj_discussion: search_index
+          dsj_event: search_index
+          dsj_funding_opportunity: search_index
+          dsj_good_practice: search_index
+          dsj_initiative: search_index
+          dsj_landing_page: search_index
+          dsj_national_coalition: search_index
+          dsj_organization: search_index
+          dsj_page: search_index
+          dsj_pledge: search_index
+          dsj_pledge_initiative: ''
+          dsj_skills_intelligence: search_index
+          dsj_strategy: search_index
+          dsj_training_offer: search_index
+          simplenews_issue: ''
+        'entity:taxonomy_term':
+          dsj_type_of_article: ''
+        'entity:user':
+          user: ''
+  status:
+    label: status
+    datasource_id: 'entity:node'
+    property_path: status
+    type: boolean
+    indexed_locked: true
+    type_locked: true
+    dependencies:
+      module:
+        - node
+  sticky:
+    label: 'Sticky at top of lists'
+    datasource_id: 'entity:node'
+    property_path: sticky
+    type: boolean
+    dependencies:
+      module:
+        - node
+  title:
+    label: Title
+    datasource_id: 'entity:node'
+    property_path: title
+    type: text
+    boost: !!float 5
+    dependencies:
+      module:
+        - node
+  type:
+    label: 'Content type'
+    datasource_id: 'entity:node'
+    property_path: type
+    type: string
+    dependencies:
+      module:
+        - node
+  uid:
+    label: uid
+    datasource_id: 'entity:node'
+    property_path: uid
+    type: integer
+    indexed_locked: true
+    type_locked: true
+    dependencies:
+      module:
+        - node
+  uid_1:
+    label: 'User ID'
+    datasource_id: 'entity:user'
+    property_path: uid
+    type: integer
+    dependencies:
+      module:
+        - user
+  url:
+    label: URI
+    property_path: search_api_url
+    type: string
+    configuration:
+      absolute: false
+datasource_settings:
+  'entity:group':
+    bundles:
+      default: false
+      selected:
+        - dsj_organization
+    languages:
+      default: false
+      selected:
+        - en
+  'entity:node':
+    bundles:
+      default: true
+      selected:
+        - dsj_listing
+    languages:
+      default: false
+      selected:
+        - en
+  'entity:taxonomy_term':
+    bundles:
+      default: false
+      selected:
+        - dsj_type_of_article
+    languages:
+      default: false
+      selected:
+        - en
+  'entity:user':
+    languages:
+      default: true
+      selected: {  }
+processor_settings:
+  add_url: {  }
+  aggregated_field: {  }
+  content_access:
+    weights:
+      preprocess_query: -30
+  entity_status: {  }
+  entity_type: {  }
+  hierarchy:
+    weights:
+      preprocess_index: -45
+    fields:
+      field_dsj_form_of_funding: taxonomy_term-parent
+      field_dsj_geographic_scope: skos_concept-broader
+      field_dsj_type_of_article: taxonomy_term-parent
+  highlight:
+    weights:
+      postprocess_query: 0
+    prefix: '<strong>'
+    suffix: '</strong>'
+    excerpt: true
+    excerpt_always: false
+    excerpt_length: 256
+    exclude_fields:
+      - title
+    highlight: always
+    highlight_partial: true
+  html_filter:
+    weights:
+      preprocess_index: -15
+      preprocess_query: -15
+    all_fields: false
+    fields:
+      - field_dsj_digital_skill_level
+      - field_dsj_digital_technology
+      - field_dsj_industry
+      - field_dsj_organization_category
+      - field_dsj_publication_type
+      - field_dsj_skills_resource_type
+      - field_dsj_target_audience
+      - field_dsj_type_of_funding
+      - field_dsj_type_of_initiative
+      - field_dsj_type_of_training
+      - field_dsj_typology_of_training
+      - langcode
+      - language_with_fallback
+      - organization_title
+      - rendered_item
+      - title
+      - type
+      - url
+    title: true
+    alt: true
+    tags:
+      b: 2
+      h1: 5
+      h2: 3
+      h3: 2
+      strong: 2
+  language_with_fallback: {  }
+  rendered_item: {  }
+  reverse_hierarchy:
+    weights:
+      preprocess_index: -45
+    fields:
+      field_dsj_geographic_scope: taxonomy_term-parent
+  solr_date_range:
+    weights:
+      preprocess_index: 0
+  user_legal_accepted: {  }
+tracker_settings:
+  default:
+    indexing_order: fifo
+options:
+  cron_limit: 50
+  index_directly: true
+  track_changes_in_references: true
+server: solr

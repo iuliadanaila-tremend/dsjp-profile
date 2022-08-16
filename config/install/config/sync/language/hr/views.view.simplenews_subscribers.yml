@@ -1,0 +1,45 @@
+label: Pretplatnici
+display:
+  default:
+    display_title: Master
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Primjeni
+          reset_button_label: Poništi
+          exposed_sorts_label: 'Rasporedi po'
+          sort_asc_label: Uzlazno
+          sort_desc_label: Silazno
+      pager:
+        options:
+          tags:
+            previous: '‹ prethodna'
+            next: 'sljedeća ›'
+            first: '« prva'
+            last: 'posljednja »'
+      fields:
+        mail:
+          label: E-pošta
+        user_name:
+          label: 'Korisničko ime'
+        subscriptions_target_id:
+          separator: ', '
+        status:
+          label: Aktivno
+        created:
+          label: Stvoreno
+        operations:
+          label: Operacije
+      filters:
+        mail:
+          expose:
+            label: E-pošta
+        status:
+          expose:
+            label: Aktivno
+        subscriptions_status:
+          expose:
+            label: Status
+      title: Pretplatnici
+  page_1:
+    display_title: Stranica

@@ -1,0 +1,21 @@
+@import 'regions';
+@import 'pages';
+@import 'page-header';
+@import 'page-footer';
+@import 'breadcrumbs';
+@import 'listing';
+@import 'sidebar';
+@import 'front-page';
+@import 'search-page';
+@import 'contact-form';
+
+@include media-breakpoint-down(sm) {
+  .ecl-container {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+.ecl-row {
+  min-width: 100%;
+}

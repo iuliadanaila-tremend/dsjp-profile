@@ -1,0 +1,23 @@
+uuid: 1dce06f1-bacf-47ca-9a44-5df717224afc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dsj_digital_skill_level
+    - node.type.dsj_digital_skills_resource
+  module:
+    - options
+_core:
+  default_config_hash: FQE1cXCV2UdBm4WVJuYYS8nOcDsxKdHDIUAJBtzucwE
+id: node.dsj_digital_skills_resource.field_dsj_digital_skill_level
+field_name: field_dsj_digital_skill_level
+entity_type: node
+bundle: dsj_digital_skills_resource
+label: 'Digital skill level'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

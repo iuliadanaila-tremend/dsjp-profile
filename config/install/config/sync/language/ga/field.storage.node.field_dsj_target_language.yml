@@ -1,0 +1,50 @@
+settings:
+  allowed_values:
+    -
+      label: Bulgáiris
+    -
+      label: Cróitis
+    -
+      label: Seicis
+    -
+      label: Danmhairgis
+    -
+      label: Ollainnis
+    -
+      label: Béarla
+    -
+      label: Eastóinis
+    -
+      label: Fionlainnis
+    -
+      label: Fraincis
+    -
+      label: Gearmáinis
+    -
+      label: Gréigis
+    -
+      label: Ungáiris
+    -
+      label: Gaeilge
+    -
+      label: Iodáilis
+    -
+      label: Laitvis
+    -
+      label: Liotuáinis
+    -
+      label: Máltais
+    -
+      label: Polainnis
+    -
+      label: Portaingéilis
+    -
+      label: Rómáinis
+    -
+      label: Slóvaicis
+    -
+      label: Slóivéinis
+    -
+      label: Spáinnis
+    -
+      label: Sualainnis

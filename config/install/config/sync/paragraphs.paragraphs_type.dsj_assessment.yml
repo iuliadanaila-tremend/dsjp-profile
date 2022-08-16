@@ -1,0 +1,10 @@
+uuid: d1ac0f82-04e8-45a4-a797-aaab8c2b9a33
+langcode: en
+status: true
+dependencies: {  }
+id: dsj_assessment
+label: Assessment
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

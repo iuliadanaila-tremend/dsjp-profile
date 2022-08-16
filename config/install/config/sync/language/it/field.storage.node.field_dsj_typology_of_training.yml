@@ -1,0 +1,24 @@
+settings:
+  allowed_values:
+    0:
+      label: Corso
+    1:
+      label: 'Modulo del programma'
+    2:
+      label: Tutoraggio
+    4:
+      label: Apprendistato
+    5:
+      label: 'Visita di studio'
+    6:
+      label: 'Programma di apprendimento breve'
+    7:
+      label: Tirocinio
+    8:
+      label: 'Programma di istruzione'
+    9:
+      label: Classe
+    10:
+      label: 'Servizio di apprendimento'
+    11:
+      label: Tesi

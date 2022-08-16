@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Viešosios
+    -
+      label: Privatus
+    -
+      label: 'Visuomenės finansavimas'
+    -
+      label: 'Viešasis ir privatusis sektorius'

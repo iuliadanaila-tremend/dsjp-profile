@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Mezcladas
+    -
+      label: 'Sobre la ubicación'
+    -
+      label: 'Vida virtual'
+    -
+      label: 'Virtual preregistrado'

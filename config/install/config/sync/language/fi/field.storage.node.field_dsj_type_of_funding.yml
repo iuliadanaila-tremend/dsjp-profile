@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Julkinen
+    -
+      label: Yksityinen
+    -
+      label: Joukkorahoitus
+    -
+      label: 'Julkinen ja yksityinen sektori'

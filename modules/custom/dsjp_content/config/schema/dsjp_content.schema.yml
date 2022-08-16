@@ -1,0 +1,26 @@
+block.settings.dsjp_content:
+  type: block_settings
+  label: 'Facets List Block settings'
+  mapping:
+    show_title:
+      type: boolean
+      label: 'Show Facet titles'
+    include_search:
+      type: boolean
+      label: 'Show Facet titles'
+    exclude_empty_facets:
+      type: boolean
+      label: 'Exclude empty facets'
+    exclude_fields:
+      type: string
+      label: 'Exclude fields'
+    select_fields:
+      type: string
+      label: 'Select fields'
+block.settings.dsjp_filter_results_btn_block:
+  type: block_settings
+  label: 'Filter results btn block settings'
+  mapping:
+    text:
+      type: text
+      label: 'Text to appear on button'

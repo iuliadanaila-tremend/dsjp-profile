@@ -1,0 +1,16 @@
+display:
+  default:
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Apply
+          reset_button_label: Reset
+      fields:
+        version:
+          label: Version
+        language:
+          label: Language
+        revision:
+          label: Revision
+  page_1:
+    display_title: Page

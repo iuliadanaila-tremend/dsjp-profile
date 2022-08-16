@@ -1,0 +1,14 @@
+settings:
+  allowed_values:
+    -
+      label: 'Menos de 1 semana'
+    -
+      label: 'Até 4 semanas'
+    -
+      label: 'Até 3 meses'
+    -
+      label: 'Até 6 meses'
+    -
+      label: 'Até um ano'
+    -
+      label: 'Anos múltiplos'

@@ -1,0 +1,14 @@
+settings:
+  allowed_values:
+    -
+      label: Arbetsbaserad
+    -
+      label: Projektbaserat
+    -
+      label: Närundervisning
+    -
+      label: 'På nätet'
+    -
+      label: 'Blandat lärande'
+    -
+      label: 'Lärande i forskningslaboratorium'

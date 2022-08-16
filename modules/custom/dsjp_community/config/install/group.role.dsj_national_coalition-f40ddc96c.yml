@@ -1,0 +1,17 @@
+uuid: 23cbb877-0bcd-4cd7-acfe-d51991ad7063
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.dsj_national_coalition
+  enforced:
+    config:
+      - user.role.dsj_content_editor
+id: dsj_national_coalition-f40ddc96c
+label: 'Content Editor'
+weight: -7
+internal: true
+audience: outsider
+group_type: dsj_national_coalition
+permissions_ui: false
+permissions: {  }

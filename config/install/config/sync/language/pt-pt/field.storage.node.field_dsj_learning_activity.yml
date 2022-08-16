@@ -1,0 +1,24 @@
+settings:
+  allowed_values:
+    -
+      label: 'laboratório/simulação/trabalho prático'
+    -
+      label: 'experiência profissional'
+    -
+      label: voluntariado
+    -
+      label: investigação
+    -
+      label: 'estudo individual'
+    -
+      label: 'cursos de aprendizagem em linha'
+    -
+      label: estágio
+    -
+      label: aprendizagem
+    -
+      label: 'workshop, seminário ou conferência'
+    -
+      label: 'programa educativo'
+    -
+      label: 'aulas letivas presenciais'

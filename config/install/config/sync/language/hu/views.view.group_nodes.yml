@@ -1,0 +1,87 @@
+label: Csoporttartalmak
+display:
+  default:
+    display_title: Mester
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Alkalmaz
+          reset_button_label: Alaphelyzet
+          exposed_sorts_label: Rendezés
+          sort_asc_label: Növekvő
+          sort_desc_label: Csökkenő
+      pager:
+        options:
+          tags:
+            previous: ‹‹
+            next: ››
+            first: '« Első'
+            last: 'Utolsó »'
+          expose:
+            items_per_page_label: 'Elemek száma oldalanként'
+            items_per_page_options_all_label: '– Mind –'
+            offset_label: Eltolás
+      fields:
+        title:
+          label: Cím
+          separator: ', '
+        type:
+          label: Tartalomtípus
+          separator: ', '
+        status:
+          label: Állapot
+          settings:
+            format_custom_true: Közzétéve
+            format_custom_false: Rejtett
+          separator: ', '
+        changed:
+          label: Frissítve
+          separator: ', '
+        view_group_content:
+          label: 'Hivatkozás a csoporttartalomra'
+        edit_group_content:
+          label: 'Hivatkozás a csoporttartalom szerkesztéséhez'
+          text: 'Kapcsolat szerkesztése'
+        delete_group_content:
+          label: 'Hivatkozás a csoporttartalom törléséhez'
+          text: 'Kapcsolat törlése'
+        edit_node:
+          text: 'Tartalom szerkesztése'
+        delete_node:
+          text: 'Tartalom törlése'
+        dropbutton:
+          label: Műveletek
+      filters:
+        status:
+          expose:
+            label: 'Közzététel állapota'
+          group_info:
+            label: 'Közzététel állapota'
+            group_items:
+              1:
+                title: Közzétéve
+              2:
+                title: Rejtett
+        type:
+          expose:
+            label: Tartalomtípus
+      empty:
+        area_text_custom:
+          content: 'Nincs elérhető tartalom.'
+      arguments:
+        gid:
+          exception:
+            title: Mind
+          title: '{{ arguments.gid|placeholder }} tartalmak'
+      title: Tartalmak
+  block_1:
+    display_options:
+      fields:
+        title:
+          label: Cím
+          separator: ', '
+  page_1:
+    display_title: Oldal
+    display_options:
+      menu:
+        title: Tartalmak

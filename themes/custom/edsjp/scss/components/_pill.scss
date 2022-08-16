@@ -1,0 +1,22 @@
+////
+/// Sorting / ordering, color management mixins and functions
+/// @group components
+////
+
+/// Pill mixin
+/// @param {String} $fill-color [$blue-200] - background color
+/// @param {String} $text-color [$white] - text color
+/// @param {String} $text-transform [uppercase] - text transform
+/// @param {String} $text-weight [500] - text weight
+/// @param {String} $display [inline-block] - display mode: block or inline-block
+@mixin pill($fill-color: theme-color('fourth'), $text-color: $body-bg, $text-transform: none, $text-weight: 500, $display: inline-block) {
+  background-color: $fill-color;
+  border-radius: 6px;
+  color: $text-color !important;
+  display: $display;
+  font-size: $font-size-xs;
+  font-weight: $text-weight;
+  line-height: $line-height-xs;
+  padding: .25rem 1rem;
+  text-transform: $text-transform;
+}

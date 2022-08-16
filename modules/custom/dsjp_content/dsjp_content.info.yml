@@ -1,0 +1,10 @@
+name: dsjp_content
+type: module
+description: Custom content related functionalities.
+package: Custom
+dependencies:
+  - facets:facets
+  - jquery_ui_datepicker:jquery_ui_datepicker
+core: 8.x
+core_version_requirement: ^8 || ^9
+php: 7.3

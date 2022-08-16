@@ -1,0 +1,89 @@
+{#
+/**
+ * @file
+ * Theme override to display a single page.
+ *
+ * @see ./core/themes/stable/templates/layout/page.html.twig
+ */
+#}
+{% set content_columns = 12 %}
+{% if page.right_sidebar|render %}
+  {% set content_columns = 8 %}
+{% endif %}
+{% block site_header %}
+  <header
+    class="ecl-site-header-{{ ecl_branding }}"
+    data-ecl-site-header="true"
+    data-ecl-auto-init="SiteHeader{{ ecl_branding|capitalize }}"
+  >
+    {{ page.site_top_bar }}
+    <div class="ecl-site-header-{{ ecl_branding }}__container ecl-container">
+      <div class="ecl-site-header-{{ ecl_branding }}__top">
+        {{ page.site_header }}
+        <div class="ecl-site-header-{{ ecl_branding }}__action">
+          {{ page.site_header_secondary }}
+        </div>
+      </div>
+    </div>
+    {% block navigation %}
+      {{ page.navigation }}
+    {% endblock %}
+  </header>
+{% endblock %}
+
+{% block page_header %}
+  {% if page.page_header %}
+    {{ page.page_header }}
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  <main{{ main_attributes }}>
+    <div class="ecl-container private-messages-ecl-container">
+      <div class="ecl-row">
+        <div class="ecl-col-s-12 ecl-col-m-{{ content_columns }} private-messages-ecl-col-s-12">
+          {{ page.content }}
+        </div>
+        {% if page.right_sidebar|render %}
+          <div class="ecl-col-s-12 ecl-col-m-4 sidebar">
+            {{ page.right_sidebar }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </main>
+{% endblock %}
+
+{% if page.social_media_1_third or page.social_media_2_thirds %}
+  {% block social_media_split %}
+    <div class="region-social-media-split-wrapper">
+      <div class="ecl-container">
+        <div class="ecl-row">
+          {% if page.social_media_2_thirds %}
+            <div class="ecl-col-m-4">
+              {{ page.social_media_2_thirds }}
+            </div>
+          {% endif %}
+
+          {% if page.social_media_1_third %}
+            <div class="ecl-col-m-8">
+              {{ page.social_media_1_third }}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  {% endblock %}
+{% endif %}
+
+{% if page.footer %}
+  {% block footer %}
+    {{ page.footer }}
+  {% endblock %}
+{% endif %}
+
+{% if page.footer_eu %}
+  {% block footer_eu %}
+    {{ page.footer_eu }}
+  {% endblock %}
+{% endif %}

@@ -1,0 +1,23 @@
+uuid: e4daa3e6-e5a7-401e-b616-77aaf300d45b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dsj_skills_resource_type
+    - node.type.dsj_digital_skills_resource
+  module:
+    - options
+_core:
+  default_config_hash: H2MTPmBwQBa2ob6_dGtN9V2G1eiUr2Rr4k0aMgv54jo
+id: node.dsj_digital_skills_resource.field_dsj_skills_resource_type
+field_name: field_dsj_skills_resource_type
+entity_type: node
+bundle: dsj_digital_skills_resource
+label: 'Skills resource type'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

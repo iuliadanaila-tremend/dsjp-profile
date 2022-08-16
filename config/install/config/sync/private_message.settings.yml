@@ -1,0 +1,15 @@
+_core:
+  default_config_hash: 4EICpUJyEgT7BPbJRxo56NdQGlgNxxA0euUVX_uNXpM
+enable_notifications: true
+notify_by_default: false
+notify_when_using: 'yes'
+number_of_seconds_considered_away: 0
+hide_form_filter_tips: false
+hide_recipient_field_when_prefilled: false
+create_message_label: 'Create Private Message'
+save_message_label: ''
+autofocus_enable: false
+keys_send: ''
+remove_css: false
+enable_email_notifications: true
+send_by_default: true

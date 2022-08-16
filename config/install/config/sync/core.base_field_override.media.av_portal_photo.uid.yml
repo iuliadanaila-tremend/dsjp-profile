@@ -1,0 +1,20 @@
+uuid: 1d32941a-7230-4980-8407-01a2d8cfd50d
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.av_portal_photo
+id: media.av_portal_photo.uid
+field_name: uid
+entity_type: media
+bundle: av_portal_photo
+label: 'Authored by'
+description: 'The user ID of the author.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: 'Drupal\media\Entity\Media::getDefaultEntityOwner'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

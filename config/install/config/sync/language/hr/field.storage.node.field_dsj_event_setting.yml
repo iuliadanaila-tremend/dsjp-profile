@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Kombinirano
+    -
+      label: 'O lokaciji'
+    -
+      label: 'Virtualna živca'
+    -
+      label: 'Prethodno snimljena virtualna'

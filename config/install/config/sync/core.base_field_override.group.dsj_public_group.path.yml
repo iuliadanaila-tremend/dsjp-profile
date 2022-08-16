@@ -1,0 +1,20 @@
+uuid: a6bd34ee-cc6b-44b7-a64b-f1db17a27da8
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.dsj_public_group
+  module:
+    - path
+id: group.dsj_public_group.path
+field_name: path
+entity_type: group
+bundle: dsj_public_group
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

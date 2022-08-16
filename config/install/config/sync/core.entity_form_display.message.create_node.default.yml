@@ -1,0 +1,40 @@
+uuid: 7cd4549f-4b05-4b3d-ac3d-40c33c2859dd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.message.create_node.field_node_reference
+    - field.field.message.create_node.field_published
+    - message.template.create_node
+id: message.create_node.default
+targetEntityType: message
+bundle: create_node
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_published:
+    type: boolean_checkbox
+    weight: 11
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    field_name: field_published
+  uid:
+    type: entity_reference_autocomplete
+    weight: 5
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    '#group': advanced
+hidden:
+  field_node_reference: true

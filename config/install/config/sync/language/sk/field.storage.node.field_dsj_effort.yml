@@ -1,0 +1,8 @@
+settings:
+  allowed_values:
+    -
+      label: 'Svetlo na čiastočný úväzok'
+    -
+      label: 'Plný pracovný čas'
+    -
+      label: 'Náročná na čiastočný úväzok'

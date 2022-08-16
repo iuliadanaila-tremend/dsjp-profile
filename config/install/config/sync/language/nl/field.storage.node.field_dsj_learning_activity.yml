@@ -1,0 +1,24 @@
+settings:
+  allowed_values:
+    -
+      label: lab/simulatie/oefenwerk
+    -
+      label: werkervaring
+    -
+      label: vrijwilligerswerk
+    -
+      label: onderzoek
+    -
+      label: zelfstudie
+    -
+      label: e-learning
+    -
+      label: stage
+    -
+      label: leerlingplaats
+    -
+      label: 'workshop, seminar of conferentie'
+    -
+      label: onderwijsprogramma
+    -
+      label: contactonderwijs

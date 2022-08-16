@@ -1,0 +1,107 @@
+# Test "default" variant.
+- variant: default
+  date:
+    start: 370173600
+    end: NULL
+    timezone: Europe/Brussels
+  assertions:
+    count:
+      time.ecl-date-block.ecl-date-block--default: 1
+      time.ecl-date-block.ecl-date-block--canceled: 0
+      time.ecl-date-block.ecl-date-block--past: 0
+      time.ecl-date-block.ecl-date-block--ongoing: 0
+      abbr.ecl-date-block__month[title='September']: 1
+    equals:
+      span.ecl-date-block__day: 24
+      abbr.ecl-date-block__month: Sep
+      span.ecl-date-block__year: 1981
+
+# Test "cancelled" variant.
+- variant: cancelled
+  date:
+    start: 370173600
+    end: NULL
+    timezone: Europe/Brussels
+  assertions:
+    count:
+      time.ecl-date-block.ecl-date-block--default: 0
+      time.ecl-date-block.ecl-date-block--canceled: 1
+      time.ecl-date-block.ecl-date-block--past: 0
+      time.ecl-date-block.ecl-date-block--ongoing: 0
+      abbr.ecl-date-block__month[title='September']: 1
+    equals:
+      span.ecl-date-block__day: 24
+      abbr.ecl-date-block__month: Sep
+      span.ecl-date-block__year: 1981
+
+# Test "ongoing" variant.
+- variant: ongoing
+  date:
+    start: 370173600
+    end: NULL
+    timezone: Europe/Brussels
+  assertions:
+    count:
+      time.ecl-date-block.ecl-date-block--default: 0
+      time.ecl-date-block.ecl-date-block--canceled: 0
+      time.ecl-date-block.ecl-date-block--past: 0
+      time.ecl-date-block.ecl-date-block--ongoing: 1
+      abbr.ecl-date-block__month[title='September']: 1
+    equals:
+      span.ecl-date-block__day: 24
+      abbr.ecl-date-block__month: Sep
+      span.ecl-date-block__year: 1981
+
+# Test "past" variant.
+- variant: past
+  date:
+    start: 370173600
+    end: NULL
+    timezone: Europe/Brussels
+  assertions:
+    count:
+      time.ecl-date-block.ecl-date-block--default: 0
+      time.ecl-date-block.ecl-date-block--canceled: 0
+      time.ecl-date-block.ecl-date-block--past: 1
+      time.ecl-date-block.ecl-date-block--ongoing: 0
+      abbr.ecl-date-block__month[title='September']: 1
+    equals:
+      span.ecl-date-block__day: 24
+      abbr.ecl-date-block__month: Sep
+      span.ecl-date-block__year: 1981
+
+# Test "unknown" variant.
+- variant: unexistant
+  date:
+    start: 370173600
+    end: NULL
+    timezone: Europe/Brussels
+  assertions:
+    count:
+      time.ecl-date-block.ecl-date-block--default: 1
+      time.ecl-date-block.ecl-date-block--canceled: 0
+      time.ecl-date-block.ecl-date-block--past: 0
+      time.ecl-date-block.ecl-date-block--ongoing: 0
+      abbr.ecl-date-block__month[title='September']: 1
+    equals:
+      span.ecl-date-block__day: 24
+      abbr.ecl-date-block__month: Sep
+      span.ecl-date-block__year: 1981
+
+# Test empty variant.
+- variant: ''
+  date:
+    start: 370173600
+    end: NULL
+    timezone: Europe/Brussels
+  assertions:
+    count:
+      time.ecl-date-block.ecl-date-block--default: 1
+      time.ecl-date-block.ecl-date-block--canceled: 0
+      time.ecl-date-block.ecl-date-block--past: 0
+      time.ecl-date-block.ecl-date-block--ongoing: 0
+      abbr.ecl-date-block__month[title='September']: 1
+    equals:
+      span.ecl-date-block__day: 24
+      abbr.ecl-date-block__month: Sep
+      span.ecl-date-block__year: 1981

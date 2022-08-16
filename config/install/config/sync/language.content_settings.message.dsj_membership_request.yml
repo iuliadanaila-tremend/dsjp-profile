@@ -1,0 +1,11 @@
+uuid: ea2dea7f-639f-41bd-b5c8-b403610ee843
+langcode: en
+status: true
+dependencies:
+  config:
+    - message.template.dsj_membership_request
+id: message.dsj_membership_request
+target_entity_type_id: message
+target_bundle: dsj_membership_request
+default_langcode: site_default
+language_alterable: false

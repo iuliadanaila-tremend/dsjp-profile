@@ -1,0 +1,171 @@
+uuid: 694c8cbb-58f8-4dd2-a791-0d6c8b80ff4d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.group.dsj_organization.field_dsj_contact
+    - field.field.group.dsj_organization.field_dsj_contact_email_pledges
+    - field.field.group.dsj_organization.field_dsj_contact_person_pledges
+    - field.field.group.dsj_organization.field_dsj_country
+    - field.field.group.dsj_organization.field_dsj_endorse
+    - field.field.group.dsj_organization.field_dsj_geographic_sphere
+    - field.field.group.dsj_organization.field_dsj_group_image
+    - field.field.group.dsj_organization.field_dsj_is_pledger
+    - field.field.group.dsj_organization.field_dsj_number_of_employees
+    - field.field.group.dsj_organization.field_dsj_organization_category
+    - field.field.group.dsj_organization.field_dsj_role
+    - field.field.group.dsj_organization.field_dsj_target_sector
+    - field.field.group.dsj_organization.field_dsj_town
+    - field.field.group.dsj_organization.field_group_description
+    - group.type.dsj_organization
+    - image.style.thumbnail
+    - workflows.workflow.dsj_organisation_flow
+  module:
+    - content_moderation
+    - image
+    - paragraphs
+    - path
+    - text
+id: group.dsj_organization.default
+targetEntityType: group
+bundle: dsj_organization
+mode: default
+content:
+  field_dsj_contact:
+    type: paragraphs
+    weight: 3
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+      features:
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+  field_dsj_contact_email_pledges:
+    type: email_default
+    weight: 5
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
+  field_dsj_contact_person_pledges:
+    type: string_textfield
+    weight: 4
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_dsj_country:
+    type: options_select
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_dsj_endorse:
+    type: boolean_checkbox
+    weight: 17
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_dsj_geographic_sphere:
+    type: options_select
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_dsj_group_image:
+    type: image_image
+    weight: 12
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_dsj_number_of_employees:
+    type: options_select
+    weight: 26
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_dsj_organization_category:
+    type: options_select
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_dsj_role:
+    type: options_select
+    weight: 11
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_dsj_target_sector:
+    type: options_select
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_dsj_town:
+    type: string_textfield
+    weight: 7
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_group_description:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  label:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 13
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 16
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 14
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 15
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+hidden:
+  field_dsj_is_pledger: true
+  uid: true

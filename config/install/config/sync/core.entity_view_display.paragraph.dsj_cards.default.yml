@@ -1,0 +1,48 @@
+uuid: 114fb28f-fd97-4c42-a12d-22e1b26faacb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.dsj_cards.field_dsj_card
+    - field.field.paragraph.dsj_cards.paragraph_view_mode
+    - paragraphs.paragraphs_type.dsj_cards
+  module:
+    - entity_reference_revisions
+    - field_group
+third_party_settings:
+  field_group:
+    group_dsj_cards_wrapper:
+      children:
+        - field_dsj_card
+      label: 'Cards Wrapper'
+      parent_name: ''
+      region: content
+      weight: 0
+      format_type: html_element
+      format_settings:
+        classes: cards-wrapper
+        id: ''
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+id: paragraph.dsj_cards.default
+targetEntityType: paragraph
+bundle: dsj_cards
+mode: default
+content:
+  field_dsj_card:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: diagonal
+      link: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  paragraph_view_mode: true
+  search_api_excerpt: true

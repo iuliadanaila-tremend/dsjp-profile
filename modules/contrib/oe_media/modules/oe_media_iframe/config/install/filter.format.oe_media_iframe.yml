@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - oe_media_iframe
+name: 'Iframe media'
+format: oe_media_iframe
+# Set a higher weight than core "plain_text" format to avoid this format to be used as default.
+# @see filter_default_format()
+# @see \Drupal\filter\Element\TextFormat::processFormat()
+weight: 11
+filters:
+  filter_html:
+    id: filter_html
+    provider: filter
+    status: true
+    weight: -10
+    settings:
+      allowed_html: '<iframe allowfullscreen height importance loading referrerpolicy sandbox src width mozallowfullscreen webkitAllowFullScreen scrolling frameborder>'
+      filter_html_help: true
+      filter_html_nofollow: false
+  filter_iframe_tag:
+    id: filter_iframe_tag
+    provider: oe_media_iframe
+    status: true
+    weight: 0
+    settings: {  }

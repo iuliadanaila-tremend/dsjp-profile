@@ -1,0 +1,17 @@
+uuid: 736773c7-2e89-4cc4-ad6e-77ec4a89bc32
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.dsj_national_coalition
+  enforced:
+    config:
+      - user.role.dsj_advanced_contributor
+id: dsj_national_coalition-d34efd773
+label: 'Advanced Contributor'
+weight: 2
+internal: true
+audience: outsider
+group_type: dsj_national_coalition
+permissions_ui: false
+permissions: {  }

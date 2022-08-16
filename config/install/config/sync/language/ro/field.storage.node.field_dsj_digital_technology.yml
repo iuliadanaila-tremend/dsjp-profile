@@ -1,0 +1,36 @@
+settings:
+  allowed_values:
+    0:
+      label: 'Inteligență artificială'
+    1:
+      label: 'Securitate cibernetică'
+    2:
+      label: 'Internetul obiectelor'
+    3:
+      label: 'Volumele mari de date'
+    4:
+      label: 'Tehnologia blockchain'
+    5:
+      label: Robotică
+    6:
+      label: 'Realitate augmentată'
+    7:
+      label: 'Realitatea virtuală'
+    8:
+      label: 'Calculul de înaltă performanță'
+    9:
+      label: 'Învățare automată'
+    10:
+      label: 'Cloud computing'
+    12:
+      label: Telecomunicații
+    14:
+      label: 'Calcul cuantic'
+    16:
+      label: 'Dezvoltarea aplicațiilor mobile'
+    17:
+      label: 'Dezvoltare web'
+    18:
+      label: Microelectronică
+    19:
+      label: 'Competențe digitale'

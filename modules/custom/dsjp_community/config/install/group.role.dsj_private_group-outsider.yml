@@ -1,0 +1,18 @@
+uuid: d90b200a-5898-4c8e-8048-3e5ec22ece20
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.dsj_private_group
+id: dsj_private_group-outsider
+label: Outsider
+weight: -101
+internal: true
+audience: outsider
+group_type: dsj_private_group
+permissions_ui: true
+permissions:
+  - 'request group membership'
+  - 'update own group_node:dsj_discussion entity'
+  - 'view group'
+  - 'view group_membership content'

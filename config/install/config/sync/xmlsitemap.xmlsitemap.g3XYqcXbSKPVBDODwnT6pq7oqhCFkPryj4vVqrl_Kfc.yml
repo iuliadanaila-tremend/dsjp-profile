@@ -1,0 +1,8 @@
+uuid: 416ad595-8103-4e6b-8ca6-719b25f7b0c0
+langcode: en
+status: true
+dependencies: {  }
+id: g3XYqcXbSKPVBDODwnT6pq7oqhCFkPryj4vVqrl_Kfc
+label: 'http://web:8080/en'
+context:
+  language: en

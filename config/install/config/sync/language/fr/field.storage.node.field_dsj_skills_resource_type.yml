@@ -1,0 +1,12 @@
+settings:
+  allowed_values:
+    -
+      label: 'Outil d’autoévaluation'
+    -
+      label: Méthodologie
+    -
+      label: 'Programmes de formation'
+    -
+      label: 'Étude de cas'
+    -
+      label: 'Autre matériel de formation'

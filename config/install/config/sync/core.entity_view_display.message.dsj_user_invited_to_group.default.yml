@@ -1,0 +1,27 @@
+uuid: 2346c236-dc0b-41a9-8bd9-35c5154a540f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.message.dsj_user_invited_to_group.field_dsj_group_content
+    - field.field.message.dsj_user_invited_to_group.field_dsj_user_email
+    - message.template.dsj_user_invited_to_group
+id: message.dsj_user_invited_to_group.default
+targetEntityType: message
+bundle: dsj_user_invited_to_group
+mode: default
+content:
+  partial_0:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  partial_1:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_dsj_group_content: true
+  field_dsj_user_email: true
+  search_api_excerpt: true

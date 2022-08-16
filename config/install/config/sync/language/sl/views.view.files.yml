@@ -1,0 +1,42 @@
+label: Datoteke
+display:
+  default:
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Filter
+          reset_button_label: Ponastavi
+      fields:
+        filename:
+          label: Ime
+        filemime:
+          label: 'MIME type'
+        filesize:
+          label: Velikost
+        status:
+          label: Stanje
+          settings:
+            format_custom_true: Stalno
+        count:
+          label: 'Uporabljen v'
+      filters:
+        filename:
+          expose:
+            label: 'Ime datoteke'
+        filemime:
+          expose:
+            label: 'MIME type'
+        status:
+          expose:
+            label: Stanje
+      title: Datoteke
+  page_1:
+    display_options:
+      menu:
+        title: Datoteke
+  page_2:
+    display_options:
+      arguments:
+        fid:
+          exception:
+            title: Vsi

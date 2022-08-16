@@ -1,0 +1,7 @@
+text:
+  -
+    value: 'Digital Skills & Jobs Platform – New language translation!'
+    format: plain_text
+  -
+    value: "<p>[message:field_dsj_job_item_reference:entity:tjid:entity:target_language] version of a content was created: <a href=\"[message:field_dsj_job_item_reference:entity:url:absolute]\">[message:field_dsj_job_item_reference:entity:url:absolute]</a>.</p>\r\n\r\n<p>&nbsp;</p>\r\n"
+    format: full_html

@@ -1,0 +1,18 @@
+uuid: 8c60fba8-3bc2-4fc3-97b1-816a5aa8cbdd
+langcode: en
+status: true
+dependencies: {  }
+id: node__dsj_event
+label: 'Content: Event'
+tags:
+  schema_event_description: '[node:summary]'
+  schema_event_id: '[node:url:absolute]'
+  schema_event_location: 'a:4:{s:5:"@type";s:5:"Place";s:3:"url";s:35:"[node:field_dsj_website_link:0:uri]";s:7:"address";a:5:{s:5:"@type";s:13:"PostalAddress";s:13:"streetAddress";s:47:"[node:field_dsj_event_location:0:address_line1]";s:15:"addressLocality";s:42:"[node:field_dsj_event_location:0:locality]";s:10:"postalCode";s:45:"[node:field_dsj_event_location:0:postal_code]";s:14:"addressCountry";s:46:"[node:field_dsj_event_location:0:country_name]";}s:3:"geo";a:3:{s:5:"@type";s:14:"GeoCoordinates";s:8:"latitude";s:40:"[node:field_dsj_event_coordinates:0:lat]";s:9:"longitude";s:40:"[node:field_dsj_event_coordinates:0:lon]";}}'
+  schema_event_organizer: 'a:5:{s:5:"@type";s:12:"Organization";s:3:"@id";s:51:"[node:field_dsj_organization:0:entity:url:absolute]";s:4:"name";s:44:"[node:field_dsj_organization:0:entity:title]";s:3:"url";s:51:"[node:field_dsj_organization:0:entity:url:absolute]";s:4:"logo";a:5:{s:5:"@type";s:11:"ImageObject";s:20:"representativeOfPage";s:4:"True";s:3:"url";s:140:"[node:field_dsj_organization:0:entity:field_dsj_representative_image:entity:url]||/themes/custom/edsjp/assets/images/digital-skills-logo.png";s:5:"width";s:81:"[node:field_dsj_organization:0:entity:field_dsj_representative_image:width]||1080";s:6:"height";s:82:"[node:field_dsj_organization:0:entity:field_dsj_representative_image:height]||1080";}}'
+  schema_event_event_attendance_mode: '[node:field_dsj_event_setting]'
+  schema_event_name: '[node:title]'
+  schema_event_end_date: '[node:field_dsj_date:end_value][node:field_dsj_event_timezone:value]'
+  schema_event_start_date: '[node:field_dsj_date:value][node:field_dsj_event_timezone:value]'
+  schema_event_url: '[node:url:absolute]'
+  schema_event_type: Event
+  schema_event_image: 'a:5:{s:5:"@type";s:11:"ImageObject";s:20:"representativeOfPage";s:4:"True";s:3:"url";s:108:"[node:field_dsj_representative_image:entity:url]||/themes/custom/edsjp/assets/images/digital-skills-logo.png";s:5:"width";s:49:"[node:field_dsj_representative_image:width]||1080";s:6:"height";s:50:"[node:field_dsj_representative_image:height]||1080";}'

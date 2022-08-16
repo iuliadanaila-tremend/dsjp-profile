@@ -1,0 +1,45 @@
+uuid: ccfeca2d-a885-4f61-bf4f-3249bb34429e
+langcode: en
+status: true
+dependencies:
+  config:
+    - search_api.index.main_content
+    - views.view.dsj_pledge_organizations
+  module:
+    - search_api
+id: dsj_pledge_organizations_organisations_summary
+name: 'Facet Summary'
+facet_source_id: 'search_api:views_page__dsj_pledge_organizations__organisations'
+processor_configs:
+  hide_when_not_rendered:
+    processor_id: hide_when_not_rendered
+    weights:
+      build: '45'
+    settings: {  }
+  show_text_when_empty:
+    processor_id: show_text_when_empty
+    weights:
+      build: '10'
+    settings:
+      text:
+        value: 'No results found.'
+        format: plain_text
+facets:
+  dsj_is_pledger:
+    checked: true
+    label: 'Select By'
+    separator: ', '
+    show_count: false
+    weight: 0
+  dsj_organisation_country:
+    checked: true
+    label: 'Geographic Scope - Country'
+    separator: ', '
+    show_count: false
+    weight: 0
+  dsj_organization_type:
+    checked: true
+    label: 'Organisation category'
+    separator: ', '
+    show_count: false
+    weight: 0

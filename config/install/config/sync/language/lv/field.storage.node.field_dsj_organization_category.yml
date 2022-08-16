@@ -1,0 +1,26 @@
+settings:
+  allowed_values:
+    -
+      label: NVO
+    -
+      label: 'Publiska iestāde'
+    -
+      label: 'Formālās izglītības un apmācības sniedzējs'
+    -
+      label: Uzņēmums/rūpniecība
+    -
+      label: 'Publiskā un privātā sektora partnerība'
+    -
+      label: Pārējās
+    -
+      label: 'Darba ņēmēju savienība'
+    -
+      label: 'Pētniecības iestāde'
+    -
+      label: Asociācija
+    -
+      label: 'Atvērtā mācību platforma'
+    -
+      label: 'Interešu grupa'
+    -
+      label: 'Politikas veidotājs'

@@ -1,0 +1,16 @@
+uuid: c03029ca-7d0a-40de-9ea0-fd36fd06099d
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraph_view_mode
+third_party_settings:
+  paragraph_view_mode:
+    label: 'Content align'
+    enabled: true
+id: dsj_small_banner
+label: 'Small Banner'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

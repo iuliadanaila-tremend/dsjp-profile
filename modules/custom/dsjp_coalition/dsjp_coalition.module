@@ -1,0 +1,195 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for dsjp_coalition module.
+ */
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\group\Entity\Group;
+use Drupal\group\Entity\GroupContent;
+
+/**
+ * Implements hook_cron().
+ */
+function dsjp_coalition_cron() {
+  $queue = \Drupal::service('queue')->get('dsj_data_fetcher');
+
+  // Get all group ids of type dsj_national_coalition.
+  $coalitionIds = Drupal::entityQuery('group')
+    ->condition('type', 'dsj_national_coalition')
+    ->accessCheck(FALSE)
+    ->execute();
+  $news_article_type = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadByProperties([
+    'name' => 'News',
+  ]);
+  if ($coalitionIds) {
+    $coalitions = Group::loadMultiple($coalitionIds);
+    /** @var \Drupal\group\Entity\Group $coalition */
+    foreach ($coalitions as $coalition) {
+      // Get api base url.
+      $apiUrl = $coalition->get('field_dsj_api_url')->value;
+      if ($apiUrl) {
+        $apiUrl = trim($apiUrl, '/');
+        $sourceType = $coalition->get('field_dsj_source_type')->getString();
+        $defaultLanguage = $coalition->get('field_dsj_content_language')->getString();
+        $contentTypes = [
+          'organizations' => 'dsj_organization',
+          'articles' => 'dsj_article',
+          'digital-skills-resources' => 'dsj_digital_skills_resource',
+          'events' => 'dsj_event',
+          'funding-opportunities' => 'dsj_funding_opportunity',
+          'good-practices' => 'dsj_good_practice',
+          'initiatives' => 'dsj_initiative',
+          'skills-intelligence-publications' => 'dsj_skills_intelligence',
+          'strategies' => 'dsj_strategy',
+          'training-offers' => 'dsj_training_offer',
+        ];
+        if ($apiUrl == 'https://cyfrowekompetencje.pl/wp-json/wp/v2') {
+          $contentTypes = [
+            'organizations' => 'dsj_organization',
+            'articles' => 'dsj_article',
+            'training-resources' => 'dsj_digital_skills_resource',
+            'events' => 'dsj_event',
+            'funding-opportunities' => 'dsj_funding_opportunity',
+            'good-practices' => 'dsj_good_practice',
+            'eu-initiatives' => 'dsj_initiative',
+            'skills-intelligence-publications' => 'dsj_skills_intelligence',
+            'strategic-documents' => 'dsj_strategy',
+            'training-offers' => 'dsj_training_offer',
+          ];
+        }
+
+        foreach ($contentTypes as $fromContentType => $toContentType) {
+          $bundle = $toContentType == 'dsj_digital_skills_resource' ? 'dsj_digital_skills' : $toContentType;
+          $field = 'field_' . $bundle . '_id';
+          $imported_date = $coalition->get($field)->getString();
+          $queue->createItem([
+            'group_id' => $coalition->id(),
+            'group_owner' => $coalition->getOwnerId(),
+            'api_base_url' => $apiUrl,
+            'from_content_type' => $fromContentType,
+            'to_content_type' => $toContentType,
+            'source_type' => $sourceType,
+            'default_language' => $defaultLanguage,
+            'last_imported' => !empty($imported_date) ? $imported_date : '',
+            'news_article_type' => !empty($news_article_type) ? reset($news_article_type)->id() : '',
+          ]);
+        }
+      }
+    }
+  }
+  else {
+    \Drupal::logger('dsjp_coalition')->error(t('No coalition groups found.'));
+  }
+}
+
+/**
+ * Implements hook_content_moderation_notification_mail_data_alter().
+ */
+function dsjp_coalition_content_moderation_notification_mail_data_alter(EntityInterface $entity, array &$data) {
+  // When moving a content from imported to draft, make sure all users from the
+  // given group are notified.
+  if ($data['notification']->id() == 'dsj_draft_notification') {
+    $group_content = GroupContent::loadByEntity($entity);
+    if (!empty($group_content)) {
+      foreach ($group_content as $gcontent) {
+        $group = $gcontent->getGroup();
+        if ($group->getGroupType()->id() == 'dsj_national_coalition') {
+          $users = [];
+          $members = $group->getMembers();
+          foreach ($members as $member) {
+            if (!empty($member->getUser()->getEmail())) {
+              $users[] = $member->getUser()->getEmail();
+            }
+          }
+          if (!empty($users)) {
+            $data['to'] = $users;
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function dsjp_coalition_form_group_dsj_national_coalition_add_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  _dsjp_coalition_group_nc_form_alter($form, $form_state);
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function dsjp_coalition_form_group_dsj_national_coalition_edit_form_alter(&$form, FormStateInterface $form_state) {
+  _dsjp_coalition_group_nc_form_alter($form, $form_state);
+}
+
+/**
+ * Form alter for national coalition group form.
+ */
+function _dsjp_coalition_group_nc_form_alter(&$form, FormStateInterface $form_state) {
+  $form['api_credentials'] = [
+    '#type' => 'details',
+    '#title' => t('API credentials'),
+    '#tree' => TRUE,
+    '#states' => [
+      'visible' => [
+        ':input[name="field_dsj_source_type"]' => ['value' => 'austria'],
+      ],
+    ],
+    'token_url' => [
+      '#type' => 'textfield',
+      '#title' => t('Token URL'),
+    ],
+    'client_id' => [
+      '#type' => 'textfield',
+      '#title' => t('Client ID'),
+    ],
+    'client_secret' => [
+      '#type' => 'textfield',
+      '#title' => t('Client Secret'),
+    ],
+    'username' => [
+      '#type' => 'textfield',
+      '#title' => t('Username'),
+    ],
+    'password' => [
+      '#type' => 'textfield',
+      '#title' => t('Password'),
+    ],
+  ];
+  $form['auth_header'] = [
+    '#type' => 'textfield',
+    '#title' => t('Auth header'),
+    '#states' => [
+      'visible' => [
+        ':input[name="field_dsj_source_type"]' => ['value' => 'slovenia'],
+      ],
+    ],
+  ];
+  $group = $form_state->getFormObject()->getEntity();
+  if (!$group->isNew()) {
+    $config = \Drupal::state()->get('group_nc_' . $group->id());
+    if (!empty($config)) {
+      foreach ($config as $key => $value) {
+        $form['api_credentials'][$key]['#default_value'] = $value;
+      }
+      if (isset($config['auth_header'])) {
+        $form['auth_header']['#default_value'] = $config['auth_header'];
+      }
+    }
+  }
+  $form['actions']['submit']['#submit'][] = 'dsjp_coalition_nc_group_submit';
+}
+
+/**
+ * Submit handler for national coalition group.
+ */
+function dsjp_coalition_nc_group_submit(array &$form, FormStateInterface $form_state) {
+  $group = $form_state->getFormObject()->getEntity();
+  \Drupal::state()->set('group_nc_' . $group->id(), $form_state->getValue('api_credentials'));
+  \Drupal::state()->set('group_nc_' . $group->id(), ['auth_header' => $form_state->getValue('auth_header')]);
+}

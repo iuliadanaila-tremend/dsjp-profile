@@ -1,0 +1,17 @@
+uuid: cc42c35a-7d74-4ccd-8f96-0de970db7860
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.dsj_national_coalition
+  enforced:
+    config:
+      - user.role.dsj_reviewer
+id: dsj_national_coalition-47200f2e7
+label: Reviewer
+weight: -6
+internal: true
+audience: outsider
+group_type: dsj_national_coalition
+permissions_ui: false
+permissions: {  }

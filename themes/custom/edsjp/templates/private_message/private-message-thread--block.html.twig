@@ -1,0 +1,8 @@
+<div class="{{ attributes.class }}">
+  {{ content }}
+  {% if unread_count > 0 %}
+    <div class="unread-messages-count">
+      {{ unread_count }}
+    </div>
+  {% endif %}
+</div>

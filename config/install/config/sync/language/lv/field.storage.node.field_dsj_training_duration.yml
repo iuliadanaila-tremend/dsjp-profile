@@ -1,0 +1,14 @@
+settings:
+  allowed_values:
+    -
+      label: 'Ne ilgāk par 1 nedēļu'
+    -
+      label: 'Līdz 4 nedēļām'
+    -
+      label: 'Līdz 3 mēnešiem'
+    -
+      label: 'Līdz 6 mēnešiem'
+    -
+      label: 'Līdz vienam gadam'
+    -
+      label: 'Vairāki gadi'

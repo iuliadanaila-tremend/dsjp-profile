@@ -1,0 +1,21 @@
+uuid: f8eaffc5-e6cd-41d3-b5b2-be31e03717cc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_dsj_body
+    - paragraphs.paragraphs_type.dsj_cta_banner
+  module:
+    - text
+id: paragraph.dsj_cta_banner.field_dsj_body
+field_name: field_dsj_body
+entity_type: paragraph
+bundle: dsj_cta_banner
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

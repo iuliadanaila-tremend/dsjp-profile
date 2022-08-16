@@ -1,0 +1,23 @@
+{%
+  set classes = [
+  'field',
+  'field--name-' ~ field_name|clean_class,
+  label_display == 'inline' ? 'clearfix',
+]
+%}
+{% spaceless %}
+  <div{{ attributes.addClass(classes) }}>
+    {% if not label_hidden %}
+      {%
+        set title_classes = [
+        'field__label',
+        label_display == 'visually_hidden' ? 'visually-hidden',
+      ]
+      %}
+      <div{{ title_attributes.addClass(title_classes) }}>{{ label }}</div>
+    {% endif %}
+    <div class="field__item">
+      {%- include 'field--bare.html.twig' -%}
+    </div>
+  </div>
+{% endspaceless %}

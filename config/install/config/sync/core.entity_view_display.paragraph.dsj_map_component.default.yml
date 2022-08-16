@@ -1,0 +1,52 @@
+uuid: 94b0b258-ec09-4999-9f1a-6286492697d3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.dsj_map_component.field_dsj_body
+    - field.field.paragraph.dsj_map_component.field_dsj_country
+    - field.field.paragraph.dsj_map_component.field_dsj_score
+    - field.field.paragraph.dsj_map_component.field_dsj_title
+    - field.field.paragraph.dsj_map_component.field_dsj_tooltip
+    - paragraphs.paragraphs_type.dsj_map_component
+  module:
+    - text
+id: paragraph.dsj_map_component.default
+targetEntityType: paragraph
+bundle: dsj_map_component
+mode: default
+content:
+  field_dsj_country:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_dsj_score:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_dsj_title:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_dsj_tooltip:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+hidden:
+  field_dsj_body: true
+  search_api_excerpt: true

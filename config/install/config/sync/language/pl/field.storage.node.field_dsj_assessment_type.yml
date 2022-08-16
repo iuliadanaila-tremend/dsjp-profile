@@ -1,0 +1,14 @@
+settings:
+  allowed_values:
+    -
+      label: Praca
+    -
+      label: 'Oparte na projektach'
+    -
+      label: Stacjonarne
+    -
+      label: Internet
+    -
+      label: Mieszane
+    -
+      label: 'Oparte na pracy w laboratoriach badawczych'

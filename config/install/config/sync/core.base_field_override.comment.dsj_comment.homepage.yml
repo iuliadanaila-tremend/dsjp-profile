@@ -1,0 +1,18 @@
+uuid: 49366d77-f91b-45a6-b60b-fb980b162b03
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.dsj_comment
+id: comment.dsj_comment.homepage
+field_name: homepage
+entity_type: comment
+bundle: dsj_comment
+label: Homepage
+description: 'The comment author''s home page address.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: uri

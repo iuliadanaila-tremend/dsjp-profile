@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: 'Digitale vaardigheden voor de beroepsbevolking.'
+    -
+      label: 'Digitale vaardigheden voor ICT-professionals en andere digitale deskundigen.'
+    -
+      label: 'Digitale vaardigheden in het onderwijs.'
+    -
+      label: 'Digitale vaardigheden voor iedereen'

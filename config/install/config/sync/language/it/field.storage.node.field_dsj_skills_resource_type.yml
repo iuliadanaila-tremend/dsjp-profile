@@ -1,0 +1,12 @@
+settings:
+  allowed_values:
+    -
+      label: 'Strumento di autovalutazione'
+    -
+      label: Metodologia
+    -
+      label: 'Programmi di formazione'
+    -
+      label: 'Caso di studio'
+    -
+      label: 'Altro materiale per la formazione'

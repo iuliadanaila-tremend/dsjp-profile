@@ -1,0 +1,90 @@
+dsjp_theme_demo.main.home:
+  title: 'Home'
+  route_name: "<front>"
+  menu_name: "main"
+  weight: 0
+dsjp_theme_demo.main.actions:
+  title: 'Actions'
+  route_name: "<none>"
+  menu_name: "main"
+  expanded: true
+  weight: 1
+dsjp_theme_demo.main.actions_1:
+  title: 'European Initiatives'
+  route_name: "<none>"
+  menu_name: "main"
+  parent: "dsjp_theme_demo.main.actions"
+dsjp_theme_demo.main.actions_2:
+  title: 'National Strategies'
+  route_name: "<none>"
+  menu_name: "main"
+  parent: "dsjp_theme_demo.main.actions"
+dsjp_theme_demo.main.opportunities:
+  title: 'Opportunities'
+  route_name: "<none>"
+  menu_name: "main"
+  expanded: true
+  weight: 2
+dsjp_theme_demo.main.opportunities_1:
+  title: 'Training'
+  route_name: "<none>"
+  menu_name: "main"
+  parent: "dsjp_theme_demo.main.opportunities"
+dsjp_theme_demo.main.opportunities_2:
+  title: 'Funding'
+  route_name: "<none>"
+  menu_name: "main"
+  parent: "dsjp_theme_demo.main.opportunities"
+dsjp_theme_demo.main.opportunities_3:
+  title: 'Careers'
+  route_name: "<none>"
+  menu_name: "main"
+  parent: "dsjp_theme_demo.main.opportunities"
+dsjp_theme_demo.main.inspiration:
+  title: 'Inspiration'
+  route_name: "<none>"
+  menu_name: "main"
+  expanded: true
+  weight: 3
+dsjp_theme_demo.main.inspiration_1:
+  title: 'Good Practices'
+  route_name: "<none>"
+  menu_name: "main"
+  parent: "dsjp_theme_demo.main.inspiration"
+dsjp_theme_demo.main.inspiration_2:
+  title: 'Resources'
+  route_name: "<none>"
+  menu_name: "main"
+  parent: "dsjp_theme_demo.main.inspiration"
+dsjp_theme_demo.main.inspiration_3:
+  title: 'Research'
+  route_name: "<none>"
+  menu_name: "main"
+  parent: "dsjp_theme_demo.main.inspiration"
+dsjp_theme_demo.main.latest:
+  title: 'Latest'
+  route_name: "<none>"
+  menu_name: "main"
+  expanded: true
+  weight: 4
+dsjp_theme_demo.main.latest_1:
+  title: 'News'
+  route_name: "<none>"
+  menu_name: "main"
+  parent: "dsjp_theme_demo.main.latest"
+dsjp_theme_demo.main.latest_2:
+  title: 'Events'
+  route_name: "<none>"
+  menu_name: "main"
+  parent: "dsjp_theme_demo.main.latest"
+dsjp_theme_demo.main.latest_3:
+  title: 'Opinions'
+  route_name: "<none>"
+  menu_name: "main"
+  parent: "dsjp_theme_demo.main.latest"
+dsjp_theme_demo.main.about:
+  title: 'About'
+  route_name: "<none>"
+  menu_name: "main"
+  expanded: true
+  weight: 5

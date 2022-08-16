@@ -1,0 +1,70 @@
+.comment-form {
+  @media (min-width: $min-md-width) {
+    padding: $grid-gutter-width;
+  }
+
+  background-color: $white;
+  border-radius: $border-radius * 1.5;
+  margin-top: $grid-gutter-width / 1.6;
+  padding: $grid-gutter-width / 2;
+
+  .comment-attachment-toggle {
+    @include icon(paperclip);
+
+    &::before {
+      @include position(absolute, null $grid-gutter-width null null);
+      color: $gray-400;
+      cursor: pointer;
+      font-size: $font-size-lg;
+    }
+  }
+
+  .field--name-field-dsj-attachments {
+    @include custom-attachment-form;
+  }
+
+  .ecl-form-label {
+    font-size: $font-size-base;
+  }
+
+  .ecl-form-group {
+    margin: 0;
+
+    .js-form-managed-file {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .ecl-help-block {
+      &.description {
+        color: $neutral-default;
+        font-size: $font-size-xs;
+        line-height: $line-height-xs;
+      }
+    }
+
+    button {
+      background-color: $primary-default;
+      margin-right: $grid-gutter-width/2;
+
+      &[id*="edit-cancel"] {
+        background-color: $body-bg;
+        color: $neutral-active;
+        border: 1px solid $neutral-active;
+      }
+    }
+  }
+
+  .ecl-u-mt-m,
+  .ecl-u-mv-m {
+    margin-top: 0 !important;
+  }
+
+  .ecl-button {
+    margin: 0;
+  }
+}
+
+.dropbutton-multiple.open {
+  z-index: 10;
+}

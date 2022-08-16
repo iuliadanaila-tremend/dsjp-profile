@@ -1,0 +1,29 @@
+.is-pledge-badge {
+  display: inline-block;
+  margin-left: $grid-gutter-width-mobile * 1.5;
+
+  .group--dsj-organization & {
+    margin-bottom: $grid-gutter-width-mobile * 1.5;
+  }
+
+  .is-pledger {
+    @include icon(badge);
+
+    display: inline-block;
+    border-radius: 100%;
+    width: $grid-gutter-width-mobile * 1.5;
+    height: $grid-gutter-width-mobile * 1.5;
+    line-height: $grid-gutter-width-mobile * 1.5;
+    vertical-align: middle;
+    background-color: $yellow;
+    font-family: $font-ec-square-medium;
+    text-align: center;
+    color: $gray-650;
+
+    &::before {
+      margin: auto;
+      line-height: $grid-gutter-width-mobile * 1.5;
+      font-size: $font-size-md;
+    }
+  }
+}

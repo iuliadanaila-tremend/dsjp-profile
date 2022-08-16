@@ -1,0 +1,33 @@
+uuid: cd58cdc5-2011-41ad-9f72-28870adc59e8
+langcode: en
+status: true
+dependencies:
+  module:
+    - group
+    - options
+id: group.field_dsj_number_of_employees
+field_name: field_dsj_number_of_employees
+entity_type: group
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: 1-10
+      label: '1-10 Staff Headcount'
+    -
+      value: 10-50
+      label: '10-15 Staff Headcount'
+    -
+      value: 50-250
+      label: '50-250 Staff Headcount'
+    -
+      value: '>250'
+      label: '>250 Staff Headcount'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

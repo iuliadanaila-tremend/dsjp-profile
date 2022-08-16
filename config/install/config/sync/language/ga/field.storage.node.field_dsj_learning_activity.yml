@@ -1,0 +1,24 @@
+settings:
+  allowed_values:
+    -
+      label: 'saotharlann/insamhlú/obair chúrsa cleachtas'
+    -
+      label: 'taithí ar phost'
+    -
+      label: 'obair dheonach'
+    -
+      label: taighde
+    -
+      label: 'staidéar féinspreagtha'
+    -
+      label: 'obair chúrsa ríomhfhoghlama'
+    -
+      label: intéirneacht
+    -
+      label: printíseacht
+    -
+      label: 'ceardlann, seimineár nó comhdháil'
+    -
+      label: 'clár oideachais'
+    -
+      label: 'obair chúrsa ranga'

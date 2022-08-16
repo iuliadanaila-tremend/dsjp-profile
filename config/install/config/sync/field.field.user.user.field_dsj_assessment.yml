@@ -1,0 +1,86 @@
+uuid: c02537e6-a765-4359-9f74-2ca7e10fdee3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_dsj_assessment
+    - paragraphs.paragraphs_type.dsj_assessment
+  module:
+    - entity_reference_revisions
+    - tmgmt_content
+    - user
+third_party_settings:
+  tmgmt_content:
+    excluded: false
+id: user.user.field_dsj_assessment
+field_name: field_dsj_assessment
+entity_type: user
+bundle: user
+label: Assessments
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      dsj_assessment: dsj_assessment
+    negate: 0
+    target_bundles_drag_drop:
+      dsj_assessment:
+        weight: 19
+        enabled: true
+      dsj_blank_card:
+        weight: 20
+        enabled: false
+      dsj_blank_cards:
+        weight: 21
+        enabled: false
+      dsj_card:
+        weight: 22
+        enabled: false
+      dsj_cards:
+        weight: 23
+        enabled: false
+      dsj_cta_banner:
+        weight: 24
+        enabled: false
+      dsj_grouped_cards:
+        weight: 25
+        enabled: false
+      dsj_highlighted_listing:
+        weight: 26
+        enabled: false
+      dsj_info_cards:
+        weight: 27
+        enabled: false
+      dsj_listing:
+        weight: 28
+        enabled: false
+      dsj_map:
+        weight: 29
+        enabled: false
+      dsj_map_component:
+        weight: 30
+        enabled: false
+      dsj_social_media:
+        weight: 31
+        enabled: false
+      dsj_testimonial:
+        weight: 32
+        enabled: false
+      dsj_testimonials:
+        weight: 33
+        enabled: false
+      dsj_text:
+        weight: 34
+        enabled: false
+      dsj_top_banner:
+        weight: 35
+        enabled: false
+      dsj_widget:
+        weight: 36
+        enabled: false
+field_type: entity_reference_revisions

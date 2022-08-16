@@ -1,0 +1,64 @@
+uuid: 53afb8ac-d637-43ee-b4f8-9b271b93f741
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.dsj_discussion.body
+    - field.field.node.dsj_discussion.field_dsj_attachment
+    - field.field.node.dsj_discussion.field_dsj_comments
+    - field.field.node.dsj_discussion.field_dsj_digital_technology
+    - field.field.node.dsj_discussion.field_dsj_meta_tags
+    - field.field.node.dsj_discussion.field_dsj_publish_in_core
+    - field.field.node.dsj_discussion.field_dsj_representative_image
+    - node.type.dsj_discussion
+  module:
+    - smart_trim
+    - user
+_core:
+  default_config_hash: aKQqs7vc5_4haOrYRGL3xVdNkkv7z4N_FRjoP23_Ons
+id: node.dsj_discussion.teaser
+targetEntityType: node
+bundle: dsj_discussion
+mode: teaser
+content:
+  body:
+    type: smart_trim
+    label: hidden
+    settings:
+      trim_length: 140
+      trim_type: chars
+      trim_suffix: ...
+      wrap_output: false
+      wrap_class: trimmed
+      more_link: false
+      more_class: more-link
+      more_text: More
+      summary_handler: trim
+      trim_options:
+        text: true
+        trim_zero: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  flag_voting:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  field_dsj_attachment: true
+  field_dsj_comments: true
+  field_dsj_digital_technology: true
+  field_dsj_meta_tags: true
+  field_dsj_publish_in_core: true
+  field_dsj_representative_image: true
+  flag_subscribe_node: true
+  langcode: true
+  links: true
+  search_api_excerpt: true

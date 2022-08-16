@@ -1,0 +1,14 @@
+settings:
+  allowed_values:
+    -
+      label: Työperusteinen
+    -
+      label: Projektipohjainen
+    -
+      label: 'Paikan päällä'
+    -
+      label: Verkossa
+    -
+      label: Yhdistelmä
+    -
+      label: Tutkimus-/laboratoriopohjainen

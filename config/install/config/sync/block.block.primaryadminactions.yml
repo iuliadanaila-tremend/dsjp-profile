@@ -1,0 +1,38 @@
+uuid: 1ac214d7-f5e5-435b-85e3-83033a12cdb1
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - user
+  theme:
+    - edsjp
+id: primaryadminactions
+theme: edsjp
+region: content
+weight: -14
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  label_display: '0'
+  provider: core
+visibility:
+  user_role:
+    id: user_role
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+    roles:
+      dsj_advanced_contributor: dsj_advanced_contributor
+      dsj_content_editor: dsj_content_editor
+      dsj_reviewer: dsj_reviewer
+      dsj_critical_reviewer: dsj_critical_reviewer
+      community_manager: community_manager
+      administrator: administrator
+  condition_group:
+    id: condition_group
+    negate: false
+    context_mapping: {  }
+    block_visibility_group: ''

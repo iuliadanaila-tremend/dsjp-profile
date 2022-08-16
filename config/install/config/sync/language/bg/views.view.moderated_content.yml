@@ -1,0 +1,24 @@
+display:
+  default:
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Filter
+          reset_button_label: Reset
+      fields:
+        type:
+          label: 'Content type'
+        changed:
+          label: Updated
+        operations:
+          label: Operations
+      filters:
+        title:
+          expose:
+            label: Title
+        type:
+          expose:
+            label: 'Content type'
+        langcode:
+          expose:
+            label: Language

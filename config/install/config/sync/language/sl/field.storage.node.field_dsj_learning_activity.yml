@@ -1,0 +1,24 @@
+settings:
+  allowed_values:
+    -
+      label: 'laboratorijske/simulacijske/praktične vaje'
+    -
+      label: 'delovne izkušnje'
+    -
+      label: prostovoljstvo
+    -
+      label: raziskave
+    -
+      label: 'samomotivirani študij'
+    -
+      label: 'praktično delo za e-tečaj'
+    -
+      label: pripravništvo
+    -
+      label: vajeništvo
+    -
+      label: 'delavnica, seminar ali konferenca'
+    -
+      label: 'izobraževalni program'
+    -
+      label: 'delo v učilnici'

@@ -1,0 +1,33 @@
+uuid: 7abf212c-6098-4743-a734-eca811f27a5e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.message.field_user
+    - message.template.dsj_user_assessment_saved
+  module:
+    - tmgmt_content
+third_party_settings:
+  tmgmt_content:
+    excluded: false
+id: message.dsj_user_assessment_saved.field_user
+field_name: field_user
+entity_type: message
+bundle: dsj_user_assessment_saved
+label: User
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    target_bundles: null
+    sort:
+      field: _none
+    auto_create: false
+    filter:
+      type: _none
+    include_anonymous: false
+field_type: entity_reference

@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Vegyes
+    -
+      label: Helyszín
+    -
+      label: 'Virtuális élet'
+    -
+      label: 'Virtuális előzetes felvétel'

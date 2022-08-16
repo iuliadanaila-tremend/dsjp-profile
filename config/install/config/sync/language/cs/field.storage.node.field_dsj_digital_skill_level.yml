@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Základní
+    -
+      label: Střední
+    -
+      label: Pokročilé
+    -
+      label: 'Odborník na digitální technologie'

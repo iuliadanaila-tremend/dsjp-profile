@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Podstawowa
+    -
+      label: Półprodukt
+    -
+      label: Zaawansowane
+    -
+      label: 'Specjalista ds. technologii cyfrowych'

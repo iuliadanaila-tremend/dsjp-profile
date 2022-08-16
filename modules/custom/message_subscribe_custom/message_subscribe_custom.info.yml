@@ -1,0 +1,16 @@
+name: Message Subscribe Custom
+type: module
+description: "Custom implementation of subscriptions using Message, Message Notify, and Message Subscribe."
+core: 8.x
+package: Message
+dependencies:
+  - message:message
+  - message_notify:message_notify
+  - message_subscribe:message_subscribe
+  - message_subscribe:message_subscribe_ui
+  - token:token
+  - drupal:node
+  - drupal:comment
+core_version_requirement: ^8 || ^9
+
+php: 7.3

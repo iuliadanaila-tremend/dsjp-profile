@@ -1,0 +1,14 @@
+settings:
+  allowed_values:
+    -
+      label: Práce
+    -
+      label: 'V rámci realizace projektu'
+    -
+      label: Prezenční
+    -
+      label: On-line
+    -
+      label: Smíšené
+    -
+      label: 'V rámci (laboratorního) výzkumu'

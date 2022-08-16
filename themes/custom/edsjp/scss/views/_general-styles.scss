@@ -1,0 +1,108 @@
+.view-header {
+  .field--name-body {
+    a {
+      text-decoration: underline !important;
+    }
+  }
+
+  .view-dsj-articles-listing & {
+    margin-bottom: $grid-gutter-width;
+  }
+}
+
+.block-page-title-block + .block {
+  .view-header {
+    a {
+      margin-bottom: 2rem;
+
+      @media all and (min-width: $min-sm-width) {
+        position: absolute;
+        right: 1rem;
+        top: -4px;
+      }
+    }
+  }
+
+  .contextual + .view-header {
+    a {
+      @media all and (min-width: $min-sm-width) {
+        right: 0;
+        top: -68px;
+      }
+    }
+  }
+}
+
+.more-link {
+  a {
+    @include font($font-size-md, $line-height-sm, $font-ec-square-medium);
+  }
+}
+
+.view-dsj-events,
+.view-dsj-discussions,
+.webform-block-wrapper,
+.paragraph--type--dsj-blank-cards {
+  .more-link {
+    a {
+      @include icon(right-arrow);
+
+      padding-right: 20px;
+      color: $primary !important;
+      position: relative;
+
+      &::before {
+        @include position(absolute, 2px 0 null null);
+        font-size: $font-size-xs;
+      }
+
+      .path-frontpage & {
+        font-size: $font-size-base;
+        line-height: $line-height-base;
+        display: inline-block;
+        margin-top: 1.375rem;
+      }
+
+      &:hover {
+        color: $latest-category-color !important;
+      }
+
+      &:focus {
+        color: $primary !important; /* override ecl default style */
+      }
+
+      &:disabled {
+        color: $primary-disabled !important;
+      }
+    }
+  }
+}
+
+.path-discussions:not(.user-logged-in) {
+  .add-node-link {
+    display: none !important;
+  }
+}
+
+.view-empty {
+  @include border-radius($border-radius-sm);
+  margin-bottom: 100vh;
+  padding: $grid-gutter-width / 2 $grid-gutter-width / 2;
+  background-color: transparentize($primary-active, .9);
+  border-radius: 6px;
+  text-align: left;
+  font-size: $font-size-sm;
+  line-height: $line-height-xl;
+  color: $gray-650;
+  border: 2px solid $primary-disabled;
+
+  &::before {
+    height: 20px;
+    padding-right: $grid-gutter-width * 1.13;
+    position: relative;
+    content: '';
+    background: url('../assets/images/icons/info-circle.svg') no-repeat center;
+    color: $primary-disabled;
+    font-size: $font-size-2xl;
+  }
+}

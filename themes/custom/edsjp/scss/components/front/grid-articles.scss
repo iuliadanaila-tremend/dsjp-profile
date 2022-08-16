@@ -1,0 +1,168 @@
+.paragraph--type--dsj-info-cards {
+  .ecl {
+    h2 {
+      color: $primary;
+      margin: 0 0 ($grid-gutter-width * 1.5rem) / $grid-gutter-width;
+  
+      span {
+        @include media-breakpoint-down(sm) {
+          margin: 0 $grid-gutter-width * 1.37;
+          font-size: $line-height-xl;
+          line-height: $line-height-xs * 2;
+          display: flex;
+          justify-content: center;
+        }
+        line-height: $line-height-3xl;
+        font-size: $font-size-3xl;
+      }
+  
+      + p {
+        @include media-breakpoint-down(sm) {
+          margin: 0 $grid-gutter-width/3.2;
+        }
+
+        font-family: $font-ec-square-regular !important; /* override ecl default style */
+        margin: 0;
+        font-size: $font-size-2md !important; /* override ecl default style */
+        line-height: $line-height-xl !important; /* override ecl default style */
+        max-width: unset !important; /* override ecl default style */
+      }
+    }
+  }
+
+  .field--name-body {
+    p {
+      max-width: 100%;
+    }
+  }
+
+  .ecl-container {
+    padding: 0 $grid-gutter-width / 2;
+    width: 100% !important;
+    max-width: 1140px !important;
+
+    .ecl-container {
+      padding: 0;
+    }
+  }
+
+  .cards-inner {
+    @include media-breakpoint-down(sm) {
+      padding-top: $grid-gutter-width;
+    }
+    @include make-row();
+    padding-top: $grid-gutter-width * 2;
+  }
+
+  .card-container {
+    @include media-breakpoint-down(sm) {
+      @include make-col(12);
+    }
+    @include make-col-ready();
+    @include make-col(4);
+    padding: 0;
+    position: relative;
+    margin-bottom: $grid-gutter-width;
+
+    &::before {
+      @include position(absolute, 0 $grid-gutter-width / 2);
+      content: '';
+      border-radius: $border-radius-lg;
+      background-color: $body-bg;
+      z-index: -1;
+    }
+
+    h2 {
+      font-size: 1rem;
+      font-weight: normal;
+    }
+
+    a {
+      display: inline-block;
+
+      &:hover {
+        h2 {
+          color: $blue-100;
+        }
+      }
+    }
+  }
+
+  .card-image,
+  .card-info {
+    padding: $grid-gutter-width / 2;
+    text-align: center;
+
+    img {
+      display: inline-block;
+    }
+  }
+
+  .card-description,
+  .card-title h2 {
+    margin-bottom: 0;
+    padding: 0 1rem;
+
+    a {
+      font-size: $font-size-base;
+    }
+  }
+
+  .card-image {
+    padding-top: 20px;
+    padding-bottom: $grid-gutter-width / 2;
+  }
+
+  .card-info {
+    padding-top: 0;
+    padding-bottom: $grid-gutter-width;
+  }
+
+  .card-description {
+    font-size: $font-size-sm;
+  }
+
+  .field--name-field-dsj-read-more-link {
+    text-align: right;
+    margin-bottom: 1rem;
+
+    a {
+      @include font($font-size-md, $line-height-sm, $font-ec-square-medium);
+      @include icon(right-arrow);
+      padding-right: 20px;
+      color: $primary !important;
+      position: relative;
+
+      &::before {
+        @include position(absolute, 2px 0 null null);
+        font-size: $font-size-xs;
+      }
+
+      &:hover {
+        color: $latest-category-color !important;
+      }
+
+      &:focus {
+        color: $primary !important;
+      }
+
+      &:disabled {
+        color: $primary-disabled !important;
+      }
+    }
+  }
+}
+
+.slick__slide {
+  .card-container {
+    max-width: 100%;
+  }
+}
+
+.slick--view--dsj-paragraph-component-listing--dsj-component-listing {
+  padding-top: $grid-gutter-width;
+
+  .slick__slider {
+    margin: 0 (-$grid-gutter-width / 2);
+  }
+}

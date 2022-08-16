@@ -1,0 +1,31 @@
+uuid: 6017ed3e-d381-4c3f-adc1-dce7487f1bc1
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.dsj_comment
+    - field.storage.comment.field_dsj_attachments
+  module:
+    - file
+    - tmgmt_content
+third_party_settings:
+  tmgmt_content:
+    excluded: false
+id: comment.dsj_comment.field_dsj_attachments
+field_name: field_dsj_attachments
+entity_type: comment
+bundle: dsj_comment
+label: 'Upload your file'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: 'comment_attachments/[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'txt pdf doc jpg png'
+  max_filesize: ''
+  description_field: true
+field_type: file

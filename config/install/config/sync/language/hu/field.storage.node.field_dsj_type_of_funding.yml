@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Állami
+    -
+      label: Magán
+    -
+      label: 'Közösségi finanszírozás'
+    -
+      label: 'Köz-magán társulás'

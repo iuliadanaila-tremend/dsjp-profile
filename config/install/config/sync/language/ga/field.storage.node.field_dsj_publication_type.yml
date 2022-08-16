@@ -1,0 +1,34 @@
+settings:
+  allowed_values:
+    -
+      label: 'Bileog eolais'
+    -
+      label: Réamhaisnéis
+    -
+      label: 'Treoirlínte ginearálta'
+    -
+      label: 'Faisnéis ghinearálta'
+    -
+      label: Iris
+    -
+      label: 'Plean náisiúnta'
+    -
+      label: 'Fógraí nuachta'
+    -
+      label: 'Alt nuachta'
+    -
+      label: Nuachtlitir
+    -
+      label: 'Cur i láthair'
+    -
+      label: 'Ábhar fógraíochta'
+    -
+      label: Tuarascáil
+    -
+      label: Sceideal
+    -
+      label: 'Páipéar eolaíoch'
+    -
+      label: Staidéar
+    -
+      label: 'Doiciméad oibre'

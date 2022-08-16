@@ -1,0 +1,34 @@
+services:
+  dsjp_coalition.post_node_migration_subscriber:
+    class: 'Drupal\dsjp_coalition\EventSubscriber\NodeMigrationSaveSubscriber'
+    arguments: ['@entity_type.manager', '@logger.factory']
+    tags:
+      - { name: 'event_subscriber' }
+
+  dsjp_coalition.migration_service_drupal:
+    class: 'Drupal\dsjp_coalition\DrupalMigrationService'
+    arguments: ['@http_client', '@serialization.json', '@logger.factory']
+
+  dsjp_coalition.migration_service_wordpress:
+    class: 'Drupal\dsjp_coalition\WordpressMigrationService'
+    arguments: [ '@http_client', '@serialization.json', '@logger.factory']
+
+  dsjp_coalition.migration_service_austria:
+    class: 'Drupal\dsjp_coalition\AustriaMigrationService'
+    arguments: [ '@http_client', '@serialization.json', '@logger.factory', '@state' ]
+
+  dsjp_coalition.migration_service_slovenia:
+    class: 'Drupal\dsjp_coalition\SloveniaMigrationService'
+    arguments: [ '@http_client', '@serialization.json', '@logger.factory', '@state' ]
+
+  dsjp_coalition:migrate_imported_subscriber:
+    class: 'Drupal\dsjp_coalition\EventSubscriber\MigrationImportedSubscriber'
+    arguments: ['@date.formatter']
+    tags:
+      - { name: 'event_subscriber' }
+
+  dsjp_coalition.translation_export_command:
+    class: 'Drupal\dsjp_coalition\Commands\TranslationExportCommand'
+    arguments: ['@language_manager']
+    tags:
+      - { name: drush.command }

@@ -1,0 +1,128 @@
+{
+    "name": "openeuropa/oe_theme",
+    "description": "OpenEuropa base theme.",
+    "type": "drupal-theme",
+    "license": "EUPL-1.2",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": ">=7.4",
+        "drupal/core": "^9.2",
+        "drupal/smart_trim": "^1.2",
+        "drupal/twig_field_value": "^2.0",
+        "drupal/ui_patterns": "^1.0",
+        "openeuropa/ecl-twig-loader": "^3.1",
+        "openeuropa/oe_time_caching": "~1.0"
+    },
+    "require-dev": {
+        "../../../../../../../vendor/behat/behat": "^3.10",
+        "behat/mink-extension": "^2.3.1",
+        "../../../../../../../vendor/composer/installers": "~1.5",
+        "../../../../../../../vendor/cweagans/composer-patches": "^1.7",
+        "drupal/address": "~1.9",
+        "drupal/composite_reference": "^2.1",
+        "drupal/config_devel": "~1.2",
+        "../../../../../../../vendor/drupal/core-composer-scaffold": "^9.2",
+        "drupal/core-dev": "^9.2",
+        "drupal/ctools": "^3.7",
+        "drupal/datetime_testing": "^1.0",
+        "drupal/description_list_field": "^1.0",
+        "drupal/drupal-driver": "^2.1.1",
+        "drupal/drupal-extension": "~4.0",
+        "drupal/emr": "~1.0-beta9",
+        "drupal/entity_browser": "^2.5",
+        "drupal/entity_reference_revisions": "~1.3",
+        "drupal/extra_field": "^2.1",
+        "drupal/field_group": "~3.2",
+        "drupal/inline_entity_form": "~1.0-rc9",
+        "drupal/json_field": "^1.0.0-rc2",
+        "drupal/renderviz": "^1.0@alpha",
+        "drupal/styleguide": "~1.0@beta",
+        "drupal/typed_link": "^2.0",
+        "../../../../../../../vendor/drush/drush": "~10.3",
+        "../../../../../../../vendor/egulias/email-validator": "^2.1.22 || ^3.0",
+        "friends-of-behat/service-container-extension": "^1.0",
+        "../../../../../../../vendor/instaclick/php-webdriver": "^1.4.7",
+        "../../../../../../../vendor/nikic/php-parser": "^4.12.0",
+        "openeuropa/behat-transformation-context": "~0.1",
+        "openeuropa/code-review": "^2.0",
+        "openeuropa/oe_contact_forms": "^1.2",
+        "openeuropa/oe_content": "^2.9",
+        "openeuropa/oe_corporate_blocks": "^4.4",
+        "openeuropa/oe_corporate_countries": "~2.0",
+        "openeuropa/oe_media": "^1.15",
+        "openeuropa/oe_multilingual": "^1.10",
+        "openeuropa/oe_paragraphs": "^1.12",
+        "openeuropa/oe_search": "^1.9",
+        "openeuropa/oe_webtools": "^1.15",
+        "openeuropa/rdf_skos": "^1.0",
+        "openeuropa/task-runner-drupal-project-symlink": "^1.0-beta5",
+        "phpspec/prophecy-phpunit": "^2",
+        "../../../../../../../vendor/symfony/dom-crawler": "^4.4.12"
+    },
+    "scripts": {
+        "post-install-cmd": "./vendor/bin/run drupal:site-setup",
+        "post-update-cmd": "./vendor/bin/run drupal:site-setup"
+    },
+    "autoload": {
+        "psr-4": {
+            "Drupal\\oe_theme\\": "./src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Drupal\\Tests\\oe_theme\\": "./tests/src/",
+            "Drupal\\Tests\\oe_content\\": "./build/modules/contrib/oe_content/tests/src/",
+            "Drupal\\Tests\\oe_media\\": "./build/modules/contrib/oe_media/tests/src/"
+        }
+    },
+    "repositories": {
+        "drupal": {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        }
+    },
+    "extra": {
+        "composer-exit-on-patch-failure": true,
+        "enable-patching": true,
+        "installer-paths": {
+            "build/core": ["type:drupal-core"],
+            "build/profiles/contrib/{$name}": ["type:drupal-profile"],
+            "build/modules/contrib/{$name}": ["type:drupal-module"],
+            "build/themes/contrib/{$name}": ["type:drupal-theme"]
+        },
+        "patches": {
+            "drupal/drupal-driver": {
+                "allow-date-only-date-fields": "https://patch-diff.githubusercontent.com/raw/jhedstrom/DrupalDriver/pull/235.patch"
+            },
+            "drupal/address": {
+                "https://www.drupal.org/project/address/issues/3144823": "https://www.drupal.org/files/issues/2020-11-05/3144823-6.patch"
+            },
+            "drupal/entity_reference_revisions": {
+                "https://www.drupal.org/project/entity_reference_revisions/issues/2937835": "https://www.drupal.org/files/issues/2021-03-26/entity_reference_revisions-field_formatter_label-2937835-36.patch"
+            }
+        },
+        "drupal-scaffold": {
+            "locations": {
+                "web-root": "./build"
+            }
+        },
+        "_readme": [
+            "openeuropa/oe_search is used from a branch because of major upgrading is pending. Change again when it released.",
+            "Explicit minimum version requirement of drupal/ctools module due to D9.2 compatability.",
+            "Explicit minimum version requirement of behat library due to PHP compatibility.",
+            "Explicit requirement for egulias/email-validator due to https://www.drupal.org/project/drupal/issues/3061074#comment-14300579. It can be removed when Drupal core 9.2 support is droppped.",
+            "Explicit minimum version requirement for symfony/dom-crawler due to its lower versions using the deprecated function libxml_disable_entity_loader() in PHP8."
+        ]
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "composer/installers": true,
+            "drupal/core-composer-scaffold": true,
+            "cweagans/composer-patches": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "phpro/grumphp": true
+        }
+    }
+}

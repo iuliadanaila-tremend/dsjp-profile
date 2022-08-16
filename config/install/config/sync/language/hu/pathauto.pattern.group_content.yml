@@ -1,0 +1,4 @@
+label: 'Csoport tartalom'
+relationships:
+  'group_content:langcode:language':
+    label: Nyelv

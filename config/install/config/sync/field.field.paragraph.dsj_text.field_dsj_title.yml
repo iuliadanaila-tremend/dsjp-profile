@@ -1,0 +1,19 @@
+uuid: a335331e-d2fd-4774-baf7-b6cf4f66a05a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_dsj_title
+    - paragraphs.paragraphs_type.dsj_text
+id: paragraph.dsj_text.field_dsj_title
+field_name: field_dsj_title
+entity_type: paragraph
+bundle: dsj_text
+label: Title
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

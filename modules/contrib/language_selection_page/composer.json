@@ -1,0 +1,36 @@
+{
+    "name": "drupal/language_selection_page",
+    "type": "drupal-module",
+    "description": "Provides an additional language negotiation fallback using a selection page.",
+    "homepage": "https://drupal.org/project/language_selection_page",
+    "license": "GPL-2.0+",
+    "authors": [
+        {
+            "name": "Pol Dellaiera (@drupol)",
+            "homepage": "https://www.drupal.org/u/pol",
+            "role": "Maintainer"
+        }
+    ],
+    "require-dev": {
+        "drupol/drupal-conventions": "^2"
+    },
+    "scripts": {
+        "changelog-unreleased": "docker-compose run auto_changelog -c .auto-changelog -u",
+        "changelog-version": "docker-compose run auto_changelog -c .auto-changelog -v"
+    },
+    "support": {
+        "issues": "https://drupal.org/project/issues/language_selection_page",
+        "irc": "irc://irc.freenode.org/drupal-contribute",
+        "source": "https://cgit.drupalcode.org/language_selection_page"
+    },
+    "funding": [
+        {
+            "type": "github",
+            "url": "https://github.com/drupol"
+        },
+        {
+            "type": "paypal",
+            "url": "https://www.paypal.me/drupol"
+        }
+    ]
+}

@@ -1,0 +1,24 @@
+{#
+/**
+ * @file
+ * Project top fieldgroup html element.
+ *
+ * @see ./modules/contrib/field_group/templates/field-group-html-element.html.twig
+ */
+#}
+<div id="project-details" class="ecl-row">
+  <div class="ecl-col-12 ecl-col-m-6">
+    {% block primary_details %}
+      {{ element.oe_featured_media }}
+      {{ element.body }}
+    {% endblock %}
+  </div>
+
+  <div class="ecl-col-12 ecl-col-m-6 ecl-u-mt-l ecl-u-mt-m-none">
+    {% block secondary_details %}
+      {{ element.group_details }}
+      {{ element.group_budget }}
+      {{ element.group_resources }}
+    {% endblock %}
+  </div>
+</div>

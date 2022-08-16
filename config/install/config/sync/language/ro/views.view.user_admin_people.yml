@@ -1,0 +1,76 @@
+label: Oameni
+description: 'Identificați și administrați utilizatorii sitului dumneavoastră.'
+display:
+  default:
+    display_title: Master
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Filter
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      pager:
+        options:
+          tags:
+            previous: '‹ Previous'
+            next: 'Next ›'
+            first: '« First'
+            last: 'Last »'
+          expose:
+            items_per_page_label: 'Items per page'
+            items_per_page_options_all_label: '- All -'
+            offset_label: Offset
+      fields:
+        user_bulk_form:
+          label: 'Actualizare în masă'
+        name:
+          label: 'Numele de utilizator'
+        status:
+          label: Status
+          settings:
+            format_custom_true: Activ
+            format_custom_false: Blocat
+        roles_target_id:
+          label: Roluri
+        created:
+          label: 'Membru înregistrat de'
+        access:
+          label: 'Ultima accesare'
+        operations:
+          label: Operations
+        mail:
+          separator: ', '
+      filters:
+        combine:
+          expose:
+            label: 'Numele sau emailul conține'
+        status:
+          group_info:
+            label: Status
+            group_items:
+              1:
+                title: Activ
+              2:
+                title: Blocat
+        roles_target_id:
+          expose:
+            label: Rol
+        permission:
+          expose:
+            label: Permisiune
+      title: Oameni
+      empty:
+        area_text_custom:
+          content: 'Nici o persoană disponibilă.'
+      use_more_text: 'mai multe'
+  page_1:
+    display_title: Page
+    display_options:
+      menu:
+        title: Lista
+        description: 'Identificați și administrați utilizatorii sitului dumneavoastră.'
+      tab_options:
+        title: Oameni
+        description: 'Gestionați conturile, rolurile și permisiunile utilizatorilor.'

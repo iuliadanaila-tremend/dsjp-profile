@@ -1,0 +1,14 @@
+settings:
+  allowed_values:
+    -
+      label: '1 teden ali manj'
+    -
+      label: 'Do 4 tednov'
+    -
+      label: 'Do 3 mesecev'
+    -
+      label: 'Do 6 mesecev'
+    -
+      label: 'Do enega leta'
+    -
+      label: 'Več let'

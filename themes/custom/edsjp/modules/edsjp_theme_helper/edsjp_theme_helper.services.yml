@@ -1,0 +1,16 @@
+parameters:
+  edsjp_theme_helper.twig_loader.namespaces: ['edsjp', 'ecl-twig', 'ecl']
+  edsjp_theme_helper.twig_loader.themes: ['edsjp', 'oe_theme']
+  edsjp_theme_helper.twig_loader.directory: 'components'
+services:
+  edsjp_theme_helper.twig_loader.component_library:
+    class: Drupal\edsjp_theme_helper\Loader\EdsjpComponentLibraryLoader
+    arguments:
+      - '%edsjp_theme_helper.twig_loader.namespaces%'
+      - '@app.root'
+      - '%edsjp_theme_helper.twig_loader.themes%'
+      - '%edsjp_theme_helper.twig_loader.directory%'
+      - '@theme_handler'
+      - '@logger.factory'
+    tags:
+      - { name: twig.loader, priority: -99 }

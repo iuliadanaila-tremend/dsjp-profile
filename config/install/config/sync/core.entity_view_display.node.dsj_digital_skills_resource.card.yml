@@ -1,0 +1,116 @@
+uuid: 90462cbb-6812-4675-a1c3-c79426ad6895
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.card
+    - field.field.node.dsj_digital_skills_resource.body
+    - field.field.node.dsj_digital_skills_resource.field_dsj_author
+    - field.field.node.dsj_digital_skills_resource.field_dsj_comments
+    - field.field.node.dsj_digital_skills_resource.field_dsj_digital_skill_level
+    - field.field.node.dsj_digital_skills_resource.field_dsj_digital_technology
+    - field.field.node.dsj_digital_skills_resource.field_dsj_external_id
+    - field.field.node.dsj_digital_skills_resource.field_dsj_geographic_scope
+    - field.field.node.dsj_digital_skills_resource.field_dsj_image
+    - field.field.node.dsj_digital_skills_resource.field_dsj_industry
+    - field.field.node.dsj_digital_skills_resource.field_dsj_main_file_for_download
+    - field.field.node.dsj_digital_skills_resource.field_dsj_meta_tags
+    - field.field.node.dsj_digital_skills_resource.field_dsj_methodology
+    - field.field.node.dsj_digital_skills_resource.field_dsj_organization
+    - field.field.node.dsj_digital_skills_resource.field_dsj_publish_in_core
+    - field.field.node.dsj_digital_skills_resource.field_dsj_representative_image
+    - field.field.node.dsj_digital_skills_resource.field_dsj_skills_resource_type
+    - field.field.node.dsj_digital_skills_resource.field_dsj_supporting_document
+    - field.field.node.dsj_digital_skills_resource.field_dsj_target_audience
+    - field.field.node.dsj_digital_skills_resource.field_dsj_target_group
+    - field.field.node.dsj_digital_skills_resource.field_dsj_target_language
+    - field.field.node.dsj_digital_skills_resource.field_dsj_topology_of_competence
+    - field.field.node.dsj_digital_skills_resource.field_dsj_type_of_initiative
+    - field.field.node.dsj_digital_skills_resource.field_dsj_website_link
+    - node.type.dsj_digital_skills_resource
+    - responsive_image.styles.card_image
+  module:
+    - field_group
+    - responsive_image
+    - user
+third_party_settings:
+  field_group:
+    group_resource_details:
+      children:
+        - field_dsj_author
+        - field_dsj_digital_skill_level
+        - field_dsj_digital_technology
+        - field_dsj_geographic_scope
+        - field_dsj_industry
+        - field_dsj_main_file_for_download
+        - field_dsj_methodology
+        - field_dsj_organization
+        - field_dsj_skills_resource_type
+        - field_dsj_supporting_document
+        - field_dsj_target_audience
+        - field_dsj_target_group
+        - field_dsj_target_language
+        - field_dsj_topology_of_competence
+        - field_dsj_type_of_initiative
+        - field_dsj_website_link
+      label: 'Digital skills resource details'
+      parent_name: ''
+      region: hidden
+      weight: 7
+      format_type: html_element
+      format_settings:
+        classes: ''
+        id: resource-details
+        element: div
+        show_label: true
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+_core:
+  default_config_hash: bP0z_SHY7BVVSv7LPoKo1XV-yik7RB5FIWdZmvTp09o
+id: node.dsj_digital_skills_resource.card
+targetEntityType: node
+bundle: dsj_digital_skills_resource
+mode: card
+content:
+  field_dsj_image:
+    type: responsive_image
+    label: hidden
+    settings:
+      responsive_image_style: card_image
+      image_link: content
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  body: true
+  content_moderation_control: true
+  field_dsj_author: true
+  field_dsj_comments: true
+  field_dsj_digital_skill_level: true
+  field_dsj_digital_technology: true
+  field_dsj_external_id: true
+  field_dsj_geographic_scope: true
+  field_dsj_industry: true
+  field_dsj_main_file_for_download: true
+  field_dsj_meta_tags: true
+  field_dsj_methodology: true
+  field_dsj_organization: true
+  field_dsj_publish_in_core: true
+  field_dsj_representative_image: true
+  field_dsj_skills_resource_type: true
+  field_dsj_supporting_document: true
+  field_dsj_target_audience: true
+  field_dsj_target_group: true
+  field_dsj_target_language: true
+  field_dsj_topology_of_competence: true
+  field_dsj_type_of_initiative: true
+  field_dsj_website_link: true
+  flag_subscribe_node: true
+  flag_voting: true
+  langcode: true
+  links: true
+  private_message_link: true
+  search_api_excerpt: true

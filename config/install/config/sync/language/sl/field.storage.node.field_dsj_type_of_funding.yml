@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Javni
+    -
+      label: Zasebni
+    -
+      label: 'Množično financiranje'
+    -
+      label: Javno-zasebni

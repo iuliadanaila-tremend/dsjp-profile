@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: 'Scileanna digiteacha don lucht saothair.'
+    -
+      label: 'Scileanna digiteacha do ghairmithe TFC agus saineolaithe digiteacha eile.'
+    -
+      label: 'Scileanna digiteacha san oideachas.'
+    -
+      label: 'Scileanna digiteacha do chách'

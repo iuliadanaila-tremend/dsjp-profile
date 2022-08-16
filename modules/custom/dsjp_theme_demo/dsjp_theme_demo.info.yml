@@ -1,0 +1,9 @@
+name: DSJP Theme Demo
+description: DSJP Theme Demo
+type: module
+core_version_requirement: ^8 || ^9
+php: 7.3
+core: 8.x
+package: DSJP
+dependencies:
+  - drupal:block

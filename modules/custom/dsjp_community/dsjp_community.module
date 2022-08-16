@@ -1,0 +1,567 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for dsjp_community module.
+ */
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
+use Drupal\group\Entity\Group;
+use Drupal\node\NodeInterface;
+use Drupal\message\Entity\Message;
+use Drupal\group\Entity\GroupInterface;
+use Drupal\dsjp_community\Plugin\Filter\MentionsCustomFilter;
+use Drupal\group\Entity\GroupContent;
+use Drupal\Core\Render\BubbleableMetadata;
+use Drupal\user\Entity\User;
+
+/**
+ * Implements hook_page_attachments_alter().
+ */
+function dsjp_community_page_attachments_alter(&$build) {
+  // Add mentions library.
+  $build['#attached']['library'][] = 'dsjp_community/mentions';
+}
+
+/**
+ * Implements hook_entity_update().
+ */
+function dsjp_community_entity_update(EntityInterface $entity) {
+  _dsjp_community_update_alias($entity, 'update');
+  if (PHP_SAPI !== 'cli') {
+    dsjp_community_insert_or_update($entity, TRUE);
+  }
+}
+
+/**
+ * Handling mentions crud operations.
+ */
+function dsjp_community_insert_or_update(EntityInterface $entity, $update) {
+  $config = \Drupal::config('mentions.settings');
+  $supported_entities = $config->get('supported_entity_types');
+  if (empty($supported_entities) || !in_array($entity->getEntityTypeId(), $supported_entities)) {
+    return;
+  }
+
+  $type = $entity->getEntityTypeId();
+  $field_definitions = $entity->getFieldDefinitions();
+  $fields_with_text = [];
+  $supported_field_types = ['text_with_summary', 'text_long', 'text'];
+  foreach ($field_definitions as $field_definition) {
+    $field_type = $field_definition->getType();
+    if (isset($field_type) && in_array($field_type, $supported_field_types)) {
+      array_push($fields_with_text, $field_definition->getName());
+    }
+  }
+
+  foreach ($fields_with_text as $text_field) {
+    $entity_text_field = $entity->get($text_field);
+    $value = $entity_text_field->value;
+    $format = !empty($entity_text_field->format) ? $entity_text_field->format : 'basic_html';
+
+    $container = \Drupal::getContainer();
+    $filter_mentions = MentionsCustomFilter::create($container, [], 'dsj_filter_mentions', []);
+    $filter_mentions->setTextFormat($format);
+    if ($filter_mentions->shouldApplyFilter()) {
+      $mentions = $filter_mentions->getMentions($value);
+      $auid = \Drupal::currentUser()->id();
+      mentions_crud_update($type, $mentions, $entity->id(), $auid);
+    }
+  }
+}
+
+/**
+ * Implements hook_entity_insert().
+ */
+function dsjp_community_entity_insert(EntityInterface $entity) {
+  _dsjp_community_update_alias($entity, 'create');
+  if (PHP_SAPI !== 'cli') {
+    dsjp_community_insert_or_update($entity, FALSE);
+  }
+  if ('mentions' === $entity->bundle()) {
+    // Get the mentioned user.
+    $mentionedUser = $entity->getMentionedUserId();
+    // Create message.
+    $currentNode = \Drupal::routeMatch()->getParameter('entity');
+    $message = Message::create([
+      'template' => 'dsj_user_mentioned',
+      'uid' => $mentionedUser,
+      'field_node_reference' => ($currentNode instanceof NodeInterface) ? $currentNode->id() : '',
+    ]);
+    $message->save();
+    // Call message notify service.
+    $notifier = \Drupal::service('message_notify.sender');
+    // Send message to message creator.
+    $notifier->send($message);
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_insert().
+ */
+function dsjp_community_group_content_insert(EntityInterface $entity) {
+  $notifier = \Drupal::service('message_notify.sender');
+  if ($entity->hasField('field_dsj_request_message')) {
+    $message_to_send = $entity->get('field_dsj_request_message')->value;
+    if (!empty($message_to_send)) {
+      $message = Message::create([
+        'template' => 'dsj_membership_request',
+        'uid' => $entity->getGroup()->getOwner()->id(),
+      ]);
+      $message->set('field_dsj_group_content', $entity);
+      $message->save();
+      // Call message notify service.
+      $notifier->send($message);
+    }
+  }
+  elseif ($entity->hasField('invitee_mail')) {
+    $message = Message::create([
+      'template' => 'dsj_user_invited_to_group',
+      'uid' => $entity->getGroup()->getOwner()->id(),
+    ]);
+    $message->set('field_dsj_group_content', $entity);
+    $message->set('field_dsj_user_email', $entity->get('invitee_mail')->value);
+    $message->save();
+    $notifier->send($message, [
+      'mail' => 'webmaster@digitalskillsjobs.eu, helpdesk@digitalskillsjobs.eu',
+    ]);
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function dsjp_community_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  switch ($form_id) {
+    case 'node_dsj_discussion_form':
+    case 'node_dsj_discussion_edit_form':
+      // Authenticated users should not see the revision tab when creating
+      // or updating a discussion node.
+      // Get current user roles.
+      $roles = \Drupal::currentUser()->getRoles();
+      $uid = \Drupal::currentUser()->id();
+      // Super admin has only the authenticated role.
+      // If only one role exists, it's the authenticated one.
+      if ($uid > 1 && 1 === count($roles)) {
+        // Hide the revision information tab.
+        $form['revision_information']['#access'] = FALSE;
+      }
+      $form['field_dsj_representative_image']['#access'] = count($roles) > 1;
+      $form['body']['widget'][0]['#allowed_formats'] = ['full_html'];
+      break;
+
+    case 'comment_dsj_comment_form':
+      // Because the edit and add form ids are similar, check if the form entity
+      // is new before sending any emails.
+      $entity = $form_state->getFormObject()->getEntity();
+      if ($entity->isNew()) {
+        // If the current user has already submitted a comment and has been
+        // published, it can post other comments without notifying reviewers.
+        $uid = \Drupal::currentUser()->id();
+        $user_has_comments = \Drupal::entityQuery('comment')
+          ->condition('uid', $uid)
+          ->condition('status', 1)
+          ->range(0, 1)
+          ->execute();
+        if (empty($user_has_comments)) {
+          $form['actions']['submit']['#submit'][] = 'dsjp_community_comment_submit';
+        }
+      }
+      // Disable the comment preview button.
+      if (isset($form['actions']['preview'])) {
+        $form['actions']['preview']['#access'] = FALSE;
+      }
+      break;
+  }
+
+  // For the public groups we do not use request membership form
+  // so we must add a help text.
+  if (strpos($form_id, '_group-join_form') !== FALSE) {
+    // Get the group from the route.
+    $group = \Drupal::routeMatch()->getParameter('group');
+    if ($group instanceof Group && 'dsj_public_group' === $group->bundle()) {
+      $markup = t('Confirm request to join the %title', ['%title' => $group->label()]);
+      $form['help'] = [
+        '#type' => 'item',
+        '#markup' => $markup,
+      ];
+    }
+  }
+  // Set some helpful text on the group join form now it's there.
+  if (strpos($form_id, '_group-request-membership_form') !== FALSE) {
+    // Get the current group.
+    $group = \Drupal::routeMatch()->getParameter('group');
+    if ($group && $group instanceof Group) {
+      // Get the group title.
+      $title = $group->label();
+      // Replace the markup.
+      $markup = t('Confirm request to join the %title', ['%title' => $title]);
+      $form['help'] = [
+        '#type' => 'item',
+        '#markup' => $markup,
+      ];
+      // Add placeholder.
+      $form['field_dsj_request_message']['widget'][0]['value']['#placeholder'] = t('Write your message');
+      // Change Request button value.
+      $form['actions']['submit']['#value'] = t('Join this group');
+    }
+    $form['path']['#type'] = 'hidden';
+  }
+}
+
+/**
+ * Comment submit callback.
+ */
+function dsjp_community_comment_submit(&$form, FormStateInterface $form_state) {
+  $entity = $form_state->getFormObject()->getEntity();
+  $role = $entity->getCommentedEntity()->bundle() === 'dsj_discussion' ? 'community_manager' : 'dsj_reviewer';
+  _dsjp_community_notify_users($entity, $role, 'create_comment', 'field_comment_reference');
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_insert().
+ */
+function dsjp_community_node_insert(NodeInterface $node) {
+  if ('dsj_discussion' === $node->bundle()) {
+    // Check if the author of the discussion has created other discussions.
+    $uid = $node->getOwnerId();
+    $discussions = \Drupal::entityTypeManager()->getStorage('node')->loadByProperties(['uid' => $uid]);
+    if (1 === count($discussions)) {
+      // This is the first discussion of this user
+      // so we must notify the community managers.
+      _dsjp_community_notify_users($node, 'community_manager', 'dsj_first_discussion', 'field_node_reference');
+    }
+  }
+}
+
+/**
+ * Helper function that sends message notifications.
+ *
+ * The notification is sent to all users with the given role.
+ *
+ * @param object $entity
+ *   The loaded node object.
+ * @param string $role
+ *   The role to load users from.
+ * @param string $message_template
+ *   The message template to use.
+ * @param string $reference_token
+ *   The entity reference token for the message template.
+ *
+ * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+ * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+ * @throws \Drupal\Core\Entity\EntityStorageException
+ */
+function _dsjp_community_notify_users($entity, $role, $message_template, $reference_token) {
+  // Get all users with the given role role.
+  $users = \Drupal::entityTypeManager()->getStorage('user')->loadByProperties(['roles' => $role]);
+  // Call message notify service.
+  $notifier = \Drupal::service('message_notify.sender');
+  foreach ($users as $user) {
+    // Create a message to notify the users.
+    $message = Message::create([
+      'template' => $message_template,
+      'uid' => $user->id(),
+    ]);
+    $message->set($reference_token, $entity);
+    $message->save();
+    // Send message to message creator(in this case = node author).
+    $notifier->send($message);
+  }
+}
+
+/**
+ * Implements hook_module_implements_alter().
+ */
+function dsjp_community_module_implements_alter(&$implementations, $hook) {
+  if ($hook == 'form_alter') {
+    $group = $implementations['dsjp_community'];
+    unset($implementations['dsjp_community']);
+    $implementations['dsjp_community'] = $group;
+  }
+}
+
+/**
+ * Implements hook_field_widget_form_alter().
+ */
+function dsjp_community_field_widget_form_alter(&$element, FormStateInterface $form_state, $context) {
+  // Remove N/A options from Yes/No boolean.
+  if (in_array($context['items']->getName(), [
+    'field_dsj_i_am_student',
+    'field_dsj_i_am_job_seeker',
+  ])) {
+    if (isset($element['#options']['_none'])) {
+      unset($element['#options']['_none']);
+    }
+  }
+  // Alter the selection handler for the user autocomplete in order to query by
+  // the user's fullname instead of username.
+  if ($context['items']->getName() == 'members') {
+    if ($element['target_id']['#delta'] == 0) {
+      $recipient = \Drupal::requestStack()->getCurrentRequest()->query->get('recipient');
+      $element['target_id']['#default_value'] = !empty($recipient) ? User::load($recipient) : NULL;
+    }
+    $element['target_id']['#selection_handler'] = 'default:user_fullname';
+  }
+}
+
+/**
+ * Implements hook_entity_delete().
+ */
+function dsjp_community_entity_delete(EntityInterface $entity) {
+  _dsjp_community_update_alias($entity, 'delete');
+}
+
+/**
+ * Create the aliases for the views of the group.
+ *
+ * @param \Drupal\Core\Entity\EntityInterface $entity
+ *   The entity that is the parent for the alias.
+ * @param string $op
+ *   The operation that is being performed.
+ * @param bool $bulk
+ *   Parameter to tell if the operation is coming from a bulk or not.
+ *
+ * @throws \Exception
+ */
+function _dsjp_community_update_alias(EntityInterface $entity, $op, $bulk = FALSE) {
+  if ($entity->getEntityTypeId() === 'group') {
+    switch ($op) {
+      case 'all':
+      case 'update':
+      case 'create':
+        /** @var \Drupal\path_alias\AliasManager $pam */
+        $pam = \Drupal::service('path_alias.manager');
+
+        // If disabled generate automatic link.
+        if (
+          !$entity->get('path')->pathauto &&
+          $entity->get('path')->alias
+        ) {
+          $path = $entity->get('path')->getValue()[0];
+        }
+        else {
+          // If it's a bulk generate then get the alias by path.
+          if ($bulk === TRUE) {
+            $url = Url::fromRoute('entity.group.canonical', ['group' => $entity->id()]);
+            $url = $url->getInternalPath();
+
+            $path['alias'] = $pam->getAliasByPath('/' . $url);
+          }
+          else {
+            // New alias.
+            $path = \Drupal::service('pathauto.generator')
+              ->updateEntityAlias($entity, 'update');
+          }
+        }
+
+        // Check if the alias changed.
+        // If yes, then change all the other views.
+        if (!empty($path)) {
+          foreach (_dsjp_community_group_tabs() as $route) {
+            $suffix = _dsjp_community_get_path_suffix($entity, $route);
+            $entity_language = $entity->language()->getId();
+
+            // Get alias of the group tab.
+            $grouptab_alias = $pam->getAliasByPath('/group/' . $entity->id() . '/' . $suffix);
+
+            /** @var \Drupal\path_alias\PathAliasStorage $pas */
+            $pas = \Drupal::entityTypeManager()->getStorage('path_alias');
+
+            // Check of the alias is an alias or path.
+            $is_alias = $pas->loadByProperties([
+              'alias' => $grouptab_alias,
+              'langcode' => $entity_language,
+            ]);
+
+            // Create a new alias when it does not exist.
+            if ($op === 'create' && empty($is_alias)) {
+              // Insert the alias for the other views.
+              $path_alias = $pas->create([
+                'path' => '/group/' . $entity->id() . '/' . $suffix,
+                'alias' => $path['alias'] . '/' . $suffix,
+                'langcode' => $entity_language,
+              ]);
+              $path_alias->save();
+            }
+
+            // Update alias by deleting the old one and creating a new one.
+            if ($op === 'update' || $op === 'all') {
+              \Drupal::service('pathauto.alias_storage_helper')
+                ->deleteBySourcePrefix('/group/' . $entity->id() . '/' . $suffix);
+              $path_alias = $pas->create([
+                'path' => '/group/' . $entity->id() . '/' . $suffix,
+                'alias' => $path['alias'] . '/' . $suffix,
+                'langcode' => $entity_language,
+              ]);
+              $path_alias->save();
+            }
+          }
+
+          // Clear cache of the group tag and rebuild routes.
+          \Drupal::service('cache_tags.invalidator')->invalidateTags(['group:' . $entity->id()]);
+          \Drupal::service('router.builder')->rebuild();
+        }
+        break;
+
+      case 'delete':
+        // Delete all the aliases of the deleted group.
+        $storage_helper = \Drupal::service('pathauto.alias_storage_helper');
+        $storage_helper->deleteBySourcePrefix('/group/' . $entity->id());
+        break;
+    }
+  }
+}
+
+/**
+ * Get a list of tabs used in groups.
+ *
+ * @return array
+ *   Array of group tabs.
+ */
+function _dsjp_community_group_tabs() {
+  $tabs = &drupal_static(__FUNCTION__);
+  if (!isset($tabs)) {
+    /** @var \Drupal\Core\Menu\LocalTaskManager $taskManager */
+    $taskManager = Drupal::service('plugin.manager.menu.local_task');
+    $tabs = [];
+
+    $group_tabs = $taskManager->getLocalTasksForRoute('entity.group.canonical');
+    $group_tabs = $group_tabs[0];
+
+    // Loop over the available tabs on a group.
+    foreach ($group_tabs as $key => $localtask) {
+      /** @var \Drupal\Core\Url $localtask */
+      $tabs[$key] = $localtask->getRouteName();
+    }
+    // Allow other modules to change the group tabs.
+    \Drupal::moduleHandler()->alter('dsjp_community_group_tabs', $tabs);
+  }
+  return $tabs;
+}
+
+/**
+ * Get the url suffix for a giving route of a group.
+ *
+ * @param \Drupal\group\Entity\GroupInterface $group
+ *   The group being updated.
+ * @param string $route
+ *   The route of the tab being updated.
+ *
+ * @return string
+ *   The url suffix of the tab.
+ */
+function _dsjp_community_get_path_suffix(GroupInterface $group, $route) {
+  $url = Url::fromRoute($route, ['group' => $group->id()]);
+
+  // Get the last part of the url.
+  $url = explode('/', $url->getInternalPath());
+
+  return end($url);
+}
+
+/**
+ * Helper function that checks if a node is part of a group.
+ *
+ * @param int $nid
+ *   The node id.
+ *
+ * @return mixed
+ *   The group id if one is found or false otherwise.
+ */
+function _dsjp_community_node_is_group_content($nid) {
+  $groupId = NULL;
+  // @todo Find better solution to get group id based on node.
+  $ids = \Drupal::entityQuery('group_content')
+    ->condition('entity_id', $nid)
+    ->execute();
+
+  $relations = GroupContent::loadMultiple($ids);
+  foreach ($relations as $rel) {
+    if ($rel->getEntity()->getEntityTypeId() == 'node') {
+      $groupId = $rel->getGroup()->id();
+      return $groupId;
+    }
+  }
+
+  return FALSE;
+}
+
+/**
+ * Implements hook_token_info().
+ */
+function dsjp_community_token_info() {
+  $type = [
+    'name' => t('Custom Tokens'),
+    'description' => t('Tokens for custom functionality.'),
+  ];
+  $node['discussion-path'] = [
+    'name' => t("Discussion Prefix"),
+    'description' => t('Discussion url pattern for online/group cases'),
+  ];
+  $user_by_email_type = [
+    'name' => t('User By Email'),
+    'description' => t('Tokens for user by email.'),
+  ];
+  return [
+    'types' => [
+      'customtoken' => $type,
+      'user_by_email' => $user_by_email_type,
+    ],
+    'tokens' => ['customtoken' => $node],
+  ];
+}
+
+/**
+ * Implements hook_tokens().
+ */
+function dsjp_community_tokens($type, $tokens, array $data, array $options, BubbleableMetadata $bubbleable_metadata) {
+  $replacements = [];
+
+  if ($type == 'customtoken') {
+    foreach ($tokens as $name => $original) {
+      switch ($name) {
+        case 'discussion-path':
+          if ($data['node']) {
+            // Check if this discussion is in a group.
+            if ($groupId = _dsjp_community_node_is_group_content($data['node']->id())) {
+              // Get the group alias.
+              $url = Url::fromRoute('entity.group.canonical', ['group' => $groupId]);
+              $url = $url->getInternalPath();
+              $pam = \Drupal::service('path_alias.manager');
+              $groupAlias = $pam->getAliasByPath('/' . $url);
+              $prefix = $groupAlias . '/discussions';
+            }
+            else {
+              $prefix = '/community/online-discussions';
+            }
+            $replacements[$original] = addslashes($prefix);
+          }
+          break;
+      }
+    }
+  }
+  elseif ($type == 'user_by_email') {
+    $replacements['[user_by_email:user_firstname]'] = '';
+    if (isset($data['group_content'])) {
+      $user = \Drupal::entityTypeManager()->getStorage('user')->loadByProperties([
+        'mail' => $data['group_content']->get('invitee_mail')->value,
+      ]);
+      if (!empty($user)) {
+        $account = reset($user);
+        $first_name = $account->get('field_dsj_firstname')->getValue();
+        $replacements['[user_by_email:user_firstname]'] = !empty($first_name[0]['value']) ? $first_name[0]['value'] : '';
+      }
+    }
+  }
+  return $replacements;
+}
+
+/**
+ * Implements hook_entity_type_alter().
+ */
+function dsjp_community_entity_type_alter(array &$entity_types) {
+  $entity_types['group_content']->setFormClass('group-leave', 'Drupal\dsjp_community\Form\GroupLeaveOverrideForm');
+}

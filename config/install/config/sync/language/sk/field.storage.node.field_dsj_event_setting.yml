@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Zmiešané
+    -
+      label: 'O mieste'
+    -
+      label: 'Virtuálny živý'
+    -
+      label: 'Virtuálne vopred zaznamenané'

@@ -1,0 +1,18 @@
+uuid: e595ab8f-2270-4338-b027-a6985b9e7e19
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.content_type.group_content_type_8b8a0bf61fb1b
+id: group_content.group_content_type_8b8a0bf61fb1b.metatag
+field_name: metatag
+entity_type: group_content
+bundle: group_content_type_8b8a0bf61fb1b
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

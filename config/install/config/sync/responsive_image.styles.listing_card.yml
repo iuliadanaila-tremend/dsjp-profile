@@ -1,0 +1,38 @@
+uuid: df5bf663-398a-4356-ac84-6e63c28bab65
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.ratio_16_9_medium
+    - image.style.ratio_16_9_medium_2x
+    - image.style.ratio_16_9_small
+    - image.style.ratio_16_9_small_2x
+  theme:
+    - oe_theme
+_core:
+  default_config_hash: UJnzGRHPV4nai-nNqm9mtcpMzjvYSb8nk22F_14hCIo
+id: listing_card
+label: 'Listing Card'
+image_style_mappings:
+  -
+    image_mapping_type: image_style
+    image_mapping: ratio_16_9_medium
+    breakpoint_id: oe_theme.medium
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: ratio_16_9_medium_2x
+    breakpoint_id: oe_theme.medium
+    multiplier: 2x
+  -
+    image_mapping_type: image_style
+    image_mapping: ratio_16_9_small
+    breakpoint_id: oe_theme.extra_small
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: ratio_16_9_small_2x
+    breakpoint_id: oe_theme.extra_small
+    multiplier: 2x
+breakpoint_group: oe_theme
+fallback_image_style: ratio_16_9_medium

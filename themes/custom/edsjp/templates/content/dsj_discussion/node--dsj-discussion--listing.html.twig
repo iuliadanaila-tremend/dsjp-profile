@@ -1,0 +1,73 @@
+{% set classes = [
+  'node',
+  node.isPromoted() ? 'node--promoted',
+  node.isSticky() ? 'node--sticky',
+  not node.isPublished() ? 'node--unpublished',
+  node.bundle|clean_class,
+  (node.bundle|clean_class) ~ '--' ~ (view_mode|clean_class),
+  'node' ~ '--' ~ (view_mode|clean_class),
+  'node' ~ '--' ~ (node.bundle|clean_class),
+  term_type ? (node.bundle|clean_class) ~ '--' ~ (term_type|clean_class)
+] %}
+<article {{ attributes.addClass(classes) }}>
+  <div class="article-header">
+    <div class="user author-picture">
+      {{ author_avatar }}
+    </div>
+    <div class="page-title">
+      {{ title_prefix }}
+      {% if not page %}
+        <h2 {{ title_attributes }}>
+          <a href="{{ url }}" rel="bookmark" title="{{ title }}">{{ title }}</a>
+        </h2>
+      {% endif %}
+      {{ title_suffix }}
+    </div>
+  </div>
+  <div {{ content_attributes.addClass('content', 'content-area') }}>
+    <div class="left-side">
+      <div {{ author_attributes }}>
+        <div class="started-by">
+          <span class="hidden-mobile">{{ 'Created by'|t }}</span>
+          {% if node.getOwner.isAnonymous %}
+            {{ author_name }}
+          {% else %}
+            <a href="{{ path('entity.user.canonical', { user: node.getOwnerId }) }}">
+              {{ author_name }}
+            </a>
+          {% endif %}
+        </div>
+        <div class="ended-by-info">
+          <span class="delimiter">|</span>
+          <span class="hidden-mobile">{{ 'Posted'|t }}</span>
+          {% set timestamp = node.getCreatedTime|format_date('custom', 'U') %}
+          {% if date(timestamp) < date('-6 days') %}
+            <time>
+              {{ node.getCreatedTime|format_date('custom', 'd F Y') }}
+            </time>
+          {% else %}
+            <time class="time-ago-wrapper" data-date="{{ timestamp }}"></time>
+            <span>{{ 'ago'|t }}</span>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {{ content|without('flag_voting', 'field_dsj_comments') }}
+  </div>
+
+  {% if display_submitted %}
+    <div class="content content-footer">
+      <div class="right-side">
+        <div class="count count-comment{% if comment_count != 0 %} has-comments{% endif %}">
+          <span><a href="{{ comment_form_url }}">{{ comment_count }}</a></span>
+        </div>
+        <div class="count count-vote">
+          <span>{{ content.flag_voting }}</span>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+  {% if content.field_dsj_comments %}
+    {{ content.field_dsj_comments }}
+  {% endif %}
+</article>

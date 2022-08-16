@@ -1,0 +1,24 @@
+settings:
+  allowed_values:
+    0:
+      label: Curs
+    1:
+      label: 'Modul de program'
+    2:
+      label: Mentorat
+    4:
+      label: Ucenicie
+    5:
+      label: 'Vizită de studiu'
+    6:
+      label: 'Program scurt de învățare'
+    7:
+      label: Stagiu
+    8:
+      label: 'Program educațional'
+    9:
+      label: Clasa
+    10:
+      label: 'Serviciu de învățare'
+    11:
+      label: 'Teza de doctorat'

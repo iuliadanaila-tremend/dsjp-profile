@@ -1,0 +1,71 @@
+contact_title: 'Ikkuntattja lill-UE'
+contact:
+  -
+    label: 'Ċemplilna 00 800 6 7 8 9 10 11'
+  -
+    href: 'https://europa.eu/european-union/contact/call-us_mt'
+    label: 'Uża alternattivi telefoniċi oħra'
+  -
+    href: 'https://europa.eu/european-union/contact/write-to-us_mt'
+    label: 'Iltaqa’ magħna f’uffiċċju lokali tal-UE'
+  -
+    href: 'https://europa.eu/european-union/contact/meet-us_mt'
+    label: 'Iktbilna permezz tal-formola ta’ kuntatt tagħna'
+social_media_title: 'Media soċjali'
+social_media:
+  -
+    label: 'Fittex kanali tal-midja soċjali tal-UE'
+    href: 'https://europa.eu/european-union/contact/social-networks_mt'
+institution_links_title: 'Istituzzjonijiet tal-UE'
+institution_links:
+  0:
+    label: 'Il-Parlament Ewropew'
+    href: 'http://www.europarl.europa.eu/portal/mt'
+  1:
+    label: 'Il-Kunsill Ewropew'
+    href: 'http://www.consilium.europa.eu/mt/european-council/'
+  2:
+    label: 'Il-Kunsill tal-Unjoni Ewropea'
+    href: 'http://www.consilium.europa.eu/mt/home/'
+  3:
+    label: 'Il-Kummissjoni Ewropea'
+    href: 'http://ec.europa.eu/index_mt.htm'
+  4:
+    label: 'Il-Qorti tal-Ġustizzja tal-Unjoni Ewropea (QtĠ-UE)'
+    href: 'http://curia.europa.eu/jcms/jcms/j_6/mt/'
+  5:
+    label: 'Il-Bank Ċentrali Ewropew (BĊE)'
+    href: 'https://www.ecb.europa.eu/home/languagepolicy/html/index.mt.html'
+  6:
+    label: 'Il-Qorti Ewropea tal-Awdituri (QEA)'
+    href: 'http://www.eca.europa.eu/mt'
+  7:
+    label: 'Is-Servizz Ewropew għall-Azzjoni Esterna (SEAE)'
+    href: 'http://eeas.europa.eu/index_en.htm'
+  8:
+    label: 'Il-Kumitat Ekonomiku u Soċjali Ewropew (KESE)'
+    href: 'http://www.eesc.europa.eu/?i=portal.mt.home'
+  9:
+    label: 'Il-Kumitat tar-Reġjuni tal-Unjoni Ewropea (KtR)'
+    href: 'http://cor.europa.eu/mt/'
+  10:
+    label: 'Il-Bank Ewropew tal-Investiment (BEI)'
+  12:
+    label: 'Kontrollur Ewropew għall-Protezzjoni tad-Data (KEPD)'
+    href: 'https://secure.edps.europa.eu/EDPSWEB/edps/EDPS?lang=mt'
+legal_links_title: Legali
+legal_links:
+  -
+    label: 'Dwar dan is-sit'
+    href: 'https://europa.eu/european-union/abouteuropa_mt'
+  -
+    label: 'Politika dwar il-lingwa'
+    href: 'https://europa.eu/european-union/abouteuropa/language-policy_mt'
+  -
+    label: 'Politika ta’ privatezza'
+    href: 'https://europa.eu/european-union/abouteuropa/privacy-policy_mt'
+  -
+    label: 'Avviż legali'
+    href: 'https://europa.eu/european-union/abouteuropa/legal_notices_mt'
+  -
+    href: 'https://europa.eu/european-union/abouteuropa/cookies_mt'

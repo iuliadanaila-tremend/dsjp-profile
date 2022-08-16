@@ -1,0 +1,24 @@
+settings:
+  allowed_values:
+    0:
+      label: Kors
+    1:
+      label: 'Modulu tal-programm'
+    2:
+      label: Mentoraġġ
+    4:
+      label: Apprendistat
+    5:
+      label: 'Żjara ta’ studju'
+    6:
+      label: 'Programm qasir ta’ tagħlim'
+    7:
+      label: Apprendistat
+    8:
+      label: 'Programm ta’ edukazzjoni'
+    9:
+      label: Klassi
+    10:
+      label: 'Tagħlim f’servizz'
+    11:
+      label: Teżi

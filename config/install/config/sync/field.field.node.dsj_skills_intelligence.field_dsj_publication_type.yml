@@ -1,0 +1,25 @@
+uuid: 287c4777-2e4f-4fe3-92fb-d9e9379b213d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dsj_publication_type
+    - node.type.dsj_skills_intelligence
+  module:
+    - options
+    - tmgmt_content
+third_party_settings:
+  tmgmt_content:
+    excluded: false
+id: node.dsj_skills_intelligence.field_dsj_publication_type
+field_name: field_dsj_publication_type
+entity_type: node
+bundle: dsj_skills_intelligence
+label: 'Publication type'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

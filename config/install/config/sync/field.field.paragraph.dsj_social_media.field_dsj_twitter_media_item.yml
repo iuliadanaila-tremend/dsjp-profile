@@ -1,0 +1,33 @@
+uuid: e0f30340-ff40-4583-a6ca-080455022320
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_dsj_twitter_media_item
+    - media.type.webtools_social_feed
+    - paragraphs.paragraphs_type.dsj_social_media
+  module:
+    - tmgmt_content
+third_party_settings:
+  tmgmt_content:
+    excluded: false
+id: paragraph.dsj_social_media.field_dsj_twitter_media_item
+field_name: field_dsj_twitter_media_item
+entity_type: paragraph
+bundle: dsj_social_media
+label: 'Twitter media item'
+description: 'Find the feed item by searching for the "Twitter" keyword.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      webtools_social_feed: webtools_social_feed
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

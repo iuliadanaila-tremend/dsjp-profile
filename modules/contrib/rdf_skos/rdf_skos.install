@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for rdf_skos module.
+ */
+
+declare(strict_types = 1);
+
+/**
+ * Remove UUID field storage definition for rdf_skos entities.
+ */
+function rdf_skos_update_9101(): void {
+  $entity_definition_update_manager = \Drupal::entityDefinitionUpdateManager();
+
+  foreach (['skos_concept_scheme', 'skos_concept'] as $entity_type_id) {
+    $storage_definition = $entity_definition_update_manager->getFieldStorageDefinition('uuid', $entity_type_id);
+    $entity_definition_update_manager->uninstallFieldStorageDefinition($storage_definition);
+  }
+}

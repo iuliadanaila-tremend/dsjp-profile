@@ -1,0 +1,8 @@
+uuid: c02279ed-f0fd-4b95-9f0a-c668b69725ae
+langcode: en
+status: true
+dependencies: {  }
+id: medium_date_without_time
+label: 'Medium date without time'
+locked: false
+pattern: 'D, d M Y'

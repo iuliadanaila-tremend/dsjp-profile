@@ -1,0 +1,14 @@
+name: 'OpenEuropa Media'
+description: 'Media features for the OpenEuropa project.'
+package: OpenEuropa
+type: module
+core_version_requirement: ^9.2
+dependencies:
+  - media:media
+  - drupal:options
+  - drupal:views
+  - inline_entity_form:inline_entity_form
+  - entity_browser:entity_browser
+  - entity_browser_entity_form:entity_browser_entity_form
+  - file_link:file_link
+

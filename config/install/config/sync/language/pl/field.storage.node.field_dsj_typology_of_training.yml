@@ -1,0 +1,24 @@
+settings:
+  allowed_values:
+    0:
+      label: Kurs
+    1:
+      label: 'Moduł programu'
+    2:
+      label: 'Opieka mentorska'
+    4:
+      label: 'Przygotowania zawodowego'
+    5:
+      label: 'Wizyta studyjna'
+    6:
+      label: 'Krótki program nauki'
+    7:
+      label: Staż
+    8:
+      label: 'Program edukacyjny'
+    9:
+      label: Klasa
+    10:
+      label: 'Uczenie się przez aktywność społeczną'
+    11:
+      label: Wniosek

@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.plain_text
+_core:
+  default_config_hash: mLS_gNnnK_b3kadePvyy8mV9XDJBqhJBl_9WprlBFI0
+template: create_comment
+label: 'Create comment'
+description: 'Comment created.'
+text:
+  -
+    value: "[message:field_comment_reference:entity:author] commented on [message:field_comment_reference:entity:entity:title]\r\n"
+    format: plain_text
+  -
+    value: "Comment by: [message:field_comment_reference:entity:author] on [message:field_comment_reference:entity:entity:title]\r\nComment: [message:field_comment_reference:entity:body]\r\nUrl: [message:field_comment_reference:entity:url]\r\nTimestamp: [message:field_comment_reference:entity:created]\r\n"
+    format: plain_text
+settings:
+  'token options':
+    clear: false
+    'token replace': true
+  purge_override: false
+  purge_methods: {  }

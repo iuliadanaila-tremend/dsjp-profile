@@ -1,0 +1,50 @@
+settings:
+  allowed_values:
+    -
+      label: Bulgarų
+    -
+      label: Kroatijos
+    -
+      label: Čekijos
+    -
+      label: Danijos
+    -
+      label: Nyderlandų
+    -
+      label: Anglų
+    -
+      label: Estijos
+    -
+      label: Suomių
+    -
+      label: Prancūzijos
+    -
+      label: Vokiečių
+    -
+      label: Graikų
+    -
+      label: Vengrų
+    -
+      label: Airijos
+    -
+      label: Italijos
+    -
+      label: Latvių
+    -
+      label: Lietuvos
+    -
+      label: Maltiečių
+    -
+      label: Lenkų
+    -
+      label: Portugalų
+    -
+      label: Rumunų
+    -
+      label: Slovakijos
+    -
+      label: Slovėnų
+    -
+      label: Ispanijos
+    -
+      label: Švedijos

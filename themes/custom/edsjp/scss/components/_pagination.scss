@@ -1,0 +1,46 @@
+.ecl-pagination {
+  @include font($font-size-sm, $line-height-sm, $font-ec-square-regular);
+
+  border-top-width: 0;
+
+  .ecl-pagination__list {
+    .ecl-pagination__item--current {
+      border: 0;
+      font-weight: bold;
+
+      .ecl-pagination__text--summary, 
+      .ecl-pagination__text--full {
+        color: $primary !important;
+      }
+    }
+
+    .ecl-pagination__item--previous,
+    .ecl-pagination__item--next {
+      .ecl-link__label {
+        font-family: $font-ec-square-regular;
+        font-weight: bold;
+        color: $primary !important;
+      }
+
+      .ecl-pagination__text--summary, 
+      .ecl-pagination__text--full {
+        color: $primary !important;
+      }
+    }
+
+    .ecl-pagination__item--last {
+      .ecl-pagination__link {
+        color: $primary !important;
+      }
+    }
+
+    .ecl-link--icon {
+      color: $primary !important;
+
+      .ecl-icon--xs {
+        height: .75rem;
+        width: .75rem;
+      }
+    }
+  }
+}

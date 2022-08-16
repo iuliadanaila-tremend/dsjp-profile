@@ -1,0 +1,14 @@
+settings:
+  allowed_values:
+    -
+      label: '1 hétnél nem hosszabb'
+    -
+      label: 'Legfeljebb 4 hét'
+    -
+      label: 'Legfeljebb 3 hónap'
+    -
+      label: 'Legfeljebb 6 hónap'
+    -
+      label: 'Legfeljebb egy év'
+    -
+      label: 'Több év'

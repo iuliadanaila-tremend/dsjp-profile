@@ -1,0 +1,19 @@
+uuid: 457ac4c0-01d0-4e64-baf6-79590fecef04
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.full_html
+template: dsj_first_discussion
+label: 'First discussion'
+description: ''
+text:
+  -
+    value: "<p>A new discussion has been created and needs to be reviewed:&nbsp;[message:field_node_reference:entity:url]</p>\r\n"
+    format: full_html
+settings:
+  'token options':
+    clear: false
+    'token replace': true
+  purge_override: false
+  purge_methods: {  }

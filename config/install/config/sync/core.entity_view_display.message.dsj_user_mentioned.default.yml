@@ -1,0 +1,25 @@
+uuid: 943de96f-b268-4d02-a0e6-7a5e71f7c521
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.message.dsj_user_mentioned.field_node_reference
+    - message.template.dsj_user_mentioned
+id: message.dsj_user_mentioned.default
+targetEntityType: message
+bundle: dsj_user_mentioned
+mode: default
+content:
+  partial_0:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  partial_1:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_node_reference: true
+  search_api_excerpt: true

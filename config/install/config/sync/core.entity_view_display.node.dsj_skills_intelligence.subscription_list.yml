@@ -1,0 +1,92 @@
+uuid: d6e4c50b-d59e-4dbf-a123-d28c7a3404af
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.subscription_list
+    - field.field.node.dsj_skills_intelligence.body
+    - field.field.node.dsj_skills_intelligence.field_dsj_author
+    - field.field.node.dsj_skills_intelligence.field_dsj_comments
+    - field.field.node.dsj_skills_intelligence.field_dsj_digital_skill_level
+    - field.field.node.dsj_skills_intelligence.field_dsj_digital_technology
+    - field.field.node.dsj_skills_intelligence.field_dsj_external_id
+    - field.field.node.dsj_skills_intelligence.field_dsj_geographic_scope
+    - field.field.node.dsj_skills_intelligence.field_dsj_image
+    - field.field.node.dsj_skills_intelligence.field_dsj_industry
+    - field.field.node.dsj_skills_intelligence.field_dsj_meta_tags
+    - field.field.node.dsj_skills_intelligence.field_dsj_publication_type
+    - field.field.node.dsj_skills_intelligence.field_dsj_publish_in_core
+    - field.field.node.dsj_skills_intelligence.field_dsj_representative_image
+    - field.field.node.dsj_skills_intelligence.field_dsj_target_audience
+    - field.field.node.dsj_skills_intelligence.field_dsj_type_of_initiative
+    - field.field.node.dsj_skills_intelligence.field_dsj_website_link
+    - image.style.thumbnail_100x100_crop
+    - node.type.dsj_skills_intelligence
+  module:
+    - field_group
+    - image
+    - user
+third_party_settings:
+  field_group:
+    group_publication_details:
+      children:
+        - field_dsj_digital_skill_level
+        - field_dsj_digital_technology
+        - field_dsj_geographic_scope
+        - field_dsj_target_audience
+        - field_dsj_website_link
+        - field_dsj_industry
+        - field_dsj_type_of_initiative
+        - field_dsj_publication_type
+      label: 'Skills intelligence publication details'
+      parent_name: ''
+      region: hidden
+      weight: 3
+      format_type: html_element
+      format_settings:
+        classes: bordered-field-list
+        id: publication-details
+        element: div
+        show_label: true
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+id: node.dsj_skills_intelligence.subscription_list
+targetEntityType: node
+bundle: dsj_skills_intelligence
+mode: subscription_list
+content:
+  field_dsj_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: content
+      image_style: thumbnail_100x100_crop
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  body: true
+  content_moderation_control: true
+  field_dsj_author: true
+  field_dsj_comments: true
+  field_dsj_digital_skill_level: true
+  field_dsj_digital_technology: true
+  field_dsj_external_id: true
+  field_dsj_geographic_scope: true
+  field_dsj_industry: true
+  field_dsj_meta_tags: true
+  field_dsj_publication_type: true
+  field_dsj_publish_in_core: true
+  field_dsj_representative_image: true
+  field_dsj_target_audience: true
+  field_dsj_type_of_initiative: true
+  field_dsj_website_link: true
+  flag_subscribe_node: true
+  flag_voting: true
+  langcode: true
+  links: true
+  private_message_link: true
+  search_api_excerpt: true

@@ -1,0 +1,9 @@
+uuid: 276a4ae1-de9b-4d64-b166-831996fc6567
+langcode: en
+status: true
+dependencies: {  }
+id: search_api__views_block__dsj_paragraph_component_listing__dsj_component_listing
+name: 'search_api:views_block__dsj_paragraph_component_listing__dsj_component_listing'
+filter_key: null
+url_processor: query_string
+breadcrumb: {  }

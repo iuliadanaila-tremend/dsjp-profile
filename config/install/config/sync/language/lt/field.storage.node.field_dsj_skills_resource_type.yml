@@ -1,0 +1,12 @@
+settings:
+  allowed_values:
+    -
+      label: 'Įsivertinimo priemonė'
+    -
+      label: Metodika
+    -
+      label: 'Mokymo programos'
+    -
+      label: 'Atvejo tyrimas'
+    -
+      label: 'Kita mokomoji medžiaga'

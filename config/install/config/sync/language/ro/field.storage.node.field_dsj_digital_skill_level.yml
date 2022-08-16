@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Bază
+    -
+      label: Intermediar
+    -
+      label: Avansat
+    -
+      label: 'Expert digital'

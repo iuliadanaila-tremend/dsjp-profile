@@ -1,0 +1,18 @@
+uuid: fce56c4e-421d-4f26-9df5-caa0891b4a12
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.dsj_grouped_cards
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+id: paragraph.dsj_grouped_cards
+target_entity_type_id: paragraph
+target_bundle: dsj_grouped_cards
+default_langcode: site_default
+language_alterable: true

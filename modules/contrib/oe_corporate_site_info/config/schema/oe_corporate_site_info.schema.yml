@@ -1,0 +1,13 @@
+oe_corporate_site_info.settings:
+  type: config_object
+  label: 'OpenEuropa Corporate site information'
+  mapping:
+    site_owner:
+      type: string
+      label: 'Site owner SKOS entity ID'
+    content_owners:
+      label: 'Content owner SKOS entity IDs'
+      type: sequence
+      sequence:
+        label: 'SKOS entity ID'
+        type: string

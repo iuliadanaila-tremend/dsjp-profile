@@ -1,0 +1,14 @@
+settings:
+  allowed_values:
+    -
+      label: '1 uge eller mindre'
+    -
+      label: 'Op til 4 uger'
+    -
+      label: 'Op til 3 måneder'
+    -
+      label: 'Op til 6 måneder'
+    -
+      label: 'Op til et år'
+    -
+      label: 'Flere år'

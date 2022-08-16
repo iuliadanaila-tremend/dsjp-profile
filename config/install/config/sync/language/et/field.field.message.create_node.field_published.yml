@@ -1,0 +1,4 @@
+label: Published
+settings:
+  on_label: Published
+  off_label: Unpublished

@@ -1,0 +1,41 @@
+display:
+  default:
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Použiť
+          reset_button_label: Reset
+          exposed_sorts_label: 'Zoradiť podľa'
+          sort_asc_label: Vzostupne
+          sort_desc_label: Zostupne
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'Položiek na stránku'
+            items_per_page_options_all_label: '- Všetko -'
+            offset_label: 'Zobraziť od'
+      fields:
+        gid:
+          label: Skupina
+          separator: ', '
+        group_roles:
+          label: 'Kategórie používateľov'
+          separator: ', '
+        uid:
+          separator: ', '
+        created:
+          separator: ', '
+        id:
+          separator: ', '
+        dropbutton:
+          label: Operácie
+      empty:
+        area_text_custom:
+          content: 'Žiadne dostupné pozvánky.'
+      arguments:
+        entity_id:
+          exception:
+            title: Všetko
+      title: Pozvánky
+  page_1:
+    display_title: Stránka

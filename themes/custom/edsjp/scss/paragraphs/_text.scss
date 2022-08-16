@@ -1,0 +1,57 @@
+.paragraph--type--dsj-text {
+
+  .ecl-u-type-heading-2 {
+    color: $primary;
+    margin-bottom: 1.5rem;
+  }
+
+  .ecl-u-type-heading-2,
+  h2 {
+    @include font($h2-font-size, $line-height-2xl, $font-ec-square-regular, 600, true);
+  }
+
+  .ecl {
+
+    h2 {
+      @include font($h2-font-size, $line-height-2xl, $font-ec-square-regular, 600, true);
+    }
+
+    h3 {
+      font-size: $font-size-xl !important; /* override ecl default style */
+      line-height: 1.1 !important;
+    }
+
+    h4 {
+      @include font($font-size-2md, $line-height-lg, $font-ec-square-regular, 400, true);
+    }
+  }
+
+  .ecl-row {
+    .ecl-row {
+      margin: 0;
+    }
+  }
+
+  .listing-more-link {
+    //@include media-breakpoint-down(sm) {
+    //  @include position(absolute, null $grid-gutter-width / 2 $grid-gutter-width null);
+    //}
+
+    margin-left: auto;
+    margin-top: $grid-gutter-width / 2;
+
+    a {
+      @include blue-button();
+      @include border-radius(6px);
+
+
+      &:hover {
+        color: $body-bg;
+      }
+    }
+  }
+
+  .video-embed-field-responsive-video {
+    width: 100%;
+  }
+}

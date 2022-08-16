@@ -1,0 +1,9 @@
+services:
+  rdf_skos_test.active_graph_subscriber:
+    class: Drupal\rdf_skos_test\EventSubscriber\TestSkosActiveGraphSubscriber
+    tags:
+      - { name: event_subscriber }
+  rdf_skos_test.predicate_mapping_subscriber:
+    class: Drupal\rdf_skos_test\EventSubscriber\SkosPredicateMappingTestSubscriber
+    tags:
+      - { name: event_subscriber }

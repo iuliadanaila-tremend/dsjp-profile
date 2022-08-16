@@ -1,0 +1,4 @@
+label: Gepubliceerd
+settings:
+  on_label: Actief
+  off_label: Inactief

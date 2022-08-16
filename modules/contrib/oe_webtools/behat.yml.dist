@@ -1,0 +1,84 @@
+default:
+  suites:
+    default:
+      paths:
+        - "%paths.base%/tests/features"
+      contexts:
+        - Drupal\DrupalExtension\Context\ConfigContext
+        - Drupal\DrupalExtension\Context\DrupalContext
+        - Drupal\DrupalExtension\Context\MarkupContext
+        - Drupal\DrupalExtension\Context\MessageContext
+        - Drupal\Tests\oe_webtools\Behat\WebtoolsAnalyticsMinkContext
+        - Drupal\Tests\oe_webtools\Behat\WebtoolsConfigContext
+        - Drupal\Tests\oe_webtools\Behat\WebtoolsCookieConsentContext:
+            selectors:
+              oembed_video: 'iframe'
+        - Drupal\Tests\oe_webtools\Behat\WebtoolsCleanupContext
+        - Drupal\Tests\oe_webtools\Behat\WebtoolsExtensionsContext
+        - Drupal\Tests\oe_webtools\Behat\WebtoolsGlobanContext
+        - Drupal\Tests\oe_webtools\Behat\WebtoolsMapsContext
+        - OpenEuropa\Behat\TransformationContext:
+            pages:
+              Webtools Analytics configuration: 'en/admin/config/system/oe_webtools_analytics'
+              Webtools Laco Widget configuration: 'en/admin/config/regional/oe_webtools_laco_widget'
+              Webtools Analytics rule creation: 'en/admin/structure/webtools_analytics_rule/add'
+              Webtools Analytics rule: 'en/admin/structure/webtools_analytics_rule'
+              Webtools Cookie Consent configuration: 'en/admin/config/system/oe_webtools_cookie_consent'
+              Webtools Globan configuration: 'en/admin/config/system/oe_webtools_globan'
+      filters:
+        tags: "~@static"
+  extensions:
+    Drupal\MinkExtension:
+      goutte: ~
+      ajax_timeout: 10
+      browser_name: 'chrome'
+      javascript_session: 'selenium2'
+      selenium2:
+        wd_host: '${selenium.host}:${selenium.port}/wd/hub'
+        capabilities: { "browser": "chrome", "version": "*" }
+      base_url: "${drupal.base_url}"
+    Drupal\DrupalExtension:
+      api_driver: "drupal"
+      drupal:
+        drupal_root: "build"
+      region_map:
+        about dropdown menu: "#nav-menu-expandable-group-2"
+        corporate bottom footer: ".ecl-footer__corporate-bottom"
+        corporate top footer: ".ecl-footer__corporate-top"
+        custom footer: ".ecl-footer__custom"
+        header: ".ecl-site-header"
+        language dialog: ".ecl-dialog"
+        language switcher: ".ecl-language-list"
+        navigation: ".ecl-navigation-menu"
+        page: "body"
+        page header: ".ecl-page-header"
+        page header site identity: ".ecl-page-header__identity"
+        priorities dropdown menu: "#nav-menu-expandable-group-3"
+      selectors:
+        message_selector: ".messages"
+  formatters:
+    progress: ~
+
+static:
+  suites:
+    default:
+      paths:
+        - "%paths.base%/tests/features"
+      contexts:
+        - Drupal\DrupalExtension\Context\MinkContext
+        - Drupal\Tests\oe_webtools\Behat\WebtoolsExtensionsContext
+        - Drupal\Tests\oe_webtools\Behat\WebtoolsMapsContext
+      filters:
+        tags: "@static"
+  extensions:
+    Drupal\MinkExtension:
+      goutte: ~
+      ajax_timeout: 10
+      browser_name: 'chrome'
+      base_url: "${static_html.base_url}"
+    Drupal\DrupalExtension:
+      api_driver: "drupal"
+      drupal:
+        drupal_root: "build"
+  formatters:
+    progress: ~

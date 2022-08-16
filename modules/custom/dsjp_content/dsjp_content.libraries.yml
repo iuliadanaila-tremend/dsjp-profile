@@ -1,0 +1,77 @@
+form--datepicker:
+  css:
+    component:
+      assets/css/datepicker.css: {}
+  js:
+    assets/js/date-picker-init.js: {}
+  dependencies:
+    - core/modernizr
+
+moment:
+  remote: https://github.com/moment/moment
+  version: "2.29.1"
+  license:
+    name: MIT
+    url: https://github.com/moment/moment/blob/master/README.md
+    gpl-compatible: true
+  js:
+    /libraries/moment/min/moment.min.js: { minified: true }
+
+moment--timezone:
+  remote: https://github.com/moment/moment-timezone
+  version: "0.5.33"
+  license:
+    name: MIT
+    url: https://github.com/moment/moment-timezone/blob/master/README.md
+    gpl-compatible: true
+  js:
+    /libraries/moment-timezone/builds/moment-timezone-with-data.min.js: { minified: true }
+  dependencies:
+    - dsjp_content/moment
+
+timezone--changer:
+  js:
+    assets/js/timezone-changer.js: {}
+  dependencies:
+    - core/jquery
+    - dsjp_content/moment--timezone
+
+form--timepicker:
+  remote: https://github.com/jonthornton/jquery-timepicker
+  version: "1.11.4"
+  license:
+    name: MIT
+    url: https://raw.githubusercontent.com/jonthornton/jquery-timepicker/master/README.md
+    gpl-compatible: true
+  css:
+    component:
+      assets/css/timepicker.css: {}
+  js:
+    /libraries/timepicker/jquery.timepicker.min.js: { minified: true }
+
+drupal.facets.datepicker-widget:
+  version: VERSION
+  js:
+    js/datepicker-widget.js: {}
+  dependencies:
+    - facets/widget
+    - jquery_ui_datepicker/datepicker
+
+drupal.facets.filter-results-btn:
+  version: VERSION
+  js:
+    js/filter-results-btn.js: {}
+
+exposed_filters:
+  js:
+    js/reports_exposed_filters.js: {}
+  dependencies:
+    - core/jquery
+
+popup:
+  js:
+    js/popup.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+    - core/jquery.cookie

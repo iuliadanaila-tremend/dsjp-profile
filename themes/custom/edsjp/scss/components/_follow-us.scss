@@ -1,0 +1,52 @@
+.follow-us {
+  @include media-breakpoint-down(md) {
+    padding-top: 20px;
+  }
+
+  .links {
+    &-title {
+      font-size: $font-size-2md;
+      padding-bottom: 15px;
+
+      .region-social-media-split-wrapper & {
+        font-weight: 600;
+      }
+    }
+
+    a {
+      display: inline-block;
+      width: 32px;
+      height: 32px;
+      position: relative;
+      margin-right: 10px;
+
+      .icon {
+        @include position(absolute, 0);
+
+        &-email {
+          &::before {
+            display: none;
+          }
+
+          background-image: url('../assets/images/email.svg');
+        }
+
+        &-facebook {
+          background-image: url('../assets/images/facebook.svg');
+        }
+
+        &-twitter {
+          background-image: url('../assets/images/twitter.svg');
+        }
+
+        &-instagram {
+          background-image: url('../assets/images/instagram.svg');
+        }
+
+        &-youtube {
+          background-image: url('../assets/images/youtube.svg');
+        }
+      }
+    }
+  }
+}

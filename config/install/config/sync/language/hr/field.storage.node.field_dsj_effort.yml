@@ -1,0 +1,8 @@
+settings:
+  allowed_values:
+    -
+      label: 'Nepuno vrijeme pohađanja – lagani tečaj'
+    -
+      label: 'Puno radno vrijeme'
+    -
+      label: 'Nepuno vrijeme pohađanja – intenzivni tečaj'

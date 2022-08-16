@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Avalik
+    -
+      label: Era
+    -
+      label: Ühisrahastamine
+    -
+      label: 'Avaliku ja erasektori partnerlus'

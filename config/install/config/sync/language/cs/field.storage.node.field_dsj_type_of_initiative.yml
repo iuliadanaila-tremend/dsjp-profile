@@ -1,0 +1,12 @@
+settings:
+  allowed_values:
+    -
+      label: 'Institucionální iniciativa EU'
+    -
+      label: 'Vnitrostátní iniciativa'
+    -
+      label: 'Regionální iniciativa'
+    -
+      label: 'Místní iniciativa'
+    -
+      label: 'Mezinárodní iniciativa'

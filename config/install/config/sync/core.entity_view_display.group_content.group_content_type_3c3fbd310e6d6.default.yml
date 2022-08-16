@@ -1,0 +1,35 @@
+uuid: f6040c3a-3a47-44e8-81dc-20951f5d0f9e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.group_content.group_content_type_3c3fbd310e6d6.grequest_status
+    - field.field.group_content.group_content_type_3c3fbd310e6d6.grequest_updated_by
+    - group.content_type.group_content_type_3c3fbd310e6d6
+  module:
+    - options
+id: group_content.group_content_type_3c3fbd310e6d6.default
+targetEntityType: group_content
+bundle: group_content_type_3c3fbd310e6d6
+mode: default
+content:
+  grequest_status:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: -4
+    region: content
+  grequest_updated_by:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: -3
+    region: content
+hidden:
+  entity_id: true
+  langcode: true
+  search_api_excerpt: true
+  uid: true

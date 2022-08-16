@@ -1,0 +1,62 @@
+.node--full {
+
+  &.node--article {
+    h1 {
+      font-weight: bold;
+      color: $gray-800;
+    }
+  }
+
+  h2 {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: $grid-gutter-width * 1.5;
+
+    .voting {
+      white-space: nowrap;
+      padding-left: $grid-gutter-width / 2;
+
+      a {
+        display: none;
+      }
+    }
+  }
+
+  /* override ecl default style */
+  .ecl {
+    h2 {
+      @include font($h2-font-size, 1.2, $font-ec-square-regular, 700, true);
+    }
+
+    h3 {
+      @include font($font-size-xl, $line-height-xl, $font-ec-square-regular, 500, true);
+    }
+
+    .ecl-unordered-list,
+    ul:is([class*=ecl-u-]),
+    ul:not([class*=ecl-],
+    [class*=wt-]) {
+      list-style-position: initial;
+      padding-inline-start: 40px;
+    }
+
+    .ecl-ordered-list,
+    ol:is([class*=ecl-u-]),
+    ol:not([class*=ecl-],
+    [class*=wt-]) {
+      margin: 0;
+      padding: 0;
+      list-style-position: initial;
+      padding-inline-start: 40px;
+
+      li {
+        margin: 0;
+        max-width: unset;
+
+        &::before {
+          padding-left: 0;
+        }
+      }
+    }
+  }
+}

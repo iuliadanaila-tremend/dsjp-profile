@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Misto
+    -
+      label: Localizzazione
+    -
+      label: 'Vivo virtuale'
+    -
+      label: 'Preregistrato virtuale'

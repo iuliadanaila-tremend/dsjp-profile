@@ -1,0 +1,18 @@
+services:
+  fixed_block_content.block_content:
+    class: Drupal\fixed_block_content\Normalizer\BlockContentNormalizer
+    arguments: ['@hal.link_manager', '@entity_type.manager', '@module_handler', '@entity_type.repository', '@entity_field.manager']
+    tags:
+      - { name: normalizer, priority: 15 }
+
+  fixed_block_content.get_block_dependency_subscriber:
+    class: Drupal\fixed_block_content\EventSubscriber\SetFixedBlockDependency
+    arguments: ['@entity_type.manager', '@database']
+    tags:
+      - { name: event_subscriber }
+
+  fixed_block_content.config_event_subscriber:
+    class: Drupal\fixed_block_content\EventSubscriber\ConfigEventSubscriber
+    arguments: ['@entity_type.manager', '@lock']
+    tags:
+      - { name: event_subscriber }

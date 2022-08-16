@@ -1,0 +1,24 @@
+settings:
+  allowed_values:
+    0:
+      label: Cours
+    1:
+      label: 'Module du programme'
+    2:
+      label: Mentorat
+    4:
+      label: Apprentissage;
+    5:
+      label: 'Visite d’étude'
+    6:
+      label: 'Programme d’apprentissage de courte durée'
+    7:
+      label: Stage
+    8:
+      label: 'Programme éducatif'
+    9:
+      label: Classe
+    10:
+      label: 'Apprentissage de service'
+    11:
+      label: Thèse

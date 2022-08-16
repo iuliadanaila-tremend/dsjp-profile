@@ -1,0 +1,14 @@
+uuid: 3f09b7a2-4d88-44e6-9b99-31b136b8d2a4
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.dsj_private_group
+id: dsj_private_group-anonymous
+label: Anonymous
+weight: -102
+internal: true
+audience: anonymous
+group_type: dsj_private_group
+permissions_ui: true
+permissions: {  }

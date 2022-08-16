@@ -1,0 +1,9 @@
+user_online_status:
+  css:
+    theme:
+      css/user_online_status.css: {}
+  js:
+    js/user_online_status.js: {}
+  dependencies:
+    - core/drupal
+    - core/drupalSettings

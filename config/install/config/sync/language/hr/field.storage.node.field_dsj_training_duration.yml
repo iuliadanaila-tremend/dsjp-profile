@@ -1,0 +1,14 @@
+settings:
+  allowed_values:
+    -
+      label: 'Do 1 tjedan'
+    -
+      label: 'Do 4 tjedana'
+    -
+      label: 'Do 3 mjeseca'
+    -
+      label: 'Do 6 mjeseci'
+    -
+      label: 'Do godinu dana'
+    -
+      label: 'Više godina'

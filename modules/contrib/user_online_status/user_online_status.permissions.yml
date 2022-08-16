@@ -1,0 +1,3 @@
+administer user online status:
+  title: 'Administer user online status'
+  restrict access: TRUE

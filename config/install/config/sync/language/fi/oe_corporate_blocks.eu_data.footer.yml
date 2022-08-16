@@ -1,0 +1,71 @@
+contact_title: 'Ota yhteyttä EU:hun'
+contact:
+  -
+    label: 'Soita numeroon 00 800 6 7 8 9 10 11'
+  -
+    href: 'https://europa.eu/european-union/contact/call-us_fi'
+    label: 'Käytä muita soittomahdollisuuksia'
+  -
+    href: 'https://europa.eu/european-union/contact/write-to-us_fi'
+    label: 'Lähetä viesti yhteydenottolomakkeella'
+  -
+    href: 'https://europa.eu/european-union/contact/meet-us_fi'
+    label: 'Käy EU:n tiedotuspisteessä'
+social_media_title: 'Sosiaalinen media'
+social_media:
+  -
+    label: 'EU sosiaalisessa mediassa'
+    href: 'https://europa.eu/european-union/contact/social-networks_fi'
+institution_links_title: 'EU:n toimielimet'
+institution_links:
+  0:
+    label: 'Euroopan parlamentti'
+    href: 'http://www.europarl.europa.eu/portal/fi'
+  1:
+    label: Eurooppa-neuvosto
+    href: 'http://www.consilium.europa.eu/fi/european-council/'
+  2:
+    label: 'Euroopan unionin neuvosto'
+    href: 'http://www.consilium.europa.eu/fi/home/'
+  3:
+    label: 'Euroopan komissio'
+    href: 'https://ec.europa.eu/commission/index_fi'
+  4:
+    label: 'Euroopan unionin tuomioistuin'
+    href: 'http://curia.europa.eu/jcms/jcms/j_6/fi/'
+  5:
+    label: 'Euroopan keskuspankki (EKP)'
+    href: 'https://www.ecb.europa.eu/home/languagepolicy/html/index.fi.html'
+  6:
+    label: 'Euroopan tilintarkastustuomioistuin'
+    href: 'http://www.eca.europa.eu/fi'
+  7:
+    label: 'Euroopan ulkosuhdehallinto'
+    href: 'http://eeas.europa.eu/index_fi.htm'
+  8:
+    label: 'Euroopan talous- ja sosiaalikomitea (ETSK)'
+    href: 'http://www.eesc.europa.eu/?i=portal.fi.home'
+  9:
+    label: 'Euroopan alueiden komitea (AK)'
+    href: 'http://cor.europa.eu/fi/'
+  10:
+    label: 'Euroopan investointipankki (EIP)'
+  12:
+    label: 'Euroopan tietosuojavaltuutettu'
+    href: 'https://secure.edps.europa.eu/EDPSWEB/edps/EDPS?lang=fi'
+legal_links:
+  -
+    label: 'Tietoa sivustosta'
+    href: 'https://europa.eu/european-union/abouteuropa_fi'
+  -
+    label: Kielipolitiikka
+    href: 'https://europa.eu/european-union/abouteuropa/language-policy_fi'
+  -
+    label: Tietosuojaperiaatteet
+    href: 'https://europa.eu/european-union/abouteuropa/privacy-policy_fi'
+  -
+    label: 'Oikeudellinen huomautus'
+    href: 'https://europa.eu/european-union/abouteuropa/legal_notices_fi'
+  -
+    label: Evästeet
+    href: 'https://europa.eu/european-union/abouteuropa/cookies_fi'

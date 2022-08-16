@@ -1,0 +1,20 @@
+uuid: 62fcdabe-571b-4755-98e2-1a1ad1e9dec2
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.content_type.group_content_type_e74b64d0e5876
+  module:
+    - path
+id: group_content.group_content_type_e74b64d0e5876.path
+field_name: path
+entity_type: group_content
+bundle: group_content_type_e74b64d0e5876
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

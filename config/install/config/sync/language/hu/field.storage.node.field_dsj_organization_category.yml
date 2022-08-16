@@ -1,0 +1,24 @@
+settings:
+  allowed_values:
+    1:
+      label: Közintézmény
+    2:
+      label: 'Formális oktatást és képzést nyújtó szolgáltató'
+    3:
+      label: Vállalkozás/ipar
+    4:
+      label: 'A köz- és magánszféra közötti partnerség'
+    5:
+      label: Egyéb
+    6:
+      label: 'Munkaügyi unió'
+    7:
+      label: Elemzőközpont
+    8:
+      label: Egyesület
+    9:
+      label: 'Nyílt tanulási platform'
+    10:
+      label: 'Érdeklődési csoport'
+    11:
+      label: Döntéshozó

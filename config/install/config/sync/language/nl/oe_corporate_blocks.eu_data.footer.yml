@@ -1,0 +1,71 @@
+contact_title: 'Contact opnemen met de EU'
+contact:
+  -
+    label: 'Bel ons gratis op 00 800 6 7 8 9 10 11'
+  -
+    href: 'https://europa.eu/european-union/contact/call-us_nl'
+    label: 'Bel ons op een andere manier'
+  -
+    href: 'https://europa.eu/european-union/contact/write-to-us_nl'
+    label: 'Schrijf ons via het contactformulier'
+  -
+    href: 'https://europa.eu/european-union/contact/meet-us_nl'
+    label: 'Kom langs bij de EU in uw land'
+social_media_title: 'Sociale media'
+social_media:
+  -
+    label: 'Zoek naar accounts van de EU op sociale media'
+    href: 'https://europa.eu/european-union/contact/social-networks_nl'
+institution_links_title: EU-instellingen
+institution_links:
+  0:
+    label: 'Europees Parlement'
+    href: 'http://www.europarl.europa.eu/portal/nl'
+  1:
+    label: 'Europese Raad'
+    href: 'http://www.consilium.europa.eu/nl/european-council/'
+  2:
+    label: 'Raad van de Europese Unie'
+    href: 'http://www.consilium.europa.eu/nl/home/'
+  3:
+    label: 'Europese Commissie'
+    href: 'http://ec.europa.eu/index_nl.htm'
+  4:
+    label: 'Hof van Justitie van de Europese Unie (HvJ-EU)'
+    href: 'http://curia.europa.eu/jcms/jcms/j_6/nl/'
+  5:
+    label: 'Europese Centrale Bank (ECB)'
+    href: 'https://www.ecb.europa.eu/home/languagepolicy/html/index.nl.html'
+  6:
+    label: 'Europese Rekenkamer'
+    href: 'http://www.eca.europa.eu/nl'
+  7:
+    label: 'Europese Dienst voor extern optreden (EDEO)'
+    href: 'http://eeas.europa.eu/index_nl.htm'
+  8:
+    label: 'Europees Economisch en Sociaal Comité (EESC)'
+    href: 'http://www.eesc.europa.eu/?i=portal.nl.home'
+  9:
+    label: 'Europees Comité van de Regio''s (CvdR)'
+    href: 'http://cor.europa.eu/nl/'
+  10:
+    label: 'Europese Investeringsbank (EIB)'
+  12:
+    label: 'Europese Toezichthouder voor gegevensbescherming (EDPS)'
+    href: 'https://secure.edps.europa.eu/EDPSWEB/edps/EDPS?lang=nl'
+legal_links_title: Juridisch
+legal_links:
+  -
+    label: 'Over deze site'
+    href: 'https://europa.eu/european-union/abouteuropa_nl'
+  -
+    label: 'Talenbeleid op de Europa-website'
+    href: 'https://europa.eu/european-union/abouteuropa/language-policy_nl'
+  -
+    label: Privacybeleid
+    href: 'https://europa.eu/european-union/abouteuropa/privacy-policy_nl'
+  -
+    label: 'Juridische mededeling'
+    href: 'https://europa.eu/european-union/abouteuropa/legal_notices_nl'
+  -
+    href: 'https://europa.eu/european-union/abouteuropa/cookies_nl'

@@ -1,0 +1,25 @@
+uuid: 5ee2445f-cc7b-45f4-873c-ea11f1e4bea7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_dsj_data
+    - paragraphs.paragraphs_type.dsj_assessment
+  module:
+    - json_field
+    - tmgmt_content
+third_party_settings:
+  tmgmt_content:
+    excluded: false
+id: paragraph.dsj_assessment.field_dsj_data
+field_name: field_dsj_data
+entity_type: paragraph
+bundle: dsj_assessment
+label: Data
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: json_native

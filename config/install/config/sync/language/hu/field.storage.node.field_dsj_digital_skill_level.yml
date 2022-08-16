@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Alapszintű
+    -
+      label: Közbenső
+    -
+      label: Haladó
+    -
+      label: 'Digitális szakértő'

@@ -1,0 +1,8 @@
+uuid: 848fcb7c-52d7-4aa0-9db8-d4f08714470c
+langcode: en
+status: true
+dependencies: {  }
+id: dsj_cards_block
+label: 'Cards Block'
+revision: 0
+description: 'Use this block if you want to create components like What is the Digital Skills and Jobs Platform.'

@@ -1,0 +1,26 @@
+uuid: b737f93d-984e-4876-8700-a0ffde7f4e14
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - typed_link
+id: paragraph.field_dsj_social_link
+field_name: field_dsj_social_link
+entity_type: paragraph
+type: typed_link
+settings:
+  allowed_values:
+    email: Email
+    twitter: Twitter
+    facebook: Facebook
+    youtube: Youtube
+    instagram: Instagram
+  allowed_values_function: ''
+module: typed_link
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

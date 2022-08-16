@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: 'Työvoiman digitaaliset taidot.'
+    -
+      label: 'Tieto- ja viestintätekniikan ammattilaisten ja muiden digitaalialan asiantuntijoiden digitaaliset taidot.'
+    -
+      label: 'Digitaaliset taidot koulutuksessa.'
+    -
+      label: 'Digitaaliset taidot kaikille'

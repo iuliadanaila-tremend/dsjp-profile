@@ -1,0 +1,8 @@
+uuid: ced44985-ee4e-4e60-a33e-8a72c3e548f8
+langcode: en
+status: true
+dependencies: {  }
+id: media__document
+label: 'Media: Document'
+tags:
+  robots: 'noindex, nofollow, nosnippet, noodp, noydir'

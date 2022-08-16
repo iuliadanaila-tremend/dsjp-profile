@@ -1,0 +1,24 @@
+settings:
+  allowed_values:
+    0:
+      label: Tečaj
+    1:
+      label: 'Modul programa'
+    2:
+      label: Mentorstvo
+    4:
+      label: Naukovanje
+    5:
+      label: 'Studijski posjet'
+    6:
+      label: 'Kratki program učenja'
+    7:
+      label: Praksa
+    8:
+      label: 'Obrazovni program'
+    9:
+      label: Klasa
+    10:
+      label: 'Učenje zalaganjem u zajednici (service learning)'
+    11:
+      label: 'Završni rad'

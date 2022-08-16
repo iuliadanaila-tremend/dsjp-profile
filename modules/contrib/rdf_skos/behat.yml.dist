@@ -1,0 +1,25 @@
+default:
+  suites:
+    default:
+      paths:
+        - "%paths.base%/tests/features"
+      contexts:
+        - Drupal\DrupalExtension\Context\MinkContext
+        - Drupal\DrupalExtension\Context\DrupalContext
+        - Drupal\Tests\rdf_skos\Behat\FeatureContext
+        - OpenEuropa\Behat\TransformationContext:
+            pages:
+              SKOS concept scheme administration: 'admin/structure/skos_concept_scheme'
+              SKOS concept administration: 'admin/structure/skos_concept'
+  extensions:
+    Behat\MinkExtension:
+      goutte: ~
+      selenium2: ~
+      javascript_session: selenium2
+      base_url: "${drupal.base_url}"
+    Drupal\DrupalExtension:
+      api_driver: "drupal"
+      drupal:
+        drupal_root: "build"
+  formatters:
+    progress: ~

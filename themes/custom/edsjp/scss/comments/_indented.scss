@@ -1,0 +1,184 @@
+$avatar-size: 50px;
+$mobile-avatar-size: 30px;
+$avatar-size-rem: $grid-gutter-width * 1.5625; /* needed for calc in same unit*/
+$mobile-avatar-size-rem: $grid-gutter-width / 1.0669;
+
+.node--comments {
+  .indented {
+    > article,
+    .indented {
+      @include border-radius(3px);
+
+      border-left: none;
+      position: relative;
+      background-color: inherit;
+      border-left: 0;
+      margin: 0;
+    }
+  }
+
+  .indented {
+    @include media-breakpoint-down(md) {
+      padding: $grid-gutter-width / 2 $grid-gutter-width / 2 0;
+    }
+
+    @include media-breakpoint-down(sm) {
+      height: auto;
+      overflow-y: hidden;
+      overflow-x: hidden;
+      border-left-width: 4px;
+    }
+
+    padding: $grid-gutter-width $grid-gutter-width 0;
+    padding-right: 0;
+    margin-top: $grid-gutter-width * 0.75;
+    background-color: $body-bg;
+    padding: 0;
+    border-left: 6px solid $primary-disabled;
+
+    &::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: $border-gray;
+      border-radius: 8px;
+      padding: 2px;
+      margin: 0 24px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: $body-bg;
+      border-radius: 4px;
+      border: 2px solid $border-gray;
+      margin: 0 10px;
+    }
+
+    .comment--author {
+      @include media-breakpoint-down(sm) {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      display: flex;
+      align-items: center;
+
+      .user--compact {
+        @include media-breakpoint-down(sm) {
+          width: 100%;
+        }
+        margin-right: 5px;
+      }
+
+      .replay-comm {
+        @include media-breakpoint-down(sm) {
+          margin-top: 0;
+          margin-left: $grid-gutter-width * 2;
+        }
+
+        position: static;
+        font-family: $font-ec-square-regular;
+        font-size: $font-size-sm;
+        line-height: $line-height-xl;
+        color: $gray-900;
+      }
+    }
+
+    form {
+      @include media-breakpoint-down(sm) {
+        padding-left: $grid-gutter-width * 1.5;
+      }
+      
+      margin: 0;
+      padding-left: $grid-gutter-width * 3;
+      padding-top: 0;
+      position: relative;
+
+      &::before {
+        top: 0;
+        height: 100%;
+      }
+
+      .cke {
+        height: 116px;
+
+        .cke_contents {
+          height: $grid-gutter-width * 2 !important;
+        }
+      }
+    }
+  }
+
+  .node-oe-news-field-comments
+    > .indented
+    > .indented:last-child
+    .comment:last-child,
+  .node-oe-news-field-comments > .indented > .comment:last-child,
+  .indented:last-child > .indented:last-child .comment:last-child {
+    &::before {
+      display: none;
+    }
+  }
+
+  .indented .comment,
+  .indented .indented .comment,
+  .indented > .indented > .indented > .comment {
+    &::before {
+      @include media-breakpoint-down(sm) {
+        top: $grid-gutter-width / 1.28 + $mobile-avatar-size-rem;
+        height: calc(100% - 30px);
+      }
+
+      /* avatar width + left padding */
+      @include position(absolute, $grid-gutter-width + $avatar-size-rem null null $avatar-size / 2 + 32px);
+      height: calc(100% - 50px);
+    }
+  }
+
+  .indented > .comment-form {
+    &::before {
+      @include position(absolute, 0 null null  $avatar-size / 2 + 32px);
+    }
+  }
+
+  .indented .comment,
+  .indented .indented .comment,
+  .indented > .indented > .indented > .comment,
+  .indented > .comment-form {
+    &::before {
+      @include media-breakpoint-down(sm) {
+        /* avatar width + left padding */
+        left: $mobile-avatar-size / 2 + 16px;
+      }
+
+      content: '';
+      background: $gray-400;
+      opacity: .4;
+      display: block;
+      width: 2px;
+      z-index: $zindex-dropdown;
+    }
+  }
+
+  .replay-comm {
+    @include media-breakpoint-down(md) {
+      margin: $grid-gutter-width/4 0;
+    }
+
+    @include media-breakpoint-up(md) {
+      @include position(absolute, 20px null null 70px);
+    }
+
+    @include media-breakpoint-up(lg) {
+      @include position(absolute, 5px null null 190px);
+    }
+
+    margin: 0;
+    color: $gray-400;
+    font-family: $font-ec-square-medium;
+  }
+
+  p:not([data-letters]):empty {
+    display: none;
+  }
+}

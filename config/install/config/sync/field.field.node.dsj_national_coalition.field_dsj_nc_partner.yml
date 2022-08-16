@@ -1,0 +1,25 @@
+uuid: f1011f50-3445-437b-9faf-2a126d966d60
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dsj_nc_partner
+    - node.type.dsj_national_coalition
+  module:
+    - text
+    - tmgmt_content
+third_party_settings:
+  tmgmt_content:
+    excluded: false
+id: node.dsj_national_coalition.field_dsj_nc_partner
+field_name: field_dsj_nc_partner
+entity_type: node
+bundle: dsj_national_coalition
+label: 'NC partners'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

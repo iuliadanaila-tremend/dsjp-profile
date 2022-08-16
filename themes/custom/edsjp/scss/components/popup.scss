@@ -1,0 +1,81 @@
+.popup-cta {
+  @include position(fixed, null 0 0 null);
+
+  background-color: $body-bg;
+  color: $gray-800;
+  box-shadow: 0 20px 30px rgba(28, 40, 44, .2);
+  border-radius: $border-radius-lg;
+  width: $grid-gutter-width * 10;
+  max-width: 100%;
+  z-index: $zindex-tooltip;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+
+  img {
+    max-width: 300px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  #popup-cta-close {
+    @include position(absolute, $grid-gutter-width * .75 $grid-gutter-width * .75 null null);
+    @include icon(remove);
+    
+    color: $gray-400;
+    cursor: pointer;
+    font-family: $font-ec-square-light;
+  }
+
+  .text-container {
+    padding: 0 $grid-gutter-width * .75 $grid-gutter-width * .75;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    div.popup-title {
+      font-size: $font-size-2xl;
+      line-height: $line-height-2xl;
+      font-family: $font-ec-square-medium;
+      padding-bottom: $grid-gutter-width/2;
+    }
+
+    p {
+      margin: 0;
+      font-size: $font-size-base;
+      line-height: $line-height-base;
+      padding-bottom: $grid-gutter-width;
+    }
+
+    a {
+      font-size: $font-size-sm;
+      color: $body-bg;
+      background-color: $secondary-active;
+      padding: 12px 25px;
+      border-radius: $border-radius-lg;
+      text-align: center;
+
+      &:hover {
+        background-color: $secondary-hover;
+      }
+    }
+  }
+}
+
+#cookie-consent-banner {
+  & ~ .popup-cta {
+    @include media-breakpoint-down(md) {
+      bottom: 130px;
+    }
+
+    @include media-breakpoint-down(sm) {
+      bottom: 180px;
+    }
+
+    @include media-breakpoint-down(xs) {
+      bottom: 300px;
+    }
+
+    bottom: 110px;
+  }
+}

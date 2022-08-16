@@ -1,0 +1,8 @@
+uuid: 0c9b1c59-486f-4d14-8d1f-f8b9a15de6a1
+langcode: en
+status: true
+dependencies: {  }
+id: dsj_comment
+label: Comment
+target_entity_type_id: node
+description: ''

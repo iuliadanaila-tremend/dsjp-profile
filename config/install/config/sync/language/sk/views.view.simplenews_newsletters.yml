@@ -1,0 +1,40 @@
+display:
+  default:
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Použiť
+          reset_button_label: Reset
+          exposed_sorts_label: 'Zoradiť podľa'
+          sort_asc_label: Vzostupne
+          sort_desc_label: Zostupne
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'Položiek na stránku'
+            items_per_page_options_all_label: '- Všetko -'
+            offset_label: 'Zobraziť od'
+          tags:
+            previous: '‹ predchádzajúca'
+            next: 'nasledujúca ›'
+            first: '« prvá'
+            last: 'posledná »'
+      fields:
+        node_bulk_form:
+          action_title: 'S výberom'
+        simplenews_issue:
+          label: 'Informačný list'
+          separator: ', '
+        status:
+          label: Zverejnené
+          separator: ', '
+        created:
+          label: Aktualizované
+        operations:
+          label: 'Odkazy na operácie'
+      filters:
+        simplenews_issue_target_id_1:
+          expose:
+            label: 'Informačný list'
+  page_1:
+    display_title: Stránka

@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Mišrus
+    -
+      label: 'Dėl buvimo vietos'
+    -
+      label: 'Virtualioji gyva'
+    -
+      label: 'Virtualus iš anksto užregistruotas'

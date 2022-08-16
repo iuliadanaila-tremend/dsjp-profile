@@ -1,0 +1,14 @@
+settings:
+  allowed_values:
+    -
+      label: 'Maximaal 1 week'
+    -
+      label: 'Tot 4 weken'
+    -
+      label: 'Tot 3 maanden'
+    -
+      label: 'Tot 6 maanden'
+    -
+      label: 'Tot en met een jaar'
+    -
+      label: 'Meerdere jaren'

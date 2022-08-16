@@ -1,0 +1,44 @@
+display:
+  default:
+    display_title: Mester
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Alkalmaz
+          reset_button_label: Alaphelyzet
+          exposed_sorts_label: Rendezés
+          sort_asc_label: Növekvő
+          sort_desc_label: Csökkenő
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'Elemek száma oldalanként'
+            items_per_page_options_all_label: '– Mind –'
+            offset_label: Eltolás
+          tags:
+            previous: '‹ előző'
+            next: 'következő ›'
+            first: '« első'
+            last: 'utolsó »'
+      fields:
+        node_bulk_form:
+          label: 'Tartalmak tömeges műveleteit lehetővé tevő űrlap'
+          action_title: 'A kiválasztottakkal'
+        title:
+          label: Feladat
+        simplenews_issue:
+          label: Hírlevél
+          separator: ', '
+        status:
+          label: Közzétéve
+          separator: ', '
+        created:
+          label: Frissítve
+        operations:
+          label: 'Műveletek hivatkozásai'
+      filters:
+        simplenews_issue_target_id_1:
+          expose:
+            label: Hírlevél
+  page_1:
+    display_title: Oldal

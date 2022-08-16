@@ -1,0 +1,42 @@
+settings:
+  allowed_values:
+    -
+      label: 'Kiválóan teljesítők'
+    -
+      label: 'Nem anyanyelvi beszélők'
+    -
+      label: 'Átképzést igénylő személyek'
+    -
+      label: 'Felsőfokú (6. EKKR-szint) oktatásban részt vevő személyek'
+    -
+      label: 'Alapfokú végzettséggel rendelkező személyek'
+    -
+      label: 'Középfokú oktatásban részt vevő személyek'
+    -
+      label: 'Felsőfokú végzettséggel rendelkező személyek (EKKR 7)'
+    -
+      label: 'Alapfokú oktatásban részt vevő személyek'
+    -
+      label: '3 évnél rövidebb szakmai tapasztalattal rendelkező személyek'
+    -
+      label: 'Felsőfokú végzettséggel rendelkező személyek (EKKR 8)'
+    -
+      label: 'Középfokú végzettséggel rendelkező/tankötelezettséget teljesített személyek'
+    -
+      label: 'Felsőfokú oktatásban részt vevő személyek (EKKR 7)'
+    -
+      label: 'Felsőfokú oktatásban részt vevő személyek (EKKR 8)'
+    -
+      label: Migránsok
+    -
+      label: '3-10 éves szakmai tapasztalattal rendelkező személyek'
+    -
+      label: '10 évnél hosszabb szakmai tapasztalattal rendelkező személyek'
+    -
+      label: 'Tanulási nehézséggel küzdő személyek'
+    -
+      label: 'Anyanyelvi beszélők'
+    -
+      label: 'Felsőfokú végzettséggel (6. EKKR-szint) rendelkező személyek'
+    -
+      label: 'Gyengén teljesítők'

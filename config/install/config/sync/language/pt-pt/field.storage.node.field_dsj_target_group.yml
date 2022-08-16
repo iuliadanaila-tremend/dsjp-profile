@@ -1,0 +1,42 @@
+settings:
+  allowed_values:
+    -
+      label: 'Alunos com muito bom aproveitamento'
+    -
+      label: 'Falantes não nativos'
+    -
+      label: 'Pessoas que necessitam de ações de reconversão profissional'
+    -
+      label: 'Pessoas a frequentar o ensino superior (QEQ 6)'
+    -
+      label: 'Pessoas que concluíram o ensino primário'
+    -
+      label: 'Pessoas a frequentar o ensino secundário/ensino obrigatório'
+    -
+      label: 'Pessoas que completaram o ensino superior (QEQ 7)'
+    -
+      label: 'Pessoas a frequentar o ensino primário'
+    -
+      label: "Pessoas com 0 a 3\_anos de experiência profissional"
+    -
+      label: 'Pessoas que completaram o ensino superior (QEQ 8)'
+    -
+      label: 'Pessoas que concluíram o ensino secundário/ensino obrigatório'
+    -
+      label: 'Pessoas a frequentar o ensino superior (QEQ 7)'
+    -
+      label: 'Pessoas a frequentar o ensino superior (QEQ 8)'
+    -
+      label: Migrantes
+    -
+      label: "Pessoas com 3 a 10\_anos de experiência profissional"
+    -
+      label: "Pessoas com mais de 10\_anos de experiência profissional"
+    -
+      label: 'Pessoas com dificuldades de aprendizagem'
+    -
+      label: 'Falantes nativos'
+    -
+      label: 'Pessoas que completaram o ensino superior (QEQ 6)'
+    -
+      label: 'Alunos com fraco aproveitamento'

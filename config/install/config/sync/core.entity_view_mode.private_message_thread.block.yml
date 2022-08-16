@@ -1,0 +1,10 @@
+uuid: d98fbad8-378a-4e16-82f0-3709090cbe33
+langcode: en
+status: true
+dependencies:
+  module:
+    - private_message
+id: private_message_thread.block
+label: Block
+targetEntityType: private_message_thread
+cache: true

@@ -1,0 +1,38 @@
+settings:
+  allowed_values:
+    1:
+      label: 'Ikke-indfødte parlamentsformænd'
+    2:
+      label: 'Personer, der har behov for omskoling i ansættelsen'
+    3:
+      label: 'Personer på en videregående uddannelse (EQF 6)'
+    4:
+      label: 'Personer, der har afsluttet grundskoleuddannelse'
+    5:
+      label: 'Personer på sekundærtrinnet/obligatorisk skolegang'
+    6:
+      label: 'Personer, der har afsluttet en videregående uddannelse (EQF 7)'
+    7:
+      label: 'Personer under grundskoleuddannelse'
+    8:
+      label: 'Personer med 0-3 års erhvervserfaring'
+    9:
+      label: 'Personer, der har afsluttet en videregående uddannelse (EQF 8)'
+    10:
+      label: 'Personer, der har afsluttet en gymnasial/obligatorisk uddannelse'
+    11:
+      label: 'Personer på en videregående uddannelse (EQF 7)'
+    12:
+      label: 'Personer på en videregående uddannelse (EQF 8)'
+    13:
+      label: Migranter
+    14:
+      label: 'Personer med 3-10 års erhvervserfaring'
+    15:
+      label: 'Personer med 10 års erhvervserfaring'
+    16:
+      label: 'Personer med indlæringsvanskeligheder'
+    17:
+      label: Modersmål
+    18:
+      label: 'Personer, der har afsluttet en videregående uddannelse (EQF 6)'

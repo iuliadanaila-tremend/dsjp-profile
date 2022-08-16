@@ -1,0 +1,462 @@
+/*=================== CUSTOM MIXINS ===================*/
+/* font */
+@mixin font($font-size, $line-height, $font-family, $font-weight: normal, $important: false) {
+  @if $important {
+    font-size: $font-size !important;
+    line-height: $line-height !important;
+    font-family: $font-family !important;
+    font-weight: $font-weight !important;
+  } @else {
+    font-size: $font-size;
+    line-height: $line-height;
+    font-family: $font-family;
+    font-weight: $font-weight;
+  }
+}
+
+/* blue button */
+@mixin blue-button($font-size: $font-size-sm, $line-height: $line-height-sm, $font-family: $font-ec-square-medium, $padding: .75rem 1.5rem) {
+  background-color: $primary;
+  color: $body-bg;
+  display: inline-block;
+  font-size: $font-size;
+  font-family: $font-family;
+  line-height: $line-height;
+  padding: $padding;
+
+  &:hover {
+    background-color: $blue-100;
+  }
+
+  &:active {
+    background-color: $primary;
+  }
+
+  &:focus {
+    color: $body-bg;
+  }
+}
+
+/* tag */
+@mixin tag(
+  $font-weight: 600,
+  $font-size: $font-size-sm,
+  $line-height: $line-height-sm,
+  $font-family: $font-ec-square-regular,
+  $color: $primary,
+  $padding: $grid-gutter-width/3 $grid-gutter-width/2.5 ) {
+
+  @include font($font-size, $line-height, $font-family, $font-weight);
+
+  border-radius: 24px;
+  display: inline-block;
+  margin-bottom: $grid-gutter-width / 3;
+  margin-right: $grid-gutter-width / 3;
+  color: $color;
+  padding: $padding;
+}
+
+/* checkbox */
+@mixin checkbox($type) {
+  .ecl-#{$type}__label {
+    @include font($font-size-sm, $line-height-sm, inherit, normal);
+    color: $secondary;
+  }
+
+  .ecl-#{$type}__box {
+    @include border-radius(2px);
+    background: $body-bg;
+    border: 1px solid $gray-100;
+    cursor: pointer;
+    height: 16px;
+    outline: 0 !important;
+    width: 16px;
+
+    &:hover {
+      @include border-color($primary);
+    }
+
+    @if $type == 'radio' {
+      @include margin(null 8px null null);
+      @include border-radius(50%);
+
+      .path-user & {
+
+        &::before {
+          top: -4px !important;
+          left: -4px !important;
+        }
+      }
+    }
+  }
+
+  .ecl-icon--s {
+    height: 10px;
+    width: 10px;
+  }
+
+  .ecl-#{$type}__input:active + .ecl-#{$type}__label > & {
+    .ecl-#{$type}__box:not(.ecl-#{$type}__box--disabled) {
+      outline: 0;
+
+      &::before {
+        display: none;
+      }
+    }
+  }
+
+  .ecl-#{$type}__input:focus + .ecl-#{$type}__label > & {
+    .ecl-#{$type}__box:not(.ecl-#{$type}__box--disabled) {
+      outline: 0;
+
+      &::before {
+        display: none;
+      }
+    }
+  }
+
+  .ecl-#{$type}__input:checked + .ecl-#{$type}__label & {
+    .ecl-#{$type}__box {
+      @include border-color($body-bg);
+      background-color: $body-bg;
+
+      @if $type == 'radio' {
+        @include border-width(6px);
+        background-color: $body-bg;
+        height: 6px;
+        width: 6px;
+      }
+    }
+  }
+
+  .ecl-#{$type}__input:checked + .ecl-#{$type}__label {
+    .ecl-#{$type}__box-inner {
+      @if $type == 'radio' {
+        height: $grid-gutter-width / 4;
+        width:  $grid-gutter-width / 4;
+      }
+    }
+  }
+
+  .ecl-#{$type}__input:active + .ecl-#{$type}__label {
+    .ecl-#{$type}__box {
+      @if $type == 'radio'  {
+
+        &::before {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .ecl-#{$type}__input:disabled + .ecl-#{$type}__label {
+    color: $body-color;
+  }
+
+  .ecl-#{$type}__input:disabled + .ecl-#{$type}__box {
+    background-color: $gray-100;
+    border: 1px solid $body-color;
+
+    &:hover {
+      border: 1px solid $body-color;
+    }
+  }
+}
+
+/* box shadow */
+@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+  @if $inset {
+    -webkit-box-shadow: inset $top $left $blur $color;
+    -moz-box-shadow: inset $top $left $blur $color;
+    box-shadow: inset $top $left $blur $color;
+  } @else {
+    -webkit-box-shadow: $top $left $blur $color;
+    -moz-box-shadow: $top $left $blur $color;
+    box-shadow: $top $left $blur $color;
+  }
+}
+
+/* custom border */
+@mixin custom-border($top, $right, $left, $width, $height, $background) {
+  background-color: $background;
+  content: '';
+  display: block;
+  height: $height;
+  left: $left;
+  position: absolute;
+  right: $right;
+  top: $top;
+  width: $width;
+}
+
+/* card block */
+@mixin card-block() {
+  background-color: $body-bg;
+  background-position: calc(100% - 10px) calc(100% - 10px);
+  background-repeat: no-repeat;
+  background-size: 4rem;
+  border: 1px solid $gray-400;
+  border-radius: 4px;
+  padding: $grid-gutter-width/1.25 $grid-gutter-width/1.25 $grid-gutter-width/1.5;
+
+  h2 {
+    color: $blue-400;
+    margin: 0 0 $grid-gutter-width/1.5;
+  }
+
+  .field--name-body {
+    font-size: $font-size-md;
+
+    p,
+    ul {
+      font-size: inherit;
+    }
+
+    @media all and (min-width: $min-md-width) {
+      max-width: calc(100% - 125px);
+    }
+  }
+
+  .field--name-field-cta {
+    font-size: 1rem;
+    margin-top: $grid-gutter-width * 1.4;
+
+    a {
+      font-family: $font-ec-square-medium;
+      margin-right: $grid-gutter-width / 7.5;
+    }
+  }
+
+  @media (min-width: $min-md-width) {
+    background-position: calc(100% - 24px) calc(100% - 14px);
+    background-size: inherit;
+  }
+}
+
+/* close filter tag button */
+@mixin close-filter() {
+
+  a {
+    color: $red;
+    font-size: $font-size-sm;
+    line-height: $line-height-sm;
+    font-weight: 600;
+    display: inline-block;
+    border-color: transparent;
+    background-color: transparent;
+
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      padding-right: $grid-gutter-width / 3;
+      background: url('../assets/images/close-filter-tag.svg') no-repeat;
+      background-size: contain;
+    }
+  }
+}
+
+@mixin dropdown-styling($filter) {
+  @include border-radius(4px);
+  width: 100% !important;
+  border: 1px solid $gray-100;
+  background-color: $white;
+  position: relative;
+  box-sizing: border-box;
+
+  @if $filter {
+    border: 1px solid $blue-450;
+  }
+
+  a {
+    div {
+      @include icon(keyboard_arrow_down);
+      display: block;
+      height: 1px;
+
+      &::before {
+        @include position(absolute, null 10px -31px null);
+        font-size: $font-size-lg;
+        z-index: 1;
+        color: $gray-100;
+        @if $filter {
+          color: $blue-450;
+        }
+      }
+    }
+  }
+
+  &.chosen-with-drop {
+    a {
+      div {
+        @include icon(keyboard_arrow_up);
+        display: block;
+        height: 1px;
+
+        &::before {
+          @include position(absolute, null 10px -31px null);
+          font-size: $font-size-lg;
+          z-index: 1;
+          color: $gray-100;
+          @if $filter {
+            color: $blue-450;
+          }
+        }
+      }
+    }
+  }
+
+  option {
+    cursor: pointer;
+
+    &:hover {
+      background-color: $gray-300;
+    }
+  }
+
+  &.facet-active > a {
+    color: $gray-800;
+  }
+
+  &.chosen-container-active {
+    @include border-radius(4px);
+    border: 1px solid $primary;
+  }
+
+  .chosen-single {
+    appearance: unset;
+    background-color: transparent;
+    border: unset;
+    box-shadow: unset;
+    box-sizing: border-box;
+    color: $gray-100;
+    display: flex;
+    flex-direction: column;
+    font-size: $font-size-sm;
+    height: 46px;
+    justify-content: center;
+    padding-left: $grid-gutter-width / 2;
+    position: relative;
+    width: 100%;
+    z-index: $zindex-dropdown;
+
+    div {
+
+      b {
+        display: none;
+      }
+    }
+  }
+
+  .chosen-drop {
+    @include border-radius(4px);
+
+    border: unset;
+    background: $white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .15);
+    margin-top: $grid-gutter-width / 6;
+    margin-left: -1px;
+    width: 100.8%;
+
+    .chosen-search {
+      .chosen-search-input {
+        @include border-radius(4px);
+
+        background-color: $white;
+        background-image: none !important;
+        border: 1px solid $blue-450;
+        box-sizing: border-box;
+        height: 46px;
+      }
+    }
+
+    .chosen-results {
+      width: 100%;
+      padding-left: 0;
+      margin-bottom: 0;
+      border-radius: 4px;
+      overflow-y: hidden;
+
+      .active-result {
+        background: $white;
+        height: 46px;
+        padding: 17px 0 0 $grid-gutter-width / 2;
+        color: $gray-800;
+
+        &:hover {
+          color: $gray-800;
+          background: $gray-dropdown-hover;
+        }
+
+        &.result-selected {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
+
+/* custom attachment upload form */
+@mixin custom-attachment-form {
+  .js-form-item {
+    .js-form-managed-file {
+      .custom-attachment-upload {
+        color: $gray-650;
+
+        .attachment-choose-file,
+        .file-name {
+          @include padding(($grid-gutter-width / 4) 0);
+          @include border-radius(6px);
+          margin-top: $grid-gutter-width / 4;
+        }
+
+        .attachment-choose-file {
+          font-family: $font-ec-square-medium;
+          display: block;
+          background-color: transparentize($gray-400, .4);
+          border: 1px dashed $gray-400;
+          text-align: center;
+          font-size: $font-size-xs;
+        }
+
+        .file-name {
+          @include icon(paperclip);
+          font-size: $font-size-sm;
+          border: 1px solid $gray-400;
+
+          &::before {
+            @include padding(0 ($grid-gutter-width / 4));
+          }
+        }
+      }
+
+      .file--image {
+        @include padding(($grid-gutter-width / 4) 0);
+        @include border-radius(6px);
+        @include icon(paperclip);
+        padding-right: $grid-gutter-width * 3;
+        font-size: $font-size-sm;
+        border: 1px solid $gray-400;
+        margin-bottom: $grid-gutter-width / 4;
+
+        &::before {
+          @include padding(0 ($grid-gutter-width / 4));
+        }
+      }
+    }
+
+    .ecl-text-input {
+      @include border-radius(6px);
+      @include padding($grid-gutter-width / 4);
+      font-size: $font-size-sm;
+      line-height: $line-height-lg;
+      border: 1px solid $gray-400;
+      width: 100%;
+    }
+
+    .ecl-help-block {
+      margin-top: $grid-gutter-width / 8;
+    }
+  }
+}

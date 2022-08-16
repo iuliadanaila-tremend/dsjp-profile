@@ -1,0 +1,50 @@
+settings:
+  allowed_values:
+    -
+      label: Bulgara
+    -
+      label: Kroat
+    -
+      label: Ċeka
+    -
+      label: Daniż
+    -
+      label: Olandiż
+    -
+      label: Bl-Ingliż
+    -
+      label: Estonjan
+    -
+      label: Finlandiż
+    -
+      label: Franċiż
+    -
+      label: Ġermaniż
+    -
+      label: Grieg
+    -
+      label: Ungeriż
+    -
+      label: Irlandiż
+    -
+      label: Taljan
+    -
+      label: Latvjan
+    -
+      label: Litwan
+    -
+      label: Malti
+    -
+      label: Pollakk
+    -
+      label: Portugiż
+    -
+      label: Rumena
+    -
+      label: Slovakka
+    -
+      label: Sloven
+    -
+      label: Spanjola
+    -
+      label: L-Iżvediż

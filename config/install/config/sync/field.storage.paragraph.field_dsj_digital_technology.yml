@@ -1,0 +1,21 @@
+uuid: 19174c3f-15b8-4b8e-a2b3-f6c223a3812d
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_dsj_digital_technology
+field_name: field_dsj_digital_technology
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values: {  }
+  allowed_values_function: dsjp_content_digital_technology_values
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,50 @@
+{% set classes = [
+  'node',
+  node.isPromoted() ? 'node--promoted',
+  node.isSticky() ? 'node--sticky',
+  not node.isPublished() ? 'node--unpublished',
+  node.bundle|clean_class,
+  node.bundle|clean_class ~ '--' ~ view_mode|clean_class,
+  'node' ~ '--' ~ view_mode|clean_class,
+  'node' ~ '--' ~ node.bundle|clean_class,
+  term_type ? node.bundle|clean_class ~ '--' ~ term_type|clean_class,
+] %}
+<article{{ attributes.addClass(classes) }}>
+  <div class="ecl-row">
+    <div class="ecl-col-4 ecl-col-m-4">
+      {% if content.field_dsj_date.0.start_date %}
+        {% set day = content.field_dsj_date.0.start_date['#text'] | date('j') %}
+        {% set month = content.field_dsj_date.0.start_date['#text'] | date('M') %}
+        {% set timezone = content.field_dsj_date.0.start_date['#text'] | date('e') %}
+
+        <div class="event-date">
+          <div class="event-date--month ecl-u-pa-2xs">
+            <div class="marker"></div>
+            <div class="marker"></div>
+            <div class="marker"></div>
+            <span>{{ month }}</span>
+          </div>
+          <div class="event-date--day ecl-u-pa-xs">{{ day }}</div>
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="ecl-col-8 ecl-col-m-8">
+      {% set timestamp = content.field_dsj_date.0.start_date['#text'] | date('U') %}
+      {% if date(timestamp) > date() %}
+        <div class="event-processed-date">{{ 'Upcoming' | t }}</div>
+      {% endif %}
+      {{ title_prefix }}
+      <h3{{ title_attributes }}>
+        <a href="{{ url }}" title="{{ node.title.value }}" rel="bookmark">{{ node.title.value }}</a>
+      </h3>
+      {{ title_suffix }}
+      {% if event_data %}
+        <div class="event-location">
+          <span class="icon icon-location"></span>
+          {{ event_data }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</article>

@@ -1,0 +1,323 @@
+msgid ""
+msgstr ""
+
+msgid "Contact the EU"
+msgstr "Võtke ELiga ühendust"
+
+msgid "tel:0080067891011"
+msgstr "tel:0080067891011"
+
+msgid "Call us 00 800 6 7 8 9 10 11"
+msgstr "Helistage meile 00 800 6 7 8 9 10 11"
+
+msgid "https://european-union.europa.eu/contact-eu/call-us_en"
+msgstr "https://european-union.europa.eu/contact-eu/call-us_et"
+
+msgid "Use other telephone options"
+msgstr "Kasutage ka muid helistamisvõimalusi"
+
+msgid "https://european-union.europa.eu/contact-eu/write-us_en"
+msgstr "https://european-union.europa.eu/contact-eu/write-us_et"
+
+msgid "Write to us via our contact form"
+msgstr "Kirjutage meile kontaktvormi vahendusel"
+
+msgid "https://european-union.europa.eu/contact-eu/meet-us_en"
+msgstr "https://european-union.europa.eu/contact-eu/meet-us_et"
+
+msgid "Meet us at one of the EU centres"
+msgstr "Külastage meid ELi teabekeskuses"
+
+msgid "Find a social media account"
+msgstr "Leidke sotsiaalmeediakonto"
+
+msgid "Search for EU social media channels"
+msgstr "Kasutage ELi sotsiaalmeedia kanaleid"
+
+msgid "https://european-union.europa.eu/contact-eu/social-media-channels_en"
+msgstr "https://european-union.europa.eu/contact-eu/social-media-channels_et"
+
+msgid "EU institutions"
+msgstr "ELi institutsioonid"
+
+msgid "European Parliament"
+msgstr "Euroopa Parlament"
+
+msgid "http://www.europarl.europa.eu/portal/"
+msgstr "http://www.europarl.europa.eu/portal/et"
+
+msgid "European Council"
+msgstr "Euroopa Ülemkogu"
+
+msgid "http://www.consilium.europa.eu/en/european-council/"
+msgstr "http://www.consilium.europa.eu/et/european-council/"
+
+msgid "Council of the European Union"
+msgstr "Euroopa Liidu Nõukogu"
+
+msgid "http://www.consilium.europa.eu/en/home/"
+msgstr "http://www.consilium.europa.eu/et/home/"
+
+msgid "https://ec.europa.eu/commission/index_en"
+msgstr "https://ec.europa.eu/commission/index_et"
+
+msgid "Court of Justice of the European Union (CJEU)"
+msgstr "Euroopa Liidu Kohus"
+
+msgid "http://curia.europa.eu/jcms/jcms/j_6/en/"
+msgstr "http://curia.europa.eu/jcms/jcms/j_6/et/"
+
+msgid "European Central Bank (ECB)"
+msgstr "Euroopa Keskpank (EKP)"
+
+msgid "https://www.ecb.europa.eu/home/html/index.en.html"
+msgstr "https://www.ecb.europa.eu/home/languagepolicy/html/index.et.html"
+
+msgid "European Court of Auditors (ECA)"
+msgstr "Euroopa Kontrollikoda"
+
+msgid "http://www.eca.europa.eu/en"
+msgstr "http://www.eca.europa.eu/et"
+
+msgid "European External Action Service (EEAS)"
+msgstr "Euroopa välisteenistus (EEAS)"
+
+msgid "https://eeas.europa.eu/headquarters/headquarters-homepage_en"
+msgstr "http://eeas.europa.eu/index_et.htm"
+
+msgid "European Economic and Social Committee (EESC)"
+msgstr "Euroopa Majandus- ja Sotsiaalkomitee"
+
+msgid "http://www.eesc.europa.eu/?i=portal.en.home"
+msgstr "http://www.eesc.europa.eu/?i=portal.et.home"
+
+msgid "European Committee of the Regions (CoR)"
+msgstr "Euroopa Regioonide Komitee"
+
+msgid "http://cor.europa.eu/en/"
+msgstr "https://cor.europa.eu/et"
+
+msgid "European Investment Bank (EIB)"
+msgstr "Euroopa Investeerimispank"
+
+msgid "European Data Protection Supervisor (EDPS)"
+msgstr "Euroopa Andmekaitseinspektor"
+
+msgid "https://secure.edps.europa.eu/EDPSWEB/edps/EDPS?lang=en"
+msgstr "https://secure.edps.europa.eu/EDPSWEB/edps/EDPS?lang=et"
+
+msgid "European Ombudsman"
+msgstr "Euroopa Ombudsman"
+
+msgid "https://www.ombudsman.europa.eu/en/home"
+msgstr "https://www.ombudsman.europa.eu/et/home"
+
+msgid "European Data Protection Board"
+msgstr "Euroopa Andmekaitsenõukogu"
+
+msgid "https://edpb.europa.eu/edpb_en"
+msgstr "https://edpb.europa.eu/edpb_et"
+
+msgid "European Personnel Selection Office"
+msgstr "Euroopa Personalivaliku Amet"
+
+msgid "https://epso.europa.eu/home_en"
+msgstr "https://epso.europa.eu/home_et"
+
+msgid "Publications Office of the European Union"
+msgstr "Euroopa Liidu Väljaannete Talitus"
+
+msgid "https://op.europa.eu/en/home"
+msgstr "https://op.europa.eu/et/home"
+
+msgid "Agencies"
+msgstr "Asutused ja ametid"
+
+msgid "https://european-union.europa.eu/institutions-law-budget/institutions-and-bodies/institutions-and-bodies-profiles_en?f%5B0%5D=oe_organisation_eu_type%3Ahttp%3A//publications.europa.eu/resource/authority/corporate-body-classification/AGENCY_DEC&f%5B1%5D=oe_organisation_eu_type%3Ahttp%3A//publications.europa.eu/resource/authority/corporate-body-classification/AGENCY_EXEC&f%5B2%5D=oe_organisation_eu_type%3Ahttp%3A//publications.europa.eu/resource/authority/corporate-body-classification/EU_JU"
+msgstr "https://european-union.europa.eu/institutions-law-budget/institutions-and-bodies/institutions-and-bodies-profiles_et?f%5B0%5D=oe_organisation_eu_type%3Ahttp%3A//publications.europa.eu/resource/authority/corporate-body-classification/AGENCY_DEC&f%5B1%5D=oe_organisation_eu_type%3Ahttp%3A//publications.europa.eu/resource/authority/corporate-body-classification/AGENCY_EXEC&f%5B2%5D=oe_organisation_eu_type%3Ahttp%3A//publications.europa.eu/resource/authority/corporate-body-classification/EU_JU"
+
+msgid "About this site"
+msgstr "Selle saidi kohta"
+
+msgid "https://europa.eu/european-union/abouteuropa_en"
+msgstr "https://europa.eu/european-union/abouteuropa_et"
+
+msgid "Language policy"
+msgstr "Keelepoliitika"
+
+msgid "Languages on our websites"
+msgstr "Keeled meie veebisaitidel"
+
+msgid "https://european-union.europa.eu/languages-our-websites_en"
+msgstr "https://european-union.europa.eu/languages-our-websites_et"
+
+msgid "Privacy policy"
+msgstr "Isikuandmete kaitse"
+
+msgid "https://european-union.europa.eu/privacy-policy_en"
+msgstr "https://european-union.europa.eu/privacy-policy_et"
+
+msgid "Legal"
+msgstr "Õigusteave"
+
+msgid "Legal notice"
+msgstr "Õigusteave"
+
+msgid "https://european-union.europa.eu/legal-notice_en"
+msgstr "https://european-union.europa.eu/legal-notice_et"
+
+msgid "Cookies"
+msgstr "Küpsised"
+
+msgid "European Commission"
+msgstr "Euroopa Komisjon"
+
+msgid "https://european-union.europa.eu/cookies_en"
+msgstr "https://european-union.europa.eu/cookies_et"
+
+msgid "Accessibility"
+msgstr "Juurdepääsetavus"
+
+msgid "https://european-union.europa.eu/web-accessibility-policy_en"
+msgstr "https://european-union.europa.eu/web-accessibility-policy_et"
+
+msgid "https://ec.europa.eu/info/index_en"
+msgstr "https://ec.europa.eu/info/index_et"
+
+msgid "European Commission website"
+msgstr "Euroopa Komisjoni veebisait"
+
+msgid "https://ec.europa.eu/info/strategy_en"
+msgstr "https://ec.europa.eu/info/strategy_et"
+
+msgid "Strategy"
+msgstr "Strateegia"
+
+msgid "https://ec.europa.eu/info/about-european-commission_en"
+msgstr "https://ec.europa.eu/info/about-european-commission_et"
+
+msgid "About the European Commission"
+msgstr "Euroopa Komisjoni tutvustus"
+
+msgid "https://ec.europa.eu/info/business-economy-euro_en"
+msgstr "https://ec.europa.eu/info/business-economy-euro_et"
+
+msgid "Business, Economy, Euro"
+msgstr "Ettevõtlus, majandus, euro"
+
+msgid "https://ec.europa.eu/info/live-work-travel-eu_en"
+msgstr "https://ec.europa.eu/info/live-work-travel-eu_et"
+
+msgid "Live, work, travel in the EU"
+msgstr "Elamine, töötamine ja reisimine ELis"
+
+msgid "https://ec.europa.eu/info/law_en"
+msgstr "https://ec.europa.eu/info/law_et"
+
+msgid "Law"
+msgstr "Õigusnormid"
+
+msgid "https://ec.europa.eu/info/funding-tenders_en"
+msgstr "https://ec.europa.eu/info/funding-tenders_et"
+
+msgid "Funding, Tenders"
+msgstr "Rahastamine, hanked"
+
+msgid "https://ec.europa.eu/info/research-and-innovation_en"
+msgstr "https://ec.europa.eu/info/research-and-innovation_et"
+
+msgid "Research and innovation"
+msgstr "Teadusuuringud ja innovatsioon"
+
+msgid "https://ec.europa.eu/info/energy-climate-change-environment_en"
+msgstr "https://ec.europa.eu/info/energy-climate-change-environment_et"
+
+msgid "Energy, Climate change, Environment"
+msgstr "Energia, kliimamuutused, keskkond"
+
+msgid "https://ec.europa.eu/info/education_en"
+msgstr "https://ec.europa.eu/info/education_et"
+
+msgid "Education"
+msgstr "Haridus"
+
+msgid "https://ec.europa.eu/info/aid-development-cooperation-fundamental-rights_en"
+msgstr "https://ec.europa.eu/info/aid-development-cooperation-fundamental-rights_et"
+
+msgid "Aid, Development cooperation, Fundamental rights"
+msgstr "Abi, arengukoostöö, põhiõigused"
+
+msgid "https://ec.europa.eu/info/food-farming-fisheries_en"
+msgstr "https://ec.europa.eu/info/food-farming-fisheries_et"
+
+msgid "Food, Farming, Fisheries"
+msgstr "Toit, põllumajandus, kalandus"
+
+msgid "https://ec.europa.eu/info/eu-regional-and-urban-development_en"
+msgstr "https://ec.europa.eu/info/eu-regional-and-urban-development_et"
+
+msgid "EU regional and urban development"
+msgstr "ELi regionaal- ja linnapoliitika"
+
+msgid "https://ec.europa.eu/info/jobs-european-commission_en"
+msgstr "https://ec.europa.eu/info/jobs-european-commission_et"
+
+msgid "Jobs at the European Commission"
+msgstr "Töökohad Euroopa Komisjonis"
+
+msgid "https://ec.europa.eu/info/statistics_en"
+msgstr "https://ec.europa.eu/info/statistics_et"
+
+msgid "Statistics"
+msgstr "Statistika"
+
+msgid "https://ec.europa.eu/commission/presscorner/home/en"
+msgstr "https://ec.europa.eu/commission/presscorner/home/et"
+
+msgid "News"
+msgstr "Uudised"
+
+msgid "https://ec.europa.eu/info/events_en"
+msgstr "https://ec.europa.eu/info/events_et"
+
+msgid "Events"
+msgstr "Üritused"
+
+msgid "https://ec.europa.eu/info/publications_en"
+msgstr "https://ec.europa.eu/info/publications_et"
+
+msgid "Publications"
+msgstr "Väljaanded"
+
+msgid "https://ec.europa.eu/info/about-european-commission/contact_en"
+msgstr "https://ec.europa.eu/info/about-european-commission/contact_et"
+
+msgid "Contact the European Commission"
+msgstr "Võtke ühendust Euroopa Komisjoniga"
+
+msgid "https://european-union.europa.eu/contact-eu/social-media-channels_en#/search?page=0&institutions=european_commission"
+msgstr "https://european-union.europa.eu/contact-eu/social-media-channels_et#/search?page=0&institutions=european_commission"
+
+msgid "Follow the European Commission on social media"
+msgstr "Euroopa Komisjon sotsiaalmeedias"
+
+msgid "https://ec.europa.eu/info/resources-partners_en"
+msgstr "https://ec.europa.eu/info/resources-partners_et"
+
+msgid "Resources for partners"
+msgstr "Materjalid partneritele"
+
+msgid "https://ec.europa.eu/info/language-policy_en"
+msgstr "https://ec.europa.eu/info/language-policy_et"
+
+msgid "https://ec.europa.eu/info/cookies_en"
+msgstr "https://ec.europa.eu/info/cookies_et"
+
+msgid "https://ec.europa.eu/info/privacy-policy_en"
+msgstr "https://ec.europa.eu/info/privacy-policy_et"
+
+msgid "https://ec.europa.eu/info/legal-notice_en"
+msgstr "https://ec.europa.eu/info/legal-notice_et"
+
+msgid "Social media"
+msgstr "Sotsiaalmeedia"

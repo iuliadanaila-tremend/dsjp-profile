@@ -1,0 +1,4 @@
+services:
+  dsjp_pledge.group_service:
+    class: Drupal\dsjp_pledge\Service\GroupService
+    arguments: [ '@entity_type.manager' ]

@@ -1,0 +1,38 @@
+@import 'form';
+@import 'comment';
+@import 'indented';
+@import '../rate/rate';
+
+.node--comments {
+  padding-bottom: $grid-gutter-width;
+
+  .user {
+    p[data-letters]:before {
+      width: 52px;
+      height: 52px;
+      line-height: 52px;
+    }
+  }
+
+  .node--comments {
+    padding-bottom: 0;
+    position: relative;
+
+    &::before {
+      @include position(absolute, 0 -$grid-gutter-width / 1.5);
+      content: '';
+      display: block;
+      height: $grid-gutter-width / 1.5;
+      background-color: $gray;
+    }
+  }
+
+  .user-page-links {
+    margin-top: $grid-gutter-width / 3;
+
+    a {
+      @include blue-button($font-size-sm, $line-height-sm, $font-ec-square-medium);
+      border-radius: $border-radius-lg;
+    }
+  }
+}

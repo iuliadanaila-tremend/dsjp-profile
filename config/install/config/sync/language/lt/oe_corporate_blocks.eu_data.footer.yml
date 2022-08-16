@@ -1,0 +1,71 @@
+contact_title: Kontaktai
+contact:
+  -
+    label: 'Skambinkite mums telefonu 00 800 6 7 8 9 10 11'
+  -
+    href: 'https://europa.eu/european-union/contact/call-us_lt'
+    label: 'Pasinaudokite kitomis telefoninio ryšio galimybėmis'
+  -
+    href: 'https://europa.eu/european-union/contact/write-to-us_lt'
+    label: 'Rašykite e. paštu naudodamiesi kontaktine forma'
+  -
+    href: 'https://europa.eu/european-union/contact/meet-us_lt'
+    label: 'Susitikite su mumis vietiniame ES biure'
+social_media_title: 'Socialiniai tinklai'
+social_media:
+  -
+    label: 'ES socialinės žiniasklaidos kanalai'
+    href: 'https://europa.eu/european-union/contact/social-networks_lt'
+institution_links_title: 'ES institucijos'
+institution_links:
+  0:
+    label: 'Europos Parlamentas'
+    href: 'http://www.europarl.europa.eu/portal/lt/'
+  1:
+    label: 'Europos Vadovų Taryba'
+    href: 'http://www.consilium.europa.eu/lt/european-council/'
+  2:
+    label: 'Europos Sąjungos Taryba'
+    href: 'http://www.consilium.europa.eu/lt/home/'
+  3:
+    label: 'Europos Komisija'
+    href: 'http://ec.europa.eu/index_lt.htm'
+  4:
+    label: 'Europos Sąjungos Teisingumo Teismas'
+    href: 'http://curia.europa.eu/jcms/jcms/j_6/lt/'
+  5:
+    label: 'Europos Centrinis Bankas (ECB)'
+    href: 'https://www.ecb.europa.eu/home/languagepolicy/html/index.lt.html'
+  6:
+    label: 'Europos Audito Rūmai'
+    href: 'http://www.eca.europa.eu/lt'
+  7:
+    label: 'Europos išorės veiksmų tarnyba (EIVT)'
+    href: 'http://eeas.europa.eu/index_lt.htm'
+  8:
+    label: 'Europos ekonomikos ir socialinių reikalų komitetas (EESRK)'
+    href: 'http://www.eesc.europa.eu/?i=portal.lt.home'
+  9:
+    label: 'Europos regionų komitetas'
+    href: 'http://cor.europa.eu/lt/'
+  10:
+    label: 'Europos investicijų bankas (EIB)'
+  12:
+    label: 'Europos duomenų apsaugos priežiūros pareigūnas (EDAPP)'
+    href: 'https://secure.edps.europa.eu/EDPSWEB/edps/EDPS?lang=lt'
+legal_links:
+  -
+    label: 'Apie šią svetainę'
+    href: 'https://europa.eu/european-union/abouteuropa_lt'
+  -
+    label: 'Kalbų politika'
+    href: 'https://europa.eu/european-union/abouteuropa/language-policy_lt'
+  -
+    label: 'Privatumo politika'
+    href: 'https://europa.eu/european-union/abouteuropa/privacy-policy_lt'
+  -
+    label: 'Teisinis pranešimas'
+    href: 'https://europa.eu/european-union/abouteuropa/legal_notices_lt'
+  -
+    label: Slapukai
+    href: 'https://europa.eu/european-union/abouteuropa/cookies_lt'

@@ -1,0 +1,14 @@
+{% if content %}
+  <article{{ attributes.addClass('user', 'user--compact') }}>
+    {{ author_avatar }}
+    <div class="user-name">
+      {% if user.isAnonymous %}
+        {{ author_name }}
+      {% else %}
+        <a href="{{ path('entity.user.canonical', {'user': user.id}) }}">
+          {{ author_name }}
+        </a>
+      {% endif %}
+    </div>
+  </article>
+{% endif %}

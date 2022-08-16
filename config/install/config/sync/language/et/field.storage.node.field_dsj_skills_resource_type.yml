@@ -1,0 +1,12 @@
+settings:
+  allowed_values:
+    -
+      label: Enesehindamisvahend
+    -
+      label: Metoodika
+    -
+      label: Koolituskavad
+    -
+      label: Juhtumiuuring
+    -
+      label: 'Muu koolitusmaterjal'

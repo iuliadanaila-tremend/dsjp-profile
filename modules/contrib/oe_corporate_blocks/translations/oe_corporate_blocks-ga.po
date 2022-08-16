@@ -1,0 +1,320 @@
+msgid ""
+msgstr ""
+
+msgid "Contact the EU"
+msgstr "Déan teagmháil leis an Aontas Eorpach"
+
+msgid "tel:0080067891011"
+msgstr "tel:0080067891011"
+
+msgid "Call us 00 800 6 7 8 9 10 11"
+msgstr "Glaoigh orainn ar 00 800 6 7 8 9 10 11"
+
+msgid "https://european-union.europa.eu/contact-eu/call-us_en"
+msgstr "https://european-union.europa.eu/contact-eu/call-us_ga"
+
+msgid "Use other telephone options"
+msgstr "Úsáid roghanna teileafóin eile"
+
+msgid "https://european-union.europa.eu/contact-eu/write-us_en"
+msgstr "https://european-union.europa.eu/contact-eu/write-us_ga"
+
+msgid "Write to us via our contact form"
+msgstr "Scríobh chugainn tríd an bhfoirm theagmhála"
+
+msgid "https://european-union.europa.eu/contact-eu/meet-us_en"
+msgstr "https://european-union.europa.eu/contact-eu/meet-us_ga"
+
+msgid "Meet us at one of the EU centres"
+msgstr "Tabhair cuairt orainn ag ceann de lárionaid an Aontais"
+
+msgid "Find a social media account"
+msgstr "Cuntas sna meáin shóisialta a aimsiú"
+
+msgid "Search for EU social media channels"
+msgstr "Cainéil an Aontais Eorpaigh ar na meáin shóisialta a chuardach"
+
+msgid "https://european-union.europa.eu/contact-eu/social-media-channels_en"
+msgstr "https://european-union.europa.eu/contact-eu/social-media-channels_ga"
+
+msgid "EU institutions"
+msgstr "Institiúidí an Aontais Eorpaigh"
+
+msgid "European Parliament"
+msgstr "Parlaimint na hEorpa"
+
+msgid "http://www.europarl.europa.eu/portal/"
+msgstr "http://www.europarl.europa.eu/portal/ga"
+
+msgid "European Council"
+msgstr "An Chomhairle Eorpach"
+
+msgid "http://www.consilium.europa.eu/en/european-council/"
+msgstr "http://www.consilium.europa.eu/ga/european-council/"
+
+msgid "Council of the European Union"
+msgstr "Comhairle an Aontais Eorpaigh"
+
+msgid "http://www.consilium.europa.eu/en/home/"
+msgstr "http://www.consilium.europa.eu/ga/home/"
+
+msgid "European Commission"
+msgstr "An Coimisiún Eorpach"
+
+msgid "https://ec.europa.eu/commission/index_en"
+msgstr "https://ec.europa.eu/commission/index_ga"
+
+msgid "Court of Justice of the European Union (CJEU)"
+msgstr "Cúirt Bhreithiúnais an Aontais Eorpaigh (CBAE)"
+
+msgid "European Central Bank (ECB)"
+msgstr "an Banc Ceannais Eorpach (BCE)"
+
+msgid "https://www.ecb.europa.eu/home/html/index.en.html"
+msgstr "https://www.ecb.europa.eu/home/languagepolicy/html/index.ga.html"
+
+msgid "European Court of Auditors (ECA)"
+msgstr "Cúirt Iniúchóirí na hEorpa"
+
+msgid "http://www.eca.europa.eu/en"
+msgstr "http://www.eca.europa.eu/ga"
+
+msgid "European External Action Service (EEAS)"
+msgstr "An tSeirbhís Eorpach Gníomhaíochta Seachtraí (SEGS)"
+
+msgid "https://eeas.europa.eu/headquarters/headquarters-homepage_en"
+msgstr "http://eeas.europa.eu/index_ga.htm"
+
+msgid "European Economic and Social Committee (EESC)"
+msgstr "Coiste Eacnamaíoch agus Sóisialta na hEorpa (CESE)"
+
+msgid "http://www.eesc.europa.eu/?i=portal.en.home"
+msgstr "http://www.eesc.europa.eu/?i=portal.ga.home"
+
+msgid "http://cor.europa.eu/en/"
+msgstr "http://cor.europa.eu/ga/"
+
+msgid "European Committee of the Regions (CoR)"
+msgstr "Coiste Eorpach na Réigiún (CoR)"
+
+msgid "European Investment Bank (EIB)"
+msgstr "An Banc Eorpach Infheistíochta (BEI)"
+
+msgid "European Data Protection Supervisor (EDPS)"
+msgstr "An Maoirseoir Eorpach ar Chosaint Sonraí (MECS)"
+
+msgid "https://secure.edps.europa.eu/EDPSWEB/edps/EDPS?lang=en"
+msgstr "https://secure.edps.europa.eu/EDPSWEB/edps/EDPS?lang=ga"
+
+msgid "European Ombudsman"
+msgstr "An tOmbudsman Eorpach"
+
+msgid "https://www.ombudsman.europa.eu/en/home"
+msgstr "https://www.ombudsman.europa.eu/ga/home"
+
+msgid "European Data Protection Board"
+msgstr "An Bord Eorpach um Chosaint Sonraí (EDPB)"
+
+msgid "https://edpb.europa.eu/edpb_en"
+msgstr "https://edpb.europa.eu/edpb_ga"
+
+msgid "European Personnel Selection Office"
+msgstr "An Oifig Eorpach um Roghnú Foirne"
+
+msgid "https://epso.europa.eu/home_en"
+msgstr "https://epso.europa.eu/home_ga"
+
+msgid "Publications Office of the European Union"
+msgstr "Oifig Foilseachán an Aontais Eorpaigh"
+
+msgid "https://op.europa.eu/en/home"
+msgstr "https://op.europa.eu/ga/home"
+
+msgid "Agencies"
+msgstr "Gníomhaireachtaí"
+
+msgid "https://european-union.europa.eu/institutions-law-budget/institutions-and-bodies/institutions-and-bodies-profiles_en?f%5B0%5D=oe_organisation_eu_type%3Ahttp%3A//publications.europa.eu/resource/authority/corporate-body-classification/AGENCY_DEC&f%5B1%5D=oe_organisation_eu_type%3Ahttp%3A//publications.europa.eu/resource/authority/corporate-body-classification/AGENCY_EXEC&f%5B2%5D=oe_organisation_eu_type%3Ahttp%3A//publications.europa.eu/resource/authority/corporate-body-classification/EU_JU"
+msgstr "https://european-union.europa.eu/institutions-law-budget/institutions-and-bodies/institutions-and-bodies-profiles_ga?f%5B0%5D=oe_organisation_eu_type%3Ahttp%3A//publications.europa.eu/resource/authority/corporate-body-classification/AGENCY_DEC&f%5B1%5D=oe_organisation_eu_type%3Ahttp%3A//publications.europa.eu/resource/authority/corporate-body-classification/AGENCY_EXEC&f%5B2%5D=oe_organisation_eu_type%3Ahttp%3A//publications.europa.eu/resource/authority/corporate-body-classification/EU_JU"
+
+msgid "About this site"
+msgstr "Faoin suíomh seo"
+
+msgid "https://europa.eu/european-union/abouteuropa_en"
+msgstr "https://europa.eu/european-union/abouteuropa_ga"
+
+msgid "Language policy"
+msgstr "Beartas teanga"
+
+msgid "Languages on our websites"
+msgstr "Teangacha ar ár suíomhanna gréasáin"
+
+msgid "https://european-union.europa.eu/languages-our-websites_en"
+msgstr "https://european-union.europa.eu/languages-our-websites_ga"
+
+msgid "Privacy policy"
+msgstr "Beartas príobháideachais"
+
+msgid "https://european-union.europa.eu/privacy-policy_en"
+msgstr "https://european-union.europa.eu/privacy-policy_ga"
+
+msgid "Legal"
+msgstr "Fógraí Dlíthiúla"
+
+msgid "Legal notice"
+msgstr "Fógra dlíthiúil"
+
+msgid "https://european-union.europa.eu/legal-notice_en"
+msgstr "https://european-union.europa.eu/legal-notice_ga"
+
+msgid "Cookies"
+msgstr "Fianáin"
+
+msgid "https://european-union.europa.eu/cookies_en"
+msgstr "https://european-union.europa.eu/cookies_ga"
+
+msgid "Accessibility"
+msgstr "Inrochtaineacht"
+
+msgid "https://european-union.europa.eu/web-accessibility-policy_en"
+msgstr "https://european-union.europa.eu/web-accessibility-policy_ga"
+
+msgid "https://ec.europa.eu/info/index_en"
+msgstr "https://ec.europa.eu/info/index_ga"
+
+msgid "European Commission website"
+msgstr "Suíomh gréasáin an Choimisiúin Eorpaigh"
+
+msgid "https://ec.europa.eu/info/strategy_en"
+msgstr "https://ec.europa.eu/info/strategy_ga"
+
+msgid "Strategy"
+msgstr "Straitéis"
+
+msgid "https://ec.europa.eu/info/about-european-commission_en"
+msgstr "https://ec.europa.eu/info/about-european-commission_ga"
+
+msgid "About the European Commission"
+msgstr "Eolas faoin gCoimisiún Eorpach"
+
+msgid "https://ec.europa.eu/info/business-economy-euro_en"
+msgstr "https://ec.europa.eu/info/business-economy-euro_ga"
+
+msgid "Business, Economy, Euro"
+msgstr "Gnó, an geilleagar, an euro"
+
+msgid "https://ec.europa.eu/info/live-work-travel-eu_en"
+msgstr "https://ec.europa.eu/info/live-work-travel-eu_ga"
+
+msgid "Live, work, travel in the EU"
+msgstr "Cúrsaí saoil, oibre agus taistil san Aontas Eorpach"
+
+msgid "https://ec.europa.eu/info/law_en"
+msgstr "https://ec.europa.eu/info/law_ga"
+
+msgid "Law"
+msgstr "An dlí"
+
+msgid "https://ec.europa.eu/info/funding-tenders_en"
+msgstr "https://ec.europa.eu/info/funding-tenders_ga"
+
+msgid "Funding, Tenders"
+msgstr "Maoiniú, Glaonna ar Thairiscintí"
+
+msgid "https://ec.europa.eu/info/research-and-innovation_en"
+msgstr "https://ec.europa.eu/info/research-and-innovation_ga"
+
+msgid "Research and innovation"
+msgstr "Taighde agus nuálaíocht"
+
+msgid "https://ec.europa.eu/info/energy-climate-change-environment_en"
+msgstr "https://ec.europa.eu/info/energy-climate-change-environment_ga"
+
+msgid "Energy, Climate change, Environment"
+msgstr "Fuinneamh, an t-athrú aeráide, an comhshaol"
+
+msgid "https://ec.europa.eu/info/education_en"
+msgstr "https://ec.europa.eu/info/education_ga"
+
+msgid "Education"
+msgstr "Oideachas"
+
+msgid "https://ec.europa.eu/info/aid-development-cooperation-fundamental-rights_en"
+msgstr "https://ec.europa.eu/info/aid-development-cooperation-fundamental-rights_ga"
+
+msgid "Aid, Development cooperation, Fundamental rights"
+msgstr "Cabhair, comhar don fhorbairt, cearta bunúsacha"
+
+msgid "https://ec.europa.eu/info/food-farming-fisheries_en"
+msgstr "https://ec.europa.eu/info/food-farming-fisheries_ga"
+
+msgid "Food, Farming, Fisheries"
+msgstr "Bia, Feirmeoireacht, Iascaigh"
+
+msgid "https://ec.europa.eu/info/eu-regional-and-urban-development_en"
+msgstr "https://ec.europa.eu/info/eu-regional-and-urban-development_ga"
+
+msgid "EU regional and urban development"
+msgstr "Infheistíocht réigiúnach agus uirbeach an Aontais"
+
+msgid "https://ec.europa.eu/info/jobs-european-commission_en"
+msgstr "https://ec.europa.eu/info/jobs-european-commission_ga"
+
+msgid "Jobs at the European Commission"
+msgstr "Poist leis an gCoimisiún Eorpach"
+
+msgid "https://ec.europa.eu/info/statistics_en"
+msgstr "https://ec.europa.eu/info/statistics_ga"
+
+msgid "Statistics"
+msgstr "Statisticí"
+
+msgid "https://ec.europa.eu/commission/presscorner/home/en"
+msgstr "https://ec.europa.eu/commission/presscorner/home/ga"
+
+msgid "News"
+msgstr "Nuacht"
+
+msgid "https://ec.europa.eu/info/events_en"
+msgstr "https://ec.europa.eu/info/events_ga"
+
+msgid "Events"
+msgstr "Imeachtaí"
+
+msgid "https://ec.europa.eu/info/publications_en"
+msgstr "https://ec.europa.eu/info/publications_ga"
+
+msgid "Publications"
+msgstr "Foilseacháin"
+
+msgid "https://ec.europa.eu/info/about-european-commission/contact_en"
+msgstr "https://ec.europa.eu/info/about-european-commission/contact_ga"
+
+msgid "Contact the European Commission"
+msgstr "Teagmháil a dhéanamh leis an gCoimisiún Eorpach"
+
+msgid "https://european-union.europa.eu/contact-eu/social-media-channels_en#/search?page=0&institutions=european_commission"
+msgstr "https://european-union.europa.eu/contact-eu/social-media-channels_ga#/search?page=0&institutions=european_commission"
+
+msgid "Follow the European Commission on social media"
+msgstr "Lean an Coimisiún Eorpach ar na meáin shóisialta"
+
+msgid "https://ec.europa.eu/info/resources-partners_en"
+msgstr "https://ec.europa.eu/info/resources-partners_ga"
+
+msgid "Resources for partners"
+msgstr "Acmhainní le haghaidh comhpháirtithe"
+
+msgid "https://ec.europa.eu/info/language-policy_en"
+msgstr "https://ec.europa.eu/info/language-policy_ga"
+
+msgid "https://ec.europa.eu/info/cookies_en"
+msgstr "https://ec.europa.eu/info/cookies_ga"
+
+msgid "https://ec.europa.eu/info/privacy-policy_en"
+msgstr "https://ec.europa.eu/info/privacy-policy_ga"
+
+msgid "https://ec.europa.eu/info/legal-notice_en"
+msgstr "https://ec.europa.eu/info/legal-notice_ga"
+
+msgid "Social media"
+msgstr "Na meáin shóisialta"

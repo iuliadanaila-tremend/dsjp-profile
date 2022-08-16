@@ -1,0 +1,34 @@
+{% set classes = [
+  'node',
+  node.isPromoted() ? 'node--promoted',
+  node.isSticky() ? 'node--sticky',
+  not node.isPublished() ? 'node--unpublished',
+  node.bundle|clean_class,
+  node.bundle|clean_class ~ '--' ~ view_mode|clean_class,
+  'node' ~ '--' ~ view_mode|clean_class,
+  'node' ~ '--' ~ node.bundle|clean_class,
+  term_type ? node.bundle|clean_class ~ '--' ~ term_type|clean_class,
+] %}
+<article{{ attributes.addClass(classes) }}>
+  <div class="article-header">
+    <div class="user author-picture">
+      {{ author_avatar }}
+    </div>
+    <div class="page-title">
+      {{ title_prefix }}
+      {% if not page %}
+        <h2{{ title_attributes }}>
+          <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+        </h2>
+      {% endif %}
+      {{ title_suffix }}
+    </div>
+  </div>
+  <div {{ content_attributes.addClass('content', 'content-area') }}>
+    {{ content|without('comment_count', 'rating_count', 'flag_voting') }}
+  </div>
+
+  {% if display_submitted %}
+    {% include '@edsjp/content/partials/discussion-footer-info.html.twig' %}
+  {% endif %}
+</article>

@@ -1,0 +1,77 @@
+corporate_site_link:
+  href: 'https://ec.europa.eu/info/index_nl'
+  label: 'Website van de Europese Commissie'
+class_navigation:
+  -
+    href: 'https://ec.europa.eu/info/strategy_nl'
+    label: Strategie
+  -
+    href: 'https://ec.europa.eu/info/about-european-commission_nl'
+    label: 'Over de Europese Commissie'
+  -
+    href: 'https://ec.europa.eu/info/business-economy-euro_nl'
+    label: 'Handel, economie, euro'
+  -
+    href: 'https://ec.europa.eu/info/live-work-travel-eu_nl'
+    label: 'Wonen, werken en reizen in de EU'
+  -
+    href: 'https://ec.europa.eu/info/law_nl'
+    label: Wetgeving
+  -
+    href: 'https://ec.europa.eu/info/funding-tenders_nl'
+    label: 'Subsidies, leningen, aanbestedingen'
+  -
+    href: 'https://ec.europa.eu/info/research-and-innovation_nl'
+    label: 'Onderzoek en innovatie'
+  -
+    href: 'https://ec.europa.eu/info/energy-climate-change-environment_nl'
+    label: 'Energie, klimaatverandering, milieu'
+  -
+    href: 'https://ec.europa.eu/info/education_nl'
+    label: Onderwijs
+  -
+    href: 'https://ec.europa.eu/info/aid-development-cooperation-fundamental-rights_nl'
+    label: 'Noodhulp, ontwikkelingssamenwerking, grondrechten'
+  -
+    href: 'https://ec.europa.eu/info/food-farming-fisheries_nl'
+    label: 'Voedsel, landbouw, visserij'
+  -
+    href: 'https://ec.europa.eu/info/eu-regional-and-urban-development_nl'
+    label: 'Platteland, steden, regio''s'
+  -
+    href: 'https://ec.europa.eu/info/jobs-european-commission_nl'
+    label: 'Werken voor de Europese Commissie'
+  -
+    href: 'https://ec.europa.eu/info/statistics_nl'
+    label: Statistieken
+  -
+    href: 'https://ec.europa.eu/commission/presscorner/home/nl'
+    label: Nieuws
+  -
+    href: 'https://ec.europa.eu/info/events_nl'
+    label: Evenementen
+  -
+    href: 'https://ec.europa.eu/info/publications_nl'
+    label: Publicaties
+service_navigation:
+  -
+    href: 'https://ec.europa.eu/info/about-european-commission/contact_nl'
+    label: 'Contact met de Europese Commissie'
+  -
+    href: 'https://europa.eu/european-union/contact/social-networks_nl#n:+i:4+e:1+t:+s'
+    label: 'Volg de Europese Commissie op sociale media'
+  -
+    href: 'https://ec.europa.eu/info/resources-partners_nl'
+    label: 'Bronmateriaal voor partners'
+legal_navigation:
+  -
+    href: 'https://ec.europa.eu/info/language-policy_nl'
+    label: 'Talenbeleid op de Europa-website'
+  -
+    href: 'https://ec.europa.eu/info/cookies_nl'
+  -
+    href: 'https://ec.europa.eu/info/privacy-policy_nl'
+    label: Privacybeleid
+  -
+    href: 'https://ec.europa.eu/info/legal-notice_nl'
+    label: 'Juridische mededeling'

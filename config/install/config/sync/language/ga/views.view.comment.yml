@@ -1,0 +1,23 @@
+display:
+  default:
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Apply
+      pager:
+        options:
+          tags:
+            previous: '‹ previous'
+            next: 'next ›'
+            first: '« first'
+            last: 'last »'
+      filters:
+        langcode:
+          expose:
+            label: Language
+  page_unapproved:
+    display_options:
+      filters:
+        langcode:
+          expose:
+            label: Language

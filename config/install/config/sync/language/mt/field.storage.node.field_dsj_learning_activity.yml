@@ -1,0 +1,24 @@
+settings:
+  allowed_values:
+    -
+      label: 'laboratorju/simulazzjoni/sessjonijiet ta’ prattika'
+    -
+      label: 'esperjenza ta’ xogħol'
+    -
+      label: volontarjat
+    -
+      label: riċerka
+    -
+      label: 'studju awtomotivat'
+    -
+      label: 'korsijiet ta’ tagħlim elettroniku'
+    -
+      label: apprendistat
+    -
+      label: apprendistat
+    -
+      label: 'workshop, seminar jew konferenza'
+    -
+      label: 'programm ta’ edukazzjoni'
+    -
+      label: 'korsijiet fil-klassi.'

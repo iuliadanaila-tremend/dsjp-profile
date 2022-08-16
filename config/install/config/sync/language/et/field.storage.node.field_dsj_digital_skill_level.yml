@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Alus
+    -
+      label: Keskmine
+    -
+      label: Täiustatud
+    -
+      label: 'Digitaalvaldkonna ekspert'

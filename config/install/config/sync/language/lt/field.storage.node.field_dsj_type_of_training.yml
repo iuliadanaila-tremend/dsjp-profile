@@ -1,0 +1,6 @@
+settings:
+  allowed_values:
+    -
+      label: 'Vienintelis pasiūlymas'
+    -
+      label: 'Duomenų bazė'

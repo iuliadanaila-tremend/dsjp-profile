@@ -1,0 +1,18 @@
+<?php
+
+/**
+ * @file
+ * Provides the install & update functionality for the user authentication.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function dsjp_authentication_user_fields_test_install() {
+  if (\Drupal::isConfigSyncing() === FALSE) {
+    // Set default settings for CAS.
+    \Drupal::configFactory()->getEditable('cas.settings')
+      ->set('forced_login.enabled', FALSE)
+      ->save();
+  }
+}

@@ -1,0 +1,12 @@
+settings:
+  allowed_values:
+    -
+      label: 'Institucionalna inicijativa EU-a'
+    -
+      label: 'Nacionalna inicijativa'
+    -
+      label: 'Regionalna inicijativa'
+    -
+      label: 'Lokalna inicijativa'
+    -
+      label: 'Međunarodna inicijativa'

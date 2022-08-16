@@ -1,0 +1,21 @@
+uuid: 604c46e4-5087-43ec-a727-f314e4791271
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dsj_meta_tags
+    - node.type.dsj_national_coalition
+  module:
+    - metatag
+id: node.dsj_national_coalition.field_dsj_meta_tags
+field_name: field_dsj_meta_tags
+entity_type: node
+bundle: dsj_national_coalition
+label: 'Meta tags'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag

@@ -1,0 +1,8 @@
+settings:
+  allowed_values:
+    -
+      label: 'Niepełny wymiar godzin - zajęcia nieintensywne'
+    -
+      label: 'W pełnym wymiarze czasu pracy'
+    -
+      label: 'Niepełny wymiar godzin - zajęcia intensywne'

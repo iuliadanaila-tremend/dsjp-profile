@@ -1,0 +1,14 @@
+settings:
+  allowed_values:
+    -
+      label: 'Basato sul lavoro'
+    -
+      label: 'Basato sul progetto'
+    -
+      label: Presenziale
+    -
+      label: On-line
+    -
+      label: Misto
+    -
+      label: 'Basato su laboratorio di ricerca'

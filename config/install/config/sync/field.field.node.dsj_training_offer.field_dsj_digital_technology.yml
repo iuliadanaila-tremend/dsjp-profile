@@ -1,0 +1,21 @@
+uuid: 4e3c50c3-a0b2-4e35-97cf-c3d06d1aeb80
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dsj_digital_technology
+    - node.type.dsj_training_offer
+  module:
+    - options
+id: node.dsj_training_offer.field_dsj_digital_technology
+field_name: field_dsj_digital_technology
+entity_type: node
+bundle: dsj_training_offer
+label: 'Digital technology / specialisation'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,22 @@
+uuid: bc23732a-dc63-4710-9f52-04ab5c31a3f8
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.dsj_testimonial
+id: paragraph.dsj_testimonial.status
+field_name: status
+entity_type: paragraph
+bundle: dsj_testimonial
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,8 @@
+settings:
+  allowed_values:
+    -
+      label: 'Horario parcial limitado'
+    -
+      label: 'A tiempo completo'
+    -
+      label: 'Horario parcial intensivo'

@@ -1,0 +1,19 @@
+uuid: 644c73a2-f5e7-4bd1-8125-87978b526424
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group_content.invitee_mail
+    - group.content_type.group_content_type_ec4009ca39d94
+id: group_content.group_content_type_ec4009ca39d94.invitee_mail
+field_name: invitee_mail
+entity_type: group_content
+bundle: group_content_type_ec4009ca39d94
+label: 'Invitee mail'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

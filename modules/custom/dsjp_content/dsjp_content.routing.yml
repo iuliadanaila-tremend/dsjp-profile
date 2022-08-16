@@ -1,0 +1,6 @@
+dsjp_content.popup_config:
+  path: '/admin/config/user-interface/popup-config'
+  defaults:
+    _form: '\Drupal\dsjp_content\Form\PopupConfigForm'
+  requirements:
+    _role: 'dsj_reviewer+dsj_critical_reviewer+administrator'

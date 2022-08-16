@@ -1,0 +1,8 @@
+uuid: 21ca87ec-78b1-4142-b2fa-55be0621e974
+langcode: en
+status: true
+dependencies: {  }
+id: default_timeless_short_date
+label: 'Default timeless short date'
+locked: false
+pattern: d/m/Y

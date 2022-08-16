@@ -1,0 +1,184 @@
+@import '../components/front/hero';
+@import '../components/front/tiles';
+@import '../components/front/calendar-listing';
+@import '../components/front/diagonal-cards';
+@import '../components/front/carousel';
+@import '../components/front/grid-articles';
+@import '../components/front/testimonials';
+
+.path-frontpage {
+
+  .page-title h2 a,
+  .card-title h2,
+  .node--content h3 a,
+  .node .node--title a {
+    color: $primary !important;
+  }
+
+  .region-content,
+  .region-after-content-split--wrapper,
+  #main-content {
+    overflow: hidden;
+  }
+
+  #main-content {
+    padding-bottom: 0 !important;
+
+    h1,
+    h2 {
+      display: block;
+    }
+
+    .paragraph--type--dsj-grouped-cards {
+      &.paragraph--view-mode--default {
+        .ecl-container {
+          .ecl-row {
+            @include media-breakpoint-down(xs) {
+              h2 {
+                padding-top: $grid-gutter-width;
+                padding-left: 0;
+                margin: 0;
+                color: $body-bg;
+                font-weight: normal !important;
+                font-family: $font-ec-square-regular;
+                font-style: normal;
+                font-size: $font-size-2xl !important;
+                line-height: $line-height-2xl;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .title-wrapper {
+
+      h1,
+      h2 {
+        display: block;
+      }
+
+      @include media-breakpoint-down(sm) {
+        text-align: left;
+        margin-right: $grid-gutter-width / 2;
+
+        h1 {
+          @include media-breakpoint-down(xxs) {
+            line-height: $line-height-3xl !important; /* override ecl default style */
+            font-size: $font-size-3xl !important; /* override ecl default style */
+          }
+          /* override ecl default style */
+          font-family: $font-ec-square-regular !important;
+          line-height: $line-height-3xl !important;
+          font-size: $h1-font-size !important;
+          margin: 0;
+          max-width: 100%;
+        }
+
+        h2 {
+          line-height: $line-height-2xl;
+          font-size: $h2-font-size;
+          margin-top: ($grid-gutter-width / 2);
+          margin-bottom: 0;
+          max-width: 100%;
+        }
+      }
+    }
+
+    .ecl-navigation-list {
+      h1,
+      h2 {
+        display: none;
+      }
+    }
+
+    .node--card {
+      .node--footer {
+        padding: 0 $grid-gutter-width / 3;
+      }
+    }
+  }
+
+  .paragraph + .paragraph {
+    margin-top: $grid-gutter-width;
+
+    &.paragraph--type--dsj-cta-banner,
+    &.widget_wrapper_events_community {
+      margin-top: 0;
+    }
+  }
+
+  .paragraph--type--dsj-text {
+    margin-bottom: $grid-gutter-width * 2;
+  }
+
+  .paragraph--type--dsj-grouped-cards h2,
+  .ecl-u-type-heading-2 {
+    @include font($h2-font-size, $line-height-2xl, $font-ec-square-regular, 600, true);
+    margin: 0;
+    color: $gray-650;
+  }
+
+  .paragraph--type--dsj-grouped-cards h2 {
+    color: $body-bg;
+  }
+
+  .paragraph--type--dsj-info-cards {
+    @include media-breakpoint-down(md) {
+      text-align: center;
+
+      h2 {
+        line-height: $line-height-base;
+      }
+    }
+    padding: $grid-gutter-width * 2 0 $grid-gutter-width;
+
+    .field--name-field-dsj-read-more-link {
+      margin-bottom: 0;
+      margin-top: $grid-gutter-width;
+    }
+  }
+}
+
+.region-social-media-split-wrapper {
+  padding: $grid-gutter-width * 2 0;
+}
+
+.region-after-content-split--wrapper {
+  @include media-breakpoint-down(lg) {
+    padding: $grid-gutter-width * 2 0 $grid-gutter-width * 2;
+  }
+
+  padding: $grid-gutter-width * 4 0;
+}
+
+#block-views-block-dsj-content-listing-latest-widget {
+  @include make-container();
+  @include make-container-max-widths();
+  padding: 0;
+
+  .ecl-u-type-heading-2 {
+    padding: 0 $grid-gutter-width / 2;
+  }
+
+  .view-rows {
+    margin: 0;
+  }
+}
+
+#block-dsj-follow-us {
+  @include media-breakpoint-down(md) {
+    margin-bottom: $grid-gutter-width;
+  }
+  @include media-breakpoint-up(md) {
+    text-align: left;
+  }
+  text-align: center;
+}
+
+.block-dsj-tabs-wrapper {
+  .ecl-navigation-list {
+    padding: 0;
+  }
+}
+

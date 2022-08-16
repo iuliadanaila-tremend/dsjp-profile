@@ -1,0 +1,61 @@
+@import 'pill';
+@import 'pagination';
+@import 'follow-us';
+@import 'map';
+@import 'popup';
+@import 'cta-button';
+@import 'assessment';
+@import 'map-banner';
+@import 'private-message';
+
+.type-pill {
+  @include pill();
+
+  &.color-default {
+    background-color: $organisations-category-color;
+
+    &:hover {
+      background-color: $organisations-hover-color;
+    }
+  }
+
+  &.color-latest {
+    background-color: $latest-color;
+
+    &:hover {
+      background-color: $latest-hover-color;
+    }
+  }
+
+  &.color-actions {
+    background-color: $actions-category-color;
+
+    &:hover {
+      background-color: $actions-hover-color;
+    }
+  }
+
+  &.color-opportunities {
+    background-color: $opportunities-category-color;
+
+    &:hover {
+      background-color: $opportunities-hover-color;
+    }
+  }
+
+  &.color-inspiration {
+    background-color: $inspiration-category-color;
+
+    &:hover {
+      background-color: $inspiration-hover-color;
+    }
+  }
+
+  &.color-community {
+    background-color: $community-category-color;
+
+    &:hover {
+      background-color: $community-hover-color;
+    }
+  }
+}

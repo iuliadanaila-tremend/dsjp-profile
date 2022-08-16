@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: 'Digitale færdigheder for arbejdsstyrken.'
+    -
+      label: 'Digitale færdigheder for IKT-fagfolk og andre digitale eksperter.'
+    -
+      label: 'Digitale færdigheder inden for uddannelse.'
+    -
+      label: 'Digitale færdigheder for alle'

@@ -1,0 +1,21 @@
+uuid: f06b0611-cdb6-47e4-b518-6699274b65b0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_dsj_body
+    - paragraphs.paragraphs_type.dsj_info_cards
+  module:
+    - text
+id: paragraph.dsj_info_cards.field_dsj_body
+field_name: field_dsj_body
+entity_type: paragraph
+bundle: dsj_info_cards
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

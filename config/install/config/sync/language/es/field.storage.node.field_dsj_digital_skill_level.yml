@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Básico
+    -
+      label: Intermedio
+    -
+      label: Avanzado
+    -
+      label: 'Experto digital'

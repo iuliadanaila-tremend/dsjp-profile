@@ -1,0 +1,6 @@
+settings:
+  allowed_values:
+    -
+      label: 'Tairiscint aonair'
+    -
+      label: 'Bunachar sonraí'

@@ -1,0 +1,6 @@
+services:
+  dsjp_pledge_migration.post_node_migration_subscriber:
+    class: 'Drupal\dsjp_pledge_migration\EventSubscriber\MigrationRowSaveSubscriber'
+    arguments: ['@database']
+    tags:
+      - { name: 'event_subscriber' }

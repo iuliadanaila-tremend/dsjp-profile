@@ -1,0 +1,8 @@
+settings:
+  allowed_values:
+    0:
+      label: Öffentlich
+    1:
+      label: Privat
+    3:
+      label: 'Öffentlich-private Partnerschaften'

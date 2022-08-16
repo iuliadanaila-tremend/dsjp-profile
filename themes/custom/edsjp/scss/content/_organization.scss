@@ -1,0 +1,77 @@
+.node--dsj-organization {
+
+  .page-header {
+    margin-bottom: 1.875rem;
+    border-bottom: 1px solid $gray-500;
+
+    @media all and (min-width: $min-sm-width) {
+
+      h1 {
+        color: $gray-650;
+        margin: 0 0 1.5rem;
+      }
+
+      .term {
+        text-align: right;
+      }
+    }
+  }
+
+  .event-location {
+    color: $gray-100;
+    font-size: $font-size-md;
+    display: flex;
+    align-items: flex-start;
+    line-height: 1.5rem;
+    margin-bottom: 1.5rem;
+
+    .icon-location {
+      padding-right: .9375rem;
+    }
+  }
+
+  .field--name-field {
+    &-dsj-geographic-scope {
+      display: flex;
+
+      .field__item {
+        padding-right: .625rem;
+      }
+    }
+
+    &-organization-logo {
+      align-items: center;
+      background-color: theme-color('fourth');
+      border-radius: 6px;
+      display: flex;
+      float: left;
+      height: 125px;
+      justify-content: center;
+      margin: 0 1rem 1.5rem 0;
+      position: relative;
+      width: 125px;
+
+      &::after {
+        content: '';
+        display: block;
+        top: 20px;
+        right: 20px;
+        position: absolute;
+        width: 84px;
+        height: 84px;
+      }
+
+      img {
+        max-height: 125px;
+        position: relative;
+        z-index: $zindex-dropdown;
+      }
+    }
+  }
+
+  .bordered-field-list {
+    .comment-add {
+      display: none;
+    }
+  }
+}

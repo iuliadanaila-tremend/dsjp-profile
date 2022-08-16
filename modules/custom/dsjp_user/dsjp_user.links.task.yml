@@ -1,0 +1,11 @@
+dsjp_user.groups.page:
+  title: Groups
+  route_name: view.groups.dsj_user_groups
+  base_route: entity.user.canonical
+  weight: 5
+
+dsjp_user.submissions.page:
+  title: Submissions
+  route_name: view.webform_submissions.user_webform_submissions
+  base_route: entity.user.canonical
+  weight: 4

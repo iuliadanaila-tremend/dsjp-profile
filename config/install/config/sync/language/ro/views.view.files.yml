@@ -1,0 +1,90 @@
+label: Fişiere
+description: 'Găsiți și gestionați fișiere.'
+display:
+  default:
+    display_title: Master
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Filter
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      pager:
+        options:
+          tags:
+            previous: '‹ Previous'
+            next: 'Next ›'
+          expose:
+            items_per_page_label: 'Items per page'
+            items_per_page_options_all_label: '- All -'
+            offset_label: Offset
+      fields:
+        fid:
+          label: Fid
+        filename:
+          label: Nume
+          separator: ', '
+        filemime:
+          label: 'Tip MIME'
+        filesize:
+          label: Mărime
+        status:
+          label: Status
+          settings:
+            format_custom_false: Temporar
+            format_custom_true: Permanent
+        created:
+          label: 'Data încărcării'
+        changed:
+          label: 'Data modificării'
+        count:
+          label: 'Utilizat în'
+      filters:
+        filename:
+          expose:
+            label: 'Nume fişier'
+        filemime:
+          expose:
+            label: 'Tip MIME'
+        status:
+          expose:
+            label: Status
+      title: Fişiere
+      empty:
+        area_text_custom:
+          content: 'Nu sunt fișiere disponibile.'
+  page_1:
+    display_title: 'Privire de ansamblu asupra fișierelor'
+    display_options:
+      menu:
+        title: Fişiere
+  page_2:
+    display_title: 'Întrebuințarea fișierului'
+    display_options:
+      pager:
+        options:
+          tags:
+            previous: '‹ Previous'
+            next: 'Next ›'
+          expose:
+            items_per_page_label: 'Items per page'
+            items_per_page_options_all_label: '- All -'
+            offset_label: Offset
+      fields:
+        entity_label:
+          label: Entitate
+        type:
+          label: 'Tip de entitate'
+        module:
+          label: 'Înregistrare modul'
+        count:
+          label: 'Număr de utilizări'
+          format_plural_string: !!binary MQNAY291bnQ=
+      title: 'Întrebuințarea fișierului'
+      arguments:
+        fid:
+          exception:
+            title: All
+          title: 'Informații referitoare la frecventa de utilizare pentru {{ arguments.fid }}'

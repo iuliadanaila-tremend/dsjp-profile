@@ -1,0 +1,65 @@
+display:
+  default:
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Apply
+          reset_button_label: Reset
+      fields:
+        created:
+          label: Created
+        view_webform_submission:
+          label: Operations
+          text: view
+      arguments:
+        in_draft:
+          exception:
+            title: All
+  embed_administer:
+    display_options:
+      fields:
+        webform_submission_bulk_form:
+          action_title: Action
+        sticky:
+          label: Sticky
+        created:
+          label: Created
+        operations:
+          label: Operations
+      filters:
+        sticky:
+          expose:
+            label: Sticky
+  embed_manage:
+    display_options:
+      fields:
+        webform_submission_bulk_form:
+          action_title: Action
+        sticky:
+          label: Sticky
+        created:
+          label: Created
+        view_webform_submission:
+          label: Operations
+          text: view
+        edit_webform_submission:
+          label: Operations
+          text: edit
+      filters:
+        sticky:
+          expose:
+            label: Sticky
+  embed_review:
+    display_options:
+      fields:
+        sticky:
+          label: Sticky
+        created:
+          label: Created
+        view_webform_submission:
+          label: Operations
+          text: view
+      filters:
+        sticky:
+          expose:
+            label: Sticky

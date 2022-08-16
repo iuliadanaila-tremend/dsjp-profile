@@ -1,0 +1,36 @@
+settings:
+  allowed_values:
+    0:
+      label: 'Kunstig intelligens'
+    1:
+      label: Cybersikkerhed
+    2:
+      label: 'Tingenes internet'
+    3:
+      label: 'Big data'
+    5:
+      label: Robotik
+    6:
+      label: 'Udvidet virkelighed'
+    7:
+      label: 'Virtuel virkelighed'
+    8:
+      label: 'Højtydende databehandling'
+    9:
+      label: Maskinlæring
+    10:
+      label: Cloudcomputing
+    12:
+      label: Telekommunikation
+    14:
+      label: Kvantedatabehandling
+    15:
+      label: Programmel
+    16:
+      label: 'Udvikling af mobilapplikationer'
+    17:
+      label: Webudvikling
+    18:
+      label: Mikroelektronik
+    19:
+      label: 'Digitale færdigheder'

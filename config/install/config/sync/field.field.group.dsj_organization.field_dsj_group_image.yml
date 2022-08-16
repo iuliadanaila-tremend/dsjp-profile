@@ -1,0 +1,48 @@
+uuid: 3bde16b1-0091-4fcb-8f04-95b994c862d3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_dsj_group_image
+    - group.type.dsj_organization
+  module:
+    - content_translation
+    - image
+    - tmgmt_content
+third_party_settings:
+  content_translation:
+    translation_sync:
+      alt: alt
+      title: title
+      file: '0'
+  tmgmt_content:
+    excluded: false
+id: group.dsj_organization.field_dsj_group_image
+field_name: field_dsj_group_image
+entity_type: group
+bundle: dsj_organization
+label: Logo
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'png gif jpg jpeg'
+  max_filesize: ''
+  max_resolution: ''
+  min_resolution: ''
+  alt_field: true
+  alt_field_required: true
+  title_field: false
+  title_field_required: false
+  default_image:
+    uuid: ''
+    alt: ''
+    title: ''
+    width: null
+    height: null
+field_type: image

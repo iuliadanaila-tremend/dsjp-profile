@@ -1,0 +1,12 @@
+settings:
+  allowed_values:
+    -
+      label: 'Tionscnamh institiúideach AE'
+    -
+      label: 'Tionscnamh náisiúnta'
+    -
+      label: 'Tionscnamh réigiúnach'
+    -
+      label: 'Tionscnamh áitiúil'
+    -
+      label: 'Tionscnamh idirnáisiúnta'

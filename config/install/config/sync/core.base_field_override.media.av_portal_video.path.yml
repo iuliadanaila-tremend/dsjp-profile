@@ -1,0 +1,20 @@
+uuid: f7566355-6a6f-450f-a2af-0b5d81e4b6de
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.av_portal_video
+  module:
+    - path
+id: media.av_portal_video.path
+field_name: path
+entity_type: media
+bundle: av_portal_video
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

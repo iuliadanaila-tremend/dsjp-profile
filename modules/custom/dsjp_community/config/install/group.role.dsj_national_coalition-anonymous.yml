@@ -1,0 +1,14 @@
+uuid: 4d355976-31f0-485d-b391-0ca7bee574ee
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.dsj_national_coalition
+id: dsj_national_coalition-anonymous
+label: Anonymous
+weight: -102
+internal: true
+audience: anonymous
+group_type: dsj_national_coalition
+permissions_ui: true
+permissions: {  }

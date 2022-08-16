@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: 'Competenze digitali per la forza lavoro.'
+    -
+      label: 'Competenze digitali per i professionisti delle TIC e altri esperti digitali.'
+    -
+      label: 'Competenze digitali nell&#39;istruzione.'
+    -
+      label: 'Competenze digitali per tutti'

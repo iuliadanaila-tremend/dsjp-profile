@@ -1,0 +1,42 @@
+settings:
+  allowed_values:
+    -
+      label: 'Personen met een hoog vaardigheidsniveau'
+    -
+      label: Niet-moedertaalsprekers
+    -
+      label: 'Personen die bijscholing nodig hebben'
+    -
+      label: 'Personen die momenteel hoger onderwijs volgen (EKK 6)'
+    -
+      label: 'Personen die het basisonderwijs voltooid hebben'
+    -
+      label: 'Personen die momenteel voortgezet/verplicht onderwijs volgen'
+    -
+      label: 'Personen die hoger onderwijs voltooid hebben (EKK 7)'
+    -
+      label: 'Personen die momenteel basisonderwijs volgen'
+    -
+      label: 'Personen met 0-3 jaar werkervaring'
+    -
+      label: 'Personen die hoger onderwijs voltooid hebben (EKK 8)'
+    -
+      label: 'Personen die het voortgezet/verplicht onderwijs voltooid hebben'
+    -
+      label: 'Personen die momenteel hoger onderwijs volgen (EKK 7)'
+    -
+      label: 'Personen die momenteel hoger onderwijs volgen (EKK 8)'
+    -
+      label: Migranten
+    -
+      label: 'Personen met 3-10 jaar werkervaring'
+    -
+      label: 'Personen met meer dan 10 jaar werkervaring'
+    -
+      label: 'Personen met leerproblemen'
+    -
+      label: Moedertaalsprekers
+    -
+      label: 'Personen die hoger onderwijs voltooid hebben (EKK 6)'
+    -
+      label: 'Personen met een beperkt vaardigheidsniveau'

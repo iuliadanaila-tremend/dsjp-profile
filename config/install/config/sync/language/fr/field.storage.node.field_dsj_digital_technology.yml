@@ -1,0 +1,40 @@
+settings:
+  allowed_values:
+    0:
+      label: 'Intelligence artificielle'
+    1:
+      label: Cybersécurité
+    2:
+      label: 'L’internet des objets'
+    3:
+      label: 'Gros volumes de données'
+    4:
+      label: 'Chaîne de blocs'
+    5:
+      label: 'La robotique'
+    6:
+      label: 'Réalité augmentée'
+    7:
+      label: 'Réalité virtuelle'
+    8:
+      label: 'Calcul à haute performance'
+    9:
+      label: 'Apprentissage automatique'
+    10:
+      label: 'Informatique en nuage'
+    12:
+      label: Télécommunications
+    13:
+      label: Wi-Fi
+    14:
+      label: 'Calcul quantique'
+    15:
+      label: Logiciels
+    16:
+      label: 'Développement d’applications mobiles'
+    17:
+      label: 'Développement du web'
+    18:
+      label: Microélectronique
+    19:
+      label: 'Compétences numériques'

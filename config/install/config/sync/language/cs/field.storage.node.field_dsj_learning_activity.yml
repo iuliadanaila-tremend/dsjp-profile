@@ -1,0 +1,24 @@
+settings:
+  allowed_values:
+    -
+      label: 'laboratorní práce/simulace/praxe'
+    -
+      label: 'pracovní zkušenost'
+    -
+      label: dobrovolnictví
+    -
+      label: výzkum
+    -
+      label: 'samostatné studium'
+    -
+      label: 'e-learningový kurz'
+    -
+      label: stáž
+    -
+      label: 'učňovské vzdělávání'
+    -
+      label: 'workshop, seminář nebo konference'
+    -
+      label: 'vzdělávací program'
+    -
+      label: 'celoroční práce'

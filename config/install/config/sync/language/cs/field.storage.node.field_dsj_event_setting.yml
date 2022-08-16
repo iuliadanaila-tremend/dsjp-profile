@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Smíšené
+    -
+      label: 'O umístění'
+    -
+      label: 'Virtuální živočichové'
+    -
+      label: 'Virtuální předem nahraná'

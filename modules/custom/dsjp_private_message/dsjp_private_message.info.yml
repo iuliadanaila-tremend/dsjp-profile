@@ -1,0 +1,9 @@
+name: dsjp_private_message
+type: module
+description: Custom private message related functionalities.
+package: Custom
+core: 8.x
+core_version_requirement: ^8 || ^9
+php: 7.3
+dependencies:
+  - drupal:private_message

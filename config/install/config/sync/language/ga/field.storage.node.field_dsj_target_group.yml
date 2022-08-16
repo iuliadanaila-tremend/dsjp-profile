@@ -1,0 +1,42 @@
+settings:
+  allowed_values:
+    -
+      label: Ard-Amharcóirí
+    -
+      label: 'Cainteoirí neamhdhúchasacha'
+    -
+      label: 'Daoine a bhfuil athoiliúint fostaíochta ag teastáil uathu'
+    -
+      label: 'Daoine atá in oideachas treasach (EQF 6)'
+    -
+      label: 'Daoine a bhfuil bunoideachas críochnaithe acu'
+    -
+      label: 'Daoine in oideachas meánscoile/éigeantach'
+    -
+      label: 'Daoine a bhfuil oideachas treasach críochnaithe acu (EQF 7)'
+    -
+      label: 'Daoine sa bhunoideachas'
+    -
+      label: 'Daoine a bhfuil taithí oibre 0-3 bliana acu'
+    -
+      label: 'Daoine a bhfuil oideachas treasach críochnaithe acu (EQF 8)'
+    -
+      label: 'Daoine a bhfuil oideachas meánscoile/éigeantach críochnaithe acu'
+    -
+      label: 'Daoine atá in oideachas treasach (EQF 7)'
+    -
+      label: 'Daoine atá in oideachas treasach (EQF 8)'
+    -
+      label: Imircigh
+    -
+      label: 'Daoine a bhfuil taithí oibre 3-10 bliana acu'
+    -
+      label: 'Daoine a bhfuil taithí oibre 10+ bliana acu'
+    -
+      label: 'Daoine faoi mhíchumas foghlama'
+    -
+      label: 'Cainteoir dúchais'
+    -
+      label: 'Daoine a bhfuil oideachas treasach críochnaithe acu (EQF 6)'
+    -
+      label: 'Éadóchais Íseal'

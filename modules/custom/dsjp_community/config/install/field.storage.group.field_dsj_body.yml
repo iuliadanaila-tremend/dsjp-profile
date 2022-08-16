@@ -1,0 +1,19 @@
+uuid: 9b22d098-4212-46ef-8e7a-7d416059b71f
+langcode: en
+status: true
+dependencies:
+  module:
+    - group
+    - text
+id: group.field_dsj_body
+field_name: field_dsj_body
+entity_type: group
+type: text_with_summary
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,44 @@
+label: Správa
+display:
+  default:
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Použiť
+          reset_button_label: Reset
+          exposed_sorts_label: 'Zoradiť podľa'
+          sort_asc_label: Vzostupne
+          sort_desc_label: Zostupne
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'Položiek na stránku'
+            items_per_page_options_all_label: '- Všetko -'
+            offset_label: 'Zobraziť od'
+          tags:
+            previous: '‹ predchádzajúca'
+            next: 'nasledujúca ›'
+            first: '« prvá'
+            last: 'posledná »'
+      fields:
+        message_bulk_form_1:
+          action_title: 'S výberom'
+        mid:
+          separator: ', '
+        template:
+          separator: ', '
+        get_text:
+          label: 'Text správy'
+        uid:
+          label: Autor
+          separator: ', '
+      filters:
+        template:
+          expose:
+            label: Šablóna
+      title: Správa
+  page_1:
+    display_title: Stránka
+    display_options:
+      menu:
+        title: Správa

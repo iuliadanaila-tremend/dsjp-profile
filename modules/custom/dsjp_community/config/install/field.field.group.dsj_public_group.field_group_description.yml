@@ -1,0 +1,21 @@
+uuid: 7471e98e-a3ed-448f-b9a8-7dc9927a861b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_group_description
+    - group.type.dsj_public_group
+  module:
+    - text
+id: group.dsj_public_group.field_group_description
+field_name: field_group_description
+entity_type: group
+bundle: dsj_public_group
+label: 'Group description'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

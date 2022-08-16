@@ -1,0 +1,7 @@
+pledge:
+  js:
+    js/pledge.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+    - core/drupal

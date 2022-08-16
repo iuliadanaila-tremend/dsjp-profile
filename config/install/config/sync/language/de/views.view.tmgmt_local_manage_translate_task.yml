@@ -1,0 +1,334 @@
+label: 'Manage Tasks'
+display:
+  default:
+    display_title: Master
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Filter
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      pager:
+        options:
+          tags:
+            previous: '‹ Previous'
+            next: 'Next ›'
+            first: '« First'
+            last: 'Last »'
+          expose:
+            items_per_page_label: 'Items per page'
+            items_per_page_options_all_label: '- All -'
+            offset_label: Offset
+      fields:
+        tmgmt_local_task_bulk_form:
+          label: 'Bulk update'
+          action_title: 'With selection'
+        title:
+          label: Title
+          separator: ', '
+        word_count:
+          label: Words
+        item_count:
+          label: Items
+        progress:
+          label: Progress
+      title: 'Local Tasks'
+  assigned:
+    display_title: Assigned
+    display_options:
+      menu:
+        title: Assigned
+      fields:
+        tmgmt_local_task_bulk_form:
+          label: 'Bulk update'
+          action_title: 'With selection'
+        status:
+          label: Status
+          separator: ', '
+        progress:
+          label: Progress
+        tuid:
+          label: Assignee
+          separator: ', '
+        title:
+          label: Title
+          separator: ', '
+        source_language:
+          label: From
+          separator: ', '
+        target_language:
+          label: To
+          separator: ', '
+        word_count:
+          label: Words
+        item_count:
+          label: Items
+        loop_count:
+          separator: ', '
+        operations:
+          label: Operations
+      filters:
+        source_language:
+          expose:
+            label: 'Source language'
+        target_language:
+          expose:
+            label: 'Target language'
+        uid:
+          expose:
+            label: Provider
+        title:
+          expose:
+            label: Title
+      empty:
+        area:
+          content:
+            value: 'There are no assigned tasks.'
+  closed:
+    display_title: Closed
+    display_options:
+      menu:
+        title: Closed
+      fields:
+        tmgmt_local_task_bulk_form:
+          label: 'Bulk update'
+          action_title: 'With selection'
+        status:
+          label: Status
+          separator: ', '
+        progress:
+          label: Progress
+        created:
+          label: Created
+          separator: ', '
+        tuid:
+          label: Assignee
+          separator: ', '
+        title:
+          label: Title
+          separator: ', '
+        source_language:
+          label: From
+          separator: ', '
+        target_language:
+          label: To
+          separator: ', '
+        word_count:
+          label: Words
+        item_count:
+          label: Items
+        loop_count:
+          separator: ', '
+        operations:
+          label: Operations
+      filters:
+        source_language:
+          expose:
+            label: 'Source language'
+        target_language:
+          expose:
+            label: 'Target language'
+        uid:
+          expose:
+            label: Provider
+        title:
+          expose:
+            label: Title
+      empty:
+        area:
+          content:
+            value: 'There are no closed tasks.'
+  completed:
+    display_title: Completed
+    display_options:
+      menu:
+        title: Completed
+      fields:
+        tmgmt_local_task_bulk_form:
+          label: 'Bulk update'
+          action_title: 'With selection'
+        status:
+          label: Status
+          separator: ', '
+        progress:
+          label: Progress
+        created:
+          label: Created
+          separator: ', '
+        tuid:
+          label: Assignee
+          separator: ', '
+        title:
+          label: Title
+          separator: ', '
+        source_language:
+          label: From
+          separator: ', '
+        target_language:
+          label: To
+          separator: ', '
+        word_count:
+          label: Words
+        item_count:
+          label: Items
+        loop_count:
+          separator: ', '
+        operations:
+          label: Operations
+      filters:
+        source_language:
+          expose:
+            label: 'Source language'
+        target_language:
+          expose:
+            label: 'Target language'
+        uid:
+          expose:
+            label: Provider
+        title:
+          expose:
+            label: Title
+      empty:
+        area:
+          content:
+            value: 'There are no completed tasks.'
+  pending:
+    display_title: Pending
+    display_options:
+      menu:
+        title: Pending
+      fields:
+        tmgmt_local_task_bulk_form:
+          label: 'Bulk update'
+          action_title: 'With selection'
+        status:
+          label: Status
+          format_plural_string: !!binary MQNAY291bnQ=
+        tuid:
+          label: Assignee
+          separator: ', '
+        title:
+          label: Title
+          separator: ', '
+        progress:
+          label: Progress
+        source_language:
+          label: From
+          separator: ', '
+        target_language:
+          label: To
+          separator: ', '
+        word_count:
+          label: Words
+        item_count:
+          label: Items
+        loop_count:
+          separator: ', '
+        operations:
+          label: Operations
+      filters:
+        source_language:
+          expose:
+            label: 'Source language'
+        target_language:
+          expose:
+            label: 'Target language'
+        uid:
+          expose:
+            label: Provider
+        title:
+          expose:
+            label: Title
+  rejected:
+    display_title: Rejected
+    display_options:
+      menu:
+        title: Rejected
+      display_description: 'Shows asigned tasks with rejected status.'
+      fields:
+        tmgmt_local_task_bulk_form:
+          label: 'Bulk update'
+          action_title: 'With selection'
+        status:
+          label: Status
+          format_plural_string: !!binary MQNAY291bnQ=
+        progress:
+          label: Progress
+        created:
+          label: Created
+          separator: ', '
+        tuid:
+          label: Assignee
+          separator: ', '
+        title:
+          label: Title
+          separator: ', '
+        source_language:
+          label: From
+          separator: ', '
+        target_language:
+          label: To
+          separator: ', '
+        word_count:
+          label: Words
+        item_count:
+          label: Items
+        loop_count:
+          separator: ', '
+        operations:
+          label: Operations
+      filters:
+        source_language:
+          expose:
+            label: 'Source language'
+        target_language:
+          expose:
+            label: 'Target language'
+        uid:
+          expose:
+            label: Provider
+        title:
+          expose:
+            label: Title
+      empty:
+        area:
+          content:
+            value: 'There are no rejected tasks.'
+  unassigned:
+    display_title: 'Unassigned and ongoing'
+    display_options:
+      title: 'Manage Tasks'
+      fields:
+        tmgmt_local_task_bulk_form:
+          label: 'Bulk update'
+          action_title: 'With selection'
+        status:
+          label: Status
+          format_plural_string: !!binary MQNAY291bnQ=
+        title:
+          label: Title
+          separator: ', '
+        source_language:
+          label: From
+          separator: ', '
+        target_language:
+          label: To
+          separator: ', '
+        word_count:
+          label: Words
+        item_count:
+          label: Items
+        loop_count:
+          separator: ', '
+        operations:
+          label: Operations
+      menu:
+        title: 'Unassigned and ongoing'
+      tab_options:
+        title: 'Unassigned and ongoing'
+      empty:
+        area:
+          content:
+            value: 'There are no unassigned tasks.'

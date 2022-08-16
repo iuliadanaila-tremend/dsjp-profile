@@ -1,0 +1,25 @@
+dsjp_user.login:
+  path: '/user/login'
+  defaults:
+    _form: '\Drupal\user\Form\UserLoginForm'
+    _title: 'Log in'
+  requirements:
+    _user_is_logged_in: 'FALSE'
+  options:
+    _maintenance_access: TRUE
+
+dsjp_user.organisation_autocomplete:
+  path: '/organisations/autocomplete'
+  defaults:
+    _controller: '\Drupal\dsjp_user\Controller\OrganisationAutocomplete::handleAutocomplete'
+    _format: json
+  requirements:
+    _permission: 'access content'
+
+dsjp_user.newsletter_subscription:
+  path: '/newsletter/subscription'
+  defaults:
+    _controller: '\Drupal\dsjp_user\Controller\NewsletterSubscriptionController::subscriptionPage'
+    _title: 'Digital Skills and Jobs Digest'
+  requirements:
+    _permission: 'access content'

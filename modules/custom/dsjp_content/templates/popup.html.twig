@@ -1,0 +1,21 @@
+{{ attach_library('dsjp_content/popup') }}
+
+<div class="popup-cta hidden">
+  <span id="popup-cta-close"></span>
+  {% if data.image %}
+    {{ data.image }}
+  {% endif %}
+  <div class="text-container">
+    <div class="popup-title">
+      {% if data.title %}
+        {{ data.title }}
+      {% endif %}
+    </div>
+    {% if data.description %}
+      {{ data.description }}
+    {% endif %}
+    {% if data.cta_button %}
+      {{ data.cta_button }}
+    {% endif %}
+  </div>
+</div>

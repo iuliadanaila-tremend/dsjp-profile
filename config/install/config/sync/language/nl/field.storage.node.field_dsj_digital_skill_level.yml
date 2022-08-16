@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Basis
+    -
+      label: Intermediair
+    -
+      label: Gevorderd
+    -
+      label: 'Digitale deskundige'

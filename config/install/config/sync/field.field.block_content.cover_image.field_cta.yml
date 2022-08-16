@@ -1,0 +1,23 @@
+uuid: fa06512d-beb4-473f-86b1-01c3a4899578
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.cover_image
+    - field.storage.block_content.field_cta
+  module:
+    - link
+id: block_content.cover_image.field_cta
+field_name: field_cta
+entity_type: block_content
+bundle: cover_image
+label: CTA
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 17
+field_type: link

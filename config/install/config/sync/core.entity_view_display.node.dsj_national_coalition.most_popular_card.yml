@@ -1,0 +1,69 @@
+uuid: 0ae45d30-98cf-4a01-a410-4473a8d47f45
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.most_popular_card
+    - field.field.node.dsj_national_coalition.body
+    - field.field.node.dsj_national_coalition.field_dsj_author
+    - field.field.node.dsj_national_coalition.field_dsj_digital_skill_level
+    - field.field.node.dsj_national_coalition.field_dsj_geographic_scope
+    - field.field.node.dsj_national_coalition.field_dsj_image
+    - field.field.node.dsj_national_coalition.field_dsj_meta_tags
+    - field.field.node.dsj_national_coalition.field_dsj_nc_partner
+    - field.field.node.dsj_national_coalition.field_dsj_nc_priority
+    - field.field.node.dsj_national_coalition.field_dsj_organization
+    - field.field.node.dsj_national_coalition.field_dsj_representative_image
+    - field.field.node.dsj_national_coalition.field_dsj_target_audience
+    - field.field.node.dsj_national_coalition.field_dsj_target_language
+    - field.field.node.dsj_national_coalition.field_dsj_website_link
+    - image.style.dsj_most_popular_card
+    - node.type.dsj_national_coalition
+  module:
+    - image
+    - user
+id: node.dsj_national_coalition.most_popular_card
+targetEntityType: node
+bundle: dsj_national_coalition
+mode: most_popular_card
+content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  field_dsj_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: content
+      image_style: dsj_most_popular_card
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  flag_subscribe_node:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  flag_voting:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 10
+    region: content
+hidden:
+  body: true
+  field_dsj_author: true
+  field_dsj_digital_skill_level: true
+  field_dsj_geographic_scope: true
+  field_dsj_meta_tags: true
+  field_dsj_nc_partner: true
+  field_dsj_nc_priority: true
+  field_dsj_organization: true
+  field_dsj_representative_image: true
+  field_dsj_target_audience: true
+  field_dsj_target_language: true
+  field_dsj_website_link: true
+  langcode: true
+  links: true
+  search_api_excerpt: true

@@ -1,0 +1,24 @@
+settings:
+  allowed_values:
+    0:
+      label: Kurs
+    1:
+      label: Programmodul
+    2:
+      label: Mentorordninger
+    4:
+      label: Læreplads
+    5:
+      label: Studiebesøg
+    6:
+      label: 'Program for kort læring'
+    7:
+      label: Praktikophold
+    8:
+      label: Uddannelsesprogram
+    9:
+      label: Klasse
+    10:
+      label: Serviceundervisning
+    11:
+      label: Speciale

@@ -1,0 +1,42 @@
+settings:
+  allowed_values:
+    -
+      label: 'Gerai besimokantys asmenys'
+    -
+      label: Negimtakalbiai
+    -
+      label: 'Asmenys, kuriems reikia persikvalifikuoti'
+    -
+      label: 'Asmenys, įgyjantys tretinį išsilavinimą (EKS 6)'
+    -
+      label: 'Asmenys, įgiję pradinį išsilavinimą'
+    -
+      label: 'Asmenys, įgyjantys vidurinį/privalomąjį išsilavinimą'
+    -
+      label: 'Asmenys, įgiję aukštąjį išsilavinimą (EKS 7)'
+    -
+      label: 'Asmenys, įgyjantys pradinį išsilavinimą'
+    -
+      label: 'Asmenys, turintys 0-3 metų darbo patirtį'
+    -
+      label: 'Asmenys, įgiję aukštąjį išsilavinimą (EKS 8)'
+    -
+      label: 'Asmenys, įgiję vidurinį/privalomąjį išsilavinimą'
+    -
+      label: 'Tretinio mokslo asmenys (EKS 7)'
+    -
+      label: 'Tretinio mokslo asmenys (EKS 8)'
+    -
+      label: Migrantai
+    -
+      label: '3-10 metų darbo patirties turintys asmenys'
+    -
+      label: 'Asmenys, turintys daugiau kaip 10 metų darbo patirtį'
+    -
+      label: 'Mokymosi sutrikimų turintys asmenys'
+    -
+      label: Gimtakalbiai
+    -
+      label: 'Asmenys, įgiję tretinį išsilavinimą (EKS 6)'
+    -
+      label: 'Prastai besimokantys asmenys'

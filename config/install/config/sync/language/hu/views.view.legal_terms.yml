@@ -1,0 +1,42 @@
+display:
+  default:
+    display_title: Mester
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Alkalmaz
+          reset_button_label: Alaphelyzet
+          exposed_sorts_label: Rendezés
+          sort_asc_label: Növekvő
+          sort_desc_label: Csökkenő
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'Elemek száma oldalanként'
+            items_per_page_options_all_label: '– Mind –'
+            offset_label: Eltolás
+          tags:
+            previous: '‹ Előző'
+            next: 'Következő ›'
+            first: '« Első'
+            last: 'Utolsó »'
+      fields:
+        version:
+          label: Verzió
+        language:
+          label: Nyelv
+        revision:
+          label: Változat
+        conditions:
+          label: 'Felhasználói szerződés'
+        extras:
+          label: 'Kiegészítő beállítások'
+        changes:
+          label: Változások
+        date:
+          label: 'Hozzáadás dátuma'
+  page_1:
+    display_title: Oldal
+    display_options:
+      tab_options:
+        description: 'Jogi nyilatkozat'

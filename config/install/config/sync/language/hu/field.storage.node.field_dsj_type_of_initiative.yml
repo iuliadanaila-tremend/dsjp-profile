@@ -1,0 +1,12 @@
+settings:
+  allowed_values:
+    -
+      label: 'Uniós intézményi kezdeményezés'
+    -
+      label: 'Nemzeti kezdeményezés'
+    -
+      label: 'Regionális kezdeményezés'
+    -
+      label: 'Helyi kezdeményezés'
+    -
+      label: 'Nemzetközi kezdeményezés'

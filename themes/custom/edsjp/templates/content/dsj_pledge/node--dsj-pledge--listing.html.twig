@@ -1,0 +1,62 @@
+{% set classes = [
+  'node',
+  node.isPromoted() ? 'node--promoted',
+  node.isSticky() ? 'node--sticky',
+  not node.isPublished() ? 'node--unpublished',
+  node.bundle|clean_class,
+  node.bundle|clean_class ~ '--' ~ view_mode|clean_class,
+  'node' ~ '--' ~ view_mode|clean_class,
+  'node' ~ '--' ~ node.bundle|clean_class,
+  term_type ? node.bundle|clean_class ~ '--' ~ term_type|clean_class,
+] %}
+{% set content_out = [
+  'current_state', 'initiatives', 'organization_name', 'end_date', 'multiple_organization'
+] %}
+<article{{ attributes.addClass(classes) }}>
+  {{ title_prefix }}
+  <a href="{{ url }}">
+    <h2{{ title_attributes }}>
+      {{ label }}
+    </h2>
+  </a>
+  {% if content.organization_name %}
+    <div class="organization-name">
+      <span>{{ 'By:'|t }} </span>{{ content.organization_name }}
+    </div>
+  {% endif %}
+  <div class="status">
+    {% if content.current_state %}
+      {{ content.current_state }}
+    {% endif %}
+  </div>
+  {{ title_suffix }}
+
+  {% if content.multiple_organization %}
+    <div class="multiple-organization">
+      <div class="icon"></div>
+      <span class="hover-text">
+        {{ 'Pledge submitted by multiple organisations'|t }}
+        <span class="pointer"></span>
+      </span>
+    </div>
+  {% endif %}
+  <div class="content">
+    {{ content|without(content_out) }}
+  </div>
+
+  {% if content.end_date %}
+    <div class="end-date">
+      <span>{{ 'To be completed by:'|t }} </span>{{ content.end_date }}
+    </div>
+  {% endif %}
+
+  <div class="article-footer">
+    <div class="initiatives-type">
+      {{ content.initiatives }}
+    </div>
+
+    <div class="more-link">
+      <a href="{{ url }}">{{ 'Read more'|t }}</a>
+    </div>
+  </div>
+</article>

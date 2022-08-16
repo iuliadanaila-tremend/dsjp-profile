@@ -1,0 +1,8 @@
+settings:
+  allowed_values:
+    -
+      label: 'Osakoormusega kerge'
+    -
+      label: Täistööaeg
+    -
+      label: 'Osakoormusega intensiivne'

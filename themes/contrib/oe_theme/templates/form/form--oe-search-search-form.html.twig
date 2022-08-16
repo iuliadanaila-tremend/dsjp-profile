@@ -1,0 +1,39 @@
+{#
+/**
+ * @file
+ * Theme override for a 'form' element.
+ *
+ * @see ./core/themes/stable/templates/form/form.html.twig
+ * @see @ecl-twig/ec-component-search-form.twig
+ */
+#}
+{% set text_input = {
+  id: input_array.id,
+  name: input_array.name,
+  label: input_array.label|default('Search'|t),
+  hide_label: input_array.hide_label|default(false),
+  invalid: input_array.invalid,
+  disabled: input_array.disabled,
+  type: input_array.type,
+  extra_classes: input_array.class|merge(['ecl-search-form__text-input'])|safe_join(' '),
+  extra_attributes: input_array.extra_attributes,
+  extra_group_classes: 'ecl-form-group--text-input'
+} %}
+{% set button = {
+  variant: 'search',
+  icon: {
+    name: 'search',
+    path: ecl_icon_path,
+    size: 'fluid'
+  },
+  label: 'Search'|t,
+  extra_classes: 'ecl-search-form__button'
+} %}
+{% set extra_attributes = attributes|to_ecl_attributes|merge([{'name': 'data-ecl-search-form'}]) %}
+{% set extra_classes = 'ecl-site-header-' ~ ecl_branding ~ '__search' %}
+{% extends '@ecl-twig/search-form' %}
+{% block extra_form_elements %}
+  {{ element.form_build_id }}
+  {{ element.form_token }}
+  {{ element.form_id }}
+{% endblock %}

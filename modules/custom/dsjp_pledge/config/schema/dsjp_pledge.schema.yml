@@ -1,0 +1,30 @@
+dsj_initiative_beneficiary:
+  type: mapping
+  label: 'Initiative beneficiaries settings'
+  mapping:
+    value:
+      type: string
+      label: 'Value'
+    number:
+      type: string
+      label: 'Target number'
+    status:
+      type: string
+      label: 'Status'
+
+initiative_type_description_config:
+  type: config_object
+  label: 'Pledge Initiative type description config'
+  mapping:
+    education:
+      type: text
+      label: 'Education'
+    labour_force:
+      type: text
+      label: 'Labour Force'
+    ict_professionals:
+      type: text
+      label: 'ICT Professionals'
+    other:
+      type: text
+      label: 'All Citizens'

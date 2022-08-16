@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: 'Umiejętności cyfrowe dla siły roboczej.'
+    -
+      label: 'Umiejętności cyfrowe dla specjalistów w dziedzinie ICT i innych ekspertów w dziedzinie technologii cyfrowych.'
+    -
+      label: 'Umiejętności cyfrowe w edukacji.'
+    -
+      label: 'Umiejętności cyfrowe dla wszystkich'

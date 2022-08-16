@@ -1,0 +1,7 @@
+text:
+  -
+    value: "You have been mentioned.\r\n"
+    format: plain_text
+  -
+    value: "<p>Visit this page to see the mention:<a href=\"[message:field_node_reference:entity:url]\">[message:field_node_reference:entity:title]</a></p>\r\n"
+    format: full_html

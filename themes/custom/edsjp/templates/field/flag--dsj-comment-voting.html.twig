@@ -1,0 +1,34 @@
+{% spaceless %}
+  {# Attach the flag CSS library.#}
+  {{ attach_library('flag/flag.link') }}
+
+  {# Depending on the flag action, set the appropriate action class. #}
+  {% if action == 'unflag' %}
+    {% set action_class = 'action-unflag' %}
+  {% else %}
+    {% set action_class = 'action-flag' %}
+  {% endif %}
+
+  {# Set the remaining Flag CSS classes. #}
+  {%
+    set classes = [
+    'flag',
+    'flag-' ~ flag.id()|clean_class,
+    'js-flag-' ~ flag.id()|clean_class ~ '-' ~ flaggable.id(),
+    action_class
+  ]
+  %}
+
+  {# Set nofollow to prevent search bots from crawling anonymous flag links #}
+  {% set attributes = attributes.setAttribute('rel', 'nofollow') %}
+  {% set count = '(' ~ flagcount(flag, flaggable) ~ ')' | t %}
+
+  <div class="{{classes|join(' ')}}">
+    {% if user_login_link %}
+      {{ user_login_link }}
+    {% else %}
+      <a{{ attributes }}>{{ title }}</a>
+    {% endif %}
+    <span>{{ count }}</span>
+  </div>
+{% endspaceless %}

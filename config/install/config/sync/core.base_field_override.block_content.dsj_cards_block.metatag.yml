@@ -1,0 +1,18 @@
+uuid: 4464d9a6-2267-42e0-88a4-fc8f54717251
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.dsj_cards_block
+id: block_content.dsj_cards_block.metatag
+field_name: metatag
+entity_type: block_content
+bundle: dsj_cards_block
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The meta tags for the entity.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

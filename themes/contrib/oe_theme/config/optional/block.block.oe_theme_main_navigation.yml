@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.main
+  module:
+    - system
+  theme:
+    - oe_theme
+id: oe_theme_main_navigation
+theme: oe_theme
+region: navigation
+weight: 0
+provider: null
+plugin: 'oe_theme_helper_site_navigation:main'
+settings:
+  id: 'oe_theme_helper_site_navigation:main'
+  label: 'Main navigation'
+  provider: oe_theme_helper
+  label_display: '0'
+  level: 1
+visibility: {  }

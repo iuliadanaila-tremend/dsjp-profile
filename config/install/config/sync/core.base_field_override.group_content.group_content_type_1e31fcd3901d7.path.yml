@@ -1,0 +1,20 @@
+uuid: 0031e068-ca80-4a39-8a3f-f28a7f15eea0
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.content_type.group_content_type_1e31fcd3901d7
+  module:
+    - path
+id: group_content.group_content_type_1e31fcd3901d7.path
+field_name: path
+entity_type: group_content
+bundle: group_content_type_1e31fcd3901d7
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

@@ -1,0 +1,47 @@
+uuid: aa6eff03-026c-4bf5-9fdd-2d1a86013716
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.group.dsj_private_group.field_dsj_group_image
+    - field.field.group.dsj_private_group.field_group_description
+    - group.type.dsj_private_group
+    - responsive_image.styles.oe_theme_main_content
+  module:
+    - responsive_image
+    - text
+id: group.dsj_private_group.default
+targetEntityType: group
+bundle: dsj_private_group
+mode: default
+content:
+  field_dsj_group_image:
+    weight: 0
+    label: hidden
+    settings:
+      responsive_image_style: oe_theme_main_content
+      image_link: ''
+    third_party_settings: {  }
+    type: responsive_image
+    region: content
+  field_group_description:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  label:
+    label: hidden
+    type: string
+    weight: 1
+    region: content
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+hidden:
+  changed: true
+  created: true
+  langcode: true
+  search_api_excerpt: true
+  uid: true

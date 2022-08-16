@@ -1,0 +1,18 @@
+uuid: 76732b78-ec41-4919-b816-f806cd4f0eff
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.account
+id: menu_link_content.account.title
+field_name: title
+entity_type: menu_link_content
+bundle: account
+label: 'Menu link title'
+description: 'The text to be used for this link in the menu.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

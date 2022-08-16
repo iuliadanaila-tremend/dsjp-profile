@@ -1,0 +1,8 @@
+display:
+  default:
+    display_options:
+      fields:
+        name:
+          label: Username
+  page_1:
+    display_title: Page

@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: 'A munkaerő digitális készségei.'
+    -
+      label: 'Az IKT-szakemberek és más digitális szakértők digitális készségei.'
+    -
+      label: 'Digitális készségek az oktatásban.'
+    -
+      label: 'Digitális készségek mindenki számára'

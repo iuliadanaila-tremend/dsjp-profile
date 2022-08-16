@@ -1,0 +1,78 @@
+corporate_site_link:
+  href: 'https://ec.europa.eu/info/index_sv'
+  label: 'Europeiska kommissionens webbplats'
+class_navigation:
+  -
+    href: 'https://ec.europa.eu/info/strategy_sv'
+    label: Strategier
+  -
+    href: 'https://ec.europa.eu/info/about-european-commission_sv'
+    label: 'Om Europeiska kommissionen'
+  -
+    href: 'https://ec.europa.eu/info/business-economy-euro_sv'
+    label: 'Företag, ekonomi och euron'
+  -
+    href: 'https://ec.europa.eu/info/live-work-travel-eu_sv'
+    label: 'Bo, jobba och resa i EU'
+  -
+    href: 'https://ec.europa.eu/info/law_sv'
+    label: Lagstiftning
+  -
+    href: 'https://ec.europa.eu/info/funding-tenders_sv'
+    label: 'Bidrag och upphandling'
+  -
+    href: 'https://ec.europa.eu/info/research-and-innovation_sv'
+    label: 'Forskning och innovation'
+  -
+    href: 'https://ec.europa.eu/info/energy-climate-change-environment_sv'
+    label: 'Energi, klimat och miljö'
+  -
+    href: 'https://ec.europa.eu/info/education_sv'
+    label: Utbildning
+  -
+    href: 'https://ec.europa.eu/info/aid-development-cooperation-fundamental-rights_sv'
+    label: 'Bistånd, utvecklingssamarbete och grundläggande rättigheter'
+  -
+    href: 'https://ec.europa.eu/info/food-farming-fisheries_sv'
+    label: 'Livsmedel, jordbruk och fiske'
+  -
+    href: 'https://ec.europa.eu/info/eu-regional-and-urban-development_sv'
+    label: 'EU-stöd till regioner, landsbygd och städer'
+  -
+    href: 'https://ec.europa.eu/info/jobs-european-commission_sv'
+    label: 'Jobba hos EU-kommissionen'
+  -
+    href: 'https://ec.europa.eu/info/statistics_sv'
+    label: Statistik
+  -
+    href: 'https://ec.europa.eu/commission/presscorner/home/sv'
+    label: Nyheter
+  -
+    href: 'https://ec.europa.eu/info/events_sv'
+    label: Aktiviteter
+  -
+    href: 'https://ec.europa.eu/info/publications_sv'
+    label: Publikationer
+service_navigation:
+  -
+    href: 'https://ec.europa.eu/info/about-european-commission/contact_sv'
+    label: 'Kontakta EU-kommissionen'
+  -
+    href: 'https://europa.eu/european-union/contact/social-networks_sv#n:+i:4+e:1+t:+s'
+    label: 'Följ kommissionen på sociala medier'
+  -
+    href: 'https://ec.europa.eu/info/resources-partners_sv'
+    label: 'Resurser för partner'
+legal_navigation:
+  -
+    href: 'https://ec.europa.eu/info/language-policy_sv'
+    label: Språkpolicy
+  -
+    href: 'https://ec.europa.eu/info/cookies_sv'
+    label: 'Kakor (cookies)'
+  -
+    href: 'https://ec.europa.eu/info/privacy-policy_sv'
+    label: Integritetspolicy
+  -
+    href: 'https://ec.europa.eu/info/legal-notice_sv'
+    label: 'Rättsligt meddelande'

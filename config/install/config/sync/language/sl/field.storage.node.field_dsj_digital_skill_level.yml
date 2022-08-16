@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Osnovno
+    -
+      label: Vmesna
+    -
+      label: Napredno
+    -
+      label: 'Strokovnjak za digitalno tehnologijo'

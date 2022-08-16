@@ -1,0 +1,29 @@
+display:
+  default:
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Pritaikyti
+          reset_button_label: Išvalyti
+          exposed_sorts_label: 'Rikiuoti pagal'
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'Vienetų kiekis puslapyje'
+            items_per_page_options_all_label: '- Visos -'
+      fields:
+        invitee_mail:
+          label: 'El. paštas'
+        group_roles:
+          label: Rolės
+        dropbutton:
+          label: Veiksmai
+      empty:
+        area_text_custom:
+          content: 'Pakvietimų nėra.'
+      arguments:
+        gid:
+          exception:
+            title: Visi
+  page_1:
+    display_title: Puslapis

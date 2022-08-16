@@ -1,0 +1,18 @@
+uuid: 2cbdc763-d093-4ae9-a5f9-7dced4c60fed
+langcode: en
+status: true
+dependencies:
+  module:
+    - rdf_skos
+id: skos_concept.skos_concept.scope_note
+field_name: scope_note
+entity_type: skos_concept
+bundle: skos_concept
+label: 'Scope Note'
+description: 'The scope note of the Concept.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

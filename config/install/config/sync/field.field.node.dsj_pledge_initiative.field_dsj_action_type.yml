@@ -1,0 +1,25 @@
+uuid: 677d2b5b-1c45-4999-bf88-d2675414b32f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dsj_action_type
+    - node.type.dsj_pledge_initiative
+  module:
+    - options
+    - tmgmt_content
+third_party_settings:
+  tmgmt_content:
+    excluded: false
+id: node.dsj_pledge_initiative.field_dsj_action_type
+field_name: field_dsj_action_type
+entity_type: node
+bundle: dsj_pledge_initiative
+label: 'Action type'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

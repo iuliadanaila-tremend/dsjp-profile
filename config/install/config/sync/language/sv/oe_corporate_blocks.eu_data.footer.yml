@@ -1,0 +1,71 @@
+contact_title: 'Kontakta EU'
+contact:
+  -
+    label: 'Ring 00 800 6 7 8 9 10 11'
+  -
+    href: 'https://europa.eu/european-union/contact/call-us_sv'
+    label: 'Använd andra telefonalternativ'
+  -
+    href: 'https://europa.eu/european-union/contact/write-to-us_sv'
+    label: 'Skriv till oss via kontaktformuläret'
+  -
+    href: 'https://europa.eu/european-union/contact/meet-us_sv'
+    label: 'Besök ett lokalt EU-kontor'
+social_media_title: 'Sociala medier'
+social_media:
+  -
+    label: 'Hitta oss i sociala medier'
+    href: 'https://europa.eu/european-union/contact/social-networks_sv'
+institution_links_title: EU-institutionerna
+institution_links:
+  0:
+    label: Europaparlamentet
+    href: 'http://www.europarl.europa.eu/portal/sv'
+  1:
+    label: 'Europeiska rådet'
+    href: 'http://www.consilium.europa.eu/sv/european-council/'
+  2:
+    label: 'Europeiska unionens råd'
+    href: 'http://www.consilium.europa.eu/sv/home/'
+  3:
+    label: 'Europeiska kommissionen'
+    href: 'http://ec.europa.eu/index_sv.htm'
+  4:
+    label: EU-domstolen
+    href: 'http://curia.europa.eu/jcms/jcms/j_6/sv/'
+  5:
+    label: 'Europeiska centralbanken'
+    href: 'https://www.ecb.europa.eu/home/languagepolicy/html/index.sv.html'
+  6:
+    label: 'Europeiska revisionsrätten'
+    href: 'http://www.eca.europa.eu/sv'
+  7:
+    label: 'Europeiska utrikestjänsten'
+  8:
+    label: 'Europeiska ekonomiska och sociala kommittén'
+    href: 'http://www.eesc.europa.eu/?i=portal.sv.home'
+  9:
+    label: 'Europeiska regionkommittén'
+    href: 'http://cor.europa.eu/sv/'
+  10:
+    label: 'Europeiska investeringsbanken'
+  12:
+    label: 'Europeiska datatillsynsmannen'
+    href: 'https://secure.edps.europa.eu/EDPSWEB/edps/EDPS?lang=sv'
+legal_links_title: Juridik
+legal_links:
+  -
+    label: 'Om webbplatsen'
+    href: 'https://europa.eu/european-union/abouteuropa_sv'
+  -
+    label: Språkpolicy
+    href: 'https://europa.eu/european-union/abouteuropa/language-policy_sv'
+  -
+    label: Integritetspolicy
+    href: 'https://europa.eu/european-union/abouteuropa/privacy-policy_sv'
+  -
+    label: 'Rättsligt meddelande'
+    href: 'https://europa.eu/european-union/abouteuropa/legal_notices_sv'
+  -
+    label: 'Kakor (cookies)'
+    href: 'https://europa.eu/european-union/abouteuropa/cookies_sv'

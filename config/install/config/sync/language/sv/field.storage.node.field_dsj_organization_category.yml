@@ -1,0 +1,26 @@
+settings:
+  allowed_values:
+    -
+      label: 'ICKE-STATLIGA ORGANISATIONER'
+    -
+      label: 'Offentlig institution'
+    -
+      label: 'Formell utbildningsanordnare'
+    -
+      label: Näringsliv
+    -
+      label: 'Offentlig-privata partnerskap'
+    -
+      label: Andra
+    -
+      label: Fackförening
+    -
+      label: Tankesmedjor
+    -
+      label: Associering
+    -
+      label: 'Öppen lärandeplattform'
+    -
+      label: Intressegrupp
+    -
+      label: Beslutsfattare

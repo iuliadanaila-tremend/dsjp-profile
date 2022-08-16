@@ -1,0 +1,24 @@
+uuid: 03deacaa-d4c6-4951-8f05-3c562f94fdd2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_dsj_title
+    - paragraphs.paragraphs_type.dsj_banner_top_image
+  module:
+    - tmgmt_content
+third_party_settings:
+  tmgmt_content:
+    excluded: false
+id: paragraph.dsj_banner_top_image.field_dsj_title
+field_name: field_dsj_title
+entity_type: paragraph
+bundle: dsj_banner_top_image
+label: Title
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

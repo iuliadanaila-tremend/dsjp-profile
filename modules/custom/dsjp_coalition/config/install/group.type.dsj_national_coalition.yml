@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies: {  }
+id: dsj_national_coalition
+label: 'National Coalition'
+description: ''
+creator_membership: true
+creator_wizard: false
+creator_roles: {  }

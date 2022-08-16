@@ -1,0 +1,69 @@
+uuid: c15400e5-beda-428d-bb9f-78fb316c1a5c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.dsj_grouped_cards.field_dsj_left_group
+    - field.field.paragraph.dsj_grouped_cards.field_dsj_left_title
+    - field.field.paragraph.dsj_grouped_cards.field_dsj_right_group
+    - field.field.paragraph.dsj_grouped_cards.field_dsj_right_title
+    - field.field.paragraph.dsj_grouped_cards.field_dsj_title
+    - paragraphs.paragraphs_type.dsj_grouped_cards
+  module:
+    - paragraphs
+id: paragraph.dsj_grouped_cards.default
+targetEntityType: paragraph
+bundle: dsj_grouped_cards
+mode: default
+content:
+  field_dsj_left_group:
+    type: entity_reference_paragraphs
+    weight: 3
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: closed
+      add_mode: dropdown
+      form_display_mode: preview
+      default_paragraph_type: dsj_card
+    third_party_settings: {  }
+  field_dsj_left_title:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_dsj_right_group:
+    type: entity_reference_paragraphs
+    weight: 4
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: closed
+      add_mode: dropdown
+      form_display_mode: preview
+      default_paragraph_type: dsj_card
+    third_party_settings: {  }
+  field_dsj_right_title:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_dsj_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

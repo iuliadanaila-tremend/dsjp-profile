@@ -1,0 +1,50 @@
+settings:
+  allowed_values:
+    -
+      label: Bolgár
+    -
+      label: Horvát
+    -
+      label: Cseh
+    -
+      label: Dán
+    -
+      label: Holland
+    -
+      label: Angol
+    -
+      label: Észt
+    -
+      label: Finn
+    -
+      label: Francia
+    -
+      label: Német
+    -
+      label: Görög
+    -
+      label: Magyar
+    -
+      label: 'Ír nyelv'
+    -
+      label: Olasz
+    -
+      label: Lett
+    -
+      label: Litván
+    -
+      label: Máltai
+    -
+      label: Lengyel
+    -
+      label: Portugál
+    -
+      label: Román
+    -
+      label: Szlovák
+    -
+      label: Szlovén
+    -
+      label: Spanyol
+    -
+      label: Svéd

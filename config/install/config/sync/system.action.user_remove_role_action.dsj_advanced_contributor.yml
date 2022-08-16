@@ -1,0 +1,14 @@
+uuid: 569c8a86-6d76-4b1d-8a6f-689a039ea0b6
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.dsj_advanced_contributor
+  module:
+    - user
+id: user_remove_role_action.dsj_advanced_contributor
+label: 'Remove the Advanced Contributor role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: dsj_advanced_contributor

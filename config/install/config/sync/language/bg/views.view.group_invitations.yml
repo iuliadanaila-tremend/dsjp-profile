@@ -1,0 +1,20 @@
+display:
+  default:
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Apply
+          reset_button_label: Reset
+      fields:
+        invitee_mail:
+          label: Email
+        group_roles:
+          label: Roles
+        dropbutton:
+          label: Operations
+      arguments:
+        gid:
+          exception:
+            title: All
+  page_1:
+    display_title: Page

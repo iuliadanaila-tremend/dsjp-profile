@@ -1,0 +1,42 @@
+display:
+  default:
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Apply
+          reset_button_label: Ponastavi
+      pager:
+        options:
+          tags:
+            previous: '‹ prejšnja'
+            next: 'naslednja ›'
+            first: '« prva'
+            last: 'zadnja »'
+      fields:
+        mail:
+          label: E-pošta
+        user_name:
+          label: 'Uporabniško ime'
+        subscriptions_target_id:
+          label: Naročniki
+        status:
+          label: Aktiven
+        created:
+          label: Ustvarjeno
+        operations:
+          label: Operacije
+      filters:
+        mail:
+          expose:
+            label: E-pošta
+        subscriptions_target_id:
+          expose:
+            label: E-novice
+        status:
+          expose:
+            label: Aktiven
+        subscriptions_status:
+          expose:
+            label: Stanje
+  page_1:
+    display_title: Stran

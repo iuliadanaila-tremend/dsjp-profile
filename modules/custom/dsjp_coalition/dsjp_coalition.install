@@ -1,0 +1,30 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the dsjp_coalition module.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function dsjp_coalition_schema() {
+  $schema['dsj_coalition_export_data'] = [
+    'description' => 'Contains the latest content data exported.',
+    'fields' => [
+      'group_id' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'description' => 'Group ID.',
+      ],
+      'data' => [
+        'type' => 'text',
+        'size' => 'big',
+        'description' => 'The data retrieved for each content type.',
+      ],
+    ],
+  ];
+
+  return $schema;
+}

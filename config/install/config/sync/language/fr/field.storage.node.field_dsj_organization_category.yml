@@ -1,0 +1,24 @@
+settings:
+  allowed_values:
+    0:
+      label: ONG
+    1:
+      label: 'Institution publique'
+    2:
+      label: 'Prestataire formel d’éducation et de formation'
+    3:
+      label: Entreprise/industrie
+    4:
+      label: 'Partenariat public-privé'
+    5:
+      label: Autres
+    6:
+      label: Syndicat
+    7:
+      label: 'Cercle de réflexion'
+    9:
+      label: 'Plateforme d’apprentissage ouvert'
+    10:
+      label: 'Groupe D’intérêt'
+    11:
+      label: 'Responsable politique'

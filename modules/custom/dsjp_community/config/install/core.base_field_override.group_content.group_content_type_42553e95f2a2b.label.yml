@@ -1,0 +1,18 @@
+uuid: 964ed648-296a-40c7-b857-5f4e05266cbd
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.content_type.group_content_type_42553e95f2a2b
+id: group_content.group_content_type_42553e95f2a2b.label
+field_name: label
+entity_type: group_content
+bundle: group_content_type_42553e95f2a2b
+label: Title
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

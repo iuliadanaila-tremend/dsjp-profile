@@ -1,0 +1,19 @@
+uuid: 0c0f6568-2df2-4a87-b15b-8aa8146b2009
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_dsj_subtitle
+    - paragraphs.paragraphs_type.dsj_card
+id: paragraph.dsj_card.field_dsj_subtitle
+field_name: field_dsj_subtitle
+entity_type: paragraph
+bundle: dsj_card
+label: Subtitle
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

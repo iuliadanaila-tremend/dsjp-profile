@@ -1,0 +1,22 @@
+uuid: 150164a4-7a7f-40f3-9198-88ed482334c8
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.plain_text
+template: dsj_user_invited_to_group
+label: 'User invited to group'
+description: ''
+text:
+  -
+    value: 'New user invited to group.'
+    format: plain_text
+  -
+    value: 'A new invitation to group [message:field_dsj_group_content:entity:group:title] has been sent to [message:field_dsj_user_email]'
+    format: plain_text
+settings:
+  'token options':
+    clear: false
+    'token replace': true
+  purge_override: false
+  purge_methods: {  }

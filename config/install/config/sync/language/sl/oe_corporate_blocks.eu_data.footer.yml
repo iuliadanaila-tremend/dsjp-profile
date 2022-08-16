@@ -1,0 +1,71 @@
+contact_title: 'Kontaktirajte EU'
+contact:
+  -
+    label: 'Pokličite nas 00 800 6 7 8 9 10 11'
+  -
+    href: 'https://europa.eu/european-union/contact/call-us_sl'
+    label: 'Pokličite druge telefonske številke'
+  -
+    href: 'https://europa.eu/european-union/contact/write-to-us_sl'
+    label: 'Pišite nam s kontaktnim obrazcem'
+  -
+    href: 'https://europa.eu/european-union/contact/meet-us_sl'
+    label: 'Obiščite nas v lokalni pisarni EU'
+social_media_title: 'Družbeni mediji'
+social_media:
+  -
+    label: 'Poiščite nas na družbenih medijih EU'
+    href: 'https://europa.eu/european-union/contact/social-networks_sl'
+institution_links_title: 'Institucije EU'
+institution_links:
+  0:
+    label: 'Evropski parlament'
+    href: 'http://www.europarl.europa.eu/portal/sl'
+  1:
+    label: 'Evropski svet'
+    href: 'http://www.consilium.europa.eu/sl/european-council/'
+  2:
+    label: 'Svet Evropske unije'
+    href: 'http://www.consilium.europa.eu/sl/home/'
+  3:
+    label: 'Evropska komisija'
+    href: 'http://ec.europa.eu/index_sl.htm'
+  4:
+    label: 'Sodišče Evropske unije'
+    href: 'http://curia.europa.eu/jcms/jcms/j_6/sl/'
+  5:
+    label: 'Evropska centralna banka (ECB)'
+    href: 'https://www.ecb.europa.eu/home/languagepolicy/html/index.sl.html'
+  6:
+    label: 'Evropsko računsko sodišče'
+    href: 'http://www.eca.europa.eu/sl'
+  7:
+    label: 'Evropska služba za zunanje delovanje'
+  8:
+    label: 'Evropski ekonomsko-socialni odbor'
+    href: 'http://www.eesc.europa.eu/?i=portal.sl.home'
+  9:
+    label: 'Evropski odbor regij'
+    href: 'http://cor.europa.eu/sl/'
+  10:
+    label: 'Evropska investicijska banka (EIB)'
+  12:
+    label: 'Evropski nadzornik za varstvo podatkov'
+    href: 'https://secure.edps.europa.eu/EDPSWEB/edps/EDPS?lang=sl'
+legal_links_title: 'Pravni pogoji'
+legal_links:
+  -
+    label: 'O spletišču'
+    href: 'https://europa.eu/european-union/abouteuropa_sl'
+  -
+    label: 'Jezikovna politika'
+    href: 'https://europa.eu/european-union/abouteuropa/language-policy_sl'
+  -
+    label: 'Politika varstva zasebnost'
+    href: 'https://europa.eu/european-union/abouteuropa/privacy-policy_sl'
+  -
+    label: 'Pravno obvestilo'
+    href: 'https://europa.eu/european-union/abouteuropa/legal_notices_sl'
+  -
+    label: Piškotki
+    href: 'https://europa.eu/european-union/abouteuropa/cookies_sl'

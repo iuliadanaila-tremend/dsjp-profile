@@ -1,0 +1,30 @@
+display:
+  default:
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Apply
+      fields:
+        created:
+          label: Created
+  embed_administer:
+    display_options:
+      fields:
+        created:
+          label: Created
+        completed:
+          label: Completed
+  embed_manage:
+    display_options:
+      fields:
+        created:
+          label: Created
+        completed:
+          label: Completed
+  embed_review:
+    display_options:
+      fields:
+        created:
+          label: Created
+        completed:
+          label: Completed

@@ -1,0 +1,40 @@
+uuid: c9c251d5-e60c-4857-af3d-55fb638a83e8
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.group_nodes
+  module:
+    - group
+    - system
+    - views
+  theme:
+    - edsjp
+id: views_block__group_nodes_block_1
+theme: edsjp
+region: groups_sidebar
+weight: 0
+provider: null
+plugin: 'views_block:group_nodes-block_1'
+settings:
+  id: 'views_block:group_nodes-block_1'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: '5'
+  context_mapping: {  }
+visibility:
+  request_path:
+    id: request_path
+    pages: '/group/*/view'
+    negate: false
+    context_mapping: {  }
+  group_type:
+    id: group_type
+    group_types:
+      community_private_grou: community_private_grou
+      community_public_group: community_public_group
+    negate: false
+    context_mapping:
+      group: '@group.group_route_context:group'

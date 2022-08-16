@@ -1,0 +1,153 @@
+.webform-submission-content-proposal-form,
+.webform-submission-contact-form {
+  @include border-radius($border-radius-sm);
+  background: $body-bg;
+  padding: 1.5rem 1.875rem;
+  max-width: 640px;
+  box-sizing: border-box;
+
+  h3 {
+    @include media-breakpoint-down(md) {
+      max-width: 100%;
+    }
+    @include media-breakpoint-down(sm) {
+      font-size: $font-size-lg;
+      line-height: $line-height-xl;
+    }
+    color: $gray-650;
+    font-size: $font-size-xl;
+    line-height: $line-height-2xl;
+    font-weight: bold;
+    margin: 0 0 1.125rem;
+    max-width: 55%;
+  }
+
+  .ecl-form-group {
+    margin: 0 0 1.5rem !important;
+
+    &:last-of-type,
+    &:first-of-type {
+      margin: 0 !important;
+    }
+
+    input,
+    select,
+    textarea,
+    .ecl-select__container--m {
+      max-width: 325px;
+      width: 100%;
+      color: $gray-100;
+      font-size: $font-size-sm;
+      box-sizing: border-box;
+
+      &::placeholder {
+        color: $gray-100;
+      }
+
+      @include media-breakpoint-down(sm) {
+        max-width: 100%;
+      }
+    }
+
+    textarea {
+      height: 140px;
+    }
+
+    .ecl {
+      &-button {
+        margin: 0;
+      }
+
+      &-select {
+        @include media-breakpoint-down(sm) {
+          max-width: 100%;
+        }
+      }
+    }
+
+    .form-required {
+      &::after {
+        content: '*';
+        background-image: none;
+        vertical-align: top;
+        font-weight: 400;
+        margin: 0;
+      }
+    }
+
+    .chosen-container-single {
+      .chosen-single {
+        height: auto;
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        box-shadow: none;
+
+        > div {
+          display: none;
+        }
+
+        span {
+          line-height: $line-height-sm;
+          color: $gray-100;
+          font-size: $font-size-sm;
+        }
+
+      }
+
+      .chosen-drop {
+        @include border-radius($border-radius-lg);
+
+        left: 0;
+        margin-top: 0;
+        border-color: $gray-100;
+      }
+    }
+  }
+
+  .ecl-form-label {
+    line-height: $line-height-base;
+  }
+
+  input,
+  textarea {
+    max-width: 100% !important;
+  }
+
+  .chosen-container {
+    width: 100% !important;
+
+    &.form-select {
+      .chosen-single {
+        @include border-radius($border-radius-lg);
+        @include padding($grid-gutter-width / 2);
+  
+        border: 1px solid $gray-100;
+      }
+    }
+  }
+
+  .chosen-choices {
+    @include border-radius($border-radius-lg);
+    background-image: none;
+    height: 100%;
+    padding: .7rem 1rem;
+  }
+
+  .ecl-select__icon {
+    height: 50px;
+  }
+
+  .captcha {
+    margin-top: ($grid-gutter-width * 1.5rem) / $grid-gutter-width;
+  }
+
+  @include media-breakpoint-down(md) {
+    margin-bottom: ($grid-gutter-width * 1.5rem) / $grid-gutter-width;
+  }
+
+  @include media-breakpoint-down(sm) {
+    max-width: 100%;
+  }
+}

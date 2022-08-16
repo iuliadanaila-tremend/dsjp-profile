@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Publique
+    -
+      label: Privé
+    -
+      label: 'Financement participatif'
+    -
+      label: Public-privé

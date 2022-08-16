@@ -1,0 +1,70 @@
+uuid: 7d8100c2-c9a7-4692-ad50-98839e2a0d79
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.dsj_organization.body
+    - field.field.node.dsj_organization.field_dsj_author
+    - field.field.node.dsj_organization.field_dsj_comments
+    - field.field.node.dsj_organization.field_dsj_digital_technology
+    - field.field.node.dsj_organization.field_dsj_external_id
+    - field.field.node.dsj_organization.field_dsj_geographic_scope
+    - field.field.node.dsj_organization.field_dsj_image
+    - field.field.node.dsj_organization.field_dsj_industry
+    - field.field.node.dsj_organization.field_dsj_meta_tags
+    - field.field.node.dsj_organization.field_dsj_nc_member
+    - field.field.node.dsj_organization.field_dsj_organization_category
+    - field.field.node.dsj_organization.field_dsj_publish_in_core
+    - field.field.node.dsj_organization.field_dsj_representative_image
+    - field.field.node.dsj_organization.field_dsj_target_audience
+    - field.field.node.dsj_organization.field_dsj_website_link
+    - image.style.thumbnail_100x100_crop
+    - node.type.dsj_organization
+  module:
+    - image
+    - text
+    - user
+id: node.dsj_organization.teaser
+targetEntityType: node
+bundle: dsj_organization
+mode: teaser
+content:
+  body:
+    type: text_trimmed
+    label: hidden
+    settings:
+      trim_length: 100
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_dsj_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: content
+      image_style: thumbnail_100x100_crop
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  content_moderation_control: true
+  field_dsj_author: true
+  field_dsj_comments: true
+  field_dsj_digital_technology: true
+  field_dsj_external_id: true
+  field_dsj_geographic_scope: true
+  field_dsj_industry: true
+  field_dsj_meta_tags: true
+  field_dsj_nc_member: true
+  field_dsj_organization_category: true
+  field_dsj_publish_in_core: true
+  field_dsj_representative_image: true
+  field_dsj_target_audience: true
+  field_dsj_website_link: true
+  flag_subscribe_node: true
+  flag_voting: true
+  langcode: true
+  links: true
+  private_message_link: true
+  search_api_excerpt: true

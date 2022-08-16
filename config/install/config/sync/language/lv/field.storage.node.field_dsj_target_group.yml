@@ -1,0 +1,42 @@
+settings:
+  allowed_values:
+    -
+      label: 'Izglītojamie ar augstiem rezultātiem'
+    -
+      label: 'Runātāji, kam attiecīgā valoda nav dzimtā'
+    -
+      label: 'Personas, kurām nepieciešama pārkvalifikācija'
+    -
+      label: 'Personas, kas iegūst augstāko izglītību (EKI 6)'
+    -
+      label: 'Personas, kas ieguvušas pamatizglītību'
+    -
+      label: 'Personas, kas iegūst vidējo/obligāto izglītību'
+    -
+      label: 'Personas, kas ieguvušas augstāko izglītību (EQF 7)'
+    -
+      label: 'Personas, kas iegūst pamatizglītību'
+    -
+      label: 'Personas ar 0-3 gadu darba pieredzi'
+    -
+      label: 'Personas, kas ieguvušas augstāko izglītību (EQF 8)'
+    -
+      label: 'Personas, kas ieguvušas vidējo/obligāto izglītību'
+    -
+      label: 'Personas, kas ieguvušas augstāko izglītību (EQF 7)'
+    -
+      label: 'Personas, kas ieguvušas augstāko izglītību (EQF 8)'
+    -
+      label: Migranti
+    -
+      label: 'Personas ar 3-10 gadu darba pieredzi'
+    -
+      label: 'Personas ar vairāk kā 10 gadu darba pieredzi'
+    -
+      label: 'Personas ar mācīšanās grūtībām'
+    -
+      label: 'Runātāji dzimtajā valodā'
+    -
+      label: 'Personas, kas ieguvušas augstāko izglītību (EKI 6)'
+    -
+      label: 'Izglītojamie ar zemiem rezultātiem'

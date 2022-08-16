@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Offentlig
+    -
+      label: Privat
+    -
+      label: '&quot;Crowdfunding&quot;'
+    -
+      label: Offentlig-privat

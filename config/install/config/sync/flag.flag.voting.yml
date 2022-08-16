@@ -1,0 +1,44 @@
+uuid: a4cdf515-ca53-4bcf-b2d7-9934a0294ae2
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: voting
+label: Voting
+bundles:
+  - dsj_article
+  - dsj_digital_skills_resource
+  - dsj_discussion
+  - dsj_event
+  - dsj_funding_opportunity
+  - dsj_good_practice
+  - dsj_initiative
+  - dsj_national_coalition
+  - dsj_organization
+  - dsj_page
+  - dsj_pledge
+  - dsj_skills_intelligence
+  - dsj_strategy
+  - dsj_training_offer
+entity_type: node
+global: false
+flag_short: Like
+flag_long: ''
+flag_message: ''
+unflag_short: Unlike
+unflag_long: ''
+unflag_message: ''
+unflag_denied_text: ''
+weight: 0
+flag_type: 'entity:node'
+link_type: ajax_link
+flagTypeConfig:
+  show_in_links:
+    full: full
+  show_as_field: true
+  show_on_form: false
+  show_contextual_link: false
+  extra_permissions:
+    owner: '0'
+linkTypeConfig: {  }

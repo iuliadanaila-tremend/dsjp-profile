@@ -1,0 +1,43 @@
+uuid: e4defdb8-f54c-4cc8-867a-80c3b73a2d0a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.group_content.group_content_type_f0eb7027af2de.field_dsj_request_message
+    - field.field.group_content.group_content_type_f0eb7027af2de.grequest_status
+    - field.field.group_content.group_content_type_f0eb7027af2de.grequest_updated_by
+    - group.content_type.group_content_type_f0eb7027af2de
+id: group_content.group_content_type_f0eb7027af2de.default
+targetEntityType: group_content
+bundle: group_content_type_f0eb7027af2de
+mode: default
+content:
+  field_dsj_request_message:
+    weight: -2
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  grequest_status:
+    type: number_integer
+    weight: -4
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    region: content
+  grequest_updated_by:
+    label: above
+    type: entity_reference_label
+    settings:
+      link: true
+    weight: -3
+    third_party_settings: {  }
+    region: content
+hidden:
+  entity_id: true
+  langcode: true
+  search_api_excerpt: true
+  uid: true

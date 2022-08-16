@@ -1,0 +1,39 @@
+{% set classes = [
+  'node',
+  node.isPromoted() ? 'node--promoted',
+  node.isSticky() ? 'node--sticky',
+  not node.isPublished() ? 'node--unpublished',
+  node.bundle|clean_class,
+  node.bundle|clean_class ~ '--' ~ view_mode|clean_class,
+  'node' ~ '--' ~ view_mode|clean_class,
+  'node' ~ '--' ~ node.bundle|clean_class,
+  term_type ? node.bundle|clean_class ~ '--' ~ term_type|clean_class,
+  'ecl-u-mb-s',
+  'node--card',
+    'contextual-region'
+] %}
+<div class="ecl-col-m-4 ecl-u-mb-s ecl-u-d-md-flex ecl-u-flex-md-column">
+  <article{{ attributes.addClass(classes) }}>
+    {{ title_suffix.contextual_links }}
+    <div class="node--content">
+      {{ content.field_dsj_image }}
+
+      <div class="node--author" {{ author_attributes }}>
+        {{ author_picture }}
+      </div>
+
+      <div {{ title_attributes.addClass('node--title') }}>
+        {{ title_prefix }}
+          <a href="{{ url }}" rel="bookmark" title="{{ title }}">{{ title }}</a>
+        {{ title_suffix }}
+      </div>
+    </div>
+
+    <div class="node--footer">
+      {{ ct_pill }}
+      <div class="more-link">
+        <a href="{{ url }}">{{ "View more"|t() }}</a>
+      </div>
+    </div>
+  </article>
+</div>

@@ -1,0 +1,25 @@
+uuid: 9f776d70-dc26-460c-a1b9-cb732ba60ebf
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.full_html
+    - filter.format.plain_text
+_core:
+  default_config_hash: 9iu8vIBPLEkZ5zoRji6j0sqfs1hRrm6u8Um3RGLHbqM
+template: update_node
+label: 'Update Node'
+description: 'Node was updated.'
+text:
+  -
+    value: "[message:field_node_reference:entity:title] updated\r\n"
+    format: plain_text
+  -
+    value: "<h2>[message:field_node_reference:entity:content-type:name] updated</h2>\r\n\r\n<p>Title: [message:field_node_reference:entity:title]<br />\r\nAuthor:&nbsp;[message:field_node_reference:entity:author]<br />\r\nTimestamp:&nbsp;[message:field_node_reference:entity:created]</p>\r\n\r\n<p>[message:field_node_reference:entity:summary] ...</p>\r\n\r\n<p>Read more:&nbsp;[message:field_node_reference:entity:url]</p>\r\n"
+    format: full_html
+settings:
+  'token options':
+    clear: false
+    'token replace': true
+  purge_override: false
+  purge_methods: {  }

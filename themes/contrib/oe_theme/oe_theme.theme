@@ -1,0 +1,1948 @@
+<?php
+
+/**
+ * @file
+ * Functions to support theming.
+ */
+
+declare(strict_types = 1);
+
+use Drupal\block\BlockInterface;
+use Drupal\Component\Utility\Html;
+use Drupal\Core\Cache\CacheableMetadata;
+use Drupal\Core\Cache\CacheableDependencyInterface;
+use Drupal\Core\Entity\ContentEntityInterface;
+use Drupal\Core\Entity\Entity\EntityViewDisplay;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Render\Element;
+use Drupal\Core\Template\Attribute;
+use Drupal\Core\Url;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\media\MediaInterface;
+use Drupal\media\Plugin\media\Source\Image;
+use Drupal\media\Plugin\media\Source\OEmbed;
+use Drupal\media_avportal\Plugin\media\Source\MediaAvPortalPhotoSource;
+use Drupal\media_avportal\Plugin\media\Source\MediaAvPortalSourceInterface;
+use Drupal\media_avportal\Plugin\media\Source\MediaAvPortalVideoSource;
+use Drupal\node\NodeInterface;
+use Drupal\oe_theme\DocumentMediaValueExtractor;
+use Drupal\oe_theme\ValueObject\FileValueObject;
+use Drupal\oe_theme\ValueObject\DateValueObject;
+use Drupal\oe_theme\ValueObject\GalleryItemValueObject;
+use Drupal\oe_theme\ValueObject\ImageValueObject;
+use Drupal\oe_theme_helper\EuropeanUnionLanguages;
+use Drupal\oe_media_iframe\Plugin\media\Source\Iframe;
+use Drupal\Component\Render\FormattableMarkup;
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function oe_theme_form_system_theme_settings_alter(&$form, FormStateInterface &$form_state, $form_id = NULL) {
+  // Work-around for a core bug affecting admin themes.
+  // @todo remove this once the core issue below is fixed.
+  // @link https://www.drupal.org/node/943212
+  if (isset($form_id)) {
+    return;
+  }
+
+  $form['component_library'] = [
+    '#type' => 'select',
+    '#title' => t('Component library'),
+    '#options' => [
+      'ec' => t('European Commission'),
+      'eu' => t('European Union'),
+    ],
+    '#default_value' => theme_get_setting('component_library'),
+    '#description' => t('Choose "European Commission" for websites hosted under the ec.europa.eu domain and "European Union" for websites hosted under the europa.eu domain.'),
+  ];
+
+  $form['branding'] = [
+    '#type' => 'select',
+    '#title' => t('Branding'),
+    '#options' => [
+      'core' => t('Core'),
+      'standardised' => t('Standardised'),
+    ],
+    '#default_value' => theme_get_setting('branding') ?? 'core',
+    '#description' => t('Choose the ECL branding for your website. Use "Core" for cross-institutional sites and "Standardised" for DG/Agency specific sites.'),
+  ];
+}
+
+/**
+ * Implements hook_preprocess().
+ */
+function oe_theme_preprocess(&$variables) {
+  $variables['ecl_component_library'] = theme_get_setting('component_library');
+  $variables['ecl_branding'] = theme_get_setting('branding') ?? 'core';
+  $variables['ecl_images_path'] = base_path() . drupal_get_path('theme', 'oe_theme') . '/dist/' . $variables['ecl_component_library'] . '/images';
+  $variables['ecl_icon_path'] = $variables['ecl_images_path'] . '/icons/sprites/icons.svg';
+  $variables['ecl_logo_path'] = $variables['ecl_images_path'] . '/logo';
+  $variables['ecl_social_icon_path'] = base_path() . drupal_get_path('theme', 'oe_theme') . '/dist/ec/images/social-icons/sprites/icons-social.svg';
+  $variables['ecl_icon_social_media_path'] = $variables['ecl_images_path'] . '/icons-social-media/sprites/icons-social-media.svg';
+  $variables['ecl_icon_flag_path'] = $variables['ecl_images_path'] . '/icons-flag/sprites/icons-flag.svg';
+  $variables['current_language_id'] = \Drupal::languageManager()->getCurrentLanguage()->getId();
+}
+
+/**
+ * Implements hook_preprocess_breadcrumb().
+ */
+function oe_theme_preprocess_breadcrumb(array &$variables): void {
+  $cacheability = CacheableMetadata::createFromRenderArray($variables);
+  $cacheability->addCacheContexts(['route']);
+  $cacheability->applyTo($variables);
+
+  $request = \Drupal::request();
+  $route_match = \Drupal::routeMatch();
+
+  $route = $route_match->getRouteObject();
+  $title = \Drupal::service('title_resolver')->getTitle($request, $route);
+
+  unset($variables['links']);
+  $variables['links'] = array_map(function ($item) use ($variables) {
+    return [
+      'path' => $item['url'],
+      'label' => $item['text'],
+      'negative' => $variables['ecl_branding'] === 'core' && $variables['ecl_component_library'] === 'ec',
+    ];
+  }, $variables['breadcrumb']);
+
+  // Add the title to the segments only if it's not empty.
+  if (!empty($title)) {
+    $variables['links'][] = [
+      'label' => $title,
+    ];
+  }
+
+  $variables['navigation_text'] = '';
+  $variables['ellipsis_label'] = '';
+  $variables['icon_file_path'] = $variables['ecl_icon_path'];
+}
+
+/**
+ * Implements hook_preprocess_menu__main().
+ */
+function oe_theme_preprocess_menu__main(array &$variables): void {
+  // Massage data to be compliant with ECL navigation menu data structure.
+  $variables['links'] = array_map(function ($item) {
+    return [
+      'label' => $item['title'],
+      'href' => $item['url'],
+      'is_current' => $item['in_active_trail'],
+    ];
+  }, $variables['items']);
+
+  foreach ($variables['items'] as $name => $link) {
+    $variables['links'][$name]['children'] = array_map(function ($item) {
+      return [
+        'label' => $item['title'],
+        'href' => $item['url'],
+        'is_current' => $item['in_active_trail'],
+      ];
+    }, $variables['items'][$name]['below']);
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ *
+ * Adds a template suggestion for type time input fields.
+ */
+function oe_theme_theme_suggestions_input_alter(array &$suggestions, array $variables): void {
+  $element = $variables['element'];
+
+  if ($element['#type'] === 'date' && $element['#attributes']['type'] === 'time') {
+    $suggestions[] = 'input__time';
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ *
+ * Adds a bare, markup-free template suggestion to all paragraph fields.
+ */
+function oe_theme_theme_suggestions_field_alter(array &$suggestions, array $variables): void {
+  $element = $variables['element'];
+
+  // Do not output field labels and wrapping markup for paragraph fields.
+  if (isset($element['#entity_type']) && $element['#entity_type'] === 'paragraph') {
+    // Prepend the new suggestion to the list. This will put it right after the
+    // default field template. By doing this we allow to override single
+    // fields, while keeping all the rest markup-free.
+    array_unshift($suggestions, 'field__bare');
+  }
+
+  // Add suggestions for all 'Entity reference revisions' for each target type.
+  if ($element['#field_type'] === 'entity_reference_revisions') {
+    /** @var \Drupal\field\Entity\FieldConfig $field_definition */
+    $field_definition = $element['#items']->getFieldDefinition();
+    // Add suggestions based on the referenced entity type.
+    $suggestions[] = 'field__entity_reference_revisions__' . $field_definition->getSetting('target_type');
+    $suggestions[] = 'field__entity_reference_revisions__' . $field_definition->getSetting('target_type') . '__' . $field_definition->getName();
+
+    // Add suggestions based on the parent entity and bundle types.
+    $suggestions[] = 'field__entity_reference_revisions__' . $element['#entity_type'] . '__' . $element['#bundle'];
+    $suggestions[] = 'field__entity_reference_revisions__' . $element['#entity_type'] . '__' . $element['#bundle'] . '__' . $field_definition->getName();
+  }
+
+  // Append view mode to default field suggestions, if any.
+  if (isset($element['#view_mode'])) {
+    $suggestions[] = 'field__' . $element['#field_type'] . '__' . $element['#view_mode'];
+    $suggestions[] = 'field__' . $element['#field_name'] . '__' . $element['#view_mode'];
+    $suggestions[] = 'field__' . $element['#entity_type'] . '__' . $element['#bundle'] . '__' . $element['#view_mode'];
+    $suggestions[] = 'field__' . $element['#entity_type'] . '__' . $element['#field_name'] . '__' . $element['#view_mode'];
+    $suggestions[] = 'field__' . $element['#entity_type'] . '__' . $element['#field_name'] . '__' . $element['#bundle'] . '__' . $element['#view_mode'];
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function oe_theme_theme_suggestions_paragraph_alter(array &$suggestions, array $variables): void {
+  /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
+  $paragraph = $variables['elements']['#paragraph'];
+
+  if ($paragraph->bundle() === 'oe_content_row') {
+    $variant = $paragraph->get('oe_paragraphs_variant')->first()->value;
+    $suggestions[] = 'paragraph__' . $paragraph->bundle() . '__variant_' . $variant;
+  }
+}
+
+/**
+ * Implements hook_preprocess_paragraph().
+ */
+function oe_theme_preprocess_paragraph__oe_links_block(array &$variables): void {
+  // Massage data to be compliant with ECL links block component data structure.
+  foreach (Element::children($variables['content']['field_oe_links']) as $index) {
+    $variables['links'][] = [
+      'label' => $variables['content']['field_oe_links'][$index]['#title'],
+      'url' => $variables['content']['field_oe_links'][$index]['#url'],
+    ];
+  }
+}
+
+/**
+ * Implements hook_preprocess_paragraph__oe_accordion().
+ */
+function oe_theme_preprocess_paragraph__oe_accordion(array &$variables): void {
+  // Massage data to be compliant with ECL Accordion2 component data structure.
+  $builder = \Drupal::entityTypeManager()->getViewBuilder('paragraph');
+  $variables['identifier'] = 'paragraph-' . $variables['paragraph']->id();
+  $variables['items'] = [];
+
+  /** @var \Drupal\entity_reference_revisions\Plugin\Field\FieldType\EntityReferenceRevisionsItem $field_item */
+  foreach ($variables['paragraph']->get('field_oe_paragraphs') as $field_item) {
+    $paragraph = \Drupal::service('entity.repository')->getTranslationFromContext($field_item->entity);
+    $variables['items'][] = [
+      'title' => $builder->viewField($paragraph->get('field_oe_text')),
+      'body' => $builder->viewField($paragraph->get('field_oe_text_long')),
+    ];
+  }
+}
+
+/**
+ * Implements hook_preprocess_paragraph__oe_contextual_navigation().
+ */
+function oe_theme_preprocess_paragraph__oe_contextual_navigation(array &$variables): void {
+  // Massage data to be compliant with ECL 'context_nav' pattern data structure.
+  /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
+  $paragraph = $variables['paragraph'];
+
+  $variables['limit'] = $paragraph->get('field_oe_limit')->value;
+  $variables['more_label'] = $paragraph->get('field_oe_text')->value;
+
+  $variables['items'] = [];
+  foreach (Element::children($variables['content']['field_oe_links']) as $index) {
+    $variables['items'][] = [
+      'label' => $variables['content']['field_oe_links'][$index]['#title'],
+      'href' => $variables['content']['field_oe_links'][$index]['#url'],
+    ];
+  }
+}
+
+/**
+ * Implements hook_preprocess_menu_local_tasks().
+ */
+function oe_theme_preprocess_menu_local_tasks(array &$variables): void {
+  // Sort local tasks by weight.
+  uasort($variables['primary'], [
+    '\Drupal\Component\Utility\SortArray',
+    'sortByWeightProperty',
+  ]);
+  uasort($variables['secondary'], [
+    '\Drupal\Component\Utility\SortArray',
+    'sortByWeightProperty',
+  ]);
+
+  foreach ($variables['primary'] as $link) {
+    /** @var Drupal\Core\Url $url */
+    $url = $link['#link']['url'];
+    if ($url->access($variables['user'])) {
+      $variables['primary_links'][] = [
+        'link' => [
+          'path' => $url,
+          'label' => $link['#link']['title'],
+          'type' => 'standalone',
+        ],
+        'is_active' => $link['#active'],
+      ];
+    }
+  }
+
+  foreach ($variables['secondary'] as $link) {
+    /** @var Drupal\Core\Url $url */
+    $url = $link['#link']['url'];
+    if ($url->access($variables['user'])) {
+      $variables['secondary_links'][] = [
+        'link' => [
+          'path' => $url,
+          'label' => $link['#link']['title'],
+          'type' => 'standalone',
+        ],
+        'is_active' => $link['#active'],
+      ];
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_input__radio().
+ */
+function oe_theme_preprocess_input__radio(array &$variables): void {
+  _oe_theme_preprocess_input_label_wrapper($variables);
+}
+
+/**
+ * Implements hook_preprocess_input__checkbox().
+ */
+function oe_theme_preprocess_input__checkbox(array &$variables): void {
+  _oe_theme_preprocess_input_label_wrapper($variables);
+}
+
+/**
+ * Implements template_preprocess_input__date().
+ */
+function oe_theme_preprocess_input__date(array &$variables): void {
+  $php_date_format = !empty($variables['attributes']['data-drupal-date-format'] && is_array($variables['attributes']['data-drupal-date-format'])) ? reset($variables['attributes']['data-drupal-date-format']) : 'Y-m-d';
+  $format_map = [
+    // @todo find a cleverer way of mapping PHP date formats to the expected
+    // ECL ones.
+    'Y-m-d' => 'YYYY-MM-DD',
+  ];
+  $ecl_format = $format_map[$php_date_format] ?? 'YYYY-MM-DD';
+  $variables['#attached']['library'][] = 'oe_theme/ecl_datepicker';
+  $variables['#attached']['drupalSettings']['oe_theme']['ecl_datepicker_format'] = $ecl_format;
+  $variables['placeholder'] = $ecl_format;
+}
+
+/**
+ * Implements template_preprocess_input__submit().
+ */
+function oe_theme_preprocess_input__submit(array &$variables): void {
+  if (isset($variables['element']['#button_type'])) {
+    $variables['variant'] = $variables['element']['#button_type'];
+  }
+}
+
+/**
+ * Helper function to additionally preprocess checkbox and radio elements.
+ *
+ * Moves the label element to the input template and creates some helper
+ * variables to be used with the ECL templates.
+ *
+ * @param array $variables
+ *   Set of available variables.
+ */
+function _oe_theme_preprocess_input_label_wrapper(array &$variables): void {
+  $element = &$variables['element'];
+  $variables['invalid'] = !empty($element['#errors']);
+
+  if (isset($element['#title']) && $element['#title'] !== '') {
+    $variables['title'] = ['#markup' => $element['#title']];
+  }
+
+  // Generate the extra attributes array from the general attributes.
+  $extra_attributes = !empty($variables['attributes']) ? $variables['attributes'] : [];
+  $predefined_attributes = [
+    'id' => 'id',
+    'name' => 'name',
+    'value' => 'value',
+    'disabled' => 'disabled',
+  ];
+  $extra_attributes = array_diff_key($extra_attributes, $predefined_attributes);
+  foreach ($extra_attributes as $key => $value) {
+    if (is_string($value)) {
+      $variables['input_attributes'][] = [
+        'name' => $key,
+        'value' => $value,
+      ];
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_radios().
+ */
+function oe_theme_preprocess_radios(array &$variables): void {
+  $element = &$variables['element'];
+  $variables['invalid'] = !empty($element['#errors']);
+
+  if (isset($element['#title']) && $element['#title'] !== '') {
+    $variables['label'] = ['#markup' => $element['#title']];
+  }
+}
+
+/**
+ * Implements hook_preprocess_fieldset().
+ */
+function oe_theme_preprocess_fieldset(array &$variables): void {
+  if (isset($variables['element']['#type']) && $variables['element']['#type'] == 'radios') {
+    $variables['legend_display'] = FALSE;
+  }
+}
+
+/**
+ * Implements hook_preprocess_form_element().
+ *
+ * Disables displaying of the label for checkbox and radio elements, as the
+ * label is already rendered in the input template.
+ */
+function oe_theme_preprocess_form_element(array &$variables): void {
+  if (in_array($variables['element']['#type'], ['checkbox', 'radio'])) {
+    $variables['label_display'] = 'none';
+  }
+  $ecl_type_mappings = [
+    'textfield' => 'text-input',
+    'password' => 'text-input',
+    'textarea' => 'text-area',
+    'select' => 'select',
+  ];
+  if (isset($ecl_type_mappings[$variables['element']['#type']])) {
+    $variables['ecl_type'] = $ecl_type_mappings[$variables['element']['#type']];
+  }
+}
+
+/**
+ * Implements hook_preprocess_field().
+ *
+ * Add paragraph formatting to body.
+ */
+function oe_theme_preprocess_field(&$variables, $hook): void {
+  // Add the ECL image class to the image fields.
+  $field_name = $variables['field_name'];
+  if (in_array($field_name, ['oe_media_avportal_photo'])) {
+    foreach ($variables['items'] as &$item) {
+      $item['content']['#attributes']['class'][] = 'ecl-u-width-100';
+      $item['content']['#attributes']['class'][] = 'ecl-u-height-auto';
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_pager().
+ *
+ * @see template_preprocess_pager()
+ *
+ * Generates pagination items for ECL pagination component.
+ */
+function oe_theme_preprocess_pager(array &$variables): void {
+  /** @var \Drupal\Core\Pager\PagerManagerInterface $pager_manager */
+  $pager_manager = \Drupal::service('pager.manager');
+  $element = $variables['pager']['#element'];
+  $parameters = $variables['pager']['#parameters'];
+  $route_name = $variables['pager']['#route_name'];
+  $route_parameters = $variables['pager']['#route_parameters'] ?? [];
+  $pager = $pager_manager->getPager($element);
+  global $pager_page_array, $pager_total;
+  // Nothing to do if there is no pager.
+  if (!isset($pager)) {
+    return;
+  }
+  // Maximum page number for this pager.
+  $pager_max = $pager->getTotalPages();
+  // Nothing to do if there is only one page.
+  if ($pager_max <= 1) {
+    return;
+  }
+  // Max number of pages to display next to the current page (left/right).
+  // The first and last page links are excluded from this count.
+  $pager_offset = 2;
+  // The page we are currently paged to.
+  $pager_current = $pager->getCurrentPage() + 1;
+  // First page of the pagination calculated by offset from current.
+  $pager_first = $pager_offset < $pager_current ? $pager_current - $pager_offset : 1;
+  // Last page of the pagination calculated by offset from current.
+  $pager_last = $pager_current + $pager_offset;
+
+  // Remove extra pages if last page is larger than maximum.
+  if ($pager_last > $pager_max) {
+    $pager_last = $pager_max;
+  }
+
+  // Array to collect the pagination items.
+  $ecl_items = [];
+
+  // Prepare navigation link item for previous/next links with defaults.
+  $nav_link = [
+    'link' => [
+      'icon' => [
+        'path' => $variables['ecl_icon_path'],
+        'type' => 'ui',
+        'name' => 'corner-arrow',
+        'size' => 'xs',
+        'transform' => 'rotate-270',
+      ],
+    ],
+  ];
+  // Prepare ellipsis item.
+  $ellipsis = [
+    'type' => 'ellipsis',
+    'label' => '...',
+  ];
+
+  // Add 'Previous' navigation link.
+  if ($pager_current > 1) {
+    $options = [
+      'query' => $pager_manager->getUpdatedParameters($parameters, $element, $pager->getCurrentPage() - 1),
+    ];
+    $nav_link['link']['link'] = [
+      'path' => Url::fromRoute($route_name, $route_parameters, $options),
+      'label' => t('Previous'),
+      'icon_position' => 'before',
+    ];
+    $nav_link['type'] = 'previous';
+    $nav_link['aria_label'] = t('Go to previous page');
+    $ecl_items[] = $nav_link;
+  }
+
+  // Add first page link.
+  if ($pager_first != $pager_current) {
+    $options = [
+      'query' => $pager_manager->getUpdatedParameters($parameters, $element, 0),
+    ];
+    $ecl_items[] = [
+      'type' => 'first',
+      'link' => [
+        'link' => [
+          'path' => Url::fromRoute($route_name, $route_parameters, $options),
+          'label' => '1',
+        ],
+      ],
+      'aria_label' => t('Go to page @number', ['@number' => 1]),
+    ];
+  }
+
+  // Add first ellipsis.
+  if ($pager_current - $pager_offset > 2) {
+    $ecl_items[] = $ellipsis;
+  }
+
+  // Generate page link items.
+  for ($i = $pager_first; $i <= $pager_current + $pager_offset && $i <= $pager_last; $i++) {
+    $label = (string) $i;
+    if ($i == $pager_current) {
+      $ecl_items[] = [
+        'type' => 'current',
+        'label' => $label,
+        'aria_label' => t('Page @number', ['@number' => $label]),
+      ];
+    }
+    else {
+      // Skip first or last page.
+      if ($i == 1 || $i == $pager_max) {
+        continue;
+      }
+      $options = [
+        'query' => $pager_manager->getUpdatedParameters($parameters, $element, $i - 1),
+      ];
+      $ecl_items[] = [
+        'link' => [
+          'link' => [
+            'path' => Url::fromRoute($route_name, $route_parameters, $options),
+            'label' => $label,
+          ],
+        ],
+        'aria_label' => t('Go to page @number', ['@number' => $i]),
+      ];
+    }
+  }
+
+  // Add second ellipsis.
+  if ($pager_last < $pager_max - 1) {
+    $ecl_items[] = $ellipsis;
+  }
+
+  // Add last page link.
+  if ($pager_max != $pager_current) {
+    $options = [
+      'query' => $pager_manager->getUpdatedParameters($parameters, $element, $pager_max - 1),
+    ];
+    $ecl_items[] = [
+      'type' => 'last',
+      'link' => [
+        'link' => [
+          'path' => Url::fromRoute($route_name, $route_parameters, $options),
+          'label' => (string) $pager_max,
+        ],
+      ],
+      'aria_label' => t('Go to page @number', ['@number' => $pager_max]),
+    ];
+  }
+
+  // Add 'Next' navigation link.
+  if ($pager_current < $pager_max) {
+    $options = [
+      'query' => $pager_manager->getUpdatedParameters($parameters, $element, $pager->getCurrentPage() + 1),
+    ];
+    $nav_link['link']['link'] = [
+      'path' => Url::fromRoute($route_name, $route_parameters, $options),
+      'label' => t('Next'),
+      'icon_position' => 'after',
+    ];
+    $nav_link['type'] = 'next';
+    $nav_link['aria_label'] = t('Go to next page');
+    $nav_link['link']['icon']['transform'] = 'rotate-90';
+    $ecl_items[] = $nav_link;
+  }
+  foreach ($ecl_items as &$item) {
+    if (isset($item['link'])) {
+      $options = $item['link']['link']['path']->getOptions();
+      if (isset($options['query']['_wrapper_format']) && $options['query']['_wrapper_format'] == 'drupal_ajax') {
+        unset($options['query']['_wrapper_format']);
+      }
+      $item['link']['link']['path']->setOptions($options);
+    }
+  }
+  $variables['label'] = t('Pagination');
+  $variables['ecl_items'] = $ecl_items;
+}
+
+/**
+ * Implements hook_preprocess_links().
+ */
+function oe_theme_preprocess_links__language_block(array &$variables): void {
+  $processed_languages = _oe_theme_preprocess_languages($variables['links'], $variables['current_language_id']);
+  $variables = array_merge($variables, $processed_languages);
+}
+
+/**
+ * Implements template_preprocess_language_selection_page_content().
+ */
+function oe_theme_preprocess_language_selection_page_content(&$variables) {
+  $processed_languages = _oe_theme_preprocess_languages($variables['language_links']['#items']);
+  $variables = array_merge($variables, $processed_languages);
+}
+
+/**
+ * Helper function to process links for language switcher block and page.
+ *
+ * @param array $link_items
+ *   The link items passed from the preprocess function.
+ * @param string $current_language_id
+ *   The current language id.
+ *
+ * @return array
+ *   Array of variables to be used for rendering.
+ */
+function _oe_theme_preprocess_languages(array $link_items, string $current_language_id = ''): array {
+  $variables = [];
+  $language_config_storage = \Drupal::entityTypeManager()->getStorage('configurable_language');
+  foreach ($link_items as $language_code => $link) {
+    // Handle both cases (block, page) when the link array structure differ.
+    if (isset($link['link'])) {
+      /** @var \Drupal\Core\Url $url */
+      $url = $link['link']['#url'];
+      $href = $url
+        ->setOptions($link['link']['#options'])
+        ->setAbsolute(TRUE)
+        ->toString();
+      $label = $link['link']['#title'];
+    }
+    else {
+      $href = $link['#url']->toString();
+      $label = $link['#title'];
+    }
+
+    $language_internal = $language_code;
+    if (EuropeanUnionLanguages::hasLanguage($language_code)) {
+      $language_internal = EuropeanUnionLanguages::getInternalLanguageCode($language_code);
+    }
+
+    $language = [
+      'path' => $href,
+      'label' => $label,
+      // Pass original language code which can be useful for some other
+      // preprocessors.
+      'hreflang' => $language_code,
+      'lang' => $language_internal,
+    ];
+
+    if (!empty($current_language_id) && $language_code === $current_language_id) {
+      $variables['current_language'] = [
+        'path' => $href,
+        'hreflang' => $language_code,
+        'lang' => $language_internal,
+        'label' => $link['link']['#title'],
+      ];
+      $language['active'] = TRUE;
+    }
+
+    // Take language categories and order languages accordingly.
+    $language_config = $language_config_storage->load($language_code);
+    $category = $language_config->getThirdPartySetting('oe_multilingual', 'category');
+    switch ($category) {
+      case 'eu':
+        $variables['eu_languages'][] = $language;
+        break;
+
+      case 'non_eu':
+        $variables['non_eu_languages'][] = $language;
+        break;
+
+      default:
+        $variables['languages'][] = $language;
+    }
+  }
+
+  return $variables;
+}
+
+/**
+ * Implements hook_preprocess_links__oe_multilingual_content_language_block().
+ *
+ * Adds extra variables regarding the current and the unavailable languages,
+ * and prepares the links for rendering.
+ */
+function oe_theme_preprocess_links__oe_multilingual_content_language_block(array &$variables): void {
+
+  // Generate the label for the unavailable language.
+  /** @var \Drupal\Core\Language\LanguageInterface[] $languages */
+  $languages = \Drupal::service('language_manager')->getNativeLanguages();
+  $variables['unavailable_language'] = $languages[$variables['current_language_id']]->getName();
+
+  // Normalize the links to an array of optional languages suitable for the ECL.
+  $variables['languages'] = [];
+  foreach ($variables['links'] as $language_code => $link) {
+    /** @var \Drupal\Core\Url $url */
+    $url = $link['link']['#url'];
+    $href = $url
+      ->setOptions($link['link']['#options'])
+      ->setAbsolute(TRUE)
+      ->toString();
+
+    $variables['languages'][] = [
+      'href' => $href,
+      'hreflang' => $language_code,
+      'label' => $link['link']['#title'],
+      'current' => FALSE,
+    ];
+  }
+
+  // Add the current language to the list.
+  $multilingual_helper = \Drupal::service('oe_multilingual.helper');
+  $entity = $multilingual_helper->getEntityFromCurrentRoute();
+  /** @var \Drupal\Core\Entity\EntityInterface $translation */
+  $translation = $multilingual_helper->getCurrentLanguageEntityTranslation($entity);
+  $variables['languages'][] = [
+    'href' => $translation->toUrl()->setAbsolute(TRUE)->toString(),
+    'hreflang' => $translation->language()->getId(),
+    'label' => $languages[$translation->language()->getId()]->getName(),
+    'current' => TRUE,
+  ];
+
+  // Generate required ids.
+  $variables['expandable_id'] = Html::getUniqueId('ecl-expandable');
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function oe_theme_preprocess_pattern_page_header(array &$variables): void {
+  // Generate unique element ID for the expandable component.
+  $variables['expandable_id'] = Html::getUniqueId('ecl-expandable');
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function oe_theme_preprocess_pattern_gallery__preview(array &$variables): void {
+  foreach ($variables['items'] as &$item) {
+    // Being 'type' an UI Patterns reserved word, we need to use 'media_type'.
+    $item['type'] = $item['media_type'];
+    $item = GalleryItemValueObject::fromArray($item);
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function oe_theme_preprocess_pattern_accordion(array &$variables): void {
+  // If no identifier is provided generate a random, unique one.
+  if (empty($variables['identifier'])) {
+    $variables['identifier'] = Html::getUniqueId('ecl-accordion');
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function oe_theme_preprocess_pattern_dropdown(array &$variables): void {
+  $variables['id'] = Html::getUniqueId('ecl-button-dropdown');
+}
+
+/**
+ * Implements hook_preprocess_html() for html.html.twig.
+ *
+ * Add css class for splash page.
+ */
+function oe_theme_preprocess_html(array &$variables): void {
+  if ('language_selection_page' === \Drupal::request()->attributes->get('_route')) {
+    $variables['attributes']['class'][] = 'page-splash';
+  }
+}
+
+/**
+ * Implements hook_preprocess_paragraph() for paragraph--oe-list-item.html.twig.
+ */
+function oe_theme_preprocess_paragraph__oe_list_item(array &$variables): void {
+  /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
+  $paragraph = $variables['paragraph'];
+
+  $list_item_variant = $paragraph->get('oe_paragraphs_variant')->first()->value;
+  $variables['variant'] = $list_item_variant ?? 'default';
+  $variables['url'] = $paragraph->get('field_oe_link')->first()->getUrl();
+
+  $cacheability = CacheableMetadata::createFromRenderArray($variables);
+
+  // Extract the image if present.
+  if (!$paragraph->get('field_oe_image')->isEmpty()) {
+    /** @var \Drupal\file\Plugin\Field\FieldType\FileItem $image_item */
+    $image_item = $paragraph->get('field_oe_image')->first();
+    $file = $image_item->get('entity')->getValue();
+    $variables['image'] = [
+      'src' => file_url_transform_relative(file_create_url($file->getFileUri())),
+      'alt' => $image_item->get('alt')->getValue(),
+    ];
+
+    // Caches are handled by the formatter usually. Since we are not rendering
+    // the original render arrays, we need to propagate our caches to the
+    // paragraph template.
+    $cacheability->addCacheableDependency($file);
+  }
+
+  // Prepare the date fields if date is available.
+  if (!$paragraph->get('field_oe_date')->isEmpty()) {
+    $variables['date'] = DateValueObject::fromDateTimeItem($paragraph->get('field_oe_date')->first());
+
+    // Add the timezone context to the cache.
+    // @see \Drupal\datetime\Plugin\Field\FieldFormatter\DateTimeFormatterBase::buildDate()
+    $cacheability->addCacheContexts(['timezone']);
+  }
+
+  // Prepare the metas if available.
+  if (!$paragraph->get('field_oe_meta')->isEmpty()) {
+    $metas = [];
+    foreach ($paragraph->get('field_oe_meta') as $item) {
+      $metas[] = $item->value;
+    }
+    $variables['meta'] = $metas;
+  }
+
+  $cacheability->applyTo($variables);
+}
+
+/**
+ * Implements hook_preprocess_paragraph() for paragraph--oe-list-item-block.html.twig.
+ */
+function oe_theme_preprocess_paragraph__oe_list_item_block(array &$variables): void {
+  /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
+  $paragraph = $variables['paragraph'];
+
+  // Set up the correct variant name.
+  $variables['variant'] = 'list_item_block_' . $paragraph->get('field_oe_list_item_block_layout')->first()->value;
+
+  $variables['items'] = [];
+  foreach ($variables['paragraph']->get('field_oe_paragraphs') as $delta => $item) {
+    $variables['items'][] = $variables['content']['field_oe_paragraphs'][$delta];
+  }
+
+  // Prepare the button variables if a link has been specified.
+  if ($paragraph->get('field_oe_link')->isEmpty()) {
+    return;
+  }
+
+  /** @var \Drupal\link\Plugin\Field\FieldType\LinkItem $link_item */
+  $link_item = $paragraph->get('field_oe_link')->first();
+  $variables['button_url'] = $link_item->getUrl();
+  $variables['button_label'] = $link_item->get('title')->getValue();
+}
+
+/**
+ * Implements hook_preprocess_paragraph() for paragraph--oe-content-row--variant-inpage_navigation.html.twig.
+ *
+ * Prepares the inpage navigation by creating links for the inner paragraphs
+ * that implement a title.
+ */
+function oe_theme_preprocess_paragraph__oe_content_row__variant_inpage_navigation(array &$variables): void {
+  /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
+  $paragraph = $variables['paragraph'];
+
+  if ($paragraph->get('field_oe_paragraphs')->isEmpty()) {
+    return;
+  }
+
+  // Add default fallback title for inpage naviagtion.
+  $variables['title'] = t('Page contents');
+  if (!$paragraph->get('field_oe_title')->isEmpty()) {
+    $variables['title'] = $paragraph->get('field_oe_title')->value;
+  }
+
+  // Create a shortcut to the render array for the field.
+  $field_render = &$variables['content']['field_oe_paragraphs'];
+  $links = [];
+  foreach ($paragraph->get('field_oe_paragraphs')->referencedEntities() as $delta => $sub_paragraph) {
+    /** @var \Drupal\paragraphs\Entity\Paragraph $sub_paragraph */
+    if (!$sub_paragraph->hasField('field_oe_title') || $sub_paragraph->get('field_oe_title')->isEmpty()) {
+      continue;
+    }
+
+    $unique_id = Html::getUniqueId('ecl-inpage-' . $sub_paragraph->id());
+    // Wrap the paragraph in a div with a specific id set as anchor.
+    $field_render[$delta]['#theme_wrappers']['container'] = [
+      '#attributes' => ['id' => $unique_id],
+    ];
+
+    // Get sub-paragraph translation.
+    $sub_paragraph = \Drupal::service('entity.repository')
+      ->getTranslationFromContext($sub_paragraph, $paragraph->language()->getId());
+
+    // Add a link pointing to the paragraph.
+    $links[] = [
+      'href' => '#' . $unique_id,
+      'label' => $sub_paragraph->get('field_oe_title')->first()->value,
+    ];
+  }
+
+  $variables['links'] = $links;
+}
+
+/**
+ * Implements hook_preprocess_paragraph() for paragraph--oe-text-feature-media.html.twig.
+ */
+function oe_theme_preprocess_paragraph__oe_text_feature_media(array &$variables): void {
+  $variables['image'] = [];
+
+  /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
+  $paragraph = $variables['paragraph'];
+
+  // Set pattern variant.
+  if (!$paragraph->get('oe_paragraphs_variant')->isEmpty()) {
+    $variant = $paragraph->get('oe_paragraphs_variant')->first()->value;
+    // The default variant of the paragraph is the 'Left simple'
+    // variant of pattern.
+    $variables['variant'] = $variant === 'default' ? 'left_simple' : $variant;
+  }
+
+  // Link field doesn't exist in oe_paragraphs <= 1.8.0, so ensure it exists.
+  if ($paragraph->hasField('field_oe_link') && !$paragraph->get('field_oe_link')->isEmpty()) {
+    $link_field = $paragraph->get('field_oe_link')->first();
+    $variables['link'] = [
+      'path' => $link_field->getUrl()->toString(),
+      'label' => $link_field->get('title')->getValue(),
+    ];
+  }
+
+  // Set image caption.
+  $variables['caption'] = '';
+  if (!$paragraph->get('field_oe_plain_text_long')->isEmpty()) {
+    $variables['caption'] = $variables['elements']['field_oe_plain_text_long'];
+  }
+
+  // Bail out if there is no media present.
+  if ($paragraph->get('field_oe_media')->isEmpty()) {
+    return;
+  }
+
+  $cacheability = CacheableMetadata::createFromRenderArray($variables);
+
+  /** @var \Drupal\media\Entity\Media $media */
+  $media = $paragraph->get('field_oe_media')->entity;
+  if (!$media instanceof MediaInterface) {
+    // The media entity is not available anymore, bail out.
+    return;
+  }
+
+  // Retrieve the correct media translation.
+  $media = \Drupal::service('entity.repository')->getTranslationFromContext($media, $paragraph->language()->getId());
+
+  // Caches are handled by the formatter usually. Since we are not rendering
+  // the original render arrays, we need to propagate our caches to the
+  // paragraph template.
+  $cacheability->addCacheableDependency($media);
+
+  // Run access checks on the media entity.
+  $access = $media->access('view', $variables['user'], TRUE);
+  $cacheability->addCacheableDependency($access);
+  if (!$access->isAllowed()) {
+    $cacheability->applyTo($variables);
+    return;
+  }
+
+  // Get the media source.
+  $source = $media->getSource();
+
+  if ($source instanceof MediaAvPortalVideoSource || $source instanceof OEmbed || $source instanceof Iframe) {
+    // Default video aspect ratio is set to 16:9.
+    $variables['ratio'] = '16:9';
+
+    // Load information about the media and the display.
+    $media_type = \Drupal::entityTypeManager()->getStorage('media_type')->load($media->bundle());
+    $cacheability->addCacheableDependency($media_type);
+    $source_field = $source->getSourceFieldDefinition($media_type);
+    $display = EntityViewDisplay::collectRenderDisplay($media, 'oe_theme_main_content');
+    $cacheability->addCacheableDependency($display);
+    $display_options = $display->getComponent($source_field->getName());
+
+    // If it is an OEmbed resource, render it and pass it as embeddable data
+    // only if it is of type video or html.
+    if ($source instanceof OEmbed) {
+      $oembed_type = $source->getMetadata($media, 'type');
+      if (in_array($oembed_type, ['video', 'html'])) {
+        $variables['video'] = $media->{$source_field->getName()}->view($display_options);
+        $cacheability->applyTo($variables);
+        return;
+      }
+    }
+
+    // If its an AvPortal video or an iframe video, render it.
+    $variables['video'] = $media->{$source_field->getName()}->view($display_options);
+    $cacheability->applyTo($variables);
+
+    // When dealing with iframe videos, also respect its given aspect ratio.
+    if ($media->bundle() === 'video_iframe') {
+      $ratio = $media->get('oe_media_iframe_ratio')->value;
+      $variables['ratio'] = str_replace('_', ':', $ratio);
+    }
+
+    return;
+  }
+
+  // If its an image media, render it and assign it to the image variable.
+  if ($source instanceof MediaAvPortalPhotoSource || $source instanceof Image) {
+    $thumbnail = $media->get('thumbnail')->first();
+    $variables['image'] = ImageValueObject::fromStyledImageItem($thumbnail, 'oe_theme_medium_no_crop');
+    $cacheability->applyTo($variables);
+    return;
+  }
+
+  $cacheability->applyTo($variables);
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function oe_theme_preprocess_paragraph__oe_iframe_media(&$variables) {
+  /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
+  $paragraph = $variables['paragraph'];
+
+  /** @var \Drupal\media\Entity\Media $media */
+  $media = $paragraph->get('field_oe_media')->entity;
+  if (!$media instanceof MediaInterface) {
+    // The media entity is not available anymore, bail out.
+    return;
+  }
+
+  // Caches are handled by the formatter usually. Since we are not rendering
+  // the original render arrays, we need to propagate our caches to the
+  // paragraph template.
+  $cacheability = CacheableMetadata::createFromRenderArray($variables);
+  $cacheability->addCacheableDependency($media);
+  $media_type = \Drupal::entityTypeManager()->getStorage('media_type')->load($media->bundle());
+  $cacheability->addCacheableDependency($media_type);
+
+  $access = $media->access('view', $variables['user'], TRUE);
+  $cacheability->addCacheableDependency($access);
+  $cacheability->applyTo($variables);
+
+  if (!$access->isAllowed()) {
+    return;
+  }
+
+  // Get the full width value.
+  $variables['full_width'] = (bool) $paragraph->get('field_oe_iframe_media_full_width')->value;
+
+  // Retrieve the correct media translation.
+  $media = \Drupal::service('entity.repository')->getTranslationFromContext($media, $paragraph->language()->getId());
+
+  // Get the ratio value.
+  $variables['ratio'] = _oe_theme_get_oe_media_iframe_ratio($media);
+
+  // Get the Iframe content to render.
+  $variables['iframe'] = $media->get('oe_media_iframe')->view([
+    'label' => 'hidden',
+    'type' => 'oe_media_iframe',
+  ]);
+}
+
+/**
+ * Implements hook_preprocess_pattern().
+ */
+function oe_theme_preprocess_pattern_date_block(array &$variables): void {
+  // This make sure that the variant value will always fallback to
+  // "default" if an empty or not valid value is passed.
+  $variants = [
+    'default',
+    'ongoing',
+    'cancelled',
+    'past',
+  ];
+
+  $variables['variant'] = in_array($variables['variant'], $variants, TRUE) ? $variables['variant'] : 'default';
+}
+
+/**
+ * Implements hook_preprocess_pattern_file__preview().
+ */
+function oe_theme_preprocess_pattern_file__preview(array &$variables): void {
+  $variables['file'] = FileValueObject::fromArray($variables['file']);
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function oe_theme_preprocess_pattern_file_translation__preview(array &$variables): void {
+  $variables['file'] = FileValueObject::fromArray($variables['file']);
+
+  foreach ($variables['translations'] as $index => $translation) {
+    $variables['translations'][$index] = FileValueObject::fromArray($translation);
+  }
+}
+
+/**
+ * Implements hook_preprocess_pattern_file_teaser__preview().
+ */
+function oe_theme_preprocess_pattern_file_teaser__preview(array &$variables): void {
+  $variables['file'] = FileValueObject::fromArray($variables['file']);
+
+  foreach ($variables['translations'] as $index => $translation) {
+    $translation['file'] = FileValueObject::fromArray($translation['file']);
+    $variables['translations'][$index] = $translation;
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function oe_theme_preprocess_pattern_list_item__variant_date__preview(array &$variables): void {
+  $variables['date'] = DateValueObject::fromArray($variables['date']);
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function oe_theme_preprocess_pattern_list_item__variant_date_cancelled__preview(array &$variables): void {
+  $variables['date'] = DateValueObject::fromArray($variables['date']);
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function oe_theme_preprocess_pattern_list_item__variant_date_ongoing__preview(array &$variables): void {
+  $variables['date'] = DateValueObject::fromArray($variables['date']);
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function oe_theme_preprocess_pattern_list_item__variant_date_past__preview(array &$variables): void {
+  $variables['date'] = DateValueObject::fromArray($variables['date']);
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function oe_theme_preprocess_pattern_date_block__preview(array &$variables): void {
+  $variables['date'] = DateValueObject::fromArray($variables['date']);
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function oe_theme_preprocess_pattern_text_featured_media__preview(array &$variables): void {
+  $variables['image'] = ImageValueObject::fromArray($variables['image']);
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function oe_theme_theme_suggestions_form_alter(array &$suggestions, array $variables): void {
+  $suggestions[] = $variables['theme_hook_original'] . '__' . $variables['element']['#form_id'];
+}
+
+/**
+ * Implements hook_preprocess_input().
+ */
+function oe_theme_preprocess_input__search(array &$variables): void {
+  $variables['input_array'] = _oe_theme_preprocess_search_input_text($variables['element']);
+}
+
+/**
+ * Implements hook_preprocess_form().
+ */
+function oe_theme_preprocess_form__oe_search_search_form(array &$variables): void {
+  $variables['input_array'] = _oe_theme_preprocess_search_input_text($variables['element']['keys']);
+  $variables['input_array']['hide_label'] = TRUE;
+  $variables['label'] = $variables['input_array']['label'] = t('Search');
+}
+
+/**
+ * Helper function to additionally preprocess textfield search elements.
+ *
+ * Moves the label element to the input template and creates some helper
+ * variables to be used with the ECL templates.
+ *
+ * @param array $element
+ *   Set of element data.
+ *
+ * @return array
+ *   The ECL array for the input element.
+ */
+function _oe_theme_preprocess_search_input_text(array $element): array {
+  // Process element attributes into an ECL input array.
+  $ecl_array = [
+    'id' => $element['#attributes']['id'],
+    'name' => $element['#attributes']['name'],
+    'disabled' => $element['#attributes']['disabled'] ?? FALSE,
+    'type' => $element['#attributes']['type'],
+    'class' => $element['#attributes']['class'],
+  ];
+
+  // Map rest of the array elements.
+  $ecl_array['invalid'] = !empty($element['#errors']);
+  return $ecl_array;
+}
+
+/**
+ * Implements template_preprocess_responsive_image_formatter().
+ *
+ * For all responsive images, we need to set the ECL image classes.
+ */
+function oe_theme_preprocess_responsive_image_formatter(&$variables) {
+  $variables['responsive_image']['#attributes']['class'][] = 'ecl-u-width-100';
+  $variables['responsive_image']['#attributes']['class'][] = 'ecl-u-height-auto';
+}
+
+/**
+ * Implements template_preprocess_block().
+ */
+function oe_theme_preprocess_block(&$variables) {
+  // Style block titles using ECL.
+  $variables['title_attributes'] = array_merge_recursive($variables['title_attributes'], [
+    'class' => [
+      'ecl-u-type-heading-2',
+    ],
+  ]);
+}
+
+/**
+ * Implements template_preprocess_block__system_branding_block().
+ *
+ * Add required variables to follow ECL guidelines.
+ */
+function oe_theme_preprocess_block__system_branding_block(&$variables) {
+  if ($variables['ecl_component_library'] === 'ec') {
+    $variables['logo_aria_label'] = t('Home') . ' - ' . t('European Commission');
+    $variables['site_logo_alt'] = t('European Commission logo');
+    $variables['site_logo_title'] = t('European Commission');
+    $site_logo_href = 'https://ec.europa.eu/info';
+  }
+  else {
+    $variables['logo_aria_label'] = t('Home') . ' - ' . t('European Union');
+    $variables['site_logo_alt'] = t('European Union flag');
+    $variables['site_logo_title'] = t('European Union');
+    $site_logo_href = 'https://european-union.europa.eu';
+  }
+
+  // Provide correct icon for non-eu languages.
+  $language_code = \Drupal::languageManager()->getCurrentLanguage()->getId();
+  if (!EuropeanUnionLanguages::hasLanguage($language_code)) {
+    if ($language_code === 'nb') {
+      // Set correct icon for Norwegian language.
+      $variables['current_language_id'] = 'no';
+    }
+    else {
+      // Check whether ECL provides a logo for the language.
+      $ecl_logo = DRUPAL_ROOT . '/' . drupal_get_path('theme', 'oe_theme') . '/dist/' . $variables['ecl_component_library'] . '/images/logo/';
+      $ecl_logo .= $variables['ecl_component_library'] === 'eu' ? 'standard-version/positive/' : 'positive/';
+      $ecl_logo .= 'logo-' . $variables['ecl_component_library'] . '--' . $language_code . '.svg';
+      if (!file_exists($ecl_logo)) {
+        // Provide fallback "en" icon if language logo doesn't exist.
+        $variables['current_language_id'] = 'en';
+      }
+    }
+  }
+  else {
+    $site_logo_href .= '/index_' . EuropeanUnionLanguages::getInternalLanguageCode($variables['current_language_id']);
+  }
+  $variables['site_logo_href'] = $site_logo_href;
+}
+
+/**
+ * Implements hook_preprocess_media__document__default().
+ *
+ * Prepares the default view mode for the document media type.
+ */
+function oe_theme_preprocess_media__document__default(&$variables) {
+  /** @var \Drupal\media\Entity\Media $media */
+  $media = $variables['media'];
+  $file_value = DocumentMediaValueExtractor::getFileValue($media);
+  if (!$file_value) {
+    return;
+  }
+
+  $variables['file'] = $file_value;
+
+  // Generate the file information for all available translations.
+  foreach ($media->getTranslationLanguages() as $langcode => $language) {
+    // We don't want to include the information of the current language again.
+    if ($media->language()->getId() === $langcode) {
+      continue;
+    }
+
+    $translation = $media->getTranslation($langcode);
+    $translation_file_value = DocumentMediaValueExtractor::getFileValue($translation);
+    if ($translation_file_value) {
+      $variables['translations'][] = $translation_file_value;
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_media__document__oe_theme_main_content().
+ *
+ * Style the view mode used for embedding the document media entity.
+ */
+function oe_theme_preprocess_media__document__oe_theme_main_content(&$variables) {
+  oe_theme_preprocess_media__document__default($variables);
+}
+
+/**
+ * Implements hook_preprocess_table().
+ */
+function oe_theme_preprocess_table(array &$variables): void {
+  /** @var \Drupal\Core\Render\RendererInterface $renderer */
+  $renderer = \Drupal::service('renderer');
+
+  // Assign data to table headers as ECL expects it.
+  $ecl_table_header_data = [];
+  $variables['header'] = $variables['header'] ?? [];
+  foreach ($variables['header'] as &$cell) {
+    $cell['label'] = $cell['content'];
+
+    // We need to generate the value of the data-ecl-table-header attribute for
+    // each row cell. Table headers may be strings or render arrays, so we count
+    // on the inline template render element to do the right thing.
+    $cell_header_render_array = [
+      '#type' => 'inline_template',
+      '#template' => '{{ label|render|striptags }}',
+      '#context' => [
+        'label' => $cell['content'],
+      ],
+    ];
+    $cell_header_data = $renderer->render($cell_header_render_array);
+
+    // Assign colspan value to the cell, if any. It will be used later.
+    if (isset($cell['attributes']['colspan'])) {
+      $cell['colspan'] = (int) $cell['attributes']['colspan']->value();
+    }
+
+    // Account for colspan values when counting the number of columns.
+    // This ensures that header content is is displayed on related columns
+    // when the table is displayed on small screen devices.
+    $columns_count = $cell['colspan'] ?? 1;
+    for ($i = 1; $i <= $columns_count; $i++) {
+      $ecl_table_header_data[] = $cell_header_data;
+    }
+  }
+  $variables['headers'] = [$variables['header']];
+
+  // Assign data to table rows as ECL expects it.
+  foreach ($variables['rows'] as &$row) {
+    $index = 0;
+    foreach ($row['cells'] as &$cell) {
+      $cell['label'] = $cell['content'];
+      if (isset($ecl_table_header_data[$index])) {
+        $cell['data-ecl-table-header'] = $ecl_table_header_data[$index];
+      }
+      $index++;
+    }
+  }
+}
+
+/**
+ * Implements template_preprocess_block__oe_theme_main_page_content().
+ */
+function oe_theme_preprocess_block__oe_theme_main_page_content(&$variables) {
+  $variables['attributes']['class'][] = 'ecl-u-mb-2xl';
+}
+
+/**
+ * Implements template_preprocess_block__oe_theme_tabs().
+ */
+function oe_theme_preprocess_block__oe_theme_tabs(&$variables) {
+  $variables['attributes']['class'][] = 'ecl-u-mb-2xl';
+}
+
+/**
+ * Implements hook_preprocess_paragraph() for oe_social_media_follow paragraph.
+ */
+function oe_theme_preprocess_paragraph__oe_social_media_follow(array &$variables): void {
+  /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
+  $paragraph = $variables['paragraph'];
+  $variables['variant'] = $paragraph->get('field_oe_social_media_variant')->value;
+  $variables['label'] = $paragraph->get('field_oe_title')->value;
+  $links = $paragraph->get('field_oe_social_media_links')->getValue();
+  $variables['links'] = [];
+  foreach ($links as $key => $link) {
+    $variables['links'][$key]['service'] = $link['link_type'];
+    $variables['links'][$key]['label'] = $link['title'];
+    $variables['links'][$key]['url'] = Url::fromUri($link['uri']);
+  }
+  if (!$paragraph->get('field_oe_social_media_see_more')->isEmpty()) {
+    $other_link = $paragraph->get('field_oe_social_media_see_more')
+      ->first()
+      ->getValue();
+    $variables['links'][] = [
+      'label' => $other_link['title'],
+      'url' => Url::fromUri($other_link['uri']),
+    ];
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function oe_theme_preprocess_pattern_link(array &$variables): void {
+  // Set default variant to 'standalone', if none given.
+  $variables['variant'] = $variables['variant'] ?: 'standalone';
+  $attributes = [];
+
+  // Make sure we always have an URL object in place.
+  if (is_string($variables['url'])) {
+    $variables['url'] = Url::fromUserInput($variables['url']);
+  }
+
+  // Extract attributes from the URL object and set them as default.
+  if ($variables['url'] instanceof Url) {
+    $attributes = (array) $variables['url']->getOption('attributes');
+  }
+
+  // Add ECL link classes to attributes.
+  $variables['attributes'] = new Attribute($attributes);
+  $variables['attributes']->addClass('ecl-link', 'ecl-link--' . $variables['variant']);
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function oe_theme_preprocess_pattern_link__preview(array &$variables): void {
+  // Pattern preview will pass along a \Drupal\Core\Render\Markup object.
+  $variables['url'] = Url::fromUserInput((string) $variables['url']);
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function oe_theme_preprocess_pattern_page_header__preview(array &$variables): void {
+  // We are going to accept only local images for the background image
+  // of the preview.
+  $variables['background_image_url'] = base_path() . drupal_get_path('module', 'oe_theme_helper') . '/images/' . $variables['background_image_url'];
+}
+
+/**
+ * Implements hook_preprocess_paragraph().
+ */
+function oe_theme_preprocess_paragraph__oe_facts_figures(array &$variables): void {
+  $paragraph = $variables['paragraph'];
+  if (!$paragraph->get('field_oe_title')->isEmpty()) {
+    $variables['title'] = $paragraph->get('field_oe_title')->value;
+  }
+  if (!$paragraph->get('field_oe_link')->isEmpty()) {
+    $variables['view_all']['path'] = $paragraph->get('field_oe_link')->first()->getUrl();
+    $variables['view_all']['label'] = $paragraph->get('field_oe_link')->first()->get('title')->getValue();
+  }
+  $variables['items'] = [];
+
+  /** @var \Drupal\paragraphs\Entity\Paragraph $sub_paragraph */
+  foreach ($paragraph->get('field_oe_paragraphs')->referencedEntities() as $sub_paragraph) {
+    // Get sub-paragraph translation.
+    $sub_paragraph = \Drupal::service('entity.repository')
+      ->getTranslationFromContext($sub_paragraph, $paragraph->language()->getId());
+    $variables['items'][] = [
+      'icon' => $sub_paragraph->get('field_oe_icon')->value,
+      'value' => $sub_paragraph->get('field_oe_title')->value,
+      'title' => $sub_paragraph->get('field_oe_subtitle')->value,
+      'description' => $sub_paragraph->get('field_oe_plain_text_long')->value,
+    ];
+  }
+}
+
+/**
+ * Implements hook_preprocess_paragraph().
+ */
+function oe_theme_preprocess_paragraph__oe_timeline(array &$variables): void {
+  $paragraph = $variables['paragraph'];
+  if ($paragraph->hasField('field_oe_title') && !$paragraph->get('field_oe_title')->isEmpty()) {
+    $variables['heading'] = $paragraph->get('field_oe_title')->value;
+  }
+  $variables['limit'] = $paragraph->get('field_oe_timeline_expand')->value;
+  $variables['items'] = $variables['content']['field_oe_timeline']['#items'];
+}
+
+/**
+ * Implements hook_preprocess_paragraph() for oe_banner paragraph.
+ */
+function oe_theme_preprocess_paragraph__oe_banner(array &$variables): void {
+  /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
+  $paragraph = $variables['paragraph'];
+
+  if (!$paragraph->get('field_oe_title')->isEmpty()) {
+    $variables['title'] = $paragraph->get('field_oe_title')->value;
+  }
+
+  $variables['description'] = $paragraph->get('field_oe_text')->value;
+
+  if (!$paragraph->get('field_oe_link')->isEmpty()) {
+    $link = $paragraph->get('field_oe_link')->first();
+    $variables['url'] = $link->getUrl();
+    $variables['label'] = $link->get('title')->getValue();
+    ;
+  }
+
+  $variables['full_width'] = (bool) $paragraph->get('field_oe_banner_full_width')->value;
+
+  // The alignment field value contains the information regarding the pattern
+  // type and centering.
+  $alignment = $paragraph->get('field_oe_banner_type')->value;
+  [$banner_type, $banner_alignment] = explode('_', $alignment);
+  // The beginning of the string determines the pattern.
+  $variables['pattern'] = 'banner_' . $banner_type;
+  // The end of the string determines the position.
+  $variables['alignment'] = $banner_alignment;
+
+  $variant = $paragraph->get('oe_paragraphs_variant')->first()->value;
+  if ($variant) {
+    $variables['variant'] = str_replace('oe_banner_', '', $variant);
+  }
+  else {
+    $variables['variant'] = 'default';
+  }
+
+  if ($variables['variant'] === 'default' || $variables['variant'] === 'primary') {
+    return;
+  }
+
+  // Bail out if there is no media present.
+  if ($paragraph->get('field_oe_media')->isEmpty()) {
+    return;
+  }
+  $cacheability = CacheableMetadata::createFromRenderArray($variables);
+
+  /** @var \Drupal\media\Entity\Media $media */
+  $media = $paragraph->get('field_oe_media')->entity;
+  if (!$media instanceof MediaInterface) {
+    // The media entity is not available anymore, bail out.
+    return;
+  }
+
+  // Retrieve the correct translation to display.
+  $media = \Drupal::service('entity.repository')->getTranslationFromContext($media, $paragraph->language()->getId());
+
+  // Caches are handled by the formatter usually. Since we are not rendering
+  // the original render arrays, we need to propagate our caches to the
+  // paragraph template.
+  $cacheability->addCacheableDependency($media);
+
+  // Run access checks on the media entity.
+  $access = $media->access('view', $variables['user'], TRUE);
+  $cacheability->addCacheableDependency($access);
+  if (!$access->isAllowed()) {
+    $cacheability->applyTo($variables);
+    return;
+  }
+
+  $source = $media->getSource();
+  // We only support images and AV Portal photos for now.
+  if (!$source instanceof MediaAvPortalSourceInterface && !$source instanceof Image) {
+    $cacheability->applyTo($variables);
+    return;
+  }
+
+  $field_name = $source->getConfiguration()['source_field'];
+  if ($source instanceof Image && ($file_entity = $media->get($field_name)->entity)) {
+    $uri = $file_entity->getFileUri();
+    $cacheability->addCacheableDependency($file_entity);
+  }
+  elseif ($source instanceof MediaAvPortalSourceInterface) {
+    $resource_ref = $media->get($field_name)->value;
+    $uri = 'avportal://' . $resource_ref . '.jpg';
+  }
+
+  // The uri might be empty if the source is of type Image and the file entity
+  // was deleted.
+  if (empty($uri)) {
+    $cacheability->applyTo($variables);
+    return;
+  }
+
+  $values = [
+    'src' => file_create_url($uri),
+    'alt' => $source->getMetadata($media, 'thumbnail_alt_value') ?? $media->label(),
+    'name' => $media->getName(),
+  ];
+  $variables['image'] = ImageValueObject::fromArray($values);
+
+  $cacheability->applyTo($variables);
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function oe_theme_theme_suggestions_page_alter(array &$suggestions, array $variables): void {
+  // Set branding template in the beginning as more common.
+  $branding = theme_get_setting('branding') ?? 'core';
+  array_unshift($suggestions, 'page__ecl_branding__' . $branding);
+
+  $route = \Drupal::routeMatch();
+  if ($route->getRouteName() === 'entity.node.canonical') {
+    $suggestions[] = 'page__node__' . $route->getParameter('node')->bundle();
+  }
+  if ($route->getRouteName() === 'entity.node.preview') {
+    $suggestions[] = 'page__node__' . $route->getParameter('node_preview')->bundle();
+    $suggestions[] = 'page__node__preview__' . $route->getParameter('node_preview')->bundle();
+  }
+}
+
+/**
+ * Implements hook_preprocess_page().
+ */
+function oe_theme_preprocess_page(array &$variables): void {
+  $variables['site_name'] = \Drupal::config('system.site')->get('name');
+  $variables['main_attributes'] = new Attribute([
+    'class' => ['ecl-u-pb-xl'],
+    'id' => ['main-content'],
+  ]);
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function oe_theme_preprocess_pattern_organisation_teaser__preview(array &$variables): void {
+  $variables['logo'] = ImageValueObject::fromArray($variables['logo']);
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function oe_theme_preprocess_field__media__oe_media_iframe__video_iframe__oe_theme_main_content(array &$variables): void {
+  // Set video aspect ratio when rendering "oe_theme_main_content" display mode.
+  $variables['ratio'] = $variables['element']['#object']->get('oe_media_iframe_ratio')->value;
+}
+
+/**
+ * Gets the value from oe_media_iframe_ratio field.
+ *
+ * @param \Drupal\media\MediaInterface $media
+ *   Media with oe_media_iframe_ratio field.
+ *
+ * @return string
+ *   Prepared ratio to be used in templates.
+ */
+function _oe_theme_get_oe_media_iframe_ratio(MediaInterface $media): string {
+  $ratio = $media->get('oe_media_iframe_ratio')->value ?? 'custom';
+  return str_replace('_', '-', $ratio);
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function oe_theme_preprocess_field__media__oe_media_iframe__iframe__oe_theme_main_content(array &$variables): void {
+  // Set iframe aspect ratio when rendering  the "oe_theme_main_content"
+  // display mode.
+  $variables['ratio'] = _oe_theme_get_oe_media_iframe_ratio($variables['element']['#object']);
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ *
+ * Add block region as a suggestion.
+ */
+function oe_theme_theme_suggestions_block_alter(array &$suggestions, array $variables) {
+  // Blocks that are not placed in a region might not have an id (if they
+  // are rendered through a block_reference field for instance).
+  if (!isset($variables['elements']['#id'])) {
+    return;
+  }
+  /** @var \Drupal\block\Entity\Block $block */
+  $block = \Drupal::entityTypeManager()->getStorage('block')->load($variables['elements']['#id']);
+  if (!$block instanceof BlockInterface || !$block->getRegion()) {
+    return;
+  }
+  $suggestions[] = 'block__region_' . $block->getRegion();
+  $suggestions[] = 'block__region_' . $block->getRegion() . '__' . $variables['elements']['#id'];
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function oe_theme_theme_suggestions_oe_corporate_blocks_ec_footer_alter(array &$suggestions, array $variables) {
+  $branding = theme_get_setting('branding') ?? 'core';
+  $suggestions[] = 'oe_corporate_blocks_ec_footer__' . $branding;
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function oe_theme_theme_suggestions_oe_corporate_blocks_eu_footer_alter(array &$suggestions, array $variables) {
+  $branding = theme_get_setting('branding') ?? 'core';
+  $suggestions[] = 'oe_corporate_blocks_eu_footer__' . $branding;
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function oe_theme_preprocess_oe_corporate_blocks_eu_footer(array &$variables) {
+  $variables['logo_description'] = t('Discover more on @link', [
+    '@link' => new FormattableMarkup('<a href="https://europa.eu/" class="ecl-link ecl-link--standalone">europa.eu</a>', []),
+  ]);
+  $site_logo_href = 'https://european-union.europa.eu';
+  // Ensure the site logo falls back to english version if the language is
+  // not EU language.
+  $language_code = \Drupal::languageManager()->getCurrentLanguage()->getId();
+  if (!EuropeanUnionLanguages::hasLanguage($language_code)) {
+    $variables['current_language_id'] = 'en';
+  }
+  else {
+    $site_logo_href .= '/index_' . EuropeanUnionLanguages::getInternalLanguageCode($variables['current_language_id']);
+  }
+  $variables['path'] = $site_logo_href;
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function oe_theme_preprocess_patterns_overview_page(&$variables) {
+  // Remove patterns from the list on the "/components" page if they are marked
+  // as hidden.
+  foreach ($variables['patterns'] as $key => $pattern) {
+    if (!empty($pattern['additional']['hidden'])) {
+      unset($variables['patterns'][$key]);
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function oe_theme_preprocess_oe_theme_helper_site_navigation(&$variables) {
+  if ($variables['ecl_branding'] === 'core') {
+    // We shouldn't have site_name inside the navigation block
+    // with 'Core' ECL branding.
+    unset($variables['site_name']);
+  }
+}
+
+/**
+ * Process common fields of illustration list paragraphs.
+ *
+ * @param array $variables
+ *   Render array.
+ */
+function _oe_theme_preprocess_paragraph_oe_illustration_list(array &$variables): void {
+  $paragraph = $variables['paragraph'];
+  if (!$paragraph->get('field_oe_title')->isEmpty()) {
+    $variables['title'] = $paragraph->get('field_oe_title')->value;
+  }
+  $variables['zebra'] = (bool) $paragraph->get('field_oe_illustration_alternate')->value;
+
+  // Set the column value based on the selected variant.
+  $variant_value = $paragraph->get('oe_paragraphs_variant')->first()->value;
+  $variables['column'] = $variant_value === 'oe_illustration_vertical' ? 1 : $paragraph->get('field_oe_illustration_columns')->value;
+}
+
+/**
+ * Validate and prepare media entity to be processed in theme preprocesses.
+ *
+ * @param mixed $media
+ *   MediaInterface entity will be processed only.
+ * @param \Drupal\Core\Session\AccountInterface $user
+ *   Active user.
+ * @param \Drupal\Core\Cache\CacheableDependencyInterface $cacheability
+ *   Object to collect cacheable dependencies.
+ * @param string $language_id
+ *   Language of the Media to return.
+ *
+ * @return \Drupal\media\MediaInterface|null
+ *   Media entity or null if media isn't accessible.
+ */
+function _oe_theme_prepare_media($media, AccountInterface $user, CacheableDependencyInterface $cacheability, string $language_id): ?MediaInterface {
+  if (!$media instanceof MediaInterface) {
+    // The media entity is not available.
+    return NULL;
+  }
+  $cacheability->addCacheableDependency($media);
+
+  // Run access checks on the media entity.
+  $access = $media->access('view', $user, TRUE);
+  $cacheability->addCacheableDependency($access);
+  if (!$access->isAllowed()) {
+    // Media isn't accessible.
+    return NULL;
+  }
+  // Retrieve the correct media translation.
+  return \Drupal::service('entity.repository')->getTranslationFromContext($media, $language_id);
+}
+
+/**
+ * Implements hook_preprocess_paragraph().
+ */
+function oe_theme_preprocess_paragraph__oe_illustration_list_flags(array &$variables): void {
+  _oe_theme_preprocess_paragraph_oe_illustration_list($variables);
+  $variables['items'] = [];
+
+  $paragraph = $variables['paragraph'];
+  $ratio = $paragraph->get('field_oe_illustration_ratio')->first()->value;
+  $builder = \Drupal::entityTypeManager()->getViewBuilder('paragraph');
+  /** @var \Drupal\paragraphs\Entity\Paragraph $sub_paragraph */
+  foreach ($paragraph->get('field_oe_paragraphs')->referencedEntities() as $sub_paragraph) {
+    // Get sub-paragraph translation.
+    $sub_paragraph = \Drupal::service('entity.repository')
+      ->getTranslationFromContext($sub_paragraph, $paragraph->language()->getId());
+    $icon = $sub_paragraph->get('field_oe_flag')->value;
+    $icon .= $ratio === 'square' ? '-square' : '';
+    $variables['items'][] = [
+      'title' => $sub_paragraph->get('field_oe_title')->value,
+      'description' => $sub_paragraph->get('field_oe_text_long')->isEmpty() ? '' : $builder->viewField($sub_paragraph->get('field_oe_text_long')),
+      'icon' => $icon,
+    ];
+  }
+}
+
+/**
+ * Implements hook_preprocess_paragraph().
+ */
+function oe_theme_preprocess_paragraph__oe_illustration_list_icons(array &$variables): void {
+  _oe_theme_preprocess_paragraph_oe_illustration_list($variables);
+  $variables['items'] = [];
+
+  $paragraph = $variables['paragraph'];
+  $builder = \Drupal::entityTypeManager()->getViewBuilder('paragraph');
+  /** @var \Drupal\paragraphs\Entity\Paragraph $sub_paragraph */
+  foreach ($paragraph->get('field_oe_paragraphs')->referencedEntities() as $sub_paragraph) {
+    // Get sub-paragraph translation.
+    $sub_paragraph = \Drupal::service('entity.repository')
+      ->getTranslationFromContext($sub_paragraph, $paragraph->language()->getId());
+    $variables['items'][] = [
+      'title' => $sub_paragraph->get('field_oe_title')->value,
+      'description' => $sub_paragraph->get('field_oe_text_long')->isEmpty() ? '' : $builder->viewField($sub_paragraph->get('field_oe_text_long')),
+      'icon' => $sub_paragraph->get('field_oe_icon')->value,
+    ];
+  }
+}
+
+/**
+ * Implements hook_preprocess_paragraph().
+ */
+function oe_theme_preprocess_paragraph__oe_illustration_list_images(array &$variables): void {
+  _oe_theme_preprocess_paragraph_oe_illustration_list($variables);
+
+  $paragraph = $variables['paragraph'];
+  $variables['items'] = [];
+
+  $entity_repository = \Drupal::service('entity.repository');
+  $cacheability = CacheableMetadata::createFromRenderArray($variables);
+  $builder = \Drupal::entityTypeManager()->getViewBuilder('paragraph');
+  /** @var \Drupal\paragraphs\Entity\Paragraph $sub_paragraph */
+  foreach ($paragraph->get('field_oe_paragraphs')->referencedEntities() as $sub_paragraph) {
+    // Get sub-paragraph translation.
+    $language_id = $paragraph->language()->getId();
+    $sub_paragraph = $entity_repository->getTranslationFromContext($sub_paragraph, $language_id);
+    // Get the image from attached media.
+    $image = [];
+    $media = _oe_theme_prepare_media($sub_paragraph->get('field_oe_media')->entity, $variables['user'], $cacheability, $language_id);
+    if ($media) {
+      $url = '';
+      $source = $media->getSource();
+      $field_name = $source->getConfiguration()['source_field'];
+      if ($source instanceof Image && ($file_entity = $media->get($field_name)->entity)) {
+        // Media Image.
+        $cacheability->addCacheableDependency($file_entity);
+        $url = $file_entity->createFileUrl();
+      }
+      elseif ($source instanceof MediaAvPortalSourceInterface) {
+        // Media AV Portal Photo.
+        $resource_ref = $media->get($field_name)->value;
+        $url = file_create_url('avportal://' . $resource_ref . '.jpg');
+      }
+
+      if ($url) {
+        // Generate image object for the template.
+        $values = [
+          'src' => $url,
+          'alt' => $source->getMetadata($media, 'thumbnail_alt_value') ?? $media->label(),
+        ];
+        $image = ImageValueObject::fromArray($values);
+      }
+    }
+    $variables['items'][] = [
+      'title' => $sub_paragraph->get('field_oe_title')->value,
+      'description' => $sub_paragraph->get('field_oe_text_long')->isEmpty() ? '' : $builder->viewField($sub_paragraph->get('field_oe_text_long')),
+      'image' => $image,
+    ];
+  }
+
+  // Set "Square" or "Landscape" view for an image.
+  $ratio = $paragraph->get('field_oe_illustration_ratio')->first()->value;
+  $variables['square_image'] = $ratio === 'square' ? TRUE : FALSE;
+
+  $cacheability->applyTo($variables);
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function oe_theme_preprocess_field__entity_reference_revisions__oe_event_speaker(&$variables) {
+  $cacheability = CacheableMetadata::createFromRenderArray($variables);
+  foreach ($variables['items'] as $key => &$item) {
+    $event_speaker = $item['content']['#oe_event_speaker'] ?? NULL;
+    $item['event_speaker'] = $event_speaker;
+
+    // Make sure that Event speaker entity is valid.
+    if (!$event_speaker instanceof ContentEntityInterface) {
+      unset($variables['items'][$key]);
+      continue;
+    }
+    $cacheability->addCacheableDependency($event_speaker);
+
+    // Make sure that Person entity is present.
+    if ($event_speaker->get('oe_person')->isEmpty() || !$event_speaker->get('oe_person')->entity instanceof NodeInterface) {
+      unset($variables['items'][$key]);
+      continue;
+    }
+    $person = $event_speaker->get('oe_person')->entity;
+    $cacheability->addCacheableDependency($person);
+
+    // Set portrait image URL.
+    _oe_theme_helper_content_thumbnail_image($variables, $person, 'oe_person_photo', TRUE);
+    $item['content']['portrait_image'] = $variables['image'];
+
+    // Set person jobs titles.
+    $person_job_labels = [];
+    foreach ($person->get('oe_person_jobs')->referencedEntities() as $person_job) {
+      $cacheability->addCacheableDependency($person_job);
+      $person_job_labels[] = \Drupal::service('entity.repository')->getTranslationFromContext($person_job)->label();
+    }
+    $item['content']['person_jobs'] = implode(', ', $person_job_labels);
+  }
+
+  $cacheability->applyTo($variables);
+}

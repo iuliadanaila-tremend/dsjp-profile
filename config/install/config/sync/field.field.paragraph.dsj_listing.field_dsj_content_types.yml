@@ -1,0 +1,21 @@
+uuid: 6b16325a-ab95-4de7-96c8-410827151999
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_dsj_content_types
+    - paragraphs.paragraphs_type.dsj_listing
+  module:
+    - options
+id: paragraph.dsj_listing.field_dsj_content_types
+field_name: field_dsj_content_types
+entity_type: paragraph
+bundle: dsj_listing
+label: 'Content types'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

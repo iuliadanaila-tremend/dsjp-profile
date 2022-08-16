@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: 'Compétences numériques pour la main-d’œuvre.'
+    -
+      label: 'Compétences numériques pour les professionnels des TIC et d’autres experts numériques.'
+    -
+      label: 'Compétences numériques dans l’éducation.'
+    -
+      label: 'Compétences numériques pour tous'

@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: 'Tööjõu digioskused.'
+    -
+      label: 'IKT spetsialistide ja muude digitaalekspertide digioskused.'
+    -
+      label: 'Digioskused hariduses.'
+    -
+      label: 'Digitaaloskused kõigile'

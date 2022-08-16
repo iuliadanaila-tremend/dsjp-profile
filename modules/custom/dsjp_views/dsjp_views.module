@@ -1,0 +1,207 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for dsjp_views module.
+ *
+ * @DCG
+ * This file is no longer required in Drupal 8.
+ * @see https://www.drupal.org/node/2217931
+ */
+
+use Drupal\Core\Link;
+use Drupal\Core\Url;
+use Drupal\node\Entity\Node;
+use Drupal\views\Plugin\views\field\EntityField;
+use Drupal\views\ViewExecutable;
+use Drupal\views\Plugin\views\query\QueryPluginBase;
+
+/**
+ * Implements hook_views_pre_build().
+ */
+function dsjp_views_views_pre_build(ViewExecutable $view) {
+  if ('dsj_related_content' === $view->id() && 'dsj_related_content' === $view->current_display) {
+    $node = \Drupal::routeMatch()->getParameter('node');
+    if ($node && $node instanceof Node) {
+      // Get content type.
+      $contentType = $node->getType();
+      $view->filter['type']->value = [$contentType => $contentType];
+    }
+    else {
+      $view->filter['type']->value = [];
+    }
+  }
+  if ('dsj_search' === $view->id() && $view->current_display == 'listing_block') {
+    $node = \Drupal::routeMatch()->getParameter('node');
+    if ($node && $node instanceof Node) {
+      $filters = $view->display_handler->getOption('filters');
+
+      // Get content type.
+      $content_type_values = $node->get('field_dsj_content_type')
+        ->getValue();
+      if (!empty($content_type_values)) {
+        $content_types_arg = array_map(function ($entry) {
+          return $entry['value'];
+        }, $content_type_values);
+
+        $filters['type']['value'] = array_combine($content_types_arg, $content_types_arg);
+      }
+
+      $digital_technologies_values = $node->get('field_dsj_digital_technology')
+        ->getValue();
+      if (!empty($digital_technologies_values)) {
+        $digital_technologies_arg = array_map(function ($entry) {
+          return $entry['value'];
+        }, $digital_technologies_values);
+
+        $filters['field_dsj_digital_technology']['operator'] = 'or';
+        $filters['field_dsj_digital_technology']['value'] = array_combine($digital_technologies_arg, $digital_technologies_arg);
+      }
+      else {
+        unset($view->filter['field_dsj_digital_technology_value']);
+      }
+
+      $exposed = $view->getExposedInput();
+      if (isset($exposed['keywords']) && !empty($exposed['keywords'])) {
+        $filters['search_api_fulltext']['value'] = $exposed['keywords'];
+      }
+
+      $view->display_handler->overrideOption('filters', $filters);
+    }
+  }
+}
+
+/**
+ * Implements hook_views_query_alter().
+ *
+ * Alter the related content block to pass the content type as argument.
+ */
+function dsjp_views_views_query_alter(ViewExecutable $view, QueryPluginBase $query) {
+  // Check view id and display id.
+  if ('dsj_most_popular' === $view->id() && 'dsj_most_popular' === $view->current_display) {
+    // Alter the query for the most popular view block to order the results by
+    // the sum of comments and likes.
+    $query->addOrderBy(
+      NULL,
+      'comment_entity_statistics.comment_count + flagging_node_field_data__flag_counts.count',
+      'DESC',
+      'values_sum'
+    );
+  }
+  // Make sure that the multiple organisation field values are not duplicating
+  // the rows.
+  elseif ($view->id() == 'dsj_reports' && !in_array($view->current_display, [
+    'likes_report',
+    'likes_export',
+  ])) {
+    $query->addField('', 'nid', '', ['function' => 'groupby']);
+    $query->addGroupBy('nid');
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function dsjp_views_preprocess_views_view(&$variables) {
+  if ($variables['view']->id() == 'dsj_reports' && $variables['view']->current_display == 'likes_report') {
+    $total_likes = 0;
+    $unique_results = [];
+    foreach ($variables['view']->result as $row) {
+      if (!isset($unique_results[$row->nid])) {
+        $total_likes += $row->flagging_node_field_data__flag_counts_count;
+        $unique_results[$row->nid] = 1;
+      }
+    }
+    $variables['footer']['result'] = [
+      '#markup' => t('Total number of likes: @likes. This is calculated based on the filters selected, if any.', [
+        '@likes' => $total_likes,
+      ]),
+    ];
+  }
+  elseif ($variables['view']->id() == 'reports_translation' && $variables['view']->current_display == 'page_1') {
+    // For the total number of words and items, we have to use an attachment in
+    // order to calculate only the items that are not default translation.
+    if (!empty($variables['attachment_before'])) {
+      $attachment_view = $variables['attachment_before'][0]['#view'];
+      $attachment_view->execute();
+      $words = [];
+      foreach ($attachment_view->result as $row) {
+        if (!isset($words[$row->tjiid])) {
+          $words[$row->tjiid] = $row->_entity->getWordCount();
+        }
+      }
+      unset($variables['attachment_before']);
+      $text = t('Total number of items that are not the original translation: @total_rows. Total number of words translated: @total_words.', [
+        '@total_rows' => count($words),
+        '@total_words' => array_sum($words),
+      ]);
+      $variables['header']['area_custom_text']['#markup'] = $text;
+      $variables['footer']['area_custom_text']['#markup'] = $text;
+    }
+  }
+  elseif ($variables['view']->id() == 'dsj_reports_users' && $variables['view']->current_display == 'user_report') {
+    if (!empty($variables['attachment_before'])) {
+      $attachment_view = $variables['attachment_before'][0]['#view'];
+      $attachment_view->execute();
+      $assessments = 0;
+      foreach ($attachment_view->result as $row) {
+        $assessments += $row->user__field_dsj_assessment_field_dsj_assessment_target_id;
+      }
+      $text = t('Total number of assessments: @count.', [
+        '@count' => $assessments,
+      ]);
+      $variables['header']['result']['#markup'] .= ' ' . $text;
+      $variables['footer']['result']['#markup'] .= ' ' . $text;
+      unset($variables['attachment_before']);
+    }
+  }
+}
+
+/**
+ * Implements hook_views_pre_render().
+ */
+function dsjp_views_views_pre_render(ViewExecutable $view) {
+  if ($view->id() == 'moderated_content') {
+    foreach ($view->result as &$result) {
+      if (isset($result->node_field_data_node_field_revision_title) && strlen($result->node_field_data_node_field_revision_title) > 50) {
+        $result->node_field_data_node_field_revision_title = mb_substr($result->node_field_data_node_field_revision_title, 0, 50) . '...';
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function dsjp_views_preprocess_views_view_field(&$variables) {
+  // Because content listing is rewriting the field with a custom link, the
+  // langcode is not used when creating the url.
+  if ($variables['field'] instanceof EntityField && $variables['field']->field == 'title') {
+    switch ($variables['view']->id()) {
+      case 'content':
+        $node = $variables['row']->_entity;
+        $markup = $variables['output'];
+        $language = \Drupal::languageManager()->getLanguage($variables['row']->node_field_data_langcode);
+        $variables['output'] = [
+          '#prefix' => '<a href="' . $node->toUrl('canonical', [
+            'language' => $language,
+          ])->toString() . '">',
+          '#suffix' => '</a>',
+          '#markup' => $markup,
+        ];
+        break;
+
+      case 'dsj_reports':
+        /** @var \Drupal\node\NodeInterface $node */
+        $node = $variables['row']->_entity;
+        if ($node->bundle() == 'dsj_pledge_initiative') {
+          $url = Url::fromRoute('entity.node.canonical', ['node' => $node->get('field_dsj_pledge')->first()->getString()]);
+          $link = Link::fromTextAndUrl($node->getTitle(), $url);
+          $variables['output'] = [
+            '#markup' => $link->toString(),
+          ];
+        }
+        break;
+    }
+  }
+}

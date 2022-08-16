@@ -1,0 +1,18 @@
+uuid: f46d7d01-719a-46d0-a50c-808dcb2477be
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.dsj_strategy
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+id: node.dsj_strategy
+target_entity_type_id: node
+target_bundle: dsj_strategy
+default_langcode: site_default
+language_alterable: false

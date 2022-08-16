@@ -1,0 +1,28 @@
+uuid: 3b856db7-5532-446b-8783-014b7291afba
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.message.mail_body
+    - field.field.message.create_node.field_node_reference
+    - field.field.message.create_node.field_published
+    - message.template.create_node
+  module:
+    - user
+_core:
+  default_config_hash: FzEJ-CLqutECYHZpXH5BFHJcBocprtK0iuTSDR-711Y
+id: message.create_node.mail_body
+targetEntityType: message
+bundle: create_node
+mode: mail_body
+content:
+  partial_1:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_node_reference: true
+  field_published: true
+  partial_0: true
+  search_api_excerpt: true

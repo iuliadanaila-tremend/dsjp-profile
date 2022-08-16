@@ -1,0 +1,27 @@
+uuid: 8eeb1979-2f53-463f-9728-2804450b6d83
+langcode: en
+status: false
+dependencies:
+  module:
+    - block_visibility_groups
+    - private_message
+  theme:
+    - edsjp
+id: dsj_private_message_notification
+theme: edsjp
+region: site_header_secondary
+weight: -11
+provider: null
+plugin: private_message_notification_block
+settings:
+  id: private_message_notification_block
+  label: 'Private Message Notification'
+  label_display: '0'
+  provider: private_message
+  ajax_refresh_rate: 15
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    context_mapping: {  }
+    block_visibility_group: ''

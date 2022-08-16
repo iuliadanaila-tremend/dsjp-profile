@@ -1,0 +1,34 @@
+settings:
+  allowed_values:
+    -
+      label: Faktablad
+    -
+      label: Prognose
+    -
+      label: 'Generelle retningslinjer'
+    -
+      label: 'Generelle oplysninger'
+    -
+      label: Magasin
+    -
+      label: 'Nationalt plan'
+    -
+      label: Nyheder
+    -
+      label: Nyhedsartikel
+    -
+      label: Nyhedsbrev
+    -
+      label: Præsentation
+    -
+      label: Reklamemateriale
+    -
+      label: Rapport
+    -
+      label: Tillæg
+    -
+      label: 'Videnskabelig rapport'
+    -
+      label: Undersøgelse
+    -
+      label: Arbejdsdokument

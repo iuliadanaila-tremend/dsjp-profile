@@ -1,0 +1,6 @@
+settings:
+  allowed_values:
+    -
+      label: 'Единична оферта'
+    -
+      label: 'База данни'

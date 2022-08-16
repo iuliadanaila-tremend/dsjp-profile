@@ -1,0 +1,14 @@
+settings:
+  allowed_values:
+    -
+      label: Darbas
+    -
+      label: 'Dalyvaujant projekte'
+    -
+      label: Akivaizdinis
+    -
+      label: Internetu
+    -
+      label: Mišrus
+    -
+      label: 'Dirbant tyrimų laboratorijoje'

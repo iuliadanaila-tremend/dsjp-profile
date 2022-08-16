@@ -1,0 +1,5 @@
+name: OpenEuropa oEmbed Media Test
+core_version_requirement: ^9.2
+type: module
+dependencies:
+  - oe_media:oe_media

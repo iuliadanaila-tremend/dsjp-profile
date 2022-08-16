@@ -1,0 +1,350 @@
+display:
+  default:
+    display_title: Master
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Filter
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'Items per page'
+            items_per_page_options_all_label: '- All -'
+            offset_label: Offset
+          tags:
+            previous: '‹ Previous'
+            next: 'Next ›'
+            first: '« First'
+            last: 'Last »'
+      fields:
+        tmgmt_local_task_bulk_form:
+          label: 'Bulk update'
+          action_title: 'With selection'
+        title:
+          label: Label
+          separator: ', '
+        word_count:
+          label: Words
+        item_count:
+          label: Items
+        progress:
+          label: Progress
+      filters:
+        status:
+          expose:
+            label: Status
+      empty:
+        area:
+          content:
+            value: 'You do not have tasks assigned to you.'
+      title: 'Local Tasks'
+  closed:
+    display_title: 'Closed tasks'
+    display_options:
+      fields:
+        tmgmt_local_task_bulk_form:
+          label: 'Bulk update'
+          action_title: 'With selection'
+        status:
+          label: Status
+          format_plural_string: !!binary MQNAY291bnQ=
+        progress:
+          label: Progress
+        title:
+          label: Label
+          separator: ', '
+        source_language:
+          label: From
+          separator: ', '
+        target_language:
+          label: To
+          separator: ', '
+        word_count:
+          label: Words
+        item_count:
+          label: Items
+        operations:
+          label: Operations
+      filters:
+        status:
+          expose:
+            label: Status
+        source_language:
+          expose:
+            label: 'Source language'
+        target_language:
+          expose:
+            label: 'Target language'
+        title:
+          expose:
+            label: Label
+      menu:
+        title: Closed
+      empty:
+        area:
+          content:
+            value: 'You do not have closed tasks.'
+  completed:
+    display_title: 'Completed tasks'
+    display_options:
+      display_description: 'Shows completed tasks for the current translator.'
+      fields:
+        tmgmt_local_task_bulk_form:
+          label: 'Bulk update'
+          action_title: 'With selection'
+        status:
+          label: Status
+          format_plural_string: !!binary MQNAY291bnQ=
+        progress:
+          label: Progress
+        title:
+          label: Label
+          separator: ', '
+        source_language:
+          label: From
+          separator: ', '
+        target_language:
+          label: To
+          separator: ', '
+        word_count:
+          label: Words
+        item_count:
+          label: Items
+        operations:
+          label: Operations
+      filters:
+        status:
+          expose:
+            label: Status
+        source_language:
+          expose:
+            label: 'Source language'
+        target_language:
+          expose:
+            label: 'Target language'
+        title:
+          expose:
+            label: Label
+      menu:
+        title: Completed
+      empty:
+        area:
+          content:
+            value: 'You do not have completed tasks.'
+  eligible:
+    display_options:
+      fields:
+        tmgmt_local_task_bulk_form:
+          label: 'Bulk update'
+          action_title: 'With selection'
+        status:
+          label: Status
+          format_plural_string: !!binary MQNAY291bnQ=
+        title:
+          label: Label
+          separator: ', '
+        source_language:
+          label: From
+          separator: ', '
+        target_language:
+          label: To
+          separator: ', '
+        word_count:
+          label: Words
+        item_count:
+          label: Items
+        operations:
+          label: Operations
+      filters:
+        status:
+          expose:
+            label: Status
+        source_language:
+          expose:
+            label: 'Source language'
+        target_language:
+          expose:
+            label: 'Target language'
+        title:
+          expose:
+            label: Label
+      menu:
+        description: 'List of eligible tasks'
+      empty:
+        area:
+          content:
+            value: 'You do not have eligible tasks.'
+  my_tasks:
+    display_title: 'My Tasks'
+    display_options:
+      fields:
+        tmgmt_local_task_bulk_form:
+          label: 'Bulk update'
+          action_title: 'With selection'
+        status:
+          label: Status
+        progress:
+          label: Progress
+        title:
+          label: Label
+          separator: ', '
+        source_language:
+          label: From
+          separator: ', '
+        target_language:
+          label: To
+          separator: ', '
+        word_count:
+          label: Words
+        item_count:
+          label: Items
+        operations:
+          label: Operations
+      filters:
+        status:
+          expose:
+            label: Status
+        source_language:
+          expose:
+            label: 'Source language'
+        target_language:
+          expose:
+            label: 'Target language'
+        title:
+          expose:
+            label: Label
+  pending:
+    display_title: 'Pending tasks'
+    display_options:
+      fields:
+        tmgmt_local_task_bulk_form:
+          label: 'Bulk update'
+          action_title: 'With selection'
+        status:
+          label: Status
+          separator: ', '
+        progress:
+          label: Progress
+        title:
+          label: Label
+          separator: ', '
+        source_language:
+          label: From
+          separator: ', '
+        target_language:
+          label: To
+          separator: ', '
+        word_count:
+          label: Words
+        item_count:
+          label: Items
+        operations:
+          label: Operations
+      filters:
+        status:
+          expose:
+            label: Status
+        source_language:
+          expose:
+            label: 'Source language'
+        target_language:
+          expose:
+            label: 'Target language'
+        title:
+          expose:
+            label: Label
+      menu:
+        title: Pending
+      empty:
+        area:
+          content:
+            value: 'You do not have pending tasks.'
+  rejected:
+    display_title: 'Rejected tasks'
+    display_options:
+      display_description: 'Shows rejected tasks for the current translator.'
+      fields:
+        tmgmt_local_task_bulk_form:
+          label: 'Bulk update'
+          action_title: 'With selection'
+        status:
+          label: Status
+          format_plural_string: !!binary MQNAY291bnQ=
+        progress:
+          label: Progress
+        title:
+          label: Label
+          separator: ', '
+        source_language:
+          label: From
+          separator: ', '
+        target_language:
+          label: To
+          separator: ', '
+        word_count:
+          label: Words
+        item_count:
+          label: Items
+        operations:
+          label: Operations
+      filters:
+        status:
+          expose:
+            label: Status
+        source_language:
+          expose:
+            label: 'Source language'
+        target_language:
+          expose:
+            label: 'Target language'
+        title:
+          expose:
+            label: Label
+      menu:
+        title: Rejected
+      empty:
+        area:
+          content:
+            value: 'You do not have rejected tasks.'
+  unassigned:
+    display_options:
+      fields:
+        tmgmt_local_task_bulk_form:
+          label: 'Bulk update'
+          action_title: 'With selection'
+        status:
+          label: Status
+          format_plural_string: !!binary MQNAY291bnQ=
+        title:
+          label: Label
+          separator: ', '
+        source_language:
+          label: From
+          separator: ', '
+        target_language:
+          label: To
+          separator: ', '
+        word_count:
+          label: Words
+        item_count:
+          label: Items
+        operations:
+          label: Operations
+      filters:
+        status:
+          expose:
+            label: Status
+      tab_options:
+        title: Translate
+      footer:
+        area:
+          content:
+            value: '<h2>My Tasks</h2>'
+      empty:
+        area:
+          content:
+            value: 'There are no eligible tasks.'

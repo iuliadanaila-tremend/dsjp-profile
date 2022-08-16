@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: 'Competencias digitales para la mano de obra.'
+    -
+      label: 'Competencias digitales para profesionales de las TIC y otros expertos digitales.'
+    -
+      label: 'Competencias digitales en la educación.'
+    -
+      label: 'Competencias digitales para todos'

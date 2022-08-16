@@ -1,0 +1,29 @@
+display:
+  default:
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Pritaikyti
+          reset_button_label: Išvalyti
+          exposed_sorts_label: 'Rikiuoti pagal'
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'Vienetų kiekis puslapyje'
+            items_per_page_options_all_label: '- Visos -'
+      fields:
+        name:
+          label: Pavadinimas
+        id:
+          label: ID
+        dropbutton:
+          label: Veiksmai
+      arguments:
+        gid:
+          exception:
+            title: Visi
+  page_1:
+    display_title: Puslapis
+    display_options:
+      menu:
+        title: 'Narystės prašymai'

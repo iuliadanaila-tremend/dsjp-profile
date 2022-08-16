@@ -1,0 +1,91 @@
+{% spaceless %}
+
+{#
+  /**
+   * @file
+   * Theme implementation for a ECL Content Item Block.
+   */
+  Parameters:
+    - "type" (string) (default: 'one'): Type of Content Item Block
+    - "title" (string) (default: ''): Title of Content Item Block
+    - "items" (array) (default: []): Content Item's for the Content Item Block
+    - "button" (associative array) (default: {}): Predefined structure compatible with Link component.
+    - "extra_classes" (string) (default: '')
+    - "extra_attributes" (array) (default: []): format: [
+        {
+          "name" (string) (default: ''),
+          "value" (string) (default: '')
+        },
+        ...
+      ]
+#}
+
+{# Internal properties #}
+
+{% set _css_class = 'ecl-content-item-block' %}
+{% set _extra_attributes = '' %}
+{% set _type = type|default('one') %}
+{% set _title = title|default('') %}
+{% set _items = items|default([]) %}
+{% set _button = button|default({}) %}
+
+{# Internal logic - Process properties #}
+
+{% if extra_classes %}
+  {% set _css_class = _css_class ~ ' ' ~ extra_classes %}
+{% endif %}
+
+{% if extra_attributes %}
+  {% for attr in extra_attributes %}
+    {% set _extra_attributes = _extra_attributes ~ ' ' ~ attr.name ~ '="' ~ attr.value ~ '"' %}
+  {% endfor %}
+{% endif %}
+
+{% set _extra_classes_item = 'ecl-col-12' %}
+{% if _type == 'two' %}
+  {% set _extra_classes_item = 'ecl-col-12 ecl-col-l-6' %}
+{% elseif _type == 'three' %}
+  {% set _extra_classes_item = 'ecl-col-12 ecl-col-l-4' %}
+{% elseif _type == 'four' %}
+  {% set _extra_classes_item = 'ecl-col-12 ecl-col-l-3' %}
+{% elseif _type == 'six' %}
+  {% set _extra_classes_item = 'ecl-col-12 ecl-col-l-2' %}
+{% endif %}
+
+<div class="{{ _css_class }}"{{ _extra_attributes|raw }}>
+  {% if _title %}
+    <div class="ecl-row">
+      <div class="ecl-content-item-block__title ecl-col-12">
+        <h2 class='ecl-u-type-heading-2'>{{ _title }}</h2>
+      </div>
+    </div>
+  {% endif %}
+
+  <div class="ecl-row">
+    {% for _item in _items %}
+      <div class="ecl-content-item-block__item ecl-u-mb-s {{ _extra_classes_item }}">
+        {{ _item }}
+      </div>
+    {% endfor %}
+  </div>
+
+  {% if _button.path %}
+    <div class="ecl-row">
+      <div class="ecl-content-item-block__button ecl-col-12">
+        <div class="ecl-u-clearfix ecl-u-pv-m">
+          {% include '@ecl-twig/link' with {
+            link: _button|merge({
+              'type': 'standalone',
+            }),
+            icon: {
+              'name': _button.icon_name,
+              'size': 'xs',
+              'path': icon_path
+            }
+          } only %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+</div>
+{% endspaceless %}

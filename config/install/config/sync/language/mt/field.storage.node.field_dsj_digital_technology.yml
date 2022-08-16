@@ -1,0 +1,32 @@
+settings:
+  allowed_values:
+    0:
+      label: 'L-intelliġenza Artifiċjali'
+    1:
+      label: Iċ-ċibersigurtà
+    2:
+      label: 'Internet tal-Oġġetti'
+    4:
+      label: Il-blockchain
+    5:
+      label: Robotika
+    6:
+      label: 'Realità Mawmentata'
+    7:
+      label: 'Realtà Virtwali'
+    8:
+      label: 'Computing ta’ Prestazzjoni Għolja'
+    9:
+      label: 'Tagħlim bil-Magni'
+    12:
+      label: Telekomunikazzjonijiet
+    15:
+      label: Softwer
+    16:
+      label: 'Żvilupp tal-Applikazzjonijiet tal-Mowbajl'
+    17:
+      label: 'Żvilupp tal-web'
+    18:
+      label: Mikroelettronika
+    19:
+      label: 'Il-ħiliet diġitali'

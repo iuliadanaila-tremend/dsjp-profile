@@ -1,0 +1,26 @@
+settings:
+  allowed_values:
+    -
+      label: ONG-URI
+    -
+      label: 'Instituție publică'
+    -
+      label: 'Furnizor de educație și formare formală'
+    -
+      label: Întreprindere/Industrie
+    -
+      label: 'Parteneriatele public-privat'
+    -
+      label: Altele
+    -
+      label: 'Sindicatul muncitorilor'
+    -
+      label: 'Grup de reflecție'
+    -
+      label: Asociere
+    -
+      label: 'Platforma de învățare deschisă'
+    -
+      label: Grup
+    -
+      label: 'Elaborare de politici'

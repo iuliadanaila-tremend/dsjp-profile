@@ -1,0 +1,9 @@
+{
+    "name": "drupal/remote_stream_wrapper",
+    "description": "Provides the ability to use external files over HTTP",
+    "type": "drupal-module",
+    "minimum-stability": "dev",
+    "require": {
+        "symfony/mime": "^4.3|^5.0"
+    }
+}

@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Osnovno
+    -
+      label: Srednja
+    -
+      label: Napredno
+    -
+      label: 'Stručnjak za digitalni sektor'

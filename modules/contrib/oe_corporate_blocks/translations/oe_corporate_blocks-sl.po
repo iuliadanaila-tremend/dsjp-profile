@@ -1,0 +1,320 @@
+msgid ""
+msgstr ""
+
+msgid "Contact the EU"
+msgstr "Kontaktirajte EU"
+
+msgid "tel:0080067891011"
+msgstr "tel:0080067891011"
+
+msgid "Call us 00 800 6 7 8 9 10 11"
+msgstr "Pokličite nas 00 800 6 7 8 9 10 11"
+
+msgid "https://european-union.europa.eu/contact-eu/call-us_en"
+msgstr "https://european-union.europa.eu/contact-eu/call-us_sl"
+
+msgid "Use other telephone options"
+msgstr "Pokličite druge telefonske številke"
+
+msgid "https://european-union.europa.eu/contact-eu/write-us_en"
+msgstr "https://european-union.europa.eu/contact-eu/write-us_sl"
+
+msgid "Write to us via our contact form"
+msgstr "Pišite nam s kontaktnim obrazcem"
+
+msgid "https://european-union.europa.eu/contact-eu/meet-us_en"
+msgstr "https://european-union.europa.eu/contact-eu/meet-us_sl"
+
+msgid "Meet us at one of the EU centres"
+msgstr "Obiščite nas v enem od centrov EU"
+
+msgid "Find a social media account"
+msgstr "Naše strani na družbenih omrežjih"
+
+msgid "Search for EU social media channels"
+msgstr "Poiščite nas na družbenih medijih EU"
+
+msgid "https://european-union.europa.eu/contact-eu/social-media-channels_en"
+msgstr "https://european-union.europa.eu/contact-eu/social-media-channels_sl"
+
+msgid "EU institutions"
+msgstr "Institucije EU"
+
+msgid "European Parliament"
+msgstr "Evropski parlament"
+
+msgid "http://www.europarl.europa.eu/portal/"
+msgstr "http://www.europarl.europa.eu/portal/sl"
+
+msgid "European Council"
+msgstr "Evropski svet"
+
+msgid "http://www.consilium.europa.eu/en/european-council/"
+msgstr "http://www.consilium.europa.eu/sl/european-council/"
+
+msgid "Council of the European Union"
+msgstr "Svet Evropske unije"
+
+msgid "http://www.consilium.europa.eu/en/home/"
+msgstr "http://www.consilium.europa.eu/sl/home/"
+
+msgid "https://ec.europa.eu/commission/index_en"
+msgstr "http://ec.europa.eu/index_sl.htm"
+
+msgid "Court of Justice of the European Union (CJEU)"
+msgstr "Sodišče Evropske unije"
+
+msgid "http://curia.europa.eu/jcms/jcms/j_6/en/"
+msgstr "http://curia.europa.eu/jcms/jcms/j_6/sl/"
+
+msgid "European Central Bank (ECB)"
+msgstr "Evropska centralna banka (ECB)"
+
+msgid "https://www.ecb.europa.eu/home/html/index.en.html"
+msgstr "https://www.ecb.europa.eu/home/languagepolicy/html/index.sl.html"
+
+msgid "European Court of Auditors (ECA)"
+msgstr "Evropsko računsko sodišče"
+
+msgid "http://www.eca.europa.eu/en"
+msgstr "http://www.eca.europa.eu/sl"
+
+msgid "European External Action Service (EEAS)"
+msgstr "Evropska služba za zunanje delovanje"
+
+msgid "European Economic and Social Committee (EESC)"
+msgstr "Evropski ekonomsko-socialni odbor"
+
+msgid "http://www.eesc.europa.eu/?i=portal.en.home"
+msgstr "http://www.eesc.europa.eu/?i=portal.sl.home"
+
+msgid "European Committee of the Regions (CoR)"
+msgstr "Evropski odbor regij"
+
+msgid "http://cor.europa.eu/en/"
+msgstr "http://cor.europa.eu/sl/"
+
+msgid "European Investment Bank (EIB)"
+msgstr "Evropska investicijska banka (EIB)"
+
+msgid "European Data Protection Supervisor (EDPS)"
+msgstr "Evropski nadzornik za varstvo podatkov"
+
+msgid "https://secure.edps.europa.eu/EDPSWEB/edps/EDPS?lang=en"
+msgstr "https://secure.edps.europa.eu/EDPSWEB/edps/EDPS?lang=sl"
+
+msgid "European Ombudsman"
+msgstr "Evropski varuh človekovih pravic"
+
+msgid "https://www.ombudsman.europa.eu/en/home"
+msgstr "https://www.ombudsman.europa.eu/sl/home"
+
+msgid "European Data Protection Board"
+msgstr "Evropski odbor za varstvo podatkov"
+
+msgid "https://edpb.europa.eu/edpb_en"
+msgstr "https://edpb.europa.eu/edpb_sl"
+
+msgid "European Personnel Selection Office"
+msgstr "Evropski urad za izbor osebja"
+
+msgid "https://epso.europa.eu/home_en"
+msgstr "https://epso.europa.eu/home_sl"
+
+msgid "Publications Office of the European Union"
+msgstr "Urad za publikacije Evropske unije"
+
+msgid "https://op.europa.eu/en/home"
+msgstr "https://op.europa.eu/sl/home"
+
+msgid "Agencies"
+msgstr "Agencije"
+
+msgid "https://european-union.europa.eu/institutions-law-budget/institutions-and-bodies/institutions-and-bodies-profiles_en?f%5B0%5D=oe_organisation_eu_type%3Ahttp%3A//publications.europa.eu/resource/authority/corporate-body-classification/AGENCY_DEC&f%5B1%5D=oe_organisation_eu_type%3Ahttp%3A//publications.europa.eu/resource/authority/corporate-body-classification/AGENCY_EXEC&f%5B2%5D=oe_organisation_eu_type%3Ahttp%3A//publications.europa.eu/resource/authority/corporate-body-classification/EU_JU"
+msgstr "https://european-union.europa.eu/institutions-law-budget/institutions-and-bodies/institutions-and-bodies-profiles_sl?f%5B0%5D=oe_organisation_eu_type%3Ahttp%3A//publications.europa.eu/resource/authority/corporate-body-classification/AGENCY_DEC&f%5B1%5D=oe_organisation_eu_type%3Ahttp%3A//publications.europa.eu/resource/authority/corporate-body-classification/AGENCY_EXEC&f%5B2%5D=oe_organisation_eu_type%3Ahttp%3A//publications.europa.eu/resource/authority/corporate-body-classification/EU_JU"
+
+msgid "About this site"
+msgstr "O spletišču"
+
+msgid "https://europa.eu/european-union/abouteuropa_en"
+msgstr "https://europa.eu/european-union/abouteuropa_sl"
+
+msgid "Language policy"
+msgstr "Jezikovna politika"
+
+msgid "Languages on our websites"
+msgstr "Jeziki na naših spletiščih"
+
+msgid "https://european-union.europa.eu/languages-our-websites_en"
+msgstr "https://european-union.europa.eu/languages-our-websites_sl"
+
+msgid "Privacy policy"
+msgstr "Politika varstva zasebnost"
+
+msgid "https://european-union.europa.eu/privacy-policy_en"
+msgstr "https://european-union.europa.eu/privacy-policy_sl"
+
+msgid "Legal"
+msgstr "Pravni pogoji"
+
+msgid "Legal notice"
+msgstr "Pravno obvestilo"
+
+msgid "https://european-union.europa.eu/legal-notice_en"
+msgstr "https://european-union.europa.eu/legal-notice_sl"
+
+msgid "Cookies"
+msgstr "Piškotki"
+
+msgid "https://european-union.europa.eu/cookies_en"
+msgstr "https://european-union.europa.eu/cookies_sl"
+
+msgid "Accessibility"
+msgstr "Dostopnost"
+
+msgid "https://european-union.europa.eu/web-accessibility-policy_en"
+msgstr "https://european-union.europa.eu/web-accessibility-policy_sl"
+
+msgid "European Commission"
+msgstr "Evropska komisija"
+
+msgid "https://ec.europa.eu/info/index_en"
+msgstr "https://ec.europa.eu/info/index_sl"
+
+msgid "European Commission website"
+msgstr "Spletišče Evropske komisije"
+
+msgid "https://ec.europa.eu/info/strategy_en"
+msgstr "https://ec.europa.eu/info/strategy_sl"
+
+msgid "Strategy"
+msgstr "Strategija"
+
+msgid "https://ec.europa.eu/info/about-european-commission_en"
+msgstr "https://ec.europa.eu/info/about-european-commission_sl"
+
+msgid "About the European Commission"
+msgstr "O Evropski komisiji"
+
+msgid "https://ec.europa.eu/info/business-economy-euro_en"
+msgstr "https://ec.europa.eu/info/business-economy-euro_sl"
+
+msgid "Business, Economy, Euro"
+msgstr "Podjetništvo, gospodarstvo, evro"
+
+msgid "https://ec.europa.eu/info/live-work-travel-eu_en"
+msgstr "https://ec.europa.eu/info/live-work-travel-eu_sl"
+
+msgid "Live, work, travel in the EU"
+msgstr "Življenje, delo, potovanje v EU"
+
+msgid "https://ec.europa.eu/info/law_en"
+msgstr "https://ec.europa.eu/info/law_sl"
+
+msgid "Law"
+msgstr "Zakonodaja"
+
+msgid "https://ec.europa.eu/info/funding-tenders_en"
+msgstr "https://ec.europa.eu/info/funding-tenders_sl"
+
+msgid "Funding, Tenders"
+msgstr "Financiranje, javna naročila"
+
+msgid "https://ec.europa.eu/info/research-and-innovation_en"
+msgstr "https://ec.europa.eu/info/research-and-innovation_sl"
+
+msgid "Research and innovation"
+msgstr "Raziskave in inovacije"
+
+msgid "https://ec.europa.eu/info/energy-climate-change-environment_en"
+msgstr "https://ec.europa.eu/info/energy-climate-change-environment_sl"
+
+msgid "Energy, Climate change, Environment"
+msgstr "Energija, podnebne spremembe, okolje"
+
+msgid "https://ec.europa.eu/info/education_en"
+msgstr "https://ec.europa.eu/info/education_sl"
+
+msgid "Education"
+msgstr "Izobraževanje"
+
+msgid "https://ec.europa.eu/info/aid-development-cooperation-fundamental-rights_en"
+msgstr "https://ec.europa.eu/info/aid-development-cooperation-fundamental-rights_sl"
+
+msgid "Aid, Development cooperation, Fundamental rights"
+msgstr "Pomoč, razvojno sodelovanje, temeljne pravice"
+
+msgid "https://ec.europa.eu/info/food-farming-fisheries_en"
+msgstr "https://ec.europa.eu/info/food-farming-fisheries_sl"
+
+msgid "Food, Farming, Fisheries"
+msgstr "Hrana, kmetijstvo, ribištvo"
+
+msgid "https://ec.europa.eu/info/eu-regional-and-urban-development_en"
+msgstr "https://ec.europa.eu/info/eu-regional-and-urban-development_sl"
+
+msgid "EU regional and urban development"
+msgstr "Razvoj regij in mest v EU"
+
+msgid "https://ec.europa.eu/info/jobs-european-commission_en"
+msgstr "https://ec.europa.eu/info/jobs-european-commission_sl"
+
+msgid "Jobs at the European Commission"
+msgstr "Zaposlitev pri Evropski komisiji"
+
+msgid "https://ec.europa.eu/info/statistics_en"
+msgstr "https://ec.europa.eu/info/statistics_sl"
+
+msgid "Statistics"
+msgstr "Statistika"
+
+msgid "https://ec.europa.eu/commission/presscorner/home/en"
+msgstr "https://ec.europa.eu/commission/presscorner/home/sl"
+
+msgid "News"
+msgstr "Novica"
+
+msgid "https://ec.europa.eu/info/events_en"
+msgstr "https://ec.europa.eu/info/events_sl"
+
+msgid "Events"
+msgstr "Dogodki"
+
+msgid "https://ec.europa.eu/info/publications_en"
+msgstr "https://ec.europa.eu/info/publications_sl"
+
+msgid "Publications"
+msgstr "Publikacije"
+
+msgid "https://ec.europa.eu/info/about-european-commission/contact_en"
+msgstr "https://ec.europa.eu/info/about-european-commission/contact_sl"
+
+msgid "Contact the European Commission"
+msgstr "Kontaktni podatki Evropske komisije"
+
+msgid "https://european-union.europa.eu/contact-eu/social-media-channels_en#/search?page=0&institutions=european_commission"
+msgstr "https://european-union.europa.eu/contact-eu/social-media-channels_sl#/search?page=0&institutions=european_commission"
+
+msgid "Follow the European Commission on social media"
+msgstr "Evropska komisija na družbenih medijih"
+
+msgid "https://ec.europa.eu/info/resources-partners_en"
+msgstr "https://ec.europa.eu/info/resources-partners_sl"
+
+msgid "Resources for partners"
+msgstr "Viri za partnerje"
+
+msgid "https://ec.europa.eu/info/language-policy_en"
+msgstr "https://ec.europa.eu/info/language-policy_sl"
+
+msgid "https://ec.europa.eu/info/cookies_en"
+msgstr "https://ec.europa.eu/info/cookies_sl"
+
+msgid "https://ec.europa.eu/info/privacy-policy_en"
+msgstr "https://ec.europa.eu/info/privacy-policy_sl"
+
+msgid "https://ec.europa.eu/info/legal-notice_en"
+msgstr "https://ec.europa.eu/info/legal-notice_sl"
+
+msgid "Social media"
+msgstr "Družbeni mediji"

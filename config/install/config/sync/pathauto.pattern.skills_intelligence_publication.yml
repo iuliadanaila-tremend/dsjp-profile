@@ -1,0 +1,22 @@
+uuid: 34587595-4a69-479c-990e-c310d7d3b3ca
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: skills_intelligence_publication
+label: 'Skills Intelligence Publication'
+type: 'canonical_entities:node'
+pattern: 'inspiration/research/[node:title]'
+selection_criteria:
+  797d89ab-7d15-476b-ba11-bf28c7fcbd08:
+    id: node_type
+    negate: false
+    uuid: 797d89ab-7d15-476b-ba11-bf28c7fcbd08
+    context_mapping:
+      node: node
+    bundles:
+      dsj_skills_intelligence: dsj_skills_intelligence
+selection_logic: and
+weight: 2
+relationships: {  }

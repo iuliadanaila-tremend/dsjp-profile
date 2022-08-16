@@ -1,0 +1,12 @@
+settings:
+  allowed_values:
+    -
+      label: 'Instrument voor zelfbeoordeling'
+    -
+      label: Methodologie
+    -
+      label: Opleidingscurricula
+    -
+      label: Casestudy
+    -
+      label: 'Ander opleidingsmateriaal'

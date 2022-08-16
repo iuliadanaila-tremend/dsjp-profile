@@ -1,0 +1,42 @@
+settings:
+  allowed_values:
+    -
+      label: 'Hauts résultats'
+    -
+      label: 'Orateurs non indigènes'
+    -
+      label: 'Personnes nécessitant une reconversion professionnelle'
+    -
+      label: 'Personnes dans l’enseignement supérieur (CEC 6)'
+    -
+      label: 'Personnes ayant terminé leurs études primaires'
+    -
+      label: 'Personnes de l’enseignement secondaire/obligatoire'
+    -
+      label: 'Titulaires d’un diplôme de l’enseignement supérieur (CEC 7)'
+    -
+      label: 'Personnes de l’enseignement primaire'
+    -
+      label: 'Personnes ayant une expérience professionnelle de 0 à 3 ans'
+    -
+      label: 'Titulaires d’un diplôme de l’enseignement supérieur (CEC 8)'
+    -
+      label: 'Titulaires d’un diplôme de l’enseignement secondaire obligatoire'
+    -
+      label: 'Personnes dans l’enseignement supérieur (CEC 7)'
+    -
+      label: 'Personnes dans l’enseignement supérieur (CEC 8)'
+    -
+      label: 'Les migrants'
+    -
+      label: 'Personnes ayant une expérience professionnelle de 3 à 10 ans'
+    -
+      label: 'Personnes ayant plus de 10 ans d’expérience professionnelle'
+    -
+      label: 'Personnes souffrant d’un handicap d’apprentissage'
+    -
+      label: 'Locuteurs natifs'
+    -
+      label: 'Titulaires d’un diplôme de l’enseignement supérieur (CEC 6)'
+    -
+      label: 'Résultats médiocres'

@@ -1,0 +1,12 @@
+settings:
+  allowed_values:
+    -
+      label: Itsearviointiväline
+    -
+      label: Menetelmät
+    -
+      label: Koulutusohjelmat
+    -
+      label: Tapaustutkimus
+    -
+      label: 'Muu koulutusmateriaali'

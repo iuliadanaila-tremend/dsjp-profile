@@ -1,0 +1,41 @@
+{#
+/**
+ * @file
+ * Overrides single page template for 'Standardised' ECL branding.
+ *
+ * Add additional information to 'site_header_container' and 'navigation' blocks.
+ *
+ * @see ./oe_theme/templates/layout/page.html.twig
+ */
+#}
+{% extends "page.html.twig" %}
+
+{% block site_header_container %}
+  <div class="ecl-site-header-standardised__header">
+    {{ parent() }}
+  </div>
+{% endblock %}
+
+{% block navigation %}
+  <div class="ecl-site-header-standardised__banner">
+    <div class="ecl-container">
+      {% if site_name is not empty %}
+        <div class="ecl-site-header-standardised__site-name">{{ site_name }}</div>
+      {% endif %}
+      {% if cta_link is not empty %}
+        {% include '@ecl-twig/link' with {
+          link: {
+            type: 'cta',
+            label: cta_link.label,
+            path: cta_link.path,
+            icon_position: 'after'
+          },
+          icon: get_link_icon(cta_link.path),
+          extra_classes: 'ecl-standardised__cta',
+        } only %}
+      {% endif %}
+    </div>
+  </div>
+  {{ parent() }}
+{% endblock %}
+

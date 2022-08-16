@@ -1,0 +1,7 @@
+uuid: 238809a6-0ff3-41b9-97aa-f78046ff8f47
+langcode: en
+status: true
+dependencies: {  }
+formId: simplenews_subscriptions_block_ed2a78f8_fb8b_4bda_ba91_d35e92b81
+captchaType: recaptcha_v3/newsletter_submit
+label: simplenews_subscriptions_block_ed2a78f8-fb8b-4bda-ba91-d35e92b81eda

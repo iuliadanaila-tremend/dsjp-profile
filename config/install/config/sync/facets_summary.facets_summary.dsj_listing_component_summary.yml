@@ -1,0 +1,61 @@
+uuid: cc0d004b-be60-4d23-b90d-d2db49b3a9b5
+langcode: en
+status: true
+dependencies:
+  config:
+    - search_api.index.main_content
+    - views.view.dsj_search
+  module:
+    - search_api
+id: dsj_listing_component_summary
+name: Summary
+facet_source_id: 'search_api:views_block__dsj_search__listing_block'
+processor_configs:
+  reset_facets:
+    processor_id: reset_facets
+    weights:
+      build: '30'
+    settings:
+      link_text: 'Clear all filters'
+  show_summary_with_reset:
+    processor_id: show_summary_with_reset
+    weights:
+      build: '20'
+    settings: {  }
+facets:
+  dsj_listing_component_content_type:
+    checked: true
+    label: 'Content type'
+    separator: ''
+    show_count: false
+    weight: 0
+  dsj_listing_component_created_date:
+    checked: true
+    label: 'Created date'
+    separator: ' '
+    show_count: false
+    weight: 0
+  dsj_listing_component_digital_skill_level:
+    checked: true
+    label: 'Digital skill level'
+    separator: ''
+    show_count: false
+    weight: 0
+  dsj_listing_component_digital_technology:
+    checked: true
+    label: 'Digital technology / specialization'
+    separator: ''
+    show_count: false
+    weight: 0
+  dsj_listing_component_geographic_scope_country:
+    checked: true
+    label: Country
+    separator: ''
+    show_count: false
+    weight: 0
+  dsj_listing_component_target_audience:
+    checked: true
+    label: 'Target audience'
+    separator: ''
+    show_count: false
+    weight: 0

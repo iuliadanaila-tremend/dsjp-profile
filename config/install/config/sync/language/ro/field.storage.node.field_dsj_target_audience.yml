@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: 'Competențe digitale pentru forța de muncă.'
+    -
+      label: 'Competențe digitale pentru profesioniștii din domeniul TIC și pentru alți experți în domeniul digital.'
+    -
+      label: 'Competențele digitale în educație.'
+    -
+      label: 'Competențe digitale pentru toți'

@@ -1,0 +1,33 @@
+uuid: 0529173f-834a-457e-b83e-55a8b38fe98e
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - dsjp_pledge
+    - system
+  theme:
+    - edsjp
+id: pledgewelcome
+theme: edsjp
+region: content
+weight: -7
+provider: null
+plugin: pledge_welcome_block
+settings:
+  id: pledge_welcome_block
+  label: 'Pledge Welcome'
+  label_display: '0'
+  provider: dsjp_pledge
+  text_content:
+    value: "<h2>Welcome</h2>\r\n\r\n<p>The Pledge Viewer is the home of the Digital Skills and Jobs Coalition for making, viewing and managing pledges and membership. Register to apply to become a member and join hundreds of organisations who demonstrate their role in closing the digital skills gap in Europe.</p>\r\n\r\n<p>&nbsp;</p>\r\n"
+    format: plain_text
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /pledges

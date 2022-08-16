@@ -1,0 +1,37 @@
+<article{{ attributes.addClass(['js-comment', 'contextual-region', 'comment']) }}>
+  <div class="comment--inner">
+    <div class="comment--author">
+      {{ user_picture }}
+      {% if reply_to %}
+        {{ reply_to }}
+      {% endif %}
+    </div>
+
+    <div class="comment--container">
+      <div class="comment--container-header">
+        <div class="created-at">
+          {% set timestamp = comment.getCreatedTime|format_date('custom', 'U') %}
+          {% if date(timestamp) < date('-6 days') %}
+            <time>{{ comment.getCreatedTime|format_date('custom', 'd F Y') }}</time>
+            {% else %}
+            <time class="time-ago-wrapper" data-date="{{ timestamp }}"></time> {{ 'ago' | t }}
+          {% endif %}
+        </div>
+
+        {#
+        Indicate the semantic relationship between parent and child comments for
+        accessibility. The list is difficult to navigate in a screen reader
+        without this information.
+        #}
+        {% if parent %}
+          <p class="visually-hidden">{{ parent }}</p>
+        {% endif %}
+      </div>
+
+      <div class="comment--container-body">
+      {{ content_attributes }}
+          {{ content }}
+      </div>
+    </div>
+  </div>
+</article>

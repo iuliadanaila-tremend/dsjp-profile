@@ -1,0 +1,26 @@
+settings:
+  allowed_values:
+    -
+      label: NGO’S
+    -
+      label: 'Openbare instelling'
+    -
+      label: 'Aanbieder van formeel onderwijs en opleiding'
+    -
+      label: Ondernemingen/industrie
+    -
+      label: 'Publiek-private partnerschappen'
+    -
+      label: Andere
+    -
+      label: Vakbond
+    -
+      label: Denktank
+    -
+      label: Vereniging
+    -
+      label: 'Open leerplatform'
+    -
+      label: Interessegroep
+    -
+      label: Beleidsmaker

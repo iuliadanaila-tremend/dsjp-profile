@@ -1,0 +1,26 @@
+settings:
+  allowed_values:
+    -
+      label: NVO
+    -
+      label: 'Javna ustanova'
+    -
+      label: 'Pružatelj formalnog obrazovanja i osposobljavanja'
+    -
+      label: Poduzeće/industrija
+    -
+      label: 'Javno-privatno partnerstvo'
+    -
+      label: Ostalo
+    -
+      label: 'Radnička unija'
+    -
+      label: 'Trustovi mozgova'
+    -
+      label: Udruženje
+    -
+      label: 'Otvorena platforma za učenje'
+    -
+      label: 'Interesna grupa'
+    -
+      label: 'Tvorac politike'

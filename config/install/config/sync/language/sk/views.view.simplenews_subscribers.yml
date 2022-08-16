@@ -1,0 +1,52 @@
+label: Odberatelia
+display:
+  default:
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Použiť
+          reset_button_label: Reset
+          exposed_sorts_label: 'Zoradiť podľa'
+          sort_asc_label: Vzostupne
+          sort_desc_label: Zostupne
+      pager:
+        options:
+          tags:
+            previous: '‹ predchádzajúca'
+            next: 'nasledujúca ›'
+            first: '« prvá'
+            last: 'posledná »'
+          expose:
+            items_per_page_label: 'Položiek na stránku'
+            items_per_page_options_all_label: '- Všetko -'
+            offset_label: 'Zobraziť od'
+      fields:
+        mail:
+          label: E-mail
+        user_name:
+          label: 'Používateľské meno'
+        subscriptions_target_id:
+          label: Odoberania
+          separator: ', '
+        status:
+          label: Aktívny
+        created:
+          label: Vytvorené
+        operations:
+          label: Operácie
+      filters:
+        mail:
+          expose:
+            label: E-mail
+        subscriptions_target_id:
+          expose:
+            label: 'Informačné listy'
+        status:
+          expose:
+            label: Aktívny
+        subscriptions_status:
+          expose:
+            label: Stav
+      title: Odberatelia
+  page_1:
+    display_title: Stránka

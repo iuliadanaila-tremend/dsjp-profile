@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: 'Ħiliet diġitali għall-forza tax-xogħol.'
+    -
+      label: 'Ħiliet diġitali għall-professjonisti tal-ICT u esperti diġitali oħra.'
+    -
+      label: 'Ħiliet diġitali fl-edukazzjoni.'
+    -
+      label: 'Ħiliet diġitali għal kulħadd'

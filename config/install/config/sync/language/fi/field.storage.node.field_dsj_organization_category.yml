@@ -1,0 +1,24 @@
+settings:
+  allowed_values:
+    1:
+      label: 'Julkinen laitos'
+    2:
+      label: 'Virallinen koulutuksen tarjoaja'
+    3:
+      label: Yritys/teollisuus
+    4:
+      label: 'Julkisen ja yksityisen sektorin kumppanuus'
+    5:
+      label: Muut
+    6:
+      label: Työmarkkinaunioni
+    7:
+      label: Ajatushautomo
+    8:
+      label: Yhdistys
+    9:
+      label: 'Avoin oppimisfoorumi'
+    10:
+      label: Eturyhmä
+    11:
+      label: Päättäjä

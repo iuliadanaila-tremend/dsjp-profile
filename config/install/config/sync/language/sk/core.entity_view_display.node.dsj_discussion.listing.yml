@@ -1,0 +1,6 @@
+third_party_settings:
+  field_group:
+    group_text:
+      label: Text
+    group_tags:
+      label: Značky

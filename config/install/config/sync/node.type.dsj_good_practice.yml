@@ -1,0 +1,18 @@
+uuid: f12693bb-ee59-49b3-a95f-d48d632e423a
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: 'Good practice'
+type: dsj_good_practice
+description: ''
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true

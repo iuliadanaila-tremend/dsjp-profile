@@ -1,0 +1,10 @@
+uuid: fac033db-2219-4688-9c09-fde3621cbdc6
+langcode: en
+status: true
+dependencies: {  }
+id: dsj_map
+label: Map
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

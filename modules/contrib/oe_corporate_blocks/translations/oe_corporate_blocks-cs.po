@@ -1,0 +1,317 @@
+msgid ""
+msgstr ""
+
+msgid "Contact the EU"
+msgstr "Jak kontaktovat EU"
+
+msgid "tel:0080067891011"
+msgstr "tel:0080067891011"
+
+msgid "Call us 00 800 6 7 8 9 10 11"
+msgstr "Zavolejte nám na linku 00 800 6 7 8 9 10 11"
+
+msgid "https://european-union.europa.eu/contact-eu/call-us_en"
+msgstr "https://european-union.europa.eu/contact-eu/call-us_cs"
+
+msgid "Use other telephone options"
+msgstr "Kontaktujte nás na jiném čísle"
+
+msgid "https://european-union.europa.eu/contact-eu/write-us_en"
+msgstr "https://european-union.europa.eu/contact-eu/write-us_cs"
+
+msgid "Write to us via our contact form"
+msgstr "Napište nám pomocí kontaktního formuláře"
+
+msgid "https://european-union.europa.eu/contact-eu/meet-us_en"
+msgstr "https://european-union.europa.eu/contact-eu/meet-us_cs"
+
+msgid "Meet us at one of the EU centres"
+msgstr "Navštivte nás v kontaktním místě EU"
+
+msgid "Find a social media account"
+msgstr "Vyhledat účet na sociálních médiích"
+
+msgid "Search for EU social media channels"
+msgstr "Vyhledávání informačních kanálů EU v sociálních médiích"
+
+msgid "https://european-union.europa.eu/contact-eu/social-media-channels_en"
+msgstr "https://european-union.europa.eu/contact-eu/social-media-channels_cs"
+
+msgid "EU institutions"
+msgstr "Orgány EU"
+
+msgid "European Parliament"
+msgstr "Evropský parlament"
+
+msgid "http://www.europarl.europa.eu/portal/"
+msgstr "http://www.europarl.europa.eu/portal/cs"
+
+msgid "European Council"
+msgstr "Evropská rada"
+
+msgid "http://www.consilium.europa.eu/en/european-council/"
+msgstr "http://www.consilium.europa.eu/cs/european-council/"
+
+msgid "Council of the European Union"
+msgstr "Rada Evropské unie"
+
+msgid "http://www.consilium.europa.eu/en/home/"
+msgstr "http://www.consilium.europa.eu/cs/home/"
+
+msgid "European Commission"
+msgstr "Evropská komise"
+
+msgid "https://ec.europa.eu/commission/index_en"
+msgstr "https://ec.europa.eu/info/index_cs"
+
+msgid "Court of Justice of the European Union (CJEU)"
+msgstr "Soudní dvůr Evropské unie"
+
+msgid "http://curia.europa.eu/jcms/jcms/j_6/en/"
+msgstr "http://curia.europa.eu/jcms/jcms/j_6/cs/"
+
+msgid "European Central Bank (ECB)"
+msgstr "Evropská centrální banka (ECB)"
+
+msgid "https://www.ecb.europa.eu/home/html/index.en.html"
+msgstr "https://www.ecb.europa.eu/home/languagepolicy/html/index.cs.html"
+
+msgid "European Court of Auditors (ECA)"
+msgstr "Evropský účetní dvůr (EÚD)"
+
+msgid "http://www.eca.europa.eu/en"
+msgstr "http://www.eca.europa.eu/cs"
+
+msgid "European External Action Service (EEAS)"
+msgstr "Evropská služba pro vnější činnost (ESVČ)"
+
+msgid "European Economic and Social Committee (EESC)"
+msgstr "Evropský hospodářský a sociální výbor"
+
+msgid "http://www.eesc.europa.eu/?i=portal.en.home"
+msgstr "http://www.eesc.europa.eu/?i=portal.cs.home"
+
+msgid "European Committee of the Regions (CoR)"
+msgstr "Evropský výbor regionů"
+
+msgid "http://cor.europa.eu/en/"
+msgstr "https://cor.europa.eu/cs"
+
+msgid "European Investment Bank (EIB)"
+msgstr "Evropská investiční banka (EIB)"
+
+msgid "European Data Protection Supervisor (EDPS)"
+msgstr "Evropský inspektor ochrany údajů"
+
+msgid "https://secure.edps.europa.eu/EDPSWEB/edps/EDPS?lang=en"
+msgstr "https://secure.edps.europa.eu/EDPSWEB/edps/EDPS?lang=cs"
+
+msgid "European Ombudsman"
+msgstr "Evropský veřejný ochránce práv"
+
+msgid "https://www.ombudsman.europa.eu/en/home"
+msgstr "https://www.ombudsman.europa.eu/cs/home"
+
+msgid "European Data Protection Board"
+msgstr "Evropský sbor pro ochranu osobních údajů"
+
+msgid "https://edpb.europa.eu/edpb_en"
+msgstr "https://edpb.europa.eu/edpb_cs"
+
+msgid "European Personnel Selection Office"
+msgstr "Úřad pro výběr personálu Evropských společenství"
+
+msgid "https://epso.europa.eu/home_en"
+msgstr "https://epso.europa.eu/home_cs"
+
+msgid "Publications Office of the European Union"
+msgstr "Úřad pro publikace Evropské unie"
+
+msgid "https://op.europa.eu/en/home"
+msgstr "https://op.europa.eu/cs/home"
+
+msgid "Agencies"
+msgstr "Agentury"
+
+msgid "https://european-union.europa.eu/institutions-law-budget/institutions-and-bodies/institutions-and-bodies-profiles_en?f%5B0%5D=oe_organisation_eu_type%3Ahttp%3A//publications.europa.eu/resource/authority/corporate-body-classification/AGENCY_DEC&f%5B1%5D=oe_organisation_eu_type%3Ahttp%3A//publications.europa.eu/resource/authority/corporate-body-classification/AGENCY_EXEC&f%5B2%5D=oe_organisation_eu_type%3Ahttp%3A//publications.europa.eu/resource/authority/corporate-body-classification/EU_JU"
+msgstr "https://european-union.europa.eu/institutions-law-budget/institutions-and-bodies/institutions-and-bodies-profiles_cs?f%5B0%5D=oe_organisation_eu_type%3Ahttp%3A//publications.europa.eu/resource/authority/corporate-body-classification/AGENCY_DEC&f%5B1%5D=oe_organisation_eu_type%3Ahttp%3A//publications.europa.eu/resource/authority/corporate-body-classification/AGENCY_EXEC&f%5B2%5D=oe_organisation_eu_type%3Ahttp%3A//publications.europa.eu/resource/authority/corporate-body-classification/EU_JU"
+
+msgid "About this site"
+msgstr "O těchto stránkách"
+
+msgid "https://europa.eu/european-union/abouteuropa_en"
+msgstr "https://europa.eu/european-union/abouteuropa_cs"
+
+msgid "Language policy"
+msgstr "Jazyková politika"
+
+msgid "Languages on our websites"
+msgstr "Jazyková politika na našich internetových stránkách"
+
+msgid "https://european-union.europa.eu/languages-our-websites_en"
+msgstr "https://european-union.europa.eu/languages-our-websites_cs"
+
+msgid "Privacy policy"
+msgstr "Politika ochrany soukromí"
+
+msgid "https://european-union.europa.eu/privacy-policy_en"
+msgstr "https://european-union.europa.eu/privacy-policy_cs"
+
+msgid "Legal"
+msgstr "Právní informace"
+
+msgid "Legal notice"
+msgstr "Právní upozornění"
+
+msgid "https://european-union.europa.eu/legal-notice_en"
+msgstr "https://european-union.europa.eu/legal-notice_cs"
+
+msgid "https://european-union.europa.eu/cookies_en"
+msgstr "https://european-union.europa.eu/cookies_cs"
+
+msgid "Accessibility"
+msgstr "Dostupnost"
+
+msgid "https://european-union.europa.eu/web-accessibility-policy_en"
+msgstr "https://european-union.europa.eu/web-accessibility-policy_cs"
+
+msgid "https://ec.europa.eu/info/index_en"
+msgstr "https://ec.europa.eu/info/index_cs"
+
+msgid "European Commission website"
+msgstr "Internetové stránky Evropské komise"
+
+msgid "https://ec.europa.eu/info/strategy_en"
+msgstr "https://ec.europa.eu/info/strategy_cs"
+
+msgid "Strategy"
+msgstr "Politická strategie EU"
+
+msgid "https://ec.europa.eu/info/about-european-commission_en"
+msgstr "https://ec.europa.eu/info/about-european-commission_cs"
+
+msgid "About the European Commission"
+msgstr "O Evropské komisi"
+
+msgid "https://ec.europa.eu/info/business-economy-euro_en"
+msgstr "https://ec.europa.eu/info/business-economy-euro_cs"
+
+msgid "Business, Economy, Euro"
+msgstr "Podnikání, ekonomika, euro"
+
+msgid "https://ec.europa.eu/info/live-work-travel-eu_en"
+msgstr "https://ec.europa.eu/info/live-work-travel-eu_cs"
+
+msgid "Live, work, travel in the EU"
+msgstr "Pobyt, práce a cestování v EU"
+
+msgid "https://ec.europa.eu/info/law_en"
+msgstr "https://ec.europa.eu/info/law_cs"
+
+msgid "Law"
+msgstr "Právní předpisy"
+
+msgid "https://ec.europa.eu/info/funding-tenders_en"
+msgstr "https://ec.europa.eu/info/funding-tenders_cs"
+
+msgid "Funding, Tenders"
+msgstr "Financování, tendry, výběrová řízení"
+
+msgid "https://ec.europa.eu/info/research-and-innovation_en"
+msgstr "https://ec.europa.eu/info/research-and-innovation_cs"
+
+msgid "Research and innovation"
+msgstr "Výzkum a inovace"
+
+msgid "https://ec.europa.eu/info/energy-climate-change-environment_en"
+msgstr "https://ec.europa.eu/info/energy-climate-change-environment_cs"
+
+msgid "Energy, Climate change, Environment"
+msgstr "Energetika, změna klimatu, životní prostředí"
+
+msgid "https://ec.europa.eu/info/education_en"
+msgstr "https://ec.europa.eu/info/education_cs"
+
+msgid "Education"
+msgstr "Vzdělávání"
+
+msgid "https://ec.europa.eu/info/aid-development-cooperation-fundamental-rights_en"
+msgstr "https://ec.europa.eu/info/aid-development-cooperation-fundamental-rights_cs"
+
+msgid "Aid, Development cooperation, Fundamental rights"
+msgstr "Pomoc, rozvojová spolupráce, základní práva"
+
+msgid "https://ec.europa.eu/info/food-farming-fisheries_en"
+msgstr "https://ec.europa.eu/info/food-farming-fisheries_cs"
+
+msgid "Food, Farming, Fisheries"
+msgstr "Potraviny, zemědělství, rybolov"
+
+msgid "https://ec.europa.eu/info/eu-regional-and-urban-development_en"
+msgstr "https://ec.europa.eu/info/eu-regional-and-urban-development_cs"
+
+msgid "EU regional and urban development"
+msgstr "Regionální a městský rozvoj"
+
+msgid "https://ec.europa.eu/info/jobs-european-commission_en"
+msgstr "https://ec.europa.eu/info/jobs-european-commission_cs"
+
+msgid "Jobs at the European Commission"
+msgstr "Kariéra v Evropské komisi"
+
+msgid "https://ec.europa.eu/info/statistics_en"
+msgstr "https://ec.europa.eu/info/statistics_cs"
+
+msgid "Statistics"
+msgstr "Statistiky"
+
+msgid "https://ec.europa.eu/commission/presscorner/home/en"
+msgstr "https://ec.europa.eu/commission/presscorner/home/cs"
+
+msgid "News"
+msgstr "Aktuality"
+
+msgid "https://ec.europa.eu/info/events_en"
+msgstr "https://ec.europa.eu/info/events_cs"
+
+msgid "Events"
+msgstr "Akce "
+
+msgid "https://ec.europa.eu/info/publications_en"
+msgstr "https://ec.europa.eu/info/publications_cs"
+
+msgid "Publications"
+msgstr "Publikace"
+
+msgid "https://ec.europa.eu/info/about-european-commission/contact_en"
+msgstr "https://ec.europa.eu/info/about-european-commission/contact_cs"
+
+msgid "Contact the European Commission"
+msgstr "Kontakt na Evropskou komisi"
+
+msgid "https://european-union.europa.eu/contact-eu/social-media-channels_en#/search?page=0&institutions=european_commission"
+msgstr "https://european-union.europa.eu/contact-eu/social-media-channels_cs#/search?page=0&institutions=european_commission"
+
+msgid "Follow the European Commission on social media"
+msgstr "Evropská komise na sociálních médiích"
+
+msgid "https://ec.europa.eu/info/resources-partners_en"
+msgstr "https://ec.europa.eu/info/resources-partners_cs"
+
+msgid "Resources for partners"
+msgstr "Zdroje a pokyny pro naše partnery"
+
+msgid "https://ec.europa.eu/info/language-policy_en"
+msgstr "https://ec.europa.eu/info/language-policy_cs"
+
+msgid "https://ec.europa.eu/info/cookies_en"
+msgstr "https://ec.europa.eu/info/cookies_cs"
+
+msgid "https://ec.europa.eu/info/privacy-policy_en"
+msgstr "https://ec.europa.eu/info/privacy-policy_cs"
+
+msgid "https://ec.europa.eu/info/legal-notice_en"
+msgstr "https://ec.europa.eu/info/legal-notice_cs"
+
+msgid "Social media"
+msgstr "Sociální média"

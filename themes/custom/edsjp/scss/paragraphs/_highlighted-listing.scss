@@ -1,0 +1,49 @@
+.paragraph--type--dsj-highlighted-listing {
+  padding-bottom: $grid-gutter-width * 2;
+
+  .ecl-u-type-heading-2 {
+    @include font($h2-font-size, $line-height-2xl, $font-ec-square-regular, 600, true);
+  }
+
+  .more-link {
+
+    a {
+      @include icon(right-arrow);
+      color: $primary !important;
+      font-size: $font-size-base;
+      line-height: $line-height-lg;
+      margin-top: $grid-gutter-width / 2;
+      padding-right: 20px;
+      position: relative;
+      text-align: right;
+
+      &::before {
+        @include position(absolute, 2px 0 null null);
+        font-size: $font-size-xs;
+      }
+
+      &:hover {
+        color: $latest-category-color !important;
+      }
+
+      &:focus {
+        color: $primary !important;
+      }
+
+      &:disabled {
+        color: $primary-disabled !important;
+      }
+    }
+  }
+
+  .node--content {
+
+    h3 {
+      margin-top: ($grid-gutter-width * .875rem) / $grid-gutter-width !important;
+
+      a {
+        color: inherit;
+      }
+    }
+  }
+}

@@ -1,0 +1,97 @@
+uuid: f1a99e03-0512-4dc4-ab33-daa3cd756810
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.listing_wide
+    - field.field.node.dsj_national_coalition.body
+    - field.field.node.dsj_national_coalition.field_dsj_author
+    - field.field.node.dsj_national_coalition.field_dsj_digital_skill_level
+    - field.field.node.dsj_national_coalition.field_dsj_geographic_scope
+    - field.field.node.dsj_national_coalition.field_dsj_image
+    - field.field.node.dsj_national_coalition.field_dsj_meta_tags
+    - field.field.node.dsj_national_coalition.field_dsj_nc_partner
+    - field.field.node.dsj_national_coalition.field_dsj_nc_priority
+    - field.field.node.dsj_national_coalition.field_dsj_organization
+    - field.field.node.dsj_national_coalition.field_dsj_representative_image
+    - field.field.node.dsj_national_coalition.field_dsj_target_audience
+    - field.field.node.dsj_national_coalition.field_dsj_target_language
+    - field.field.node.dsj_national_coalition.field_dsj_website_link
+    - image.style.thumbnail
+    - node.type.dsj_national_coalition
+  module:
+    - field_group
+    - image
+    - smart_trim
+    - user
+third_party_settings:
+  field_group:
+    group_footer:
+      children:
+        - field_dsj_website_link
+      label: Footer
+      parent_name: ''
+      region: hidden
+      weight: 2
+      format_type: html_element
+      format_settings:
+        classes: node--footer
+        id: ''
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+id: node.dsj_national_coalition.listing_wide
+targetEntityType: node
+bundle: dsj_national_coalition
+mode: listing_wide
+content:
+  body:
+    type: smart_trim
+    label: hidden
+    settings:
+      trim_length: 250
+      trim_type: chars
+      trim_suffix: ...
+      wrap_output: false
+      wrap_class: trimmed
+      more_link: false
+      more_class: more-link
+      more_text: More
+      summary_handler: trim
+      trim_options:
+        text: true
+        trim_zero: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_dsj_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: content
+      image_style: thumbnail
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  content_moderation_control: true
+  field_dsj_author: true
+  field_dsj_digital_skill_level: true
+  field_dsj_geographic_scope: true
+  field_dsj_meta_tags: true
+  field_dsj_nc_partner: true
+  field_dsj_nc_priority: true
+  field_dsj_organization: true
+  field_dsj_representative_image: true
+  field_dsj_target_audience: true
+  field_dsj_target_language: true
+  field_dsj_website_link: true
+  flag_subscribe_node: true
+  flag_voting: true
+  langcode: true
+  links: true
+  search_api_excerpt: true

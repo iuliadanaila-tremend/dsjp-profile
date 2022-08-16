@@ -1,0 +1,106 @@
+.paragraph--type--dsj-top-banner {
+  @include media-breakpoint-down(md) {
+    padding-bottom: $grid-gutter-width * 5;
+  }
+
+  @include media-breakpoint-down(sm) {
+    padding-bottom: 0;
+    height: 105vh;
+  }
+
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  padding-bottom: $grid-gutter-width * 8;
+
+  &::before {
+    @include position(absolute, null 0 0);
+    background: linear-gradient(180deg, transparentize($gray-200, 1) 0%, $gray-200 90%, $gray-200 100%);
+    content: '';
+    height: 300px;
+    z-index: 1;
+  }
+
+  .title {
+    &-wrapper {
+      @include media-breakpoint-up(md) {
+        padding-left: $grid-gutter-width;
+      }
+
+      @include media-breakpoint-down(md) {
+        padding-left: $grid-gutter-width / 2;
+      }
+
+      @include make-container();
+      @include make-container-max-widths();
+      position: relative;
+      width: auto;
+      padding-right: 0;
+    }
+
+    &-container {
+      @include media-breakpoint-down(sm) {
+        padding-top: $grid-gutter-width;
+      }
+      padding: $grid-gutter-width * 1.5 0 0;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: $body-bg;
+
+      h1 {
+        @include media-breakpoint-up(lg) {
+          width: 80%;
+        }
+        margin: 0;
+        color: $body-bg;
+        font-size: $font-size-4xl * 2 !important; /* override ecl default style */
+        line-height: $font-size-4xl * 2.5 !important;/* override ecl default style */
+      }
+
+      h2 {
+        font-weight: normal;
+        max-width: 65%;
+        font-size: $h4-font-size;
+        line-height: $line-height-3xl;
+      }
+
+      h1,
+      h2 {
+        position: relative;
+        z-index: 1;
+      }
+    }
+  }
+}
+
+
+.paragraph {
+  &.paragraph--type--dsj-grouped-cards {
+    &.paragraph--view-mode--default {
+
+      @include media-breakpoint-down(sm) {
+        margin-top: -76vh !important;
+
+        .tabs {
+          label {
+            min-width: unset;
+          }
+        }
+      }
+
+      @include media-breakpoint-down(xxs) {
+        margin-top: -72vh !important;
+      }
+      @include media-breakpoint-down(xxxs) {
+        margin-top: -68vh !important;
+      }
+    }
+  }
+}

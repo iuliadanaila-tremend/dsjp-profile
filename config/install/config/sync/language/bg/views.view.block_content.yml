@@ -1,0 +1,20 @@
+display:
+  default:
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Apply
+          reset_button_label: Reset
+      fields:
+        info:
+          label: 'Block description'
+        changed:
+          label: Updated
+        operations:
+          label: Operations
+      filters:
+        info:
+          expose:
+            label: 'Block description'
+  page_1:
+    display_title: Page

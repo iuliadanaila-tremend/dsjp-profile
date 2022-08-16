@@ -1,0 +1,5 @@
+user_online_status.settings:
+  title: 'User Online Status settings'
+  description: 'Configure the delay for each status change.'
+  route_name: user_online_status.settings
+  parent: user.admin_index

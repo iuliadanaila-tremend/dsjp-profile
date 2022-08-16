@@ -1,0 +1,14 @@
+settings:
+  allowed_values:
+    -
+      label: 'En el trabajo'
+    -
+      label: 'Basado en proyectos'
+    -
+      label: Presencial
+    -
+      label: 'En línea'
+    -
+      label: Mezcladas
+    -
+      label: 'Basado en la investigación en laboratorio'

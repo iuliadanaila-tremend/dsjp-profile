@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies: {  }
+id: test_group_type
+label: 'Test group type'
+description: ''
+new_revision: false
+creator_membership: true
+creator_wizard: false
+creator_roles: {  }

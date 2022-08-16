@@ -1,0 +1,34 @@
+settings:
+  allowed_values:
+    -
+      label: 'Faktu lapa'
+    -
+      label: Prognoze
+    -
+      label: 'Vispārīgi norādījumi'
+    -
+      label: 'Vispārīga informācija'
+    -
+      label: Žurnāls
+    -
+      label: 'Valsts plāns'
+    -
+      label: 'Paziņojumi presei'
+    -
+      label: Ziņas
+    -
+      label: Biļetens
+    -
+      label: Prezentācija
+    -
+      label: 'Reklāmas materiāli'
+    -
+      label: Ziņojums
+    -
+      label: Grafiks
+    -
+      label: 'Zinātniska publikācija'
+    -
+      label: Pētījums
+    -
+      label: 'Darba dokuments'

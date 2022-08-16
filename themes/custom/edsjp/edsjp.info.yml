@@ -1,0 +1,30 @@
+name: EDSJP Theme
+type: theme
+description: Subtheme of OpenEuropa theme.
+core_version_requirement: ^8.8 || ^9
+php: ^7.3
+package: Edsjp
+
+base theme: oe_theme
+
+component_library: ec
+
+regions:
+  site_top_bar: "Site top bar"
+  site_header: "Site header"
+  site_header_secondary: "Site header secondary"
+  page_header: "Page header"
+  navigation: "Navigation"
+  content: "Content"
+  right_sidebar: "Right Sidebar"
+  footer: "Footer"
+  footer_eu: "Footer EU"
+  groups_sidebar: "Sidebar groups"
+
+logo: assets/images/ec_logo.svg
+
+libraries:
+  - edsjp/framework
+
+ckeditor_stylesheets:
+  - css/ckeditor.css

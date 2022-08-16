@@ -1,0 +1,24 @@
+label: Sporočilo
+display:
+  default:
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Apply
+          reset_button_label: Ponastavi
+      pager:
+        options:
+          tags:
+            previous: '‹ prejšnja'
+            next: 'naslednja ›'
+            first: '« prva'
+            last: 'zadnja »'
+      fields:
+        uid:
+          label: Avtor
+      title: Sporočilo
+  page_1:
+    display_title: Stran
+    display_options:
+      menu:
+        title: Sporočilo

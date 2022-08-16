@@ -1,0 +1,39 @@
+display:
+  default:
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Apply
+          reset_button_label: Reset
+      pager:
+        options:
+          tags:
+            previous: '‹ previous'
+            next: 'next ›'
+            first: '« first'
+            last: 'last »'
+      fields:
+        mail:
+          label: Email
+        user_name:
+          label: Username
+        subscriptions_target_id:
+          label: Subscriptions
+        status:
+          label: Active
+        created:
+          label: Created
+        operations:
+          label: Operations
+      filters:
+        mail:
+          expose:
+            label: Email
+        status:
+          expose:
+            label: Active
+        subscriptions_status:
+          expose:
+            label: Status
+  page_1:
+    display_title: Page

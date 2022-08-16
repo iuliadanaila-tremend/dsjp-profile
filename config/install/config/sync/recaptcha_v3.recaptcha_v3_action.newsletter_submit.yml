@@ -1,0 +1,8 @@
+uuid: 615954db-cc38-46fd-b74e-da653c852348
+langcode: en
+status: true
+dependencies: {  }
+id: newsletter_submit
+label: 'Newsletter submit'
+threshold: !!float 1
+challenge: captcha/Math

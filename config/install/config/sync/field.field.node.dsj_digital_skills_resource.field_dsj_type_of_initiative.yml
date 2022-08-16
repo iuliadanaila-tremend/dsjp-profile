@@ -1,0 +1,23 @@
+uuid: 3ed69619-44ec-4a7c-903b-943b77f6e71d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dsj_type_of_initiative
+    - node.type.dsj_digital_skills_resource
+  module:
+    - options
+_core:
+  default_config_hash: eQCGtDHTuT9xwXzZ8WVCEMFtRbUjnDQ1iCiKekdv49I
+id: node.dsj_digital_skills_resource.field_dsj_type_of_initiative
+field_name: field_dsj_type_of_initiative
+entity_type: node
+bundle: dsj_digital_skills_resource
+label: 'Type of initiative'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

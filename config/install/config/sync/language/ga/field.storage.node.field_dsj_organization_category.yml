@@ -1,0 +1,26 @@
+settings:
+  allowed_values:
+    -
+      label: ENR
+    -
+      label: 'Institiúid phoiblí'
+    -
+      label: 'Soláthraí foirmiúil Oideachais agus Oiliúna'
+    -
+      label: Fiontar/Tionscal
+    -
+      label: 'Comhpháirtíocht phríobháideach phoiblí'
+    -
+      label: Eile
+    -
+      label: 'Aontas na n-oibrithe'
+    -
+      label: 'Meitheal machnaimh'
+    -
+      label: Cumann
+    -
+      label: 'Ardán foghlama oscailte'
+    -
+      label: 'Grúpa sainleasa'
+    -
+      label: 'Duine de lucht déanta beartas'

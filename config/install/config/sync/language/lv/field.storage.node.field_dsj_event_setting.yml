@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Maisījumi
+    -
+      label: 'Atrašanās vieta'
+    -
+      label: 'Virtuālais dzīvs'
+    -
+      label: 'Virtuāls iepriekš reģistrēts'

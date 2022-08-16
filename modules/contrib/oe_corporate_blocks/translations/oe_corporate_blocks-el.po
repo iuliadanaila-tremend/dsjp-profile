@@ -1,0 +1,340 @@
+msgid ""
+msgstr ""
+
+msgid "Contact the EU"
+msgstr "Επικοινωνήστε με την ΕΕ"
+
+msgid "tel:0080067891011"
+msgstr "tel:0080067891011"
+
+msgid "Call us 00 800 6 7 8 9 10 11"
+msgstr "Τηλεφωνήστε μας στο 00 800 6 7 8 9 10 11"
+
+msgid "https://european-union.europa.eu/contact-eu/call-us_en"
+msgstr "https://european-union.europa.eu/contact-eu/call-us_el"
+
+msgid "Use other telephone options"
+msgstr ""
+"Χρησιμοποιήστε άλλες τηλεφωνικές "
+"επιλογές"
+
+msgid "https://european-union.europa.eu/contact-eu/write-us_en"
+msgstr "https://european-union.europa.eu/contact-eu/write-us_el"
+
+msgid "Write to us via our contact form"
+msgstr ""
+"Γράψτε μας μέσω του δελτίου "
+"επικοινωνίας"
+
+msgid "https://european-union.europa.eu/contact-eu/meet-us_en"
+msgstr "https://european-union.europa.eu/contact-eu/meet-us_el"
+
+msgid "Meet us at one of the EU centres"
+msgstr "Συναντήστε μας σε ένα από τα κέντρα της ΕΕ"
+
+msgid "Find a social media account"
+msgstr ""
+"Βρείτε έναν λογαριασμό σε κοινωνικό "
+"δίκτυο"
+
+msgid "Search for EU social media channels"
+msgstr ""
+"Αναζητήστε τις σελίδες της ΕΕ στα μέσα "
+"κοινωνικής δικτύωσης"
+
+msgid "https://european-union.europa.eu/contact-eu/social-media-channels_en"
+msgstr "https://european-union.europa.eu/contact-eu/social-media-channels_el"
+
+msgid "EU institutions"
+msgstr "Θεσμικά όργανα της ΕΕ"
+
+msgid "European Parliament"
+msgstr "Ευρωπαϊκό Κοινοβούλιο"
+
+msgid "http://www.europarl.europa.eu/portal/"
+msgstr "http://www.europarl.europa.eu/portal/el"
+
+msgid "European Council"
+msgstr "Ευρωπαϊκό Συμβούλιο"
+
+msgid "http://www.consilium.europa.eu/en/european-council/"
+msgstr "http://www.consilium.europa.eu/el/european-council/"
+
+msgid "Council of the European Union"
+msgstr "Συμβούλιο της Ευρωπαϊκής Ένωσης"
+
+msgid "http://www.consilium.europa.eu/en/home/"
+msgstr "http://www.consilium.europa.eu/el/home/"
+
+msgid "European Commission"
+msgstr "Ευρωπαϊκή Επιτροπή"
+
+msgid "https://ec.europa.eu/commission/index_en"
+msgstr "https://ec.europa.eu/commission/index_el"
+
+msgid "Court of Justice of the European Union (CJEU)"
+msgstr "Δικαστήριο της Ευρωπαϊκής Ένωσης (ΔΕΕ)"
+
+msgid "http://curia.europa.eu/jcms/jcms/j_6/en/"
+msgstr "http://curia.europa.eu/jcms/jcms/j_6/el/"
+
+msgid "European Central Bank (ECB)"
+msgstr "Ευρωπαϊκή Κεντρική Τράπεζα (ΕΚΤ)"
+
+msgid "https://www.ecb.europa.eu/home/html/index.en.html"
+msgstr "https://www.ecb.europa.eu/home/languagepolicy/html/index.el.html"
+
+msgid "European Court of Auditors (ECA)"
+msgstr "Ευρωπαϊκό Ελεγκτικό Συνέδριο (ΕΕΣ)"
+
+msgid "http://www.eca.europa.eu/en"
+msgstr "http://www.eca.europa.eu/el"
+
+msgid "European External Action Service (EEAS)"
+msgstr "Ευρωπαϊκή Υπηρεσία Εξωτερικής Δράσης (ΕΥΕΔ)"
+
+msgid "https://eeas.europa.eu/headquarters/headquarters-homepage_en"
+msgstr "http://eeas.europa.eu/index_el.htm"
+
+msgid "European Economic and Social Committee (EESC)"
+msgstr "Ευρωπαϊκή Οικονομική και Κοινωνική Επιτροπή (ΕΟΚΕ)"
+
+msgid "http://www.eesc.europa.eu/?i=portal.en.home"
+msgstr "http://www.eesc.europa.eu/?i=portal.el.home"
+
+msgid "European Committee of the Regions (CoR)"
+msgstr "Ευρωπαϊκή Επιτροπή των Περιφερειών (ΕτΠ)"
+
+msgid "http://cor.europa.eu/en/"
+msgstr "https://cor.europa.eu/el"
+
+msgid "European Investment Bank (EIB)"
+msgstr "Ευρωπαϊκή Τράπεζα Επενδύσεων (ΕΤΕ)"
+
+msgid "European Data Protection Supervisor (EDPS)"
+msgstr "Ευρωπαίος Επόπτης Προστασίας Δεδομένων (ΕΕΠΔ)"
+
+msgid "https://secure.edps.europa.eu/EDPSWEB/edps/EDPS?lang=en"
+msgstr "https://secure.edps.europa.eu/EDPSWEB/edps/EDPS?lang=el"
+
+msgid "European Ombudsman"
+msgstr "Ευρωπαίος Διαμεσολαβητής"
+
+msgid "https://www.ombudsman.europa.eu/en/home"
+msgstr "https://www.ombudsman.europa.eu/el/home"
+
+msgid "European Data Protection Board"
+msgstr "Ευρωπαϊκό Συμβούλιο Προστασίας Δεδομένων (ΕΣΠΔ)"
+
+msgid "https://edpb.europa.eu/edpb_en"
+msgstr "https://edpb.europa.eu/edpb_el"
+
+msgid "European Personnel Selection Office"
+msgstr "Η Ευρωπαϊκή Υπηρεσία Επιλογής Προσωπικού"
+
+msgid "https://epso.europa.eu/home_en"
+msgstr "https://epso.europa.eu/home_el"
+
+msgid "Publications Office of the European Union"
+msgstr "Υπηρεσία Εκδόσεων της Ευρωπαϊκής Ένωσης"
+
+msgid "https://op.europa.eu/en/home"
+msgstr "https://op.europa.eu/el/home"
+
+msgid "Agencies"
+msgstr "Οργανισμοί"
+
+msgid "https://european-union.europa.eu/institutions-law-budget/institutions-and-bodies/institutions-and-bodies-profiles_en?f%5B0%5D=oe_organisation_eu_type%3Ahttp%3A//publications.europa.eu/resource/authority/corporate-body-classification/AGENCY_DEC&f%5B1%5D=oe_organisation_eu_type%3Ahttp%3A//publications.europa.eu/resource/authority/corporate-body-classification/AGENCY_EXEC&f%5B2%5D=oe_organisation_eu_type%3Ahttp%3A//publications.europa.eu/resource/authority/corporate-body-classification/EU_JU"
+msgstr "https://european-union.europa.eu/institutions-law-budget/institutions-and-bodies/institutions-and-bodies-profiles_el?f%5B0%5D=oe_organisation_eu_type%3Ahttp%3A//publications.europa.eu/resource/authority/corporate-body-classification/AGENCY_DEC&f%5B1%5D=oe_organisation_eu_type%3Ahttp%3A//publications.europa.eu/resource/authority/corporate-body-classification/AGENCY_EXEC&f%5B2%5D=oe_organisation_eu_type%3Ahttp%3A//publications.europa.eu/resource/authority/corporate-body-classification/EU_JU"
+
+msgid "About this site"
+msgstr "Γενικά"
+
+msgid "https://europa.eu/european-union/abouteuropa_en"
+msgstr "https://europa.eu/european-union/abouteuropa_el"
+
+msgid "Language policy"
+msgstr "Γλωσσική πολιτική"
+
+msgid "Languages on our websites"
+msgstr "Γλώσσες στις οποίες είναι διαθέσιμοι οι ιστότοποί μας"
+
+msgid "https://european-union.europa.eu/languages-our-websites_en"
+msgstr "https://european-union.europa.eu/languages-our-websites_el"
+
+msgid "Privacy policy"
+msgstr "Πολιτική απορρήτου"
+
+msgid "https://european-union.europa.eu/privacy-policy_en"
+msgstr "https://european-union.europa.eu/privacy-policy_el"
+
+msgid "Legal"
+msgstr "Νομικό πλαίσιο"
+
+msgid "Legal notice"
+msgstr "Ανακοίνωση νομικού περιεχομένου"
+
+msgid "https://european-union.europa.eu/legal-notice_en"
+msgstr "https://european-union.europa.eu/legal-notice_el"
+
+msgid "https://european-union.europa.eu/cookies_en"
+msgstr "https://european-union.europa.eu/cookies_el"
+
+msgid "Accessibility"
+msgstr "Δυνατότητα πρόσβασης"
+
+msgid "https://european-union.europa.eu/web-accessibility-policy_en"
+msgstr "https://european-union.europa.eu/web-accessibility-policy_el"
+
+msgid "https://ec.europa.eu/info/index_en"
+msgstr "https://ec.europa.eu/info/index_el"
+
+msgid "European Commission website"
+msgstr "Ιστότοπος της Ευρωπαϊκής Επιτροπής"
+
+msgid "https://ec.europa.eu/info/strategy_en"
+msgstr "https://ec.europa.eu/info/strategy_el"
+
+msgid "Strategy"
+msgstr "Στρατηγική"
+
+msgid "https://ec.europa.eu/info/about-european-commission_en"
+msgstr "https://ec.europa.eu/info/about-european-commission_el"
+
+msgid "About the European Commission"
+msgstr "Λίγα λόγια για την Ευρωπαϊκή Επιτροπή"
+
+msgid "https://ec.europa.eu/info/business-economy-euro_en"
+msgstr "https://ec.europa.eu/info/business-economy-euro_el"
+
+msgid "Business, Economy, Euro"
+msgstr "Επιχειρήσεις, οικονομία, ευρώ"
+
+msgid "https://ec.europa.eu/info/live-work-travel-eu_en"
+msgstr "https://ec.europa.eu/info/live-work-travel-eu_el"
+
+msgid "Live, work, travel in the EU"
+msgstr "Ζωή, εργασία, ταξίδια στην ΕΕ"
+
+msgid "https://ec.europa.eu/info/law_en"
+msgstr "https://ec.europa.eu/info/law_el"
+
+msgid "Law"
+msgstr "Δίκαιο"
+
+msgid "https://ec.europa.eu/info/funding-tenders_en"
+msgstr "https://ec.europa.eu/info/funding-tenders_el"
+
+msgid "Funding, Tenders"
+msgstr ""
+"Χρηματοδότηση, προσκλήσεις υποβολής "
+"προσφορών"
+
+msgid "https://ec.europa.eu/info/research-and-innovation_en"
+msgstr "https://ec.europa.eu/info/research-and-innovation_el"
+
+msgid "Research and innovation"
+msgstr "Έρευνα και καινοτομία"
+
+msgid "https://ec.europa.eu/info/energy-climate-change-environment_en"
+msgstr "https://ec.europa.eu/info/energy-climate-change-environment_el"
+
+msgid "Energy, Climate change, Environment"
+msgstr ""
+"Ενέργεια, κλιματική αλλαγή, "
+"περιβάλλον"
+
+msgid "https://ec.europa.eu/info/education_en"
+msgstr "https://ec.europa.eu/info/education_el"
+
+msgid "Education"
+msgstr "Εκπαίδευση"
+
+msgid "https://ec.europa.eu/info/aid-development-cooperation-fundamental-rights_en"
+msgstr "https://ec.europa.eu/info/aid-development-cooperation-fundamental-rights_el"
+
+msgid "Aid, Development cooperation, Fundamental rights"
+msgstr ""
+"Βοήθεια, αναπτυξιακή συνεργασία, "
+"θεμελιώδη δικαιώματα"
+
+msgid "https://ec.europa.eu/info/food-farming-fisheries_en"
+msgstr "https://ec.europa.eu/info/food-farming-fisheries_el"
+
+msgid "Food, Farming, Fisheries"
+msgstr "Τρόφιμα, γεωργία, αλιεία"
+
+msgid "https://ec.europa.eu/info/eu-regional-and-urban-development_en"
+msgstr "https://ec.europa.eu/info/eu-regional-and-urban-development_el"
+
+msgid "EU regional and urban development"
+msgstr ""
+"Περιφερειακή και αστική ανάπτυξη στην "
+"ΕΕ"
+
+msgid "https://ec.europa.eu/info/jobs-european-commission_en"
+msgstr "https://ec.europa.eu/info/jobs-european-commission_el"
+
+msgid "Jobs at the European Commission"
+msgstr ""
+"Θέσεις εργασίας στην Ευρωπαϊκή "
+"Επιτροπή"
+
+msgid "https://ec.europa.eu/info/statistics_en"
+msgstr "https://ec.europa.eu/info/statistics_el"
+
+msgid "Statistics"
+msgstr "Στατιστικά"
+
+msgid "https://ec.europa.eu/commission/presscorner/home/en"
+msgstr "https://ec.europa.eu/commission/presscorner/home/el"
+
+msgid "News"
+msgstr "Ειδήσεις"
+
+msgid "https://ec.europa.eu/info/events_en"
+msgstr "https://ec.europa.eu/info/events_el"
+
+msgid "Events"
+msgstr "Εκδηλώσεις"
+
+msgid "https://ec.europa.eu/info/publications_en"
+msgstr "https://ec.europa.eu/info/publications_el"
+
+msgid "Publications"
+msgstr "Εκδόσεις"
+
+msgid "https://ec.europa.eu/info/about-european-commission/contact_en"
+msgstr "https://ec.europa.eu/info/about-european-commission/contact_el"
+
+msgid "Contact the European Commission"
+msgstr "Επικοινωνία με την Ευρωπαϊκή Επιτροπή"
+
+msgid "https://european-union.europa.eu/contact-eu/social-media-channels_en#/search?page=0&institutions=european_commission"
+msgstr "https://european-union.europa.eu/contact-eu/social-media-channels_el#/search?page=0&institutions=european_commission"
+
+msgid "Follow the European Commission on social media"
+msgstr ""
+"Ακολουθήστε την Ευρωπαϊκή Επιτροπή "
+"στα μέσα κοινωνικής δικτύωσης"
+
+msgid "https://ec.europa.eu/info/resources-partners_en"
+msgstr "https://ec.europa.eu/info/resources-partners_el"
+
+msgid "Resources for partners"
+msgstr "Πόροι για εταίρους"
+
+msgid "https://ec.europa.eu/info/language-policy_en"
+msgstr "https://ec.europa.eu/info/language-policy_el"
+
+msgid "https://ec.europa.eu/info/cookies_en"
+msgstr "https://ec.europa.eu/info/cookies_el"
+
+msgid "https://ec.europa.eu/info/privacy-policy_en"
+msgstr "https://ec.europa.eu/info/privacy-policy_el"
+
+msgid "https://ec.europa.eu/info/legal-notice_en"
+msgstr "https://ec.europa.eu/info/legal-notice_el"
+
+msgid "Social media"
+msgstr "Μέσα κοινωνικής δικτύωσης"

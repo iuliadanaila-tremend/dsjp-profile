@@ -1,0 +1,42 @@
+settings:
+  allowed_values:
+    -
+      label: 'Studenti b’kisbiet għolja'
+    -
+      label: 'Kelliema mhux nattivi'
+    -
+      label: 'Persuni li jeħtieġu taħriġ mill-ġdid fl-impjieg'
+    -
+      label: 'Persuni fl-edukazzjoni terzjarja (QEK 6)'
+    -
+      label: 'Persuni li lestew l-edukazzjoni primarja'
+    -
+      label: 'Persuni fl-edukazzjoni sekondarja/obbligatorja'
+    -
+      label: 'Persuni li lestew l-edukazzjoni terzjarja (QEK 7)'
+    -
+      label: 'Persuni fl-edukazzjoni primarja'
+    -
+      label: 'Persuni li għandhom 0–3 snin esperjenza ta’ xogħol'
+    -
+      label: 'Persuni li lestew l-edukazzjoni terzjarja (QEK 8)'
+    -
+      label: 'Persuni li lestew l-edukazzjoni sekondarja/obbligatorja'
+    -
+      label: 'Persuni fl-edukazzjoni terzjarja (QEK 7)'
+    -
+      label: 'Persuni fl-edukazzjoni terzjarja (QEK 8)'
+    -
+      label: Migranti
+    -
+      label: 'Persuni li għandhom 3–10 snin esperjenza ta’ xogħol'
+    -
+      label: 'Persuni b’aktar minn 10 snin esperjenza ta’ xogħol'
+    -
+      label: 'Persuni b’diżabilità tat-tagħlim'
+    -
+      label: 'Kelliema nattivi'
+    -
+      label: 'Persuni li lestew l-edukazzjoni terzjarja (QEK 6)'
+    -
+      label: 'Studenti b’kisbiet baxxi'

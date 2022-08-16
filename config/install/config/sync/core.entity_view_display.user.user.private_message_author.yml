@@ -1,0 +1,64 @@
+uuid: 2a53d6f5-15eb-4a2e-a0d9-dfae235b5736
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.user.private_message_author
+    - field.field.user.user.field_dsj_assessment
+    - field.field.user.user.field_dsj_bio
+    - field.field.user.user.field_dsj_city
+    - field.field.user.user.field_dsj_content_subscription
+    - field.field.user.user.field_dsj_country
+    - field.field.user.user.field_dsj_i_am_interested_in
+    - field.field.user.user.field_dsj_i_am_job_seeker
+    - field.field.user.user.field_dsj_i_am_student
+    - field.field.user.user.field_dsj_job_title
+    - field.field.user.user.field_dsj_notification_step
+    - field.field.user.user.field_dsj_organisation
+    - field.field.user.user.field_dsj_picture
+    - field.field.user.user.field_dsj_registration_status
+    - field.field.user.user.field_dsj_skill_level_interest
+    - field.field.user.user.field_dsj_website_link
+    - field.field.user.user.message_digest_interval
+    - field.field.user.user.tmgmt_translation_skills
+  module:
+    - user
+_core:
+  default_config_hash: 5VkjdDDe_kM-giLC61z36ACn6Z2eMjaH63Rh6adWWpw
+id: user.user.private_message_author
+targetEntityType: user
+bundle: user
+mode: private_message_author
+content:
+  online_status:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_dsj_assessment: true
+  field_dsj_bio: true
+  field_dsj_city: true
+  field_dsj_content_subscription: true
+  field_dsj_country: true
+  field_dsj_firstname: true
+  field_dsj_i_am_interested_in: true
+  field_dsj_i_am_job_seeker: true
+  field_dsj_i_am_student: true
+  field_dsj_job_title: true
+  field_dsj_lastname: true
+  field_dsj_notification_step: true
+  field_dsj_organisation: true
+  field_dsj_picture: true
+  field_dsj_registration_status: true
+  field_dsj_skill_level_interest: true
+  field_dsj_website_link: true
+  langcode: true
+  linked_username: true
+  masquerade: true
+  member_for: true
+  message_digest_interval: true
+  private_message_link: true
+  search_api_excerpt: true
+  simplenews: true
+  tmgmt_translation_skills: true

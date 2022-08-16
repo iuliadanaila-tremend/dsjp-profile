@@ -1,0 +1,38 @@
+settings:
+  allowed_values:
+    0:
+      label: 'An Intleacht Shaorga'
+    1:
+      label: Cibearshlándáil
+    2:
+      label: 'Idirlíon na Rudaí Nithiúla'
+    3:
+      label: Mórshonraí
+    4:
+      label: Blocshlabhra
+    5:
+      label: Róbataic
+    6:
+      label: 'An Réaltacht mhéadaithe'
+    7:
+      label: 'Réaltacht fhíorúil'
+    8:
+      label: 'An Ríomhaireacht Ardfheidhmíochta'
+    9:
+      label: Meaisínfhoghlaim
+    10:
+      label: Néalríomhaireacht
+    12:
+      label: Teileachumarsáid
+    14:
+      label: 'Ríomhaireacht Chandamach'
+    15:
+      label: Bogearraí
+    16:
+      label: 'Feidhmchláir mhóibíleacha a fhorbairt'
+    17:
+      label: 'Forbairt Gréasáin'
+    18:
+      label: Micrileictreonaic
+    19:
+      label: 'Scileanna digiteacha'

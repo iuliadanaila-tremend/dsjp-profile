@@ -1,0 +1,10 @@
+uuid: 29008e8f-4e50-413c-98c4-6311f29472da
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: user.thumbnail_image_with_crop
+label: 'Thumbnail Image With Crop'
+targetEntityType: user
+cache: true

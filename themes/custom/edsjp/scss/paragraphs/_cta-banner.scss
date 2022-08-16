@@ -1,0 +1,103 @@
+.paragraph--type--dsj-cta-banner {
+  background-size: cover;
+  text-align: center;
+
+  h2.ecl-u-type-heading-2 {
+    @include media-breakpoint-down(lg) {
+      font-size: $font-size-2xl !important;
+      margin-bottom: $grid-gutter-width*.27;
+    }
+
+    color: $body-bg;
+    font-size: $font-size-3xl !important;
+    justify-content: center;
+    margin-bottom: $grid-gutter-width*.67;
+  }
+
+  .block-content {
+    @include media-breakpoint-down(md) {
+      padding-top: $grid-gutter-width*.8;
+      padding-bottom: $grid-gutter-width*.8;
+    }
+
+    @include media-breakpoint-down(lg) {
+      padding-left: $grid-gutter-width;
+      padding-right: $grid-gutter-width;
+    }
+
+    color: $body-bg;
+    padding: $grid-gutter-width*3.73 0 $grid-gutter-width*3.63;
+  }
+
+  .ecl-container {
+    .ecl-editor {
+      font-size: $font-size-2md;
+      line-height: $line-height-lg;
+      margin-bottom: $grid-gutter-width * 1.067;
+  
+      .ecl {
+        p {
+    
+          @include media-breakpoint-down(lg) {
+            font-size: $font-size-sm !important;
+            line-height: $font-size-base !important;
+            padding: 0 $grid-gutter-width/1.5;
+          }
+    
+          @include font($font-size-2md, $line-height-lg, $font-family-base, $font-weight: normal, $important: true);
+          color: $body-bg;
+          max-width: 100% !important; /* override ecl default style */
+        }
+      }
+    }
+  }
+
+  .field--name-field-dsj-cta {
+
+    @include media-breakpoint-up(lg) {
+      display: flex;
+      justify-content: center;
+    }
+
+    .field__item {
+      &:first-child {
+
+        @include media-breakpoint-up(lg) {
+          margin-right: $grid-gutter-width / 1.5;
+          margin-bottom: 0;
+        }
+
+        margin-bottom: $grid-gutter-width / 1.875;
+      }
+
+      &:last-child {
+        a {
+          background-color: $primary;
+          color: $body-bg;
+
+          &:hover {
+            background-color: $primary-light;
+          }
+        }
+      }
+
+    }
+
+    a {
+      @include font($font-size-sm, $line-height-sm, $font-ec-square-medium);
+      @include border-radius($border-radius-lg);
+
+      background-color: $warning;
+      color: $primary;
+      display: inline-block;
+      padding: $grid-gutter-width*.4 $grid-gutter-width/1.2;
+
+      &:hover {
+        background-color: $warning-hover;
+      }
+
+    }
+
+    display: block;
+  }
+}

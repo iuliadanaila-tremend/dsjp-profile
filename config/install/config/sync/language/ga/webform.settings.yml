@@ -1,0 +1,3 @@
+settings:
+  default_delete_button_label: Delete
+  default_wizard_confirmation_label: Complete

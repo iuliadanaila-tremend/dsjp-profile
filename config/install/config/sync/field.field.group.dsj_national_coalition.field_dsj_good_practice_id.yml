@@ -1,0 +1,25 @@
+uuid: 6171bdbc-af62-4ab8-8797-7b1d1c715772
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_dsj_good_practice_id
+    - group.type.dsj_national_coalition
+  module:
+    - datetime
+    - tmgmt_content
+third_party_settings:
+  tmgmt_content:
+    excluded: false
+id: group.dsj_national_coalition.field_dsj_good_practice_id
+field_name: field_dsj_good_practice_id
+entity_type: group
+bundle: dsj_national_coalition
+label: 'Good Practice Imported Date'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

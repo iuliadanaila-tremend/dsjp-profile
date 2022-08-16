@@ -1,0 +1,14 @@
+uuid: b004b7e2-dcb4-4246-9a49-85d0bd6b146f
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.dsj_advanced_contributor
+  module:
+    - user
+id: user_add_role_action.dsj_advanced_contributor
+label: 'Add the Advanced Contributor role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: dsj_advanced_contributor

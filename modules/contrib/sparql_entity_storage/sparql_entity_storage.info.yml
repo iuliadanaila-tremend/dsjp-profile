@@ -1,0 +1,12 @@
+name: 'SPARQL Entity Storage'
+type: module
+description: 'Provides SPARQL entity storage and query for Drupal entities.'
+package: Custom
+core_version_requirement: ^8 || ^9
+dependencies:
+- options
+
+# Information added by Drupal.org packaging script on 2022-01-07
+version: '8.x-1.0-alpha10'
+project: 'sparql_entity_storage'
+datestamp: 1641547946

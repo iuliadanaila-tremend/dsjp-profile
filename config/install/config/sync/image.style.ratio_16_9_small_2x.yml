@@ -1,0 +1,18 @@
+uuid: 44300ad3-8f7f-45d8-8f43-7f5fe5eac518
+langcode: en
+status: true
+dependencies:
+  module:
+    - oe_theme_helper
+name: ratio_16_9_small_2x
+label: 'Ratio 16:9 small 2x'
+effects:
+  117ac00b-d6c1-4e8f-a34b-0250a4725ca7:
+    uuid: 117ac00b-d6c1-4e8f-a34b-0250a4725ca7
+    id: retina_image_scale
+    weight: 1
+    data:
+      width: 630
+      height: null
+      upscale: false
+      multiplier: 2

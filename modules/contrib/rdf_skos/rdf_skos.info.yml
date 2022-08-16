@@ -1,0 +1,8 @@
+name: RDF SKOS
+description: Entity type for SKOS modeling
+core_version_requirement: ^8.9 || ^9
+package: RDF Entity
+type: module
+
+dependencies:
+  - sparql_entity_storage:sparql_entity_storage

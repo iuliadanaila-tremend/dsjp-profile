@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Pagrindai
+    -
+      label: Vidutinis
+    -
+      label: Specialieji
+    -
+      label: 'Skaitmeninis ekspertas'

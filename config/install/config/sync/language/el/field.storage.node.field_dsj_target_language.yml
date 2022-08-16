@@ -1,0 +1,50 @@
+settings:
+  allowed_values:
+    -
+      label: Βουλγαρικά
+    -
+      label: Κροατική
+    -
+      label: Τσεχική
+    -
+      label: Δανική
+    -
+      label: Ολλανδική
+    -
+      label: Αγγλικά
+    -
+      label: Εσθονικά
+    -
+      label: Φινλανδικά
+    -
+      label: Γαλλικά
+    -
+      label: Γερμανική
+    -
+      label: Ελληνική
+    -
+      label: Ουγγρικά
+    -
+      label: Ιρλανδικά
+    -
+      label: Ιταλική
+    -
+      label: Λετονικά
+    -
+      label: Λιθουανική
+    -
+      label: Μαλτέζικη
+    -
+      label: Πολωνική
+    -
+      label: Πορτογαλική
+    -
+      label: Ρουμανικά
+    -
+      label: Σλοβακικά
+    -
+      label: Σλοβενικά
+    -
+      label: Ισπανική
+    -
+      label: Σουηδική

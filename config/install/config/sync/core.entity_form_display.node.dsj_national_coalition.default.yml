@@ -1,0 +1,216 @@
+uuid: 38d1c62c-ff61-465d-ba84-8f94fad5723f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.dsj_national_coalition.body
+    - field.field.node.dsj_national_coalition.field_dsj_author
+    - field.field.node.dsj_national_coalition.field_dsj_digital_skill_level
+    - field.field.node.dsj_national_coalition.field_dsj_geographic_scope
+    - field.field.node.dsj_national_coalition.field_dsj_image
+    - field.field.node.dsj_national_coalition.field_dsj_meta_tags
+    - field.field.node.dsj_national_coalition.field_dsj_nc_partner
+    - field.field.node.dsj_national_coalition.field_dsj_nc_priority
+    - field.field.node.dsj_national_coalition.field_dsj_organization
+    - field.field.node.dsj_national_coalition.field_dsj_representative_image
+    - field.field.node.dsj_national_coalition.field_dsj_target_audience
+    - field.field.node.dsj_national_coalition.field_dsj_target_language
+    - field.field.node.dsj_national_coalition.field_dsj_website_link
+    - image.style.thumbnail
+    - node.type.dsj_national_coalition
+    - workflows.workflow.dsj_main_workflow
+  module:
+    - content_moderation
+    - image
+    - image_widget_crop
+    - metatag
+    - path
+    - text
+    - typed_link
+id: node.dsj_national_coalition.default
+targetEntityType: node
+bundle: dsj_national_coalition
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 10
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  created:
+    type: datetime_timestamp
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_dsj_author:
+    type: string_textfield
+    weight: 12
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_dsj_digital_skill_level:
+    type: options_select
+    weight: 15
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_dsj_geographic_scope:
+    type: options_select
+    weight: 16
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_dsj_image:
+    type: image_widget_crop
+    weight: 11
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+      crop_preview_image_style: crop_thumbnail
+      crop_list:
+        - dsj_ratio_16_9_crop
+        - dsj_ratio_1_1_crop
+      crop_types_required: {  }
+      warn_multiple_usages: true
+      show_crop_area: false
+      show_default_crop: true
+    third_party_settings: {  }
+  field_dsj_meta_tags:
+    type: metatag_firehose
+    weight: 22
+    region: content
+    settings:
+      sidebar: true
+    third_party_settings: {  }
+  field_dsj_nc_partner:
+    type: text_textarea
+    weight: 20
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_dsj_nc_priority:
+    type: text_textarea
+    weight: 18
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_dsj_organization:
+    type: entity_reference_autocomplete
+    weight: 19
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_dsj_representative_image:
+    type: image_image
+    weight: 26
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_dsj_target_audience:
+    type: options_select
+    weight: 14
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_dsj_target_language:
+    type: options_select
+    weight: 17
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_dsj_website_link:
+    type: typed_link
+    weight: 13
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 1
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    weight: 5
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 9
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    weight: 6
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 2
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  url_redirects:
+    weight: 21
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

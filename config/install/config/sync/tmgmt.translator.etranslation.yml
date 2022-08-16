@@ -1,0 +1,38 @@
+uuid: c0cecc1f-c454-4d90-9bf4-07f45e3212cb
+langcode: en
+status: true
+dependencies:
+  module:
+    - dsjp_translation
+name: etranslation
+label: eTranslation
+description: 'Allows the users to send translation requests to eTranslation.'
+auto_accept: false
+weight: null
+plugin: etranslation
+settings: {  }
+remote_languages_mappings:
+  bg: bg
+  cs: cs
+  da: da
+  de: de
+  et: et
+  el: el
+  en: en
+  es: es
+  fr: fr
+  ga: ga
+  hr: hr
+  it: it
+  lv: lv
+  lt: lt
+  hu: hu
+  mt: mt
+  nl: nl
+  pl: pl
+  pt-pt: pt
+  ro: ro
+  sk: sk
+  sl: sl
+  fi: fi
+  sv: sv

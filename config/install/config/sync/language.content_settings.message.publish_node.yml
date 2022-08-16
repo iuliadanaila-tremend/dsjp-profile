@@ -1,0 +1,11 @@
+uuid: 3b79ac3d-6289-489d-8ec1-b8688611642a
+langcode: en
+status: true
+dependencies:
+  config:
+    - message.template.publish_node
+id: message.publish_node
+target_entity_type_id: message
+target_bundle: publish_node
+default_langcode: site_default
+language_alterable: false

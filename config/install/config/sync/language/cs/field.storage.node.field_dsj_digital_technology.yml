@@ -1,0 +1,38 @@
+settings:
+  allowed_values:
+    0:
+      label: 'Umělá inteligence'
+    1:
+      label: 'Kybernetické bezpečnosti'
+    2:
+      label: 'Internet věcí'
+    3:
+      label: 'Velké objemy dat'
+    4:
+      label: 'Technologie blockchain'
+    5:
+      label: Robotika
+    6:
+      label: 'Rozšířená realita'
+    7:
+      label: 'Virtuální realita'
+    8:
+      label: 'Vysoce výkonná výpočetní technika'
+    9:
+      label: 'Strojové učení'
+    10:
+      label: 'Cloud computing'
+    12:
+      label: Telekomunikace
+    14:
+      label: 'Kvantová výpočetní technika'
+    15:
+      label: 'Programové vybavení'
+    16:
+      label: 'Vývoj mobilních aplikací'
+    17:
+      label: 'Vývoj webových stránek'
+    18:
+      label: Mikroelektronika
+    19:
+      label: 'Digitální dovednosti'

@@ -1,0 +1,22 @@
+display:
+  default:
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Apply
+      filters:
+        search:
+          expose:
+            label: Search
+  photos:
+    display_options:
+      filters:
+        search:
+          expose:
+            label: Search
+  videos:
+    display_options:
+      filters:
+        search:
+          expose:
+            label: Search

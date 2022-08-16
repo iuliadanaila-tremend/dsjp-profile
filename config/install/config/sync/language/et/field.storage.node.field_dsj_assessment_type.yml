@@ -1,0 +1,14 @@
+settings:
+  allowed_values:
+    -
+      label: Tööpõhine
+    -
+      label: Projektipõhine
+    -
+      label: Kohapealne
+    -
+      label: Internetis
+    -
+      label: Kombineeritud
+    -
+      label: 'Teaduslabori põhine'

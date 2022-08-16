@@ -1,0 +1,26 @@
+settings:
+  allowed_values:
+    -
+      label: ONG
+    -
+      label: 'Istituzione pubblica'
+    -
+      label: 'Fornitore di istruzione e formazione formale'
+    -
+      label: Imprese/industria
+    -
+      label: 'Partenariato pubblico-privato'
+    -
+      label: Altri
+    -
+      label: 'Sindacato labor'
+    -
+      label: 'Centri di studi'
+    -
+      label: Associazione
+    -
+      label: 'Piattaforma di apprendimento aperto'
+    -
+      label: 'Gruppo d&#39;interesse'
+    -
+      label: 'Responsabile politico'

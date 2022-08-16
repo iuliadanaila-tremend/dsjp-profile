@@ -1,0 +1,56 @@
+uuid: b78aa55e-dc5c-4ced-8047-0e7d4e08ed01
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.dsj_content_tags
+  module:
+    - block_visibility_groups
+    - node
+    - system
+    - views
+  theme:
+    - edsjp
+id: dsj_views__dsj_content_tags
+theme: edsjp
+region: right_sidebar
+weight: -10
+provider: null
+plugin: 'views_block:dsj_content_tags-dsj_content_tags'
+settings:
+  id: 'views_block:dsj_content_tags-dsj_content_tags'
+  label: ''
+  label_display: visible
+  provider: views
+  context_mapping: {  }
+  views_label: ''
+  items_per_page: none
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      dsj_article: dsj_article
+      dsj_digital_skills_resource: dsj_digital_skills_resource
+      dsj_discussion: dsj_discussion
+      dsj_event: dsj_event
+      dsj_funding_opportunity: dsj_funding_opportunity
+      dsj_good_practice: dsj_good_practice
+      dsj_initiative: dsj_initiative
+      dsj_national_coalition: dsj_national_coalition
+      dsj_organization: dsj_organization
+      dsj_skills_intelligence: dsj_skills_intelligence
+      dsj_strategy: dsj_strategy
+      dsj_training_offer: dsj_training_offer
+  condition_group:
+    id: condition_group
+    negate: false
+    context_mapping: {  }
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: true
+    context_mapping: {  }
+    pages: "/node/*/edit\r\n/node/*/translate\r\n/node/*/translations\r\n/node/*/delete\r\n/node/*/revisions"

@@ -1,0 +1,53 @@
+label: Feliratkozások
+display:
+  default:
+    display_title: Mester
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Alkalmaz
+          reset_button_label: Alaphelyzet
+          exposed_sorts_label: Rendezés
+          sort_asc_label: Növekvő
+          sort_desc_label: Csökkenő
+      pager:
+        options:
+          tags:
+            previous: '‹ előző'
+            next: 'következő ›'
+            first: '« első'
+            last: 'utolsó »'
+          expose:
+            items_per_page_label: 'Elemek száma oldalanként'
+            items_per_page_options_all_label: '– Mind –'
+            offset_label: Eltolás
+      fields:
+        mail:
+          label: E-mail
+        user_name:
+          label: Felhasználónév
+        subscriptions_target_id:
+          label: Feliratkozások
+          separator: ', '
+        status:
+          label: Aktív
+        created:
+          label: Létrehozva
+        operations:
+          label: Műveletek
+      filters:
+        mail:
+          expose:
+            label: E-mail
+        subscriptions_target_id:
+          expose:
+            label: Hírlevelek
+        status:
+          expose:
+            label: Aktív
+        subscriptions_status:
+          expose:
+            label: Állapot
+      title: Feliratkozások
+  page_1:
+    display_title: Oldal

@@ -1,0 +1,43 @@
+dsjp_sat.asessment_result:
+  path: '/sat/assessments'
+  defaults:
+    _controller: '\Drupal\dsjp_sat\Controller\SatController::assessmentSave'
+  requirements:
+    _role: 'authenticated'
+
+dsjp_sat.assessment_download:
+  path: '/user/{user}/assessments/{assessment_id}'
+  defaults:
+    _controller: '\Drupal\dsjp_sat\Controller\SatController::downloadAssessment'
+  requirements:
+    _role: 'authenticated'
+    _custom_access: '\Drupal\dsjp_user\Access\UserGroupsAccess::checkAccess'
+
+dsjp_sat.sat_page:
+  path: '/sat/page'
+  defaults:
+    _controller: '\Drupal\dsjp_sat\Controller\SatController::satPage'
+  requirements:
+    _permission: 'access content'
+
+dsjp_sat.sat_return:
+  path: '/sat/return'
+  defaults:
+    _controller: '\Drupal\dsjp_sat\Controller\SatController::returnPage'
+  requirements:
+    _role: 'authenticated'
+
+dsjp_sat.sat_configuration:
+  path: '/admin/config/services/sat'
+  defaults:
+    _form: '\Drupal\dsjp_sat\Form\SatConfigForm'
+    _title: 'Sat Configuration'
+  requirements:
+    _permission: 'administer sat configuration'
+
+dsjp_sat.user_assessments_page:
+  path: '/user/assessments'
+  defaults:
+    _controller: '\Drupal\dsjp_sat\Controller\SatController::userAssessmentsPage'
+  requirements:
+    _permission: 'access content'

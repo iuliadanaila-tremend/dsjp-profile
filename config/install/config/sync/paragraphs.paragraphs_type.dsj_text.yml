@@ -1,0 +1,10 @@
+uuid: 3ce77433-ac1b-4bbc-9504-1265890c1d25
+langcode: en
+status: true
+dependencies: {  }
+id: dsj_text
+label: Text
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

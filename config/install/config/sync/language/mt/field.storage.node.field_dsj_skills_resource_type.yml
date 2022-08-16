@@ -1,0 +1,12 @@
+settings:
+  allowed_values:
+    -
+      label: 'Għodda ta’ Awtovalutazzjoni'
+    -
+      label: Metodoloġija
+    -
+      label: 'Kurrikula ta’ taħriġ'
+    -
+      label: 'Studju ta’ każ'
+    -
+      label: 'Materjal ieħor ta’ taħriġ'

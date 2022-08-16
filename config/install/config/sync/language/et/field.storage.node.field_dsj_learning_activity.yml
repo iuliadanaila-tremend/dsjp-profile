@@ -1,0 +1,24 @@
+settings:
+  allowed_values:
+    -
+      label: 'labor/simulatsioon/praktiline töö'
+    -
+      label: töökogemus
+    -
+      label: 'vabatahtlik tegevus'
+    -
+      label: teadusuuringud
+    -
+      label: 'iseseisev õppetöö'
+    -
+      label: e-kursus
+    -
+      label: praktika
+    -
+      label: õpipoisiõpe
+    -
+      label: 'õpikoda, seminar või konverents'
+    -
+      label: haridusprogramm
+    -
+      label: Klassiruumikursus

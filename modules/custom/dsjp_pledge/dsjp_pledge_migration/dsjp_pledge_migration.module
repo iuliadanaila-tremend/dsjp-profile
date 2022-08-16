@@ -1,0 +1,91 @@
+<?php
+
+/**
+ * @file
+ * Provides main functionality for pledge migration module.
+ */
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\file\Entity\File;
+use Drupal\file\FileInterface;
+
+/**
+ * Implements hook_cron().
+ */
+function dsjp_pledge_migration_cron() {
+  $config = \Drupal::configFactory()->get('dsjp_pledge_migration.configuration');
+  $step = $config->get('pledge_migration_step');
+  if ($step == 1) {
+    $queue = \Drupal::service('queue')->get('dsjp_pledge_migration_import_queue');
+    $pid = $config->get('pledge');
+    if (!empty($pid)) {
+      $pledge_object = File::load($pid);
+      if ($pledge_object instanceof FileInterface) {
+        $path = \Drupal::service('file_system')->realpath($pledge_object->getFileUri());
+
+        $queue->createItem([
+          'id' => 'dsj_pledge',
+          'path' => $path,
+        ]);
+      }
+    }
+  }
+  if ($step == 2) {
+    $queue = \Drupal::service('queue')->get('dsjp_pledge_migration_import_queue');
+    $iid = $config->get('initiative');
+    if (!empty($iid)) {
+      $initiative_object = File::load($iid);
+      if ($initiative_object instanceof FileInterface) {
+        $path = \Drupal::service('file_system')->realpath($initiative_object->getFileUri());
+        $queue->createItem([
+          'id' => 'dsj_pledge_initiative',
+          'path' => $path,
+        ]);
+      }
+    }
+  }
+  if ($step == 3) {
+    $queue = \Drupal::service('queue')->get('dsjp_pledge_migration_import_queue');
+    $oid = $config->get('organisation');
+    if (!empty($oid)) {
+      $organisation_object = File::load($oid);
+      if ($organisation_object instanceof FileInterface) {
+        $path = \Drupal::service('file_system')->realpath($organisation_object->getFileUri());
+        $queue->createItem([
+          'id' => 'dsj_pledge_organisation',
+          'path' => $path,
+          'file_location' => 'https://pledgeviewer.eu',
+          'file_destination' => 'public://pledges/',
+        ]);
+      }
+    }
+  }
+  // Make sure that each migration works separately using steps.
+  if ($step < 4) {
+    $new_step = $step + 1;
+    \Drupal::configFactory()->getEditable('dsjp_pledge_migration.configuration')
+      ->set('pledge_migration_step', $new_step)
+      ->save();
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_insert().
+ */
+function dsjp_pledge_migration_user_insert(EntityInterface $entity) {
+  $query = \Drupal::database()->select('dsj_pledge_users', 'pu')
+    ->fields('pu', ['pid', 'piid', 'oid'])
+    ->condition('pu.mail', $entity->getEmail())
+    ->execute();
+  $results = $query->fetchAll(PDO::FETCH_ASSOC);
+  if (!empty($results)) {
+    $chunks = array_chunk($results, 10);
+    $queue = \Drupal::service('queue')->get('dsj_pledge_user_fetcher');
+    foreach ($chunks as $chunk) {
+      $queue->createItem([
+        'data' => $chunk,
+        'uid' => $entity->id(),
+      ]);
+    }
+  }
+}

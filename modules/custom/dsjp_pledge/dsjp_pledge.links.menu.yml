@@ -1,0 +1,10 @@
+dsjp_pledge.pledges_config:
+  title: 'Pledges config'
+  route_name: dsjp_pledge.initiative_type_description_config_form
+  parent: system.admin_config
+  weight: 10
+
+dsjp_pledge.initiative_type_description_config_form:
+  title: 'Initiative Type description'
+  route_name: dsjp_pledge.initiative_type_description_config_form
+  parent: dsjp_pledge.pledges_config

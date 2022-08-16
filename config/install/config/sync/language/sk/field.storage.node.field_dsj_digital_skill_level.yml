@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Základné
+    -
+      label: Stredné
+    -
+      label: Pokročilý
+    -
+      label: 'Odborník na digitálnu oblasť'

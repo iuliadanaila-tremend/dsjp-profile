@@ -1,0 +1,4 @@
+label: Julkaistu
+settings:
+  on_label: Voimassa
+  off_label: 'Ei aktiivinen'

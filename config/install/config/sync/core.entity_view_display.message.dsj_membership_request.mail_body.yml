@@ -1,0 +1,26 @@
+uuid: 1ac04a7e-a895-47ba-8ba2-a38683c4b5f9
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.message.mail_body
+    - field.field.message.dsj_membership_request.field_dsj_group_content
+    - message.template.dsj_membership_request
+  module:
+    - user
+id: message.dsj_membership_request.mail_body
+targetEntityType: message
+bundle: dsj_membership_request
+mode: mail_body
+content:
+  partial_0:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  partial_1:
+    weight: 0
+    region: content
+hidden:
+  field_dsj_group_content: true
+  search_api_excerpt: true

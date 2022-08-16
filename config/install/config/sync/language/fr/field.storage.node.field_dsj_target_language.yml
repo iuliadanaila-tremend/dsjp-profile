@@ -1,0 +1,50 @@
+settings:
+  allowed_values:
+    -
+      label: Bulgare
+    -
+      label: Croate
+    -
+      label: Tchèque
+    -
+      label: Danois
+    -
+      label: Néerlandais
+    -
+      label: Anglais
+    -
+      label: Estonienne
+    -
+      label: Finlandaise
+    -
+      label: Français
+    -
+      label: Allemand
+    -
+      label: Grec
+    -
+      label: Hongrois
+    -
+      label: Irlandais
+    -
+      label: Italien
+    -
+      label: Lettone
+    -
+      label: Lituanienne
+    -
+      label: Maltaise
+    -
+      label: Polonais
+    -
+      label: Portugais
+    -
+      label: Roumain
+    -
+      label: Slovaque
+    -
+      label: Slovène
+    -
+      label: Espagnol
+    -
+      label: Suédois

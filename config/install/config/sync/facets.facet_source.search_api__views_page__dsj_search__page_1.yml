@@ -1,0 +1,9 @@
+uuid: 1ccdb8d6-2bc6-4592-9078-9cbfee78f58b
+langcode: en
+status: true
+dependencies: {  }
+id: search_api__views_page__dsj_search__page_1
+name: 'search_api:views_page__dsj_search__page_1'
+filter_key: null
+url_processor: query_string
+breadcrumb: {  }

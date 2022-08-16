@@ -1,0 +1,20 @@
+uuid: cae53a05-cf48-429e-b307-29a1d4a5ece3
+langcode: en
+status: true
+dependencies:
+  module:
+    - datetime
+    - paragraphs
+id: paragraph.field_dsj_start_date
+field_name: field_dsj_start_date
+entity_type: paragraph
+type: datetime
+settings:
+  datetime_type: datetime
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

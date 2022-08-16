@@ -1,0 +1,34 @@
+.paragraph--type--dsj-text {
+
+  &.paragraph--view-mode--default {
+
+    .ecl-col-12 {
+      padding: 0 !important;
+      font-size: $font-size-2md;
+
+      p {
+        /* override ecl default style */
+        font-size: $font-size-2md !important;
+      }
+    }
+
+    .listing-more-link {
+      text-align: right;
+    }
+  }
+}
+
+/* override ecl default style */
+.ecl-u-type-paragraph, 
+.ecl-u-type-paragraph-m, 
+.ecl p:is([class*=ecl-u-]), 
+.ecl p:not([class*=ecl-],[class*=wt-]),
+.ecl-unordered-list__item, 
+.ecl ul li:is([class*=ecl-u-]), 
+.ecl ul li:not([class*=ecl-],
+[class*=wt-]) {
+  max-width: unset !important;
+  font-family: $font-ec-square-regular !important;
+  color: $gray-800;
+  line-height: $line-height-lg !important;
+}

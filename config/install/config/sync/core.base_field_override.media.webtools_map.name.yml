@@ -1,0 +1,20 @@
+uuid: c80c6d07-6dfd-4886-8b4a-a09768dfe8ca
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.webtools_map
+id: media.webtools_map.name
+field_name: name
+entity_type: media
+bundle: webtools_map
+label: Name
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: ''
+default_value_callback: ''
+settings: {  }
+field_type: string

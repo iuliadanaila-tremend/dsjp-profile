@@ -1,0 +1,20 @@
+uuid: ea438872-ed4b-4bed-98c2-e0362c59a1f2
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.dsj_listing
+  module:
+    - path
+id: node.dsj_listing.path
+field_name: path
+entity_type: node
+bundle: dsj_listing
+label: 'URL alias'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

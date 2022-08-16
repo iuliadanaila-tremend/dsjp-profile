@@ -1,0 +1,12 @@
+settings:
+  allowed_values:
+    0:
+      label: Werkbasis
+    1:
+      label: Projectleren
+    2:
+      label: Presentielijn
+    4:
+      label: Gemengd
+    5:
+      label: Onderzoekslaboratorium

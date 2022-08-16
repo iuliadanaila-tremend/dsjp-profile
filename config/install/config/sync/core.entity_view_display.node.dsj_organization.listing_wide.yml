@@ -1,0 +1,104 @@
+uuid: e55f0a63-c7a7-4517-9b2f-aea23487354f
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.listing_wide
+    - field.field.node.dsj_organization.body
+    - field.field.node.dsj_organization.field_dsj_author
+    - field.field.node.dsj_organization.field_dsj_comments
+    - field.field.node.dsj_organization.field_dsj_digital_technology
+    - field.field.node.dsj_organization.field_dsj_external_id
+    - field.field.node.dsj_organization.field_dsj_geographic_scope
+    - field.field.node.dsj_organization.field_dsj_image
+    - field.field.node.dsj_organization.field_dsj_industry
+    - field.field.node.dsj_organization.field_dsj_meta_tags
+    - field.field.node.dsj_organization.field_dsj_nc_member
+    - field.field.node.dsj_organization.field_dsj_organization_category
+    - field.field.node.dsj_organization.field_dsj_publish_in_core
+    - field.field.node.dsj_organization.field_dsj_representative_image
+    - field.field.node.dsj_organization.field_dsj_target_audience
+    - field.field.node.dsj_organization.field_dsj_website_link
+    - node.type.dsj_organization
+  module:
+    - field_group
+    - smart_trim
+    - user
+third_party_settings:
+  field_group:
+    group_o:
+      children:
+        - field_dsj_author
+        - field_dsj_comments
+        - field_dsj_geographic_scope
+        - field_dsj_image
+        - field_dsj_industry
+        - field_dsj_nc_member
+        - field_dsj_organization_category
+        - field_dsj_target_audience
+        - field_dsj_website_link
+        - content_moderation_control
+        - flag_subscribe_node
+        - flag_voting
+        - links
+      label: 'Organisation Details'
+      parent_name: ''
+      region: hidden
+      weight: 1
+      format_type: html_element
+      format_settings:
+        classes: bordered-field-list
+        id: organization-details
+        element: div
+        show_label: true
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+id: node.dsj_organization.listing_wide
+targetEntityType: node
+bundle: dsj_organization
+mode: listing_wide
+content:
+  body:
+    type: smart_trim
+    label: hidden
+    settings:
+      trim_length: 250
+      trim_type: chars
+      trim_suffix: ...
+      wrap_output: false
+      wrap_class: trimmed
+      more_link: false
+      more_class: more-link
+      more_text: More
+      summary_handler: trim
+      trim_options:
+        text: true
+        trim_zero: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  content_moderation_control: true
+  field_dsj_author: true
+  field_dsj_comments: true
+  field_dsj_digital_technology: true
+  field_dsj_external_id: true
+  field_dsj_geographic_scope: true
+  field_dsj_image: true
+  field_dsj_industry: true
+  field_dsj_meta_tags: true
+  field_dsj_nc_member: true
+  field_dsj_organization_category: true
+  field_dsj_publish_in_core: true
+  field_dsj_representative_image: true
+  field_dsj_target_audience: true
+  field_dsj_website_link: true
+  flag_subscribe_node: true
+  flag_voting: true
+  langcode: true
+  links: true
+  private_message_link: true
+  search_api_excerpt: true

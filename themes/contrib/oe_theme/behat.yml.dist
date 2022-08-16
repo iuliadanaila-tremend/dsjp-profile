@@ -1,0 +1,99 @@
+default:
+  suites:
+    default:
+      paths:
+        - "%paths.base%/tests/features"
+      contexts:
+        - Drupal\DrupalExtension\Context\DrupalContext
+        - Drupal\DrupalExtension\Context\MarkupContext
+        - Drupal\Tests\oe_content\Behat\DateFieldContext
+        - Drupal\Tests\oe_media\Behat\MediaContext
+        - Drupal\Tests\oe_theme\Behat\DrupalContext
+        - Drupal\Tests\oe_theme\Behat\MinkContext
+        - Drupal\Tests\oe_theme\Behat\OeThemeTestContext
+        - Drupal\Tests\oe_theme\Behat\CleanupContext
+        - Drupal\Tests\oe_theme\Behat\EventContext
+        - Drupal\Tests\oe_theme\Behat\PreserveAnonymousPermissionsContext
+        - Drupal\Tests\oe_content\Behat\Content\CorporateContentContext
+        - Drupal\Tests\oe_content\Behat\Content\Node\EventContentContext
+        - Drupal\Tests\oe_content\Behat\Content\Node\ProjectContentContext
+        - Drupal\Tests\oe_content\Behat\Content\Venue\DefaultVenueContext
+        - Drupal\Tests\oe_content\Behat\Content\Contact\GeneralContactContext
+        - Drupal\Tests\oe_content\Behat\Content\Contact\PressContactContext
+        - OpenEuropa\Behat\TransformationContext:
+            elements:
+              about dropdown menu: ".ecl-menu__item:nth-child(2) .ecl-menu__mega"
+              breadcrumb: "nav.ecl-breadcrumb-core"
+              dropdown content: ".ecl-unordered-list"
+              language switcher: ".ecl-language-list"
+              language switcher link: ".ecl-site-header-core__language-selector, .ecl-site-header-standardised__language-selector"
+              language switcher links: ".ecl-language-list--overlay"
+              list item: ".ecl-content-item"
+              list item image: ".ecl-content-item__image__before"
+              logo: "a.ecl-site-header-core__logo-link .ecl-site-header-core__logo-image, a.ecl-site-header-standardised__logo-link .ecl-site-header-standardised__logo-image"
+              footer logo: "a.ecl-footer-core__logo-link .ecl-footer-core__logo-image-desktop, a.ecl-footer-standardised__logo-link .ecl-footer-standardised__logo-image-desktop"
+              media container: ".ecl-media-container"
+              page header: ".ecl-page-header-core"
+              priorities dropdown menu: ".ecl-menu__item:nth-child(3) .ecl-menu__mega"
+              search form: ".ecl-search-form"
+              navigation menu: ".ecl-menu"
+              site name: ".ecl-site-header-standardised__site-name"
+            pages:
+              content management: "/en/admin/content"
+              ECL components overview: "/en/components"
+              ECL dropdown component: "/en/components/dropdown"
+              event creation: "/en/node/add/oe_event"
+              image creation: "/en/media/add/image"
+              recent content: "/en/node"
+              user registration: "/user/register"
+              home: "/en"
+  extensions:
+    Drupal\MinkExtension:
+      goutte: ~
+      ajax_timeout: 10
+      browser_name: 'chrome'
+      javascript_session: 'selenium2'
+      selenium2:
+        wd_host: '${selenium.host}:${selenium.port}/wd/hub'
+        capabilities: { "browser": "chrome", "version": "*" }
+      base_url: "${drupal.base_url}"
+      files_path: "%paths.base%/tests/fixtures/"
+    Drupal\DrupalExtension:
+      api_driver: "drupal"
+      drupal:
+        drupal_root: "build"
+      subcontexts:
+          paths:
+            - "%paths.base%/build/modules/contrib/datetime_testing"
+      region_map:
+        about dropdown menu: ".ecl-menu__item:nth-child(2) .ecl-menu__mega"
+        footer: "footer.ecl-footer-core, footer.ecl-footer-standardised"
+        header: ".ecl-site-header-core, .ecl-site-header-standardised"
+        header with menu: ".ecl-site-header-core[data-ecl-has-menu], .ecl-site-header-standardised[data-ecl-has-menu]"
+        language dialog: ".ecl-dialog"
+        language switcher: ".ecl-language-list"
+        language page switcher: ".ecl-page-header-core .ecl-lang-select-page"
+        navigation: ".ecl-menu"
+        page: "body"
+        page header: ".ecl-page-header-core, .ecl-page-header-standardised"
+        page header site identity: "h2.ecl-u-type-heading-2"
+        page header title: ".ecl-page-header-core .ecl-page-header-core__title"
+        page header intro: ".ecl-page-header-core .ecl-page-header-core__description"
+        page header meta: ".ecl-page-header-core .ecl-page-header-core__meta"
+        priorities dropdown menu: ".ecl-menu__item:nth-child(3) .ecl-menu__mega"
+        selected language in the language page switcher: ".ecl-page-header-core .ecl-lang-select-page .ecl-lang-select-page__option--is-selected"
+        unavailable languages in the language page switcher: ".ecl-page-header-core .ecl-lang-select-page .ecl-lang-select-page__unavailable"
+        Social media links: "#oe-social-media-links-values"
+        Social media follow: ".ecl-social-media-follow"
+        event contacts: "#event-contacts"
+        event general contacts: "#event-contacts-general"
+        event press contacts: "#event-contacts-press"
+        event registration: "#event-registration-block"
+        event details: "#event-details"
+        event practical information: "#event-practical-information"
+        project funding header: "#project-funding .ecl-u-type-heading-2"
+    FriendsOfBehat\ServiceContainerExtension:
+      imports:
+        - 'build/modules/contrib/oe_content/tests/src/Behat/config/services.yml'
+  formatters:
+    progress: ~

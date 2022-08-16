@@ -1,0 +1,42 @@
+settings:
+  allowed_values:
+    -
+      label: Tippsooritajad
+    -
+      label: 'Emakeelena mittekõnelejad'
+    -
+      label: 'Isikud, kes vajavad tööalast ümberõpet'
+    -
+      label: 'Isikud, kes omandavad kolmanda taseme haridust (EQFi 6. tase)'
+    -
+      label: 'Isikud, kes on omandanud põhihariduse'
+    -
+      label: 'Keskharidust/kohustuslikku haridust omandavad isikud'
+    -
+      label: 'Kolmanda taseme hariduse omandanud isikud (EQF 7)'
+    -
+      label: 'Põhiharidust omandavad isikud'
+    -
+      label: '0-3-aastase töökogemusega isikud'
+    -
+      label: 'Kolmanda taseme hariduse omandanud isikud (EQF 8)'
+    -
+      label: 'Isikud, kes on omandanud keskhariduse/kohustusliku hariduse'
+    -
+      label: 'Kolmanda taseme hariduse omandajad (EQF 7)'
+    -
+      label: 'Kolmanda taseme hariduse omandajad (EQF 8)'
+    -
+      label: Sisserändajad
+    -
+      label: '3-10-aastase töökogemusega isikud'
+    -
+      label: '10-aastase või pikema töökogemusega isikud'
+    -
+      label: 'Õpiraskustega isikud'
+    -
+      label: Emakeelekõnelejad
+    -
+      label: 'Isikud, kes on omandanud kolmanda taseme hariduse (EQFi 6. tase)'
+    -
+      label: Alasooritajad

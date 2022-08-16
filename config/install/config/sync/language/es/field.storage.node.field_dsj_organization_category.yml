@@ -1,0 +1,26 @@
+settings:
+  allowed_values:
+    -
+      label: ONG
+    -
+      label: 'Institución pública'
+    -
+      label: 'Proveedor formal de educación y formación'
+    -
+      label: Empresa/Industria
+    -
+      label: 'Asociación público-privada'
+    -
+      label: Otros
+    -
+      label: Sindicato
+    -
+      label: 'Grupos de reflexión'
+    -
+      label: Asociación
+    -
+      label: 'Plataforma de aprendizaje abierto'
+    -
+      label: Grupo
+    -
+      label: 'Responsable político'

@@ -1,0 +1,19 @@
+uuid: 4c57cd94-f079-42c0-bc4f-d290510839e1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group_content.field_dsj_request_message
+    - group.content_type.group_content_type_58c909ecd8ad9
+id: group_content.group_content_type_58c909ecd8ad9.field_dsj_request_message
+field_name: field_dsj_request_message
+entity_type: group_content
+bundle: group_content_type_58c909ecd8ad9
+label: 'Request message'
+description: "This is the text a user may send to the group administrators.\r\n<br>\r\nBy joining this community, you will be automatically subscribed to notifications from this group including for content updates. To change this, you can manage all your notifications within your user profile page. For further information, please refer to the notifications help guide."
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

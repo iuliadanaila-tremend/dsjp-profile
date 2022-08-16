@@ -1,0 +1,65 @@
+uuid: 0f5529ce-80bf-4f7d-a590-e57ba10ab882
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.dsj_listing.field_dsj_content_types
+    - field.field.paragraph.dsj_listing.field_dsj_digital_technology
+    - field.field.paragraph.dsj_listing.field_dsj_see_more_link
+    - field.field.paragraph.dsj_listing.field_dsj_title
+    - field.field.paragraph.dsj_listing.paragraph_view_mode
+    - paragraphs.paragraphs_type.dsj_listing
+  module:
+    - link
+    - paragraph_view_mode
+id: paragraph.dsj_listing.default
+targetEntityType: paragraph
+bundle: dsj_listing
+mode: default
+content:
+  field_dsj_content_types:
+    type: options_buttons
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_dsj_digital_technology:
+    type: options_select
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_dsj_see_more_link:
+    type: link_default
+    weight: 3
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_dsj_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  paragraph_view_mode:
+    type: paragraph_view_mode
+    weight: -100
+    region: content
+    settings:
+      view_modes:
+        default: default
+        dsj_slider: dsj_slider
+      default_view_mode: default
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

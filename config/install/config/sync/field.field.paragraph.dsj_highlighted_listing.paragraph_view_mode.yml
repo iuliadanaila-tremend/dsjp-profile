@@ -1,0 +1,21 @@
+uuid: f39f4f99-9009-49ae-8285-de4d3874fcec
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.paragraph_view_mode
+    - paragraphs.paragraphs_type.dsj_highlighted_listing
+  module:
+    - paragraph_view_mode
+id: paragraph.dsj_highlighted_listing.paragraph_view_mode
+field_name: paragraph_view_mode
+entity_type: paragraph
+bundle: dsj_highlighted_listing
+label: 'View mode'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: paragraph_view_mode

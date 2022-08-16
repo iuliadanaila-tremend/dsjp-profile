@@ -1,0 +1,34 @@
+settings:
+  allowed_values:
+    -
+      label: 'Ficha informativa'
+    -
+      label: Previsão
+    -
+      label: 'Orientações gerais'
+    -
+      label: 'Informações gerais'
+    -
+      label: Revista
+    -
+      label: 'Plano nacional'
+    -
+      label: 'Comunicações de notícias'
+    -
+      label: Artigo
+    -
+      label: 'Boletim informativo'
+    -
+      label: Apresentação
+    -
+      label: 'Material promocional'
+    -
+      label: Relatório
+    -
+      label: Calendário
+    -
+      label: 'Artigo científico'
+    -
+      label: Estudo
+    -
+      label: 'Documento de trabalho'

@@ -1,0 +1,77 @@
+corporate_site_link:
+  href: 'https://ec.europa.eu/info/index_mt'
+  label: 'Is-sit web tal-Kummissjoni Ewropea'
+class_navigation:
+  -
+    href: 'https://ec.europa.eu/info/strategy_mt'
+    label: Strateġija
+  -
+    href: 'https://ec.europa.eu/info/about-european-commission_mt'
+    label: 'Dwar il-Kummissjoni Ewropea'
+  -
+    href: 'https://ec.europa.eu/info/business-economy-euro_mt'
+    label: 'Negozju, Ekonomija, Euro'
+  -
+    href: 'https://ec.europa.eu/info/live-work-travel-eu_mt'
+    label: 'Għajxien, Xogħol, Ivvjaġġar fl-UE'
+  -
+    href: 'https://ec.europa.eu/info/law_mt'
+    label: Liġi
+  -
+    href: 'https://ec.europa.eu/info/funding-tenders_mt'
+    label: 'Finanzjament, Offerti'
+  -
+    href: 'https://ec.europa.eu/info/research-and-innovation_mt'
+    label: 'Riċerka u innovazzjoni'
+  -
+    href: 'https://ec.europa.eu/info/energy-climate-change-environment_mt'
+    label: 'L-Enerġija, it-Tibdil fil-klima, l-Ambjent'
+  -
+    href: 'https://ec.europa.eu/info/education_mt'
+    label: L-edukazzjoni
+  -
+    href: 'https://ec.europa.eu/info/aid-development-cooperation-fundamental-rights_mt'
+    label: 'Għajnuna, Kooperazzjoni għall-iżvilupp, Drittijiet fundamentali'
+  -
+    href: 'https://ec.europa.eu/info/food-farming-fisheries_mt'
+    label: 'Ikel, Biedja, Sajd'
+  -
+    href: 'https://ec.europa.eu/info/eu-regional-and-urban-development_mt'
+    label: 'Żvilupp reġjonali u urban tal-UE'
+  -
+    href: 'https://ec.europa.eu/info/jobs-european-commission_mt'
+    label: 'Impjiegi mal-Kummissjoni Ewropea'
+  -
+    href: 'https://ec.europa.eu/info/statistics_mt'
+    label: Statistika
+  -
+    href: 'https://ec.europa.eu/commission/presscorner/home/mt'
+    label: Aħbarijiet
+  -
+    href: 'https://ec.europa.eu/info/events_mt'
+    label: Avvenimenti
+  -
+    href: 'https://ec.europa.eu/info/publications_mt'
+    label: Pubblikazzjonijiet
+service_navigation:
+  -
+    href: 'https://ec.europa.eu/info/about-european-commission/contact_mt'
+    label: 'Ikkuntattja l-Kummissjoni Ewropea'
+  -
+    href: 'https://europa.eu/european-union/contact/social-networks_mt#n:+i:4+e:1+t:+s'
+    label: 'Segwi l-Kummissjoni Ewropea fuq il-media soċjali'
+  -
+    href: 'https://ec.europa.eu/info/resources-partners_mt'
+    label: 'Riżorsi għas-sħab'
+legal_navigation:
+  -
+    href: 'https://ec.europa.eu/info/language-policy_mt'
+    label: 'Politika dwar il-lingwa'
+  -
+    href: 'https://ec.europa.eu/info/cookies_mt'
+  -
+    href: 'https://ec.europa.eu/info/privacy-policy_mt'
+    label: 'Politika ta’ privatezza'
+  -
+    href: 'https://ec.europa.eu/info/legal-notice_mt'
+    label: 'Avviż legali'

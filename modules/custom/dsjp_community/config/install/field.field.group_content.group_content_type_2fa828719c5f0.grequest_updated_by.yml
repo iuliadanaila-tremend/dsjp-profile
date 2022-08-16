@@ -1,0 +1,21 @@
+uuid: 5197a1fe-9e04-4954-ae38-bb341e150135
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group_content.grequest_updated_by
+    - group.content_type.group_content_type_2fa828719c5f0
+id: group_content.group_content_type_2fa828719c5f0.grequest_updated_by
+field_name: grequest_updated_by
+entity_type: group_content
+bundle: group_content_type_2fa828719c5f0
+label: 'Approved/Rejected by'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings: {  }
+field_type: entity_reference

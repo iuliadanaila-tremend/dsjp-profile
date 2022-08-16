@@ -1,0 +1,482 @@
+@import "pledge-variables";
+
+#block-pledgeinitiatives {
+
+  @include media-breakpoint-down(md) {
+    margin-left: -$grid-gutter-width / 2;
+    margin-right: -$grid-gutter-width / 2;
+    margin-top: $grid-gutter-width-mobile;
+  }
+
+  margin-top: $grid-gutter-width;
+  padding: $grid-gutter-width;
+  background-color: $body-bg;
+}
+
+.page-node-type-dsj-pledge-initiative {
+  #block-dsj-main-page-content {
+    padding: $grid-gutter-width;
+    background-color: $body-bg;
+
+    .dsj-initiative-update-form {
+
+      .initiative-box-title {
+        margin-bottom: $grid-gutter-width;
+        margin-top: $grid-gutter-width;
+        font-size: $font-size-2xl;
+        line-height: $line-height-2xl;
+        font-family: $font-ec-square-medium;
+      }
+
+      #edit-initiative-beneficiary {
+        &.ecl-fieldset {
+          .fieldset-wrapper {
+            fieldset {
+              .fieldset-wrapper {
+                @include media-breakpoint-down(md) {
+                  flex-direction: column;
+                  margin-bottom: $grid-gutter-width;
+                }
+
+                display: flex;
+                justify-content: space-between;
+                padding-left: $grid-gutter-width-mobile * 1.5;
+                padding-right: $grid-gutter-width-mobile * 1.5;
+
+                .js-form-item {
+                  @include media-breakpoint-down(md) {
+                    flex-basis: 100%;
+                    margin-bottom: 0 !important;
+                  }
+
+                  flex-basis: calc(50% - #{$grid-gutter-width-mobile * 1.5});
+
+                  input {
+                    box-sizing: border-box;
+                    width: 100%;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.initiative {
+  &-header {
+    @include media-breakpoint-down(lg) {
+      padding-left: $grid-gutter-width * 1.8125;
+      font-size: $font-size-lg;
+      line-height: $font-size-2xl;
+    }
+
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: $grid-gutter-width / 1.77 $grid-gutter-width / 2 $grid-gutter-width / 1.77 $grid-gutter-width * 2.5625;
+    border-radius: $pledge-border-radius $pledge-border-radius 0 0;
+    line-height: $line-height-xl;
+    font-family: $font-ec-square-medium;
+    font-size: $font-size-2xl;
+    color: $body-bg;
+
+    &::before {
+      @include media-breakpoint-down(lg) {
+        left: $grid-gutter-width-mobile * 1.5;
+      }
+
+      @include position(absolute ,50% null null $grid-gutter-width / 1.07);
+
+      transform: translateY(-50%);
+    }
+
+    .button {
+      @include media-breakpoint-down(md) {
+        position: relative;
+        min-width: $grid-gutter-width;
+        width: $grid-gutter-width;
+        height: $grid-gutter-width;
+        line-height: $grid-gutter-width;
+        padding: 0;
+        font-family: $font-ec-square-regular;
+        font-size: 0;
+
+        &::before {
+          @include position(absolute, 50% null null 50%);
+
+          transform: translate(-50%, -50%);
+          content: "+";
+          width: $grid-gutter-width;
+          height: $grid-gutter-width;
+          line-height: $grid-gutter-width;
+          font-size: $grid-gutter-width;
+          text-align: center;
+          color: $gray-650;
+        }
+      }
+
+      border-radius: $pledge-border-radius;
+      padding: $grid-gutter-width / 2.66 $grid-gutter-width / 1.33;
+      background-color: $body-bg;
+      line-height: $line-height-xl;
+      font-family: $font-ec-square-medium !important;
+      font-size: $font-size-base;
+      color: $gray-650;
+
+      &:hover {
+        color: $gray-650;
+      }
+    }
+
+    + .initiative-details {
+      &::before {
+        display: none;
+      }
+    }
+  }
+
+  &-description {
+    display: flex;
+    align-items: center;
+    padding: $grid-gutter-width / 2;
+    background-color: $gray-200;
+    border-radius: 0 0 $pledge-border-radius $pledge-border-radius;
+    line-height: $line-height-xl;
+    font-size: $font-size-base;
+    min-height: 50px;
+  }
+
+  &-details {
+    @include media-breakpoint-down(md) {
+      padding-right: 0;
+    }
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: $line-height-xl;
+    position: relative;
+    background-color: $body-bg;
+    border-radius: 0 0 $pledge-border-radius $pledge-border-radius;
+
+    &::before {
+      @include position(absolute, 0 null null 50%);
+
+      content: "";
+      transform: translateX(-50%);
+      width: calc(100% - 24px * 2);
+      height: 1px;
+      background-color: transparentize($gray-100, 0.5);
+    }
+
+    .title {
+      font-family: $font-ec-square-medium;
+      font-size: $font-size-base;
+      line-height: 2$line-height-xl;
+      margin-top: $grid-gutter-width-mobile * 1.5;
+      padding-bottom: $grid-gutter-width-mobile;
+    }
+
+    .content {
+      &-table {
+        @include media-breakpoint-down(md) {
+          overflow-x: scroll;
+
+          .table-wrapper {
+            min-width: 600px;
+          }
+        }
+      }
+
+      &-text {
+        position: relative;
+        margin-bottom: $line-height-xl;
+
+        > span {
+          font-size: $font-size-2xl;
+          line-height: $font-size-2xl;
+
+          + .ecl {
+            p {
+              margin-top: $grid-gutter-width / 2;
+            }
+          }
+        }
+
+        .more-button {
+
+          &-tooltip {
+            @include media-breakpoint-down(md) {
+              left: auto;
+              right: $grid-gutter-width * 2;
+            }
+
+            @include position(absolute, 0 null null 100%);
+
+            display: none;
+            width: 200px;
+            padding-left: $grid-gutter-width;
+            z-index: 1;
+
+            > div {
+              box-shadow: 0 4px 8px rgba(64, 64, 64, 0.2);
+              border-radius: $pledge-border-radius / 2;
+              padding: $grid-gutter-width / 4 0;
+              background-color: $body-bg;
+            }
+
+            a {
+              display: block;
+              font-family: $font-ec-square-medium;
+              font-size: $font-size-2md;
+              line-height: $line-height-xl;
+              color: $primary-default;
+              letter-spacing: 0.0012em;
+              padding: $grid-gutter-width / 2.666 $grid-gutter-width / 1.6;
+
+              &:not(:last-child) {
+                border-bottom: 1px solid $gray-400;
+              }
+
+              &:hover {
+                color: $primary;
+                background-color: transparentize($primary-disabled, 0.9);
+                border-left: $pledge-border-radius / 1.5 solid $primary;
+                padding-left: $grid-gutter-width / 2;
+              }
+            }
+          }
+
+          &-wrapper {
+            @include media-breakpoint-down(md) {
+              right: 24px;
+            }
+
+            @include position(absolute, 0 0 null null);
+            @include icon(more-bullets);
+
+            cursor: pointer;
+            width: $grid-gutter-width / 4;
+            height: $grid-gutter-width;
+            line-height: $grid-gutter-width;
+
+            &:hover {
+              .more-button-tooltip {
+                display: block;
+              }
+            }
+          }
+        }
+      }
+
+      &-header {
+        background-color: transparentize($gray-400, 0.2);
+        padding: $grid-gutter-width / 1.14 $grid-gutter-width / 4 $grid-gutter-width / 1.6;
+        display: flex;
+        justify-content: space-between;
+        border-radius: $pledge-border-radius $pledge-border-radius 0 0;
+      }
+
+      &-body {
+        background-color: transparentize($gray-400, 0.8);
+        padding: $grid-gutter-width / 2 $grid-gutter-width / 4;
+        display: flex;
+        justify-content: space-between;
+        border-radius: 0 0 $pledge-border-radius $pledge-border-radius;
+      }
+    }
+
+    .pillar-icon {
+      @include icon(profile);
+
+      width: $grid-gutter-width;
+      height: $grid-gutter-width;
+      line-height: $grid-gutter-width;
+      display: block;
+      border-radius: 100%;
+      text-align: center;
+      font-size: 0;
+
+      &::before {
+        color: $body-bg;
+        vertical-align: middle;
+      }
+
+      &#pledge-pillar-education {
+        @include icon(education);
+
+        background-color: $education-color;
+
+        &::before {
+          font-size: $font-size-base * 1.1875;
+        }
+      }
+      &#pledge-pillar-labour_force {
+        @include icon(citizens);
+
+        background-color: $labour-force-color;
+
+        &::before {
+          font-size: $font-size-md;
+        }
+      }
+      &#pledge-pillar-ict_professionals {
+        @include icon(ict-professional);
+
+        background-color: $ict-color;
+
+        &::before {
+          font-size: $font-size-base;
+        }
+      }
+      &#pledge-pillar-other {
+        @include icon(citizens);
+
+        background-color: $other-color;
+
+        &::before {
+          font-size: $font-size-base;
+        }
+      }
+    }
+
+    .header-cell,
+    .body-cell {
+      width: 25%;
+      padding-right: $grid-gutter-width / 3.2;
+    }
+  }
+
+  &-education {
+    .initiative-header {
+      @include icon(education);
+
+      background-color: $education-color;
+
+      &::before {
+        @include media-breakpoint-down(md) {
+          font-size: $font-size-base * 1.1875;
+        }
+
+        font-size: $font-size-3xl;
+      }
+
+      .button {
+        &:hover {
+          background-color: tint($education-color, 80%);
+        }
+      }
+    }
+  }
+  &-labour-force,
+  &-labour_force {
+    .initiative-header {
+      @include icon(labour-force);
+
+      background-color: $labour-force-color;
+
+      &::before {
+        @include media-breakpoint-down(md) {
+          font-size: $font-size-lg;
+        }
+
+        font-size: $font-size-4xl;
+      }
+
+      .button {
+        &:hover {
+          background-color: tint($labour-force-color, 80%);
+        }
+      }
+    }
+  }
+  &-ict,
+  &-ict_professionals{
+    .initiative-header {
+      @include icon(ict-professional);
+
+      background-color: $ict-color;
+
+      &::before {
+        @include media-breakpoint-down(md) {
+          font-size: $font-size-2md / 1.2;
+        }
+
+        font-size: $font-size-xl;
+      }
+
+      .button {
+        &:hover {
+          background-color: tint($ict-color, 80%);
+        }
+      }
+    }
+  }
+  &-other {
+    #block-dsj-main-page-content & {
+      padding: $grid-gutter-width $grid-gutter-width 0;
+      background-color: $body-bg;
+
+      .initiative-header {
+        margin-top: $grid-gutter-width-mobile * 1.5;
+      }
+    }
+
+    .initiative-header {
+      @include icon(citizens);
+
+      background-color: $other-color;
+
+      &::before {
+        @include media-breakpoint-down(md) {
+          font-size: $font-size-base / 1.0625;
+        }
+
+        font-size: $font-size-base * 1.5625;
+      }
+
+      .button {
+        &:hover {
+          background-color: tint($other-color, 80%);
+        }
+      }
+    }
+  }
+
+  &-education,
+  &-labour-force,
+  &-ict,
+  &-other {
+    .page-node-type-dsj-pledge-initiative  #block-dsj-main-page-content .dsj-initiative-update-form & {
+      padding: 0;
+
+      .initiative-content {
+        padding: $grid-gutter-width-mobile * 1.5;
+        background-color: $gray-200;
+      }
+
+      .initiative-title {
+        margin-bottom: $grid-gutter-width-mobile;
+        font-size: $font-size-2xl;
+        line-height: $line-height-2xl;
+        font-family: $font-ec-square-medium;
+      }
+    }
+  }
+
+  &-education,
+  &-labour-force,
+  &-ict {
+    margin-bottom: $grid-gutter-width;
+
+    #block-dsj-main-page-content & {
+      background-color: $body-bg;
+      margin-bottom: 0;
+      padding: $grid-gutter-width * 1.75 $grid-gutter-width $grid-gutter-width / 4;
+    }
+  }
+}

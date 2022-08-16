@@ -1,0 +1,20 @@
+uuid: 1c5b056d-f42e-4e91-aaae-f4c72f5d6ecf
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.message.mail_subject
+    - field.field.message.dsj_user_assessment_saved.field_user
+    - message.template.dsj_user_assessment_saved
+id: message.dsj_user_assessment_saved.mail_subject
+targetEntityType: message
+bundle: dsj_user_assessment_saved
+mode: mail_subject
+content:
+  partial_0:
+    weight: 0
+    region: content
+hidden:
+  field_user: true
+  partial_1: true
+  search_api_excerpt: true

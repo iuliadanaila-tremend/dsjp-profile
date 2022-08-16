@@ -1,0 +1,40 @@
+settings:
+  allowed_values:
+    0:
+      label: 'Artificiell intelligens'
+    1:
+      label: Cybersäkerhet
+    2:
+      label: 'Sakernas internet'
+    3:
+      label: Stordata
+    4:
+      label: Blockkedja
+    5:
+      label: Robotteknik
+    6:
+      label: 'Ökad realitet'
+    7:
+      label: 'Virtuell verklighet'
+    8:
+      label: 'Högpresterande datorsystem'
+    9:
+      label: Maskininlärning
+    10:
+      label: 'Molnbaserade datortjänster'
+    12:
+      label: Telekommunikation
+    13:
+      label: 'Trådlöst nätverk'
+    14:
+      label: Kvantdatorsystem
+    15:
+      label: Programvara
+    16:
+      label: 'Utveckling av mobilapplikationer'
+    17:
+      label: Webbutveckling
+    18:
+      label: Mikroelektronik
+    19:
+      label: 'Digital kompetens'

@@ -1,0 +1,54 @@
+uuid: 30c16b12-4843-4798-8464-6f8a7287c6b8
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.dsj_slider
+    - field.field.paragraph.dsj_blank_cards.field_dsj_blank_card
+    - field.field.paragraph.dsj_blank_cards.field_dsj_title
+    - field.field.paragraph.dsj_blank_cards.paragraph_view_mode
+    - paragraphs.paragraphs_type.dsj_blank_cards
+  module:
+    - slick_paragraphs
+id: paragraph.dsj_blank_cards.dsj_slider
+targetEntityType: paragraph
+bundle: dsj_blank_cards
+mode: dsj_slider
+content:
+  field_dsj_blank_card:
+    type: slick_paragraphs_vanilla
+    label: hidden
+    settings:
+      optionset: dsj_mobile_slick
+      view_mode: default
+      cache: 0
+      current_view_mode: default
+      skin: default
+      fx: ''
+      style: ''
+      overridables:
+        arrows: '0'
+        autoplay: '0'
+        dots: '0'
+        draggable: '0'
+        infinite: '0'
+        mouseWheel: '0'
+        randomize: '0'
+        variableWidth: '0'
+      override: false
+      skin_arrows: ''
+      skin_dots: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_dsj_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  paragraph_view_mode: true
+  search_api_excerpt: true

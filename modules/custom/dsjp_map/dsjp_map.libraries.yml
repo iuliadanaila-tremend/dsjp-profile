@@ -1,0 +1,16 @@
+map:
+  js:
+    js/dsjp_map.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+flags:
+  css:
+    component:
+      /libraries/flag-icons/css/flag-icon.css: {}
+map_countries:
+  js:
+    js/dsjp_map_countries.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal

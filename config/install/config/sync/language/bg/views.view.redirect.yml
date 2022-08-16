@@ -1,0 +1,28 @@
+display:
+  default:
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Filter
+          reset_button_label: Reset
+      pager:
+        options:
+          tags:
+            previous: '‹ previous'
+            next: 'next ›'
+            first: '« first'
+            last: 'last »'
+      fields:
+        redirect_source__path:
+          label: From
+        created:
+          label: Created
+      filters:
+        redirect_source__path:
+          expose:
+            label: From
+        redirect_redirect__uri:
+          expose:
+            label: To
+  page_1:
+    display_title: Page

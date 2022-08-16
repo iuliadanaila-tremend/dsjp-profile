@@ -1,0 +1,19 @@
+uuid: f58afa4f-3abd-4935-b4bf-d79e5f0896b9
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: user.field_dsj_bio
+field_name: field_dsj_bio
+entity_type: user
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

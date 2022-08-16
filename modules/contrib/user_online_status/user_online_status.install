@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Install, uninstall and update hooks for User Online Status module.
+ */
+
+/**
+ * Install default config.
+ */
+function user_online_status_update_8100(&$sandbox) {
+  $module = 'user_online_status';
+  \Drupal::service('config.installer')->installDefaultConfig('module', $module);
+}
+
+/**
+ * Add initial CSS class config.
+ */
+function user_online_status_update_8101(&$sandbox) {
+  $config_factory = \Drupal::configFactory();
+  $config_factory->getEditable('user_online_status.settings')->set('css_classes_online', '')->save();
+  $config_factory->getEditable('user_online_status.settings')->set('css_classes_absent', '')->save();
+  $config_factory->getEditable('user_online_status.settings')->set('css_classes_offline', '')->save();
+}

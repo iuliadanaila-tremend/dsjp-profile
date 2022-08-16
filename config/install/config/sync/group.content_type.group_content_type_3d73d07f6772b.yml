@@ -1,0 +1,19 @@
+uuid: acd022f7-9979-4b37-a160-b15f7418081d
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.dsj_national_coalition
+    - node.type.dsj_training_offer
+  module:
+    - gnode
+    - node
+id: group_content_type_3d73d07f6772b
+label: 'National Coalition: Group node (Training offer)'
+description: 'Adds <em class="placeholder">Training offer</em> content to groups both publicly and privately.'
+group_type: dsj_national_coalition
+content_plugin: 'group_node:dsj_training_offer'
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: false

@@ -1,0 +1,7 @@
+purge_control.purge_settings:
+  path: '/admin/config/development/performance/purge/purge-control'
+  defaults:
+    _form: '\Drupal\purge_control\Form\PurgeControlSettings'
+    _title:  'Purge Control Settings'
+  requirements:
+    _permission: 'administer site configuration'

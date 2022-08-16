@@ -1,0 +1,25 @@
+uuid: 04ea45c9-51ec-40da-bc2e-ffd30028dcfb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dsj_type_of_initiative
+    - node.type.dsj_article
+  module:
+    - options
+    - tmgmt_content
+third_party_settings:
+  tmgmt_content:
+    excluded: false
+id: node.dsj_article.field_dsj_type_of_initiative
+field_name: field_dsj_type_of_initiative
+entity_type: node
+bundle: dsj_article
+label: 'Type of initiative'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

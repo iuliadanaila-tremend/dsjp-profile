@@ -1,0 +1,5 @@
+dsjp_content.popup:
+  title: 'Nav button & Popup configuration'
+  parent: system.admin_config_ui
+  description: 'Configuration for popup and & navigation button.'
+  route_name: dsjp_content.popup_config

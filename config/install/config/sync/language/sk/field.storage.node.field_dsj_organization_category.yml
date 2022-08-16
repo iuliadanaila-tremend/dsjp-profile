@@ -1,0 +1,24 @@
+settings:
+  allowed_values:
+    0:
+      label: MVO
+    1:
+      label: 'Verejná inštitúcia'
+    2:
+      label: 'Poskytovateľ formálneho vzdelávania a odbornej prípravy'
+    3:
+      label: Podnik/priemysel
+    4:
+      label: 'Verejno-súkromné partnerstvo'
+    5:
+      label: Iné
+    6:
+      label: 'Odborová organizácia práce'
+    8:
+      label: Združenie
+    9:
+      label: 'Otvorená vzdelávacia platforma'
+    10:
+      label: 'Záujmová skupina'
+    11:
+      label: 'Tvorca politiky'

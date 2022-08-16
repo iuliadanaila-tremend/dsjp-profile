@@ -1,0 +1,14 @@
+settings:
+  allowed_values:
+    -
+      label: Darbs
+    -
+      label: 'Uz projektu balstītas'
+    -
+      label: Klātienē
+    -
+      label: Tiešsaistē
+    -
+      label: Maisījumi
+    -
+      label: 'Balstītas uz pētniecību laboratorijā'

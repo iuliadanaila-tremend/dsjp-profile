@@ -1,0 +1,7 @@
+text:
+  -
+    value: "[message:field_comment_reference:entity:author] commented on [message:field_comment_reference:entity:entity:title]\r\n"
+    format: plain_text
+  -
+    value: "<p>Comment by: [message:field_comment_reference:entity:author] on [message:field_comment_reference:entity:entity:title]</p>\r\n\r\n<p>Comment: [message:field_comment_reference:entity:body]</p>\r\n\r\n<p>Url: [message:field_comment_reference:entity:url]</p>\r\n\r\n<p>Timestamp: [message:field_comment_reference:entity:created]</p>\r\n"
+    format: full_html

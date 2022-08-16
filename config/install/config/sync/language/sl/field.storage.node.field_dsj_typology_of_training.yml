@@ -1,0 +1,24 @@
+settings:
+  allowed_values:
+    0:
+      label: Tečaj
+    1:
+      label: 'Programski modul'
+    2:
+      label: 'Mentorstvo,'
+    4:
+      label: Vajeništvo
+    5:
+      label: 'Študijski obisk'
+    6:
+      label: 'Kratki učni program'
+    7:
+      label: Pripravništvo
+    8:
+      label: 'Izobraževalni program'
+    9:
+      label: Razred
+    10:
+      label: 'Učenje prek udejstvovanja v družbi'
+    11:
+      label: 'Doktorska disertacija'

@@ -1,0 +1,18 @@
+uuid: 54d68d39-dc17-40b9-8e77-6d4c52ed056a
+langcode: en
+status: true
+dependencies:
+  module:
+    - oe_webtools_media
+_core:
+  default_config_hash: gjJEH7VVGda5ToncZdxYyasg5BFWe7KuXNmhMKpck-Q
+id: webtools_map
+label: 'Webtools map'
+description: 'Media type for webtools map'
+source: webtools
+queue_thumbnail_downloads: false
+new_revision: false
+source_configuration:
+  source_field: oe_media_webtools
+  widget_type: map
+field_map: {  }

@@ -1,0 +1,32 @@
+settings:
+  allowed_values:
+    0:
+      label: Merkblatt
+    1:
+      label: Prognose
+    2:
+      label: 'Allgemeine Leitlinien'
+    3:
+      label: 'Allgemeine Informationen'
+    4:
+      label: Zeitschrift
+    5:
+      label: 'Nationaler Plan'
+    6:
+      label: Kurzinfos
+    7:
+      label: Nachrichtenartikel
+    9:
+      label: Präsentation
+    10:
+      label: Werbematerial
+    11:
+      label: Bericht
+    12:
+      label: Zeitplan
+    13:
+      label: 'Wissenschaftliche Veröffentlichung'
+    14:
+      label: Studie
+    15:
+      label: Arbeitsunterlage

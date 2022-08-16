@@ -1,0 +1,21 @@
+uuid: 74f19f4a-06c1-45b3-9f16-308305cdd2bb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.paragraph_view_mode
+    - paragraphs.paragraphs_type.dsj_blank_cards
+  module:
+    - paragraph_view_mode
+id: paragraph.dsj_blank_cards.paragraph_view_mode
+field_name: paragraph_view_mode
+entity_type: paragraph
+bundle: dsj_blank_cards
+label: 'View mode'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: paragraph_view_mode

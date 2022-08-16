@@ -1,0 +1,474 @@
+<?php
+
+/**
+ * @file
+ * The OE Theme Helper module.
+ */
+
+declare(strict_types = 1);
+
+use Drupal\Component\Utility\Html;
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\Core\Entity\Entity\EntityViewDisplay;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Cache\CacheableMetadata;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\image\Plugin\Field\FieldType\ImageItem;
+use Drupal\media\MediaInterface;
+use Drupal\media\Plugin\media\Source\OEmbed;
+use Drupal\media_avportal\Plugin\media\Source\MediaAvPortalVideoSource;
+use Drupal\oe_media_iframe\Plugin\media\Source\Iframe;
+use Drupal\oe_theme\ValueObject\ImageValueObject;
+
+/**
+ * Implements hook_page_attachments().
+ */
+function oe_theme_helper_page_attachments(array &$page) {
+  // Add ECL 2.0 required meta tags.
+  $meta_default = [
+    'ie_legacy_support' => [
+      '#tag' => 'meta',
+      '#attributes' => [
+        'http-equiv' => 'X-UA-Compatible',
+        'content' => 'IE=edge,chrome=1',
+      ],
+    ],
+  ];
+  foreach ($meta_default as $key => $value) {
+    $page['#attached']['html_head'][] = [$value, $key];
+  }
+
+  // Load ECL component library assets for oe_theme and its subthemes.
+  $active_theme = \Drupal::theme()->getActiveTheme();
+  if ($active_theme->getName() === 'oe_theme' || array_key_exists('oe_theme', $active_theme->getBaseThemeExtensions())) {
+    $component_library = theme_get_setting('component_library') ?? 'ec';
+    $page['#attached']['library'][] = 'oe_theme/component_library_' . $component_library;
+  }
+}
+
+/**
+ * Implements hook_entity_view_alter().
+ */
+function oe_theme_helper_entity_view_alter(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display) {
+  if (!isset($build['content_moderation_control'])) {
+    return;
+  }
+
+  // Ensure that the content moderation control block will always
+  // show at the top, above any other elements.
+  $build['content_moderation_control']['#weight'] = -500;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function oe_theme_helper_theme($existing, $type, $theme, $path) {
+  return [
+    'oe_theme_helper_address_inline' => [
+      'variables' => [
+        'address' => NULL,
+        'address_items' => [],
+        'address_delimiter' => NULL,
+      ],
+    ],
+    'oe_theme_helper_in_page_navigation' => [
+      'render element' => 'element',
+    ],
+    'oe_theme_helper_featured_media' => [
+      'variables' => [
+        'params' => [],
+        'entity' => NULL,
+        'field_name' => NULL,
+      ],
+    ],
+    'oe_theme_helper_social_media_icons_list' => [
+      'variables' => [
+        'items' => [],
+      ],
+    ],
+    'oe_theme_helper_social_media_links' => [
+      'variables' => [
+        'content' => [],
+      ],
+    ],
+    'oe_theme_helper_site_navigation' => [
+      'variables' => [
+        'site_name' => '',
+        'menu_items' => [],
+      ],
+    ],
+    'oe_theme_helper_call_status' => [
+      'variables' => [
+        'label' => '',
+        'name' => '',
+      ],
+    ],
+    'oe_theme_helper_call_label_status' => [
+      'variables' => [
+        'label' => '',
+        'name' => '',
+      ],
+    ],
+    'oe_theme_helper_inpage_navigation_block' => [
+      'variables' => [
+        'title' => NULL,
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_field_widget_WIDGET_TYPE_form_alter() for Accordion item.
+ */
+function oe_theme_helper_field_widget_oe_paragraphs_variants_form_alter(&$element, &$form_state, $context) {
+  if ($element['#paragraph_type'] !== 'oe_accordion_item') {
+    return;
+  }
+  // Hide icon field as it's not supported in ECL 2.
+  if (isset($element['subform']['field_oe_icon'])) {
+    $element['subform']['field_oe_icon']['#access'] = FALSE;
+  }
+}
+
+/**
+ * Prepares variables for in-page navigation.
+ *
+ * Default template: oe-theme-helper-in-page-navigation.html.twig.
+ *
+ * @param array $variables
+ *   An array of variables.
+ */
+function template_preprocess_oe_theme_helper_in_page_navigation(array &$variables) {
+  $variables['title'] = $variables['element']['#title'];
+  $variables['entity'] = $variables['element']['#entity'];
+  $variables['items'] = $variables['element']['#items'] ?? [];
+
+  // Process in-page navigation items, assigning them a unique ID.
+  foreach ($variables['items'] as $key => $item) {
+    $variables['items'][$key]['id'] = strtolower(Html::cleanCssIdentifier($variables['items'][$key]['label']));
+  }
+}
+
+/**
+ * Prepares variables for featured media template.
+ *
+ * Default template: oe-theme-helper-featured-media.html.twig.
+ *
+ * @param array $variables
+ *   An array of variables.
+ */
+function template_preprocess_oe_theme_helper_featured_media(array &$variables) {
+  $field = $variables['field_name'];
+  $params = ['description' => $variables['entity']->get($field)->caption];
+  $media = $variables['entity']->get($field)->entity;
+
+  if (!$media instanceof MediaInterface) {
+    return $variables;
+  }
+
+  $cacheability = CacheableMetadata::createFromRenderArray($variables);
+  // Run access checks on the media entity.
+  $access = $media->access('view', NULL, TRUE);
+  $cacheability->addCacheableDependency($access);
+  $cacheability->applyTo($variables);
+  if (!$access->isAllowed()) {
+    return $variables;
+  }
+  // Retrieve the correct media translation.
+  $media = \Drupal::service('entity.repository')->getTranslationFromContext($media, $variables['entity']->language()->getId());
+  $cacheability->addCacheableDependency($media);
+
+  // Get the media source.
+  $source = $media->getSource();
+
+  if ($source instanceof MediaAvPortalVideoSource || $source instanceof OEmbed || $source instanceof Iframe) {
+    // Default video aspect ratio is set to 16:9.
+    $params['ratio'] = '16-9';
+
+    // Load information about the media and the display.
+    $media_type = \Drupal::service('entity_type.manager')->getStorage('media_type')->load($media->bundle());
+    $cacheability->addCacheableDependency($media_type);
+    $source_field = $source->getSourceFieldDefinition($media_type);
+    $display = EntityViewDisplay::collectRenderDisplay($media, 'oe_theme_main_content');
+    $cacheability->addCacheableDependency($display);
+    $display_options = $display->getComponent($source_field->getName());
+    $oembed_type = $source->getMetadata($media, 'type');
+
+    // If it is an OEmbed resource, render it and pass it as embeddable data
+    // only if it is of type video or html.
+    if ($source instanceof OEmbed && in_array($oembed_type, ['video', 'html'])) {
+      $params['embedded_media'] = $media->{$source_field->getName()}->view($display_options);
+      $variables['params'] = $params;
+      $cacheability->applyTo($variables);
+
+      return $variables;
+    }
+
+    // If its an AvPortal video or an iframe video, render it.
+    $params['embedded_media'] = $media->{$source_field->getName()}->view($display_options);
+
+    // When dealing with iframe videos, also respect its given aspect ratio.
+    if ($media->bundle() === 'video_iframe') {
+      $ratio = $media->get('oe_media_iframe_ratio')->value;
+      $params['ratio'] = str_replace('_', '-', $ratio);
+    }
+
+    $variables['params'] = $params;
+    $cacheability->applyTo($variables);
+
+    return $variables;
+  }
+
+  // If it's an image media, render it and assign it to the image variable.
+  /** @var \Drupal\image\Plugin\Field\FieldType\ImageItem $thumbnail */
+  $thumbnail = $media->get('thumbnail')->first();
+  /** @var \Drupal\Core\Entity\Plugin\DataType\EntityAdapter $file */
+  $file = $thumbnail->get('entity')->getTarget();
+
+  $image_url = '';
+  $image_style = $variables['entity']->get($field)->getFieldDefinition()->getSetting('image_style');
+  if ($image_style) {
+    $style = \Drupal::service('entity_type.manager')->getStorage('image_style')->load($image_style);
+    if ($style) {
+      // Use image style url if set.
+      $image_url = $style->buildUrl($file->get('uri')->getString());
+      $cacheability->addCacheableDependency($image_style);
+    }
+  }
+  if (empty($image_url)) {
+    // Use original file url if image style is absent.
+    $image_url = file_create_url($file->get('uri')->getString());
+  }
+
+  $params['alt'] = $thumbnail->get('alt')->getString();
+  $params['image'] = $image_url;
+  $variables['params'] = $params;
+  $cacheability->applyTo($variables);
+
+  return $variables;
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK().
+ */
+function oe_theme_helper_theme_suggestions_oe_theme_helper_in_page_navigation(array $variables) {
+  $suggestions = [];
+  $element = $variables['element'];
+  $hook = 'oe_theme_helper_in_page_navigation';
+
+  $name = !empty($element['#group_name']) ? $element['#group_name'] : NULL;
+  $entity_type = !empty($element['#entity_type']) ? $element['#entity_type'] : NULL;
+  $bundle = !empty($element['#bundle']) ? $element['#bundle'] : NULL;
+
+  if (!empty($name)) {
+    $suggestions[] = $hook . '__' . $name;
+
+    if (!empty($entity_type)) {
+      $suggestions[] = $hook . '__' . $entity_type . '__' . $name;
+    }
+  }
+
+  if (!empty($entity_type) && !empty($bundle)) {
+    $suggestions[] = $hook . '__' . $entity_type . '__' . $bundle;
+
+    if (!empty($name)) {
+      $suggestions[] = $hook . '__' . $entity_type . '__' . $bundle . '__' . $name;
+    }
+  }
+
+  return $suggestions;
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK().
+ */
+function oe_theme_helper_theme_suggestions_oe_theme_helper_call_status(array $variables) {
+  $suggestions = [];
+
+  if (!empty($variables['name'])) {
+    $suggestions[] = 'oe_theme_helper_call_status__' . $variables['name'];
+  }
+
+  return $suggestions;
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK().
+ */
+function oe_theme_helper_theme_suggestions_oe_theme_helper_call_label_status(array $variables) {
+  $suggestions = [];
+
+  if (!empty($variables['name'])) {
+    $suggestions[] = 'oe_theme_helper_call_label_status' . '__' . $variables['name'];
+  }
+
+  return $suggestions;
+}
+
+/**
+ * Prepares variables for call status.
+ *
+ * Default template: oe-theme-helper-call-status.html.twig.
+ *
+ * @param array $variables
+ *   An array of variables.
+ */
+function template_preprocess_oe_theme_helper_call_status(array &$variables) {
+  if (!empty($variables['name'])) {
+    $variables['attributes']['class'] = $variables['name'];
+  }
+}
+
+/**
+ * Implements hook_locale_translation_projects_alter().
+ */
+function oe_theme_helper_locale_translation_projects_alter(&$projects) {
+  $projects['oe_theme_helper']['info']['interface translation server pattern'] = drupal_get_path('module', 'oe_theme_helper') . '/translations/%project-%language.po';
+}
+
+/**
+ * Prepares "image" variable from Media Image which contains ImageValueObject.
+ *
+ * @param array $variables
+ *   An array of variables.
+ * @param \Drupal\Core\Entity\EntityInterface $entity
+ *   Entity to be used to get media.
+ * @param string $field_name
+ *   Field name.
+ * @param bool|null $fallback
+ *   Provide default image.
+ */
+function _oe_theme_helper_content_thumbnail_image(array &$variables, EntityInterface $entity, string $field_name, ?bool $fallback = FALSE): void {
+  if ($fallback) {
+    // Set default image.
+    $image_path = oe_theme_helper . modulebase_path() . '/images/user_icon.svg';
+    $variables['image'] = ImageValueObject::fromArray(['src' => $image_path]);
+  }
+
+  if ($entity->get($field_name)->isEmpty()) {
+    return;
+  }
+
+  $media = $entity->get($field_name)->entity;
+
+  if (!$media instanceof MediaInterface) {
+    // The media entity is not available anymore, bail out.
+    return;
+  }
+
+  $cacheability = CacheableMetadata::createFromRenderArray($variables);
+  $cacheability->addCacheableDependency($media);
+
+  // Run access checks on the media entity.
+  $access = $media->access('view', $variables['user'], TRUE);
+  $cacheability->addCacheableDependency($access);
+  if (!$access->isAllowed()) {
+    $cacheability->applyTo($variables);
+    return;
+  }
+
+  $thumbnail = !$media->get('thumbnail')->isEmpty() ? $media->get('thumbnail')->first() : NULL;
+  $alt = '';
+  if ($thumbnail instanceof ImageItem) {
+    $alt = $thumbnail->get('alt')->getString();
+  }
+
+  $renderable = \Drupal::service('entity_type.manager')->getViewBuilder('node')->viewField($entity->get($field_name), [
+    'type' => 'oe_theme_helper_media_thumbnail_url',
+    'settings' => [
+      'image_style' => 'oe_theme_medium_no_crop',
+    ],
+  ]);
+
+  $cacheability->merge(CacheableMetadata::createFromRenderArray($renderable[0]))
+    ->applyTo($variables);
+
+  $variables['image'] = ImageValueObject::fromArray([
+    'src' => $renderable[0]['#markup'],
+    'alt' => $alt,
+  ]);
+}
+
+/**
+ * Implements hook_entity_bundle_info_alter().
+ */
+function oe_theme_helper_entity_bundle_info_alter(&$bundles) {
+  if (!isset($bundles['media'])) {
+    return;
+  }
+
+  $iframe_bundles = [
+    'av_portal_video',
+    'remote_video',
+    'video_iframe',
+  ];
+
+  foreach ($bundles['media'] as $bundle_id => &$data) {
+    $data['media_data_extractor'] = in_array($bundle_id, $iframe_bundles)
+      ? 'iframe'
+      : 'thumbnail';
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter() for the entity view display form.
+ */
+function oe_theme_helper_form_entity_view_display_edit_form_alter(&$form, FormStateInterface $form_state) {
+  foreach ($form['#fieldgroups'] as $name) {
+    if ($form['fields'][$name]['human_name']['#markup'] === "") {
+      $form['fields'][$name]['human_name']['#markup'] = t('- No label -');
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function oe_theme_helper_preprocess_node(&$variables): void {
+  $node_bundles = [
+    'oe_call_proposals',
+    'oe_call_tenders',
+    'oe_consultation',
+    'oe_event',
+    'oe_news',
+    'oe_organisation',
+    'oe_page',
+    'oe_person',
+    'oe_policy',
+    'oe_project',
+    'oe_publication',
+  ];
+  /** @var \Drupal\node\NodeInterface $node */
+  $node = $variables['node'];
+  if (in_array($node->bundle(), $node_bundles) && $node->isSticky()) {
+    $variables['badges'] = [
+      [
+        'label' => 'Highlighted',
+        'variant' => 'highlight',
+      ],
+    ];
+  }
+}
+
+/**
+ * Retrieves the variant for the status badge.
+ *
+ * @param string $status
+ *   The status name.
+ *
+ * @return string
+ *   The variant.
+ */
+function _oe_theme_helper_prepare_status_variant(string $status): string {
+  switch ($status) {
+    case 'open':
+      return 'high';
+
+    case 'upcoming':
+      return 'medium';
+
+    case 'closed':
+      return 'low';
+  }
+  return '';
+}

@@ -1,0 +1,27 @@
+entity.skos_concept_scheme.collection:
+  title: 'SKOS Concept Scheme list'
+  route_name: entity.skos_concept_scheme.collection
+  description: 'List SKOS Concept Scheme entities'
+  parent: system.admin_structure
+  weight: 100
+
+entity.skos_concept_scheme.settings:
+  title: 'SKOS Concept Scheme settings'
+  route_name: skos_concept_scheme.settings
+  description: 'Settings for the SKOS Concept Scheme entity type'
+  parent: system.admin_structure
+  weight: 100
+
+entity.skos_concept.collection:
+  title: 'SKOS Concept list'
+  route_name: entity.skos_concept.collection
+  description: 'List SKOS Concept entities'
+  parent: system.admin_structure
+  weight: 100
+
+entity.skos_concept.settings:
+  title: 'SKOS Concept settings'
+  route_name: skos_concept.settings
+  description: 'Settings for the SKOS Concept entity type'
+  parent: system.admin_structure
+  weight: 100

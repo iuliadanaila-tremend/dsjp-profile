@@ -1,0 +1,18 @@
+uuid: 78f36fe3-0f21-478a-9ccd-7dcd516a498b
+langcode: en
+status: true
+dependencies:
+  module:
+    - rdf_skos
+id: skos_concept.skos_concept.hidden_label
+field_name: hidden_label
+entity_type: skos_concept
+bundle: skos_concept
+label: 'Hidden Label'
+description: 'The hidden label of the Concept.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Offentligt
+    -
+      label: Privat
+    -
+      label: Gräsrotsfinansiering
+    -
+      label: Offentlig-privat

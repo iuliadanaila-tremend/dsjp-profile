@@ -1,0 +1,12 @@
+settings:
+  allowed_values:
+    0:
+      label: 'La locul de muncă'
+    1:
+      label: 'Bazată pe proiect'
+    2:
+      label: Presant
+    4:
+      label: Mixtă
+    5:
+      label: 'Bazată pe cercetare de laborator'

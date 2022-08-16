@@ -1,0 +1,34 @@
+uuid: 5e0141ac-bda0-4689-a646-5cf9c8bf4a1b
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.small_banner
+    - field.field.media.image.oe_media_image
+    - image.style.dsj_small_banner_widget
+    - media.type.image
+  module:
+    - image
+_core:
+  default_config_hash: Io7rEAP7BEHAdpaOQIYMsl7N7Cpqh8MHlFFOf-jQbfI
+id: media.image.small_banner
+targetEntityType: media
+bundle: image
+mode: small_banner
+content:
+  oe_media_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: dsj_small_banner_widget
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  langcode: true
+  name: true
+  search_api_excerpt: true
+  thumbnail: true
+  uid: true

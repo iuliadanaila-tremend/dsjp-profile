@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: 'Blandat lärande'
+    -
+      label: 'Om plats'
+    -
+      label: 'Virtuellt liv'
+    -
+      label: 'Virtuellt förinspelat'

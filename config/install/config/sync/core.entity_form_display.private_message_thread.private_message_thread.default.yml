@@ -1,0 +1,24 @@
+uuid: 8874d2aa-dd6c-48e6-9e7d-46f76113c218
+langcode: en
+status: true
+dependencies:
+  module:
+    - private_message
+_core:
+  default_config_hash: MC8mdpqmm7Ondq2Unne60vCjJD_m-jRjtS18alTkr08
+id: private_message_thread.private_message_thread.default
+targetEntityType: private_message_thread
+bundle: private_message_thread
+mode: default
+content:
+  members:
+    type: entity_reference_autocomplete
+    weight: -3
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

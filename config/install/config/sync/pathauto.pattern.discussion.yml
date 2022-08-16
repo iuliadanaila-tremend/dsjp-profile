@@ -1,0 +1,22 @@
+uuid: 30cd2fd8-b98f-404a-8ba3-e2001f86a9bb
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: discussion
+label: Discussion
+type: 'canonical_entities:node'
+pattern: '[customtoken:discussion-path]/[node:title]'
+selection_criteria:
+  3f6632c2-9e87-4441-a51e-079c17766527:
+    id: node_type
+    negate: false
+    uuid: 3f6632c2-9e87-4441-a51e-079c17766527
+    context_mapping:
+      node: node
+    bundles:
+      dsj_discussion: dsj_discussion
+selection_logic: and
+weight: -8
+relationships: {  }

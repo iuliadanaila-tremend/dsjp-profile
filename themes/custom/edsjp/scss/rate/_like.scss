@@ -1,0 +1,75 @@
+.voteShare-container {
+  @include media-breakpoint-down(xxs) {
+    flex-direction: column;
+  }
+
+  margin-top: $grid-gutter-width;
+  padding-top: 0;
+  margin-bottom: $grid-gutter-width;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid $gray-500;
+
+  .voting {
+    padding: 20px 0;
+
+    .dsj-pledge & {
+      padding: 15px 0;
+    }
+  }
+}
+
+.voting,
+.flag-voting {
+  position: relative;
+  font-size: $font-size-sm;
+  font-weight: normal;
+  display: flex;
+
+  a {
+    @include position(absolute, 0);
+    z-index: 1;
+    overflow: hidden;
+    text-indent: 9999px;
+  }
+
+  .count {
+    @include icon(like_2);
+    position: relative;
+    padding-left: $grid-gutter-width;
+
+    .dsj-pledge & {
+      padding-left: $grid-gutter-width + $grid-gutter-width / 4;
+      line-height: $grid-gutter-width;
+    }
+
+    &::before {
+      @include position(absolute, -1px null null 0);
+      font-size: $font-size-2xl;
+      color: $gray-100;
+
+      .dsj-pledge & {
+        font-size: 32px;
+      }
+    }
+  }
+
+  .likes-text,
+  .js-flag-message {
+    display: none;
+
+    .dsj-pledge & {
+      display: inline-block;
+      line-height: $grid-gutter-width;
+      padding-left: 2px;
+    }
+  }
+
+  .action-unflag {
+    .count {
+      &::before {
+        color: theme-color('third');
+      }
+    }
+  }
+}

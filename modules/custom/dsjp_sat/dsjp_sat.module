@@ -1,0 +1,56 @@
+<?php
+
+/**
+ * @file
+ * Provides main functionality for dsjp_sat module.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function dsjp_sat_theme($existing, $type, $theme, $path) {
+  return [
+    'dsjp_assessment' => [
+      'variables' => [
+        'skills' => NULL,
+        'overall' => NULL,
+        'start_date' => NULL,
+        'assessment_links' => NULL,
+        'level_map' => [
+          1 => t('Foundation'),
+          2 => t('Foundation'),
+          3 => t('Intermediate'),
+          4 => t('Intermediate'),
+          5 => t('Advanced'),
+          6 => t('Advanced'),
+        ],
+      ],
+      'path' => drupal_get_path('module', 'dsjp_sat') . '/templates',
+    ],
+  ];
+}
+
+/**
+ * Maps the skill data categories.
+ *
+ * @param array $results
+ *   The categories to map.
+ *
+ * @return array
+ *   The mapped categories.
+ */
+function _dsjp_sat_map_skill_data(array $results) {
+  $data = [];
+  $mapSkills = [
+    1 => t('Information and data literacy'),
+    2 => t('Communication and collaboration'),
+    3 => t('Digital content creation'),
+    4 => t('Safety'),
+    5 => t('Problem solving'),
+  ];
+  foreach ($results as $skill => $result) {
+    $data[(string) $mapSkills[$skill]] = $result;
+  }
+
+  return $data;
+}

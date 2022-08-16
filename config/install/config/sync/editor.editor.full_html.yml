@@ -1,0 +1,99 @@
+uuid: e76af055-e48e-4cad-aa0d-f6b472704a8c
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.full_html
+  module:
+    - ckeditor
+format: full_html
+editor: ckeditor
+settings:
+  toolbar:
+    rows:
+      -
+        -
+          name: Formatting
+          items:
+            - Format
+            - FontSize
+            - Bold
+            - Italic
+            - Underline
+            - Strike
+            - '-'
+            - Superscript
+            - Subscript
+            - RemoveFormat
+            - '-'
+            - Table
+            - TextColor
+            - BGColor
+        -
+          name: Positioning
+          items:
+            - JustifyLeft
+            - JustifyCenter
+            - JustifyRight
+            - JustifyBlock
+            - '-'
+            - Outdent
+            - Indent
+        -
+          name: Links
+          items:
+            - DrupalLink
+            - DrupalUnlink
+        -
+          name: Lists
+          items:
+            - BulletedList
+            - NumberedList
+        -
+          name: Media
+          items:
+            - Blockquote
+            - DrupalImage
+            - video_embed
+        -
+          name: Tools
+          items:
+            - Source
+            - Undo
+            - Redo
+            - HorizontalRule
+            - Cut
+            - Copy
+            - Paste
+            - PasteText
+            - PasteFromWord
+            - SpecialChar
+            - Maximize
+  plugins:
+    stylescombo:
+      styles: ''
+    drupallink:
+      linkit_enabled: true
+      linkit_profile: default
+    language:
+      language_list: un
+    font:
+      font_names: ''
+      font_sizes: "14px|14px\r\n15px|15px\r\n16px|16px\r\n17px|17px\r\n18px|18px\r\n19px|19px\r\n20px|20px"
+    colorbutton:
+      colors: ''
+    video_embed:
+      defaults:
+        children:
+          autoplay: false
+          responsive: true
+          width: '854'
+          height: '480'
+image_upload:
+  status: true
+  scheme: public
+  directory: inline-images
+  max_size: '5 MB'
+  max_dimensions:
+    width: 1024
+    height: 1024

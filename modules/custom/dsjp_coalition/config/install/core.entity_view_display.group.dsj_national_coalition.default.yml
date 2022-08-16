@@ -1,0 +1,41 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.group.dsj_national_coalition.field_dsj_api_url
+    - field.field.group.dsj_national_coalition.field_dsj_source_type
+    - group.type.dsj_national_coalition
+  module:
+    - options
+id: group.dsj_national_coalition.default
+targetEntityType: group
+bundle: dsj_national_coalition
+mode: default
+content:
+  field_dsj_api_url:
+    weight: -4
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_dsj_source_type:
+    weight: -3
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  label:
+    label: hidden
+    type: string
+    weight: -5
+    region: content
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+hidden:
+  changed: true
+  created: true
+  uid: true

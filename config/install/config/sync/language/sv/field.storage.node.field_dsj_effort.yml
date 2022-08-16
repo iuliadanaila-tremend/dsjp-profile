@@ -1,0 +1,8 @@
+settings:
+  allowed_values:
+    -
+      label: 'Deltid, lätt'
+    -
+      label: Heltid
+    -
+      label: 'Deltid, intensiv'

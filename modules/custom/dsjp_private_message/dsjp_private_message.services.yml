@@ -1,0 +1,11 @@
+services:
+  dsjp_community.route_subscriber:
+    class: Drupal\dsjp_private_message\Routing\RouteSubscriber
+    tags:
+      - { name: event_subscriber }
+
+  custom_breadcrumb.breadcrumb_private_message_delete_page:
+    class: Drupal\dsjp_private_message\Breadcrumb\PmBreadcrumbBuilder
+    arguments: [ '@current_user' ]
+    tags:
+      - { name: breadcrumb_builder, priority: 10003 }

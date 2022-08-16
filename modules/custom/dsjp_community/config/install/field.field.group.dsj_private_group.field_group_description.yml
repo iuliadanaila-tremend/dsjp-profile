@@ -1,0 +1,21 @@
+uuid: 3dd95a68-e4a1-4da0-ac8c-854b95640b44
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_group_description
+    - group.type.dsj_private_group
+  module:
+    - text
+id: group.dsj_private_group.field_group_description
+field_name: field_group_description
+entity_type: group
+bundle: dsj_private_group
+label: 'Group description'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

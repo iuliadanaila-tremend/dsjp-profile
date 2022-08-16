@@ -1,0 +1,81 @@
+label: Groepsnodes
+display:
+  default:
+    display_title: Hoofd
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Toepassen
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sorteren op'
+          sort_asc_label: Oplopend
+          sort_desc_label: Aflopend
+      pager:
+        options:
+          tags:
+            previous: ‹‹
+            next: ››
+            first: '« Eerste'
+            last: 'Laatste »'
+          expose:
+            items_per_page_label: 'Items per pagina'
+            items_per_page_options_all_label: '- Alle -'
+            offset_label: Startpunt
+      fields:
+        title:
+          label: Titel
+          separator: ', '
+        type:
+          label: Inhoudstype
+          separator: ', '
+        status:
+          label: Status
+          settings:
+            format_custom_true: Gepubliceerd
+            format_custom_false: 'Niet gepubliceerd'
+          separator: ', '
+        changed:
+          label: Bijgewerkt
+          separator: ', '
+        edit_group_content:
+          text: 'Relatie wijzigen'
+        delete_group_content:
+          text: 'Relatie verwijderen'
+        edit_node:
+          admin_label: 'Inhoud-link bewerken'
+          text: 'Node bewerken'
+        delete_node:
+          admin_label: 'Inhoud-link verwijderen'
+          text: 'Node verwijderen'
+        dropbutton:
+          label: Bewerkingen
+      filters:
+        status:
+          expose:
+            label: Publicatiestatus
+          group_info:
+            label: Publicatiestatus
+            group_items:
+              1:
+                title: Gepubliceerd
+              2:
+                title: 'Niet gepubliceerd'
+        type:
+          expose:
+            label: Inhoudstype
+      empty:
+        area_text_custom:
+          content: 'Geen inhoud beschikbaar.'
+      arguments:
+        gid:
+          exception:
+            title: Alle
+          title: '{{ arguments.gid|placeholder }} inhoud'
+  block_1:
+    display_options:
+      fields:
+        title:
+          label: Titel
+          separator: ', '
+  page_1:
+    display_title: Pagina

@@ -1,0 +1,40 @@
+settings:
+  allowed_values:
+    0:
+      label: 'Mesterséges intelligencia'
+    1:
+      label: Kiberbiztonság
+    2:
+      label: 'A dolgok internete'
+    3:
+      label: 'Nagy adathalmazok'
+    4:
+      label: Blokklánc
+    5:
+      label: Robotika
+    6:
+      label: 'Kiterjesztett valóság'
+    7:
+      label: 'Virtuális valóság'
+    8:
+      label: 'Nagy teljesítményű számítástechnika'
+    9:
+      label: 'Gépi tanulás'
+    10:
+      label: 'Felhőalapú számítástechnika'
+    12:
+      label: Távközlés
+    13:
+      label: Wi-fi
+    14:
+      label: Kvantumszámítás
+    15:
+      label: Szoftver
+    16:
+      label: Mobilalkalmazás-fejlesztés
+    17:
+      label: Webfejlesztés
+    18:
+      label: Mikroelektronika
+    19:
+      label: 'Digitális készségek'

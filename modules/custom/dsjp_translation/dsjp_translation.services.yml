@@ -1,0 +1,9 @@
+services:
+  dsjp_translation.etranslation:
+    class: Drupal\dsjp_translation\Etranslation
+    arguments: [ '@http_client', '@logger.factory', '@tmgmt.data', '@request_stack' ]
+  dsjp_translation.migrate_post_save:
+    class: Drupal\dsjp_translation\EventSubscriber\MigratePostSave
+    arguments: [ '@entity_type.manager' ]
+    tags:
+      - { name: event_subscriber }

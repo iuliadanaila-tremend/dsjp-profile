@@ -1,0 +1,84 @@
+uuid: fd92e8f9-e430-49ed-9017-75ab0ddabe18
+langcode: en
+status: true
+dependencies:
+  module:
+    - group
+    - options
+id: group.field_dsj_target_sector
+field_name: field_dsj_target_sector
+entity_type: group
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: agriculture
+      label: 'A - Agriculture, Forestry and Fishing'
+    -
+      value: mining
+      label: 'B - Mining and Quarrying'
+    -
+      value: manufacturing
+      label: 'C - Manufacturing'
+    -
+      value: electricity
+      label: 'D - Electricity, Gas, Steam and Air Conditioning Supply'
+    -
+      value: water_supply
+      label: 'E - Water Supply; Sewerage, Waste Management and Remediation Activities'
+    -
+      value: construction
+      label: 'F - Construction'
+    -
+      value: wholesale
+      label: 'G - Wholesale and Retail Trade; Repair of Motor Vehicles and Motorcycles'
+    -
+      value: transportation
+      label: 'H - Transportation and Storage'
+    -
+      value: accomodation
+      label: 'I - Accommodation and Food Service Activities'
+    -
+      value: information
+      label: 'J - Information and Communication'
+    -
+      value: financial
+      label: 'K - Financial and Insurance Activities'
+    -
+      value: real_estate
+      label: 'L - Real Estate Activities'
+    -
+      value: professional_scientific
+      label: 'M - Professional, Scientific and Technical Activities'
+    -
+      value: administrative_support
+      label: 'N - Administrative and Support Service Activities'
+    -
+      value: public_administration
+      label: 'O - Public Administration and Defence; Compulsory Social Security'
+    -
+      value: education
+      label: 'P - Education'
+    -
+      value: human_health
+      label: 'Q - Human Health and Social Work Activities'
+    -
+      value: arts
+      label: 'R - Arts, Entertainment and Recreation'
+    -
+      value: other
+      label: 'S - Other Service Activities'
+    -
+      value: household_activities
+      label: 'T - Activities of Households as Employers; Undifferentiate Goods and Services Producing Activities of Households for Own Use'
+    -
+      value: extraterritorial_activities
+      label: 'U - Activities of Extraterritorial Organisations and Bodies'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

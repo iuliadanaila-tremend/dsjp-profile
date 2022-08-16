@@ -1,0 +1,4 @@
+text:
+  -
+    value: "<p>A new discussion has been created and needs to be reviewed:&nbsp;[message:field_node_reference:entity:url]</p>\r\n"
+    format: full_html

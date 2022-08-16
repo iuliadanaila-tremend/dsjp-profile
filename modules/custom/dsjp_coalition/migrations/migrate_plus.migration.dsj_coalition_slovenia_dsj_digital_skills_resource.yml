@@ -1,0 +1,174 @@
+id: dsj_coalition_slovenia_dsj_digital_skills_resource
+label: 'Slovenia Coalition Digital Skills Resources content migration'
+source:
+  plugin: embedded_data
+  data_rows: {}
+  ids:
+    id:
+      type: integer
+    gid:
+      type: integer
+process:
+  uid: constants/group_owner
+  created:
+    plugin: format_date
+    from_format: 'Y-m-d\TH:i:s.Z\Z'
+    to_timezone: 'GMT'
+    to_format: 'U'
+    source: created_at
+  changed:
+    plugin: format_date
+    from_format: 'Y-m-d\TH:i:s.Z\Z'
+    to_timezone: 'GMT'
+    to_format: 'U'
+    source: updated_at
+  title: title
+  body/value:
+    plugin: text_image_extractor
+    source: description
+  body/format:
+    plugin: default_value
+    default_value: full_html
+  field_dsj_author:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: author
+    -
+      plugin: get
+      source: author
+  field_dsj_digital_skill_level: digital_skill_level
+  field_dsj_digital_technology: digital_technology
+  field_dsj_geographic_scope/target_id:
+    plugin: custom_field_entity_lookup
+    entity_type: taxonomy_term
+    bundle_key: vid
+    bundle: dsj_country
+    value_field: field_dsj_country_code
+    source: geographic_scope_country
+  field_dsj_type_of_initiative: type_of_initiative
+  field_dsj_industry: industry_education_training
+  field_dsj_skills_resource_type: skills_resource
+  field_dsj_main_file_for_download:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: file_url
+    -
+      plugin: get
+      source: file_url
+    -
+      plugin: concat
+      source:
+        - constants/file_location
+        - file_url
+    -
+      plugin: file_import
+      field: field_dsj_main_file_for_download
+      destination: constants/file_destination
+      rename: true
+      uid: '@uid'
+      skip_on_error: TRUE
+  field_dsj_file_for_download:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: files
+    -
+      plugin: extract
+      source: files
+      index:
+        - 0
+        - file_path
+    -
+      plugin: concat
+      source:
+        - constants/file_location
+        - files/0/file_path
+    -
+      plugin: file_import
+      field: field_dsj_file_for_download
+      destination: constants/file_destination
+      rename: true
+      uid: '@uid'
+      skip_on_error: TRUE
+  field_dsj_target_audience: target_audience
+  field_dsj_target_group: target_group
+  field_dsj_target_language: target_language
+  field_dsj_topology_of_competence:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: topology_of_competences
+    -
+      plugin: get
+      source: topology_of_competences
+  field_dsj_publish_in_core:
+    plugin: default_value
+    default_value: 1
+  field_dsj_website_link/uri:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: website_url
+    -
+      plugin: get
+      source: website_url
+  field_dsj_website_link/title:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: website_url_link
+    -
+      plugin: get
+      source: website_url_link
+  field_dsj_website_link/link_type:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: website_url_type
+    -
+      plugin: get
+      source: website_url_type
+  field_dsj_organization:
+    plugin: sub_process
+    source: organization
+    process:
+      target_id:
+        plugin: entity_lookup
+        entity_type: node
+        value_key: title
+        source: organization
+  field_dsj_image:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: main_image
+    -
+      plugin: get
+      source: main_image
+    -
+      plugin: concat
+      source:
+        - constants/file_location
+        - main_image
+    -
+      plugin: file_import
+      field: field_dsj_image
+      destination: constants/file_destination
+      rename: true
+      uid: '@uid'
+      skip_on_error: TRUE
+  langcode:
+    plugin: default_value
+    source: constants/language
+    default_value: und
+  status:
+    plugin: default_value
+    default_value: 0
+  moderation_state:
+    plugin: default_value
+    default_value: imported
+destination:
+  plugin: entity:node
+  default_bundle: dsj_digital_skills_resource

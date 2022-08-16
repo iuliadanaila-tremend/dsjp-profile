@@ -1,0 +1,21 @@
+uuid: a7b1b431-9e93-4bb7-8858-fed840c2ad82
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_dsj_source_type
+    - group.type.dsj_national_coalition
+  module:
+    - options
+id: group.dsj_national_coalition.field_dsj_source_type
+field_name: field_dsj_source_type
+entity_type: group
+bundle: dsj_national_coalition
+label: 'Source Type'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

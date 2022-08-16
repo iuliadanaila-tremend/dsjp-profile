@@ -1,0 +1,23 @@
+uuid: 11dd4fe5-91b4-45da-b613-ec9e12ca467b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group_content.grequest_status
+    - group.content_type.group_content_type_8b8a0bf61fb1b
+id: group_content.group_content_type_8b8a0bf61fb1b.grequest_status
+field_name: grequest_status
+entity_type: group_content
+bundle: group_content_type_8b8a0bf61fb1b
+label: 'Request status'
+description: ''
+required: true
+translatable: true
+default_value: 0
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

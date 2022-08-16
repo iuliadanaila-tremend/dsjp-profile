@@ -1,0 +1,17 @@
+uuid: e6c3b724-57e9-41a3-93ec-9d0c8ae56158
+langcode: en
+status: true
+dependencies: {  }
+id: dsj_pledge_published
+workflow: dsj_pledge_workflow
+transitions:
+  publish: publish
+roles: {  }
+author: true
+site_mail: false
+emails: ''
+subject: 'Your [node:content-type:name] has been published!'
+body:
+  value: "<p>[node:content-type:name] [node:title] was published. You can view it here: [node:url]</p>\r\n"
+  format: full_html
+label: 'Pledge Published'

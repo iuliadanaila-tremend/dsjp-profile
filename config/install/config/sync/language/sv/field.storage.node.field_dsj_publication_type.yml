@@ -1,0 +1,32 @@
+settings:
+  allowed_values:
+    0:
+      label: Faktablad
+    1:
+      label: Prognos
+    2:
+      label: 'Allmänna riktlinjer'
+    3:
+      label: 'Allmän information'
+    4:
+      label: Tidskrift
+    5:
+      label: 'Nationell plan'
+    6:
+      label: Nyhetsinslag
+    7:
+      label: Nyhetsartikel
+    8:
+      label: Nyhetsbrev
+    10:
+      label: PR-material
+    11:
+      label: Rapport
+    12:
+      label: Tidsplan
+    13:
+      label: 'Vetenskaplig artikel'
+    14:
+      label: Studie
+    15:
+      label: Arbetsdokument

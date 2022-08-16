@@ -1,0 +1,38 @@
+settings:
+  allowed_values:
+    0:
+      label: 'Inteligência artificial'
+    1:
+      label: Cibersegurança
+    2:
+      label: 'Internet das coisas'
+    3:
+      label: Megadados;
+    4:
+      label: 'Cadeia de blocos'
+    5:
+      label: Robótica
+    6:
+      label: 'Realidade aumentada'
+    7:
+      label: 'Realidade virtual'
+    8:
+      label: 'Computação de alto desempenho'
+    9:
+      label: 'Aprendizagem automática'
+    10:
+      label: 'Computação em nuvem'
+    12:
+      label: Telecomunicações
+    13:
+      label: Wi-Fi
+    14:
+      label: 'Computação quântica'
+    16:
+      label: 'Desenvolvimento de aplicações móveis'
+    17:
+      label: 'Desenvolvimento da Web'
+    18:
+      label: Microeletrónica
+    19:
+      label: 'Competências digitais'

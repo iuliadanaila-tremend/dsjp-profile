@@ -1,0 +1,24 @@
+settings:
+  allowed_values:
+    0:
+      label: Kursas
+    1:
+      label: 'Programos modulis'
+    2:
+      label: Kuravimas
+    4:
+      label: Pameistrystė
+    5:
+      label: 'Pažintinis vizitas'
+    6:
+      label: 'Trumpojo mokymosi programa'
+    7:
+      label: Stažuotė
+    8:
+      label: 'Mokymo programa'
+    9:
+      label: Klasė
+    10:
+      label: 'Praktinis mokymasis'
+    11:
+      label: Disertacija

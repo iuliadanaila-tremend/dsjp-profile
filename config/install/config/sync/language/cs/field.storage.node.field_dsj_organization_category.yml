@@ -1,0 +1,26 @@
+settings:
+  allowed_values:
+    -
+      label: 'NEVLÁDNÍ ORGANIZACE'
+    -
+      label: 'Veřejná instituce'
+    -
+      label: 'Poskytovatel formálního vzdělávání a odborné přípravy'
+    -
+      label: Podnikání/průmysl
+    -
+      label: 'Partnerství veřejného a soukromého sektoru'
+    -
+      label: Ostatní
+    -
+      label: 'Pracovní svaz'
+    -
+      label: 'Think tank'
+    -
+      label: Přidružení
+    -
+      label: 'Otevřená vzdělávací platforma'
+    -
+      label: 'Zájmová skupina'
+    -
+      label: 'Tvůrce politiky'

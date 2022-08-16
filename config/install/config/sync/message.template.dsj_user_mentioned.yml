@@ -1,0 +1,23 @@
+uuid: bc68f80b-d6e1-4b0e-9f32-9818be2d9c9b
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.full_html
+    - filter.format.plain_text
+template: dsj_user_mentioned
+label: 'User mentioned'
+description: ''
+text:
+  -
+    value: "You have been mentioned.\r\n"
+    format: plain_text
+  -
+    value: "<p>Visit this page to see the mention:&nbsp;<a href=\"[message:field_node_reference:entity:url]\">[message:field_node_reference:entity:title]</a></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>&nbsp;Kind regards,&nbsp;</p>\r\n\r\n<p>The Platform team&nbsp;</p>\r\n\r\n<p><a href=\"[site:url]\">www.digitalskillsjobs.eu</a>&nbsp;</p>\r\n<img alt=\"footer\" data-align=\"center\" data-entity-type=\"file\" data-entity-uuid=\"bbc159f8-4af0-46c2-8931-532fff4dbece\" height=\"114\" src=\"/sites/default/files/2021-10/unnamed.png\" width=\"884\" />"
+    format: full_html
+settings:
+  'token options':
+    clear: false
+    'token replace': true
+  purge_override: false
+  purge_methods: {  }

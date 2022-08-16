@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Base
+    -
+      label: Intermedio
+    -
+      label: Avanzata
+    -
+      label: 'Esperto digitale'

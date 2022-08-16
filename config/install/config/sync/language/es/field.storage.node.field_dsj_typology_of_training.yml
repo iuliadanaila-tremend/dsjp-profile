@@ -1,0 +1,24 @@
+settings:
+  allowed_values:
+    0:
+      label: Curso
+    1:
+      label: 'Módulo de un programa'
+    2:
+      label: Tutoría
+    4:
+      label: Aprendizaje
+    5:
+      label: 'Visita de estudio'
+    6:
+      label: 'Programa de aprendizaje corto'
+    7:
+      label: Prácticas
+    8:
+      label: 'Programa educativo'
+    9:
+      label: Clase
+    10:
+      label: Aprendizaje-servicio
+    11:
+      label: Tesis

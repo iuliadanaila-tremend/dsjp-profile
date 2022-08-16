@@ -1,0 +1,249 @@
+.view-groups {
+
+  .views-row {
+    @include media-breakpoint-down(sm) {
+      flex-wrap: wrap;
+    }
+    border-radius: $border-radius-lg;
+    border: 1px solid $gray-300;
+    padding: $grid-gutter-width / 2;
+    box-sizing: border-box;
+    flex-wrap: nowrap;
+    background-color: $body-bg;
+    height: 100%;
+    display: flex;
+    margin-bottom: $grid-gutter-width / 2;
+  }
+
+  .more-link {
+    @include media-breakpoint-down(sm) {
+      display: none;
+    }
+
+    a {
+      font-size: $font-size-sm;
+    }
+  }
+
+  $list-image-size: 100px;
+  $list-image-size-small: 70px;
+
+  .field--name {
+
+    &-field-dsj-group-image {
+      @include media-breakpoint-down(sm) {
+        width: $list-image-size-small;
+        height: $list-image-size-small;
+      }
+      width: $list-image-size;
+      height: $list-image-size;
+      margin-right: $grid-gutter-width / 2;
+
+      img {
+        @include media-breakpoint-down(sm) {
+          max-width: $list-image-size-small;
+        }
+        border-radius: $border-radius-lg;
+        max-width: $list-image-size;
+      }
+    }
+
+    &-label {
+      @include media-breakpoint-down(sm) {
+        width: auto;
+      }
+      color: $primary;
+      width: 100%;
+      text-align: left;
+    }
+  }
+
+  .title-wrapper {
+    @include media-breakpoint-down(sm) {
+      width: auto;
+    }
+
+    color: $primary;
+    width: 100%;
+    text-align: left;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+#block-dsj-exposed-form-groups {
+  border-radius: $border-radius-lg;
+  background-color: $body-bg;
+  border: 1px solid $gray-300;
+  padding: $grid-gutter-width / 1.25;
+  margin: 0 0 $grid-gutter-width;
+
+  .ecl-form-group--text-input:before {
+    top: unset;
+    bottom: 16px;
+  }
+
+  #views-exposed-form-groups-page-groups {
+    position: relative;
+
+    .form-actions {
+      margin: 0 !important;
+      top: 29px;
+    }
+  }
+}
+
+.group-actions {
+  @include media-breakpoint-down(sm) {
+    width: 100%;
+    margin-top: $grid-gutter-width / 2;
+  }
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  white-space: nowrap;
+  text-align: right;
+}
+
+.membership-request-link {
+
+  a {
+    font-size: $font-size-xs;
+    font-weight: 600;
+    display: inline-block;
+    border: 1px solid $primary;
+    padding: $grid-gutter-width / 6 $grid-gutter-width / 2;
+    margin-bottom: $grid-gutter-width / 2;
+    border-radius: $border-radius-lg;
+
+    &.link-subscribe {
+      color: $body-bg;
+      background-color: $primary;
+      border: unset;
+
+      &:hover {
+        color: $body-bg;
+        background-color: $primary-light;
+      }
+    }
+
+    &.link-leave {
+      color: $primary;
+      background-color: $body-bg;
+
+      &:hover {
+        color: $body-bg;
+        background-color: $primary-light;
+      }
+    }
+  }
+}
+
+.group-content-form,
+.group--full {
+  @include border-radius($border-radius-lg);
+  background: linear-gradient(168.53deg, rgba(255, 255, 255, .6) 0%, $white 97.46%);
+  padding: $grid-gutter-width / 2;
+  overflow: hidden;
+
+  @media (min-width: $min-md-width) {
+    padding: $grid-gutter-width;
+  }
+
+  .form-item-help {
+    margin-top: 0 !important;
+    margin-bottom: $grid-gutter-width * 2 !important;
+    font-size: $font-size-2lg;
+  }
+
+  .title-row {
+    margin-bottom: $grid-gutter-width;
+    border-bottom: 1px solid $gray-200;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+
+    h2 {
+      margin-top: 0;
+    }
+  }
+
+  .ecl {
+    h2 {
+      @include font($h2-font-size, $line-height-2xl, $font-ec-square-regular, 400, true);
+    }
+
+    h3 {
+      @include font($font-size-2md, $line-height-lg, $font-ec-square-regular, 400, true);
+    }
+  }
+
+  .field--name-field-dsj-group-image {
+    max-width: 180px;
+    height: auto;
+    float: left;
+    margin-right: $grid-gutter-width / 2;
+  }
+}
+
+.path-group {
+  .dropbutton-wrapper {
+    &.dropbutton-multiple {
+      padding-right: $grid-gutter-width * 6;
+    }
+
+    &.open {
+      .dropbutton-widget {
+        background-color: $gray;
+        box-shadow: 0 0 3px 2px transparentize($dark, .9);
+
+        .dropbutton {
+          .dropbutton-toggle {
+            height: 16px;
+
+            button {
+              padding-left: 5px;
+            }
+          }
+        }
+      }
+    }
+
+    .dropbutton-widget {
+      margin-left: $grid-gutter-width / 2;
+      padding-left: $grid-gutter-width / 2;
+
+      .dropbutton {
+        .dropbutton-toggle {
+          bottom: auto;
+          height: 100%;
+
+          button {
+            padding-left: $grid-gutter-width / 3.2;
+          }
+        }
+
+        .dropbutton-arrow {
+          position: static;
+        }
+
+        li {
+          a {
+            display: block;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+
+  .node-dsj-funding-opportunity-form {
+    .chosen-container {
+      width: auto !important;
+    }
+  }
+}

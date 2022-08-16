@@ -1,0 +1,18 @@
+uuid: e993fc01-8943-4111-a783-379c04008c96
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.content_type.group_content_type_35a958037e171
+id: group_content.group_content_type_35a958037e171.label
+field_name: label
+entity_type: group_content
+bundle: group_content_type_35a958037e171
+label: Title
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

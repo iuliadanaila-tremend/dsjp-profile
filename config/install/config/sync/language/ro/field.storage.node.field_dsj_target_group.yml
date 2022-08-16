@@ -1,0 +1,42 @@
+settings:
+  allowed_values:
+    -
+      label: 'Persoane cu nivel ridicat de competențe'
+    -
+      label: 'Vorbitori nenativi'
+    -
+      label: 'Persoane care au nevoie de recalificare profesională'
+    -
+      label: 'Persoane care urmează învățământul terțiar (CEC 6)'
+    -
+      label: 'Persoane care au finalizat învățământul primar'
+    -
+      label: 'Persoane care urmează învățământul secundar/obligatoriu'
+    -
+      label: 'Persoane care au finalizat învățământul terțiar (CEC 7)'
+    -
+      label: 'Persoane care urmează învățământul primar'
+    -
+      label: 'Persoane cu 0-3 ani de experiență profesională'
+    -
+      label: 'Persoane care au finalizat învățământul terțiar (CEC 8)'
+    -
+      label: 'Persoane care au finalizat învățământul secundar/obligatoriu'
+    -
+      label: 'Persoane care urmează învățământul terțiar (CEC 7)'
+    -
+      label: 'Persoane care urmează învățământul terțiar (CEC 8)'
+    -
+      label: Migranți
+    -
+      label: 'Persoane cu 3-10 ani de experiență profesională'
+    -
+      label: 'Persoane cu peste 10 ani de experiență profesională'
+    -
+      label: 'Persoanele cu dificultăți de învățare'
+    -
+      label: 'Vorbitori nativi'
+    -
+      label: 'Persoane care au finalizat învățământul terțiar (CEC 6)'
+    -
+      label: 'Persoane cu nivel scăzut de competențe'

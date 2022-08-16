@@ -1,0 +1,26 @@
+display:
+  default:
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Apply
+          reset_button_label: Reset
+      fields:
+        name:
+          label: User
+        group_roles:
+          label: Roles
+        changed:
+          label: Updated
+        dropbutton:
+          label: Operations
+      arguments:
+        gid:
+          exception:
+            title: All
+      title: 'Members Admin'
+  page_1:
+    display_title: Page
+    display_options:
+      menu:
+        title: 'Members Admin'

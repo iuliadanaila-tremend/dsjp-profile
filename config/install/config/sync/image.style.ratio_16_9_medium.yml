@@ -1,0 +1,25 @@
+uuid: b47548d9-cb3e-4dbc-ad5e-3b37b281d5ee
+langcode: en
+status: true
+dependencies:
+  config:
+    - crop.type.dsj_ratio_16_9_crop
+  module:
+    - crop
+name: ratio_16_9_medium
+label: 'Ratio 16:9 medium'
+effects:
+  950d6476-6428-483a-a097-e5831fcc4e90:
+    uuid: 950d6476-6428-483a-a097-e5831fcc4e90
+    id: crop_crop
+    weight: 2
+    data:
+      crop_type: dsj_ratio_16_9_crop
+  4bff4606-ca67-4962-b915-5d12f4bd9254:
+    uuid: 4bff4606-ca67-4962-b915-5d12f4bd9254
+    id: image_scale_and_crop
+    weight: 3
+    data:
+      width: 640
+      height: 360
+      anchor: center-center

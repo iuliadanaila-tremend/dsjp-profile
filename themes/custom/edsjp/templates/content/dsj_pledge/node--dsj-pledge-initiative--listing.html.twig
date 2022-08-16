@@ -1,0 +1,8 @@
+{% if initiative_name and initiative_type %}
+  <div class="type-initiative type-{{ content.field_dsj_initiative_type|render|striptags|trim }}">
+    <div class="initiative-type-wrapper">
+      {{ initiative_name }}
+      <div class="tooltip">{{ initiative_type_description }}</div>
+    </div>
+  </div>
+{% endif %}

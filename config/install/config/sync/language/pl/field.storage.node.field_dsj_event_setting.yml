@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Mieszane
+    -
+      label: 'W sprawie lokalizacji'
+    -
+      label: 'Wirtualny czas życia'
+    -
+      label: 'Wstępne nagrania wirtualne'

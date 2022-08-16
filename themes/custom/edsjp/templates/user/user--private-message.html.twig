@@ -1,0 +1,10 @@
+{% if content %}
+  <article{{ attributes.addClass('user', 'user--private-message') }}>
+    <a href="{{ thread_url }}">
+      {{ author_avatar }}
+      <div class="user-name">
+        {{ author_name }}
+      </div>
+    </a>
+  </article>
+{% endif %}

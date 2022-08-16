@@ -1,0 +1,23 @@
+uuid: ceb4d8ba-92ef-4ebf-bbad-a9252aa375b8
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: general
+label: General
+type: 'canonical_entities:node'
+pattern: '[node:title]'
+selection_criteria:
+  618243aa-5667-4183-95f9-c68e97ef4845:
+    id: node_type
+    negate: false
+    uuid: 618243aa-5667-4183-95f9-c68e97ef4845
+    context_mapping:
+      node: node
+    bundles:
+      dsj_landing_page: dsj_landing_page
+      dsj_page: dsj_page
+selection_logic: and
+weight: -5
+relationships: {  }

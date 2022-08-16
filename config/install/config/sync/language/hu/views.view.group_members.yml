@@ -1,0 +1,61 @@
+label: 'Csoport tagjai'
+display:
+  default:
+    display_title: Mester
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Alkalmaz
+          reset_button_label: Alaphelyzet
+          exposed_sorts_label: Rendezés
+          sort_asc_label: Növekvő
+          sort_desc_label: Csökkenő
+      pager:
+        options:
+          tags:
+            previous: ‹‹
+            next: ››
+            first: '« Első'
+            last: 'Utolsó »'
+          expose:
+            items_per_page_label: 'Elemek száma oldalanként'
+            items_per_page_options_all_label: '– Mind –'
+            offset_label: Eltolás
+      fields:
+        name:
+          label: Felhasználó
+          separator: ', '
+        group_roles:
+          label: Szerepkörök
+          separator: ', '
+        changed:
+          label: Frissítve
+          separator: ', '
+        created:
+          label: Csatlakozott
+          separator: ', '
+        view_group_content:
+          admin_label: 'Tagi kapcsolat megtekintése'
+          text: 'Tag megtekintése'
+        edit_group_content:
+          admin_label: 'Tagi kapcsolat szerkesztése'
+          text: 'Tag szerkesztése'
+        delete_group_content:
+          admin_label: 'Tagi kapcsolat eltávolítása'
+          text: 'Tag eltávolítása'
+        dropbutton:
+          label: Műveletek
+      empty:
+        area_text_custom:
+          content: 'Nincsenek rendelkezésre álló tagok.'
+      arguments:
+        gid:
+          exception:
+            title: Mind
+          title: '{{ arguments.gid|placeholder }} tag'
+      title: Tagok
+  page_1:
+    display_title: Oldal
+    display_options:
+      menu:
+        title: Tagok

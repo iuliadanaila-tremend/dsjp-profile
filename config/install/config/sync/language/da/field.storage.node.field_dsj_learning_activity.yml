@@ -1,0 +1,24 @@
+settings:
+  allowed_values:
+    -
+      label: Laboratorie/simuleringstuearbejde/praktikforløb
+    -
+      label: erhvervserfaring
+    -
+      label: 'frivilligt arbejde'
+    -
+      label: forskning
+    -
+      label: 'selvmotiveret studie'
+    -
+      label: 'undervisningsforløb for e-læring'
+    -
+      label: praktikophold
+    -
+      label: læreplads
+    -
+      label: 'workshop, seminar eller konference'
+    -
+      label: uddannelsesprogram
+    -
+      label: 'coursearbejde i klasseværelset'

@@ -1,0 +1,50 @@
+settings:
+  allowed_values:
+    -
+      label: Bulgariska
+    -
+      label: Kroatiska
+    -
+      label: Tjeckiska
+    -
+      label: Danska
+    -
+      label: Nederländska
+    -
+      label: Engelska
+    -
+      label: Estniska
+    -
+      label: Finska
+    -
+      label: Franska
+    -
+      label: Tyska
+    -
+      label: Grekiska
+    -
+      label: Ungerska
+    -
+      label: Irländska
+    -
+      label: Italienska
+    -
+      label: Lettiska
+    -
+      label: Litauiska
+    -
+      label: Maltesiska
+    -
+      label: Polska
+    -
+      label: Portugisiska
+    -
+      label: Rumänska
+    -
+      label: Slovakiska
+    -
+      label: Slovenska
+    -
+      label: Spanska
+    -
+      label: Svenska

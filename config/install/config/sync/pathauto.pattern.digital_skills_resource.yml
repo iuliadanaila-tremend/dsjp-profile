@@ -1,0 +1,22 @@
+uuid: 1e886a43-ac84-482b-a8d1-d786a7a6d8b9
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: digital_skills_resource
+label: 'Digital skills resource'
+type: 'canonical_entities:node'
+pattern: 'inspiration/resources/[node:title]'
+selection_criteria:
+  b57a705b-6a4e-4835-8335-362cdf5e4dd5:
+    id: node_type
+    negate: false
+    uuid: b57a705b-6a4e-4835-8335-362cdf5e4dd5
+    context_mapping:
+      node: node
+    bundles:
+      dsj_digital_skills_resource: dsj_digital_skills_resource
+selection_logic: and
+weight: -9
+relationships: {  }

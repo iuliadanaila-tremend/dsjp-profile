@@ -1,0 +1,33 @@
+uuid: cf75e522-db2b-49a7-b95b-707cd7bcc1e6
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - user
+id: user.field_dsj_skill_level_interest
+field_name: field_dsj_skill_level_interest
+entity_type: user
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: basic
+      label: Basic
+    -
+      value: intermediate
+      label: Intermediate
+    -
+      value: advanced
+      label: Advanced
+    -
+      value: digital_expert
+      label: 'Digital Expert'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

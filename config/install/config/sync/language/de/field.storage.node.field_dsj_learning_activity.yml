@@ -1,0 +1,24 @@
+settings:
+  allowed_values:
+    -
+      label: 'Unterricht in Form von Laborarbeit, Simulationen oder Praxisarbeit'
+    -
+      label: Berufserfahrung
+    -
+      label: Freiwilligentätigkeit
+    -
+      label: Forschung
+    -
+      label: Selbststudium
+    -
+      label: 'Unterricht durch E-Learning'
+    -
+      label: Praktika
+    -
+      label: Ausbildung
+    -
+      label: 'Workshop, Seminar oder Konferenz'
+    -
+      label: Bildungsprogramm
+    -
+      label: Präsenzunterricht

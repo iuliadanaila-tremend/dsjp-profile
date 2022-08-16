@@ -1,0 +1,33 @@
+{% set classes = [
+  'node',
+  node.isPromoted() ? 'node--promoted',
+  node.isSticky() ? 'node--sticky',
+  not node.isPublished() ? 'node--unpublished',
+  node.bundle|clean_class,
+  node.bundle|clean_class ~ '--' ~ view_mode|clean_class,
+  'node' ~ '--' ~ view_mode|clean_class,
+  'node' ~ '--' ~ node.bundle|clean_class,
+  term_type ? node.bundle|clean_class ~ '--' ~ term_type|clean_class,
+] %}
+<article{{ attributes.addClass(classes) }}>
+  <div {{ content_attributes.addClass('node--content') }}>
+    <div class="node--description">
+      {{ title_prefix }}
+      <h3{{ title_attributes }}>
+        <a href="{{ url }}" rel="bookmark" title="{{ title }}">{{ title }}</a>
+      </h3>
+      {{ title_suffix }}
+      {{ content.body }}
+
+      <div class="node--footer">
+        {{ content.field_dsj_geographic_scope }}
+        {{ content.field_dsj_website_link }}
+      </div>
+
+    </div>
+    <div class="node--image">
+      {{ content|without('body', 'field_dsj_geographic_scope', 'field_dsj_website_link') }}
+    </div>
+    <div class="more-link"><a href="{{ url }}" class="more-link">{% trans %}Read more{% endtrans %}</a></div>
+  </div>
+</article>

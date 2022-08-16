@@ -1,0 +1,29 @@
+uuid: dedb4279-e336-46cf-be72-6610303c4586
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.message.dsj_first_discussion.field_node_reference
+    - message.template.dsj_first_discussion
+  module:
+    - user
+id: message.dsj_first_discussion.default
+targetEntityType: message
+bundle: dsj_first_discussion
+mode: default
+content:
+  field_node_reference:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  partial_0:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true

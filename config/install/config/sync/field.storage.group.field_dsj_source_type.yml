@@ -1,0 +1,36 @@
+uuid: a7b3b962-ef51-482c-93dc-569b7d3cd811
+langcode: en
+status: true
+dependencies:
+  module:
+    - group
+    - options
+id: group.field_dsj_source_type
+field_name: field_dsj_source_type
+entity_type: group
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: slovenia
+      label: Slovenia
+    -
+      value: drupal
+      label: Drupal
+    -
+      value: wordpress
+      label: Wordpress
+    -
+      value: austria
+      label: Austria
+    -
+      value: slovenia
+      label: Slovenia
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

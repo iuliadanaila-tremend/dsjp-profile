@@ -1,0 +1,17 @@
+{% extends "@paragraphs/paragraph.html.twig" %}
+{% block paragraph %}
+  {% block content %}
+    <div id="{{ attributes.id }}" class="testimonials">
+      {% if content.field_dsj_title | render %}
+        <div class="testimonials--title">
+          {{ content.field_dsj_title }}
+        </div>
+      {% endif %}
+      {% if content.field_dsj_testimonial | render %}
+        <div class="testimonials--container">
+          {{ content | without('field_dsj_title') }}
+        </div>
+      {% endif %}
+    </div>
+  {% endblock %}
+{% endblock paragraph %}

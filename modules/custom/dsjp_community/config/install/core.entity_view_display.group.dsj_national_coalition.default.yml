@@ -1,0 +1,106 @@
+uuid: e9318b2c-b507-4ab9-88ea-e601b82df1c4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.group.dsj_national_coalition.field_dsj_api_url
+    - field.field.group.dsj_national_coalition.field_dsj_body
+    - field.field.group.dsj_national_coalition.field_dsj_content_language
+    - field.field.group.dsj_national_coalition.field_dsj_digital_technology
+    - field.field.group.dsj_national_coalition.field_dsj_flag
+    - field.field.group.dsj_national_coalition.field_dsj_source_type
+    - field.field.group.dsj_national_coalition.field_dsj_target_audience
+    - field.field.group.dsj_national_coalition.field_dsj_website_link
+    - group.type.dsj_national_coalition
+  module:
+    - field_group
+    - image
+    - options
+    - text
+    - typed_link
+third_party_settings:
+  field_group:
+    group_details:
+      children:
+        - field_dsj_website_link
+        - field_dsj_target_audience
+        - field_dsj_digital_technology
+      parent_name: ''
+      weight: 4
+      format_type: html_element
+      region: content
+      format_settings:
+        id: organization-details
+        classes: bordered-field-list
+        element: div
+        show_label: true
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+      label: Details
+id: group.dsj_national_coalition.default
+targetEntityType: group
+bundle: dsj_national_coalition
+mode: default
+content:
+  field_dsj_body:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_dsj_digital_technology:
+    weight: 8
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_dsj_flag:
+    weight: 1
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_dsj_target_audience:
+    weight: 7
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_dsj_website_link:
+    weight: 6
+    label: inline
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: typed_link
+    region: content
+  label:
+    label: hidden
+    type: string
+    weight: 0
+    region: content
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+hidden:
+  changed: true
+  created: true
+  field_dsj_api_url: true
+  field_dsj_content_language: true
+  field_dsj_source_type: true
+  langcode: true
+  search_api_excerpt: true
+  uid: true

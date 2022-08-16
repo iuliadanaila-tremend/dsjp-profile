@@ -1,0 +1,44 @@
+uuid: eb17e6e2-b89c-4164-a758-ac4b409512a0
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.dsj_comment
+    - field.field.comment.dsj_comment.comment_body
+    - field.field.comment.dsj_comment.field_dsj_attachments
+  module:
+    - file
+    - text
+id: comment.dsj_comment.default
+targetEntityType: comment
+bundle: dsj_comment
+mode: default
+content:
+  comment_body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_dsj_attachments:
+    type: file_default
+    label: hidden
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  flag_dsj_comment_voting:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  langcode: true
+  search_api_excerpt: true

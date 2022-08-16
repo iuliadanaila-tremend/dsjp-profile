@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Pamata
+    -
+      label: Vidējā
+    -
+      label: 'Augsts līmenis'
+    -
+      label: 'Digitālās jomas eksperts'

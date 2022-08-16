@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Blandet
+    -
+      label: 'På stedet'
+    -
+      label: 'Virtuelt liv'
+    -
+      label: 'Virtuel forhåndsregistrering'

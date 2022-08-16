@@ -1,0 +1,15 @@
+display:
+  default:
+    display_options:
+      filters:
+        langcode:
+          expose:
+            label: Language
+  page:
+    display_title: Page
+    display_options:
+      fields:
+        edit_media:
+          text: Edit
+        delete_media:
+          text: Delete

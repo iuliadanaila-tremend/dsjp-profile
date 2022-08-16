@@ -1,0 +1,12 @@
+settings:
+  allowed_values:
+    -
+      label: 'Institutioneel initiatief van de EU'
+    -
+      label: 'Nationaal initiatief'
+    -
+      label: 'Regionaal initiatief'
+    -
+      label: 'Lokaal initiatief'
+    -
+      label: 'Internationaal initiatief'

@@ -1,0 +1,4 @@
+label: Publicerad
+settings:
+  on_label: Publicerad
+  off_label: 'Ej publicerad'

@@ -1,0 +1,38 @@
+settings:
+  allowed_values:
+    0:
+      label: Tehisintellekt
+    1:
+      label: Küberturvalisus
+    2:
+      label: 'Asjade internet'
+    3:
+      label: Suurandmed
+    4:
+      label: Plokiaheltehnoloogia
+    5:
+      label: Robootika
+    6:
+      label: 'Täiendatud tegelikkus'
+    7:
+      label: 'Virtuaalne tegelikkus'
+    8:
+      label: 'Kõrgjõudlusega andmetöötlus'
+    9:
+      label: Masinõpe
+    10:
+      label: Pilvandmetöötlus
+    12:
+      label: Telekommunikatsioon
+    14:
+      label: Kvantarvutus
+    15:
+      label: Tarkvara
+    16:
+      label: 'Mobiilirakenduste arendamine'
+    17:
+      label: Veebiarendus
+    18:
+      label: Mikroelektroonika
+    19:
+      label: Digitaaloskused

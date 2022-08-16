@@ -1,0 +1,12 @@
+settings:
+  allowed_values:
+    -
+      label: 'Initiative institutionnelle de l’UE'
+    -
+      label: 'Initiative nationale'
+    -
+      label: 'Initiative régionale'
+    -
+      label: 'Initiative locale'
+    -
+      label: 'Initiative internationale'

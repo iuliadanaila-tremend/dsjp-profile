@@ -1,0 +1,12 @@
+settings:
+  allowed_values:
+    -
+      label: 'Nástroj sebehodnocení'
+    -
+      label: Metodika
+    -
+      label: 'Učební plány'
+    -
+      label: 'Případová studie'
+    -
+      label: 'Další školicí materiály'

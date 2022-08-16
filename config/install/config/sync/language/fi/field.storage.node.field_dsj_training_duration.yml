@@ -1,0 +1,14 @@
+settings:
+  allowed_values:
+    -
+      label: 'Enintään 1 viikko'
+    -
+      label: 'Enintään 4 viikkoa'
+    -
+      label: 'Enintään 3 kuukautta'
+    -
+      label: 'Enintään 6 kuukautta'
+    -
+      label: 'Enintään vuosi'
+    -
+      label: 'Useita vuosia'

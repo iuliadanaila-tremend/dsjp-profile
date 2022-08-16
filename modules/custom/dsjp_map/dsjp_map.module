@@ -1,0 +1,247 @@
+<?php
+
+/**
+ * @file
+ * Provides main functionality for dsjp_map module.
+ */
+
+use Drupal\Component\Serialization\Json;
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function dsjp_map_preprocess_paragraph(&$variables) {
+  global $base_url;
+
+  $paragraph = $variables['paragraph'];
+  if ($paragraph->bundle() == 'dsj_map') {
+    $colors = [
+      "#4073AF",
+      "#004494",
+      "#003D84",
+      "#003776",
+    ];
+
+    $countriesMap = [
+      'BEL' => 'BE',
+      'BGR' => 'BG',
+      'BIH' => 'BA',
+      'BLR' => 'BY',
+      'SRB' => 'RS',
+      'ROU' => 'RO',
+      'GRC' => 'EL',
+      'GBR' => 'UK',
+      'HRV' => 'HR',
+      'HUN' => 'HU',
+      'PRT' => 'PT-',
+      'POL' => 'PL',
+      'EST' => 'EE',
+      'ITA' => 'IT',
+      'ESP' => 'ES-',
+      'MNE' => 'ME',
+      'MDA' => 'MD',
+      'MKD' => 'MK',
+      'MLT' => 'MT',
+      'FRA' => 'FR-',
+      'FIN' => 'FI',
+      'NLD' => 'NL',
+      'NOR' => 'NO',
+      'CHE' => 'CH',
+      'CZE' => 'CZ',
+      'SVK' => 'SK',
+      'SVN' => 'SI',
+      'SWE' => 'SE',
+      'DNK' => 'DK',
+      'DEU' => 'DE',
+      'LVA' => 'LV',
+      'LTU' => 'LT',
+      'LUX' => 'LU',
+      'ISL' => 'IS',
+      'ALB' => 'AL',
+      'AUT' => 'AT',
+      'ALA' => 'AX',
+      'IRL' => 'IE',
+      'UKR' => 'UA',
+      'CYP' => 'CY',
+      'UK' => 'UK',
+    ];
+
+    // Set defaults for small countries data.
+    $variables['small_countries'] = [
+      'MT' => [
+        'tooltip' => '',
+        'color' => '#ffffff',
+      ],
+      'CY' => [
+        'tooltip' => '',
+        'color' => '#ffffff',
+      ],
+    ];
+
+    $data = [
+      'countries' => array_values($countriesMap),
+      'tooltip' => [],
+      'color' => [],
+    ];
+    $data['countries'][] = 'KS*0';
+
+    // Send the data to javascript to populate de map.
+    $components = $paragraph->get('field_dsj_map_component')
+      ->referencedEntities();
+
+    $eu_average = $paragraph->get('field_dsj_eu_average')->value;
+
+    [
+      $minScore,
+      $maxScore,
+      $chunkSize,
+      $intervals,
+      $avg,
+    ] = _dsj_map_get_scores_interval($components, $eu_average);
+
+    if (!empty($components)) {
+      foreach ($components as $component) {
+        $country_field = $component->get('field_dsj_country')
+          ->referencedEntities();
+        $country_term = reset($country_field);
+        [$code, $threeCode] = _dsjp_map_get_country_code_by_name($country_term->get('field_dsj_country_code')->getValue()[0]['target_id'], $countriesMap);
+        if (!empty($code)) {
+          _dsjp_map_restrict_map_countries($code);
+          $data['tooltip'][$code] = $component->get('field_dsj_tooltip')->value;
+
+          $score = $component->get('field_dsj_score')->value;
+          $segment = ($score != $maxScore) ? floor(($score - $minScore) / $chunkSize) : 3;
+          $data['color'][$code] = $colors[$segment];
+          $data['threeCode'][$code] = $threeCode;
+
+          $variables['countries'][$code] = [
+            'code' => $code,
+            'threeCode' => $threeCode,
+            'label' => $country_term->label(),
+            'score' => $score,
+            'position' => (100 * ($score - $minScore)) / ($maxScore - $minScore),
+            'content' => $component->get('field_dsj_body')->value,
+            'avg_score' => $avg,
+            'avg_position' => (100 * ($avg - $minScore)) / ($maxScore - $minScore),
+            'title' => $component->get('field_dsj_title')->value,
+          ];
+          // For some countries, we need to pass some variables to twig.
+          if (in_array($code, ['MT', 'CY'])) {
+            $variables['small_countries'][$code] = [
+              'tooltip' => $data['tooltip'][$code],
+              'color' => $data['color'][$code],
+            ];
+          }
+        }
+      }
+    }
+
+    $variables['colors'] = $colors;
+    $variables['intervals'] = $intervals;
+
+    // Create the map script loader.
+    $variables['map_widget'] = [
+      '#type' => 'html_tag',
+      '#tag' => 'script',
+      '#value' => Json::encode([
+        'service' => 'map',
+        'version' => '3.0',
+        'custom' => $base_url . '/' . drupal_get_path('module', 'dsjp_map') . '/js/dsjp_map.js',
+      ]),
+      '#attributes' => ['type' => 'application/json'],
+    ];
+    $variables['#attached']['drupalSettings']['dsjp_map']['mapData'] = $data;
+    $variables['#attached']['library'][] = 'dsjp_map/flags';
+    $variables['#attached']['library'][] = 'dsjp_map/map_countries';
+    $variables['#attached']['library'][] = 'oe_webtools/drupal.webtools-smartloader';
+  }
+}
+
+/**
+ * Build min and max ends of progress bar.
+ *
+ * @param array $components
+ *   Paragraph map components.
+ * @param float $eu_average
+ *   The eu average set by user.
+ *
+ * @return int[]
+ *   Return min and max scores for map
+ */
+function _dsj_map_get_scores_interval(array $components, $eu_average): array {
+  $minScore = $maxScore = 0;
+  $sum = 0;
+  $avg = 0;
+  if (!empty($components)) {
+    foreach ($components as $component) {
+      $score = (float) $component->get('field_dsj_score')->value;
+      if ($maxScore == 0) {
+        $minScore = $score;
+      }
+
+      if ($score > $maxScore) {
+        $maxScore = $score;
+      }
+      if ($score < $minScore) {
+        $minScore = $score;
+      }
+      $sum += $score;
+    }
+    $avg = round($sum / count($components), 2);
+  }
+  if (!empty($eu_average)) {
+    if ($eu_average < $minScore) {
+      $minScore = $eu_average;
+    }
+    if ($eu_average > $maxScore) {
+      $maxScore = $eu_average;
+    }
+    $avg = $eu_average;
+  }
+
+  $minScore = (floor($minScore / 20)) * 20;
+  $maxScore = (ceil($maxScore / 20)) * 20;
+  $chunkSize = ($maxScore - $minScore) / 4;
+  $intervals = [
+    $minScore,
+    $minScore + $chunkSize,
+    $minScore + 2 * $chunkSize,
+    $minScore + 3 * $chunkSize,
+    $maxScore,
+  ];
+
+  return [$minScore, $maxScore, $chunkSize, $intervals, $avg];
+}
+
+/**
+ * Restricts the map countries in order to remove overseas regions.
+ *
+ * @param string $code
+ *   The country code.
+ */
+function _dsjp_map_restrict_map_countries(&$code) {
+  // The "-" will remove the overseas regions as we don't need them.
+  if (in_array($code, ['FR', 'PT', 'ES'])) {
+    $code .= '-';
+  }
+}
+
+/**
+ * Gets the country code by name.
+ *
+ * @param string $skosCode
+ *   Country skos code.
+ * @param array $countriesMap
+ *   Array of countries 3code => 2code.
+ *
+ * @return string
+ *   The country code if found, empty string otherwise.
+ */
+function _dsjp_map_get_country_code_by_name($skosCode, array $countriesMap) {
+  // Split the code by slashes and get the country code.
+  $code = explode('/', $skosCode);
+  $threeCode = end($code);
+  $twoCode = $countriesMap[$threeCode];
+
+  return [$twoCode, $threeCode];
+}

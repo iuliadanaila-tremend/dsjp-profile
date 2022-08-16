@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Poiblí
+    -
+      label: Príobháideach
+    -
+      label: Sluamhaoiniú
+    -
+      label: 'Príobháideach Poiblí'

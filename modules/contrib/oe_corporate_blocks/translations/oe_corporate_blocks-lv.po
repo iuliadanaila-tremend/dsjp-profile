@@ -1,0 +1,323 @@
+msgid ""
+msgstr ""
+
+msgid "Contact the EU"
+msgstr "Kā sazināties ar ES"
+
+msgid "tel:0080067891011"
+msgstr "tel:0080067891011"
+
+msgid "Call us 00 800 6 7 8 9 10 11"
+msgstr "Zvaniet mums 00 800 6 7 8 9 10 11"
+
+msgid "https://european-union.europa.eu/contact-eu/call-us_en"
+msgstr "https://european-union.europa.eu/contact-eu/call-us_lv"
+
+msgid "Use other telephone options"
+msgstr "Izmantojiet citas tālruņa līnijas"
+
+msgid "https://european-union.europa.eu/contact-eu/write-us_en"
+msgstr "https://european-union.europa.eu/contact-eu/write-us_lv"
+
+msgid "Write to us via our contact form"
+msgstr "Rakstiet, izmantojot saziņas veidlapu"
+
+msgid "https://european-union.europa.eu/contact-eu/meet-us_en"
+msgstr "https://european-union.europa.eu/contact-eu/meet-us_lv"
+
+msgid "Meet us at one of the EU centres"
+msgstr "Tiecieties ar mums vietējā ES centrā"
+
+msgid "Find a social media account"
+msgstr "Atrast sociālo tīklu kontu"
+
+msgid "Search for EU social media channels"
+msgstr "ES sociālajos tīklos"
+
+msgid "https://european-union.europa.eu/contact-eu/social-media-channels_en"
+msgstr "https://european-union.europa.eu/contact-eu/social-media-channels_lv"
+
+msgid "EU institutions"
+msgstr "ES iestādes"
+
+msgid "European Parliament"
+msgstr "Eiropas Parlaments"
+
+msgid "http://www.europarl.europa.eu/portal/"
+msgstr "http://www.europarl.europa.eu/portal/lv"
+
+msgid "European Council"
+msgstr "Eiropadome"
+
+msgid "http://www.consilium.europa.eu/en/european-council/"
+msgstr "http://www.consilium.europa.eu/lv/european-council/"
+
+msgid "Council of the European Union"
+msgstr "Eiropas Savienības Padome"
+
+msgid "http://www.consilium.europa.eu/en/home/"
+msgstr "http://www.consilium.europa.eu/lv/home/"
+
+msgid "European Commission"
+msgstr "Eiropas Komisija"
+
+msgid "https://ec.europa.eu/commission/index_en"
+msgstr "http://ec.europa.eu/index_lv.htm"
+
+msgid "Court of Justice of the European Union (CJEU)"
+msgstr "Eiropas Savienības Tiesa"
+
+msgid "http://curia.europa.eu/jcms/jcms/j_6/en/"
+msgstr "http://curia.europa.eu/jcms/jcms/j_6/lv/"
+
+msgid "European Central Bank (ECB)"
+msgstr "Eiropas Centrālā banka (ECB)"
+
+msgid "https://www.ecb.europa.eu/home/html/index.en.html"
+msgstr "https://www.ecb.europa.eu/home/languagepolicy/html/index.lv.html"
+
+msgid "European Court of Auditors (ECA)"
+msgstr "Eiropas Revīzijas palāta"
+
+msgid "http://www.eca.europa.eu/en"
+msgstr "http://www.eca.europa.eu/lv"
+
+msgid "European External Action Service (EEAS)"
+msgstr "Eiropas Ārējās darbības dienests (EĀDD)"
+
+msgid "https://eeas.europa.eu/headquarters/headquarters-homepage_en"
+msgstr "http://eeas.europa.eu/index_lv.htm"
+
+msgid "European Economic and Social Committee (EESC)"
+msgstr "Eiropas Ekonomikas un sociālo lietu komiteja (EESK)"
+
+msgid "http://www.eesc.europa.eu/?i=portal.en.home"
+msgstr "http://www.eesc.europa.eu/?i=portal.lv.home"
+
+msgid "European Committee of the Regions (CoR)"
+msgstr "Eiropas Reģionu komiteja"
+
+msgid "http://cor.europa.eu/en/"
+msgstr "http://cor.europa.eu/lv/"
+
+msgid "European Investment Bank (EIB)"
+msgstr "Eiropas Investīciju banka (EIB)"
+
+msgid "European Data Protection Supervisor (EDPS)"
+msgstr "Eiropas Datu aizsardzības uzraudzītājs (EDAU)"
+
+msgid "https://secure.edps.europa.eu/EDPSWEB/edps/EDPS?lang=en"
+msgstr "https://secure.edps.europa.eu/EDPSWEB/edps/EDPS?lang=lv"
+
+msgid "European Ombudsman"
+msgstr "Eiropas Ombuds"
+
+msgid "https://www.ombudsman.europa.eu/en/home"
+msgstr "https://www.ombudsman.europa.eu/lv/home"
+
+msgid "European Data Protection Board"
+msgstr "Eiropas Datu aizsardzības kolēģija (EDAK)"
+
+msgid "https://edpb.europa.eu/edpb_en"
+msgstr "https://edpb.europa.eu/edpb_lv"
+
+msgid "European Personnel Selection Office"
+msgstr "Eiropas Kopienu Personāla atlases birojs"
+
+msgid "https://epso.europa.eu/home_en"
+msgstr "https://epso.europa.eu/home_lv"
+
+msgid "Publications Office of the European Union"
+msgstr "Eiropas Savienības Publikāciju birojs"
+
+msgid "https://op.europa.eu/en/home"
+msgstr "https://op.europa.eu/lv/home"
+
+msgid "Agencies"
+msgstr "Aģentūras"
+
+msgid "https://european-union.europa.eu/institutions-law-budget/institutions-and-bodies/institutions-and-bodies-profiles_en?f%5B0%5D=oe_organisation_eu_type%3Ahttp%3A//publications.europa.eu/resource/authority/corporate-body-classification/AGENCY_DEC&f%5B1%5D=oe_organisation_eu_type%3Ahttp%3A//publications.europa.eu/resource/authority/corporate-body-classification/AGENCY_EXEC&f%5B2%5D=oe_organisation_eu_type%3Ahttp%3A//publications.europa.eu/resource/authority/corporate-body-classification/EU_JU"
+msgstr "https://european-union.europa.eu/institutions-law-budget/institutions-and-bodies/institutions-and-bodies-profiles_lv?f%5B0%5D=oe_organisation_eu_type%3Ahttp%3A//publications.europa.eu/resource/authority/corporate-body-classification/AGENCY_DEC&f%5B1%5D=oe_organisation_eu_type%3Ahttp%3A//publications.europa.eu/resource/authority/corporate-body-classification/AGENCY_EXEC&f%5B2%5D=oe_organisation_eu_type%3Ahttp%3A//publications.europa.eu/resource/authority/corporate-body-classification/EU_JU"
+
+msgid "About this site"
+msgstr "Par šo vietni"
+
+msgid "https://europa.eu/european-union/abouteuropa_en"
+msgstr "https://europa.eu/european-union/abouteuropa_lv"
+
+msgid "Language policy"
+msgstr "Valodu politika"
+
+msgid "Languages on our websites"
+msgstr "Valodas mūsu tīmekļvietnēs"
+
+msgid "https://european-union.europa.eu/languages-our-websites_en"
+msgstr "https://european-union.europa.eu/languages-our-websites_lv"
+
+msgid "Privacy policy"
+msgstr "Privātuma aizsardzība"
+
+msgid "https://european-union.europa.eu/privacy-policy_en"
+msgstr "https://european-union.europa.eu/privacy-policy_lv"
+
+msgid "Legal"
+msgstr "Juridiski paziņojumi"
+
+msgid "Legal notice"
+msgstr "Juridisks paziņojums"
+
+msgid "https://european-union.europa.eu/legal-notice_en"
+msgstr "https://european-union.europa.eu/legal-notice_lv"
+
+msgid "Cookies"
+msgstr "Sīkdatnes"
+
+msgid "https://european-union.europa.eu/cookies_en"
+msgstr "https://european-union.europa.eu/cookies_lv"
+
+msgid "Accessibility"
+msgstr "Pieejamība"
+
+msgid "https://european-union.europa.eu/web-accessibility-policy_en"
+msgstr "https://european-union.europa.eu/web-accessibility-policy_lv"
+
+msgid "https://ec.europa.eu/info/index_en"
+msgstr "https://ec.europa.eu/info/index_lv"
+
+msgid "European Commission website"
+msgstr "Eiropas Komisijas tīmekļa vietne"
+
+msgid "https://ec.europa.eu/info/strategy_en"
+msgstr "https://ec.europa.eu/info/strategy_lv"
+
+msgid "Strategy"
+msgstr "Stratēģija"
+
+msgid "https://ec.europa.eu/info/about-european-commission_en"
+msgstr "https://ec.europa.eu/info/about-european-commission_lv"
+
+msgid "About the European Commission"
+msgstr "Par Eiropas Komisiju"
+
+msgid "https://ec.europa.eu/info/business-economy-euro_en"
+msgstr "https://ec.europa.eu/info/business-economy-euro_lv"
+
+msgid "Business, Economy, Euro"
+msgstr "Uzņēmējdarbība, ekonomika, eiro"
+
+msgid "https://ec.europa.eu/info/live-work-travel-eu_en"
+msgstr "https://ec.europa.eu/info/live-work-travel-eu_lv"
+
+msgid "Live, work, travel in the EU"
+msgstr "Dzīve, darbs un ceļošana ES"
+
+msgid "https://ec.europa.eu/info/law_en"
+msgstr "https://ec.europa.eu/info/law_lv"
+
+msgid "Law"
+msgstr "Tiesību akti"
+
+msgid "https://ec.europa.eu/info/funding-tenders_en"
+msgstr "https://ec.europa.eu/info/funding-tenders_lv"
+
+msgid "Funding, Tenders"
+msgstr "Finansējums un konkursi"
+
+msgid "https://ec.europa.eu/info/research-and-innovation_en"
+msgstr "https://ec.europa.eu/info/research-and-innovation_lv"
+
+msgid "Research and innovation"
+msgstr "Pētniecība un inovācija"
+
+msgid "https://ec.europa.eu/info/energy-climate-change-environment_en"
+msgstr "https://ec.europa.eu/info/energy-climate-change-environment_lv"
+
+msgid "Energy, Climate change, Environment"
+msgstr "Enerģētika, klimata pārmaiņas un apkārtējā vide"
+
+msgid "https://ec.europa.eu/info/education_en"
+msgstr "https://ec.europa.eu/info/education_lv"
+
+msgid "Education"
+msgstr "Izglītība"
+
+msgid "https://ec.europa.eu/info/aid-development-cooperation-fundamental-rights_en"
+msgstr "https://ec.europa.eu/info/aid-development-cooperation-fundamental-rights_lv"
+
+msgid "Aid, Development cooperation, Fundamental rights"
+msgstr "Palīdzība, attīstības sadarbība un pamattiesības"
+
+msgid "https://ec.europa.eu/info/food-farming-fisheries_en"
+msgstr "https://ec.europa.eu/info/food-farming-fisheries_lv"
+
+msgid "Food, Farming, Fisheries"
+msgstr "Pārtika, lauksaimniecība, zivsaimniecība"
+
+msgid "https://ec.europa.eu/info/eu-regional-and-urban-development_en"
+msgstr "https://ec.europa.eu/info/eu-regional-and-urban-development_lv"
+
+msgid "EU regional and urban development"
+msgstr "ES reģionālā attīstība un pilsētattīstība"
+
+msgid "https://ec.europa.eu/info/jobs-european-commission_en"
+msgstr "https://ec.europa.eu/info/jobs-european-commission_lv"
+
+msgid "Jobs at the European Commission"
+msgstr "Darbs Eiropas Komisijā"
+
+msgid "https://ec.europa.eu/info/statistics_en"
+msgstr "https://ec.europa.eu/info/statistics_lv"
+
+msgid "Statistics"
+msgstr "Statistika"
+
+msgid "https://ec.europa.eu/commission/presscorner/home/en"
+msgstr "https://ec.europa.eu/commission/presscorner/home/lv"
+
+msgid "News"
+msgstr "Jaunumi"
+
+msgid "https://ec.europa.eu/info/events_en"
+msgstr "https://ec.europa.eu/info/events_lv"
+
+msgid "Events"
+msgstr "Pasākumi"
+
+msgid "https://ec.europa.eu/info/publications_en"
+msgstr "https://ec.europa.eu/info/publications_lv"
+
+msgid "Publications"
+msgstr "Publikācijas"
+
+msgid "https://ec.europa.eu/info/about-european-commission/contact_en"
+msgstr "https://ec.europa.eu/info/about-european-commission/contact_lv"
+
+msgid "Contact the European Commission"
+msgstr "Saziņa ar Eiropas Komisiju"
+
+msgid "https://european-union.europa.eu/contact-eu/social-media-channels_en#/search?page=0&institutions=european_commission"
+msgstr "https://european-union.europa.eu/contact-eu/social-media-channels_lv#/search?page=0&institutions=european_commission"
+
+msgid "Follow the European Commission on social media"
+msgstr "Sekojiet Eiropas Komisijai sociālajos medijos"
+
+msgid "https://ec.europa.eu/info/resources-partners_en"
+msgstr "https://ec.europa.eu/info/resources-partners_lv"
+
+msgid "Resources for partners"
+msgstr "Resursi partneriem"
+
+msgid "https://ec.europa.eu/info/language-policy_en"
+msgstr "https://ec.europa.eu/info/language-policy_lv"
+
+msgid "https://ec.europa.eu/info/cookies_en"
+msgstr "https://ec.europa.eu/info/cookies_lv"
+
+msgid "https://ec.europa.eu/info/privacy-policy_en"
+msgstr "https://ec.europa.eu/info/privacy-policy_lv"
+
+msgid "https://ec.europa.eu/info/legal-notice_en"
+msgstr "https://ec.europa.eu/info/legal-notice_lv"
+
+msgid "Social media"
+msgstr "Sociālie plašsaziņas līdzekļi"

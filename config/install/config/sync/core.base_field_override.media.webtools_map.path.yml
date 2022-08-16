@@ -1,0 +1,20 @@
+uuid: 1a340c6f-74d9-421b-b21f-eb6b7ee0f62a
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.webtools_map
+  module:
+    - path
+id: media.webtools_map.path
+field_name: path
+entity_type: media
+bundle: webtools_map
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

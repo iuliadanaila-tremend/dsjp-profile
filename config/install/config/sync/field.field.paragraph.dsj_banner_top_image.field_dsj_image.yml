@@ -1,0 +1,33 @@
+uuid: 26dd2c60-eb30-4a3a-b34c-d04fafd32478
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_dsj_image
+    - media.type.image
+    - paragraphs.paragraphs_type.dsj_banner_top_image
+  module:
+    - tmgmt_content
+third_party_settings:
+  tmgmt_content:
+    excluded: false
+id: paragraph.dsj_banner_top_image.field_dsj_image
+field_name: field_dsj_image
+entity_type: paragraph
+bundle: dsj_banner_top_image
+label: Image
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

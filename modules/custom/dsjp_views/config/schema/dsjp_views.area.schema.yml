@@ -1,0 +1,22 @@
+views.area.extended_result:
+  type: views_area
+  label: 'Result'
+  mapping:
+    content:
+      type: text
+      label: 'The shown text of the result summary area'
+    content_short:
+      type: text
+      label: 'The shown text of the result summary area when fewer than per page'
+    content_one:
+      type: text
+      label: 'The shown text of the result summary area for one result'
+    content_no_search:
+      type: text
+      label: 'The shown text of the result summary area without search keyword'
+    content_short_no_search:
+      type: text
+      label: 'The shown text of the result summary area when fewer than per page without search keyword.'
+    content_one_no_search:
+      type: text
+      label: 'The shown text of the result summary area for one result without search keyword.'

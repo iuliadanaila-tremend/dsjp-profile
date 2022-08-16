@@ -1,0 +1,40 @@
+{% set classes = [
+  'node',
+  node.isPromoted() ? 'node--promoted',
+  node.isSticky() ? 'node--sticky',
+  not node.isPublished() ? 'node--unpublished',
+  node.bundle|clean_class,
+  node.bundle|clean_class ~ '--' ~ view_mode|clean_class,
+  'node' ~ '--' ~ view_mode|clean_class,
+  'node' ~ '--' ~ node.bundle|clean_class,
+  term_type ? node.bundle|clean_class ~ '--' ~ term_type|clean_class,
+  'node--wide-card',
+  'ecl-u-mb-2xl',
+] %}
+<article{{ attributes.addClass(classes) }}>
+  <div class="ecl-row">
+    <div class="ecl-col-m-6">
+      {{ content.field_dsj_image }}
+    </div>
+
+    <div class="ecl-col-m-6">
+      <div class="field--name-field-dsj-container">
+        <div class="node--content">
+          {{ title_prefix }}
+          <h3{{ title_attributes }}>
+            <a href="{{ url }}" rel="bookmark">{{ node.title.value }}</a>
+          </h3>
+          {{ title_suffix }}
+          {{ content.body }}
+        </div>
+
+        <div class="node--footer">
+          {{ ct_pill }}
+          <div class="more-link">
+            <a href="{{ url }}">{{ "View more"|t() }}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>

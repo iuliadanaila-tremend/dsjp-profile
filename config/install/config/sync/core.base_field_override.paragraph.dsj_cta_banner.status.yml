@@ -1,0 +1,22 @@
+uuid: a53f1246-28a8-4a26-b3e7-541a8d15c2b2
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.dsj_cta_banner
+id: paragraph.dsj_cta_banner.status
+field_name: status
+entity_type: paragraph
+bundle: dsj_cta_banner
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

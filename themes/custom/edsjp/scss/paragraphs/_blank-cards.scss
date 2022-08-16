@@ -1,0 +1,58 @@
+.paragraph--type--dsj-blank-cards {
+  .slick__slide {
+    @include media-breakpoint-down(sm) {
+      margin-bottom: $grid-gutter-width/2;
+      margin-right: 0;
+    }
+
+    background-color: $body-bg;
+    padding: $grid-gutter-width/2 !important;
+    border-radius: $border-radius-lg;
+
+    &:not(:last-child) {
+      margin-right: $grid-gutter-width;
+    }
+
+    .node {
+      margin: 0 !important;
+      height: 100%;
+      display: flex;
+
+      &--content {
+        .card-image {
+          img {
+            @include border-radius(6px);
+          }
+        }
+
+        .card-title {
+          a {
+            font-size: $font-size-2md;
+            color: $gray-800;
+            display: block;
+            margin-top: 1rem;
+          }
+        }
+      }
+
+      &--footer {
+        text-align: right;
+        margin-top: 1.5rem;
+        width: 100%;
+      }
+    }
+  }
+
+  .node--card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    margin-bottom: 0 !important;
+
+    .node--footer {
+      text-align: right;
+      width: 100%;
+    }
+  }
+}

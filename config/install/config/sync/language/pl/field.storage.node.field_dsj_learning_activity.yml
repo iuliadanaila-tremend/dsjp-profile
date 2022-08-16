@@ -1,0 +1,24 @@
+settings:
+  allowed_values:
+    -
+      label: 'prace laboratoryjne/działania symulacyjne/zajęcia praktyczne'
+    -
+      label: 'doświadczenie zawodowe'
+    -
+      label: wolontariat
+    -
+      label: badania
+    -
+      label: 'samodzielna nauka'
+    -
+      label: 'kursy internetowe'
+    -
+      label: staż
+    -
+      label: 'przygotowania zawodowego'
+    -
+      label: 'warsztaty, seminarium, konferencja'
+    -
+      label: 'program edukacyjny'
+    -
+      label: 'zajęcia w klasie'

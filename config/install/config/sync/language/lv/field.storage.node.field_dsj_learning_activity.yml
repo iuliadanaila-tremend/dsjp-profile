@@ -1,0 +1,24 @@
+settings:
+  allowed_values:
+    -
+      label: 'laboratorijas darbs/simulācija/praktiskais darbs'
+    -
+      label: 'darba pieredze'
+    -
+      label: 'brīvprātīgais darbs'
+    -
+      label: pētniecība
+    -
+      label: 'patstāvīgais darbs'
+    -
+      label: 'e-mācību kurss'
+    -
+      label: stažēšanās
+    -
+      label: māceklība
+    -
+      label: 'darbseminārs, seminārs vai konference'
+    -
+      label: 'izglītības programma'
+    -
+      label: 'darbs klasē'

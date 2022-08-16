@@ -1,0 +1,45 @@
+uuid: 2ce08c89-5458-47b7-8f5d-0cf5050c9bdd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.group.community_private_grou.field_group_description
+    - field.field.group.community_private_grou.field_group_image
+    - group.type.community_private_grou
+  module:
+    - text
+id: group.community_private_grou.default
+targetEntityType: group
+bundle: community_private_grou
+mode: default
+content:
+  field_group_description:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_group_image:
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: oe_theme_main_content
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  label:
+    label: hidden
+    type: string
+    weight: 1
+    region: content
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+hidden:
+  changed: true
+  created: true
+  langcode: true
+  search_api_excerpt: true
+  uid: true

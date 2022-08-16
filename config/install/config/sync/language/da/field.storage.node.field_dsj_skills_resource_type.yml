@@ -1,0 +1,12 @@
+settings:
+  allowed_values:
+    -
+      label: Selvevalueringsredskab
+    -
+      label: Metode
+    -
+      label: Undervisningsplaner
+    -
+      label: Casestudie
+    -
+      label: 'Andet undervisningsmateriale'

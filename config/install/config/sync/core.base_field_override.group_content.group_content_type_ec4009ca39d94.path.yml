@@ -1,0 +1,20 @@
+uuid: ee49038c-2b03-4daf-8943-30670a3bdbeb
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.content_type.group_content_type_ec4009ca39d94
+  module:
+    - path
+id: group_content.group_content_type_ec4009ca39d94.path
+field_name: path
+entity_type: group_content
+bundle: group_content_type_ec4009ca39d94
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

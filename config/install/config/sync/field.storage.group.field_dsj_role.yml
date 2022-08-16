@@ -1,0 +1,33 @@
+uuid: a6ac55ea-dbc5-4240-900f-da5162cb2013
+langcode: en
+status: true
+dependencies:
+  module:
+    - group
+    - options
+id: group.field_dsj_role
+field_name: field_dsj_role
+entity_type: group
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: driver
+      label: 'Driver - organisations defining digital skills and jobs requirements, providing policy advice or policy making.'
+    -
+      value: enabler
+      label: 'Enabler - organisations that facilitate the development of skills programmes.'
+    -
+      value: provider
+      label: 'Provider - organisations directly providing training and delivering digital skills programmes.'
+    -
+      value: adopter
+      label: 'Adopter - organisations which act upon proposed initiatives or recommendations to grow skills within their own organisation or community'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

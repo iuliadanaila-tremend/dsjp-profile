@@ -1,0 +1,112 @@
+.field--name-field-dsj-components {
+  // display: flex;
+  justify-content: center;
+  margin-bottom: $grid-gutter-width * 3;
+
+  .paragraph--type--dsj-banner-top-image {
+    background-color: $body-bg;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 90%;
+
+    .banner--image {
+      @include media-breakpoint-down(xs) {
+        display: none;
+      }
+
+      width: 100%;
+
+      img {
+        border: unset;
+      }
+    }
+
+    .banner--image.image-mobile {
+      @include media-breakpoint-down(xs) {
+        display: block;
+      }
+
+      display: none;
+    }
+
+    .banner--title {
+      color: $primary;
+      font-size: $font-size-base * 3;
+      font-family: $font-ec-square-medium;
+      line-height: $line-height-4xl * 1.3;
+      margin-top: $grid-gutter-width;
+    }
+
+    .banner-description {
+      @include media-breakpoint-down(xs) {
+        align-items: flex-start;
+        padding: 0 $grid-gutter-width;
+        max-width: none;
+      }
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 80%;
+
+      .banner--subtitle {
+        color: $gray-650;
+        font-size: $font-size-2xl;
+        font-family: $font-ec-square-medium;
+        line-height: $line-height-2xl;
+        margin-top: $grid-gutter-width;
+      }
+
+      .banner--body {
+        color: $gray-650;
+        opacity: .6;
+        font-family: $font-ec-square-regular;
+        font-size: $font-size-base;
+        line-height: $line-height-base;
+        margin-top: $grid-gutter-width/1.8;
+      }
+    }
+
+    .banner--cta {
+      @include media-breakpoint-down(xs) {
+        align-items: flex-start;
+        padding: 0 $grid-gutter-width;
+      }
+
+      margin-bottom: $grid-gutter-width * 1.5;
+      margin-top: $grid-gutter-width;
+
+      .field--name-field-dsj-cta {
+        display: flex;
+
+        div {
+          @include media-breakpoint-only(xxxs) {
+            padding: 12px 10px;
+          }
+
+          border: 1px solid $primary;
+          border-radius: $border-radius-lg;
+          padding: 12px 25px;
+          min-width: 85px;
+          text-align: center;
+
+          a {
+            font-size: $font-size-sm;
+            font-family: $font-ec-square-medium;
+            line-height: $line-height-sm;
+          }
+        }
+
+        div:first-child {
+          background-color: $primary;
+          margin-right: $grid-gutter-width/2;
+
+          a {
+            color: $body-bg;
+          }
+        }
+      }
+    }
+  }
+}

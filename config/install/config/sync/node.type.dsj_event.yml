@@ -1,0 +1,18 @@
+uuid: 54d888e1-c9d0-4b9b-beeb-1fdc98e061d1
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: Event
+type: dsj_event
+description: ''
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true

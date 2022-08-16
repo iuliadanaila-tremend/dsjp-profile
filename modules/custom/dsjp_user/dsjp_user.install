@@ -1,0 +1,69 @@
+<?php
+
+/**
+ * @file
+ * Provides install & update functionalities for the dsjp_user module.
+ */
+
+use Drupal\Core\Field\BaseFieldDefinition;
+use Drupal\legal\AcceptedInterface;
+use Drupal\legal\Entity\Accepted;
+
+/**
+ * Insert a new column extra_checkboxes on legal_accepted table.
+ */
+function dsjp_user_update_8001() {
+  if (\Drupal::moduleHandler()->moduleExists('legal')) {
+    $field_storage_definition = BaseFieldDefinition::create('string')
+      ->setLabel(t('Extra checkboxes'))
+      ->setDescription(t('Indicates the extra checkboxes statuses for the given user.'));
+
+    \Drupal::entityDefinitionUpdateManager()
+      ->installFieldStorageDefinition('extra_checkboxes', 'legal_accepted', 'dsjp_user', $field_storage_definition);
+  }
+}
+
+/**
+ * Move T&C data from log tracking to legal table.
+ */
+function dsjp_user_update_8002(&$sandbox) {
+  $last_legal = legal_get_conditions();
+  if (!isset($sandbox['total'])) {
+    $query = \Drupal::database()->select('event_log_track', 'e')
+      ->fields('e', ['uid', 'description', 'operation'])
+      ->condition('e.ref_char', $last_legal['version'])
+      ->execute();
+    $result = $query->fetchAll(PDO::FETCH_ASSOC);
+    $sandbox['data'] = array_chunk($result, 10);
+    $sandbox['total'] = count($sandbox['data']);
+    if (empty($sandbox['total'])) {
+      $sandbox['#finished'] = 1;
+      return;
+    }
+    $sandbox['current'] = 0;
+  }
+  if (isset($sandbox['data'][$sandbox['current']])) {
+    foreach ($sandbox['data'][$sandbox['current']] as $data) {
+      $user_legal = legal_get_accept($data['uid']);
+      if ($user_legal['version'] == $last_legal['version']) {
+        $accept_entity = Accepted::load($user_legal['legal_id']);
+        if ($accept_entity instanceof AcceptedInterface) {
+          $extras = $accept_entity->get('extra_checkboxes')->value ?? [];
+          if (!empty($extras)) {
+            $extras = json_decode($extras, TRUE);
+          }
+          $extras[$data['operation']] = $data['description'];
+          $accept_entity->get('extra_checkboxes')->setValue(json_encode($extras));
+          $accept_entity->save();
+        }
+      }
+    }
+    $sandbox['current']++;
+  }
+  if ($sandbox['current'] >= $sandbox['total']) {
+    $sandbox['#finished'] = 1;
+  }
+  else {
+    $sandbox['#finished'] = ($sandbox['current'] / $sandbox['total']);
+  }
+}

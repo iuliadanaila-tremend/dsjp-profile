@@ -1,0 +1,6 @@
+services:
+  purge_control.commands:
+    class: \Drupal\purge_control\Commands\PurgeControlCommands
+    arguments: ['@purge_control.purge_control']
+    tags:
+      - { name: drush.command }

@@ -1,0 +1,18 @@
+display:
+  default:
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Apply
+          reset_button_label: Ponastavi
+      fields:
+        name:
+          label: Ime
+        dropbutton:
+          label: Operacije
+      arguments:
+        gid:
+          exception:
+            title: Vsi
+  page_1:
+    display_title: Stran

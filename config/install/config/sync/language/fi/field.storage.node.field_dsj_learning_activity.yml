@@ -1,0 +1,24 @@
+settings:
+  allowed_values:
+    -
+      label: laboratorio/simulaatio/harjoitus
+    -
+      label: työkokemus
+    -
+      label: vapaaehtoistyö
+    -
+      label: tutkimus
+    -
+      label: 'omatoiminen opiskelu'
+    -
+      label: verkkokurssit
+    -
+      label: harjoittelu
+    -
+      label: oppisopimuskoulutus
+    -
+      label: 'työpaja, seminaari tai konferenssi'
+    -
+      label: koulutusohjelma
+    -
+      label: luokkaopetus

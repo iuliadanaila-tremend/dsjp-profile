@@ -1,0 +1,12 @@
+{% if items %}
+  <div class="follow-us">
+    <div class="links">
+      <div class="links-title">
+        {{ 'Follow us on social media'|t }}
+      </div>
+      {% for item in items %}
+        <a href="{{ item.content['#url'] }}"><i class="icon icon-{{ item.content.type|render|lower }}"></i></a>
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}

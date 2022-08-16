@@ -1,0 +1,18 @@
+name: 'Media AV Portal Responsive Test'
+description: 'Test module for the Responsive image style'
+type: module
+core_version_requirement: ^9.2
+package: Testing
+
+dependencies:
+  - drupal:image
+  - drupal:responsive_image
+
+config_devel:
+  install:
+    responsive_image.styles.test
+
+# Information added by Drupal.org packaging script on 2022-03-07
+version: '8.x-1.0-beta14'
+project: 'media_avportal'
+datestamp: 1646650234

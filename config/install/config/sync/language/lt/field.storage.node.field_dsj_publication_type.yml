@@ -1,0 +1,34 @@
+settings:
+  allowed_values:
+    -
+      label: 'Informacijos suvestinė'
+    -
+      label: Prognozė
+    -
+      label: 'Bendrosios gairės'
+    -
+      label: 'Bendroji informacija'
+    -
+      label: Žurnalas
+    -
+      label: 'Nacionalinis planas'
+    -
+      label: 'Naujienų pranešimai'
+    -
+      label: 'Naujienų straipsnis'
+    -
+      label: Naujienlaiškis
+    -
+      label: Pateikimas
+    -
+      label: 'Reklaminė medžiaga'
+    -
+      label: Ataskaita
+    -
+      label: Tvarkaraštis
+    -
+      label: 'Mokslinis darbas'
+    -
+      label: Tyrimas
+    -
+      label: 'Darbo dokumentas'

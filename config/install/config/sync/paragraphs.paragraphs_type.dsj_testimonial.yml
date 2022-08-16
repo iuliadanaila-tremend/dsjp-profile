@@ -1,0 +1,10 @@
+uuid: 85040e1e-e118-426e-96b1-b7166741e2a7
+langcode: en
+status: true
+dependencies: {  }
+id: dsj_testimonial
+label: Testimonial
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

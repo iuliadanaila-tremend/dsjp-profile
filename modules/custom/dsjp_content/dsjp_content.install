@@ -1,0 +1,63 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the dsjp_content module.
+ */
+
+use Drupal\dsjp_content\InstallHelper;
+
+/**
+ * Change field types from SKOS to list text.
+ */
+function dsjp_content_update_8001() {
+  $entity_type = 'node';
+  $fields = [
+    'field_dsj_target_group',
+    'field_dsj_learning_activity',
+    'field_dsj_effort',
+    'field_dsj_typology_of_training',
+    'field_dsj_credential_offered',
+    'field_dsj_assessment_type',
+  ];
+  if (!\Drupal::service('config.installer')->isSyncing()) {
+    foreach ($fields as $field_name) {
+      \Drupal::classResolver(InstallHelper::class)->changeFieldType($entity_type, $field_name);
+    }
+  }
+}
+
+/**
+ * Change field type from SKOS to list text for target_language.
+ */
+function dsjp_content_update_8002() {
+  $entity_type = 'node';
+  $fields = ['field_dsj_target_language'];
+  if (!\Drupal::service('config.installer')->isSyncing()) {
+    foreach ($fields as $field_name) {
+      \Drupal::classResolver(InstallHelper::class)->changeFieldType($entity_type, $field_name);
+    }
+  }
+}
+
+/**
+ * Update cta & popup config links.
+ */
+function dsjp_content_update_8003() {
+  $cta_config = \Drupal::configFactory()->getEditable('dsjp_content.cta_config');
+  $cta_link = $cta_config->get('cta_url');
+  if (!empty($cta_link)) {
+    if (strpos($cta_link, '/') === 0) {
+      $cta_link = 'internal:' . $cta_link;
+      $cta_config->set('cta_url', $cta_link)->save();
+    }
+  }
+  $popup_config = \Drupal::configFactory()->getEditable('dsjp_content.popup_config');
+  $popup_link = $popup_config->get('cta_link');
+  if (!empty($popup_link)) {
+    if (strpos($popup_link, '/') === 0) {
+      $popup_link = 'internal:' . $popup_link;
+      $popup_config->set('cta_link', $popup_link)->save();
+    }
+  }
+}

@@ -1,0 +1,12 @@
+settings:
+  allowed_values:
+    0:
+      label: Arbeitsplatzorientiert
+    1:
+      label: Projektbasiert
+    2:
+      label: Präsenz
+    4:
+      label: 'Blended Learning'
+    5:
+      label: 'Arbeit im Forschungslabor'

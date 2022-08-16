@@ -1,0 +1,22 @@
+uuid: 1ad473f7-f059-420f-bdb9-a50ceacf3743
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.dsj_national_coalition
+id: node.dsj_national_coalition.promote
+field_name: promote
+entity_type: node
+bundle: dsj_national_coalition
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

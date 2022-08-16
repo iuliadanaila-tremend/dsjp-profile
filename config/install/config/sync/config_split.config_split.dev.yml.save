@@ -1,0 +1,21 @@
+
+uuid: 03f7b3ce-6f7a-4d7c-a7f4-cb65f573103a
+langcode: en
+status: false
+dependencies: {  }
+id: dev
+label: Dev
+description: ''
+folder: ../config/dev
+module:
+  devel: 0
+  masquerade: 0
+  stage_file_proxy: 0
+theme: {  }
+blacklist:
+graylist:
+  - metatag.metatag_defaults.global
+  - system.performance
+graylist_dependents: true
+graylist_skip_equal: true
+weight: 0

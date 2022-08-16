@@ -1,0 +1,69 @@
+.dsj-training-offer--full {
+
+  header {
+    margin-bottom: $grid-gutter-width;
+
+    h1 {
+      margin-bottom: 0 !important;
+    }
+  }
+
+  .event {
+
+    &-entry {
+      font-size: $font-size-md;
+      line-height: $line-height-xl;
+      position: relative;
+      padding-left: $font-size-lg * 1.5;
+      font-weight: 600;
+
+      &.no-icon {
+        padding-left: 0;
+      }
+
+      .icon {
+        @include position(absolute, 5px null null 0);
+        font-size: $font-size-lg;
+      }
+    }
+
+    &-time {
+      font-weight: bold;
+      margin-top: 1rem;
+    }
+
+    &-calendar {
+      text-transform: capitalize;
+      display: inline-block;
+      margin-top: 1rem;
+    }
+
+    &-location {
+      padding-top: .25rem;
+
+      .icon-remote,
+      .icon-location {
+        color: $blue-450;
+      }
+    }
+
+    &-date {
+      float: left;
+      min-width: 5.563rem;
+      margin-right: 1.375rem;
+
+      &--day {
+
+        span {
+          &:nth-child(3) {
+            font-size: $font-size-xl;
+          }
+        }
+      }
+    }
+
+    &-body {
+      font-family: $font-ec-square-regular;
+    }
+  }
+}

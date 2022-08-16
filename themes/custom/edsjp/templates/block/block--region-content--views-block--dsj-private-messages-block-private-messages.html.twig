@@ -1,0 +1,25 @@
+{#
+/**
+ * @file
+ * Theme override for blocks in the content region.
+ *
+ * @see ./core/modules/system/templates/block.html.twig
+ */
+#}
+{{ attach_library('dsjp_private_message/my_messages_block') }}
+<div{{ attributes }}>
+  {{ title_prefix }}
+  <div class="my-messages-header">
+    {% if show_vbo_checkbox %}
+    <input type="checkbox" id="edit-select-all" name="select_all" data-drupal-selector="edit-select-all">
+  {% endif %}
+  {% if label %}
+    <h2{{ title_attributes }}>{{ label }}</h2>
+  {% endif %}
+  <a href="{{ url('private_message.private_message_create') }}" title="{{ 'Create PM'|t }}" class="use-ajax" data-dialog-type="modal" data-dialog-options='{"dialogClass": "private-message-create-modal"}'>+</a>
+  {{ title_suffix }}
+  </div>
+  {% block content %}
+    {{ content }}
+  {% endblock %}
+</div>

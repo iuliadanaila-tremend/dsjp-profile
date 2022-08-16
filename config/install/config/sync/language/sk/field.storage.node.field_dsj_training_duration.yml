@@ -1,0 +1,14 @@
+settings:
+  allowed_values:
+    -
+      label: 'Skoro 1 týždeň'
+    -
+      label: 'Do 4 týždňov'
+    -
+      label: 'Do 3 mesiacov'
+    -
+      label: 'Do 6 mesiacov'
+    -
+      label: 'Do jedného roka'
+    -
+      label: 'Viac rokov'

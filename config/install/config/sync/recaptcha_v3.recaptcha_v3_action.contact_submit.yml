@@ -1,0 +1,8 @@
+uuid: 91763820-da00-45cd-9b8e-3a43e3ef4d3c
+langcode: en
+status: true
+dependencies: {  }
+id: contact_submit
+label: 'Contact submit'
+threshold: !!float 1
+challenge: default

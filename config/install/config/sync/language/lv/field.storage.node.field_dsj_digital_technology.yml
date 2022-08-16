@@ -1,0 +1,38 @@
+settings:
+  allowed_values:
+    0:
+      label: 'Mākslīgais intelekts'
+    1:
+      label: Kiberdrošība
+    2:
+      label: 'Lietu internets'
+    3:
+      label: 'Lielie dati'
+    4:
+      label: Blokķēde
+    5:
+      label: Robotika
+    6:
+      label: 'Palielinātā realitāte'
+    7:
+      label: 'Virtuālā realitāte'
+    8:
+      label: 'Augstas veiktspējas datošana'
+    9:
+      label: Mašīnmācīšanās
+    10:
+      label: Mākoņdatošana
+    12:
+      label: Telekomunikācijas
+    14:
+      label: 'Kvantu datošana'
+    15:
+      label: Programmatūras
+    16:
+      label: 'Mobilās lietotnes izstrāde'
+    17:
+      label: 'Tīmekļa attīstība'
+    18:
+      label: Mikroelektronika
+    19:
+      label: 'Digitālās prasmes'

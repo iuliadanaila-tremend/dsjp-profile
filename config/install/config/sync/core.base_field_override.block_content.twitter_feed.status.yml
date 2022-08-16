@@ -1,0 +1,22 @@
+uuid: 89f044e3-d86f-4aab-8d9a-60e9074e98a3
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.twitter_feed
+id: block_content.twitter_feed.status
+field_name: status
+entity_type: block_content
+bundle: twitter_feed
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,40 @@
+uuid: bba62eb5-43a9-44ea-b31d-c1cea1e07636
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.message.community_first_discussion.field_node_reference
+    - message.template.community_first_discussion
+id: message.community_first_discussion.default
+targetEntityType: message
+bundle: community_first_discussion
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_node_reference:
+    weight: 12
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  uid:
+    type: entity_reference_autocomplete
+    weight: 5
+    '#group': advanced
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+      match_limit: 10
+    region: content
+    third_party_settings: {  }
+hidden: {  }

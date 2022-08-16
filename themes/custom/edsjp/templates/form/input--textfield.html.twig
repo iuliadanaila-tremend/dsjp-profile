@@ -1,0 +1,8 @@
+{%
+  set classes = [
+  'ecl-text-input',
+  attributes.hasClass('error') ? 'ecl-text-input--invalid',
+]
+%}
+
+<input{{ attributes.addClass(classes) }} {% if attributes.hasClass('bef-datepicker') %} autocomplete="off" {% endif %}/>{{ children }}

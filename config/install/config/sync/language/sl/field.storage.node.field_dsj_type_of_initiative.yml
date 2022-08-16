@@ -1,0 +1,12 @@
+settings:
+  allowed_values:
+    -
+      label: 'Institucionalna pobuda EU'
+    -
+      label: 'Nacionalna pobuda'
+    -
+      label: 'Regionalna pobuda'
+    -
+      label: 'Lokalna pobuda'
+    -
+      label: 'Mednarodna pobuda'

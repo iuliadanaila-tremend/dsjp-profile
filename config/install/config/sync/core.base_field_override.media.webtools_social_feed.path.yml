@@ -1,0 +1,20 @@
+uuid: b573ae10-8de0-4368-b8cc-67c767b2106e
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.webtools_social_feed
+  module:
+    - path
+id: media.webtools_social_feed.path
+field_name: path
+entity_type: media
+bundle: webtools_social_feed
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

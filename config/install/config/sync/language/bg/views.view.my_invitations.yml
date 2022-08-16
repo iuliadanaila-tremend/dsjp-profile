@@ -1,0 +1,20 @@
+display:
+  default:
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Apply
+          reset_button_label: Reset
+      fields:
+        gid:
+          label: Group
+        group_roles:
+          label: Roles
+        dropbutton:
+          label: Operations
+      arguments:
+        entity_id:
+          exception:
+            title: All
+  page_1:
+    display_title: Page

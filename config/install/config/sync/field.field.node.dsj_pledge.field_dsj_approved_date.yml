@@ -1,0 +1,25 @@
+uuid: e1446746-8150-4810-ae78-0d1b1c637d68
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dsj_approved_date
+    - node.type.dsj_pledge
+  module:
+    - datetime
+    - tmgmt_content
+third_party_settings:
+  tmgmt_content:
+    excluded: false
+id: node.dsj_pledge.field_dsj_approved_date
+field_name: field_dsj_approved_date
+entity_type: node
+bundle: dsj_pledge
+label: 'Approved Date'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

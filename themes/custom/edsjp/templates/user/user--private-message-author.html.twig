@@ -1,0 +1,13 @@
+{% if content %}
+  <article{{ attributes.addClass('user', 'user--private-message-author') }}>
+      {{ author_avatar }}
+      <div class="user">
+        <div class="user-name">
+          {{ author_name }}
+        </div>
+        <div class="online-status">
+          {{ content.online_status }}
+        </div>
+      </div>
+  </article>
+{% endif %}

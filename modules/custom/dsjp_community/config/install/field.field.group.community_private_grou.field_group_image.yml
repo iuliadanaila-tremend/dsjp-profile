@@ -1,0 +1,28 @@
+uuid: 766e7a3e-6e8d-427e-9127-f89c78f8adb9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_group_image
+    - group.type.community_private_grou
+    - media.type.image
+id: group.community_private_grou.field_group_image
+field_name: field_group_image
+entity_type: group
+bundle: community_private_grou
+label: 'Group image'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

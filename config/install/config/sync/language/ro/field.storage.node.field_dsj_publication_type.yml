@@ -1,0 +1,34 @@
+settings:
+  allowed_values:
+    -
+      label: 'Fișă informativă'
+    -
+      label: Previziuni
+    -
+      label: 'Orientări generale'
+    -
+      label: 'Informații generale'
+    -
+      label: Revistă
+    -
+      label: 'Planul național'
+    -
+      label: 'Anunțuri de presă'
+    -
+      label: Știre
+    -
+      label: 'Buletin informativ'
+    -
+      label: Prezentare
+    -
+      label: 'Materiale promoționale'
+    -
+      label: Raport
+    -
+      label: Calendar
+    -
+      label: 'Lucrare științifică'
+    -
+      label: Studiu
+    -
+      label: 'Document de lucru'

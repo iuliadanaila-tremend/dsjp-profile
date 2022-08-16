@@ -1,0 +1,14 @@
+uuid: 2dfb8108-8b9b-432b-822b-092b6bdde93c
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.dsj_critical_reviewer
+  module:
+    - user
+id: user_remove_role_action.dsj_critical_reviewer
+label: 'Remove the Critical Reviewer role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: dsj_critical_reviewer

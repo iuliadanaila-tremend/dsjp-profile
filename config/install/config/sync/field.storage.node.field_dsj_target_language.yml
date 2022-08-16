@@ -1,0 +1,93 @@
+uuid: 8db46529-adf2-499b-a625-577df519f5d0
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_dsj_target_language
+field_name: field_dsj_target_language
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: 'http://publications.europa.eu/resource/authority/language/BUL'
+      label: Bulgarian
+    -
+      value: 'http://publications.europa.eu/resource/authority/language/HRV'
+      label: Croatian
+    -
+      value: 'http://publications.europa.eu/resource/authority/language/CES'
+      label: Czech
+    -
+      value: 'http://publications.europa.eu/resource/authority/language/DAN'
+      label: Danish
+    -
+      value: 'http://publications.europa.eu/resource/authority/language/NLD'
+      label: Dutch
+    -
+      value: 'http://publications.europa.eu/resource/authority/language/ENG'
+      label: English
+    -
+      value: 'http://publications.europa.eu/resource/authority/language/EST'
+      label: Estonian
+    -
+      value: 'http://publications.europa.eu/resource/authority/language/FIN'
+      label: Finnish
+    -
+      value: 'http://publications.europa.eu/resource/authority/language/FRA'
+      label: French
+    -
+      value: 'http://publications.europa.eu/resource/authority/language/DEU'
+      label: German
+    -
+      value: 'http://publications.europa.eu/resource/authority/language/ELL'
+      label: Greek
+    -
+      value: 'http://publications.europa.eu/resource/authority/language/HUN'
+      label: Hungarian
+    -
+      value: 'http://publications.europa.eu/resource/authority/language/GLE'
+      label: Irish
+    -
+      value: 'http://publications.europa.eu/resource/authority/language/ITA'
+      label: Italian
+    -
+      value: 'http://publications.europa.eu/resource/authority/language/LAV'
+      label: Latvian
+    -
+      value: 'http://publications.europa.eu/resource/authority/language/LIT'
+      label: Lithuanian
+    -
+      value: 'http://publications.europa.eu/resource/authority/language/MLT'
+      label: Maltese
+    -
+      value: 'http://publications.europa.eu/resource/authority/language/POL'
+      label: Polish
+    -
+      value: 'http://publications.europa.eu/resource/authority/language/POR'
+      label: Portuguese
+    -
+      value: 'http://publications.europa.eu/resource/authority/language/RON'
+      label: Romanian
+    -
+      value: 'http://publications.europa.eu/resource/authority/language/SLK'
+      label: Slovak
+    -
+      value: 'http://publications.europa.eu/resource/authority/language/SLV'
+      label: Slovenian
+    -
+      value: 'http://publications.europa.eu/resource/authority/language/SPA'
+      label: Spanish
+    -
+      value: 'http://publications.europa.eu/resource/authority/language/SWE'
+      label: Swedish
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

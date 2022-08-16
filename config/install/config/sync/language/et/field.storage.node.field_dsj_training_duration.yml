@@ -1,0 +1,14 @@
+settings:
+  allowed_values:
+    -
+      label: 'Kuni 1 nädal'
+    -
+      label: 'Kuni 4 nädalat'
+    -
+      label: 'Kuni 3 kuud'
+    -
+      label: 'Kuni 6 kuud'
+    -
+      label: 'Kuni üks aasta'
+    -
+      label: 'Mitu aastat'

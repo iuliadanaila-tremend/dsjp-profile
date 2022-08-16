@@ -1,0 +1,12 @@
+settings:
+  allowed_values:
+    -
+      label: 'Önértékelési eszköz'
+    -
+      label: Módszertan
+    -
+      label: 'Képzési tantervek'
+    -
+      label: Esettanulmány
+    -
+      label: 'Egyéb képzési anyagok'

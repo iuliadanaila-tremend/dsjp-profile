@@ -1,0 +1,234 @@
+%pledge-icons-settings {
+  &::before {
+    margin-right: $grid-gutter-width / 4;
+    padding: 0 0 $grid-gutter-width / 8 $grid-gutter-width / 16;
+    vertical-align: middle;
+    font-size: $font-size-2md;
+    color: $blue-450;
+  }
+}
+
+.dsj-pledge {
+  * {
+    color: $gray-650;
+  }
+
+  border-radius: $border-radius * 1.5;
+  background: $body-bg;
+  padding: $grid-gutter-width-mobile * 1.5;
+
+  &.dsj-pledge--listing {
+    padding-bottom: $grid-gutter-width-mobile / 2;
+    position: relative;
+
+    .organization-name {
+      font-family: $font-ec-square-regular;
+      font-size: $font-size-base;
+      line-height: 1.2;
+      color: $primary-hover;
+
+      span {
+        color: $primary-hover;
+      }
+    }
+
+    .end-date {
+      margin-top: $grid-gutter-width / 2;
+      color: $primary-hover;
+
+      span {
+        color: $primary-hover;
+      }
+    }
+  }
+
+  h2 {
+    margin-bottom: $grid-gutter-width / 2;
+    font-weight: 400;
+  }
+
+  .ecl {
+    p,
+    p:not([class*=ecl-]):not([class*=wt-]) {
+      line-height: 1.5 !important;
+    }
+  }
+
+  .bordered-field-list {
+    .field {
+      width: 100%;
+
+      &:not(:last-child) {
+        padding-bottom: $grid-gutter-width / 2;
+      }
+    }
+  }
+
+  .pledge-title {
+    h2 {
+      color: $blue;
+    }
+  }
+
+  .field--name-field-dsj {
+    &-date {
+      margin-bottom: $grid-gutter-width / 2;
+      font-size: $font-size-base;
+
+      .datetime-label {
+        @include icon(calendar-filled);
+        @extend %pledge-icons-settings;
+        display: inline-block;
+
+        & + time {
+          margin-right: $grid-gutter-width / 1.7;
+        }
+      }
+    }
+
+    &-geographic-scope {
+      margin-bottom: $grid-gutter-width / 2;
+
+      .field__label {
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  .content-moderation-entity-moderation-form {
+    .entity-moderation-form {
+      display: block;
+      margin-right: 0;
+      border: none;
+
+      button {
+        display: block;
+        background-color: theme-color(fourth);
+        color: $body-bg;
+
+        &[disabled="disabled"] {
+          color: $gray-400;
+          background-color: unset;
+          border: 2px solid $gray-400;
+        }
+      }
+    }
+  }
+
+  .pledge {
+    &-geographic-scope {
+      margin-bottom: $grid-gutter-width / 2;
+
+      .icon-location {
+        @extend %pledge-icons-settings;
+      }
+    }
+
+    &-description {
+      padding-bottom: $grid-gutter-width / 4;
+    }
+
+    &-details {
+      margin-top: $grid-gutter-width;
+
+      .field__label {
+        line-height: 1.5;
+      }
+    }
+  }
+
+  &.node--listing {
+    .multiple-organization {
+      @include media-breakpoint-down(sm) {
+        width: 2.25rem;
+        height: 2.25rem;
+        @include position(absolute, 20px 19px null null);
+      }
+
+      @include position(absolute, 30px 26px null null);
+      display: inline-block;
+      width: 3.75rem;
+      height: 3.75rem;
+
+      .hover-text {
+        @include media-breakpoint-down(sm) {
+          left: unset;
+          right: -26px;
+          top: -50%;
+          transform: translate(0, -90%);
+        }
+        @include position(absolute, -57% null null 50%);
+
+        background-color: $gray-650;
+        border-radius: $border-radius-default;
+        color: $gray-400;
+        padding: $grid-gutter-width / 4  $grid-gutter-width / 3.2;
+        font-size: $font-size-xs;
+        display: none;
+
+        width: max-content;
+        height: auto;
+        padding: 0.5rem 0.625rem;
+
+        transform: translate(-50%, -50%);
+        z-index: 10;
+
+        .pointer {
+          @include media-breakpoint-down(sm) {
+            left: unset;
+            right: 26px;
+          }
+          @include position(absolute, null null -4px 50%);
+
+          width: 1.5rem;
+          height: 1.5rem;
+          border-radius: 0.1875rem;
+
+          background-color: $gray-650;
+          display: inline-block;
+          transform: translateX(-50%) rotate(45deg);
+          z-index: -1;
+        }
+      }
+
+      .icon {
+        background-image: url('../assets/images/pledges-multy-organizations.svg');
+        background-size: contain;
+        float: right;
+        width: 100%;
+        height: 100%;
+
+        &:hover + .hover-text {
+          display: inline-block;
+        }
+      }
+    }
+  }
+}
+
+.page-node-type-dsj-pledge {
+  .entity-moderation-form {
+    .js-form-item-revision-log {
+      display: none;
+    }
+
+    .entity-moderation-form__item {
+      display: inline-block;
+
+      &:last-child {
+        display: block;
+      }
+    }
+  }
+}
+
+.pika-single {
+  &.ecl-datepicker-theme {
+    .pika-lendar {
+      @include media-breakpoint-down(sm) {
+        width: 80%;
+        overflow-x: auto;
+      }
+    }
+  }
+}

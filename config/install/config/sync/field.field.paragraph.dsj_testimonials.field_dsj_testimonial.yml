@@ -1,0 +1,55 @@
+uuid: a80a8b53-f36a-4b87-b290-596d5313c25f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_dsj_testimonial
+    - paragraphs.paragraphs_type.dsj_testimonial
+    - paragraphs.paragraphs_type.dsj_testimonials
+  module:
+    - entity_reference_revisions
+id: paragraph.dsj_testimonials.field_dsj_testimonial
+field_name: field_dsj_testimonial
+entity_type: paragraph
+bundle: dsj_testimonials
+label: Testimonial
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      dsj_testimonial: dsj_testimonial
+    negate: 0
+    target_bundles_drag_drop:
+      dsj_card:
+        weight: 11
+        enabled: false
+      dsj_cards:
+        weight: 12
+        enabled: false
+      dsj_grouped_cards:
+        weight: 13
+        enabled: false
+      dsj_highlighted_listing:
+        weight: 14
+        enabled: false
+      dsj_listing:
+        weight: 15
+        enabled: false
+      dsj_testimonial:
+        weight: 16
+        enabled: true
+      dsj_testimonials:
+        weight: 10
+        enabled: false
+      dsj_text:
+        weight: 17
+        enabled: false
+      dsj_top_banner:
+        weight: 18
+        enabled: false
+field_type: entity_reference_revisions

@@ -1,0 +1,48 @@
+label: Prenumeratoriai
+display:
+  default:
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Pritaikyti
+          reset_button_label: Išvalyti
+          exposed_sorts_label: 'Rikiuoti pagal'
+      pager:
+        options:
+          tags:
+            previous: '‹ ankstesnis'
+            next: 'kitas  ›'
+            first: '« pirmas'
+            last: 'paskutinis  »'
+          expose:
+            items_per_page_label: 'Vienetų kiekis puslapyje'
+            items_per_page_options_all_label: '- Visos -'
+      fields:
+        mail:
+          label: 'El. paštas'
+        user_name:
+          label: 'Nario vardas'
+        subscriptions_target_id:
+          label: Prenumeratoriai
+        status:
+          label: Aktyvus
+        created:
+          label: Sukurta
+        operations:
+          label: Veiksmai
+      filters:
+        mail:
+          expose:
+            label: 'El. paštas'
+        subscriptions_target_id:
+          expose:
+            label: Naujienlaiškiai
+        status:
+          expose:
+            label: Aktyvus
+        subscriptions_status:
+          expose:
+            label: Būsena
+      title: Prenumeratoriai
+  page_1:
+    display_title: Puslapis

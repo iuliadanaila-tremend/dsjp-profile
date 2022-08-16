@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Bunúsach
+    -
+      label: Idirmheánach
+    -
+      label: Ardchumas
+    -
+      label: 'Saineolaí Digiteach'

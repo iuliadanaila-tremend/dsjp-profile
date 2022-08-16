@@ -1,0 +1,23 @@
+dsjp_pledge.initiative_update:
+  path: '/initiative/{node}/update'
+  defaults:
+    _title: 'Initiative Progress'
+    _form: '\Drupal\dsjp_pledge\Form\InitiativeUpdateForm'
+  requirements:
+    _permission: 'edit own dsj_pledge_initiative content'
+    node: \d+
+  options:
+    _node_operation_route: TRUE
+    parameters:
+      node:
+        type: entity:node
+
+dsjp_pledge.initiative_type_description_config_form:
+  path: '/admin/config/dsjp_pledge/initiative-type-description'
+  defaults:
+    _form: '\Drupal\dsjp_pledge\Form\InitiativeTypeDescriptionConfigForm'
+    _title: 'Initiative Type Description Config Form'
+  requirements:
+    _permission: 'dsj_pledge_initiative type description configuration'
+  options:
+    _admin_route: TRUE

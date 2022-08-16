@@ -1,0 +1,34 @@
+settings:
+  allowed_values:
+    -
+      label: 'Informativní přehled'
+    -
+      label: Prognóza
+    -
+      label: 'Obecné pokyny'
+    -
+      label: 'Obecné informace'
+    -
+      label: Časopis
+    -
+      label: 'Vnitrostátní plán'
+    -
+      label: Aktuality
+    -
+      label: Novinky
+    -
+      label: Zpravodaj
+    -
+      label: Prezentace
+    -
+      label: 'Propagační materiál'
+    -
+      label: Zpráva
+    -
+      label: Harmonogram
+    -
+      label: 'Odborná práce'
+    -
+      label: Studie
+    -
+      label: 'Pracovní dokument'

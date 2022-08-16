@@ -1,0 +1,16 @@
+uuid: f9ba8ed5-f912-4f66-84bb-b49d20d18cbe
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraph_view_mode
+third_party_settings:
+  paragraph_view_mode:
+    label: 'View mode'
+    enabled: true
+id: dsj_cards
+label: Cards
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

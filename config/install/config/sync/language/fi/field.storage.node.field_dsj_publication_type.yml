@@ -1,0 +1,34 @@
+settings:
+  allowed_values:
+    -
+      label: Tietosivu
+    -
+      label: Ennuste
+    -
+      label: 'Yleiset suuntaviivat'
+    -
+      label: 'Yleiset tiedot'
+    -
+      label: Lehti
+    -
+      label: 'Kansallinen suunnitelma'
+    -
+      label: Uutisilmoitukset
+    -
+      label: Uutisartikkeli
+    -
+      label: Uutiskirje
+    -
+      label: Esitys
+    -
+      label: Mainosmateriaali
+    -
+      label: Kertomus
+    -
+      label: Aikataulu
+    -
+      label: 'Tieteellinen asiakirja'
+    -
+      label: Tutkimus
+    -
+      label: Työasiakirja

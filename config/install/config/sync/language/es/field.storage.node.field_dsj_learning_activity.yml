@@ -1,0 +1,24 @@
+settings:
+  allowed_values:
+    -
+      label: 'laboratorio/simulación/tareas prácticas'
+    -
+      label: 'experiencia laboral'
+    -
+      label: voluntariado
+    -
+      label: investigación
+    -
+      label: 'estudio automotivado'
+    -
+      label: 'tareas de aprendizaje electrónico'
+    -
+      label: prácticas
+    -
+      label: aprendizaje
+    -
+      label: 'taller, seminario o conferencia'
+    -
+      label: 'programa educativo'
+    -
+      label: 'tareas en el aula'

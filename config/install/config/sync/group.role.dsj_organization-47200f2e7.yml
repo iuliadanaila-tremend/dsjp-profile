@@ -1,0 +1,17 @@
+uuid: ef91ebbb-52fb-4def-85e8-c31389386611
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.dsj_organization
+  enforced:
+    config:
+      - user.role.dsj_reviewer
+id: dsj_organization-47200f2e7
+label: Reviewer
+weight: -6
+internal: true
+audience: outsider
+group_type: dsj_organization
+permissions_ui: false
+permissions: {  }

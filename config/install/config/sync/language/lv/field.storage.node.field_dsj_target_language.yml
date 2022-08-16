@@ -1,0 +1,50 @@
+settings:
+  allowed_values:
+    -
+      label: Bulgāru
+    -
+      label: Horvātu
+    -
+      label: Čehijas
+    -
+      label: Dāņu
+    -
+      label: Holandiešu
+    -
+      label: Angļu
+    -
+      label: Igauņu
+    -
+      label: Somu
+    -
+      label: Franču
+    -
+      label: Vācu
+    -
+      label: Grieķu
+    -
+      label: Ungāru
+    -
+      label: Īru
+    -
+      label: Itāļu
+    -
+      label: Latviešu
+    -
+      label: Lietuviešu
+    -
+      label: Maltiešu
+    -
+      label: Poļu
+    -
+      label: Portugāļu
+    -
+      label: Rumāņu
+    -
+      label: Slovāku
+    -
+      label: Slovēņu
+    -
+      label: Spāņu
+    -
+      label: Zviedru

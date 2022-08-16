@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: 'De base'
+    -
+      label: Intermédiaire
+    -
+      label: Avancé
+    -
+      label: 'Expert numérique'

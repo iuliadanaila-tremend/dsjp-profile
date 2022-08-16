@@ -1,0 +1,25 @@
+uuid: e4848b0b-bc0b-4d2c-8891-2b33af7f3b11
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_dsj_role
+    - group.type.dsj_organization
+  module:
+    - options
+    - tmgmt_content
+third_party_settings:
+  tmgmt_content:
+    excluded: false
+id: group.dsj_organization.field_dsj_role
+field_name: field_dsj_role
+entity_type: group
+bundle: dsj_organization
+label: Role
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

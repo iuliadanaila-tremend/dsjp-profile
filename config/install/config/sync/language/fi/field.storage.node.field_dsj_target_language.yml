@@ -1,0 +1,50 @@
+settings:
+  allowed_values:
+    -
+      label: Bulgaria
+    -
+      label: Kroatia
+    -
+      label: Tšekki
+    -
+      label: Tanska
+    -
+      label: Alankomaiden
+    -
+      label: Englanti
+    -
+      label: Viro
+    -
+      label: Suomi
+    -
+      label: Ranskan
+    -
+      label: Saksa
+    -
+      label: Kreikka
+    -
+      label: Unkari
+    -
+      label: Irlannin
+    -
+      label: Italia
+    -
+      label: Latvia
+    -
+      label: Liettua
+    -
+      label: Malta
+    -
+      label: Puola
+    -
+      label: Portugali
+    -
+      label: Romania
+    -
+      label: Slovakia
+    -
+      label: Slovenia
+    -
+      label: Espanja
+    -
+      label: Ruotsi

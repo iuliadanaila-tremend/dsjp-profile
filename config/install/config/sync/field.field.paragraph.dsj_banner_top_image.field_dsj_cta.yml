@@ -1,0 +1,27 @@
+uuid: 887f63c9-56e5-47a5-8983-0fa716dc1f2c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_dsj_cta
+    - paragraphs.paragraphs_type.dsj_banner_top_image
+  module:
+    - link
+    - tmgmt_content
+third_party_settings:
+  tmgmt_content:
+    excluded: false
+id: paragraph.dsj_banner_top_image.field_dsj_cta
+field_name: field_dsj_cta
+entity_type: paragraph
+bundle: dsj_banner_top_image
+label: CTA
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 17
+field_type: link

@@ -1,0 +1,42 @@
+settings:
+  allowed_values:
+    -
+      label: 'Osoby s výbornými výsledky'
+    -
+      label: 'Nerodilí mluvčí'
+    -
+      label: 'Osoby vyžadující rekvalifikaci'
+    -
+      label: 'Osoby účastnící se terciárního vzdělávání (EQF 6)'
+    -
+      label: 'Osoby, které dokončily základní vzdělání'
+    -
+      label: 'Osoby účastnící se sekundárního/povinného vzdělávání'
+    -
+      label: 'Osoby s ukončeným terciárním vzděláním (EQF 7)'
+    -
+      label: 'Osoby účastnící se primárního vzdělávání'
+    -
+      label: 'Osoby s 0-3 lety praxe'
+    -
+      label: 'Osoby s ukončeným terciárním vzděláním (EQF 8)'
+    -
+      label: 'Osoby, které dokončily sekundární/povinné vzdělávání'
+    -
+      label: 'Osoby v terciárním vzdělávání (EQF 7)'
+    -
+      label: 'Osoby v terciárním vzdělávání (EQF 8)'
+    -
+      label: Migranti
+    -
+      label: 'Osoby s praxí 3-10 let'
+    -
+      label: 'Osoby s 10 a více lety praxe'
+    -
+      label: 'Osoby s poruchami učení'
+    -
+      label: 'Rodilí mluvčí'
+    -
+      label: 'Osoby, které dokončily terciární vzdělávání (EQF 6)'
+    -
+      label: 'Osoby se slabými výsledky'

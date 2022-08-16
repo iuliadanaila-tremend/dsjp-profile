@@ -1,0 +1,52 @@
+label: Üzenet
+display:
+  default:
+    display_title: Mester
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Alkalmaz
+          reset_button_label: Alaphelyzet
+          exposed_sorts_label: Rendezés
+          sort_asc_label: Növekvő
+          sort_desc_label: Csökkenő
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'Elemek száma oldalanként'
+            items_per_page_options_all_label: '– Mind –'
+            offset_label: Eltolás
+          tags:
+            previous: '‹ előző'
+            next: 'következő ›'
+            first: '« első'
+            last: 'utolsó »'
+      fields:
+        message_bulk_form_1:
+          action_title: 'A kiválasztottakkal'
+        mid:
+          label: Üzenetazonosító
+          separator: ', '
+        template:
+          separator: ', '
+        get_text:
+          label: 'Üzenet szövege'
+        uid:
+          label: Szerző
+          separator: ', '
+        created:
+          label: 'Közzétételi dátum'
+      filters:
+        template:
+          expose:
+            label: Sablon
+      title: Üzenet
+      empty:
+        area:
+          content:
+            value: 'Még nem lett létrehozva egyetlen üzenet sem'
+  page_1:
+    display_title: Oldal
+    display_options:
+      menu:
+        title: Üzenet

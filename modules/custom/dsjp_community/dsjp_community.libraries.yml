@@ -1,0 +1,12 @@
+mentions:
+  version: 2.x
+  css:
+    base:
+      'https://cdnjs.cloudflare.com/ajax/libs/at.js/1.5.2/css/jquery.atwho.css': { type: external}
+  js:
+    'https://cdnjs.cloudflare.com/ajax/libs/Caret.js/0.3.1/jquery.caret.js': { type: external}
+    'https://cdnjs.cloudflare.com/ajax/libs/at.js/1.5.2/js/jquery.atwho.js': { type: external}
+
+  dependencies:
+    - core/jquery
+    - core/drupalSettings

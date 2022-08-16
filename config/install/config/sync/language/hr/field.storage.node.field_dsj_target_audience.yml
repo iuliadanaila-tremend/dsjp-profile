@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: 'Digitalne vještine radne snage.'
+    -
+      label: 'Digitalne vještine stručnjaka u području IKT-a i drugih digitalnih stručnjaka.'
+    -
+      label: 'Digitalne vještine u obrazovanju.'
+    -
+      label: 'Digitalne vještine za sve'

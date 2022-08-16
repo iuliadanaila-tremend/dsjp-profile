@@ -1,0 +1,52 @@
+uuid: b87b7136-fc02-4fbe-a7e0-e3391caa364f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_dsj_left_group
+    - paragraphs.paragraphs_type.dsj_card
+    - paragraphs.paragraphs_type.dsj_grouped_cards
+  module:
+    - entity_reference_revisions
+id: paragraph.dsj_grouped_cards.field_dsj_left_group
+field_name: field_dsj_left_group
+entity_type: paragraph
+bundle: dsj_grouped_cards
+label: 'Left group'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      dsj_card: dsj_card
+    negate: 0
+    target_bundles_drag_drop:
+      dsj_card:
+        weight: 10
+        enabled: true
+      dsj_cards:
+        weight: 11
+        enabled: false
+      dsj_grouped_cards:
+        weight: 9
+        enabled: false
+      dsj_highlighted_listing:
+        weight: 12
+        enabled: false
+      dsj_listing:
+        weight: 13
+        enabled: false
+      dsj_text:
+        weight: 14
+        enabled: false
+      dsj_top_banner:
+        weight: 15
+        enabled: false
+      grouped_cards:
+        weight: 16
+        enabled: false
+field_type: entity_reference_revisions

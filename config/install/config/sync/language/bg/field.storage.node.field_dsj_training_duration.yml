@@ -1,0 +1,14 @@
+settings:
+  allowed_values:
+    -
+      label: '1 седмица'
+    -
+      label: 'До 4 седмици'
+    -
+      label: 'До 3 месеца'
+    -
+      label: 'До 6 месеца'
+    -
+      label: 'До една година'
+    -
+      label: 'Няколко години'

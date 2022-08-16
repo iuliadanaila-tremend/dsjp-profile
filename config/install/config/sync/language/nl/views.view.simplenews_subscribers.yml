@@ -1,0 +1,53 @@
+label: Abonnees
+display:
+  default:
+    display_title: Hoofd
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Toepassen
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sorteren op'
+          sort_asc_label: Oplopend
+          sort_desc_label: Aflopend
+      pager:
+        options:
+          tags:
+            previous: '‹ vorige'
+            next: 'volgende ›'
+            first: '« eerste'
+            last: 'laatste »'
+          expose:
+            items_per_page_label: 'Items per pagina'
+            items_per_page_options_all_label: '- Alle -'
+            offset_label: Startpunt
+      fields:
+        mail:
+          label: E-mail
+        user_name:
+          label: Gebruikersnaam
+        subscriptions_target_id:
+          label: Abonnementen
+          separator: ', '
+        status:
+          label: Actief
+        created:
+          label: Aangemaakt
+        operations:
+          label: Bewerkingen
+      filters:
+        mail:
+          expose:
+            label: E-mail
+        subscriptions_target_id:
+          expose:
+            label: Nieuwsbrieven
+        status:
+          expose:
+            label: Actief
+        subscriptions_status:
+          expose:
+            label: Status
+      title: Abonnees
+  page_1:
+    display_title: Pagina

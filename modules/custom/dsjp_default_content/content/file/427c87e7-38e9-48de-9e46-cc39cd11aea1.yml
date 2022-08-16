@@ -1,0 +1,29 @@
+_meta:
+  version: '1.0'
+  entity_type: file
+  uuid: 427c87e7-38e9-48de-9e46-cc39cd11aea1
+  default_langcode: en
+  depends:
+    a8c2a007-ed53-4a2e-ae5d-b0652bd388b3: user
+default:
+  uid:
+    -
+      entity: a8c2a007-ed53-4a2e-ae5d-b0652bd388b3
+  filename:
+    -
+      value: 'D icon square_GM.png'
+  uri:
+    -
+      value: 'public://2021-05/D icon square_GM.png'
+  filemime:
+    -
+      value: image/png
+  filesize:
+    -
+      value: 43405
+  status:
+    -
+      value: true
+  created:
+    -
+      value: 1621400508

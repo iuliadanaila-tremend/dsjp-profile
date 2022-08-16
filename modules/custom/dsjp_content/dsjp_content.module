@@ -1,0 +1,1068 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for dsjp_content module.
+ */
+
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Datetime\DrupalDateTime;
+use Drupal\Core\Entity\ContentEntityInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Render\BubbleableMetadata;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Url;
+use Drupal\field\Entity\FieldStorageConfig;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\file\Entity\File;
+use Drupal\file\FileInterface;
+use Drupal\group\Entity\GroupContent;
+use Drupal\group\Entity\GroupInterface;
+use Drupal\node\NodeInterface;
+use Drupal\paragraphs\Entity\Paragraph;
+use Drupal\paragraphs\ParagraphInterface;
+use Drupal\taxonomy\Entity\Term;
+use Drupal\taxonomy\TermInterface;
+use Drupal\views\Plugin\views\query\QueryPluginBase;
+use Drupal\views\ViewExecutable;
+
+/**
+ * Implements hook_theme().
+ */
+function dsjp_content_theme($existing, $type, $theme, $path) {
+  return [
+    'facets_list_block' => [
+      'variables' => [
+        'show_title' => TRUE,
+        'facets' => '',
+      ],
+    ],
+    'follow_us_block' => [
+      'variables' => [
+        'links' => '',
+      ],
+    ],
+    'filter_results_btn' => [
+      'variables' => [
+        'text' => '',
+      ],
+    ],
+    'popup' => [
+      'variables' => [
+        'data' => '',
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_entity_view().
+ */
+function dsjp_content_entity_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
+  // Check if the viewed entity is an event and should display date field.
+  if ($entity->bundle() === 'dsj_event' && isset($build['field_dsj_date']) && !empty($build['field_dsj_date'])) {
+    $nodeTimezone = $entity->get('field_dsj_event_timezone')->getValue();
+    $dateValue = $entity->get('field_dsj_date')->getValue();
+    // Get timezone.
+    $userTimezone = date_default_timezone_get();
+
+    if (isset($nodeTimezone[0]['value']) && !empty($nodeTimezone[0]['value'])) {
+      $timezone = $nodeTimezone[0]['value'];
+    }
+    else {
+      $timezone = $userTimezone;
+    }
+
+    $gmt = new DateTimeZone('GMT');
+    $dtStart = new DateTime($dateValue[0]['value'], $gmt);
+    $dtEnd = new DateTime($dateValue[0]['end_value'], $gmt);
+    $dStartFull = \Drupal::service('date.formatter')
+      ->format($dtStart->getTimestamp(), 'dsj_long_custom_date', "", $timezone);
+    $dEndFull = \Drupal::service('date.formatter')
+      ->format($dtEnd->getTimestamp(), 'dsj_long_custom_date', "", $timezone);
+
+    $dStartShort = \Drupal::service('date.formatter')
+      ->format($dtStart->getTimestamp(), 'custom', "Ymd", $timezone);
+    $dEndShort = \Drupal::service('date.formatter')
+      ->format($dtEnd->getTimestamp(), 'custom', "Ymd", $timezone);
+
+    if ('full' == $view_mode) {
+      if ($dStartFull == $dEndFull) {
+        $build['field_dsj_date'][0]['start_date']['#text'] = $dStartFull;
+      }
+      elseif ($dStartShort == $dEndShort) {
+        $build['field_dsj_date'][0]['start_date']['#text'] = \Drupal::service('date.formatter')
+          ->format($dtStart->getTimestamp(), 'custom', "j F Y h:i A", $timezone) .
+          ' - ' . \Drupal::service('date.formatter')
+            ->format($dtEnd->getTimestamp(), 'custom', "h:i A \G\M\T O", $timezone);
+      }
+      else {
+        $build['field_dsj_date'][0]['start_date']['#text'] = $dStartFull . ' - ' . $dEndFull;
+      }
+    }
+    else {
+      $build['field_dsj_date'][0]['start_date']['#text'] = $dStartFull;
+    }
+
+    unset($build['field_dsj_date'][0]['separator']);
+    unset($build['field_dsj_date'][0]['end_date']);
+
+    // Apply logic only for online events to display browser time.
+    if (dsjp_content_event_is_online($entity)) {
+      // Add the data in the drupalSettings and attach the library.
+      $build['#attached']['library'][] = 'dsjp_content/timezone--changer';
+      $build['#attached']['drupalSettings']['dsjp_content']['eventTimezone'][$entity->id()] = [
+        'timezone' => $timezone,
+        'startTimestamp' => $dtStart->getTimestamp(),
+        'endTimestamp' => $dtEnd->getTimestamp(),
+        'viewMode' => $view_mode,
+      ];
+    }
+  }
+
+}
+
+/**
+ * Helper function that returns if an event is online or not.
+ *
+ * @param \Drupal\node\NodeInterface $node
+ *   The node entity.
+ *
+ * @return bool
+ *   TRUE if node is online, FALSE otherwise.
+ */
+function dsjp_content_event_is_online(NodeInterface $node) {
+  // Get field values.
+  $eventSetting = $node->get('field_dsj_event_setting')->getValue();
+  $eventSettingArr = [];
+  if (!empty($eventSetting)) {
+    // Iterate over all values and try to find the "on location" option.
+    foreach ($eventSetting as $setting) {
+      $eventSettingArr[] = $setting['value'];
+    }
+  }
+
+  // Return false if we have only one option selected and it;s on location.
+  if (count($eventSettingArr) == 1 && $eventSettingArr[0] == 'on location') {
+    return FALSE;
+  }
+  else {
+    return TRUE;
+  }
+}
+
+/**
+ * Implements hook_field_widget_multivalue_form_alter().
+ */
+function dsjp_content_field_widget_multivalue_form_alter(&$element, FormStateInterface $form_state, $context) {
+  // Hide event location if event is online.
+  if ('field_dsj_event_location' === $context['items']->getName() || 'field_dsj_event_coordinates' === $context['items']->getName()) {
+    $element['#states'] = [
+      'visible' => [
+        ['select[name="field_dsj_event_setting[]"]' => [['value' => ['blended']]]],
+        'or',
+        ['select[name="field_dsj_event_setting[]"]' => [['value' => ['on location']]]],
+      ],
+    ];
+  }
+  if (in_array($context['items']->getName(), [
+    'field_dsj_geographic_scope',
+    'field_dsj_country',
+  ])) {
+    // Hide pledge only countries based on the form entity.
+    $entity = $form_state->getFormObject()->getEntity();
+    if ($entity->bundle() != 'dsj_pledge' && !$entity instanceof GroupInterface) {
+      if (!empty($element['#options'])) {
+        foreach (array_keys($element['#options']) as $option) {
+          $term = Term::load($option);
+          if ($term instanceof TermInterface) {
+            $pledge_only = $term->get('field_dsj_pledge_only')->value;
+            if ($pledge_only) {
+              unset($element['#options'][$option]);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_field_widget_form_alter().
+ */
+function dsjp_content_field_widget_form_alter(&$element, FormStateInterface $form_state, $context) {
+  // Make sure that resource documents are hidden based on internal\external
+  // radio value.
+  if ($context['items']->getName() == 'field_dsj_external_document' || $context['items']->getName() == 'field_dsj_document') {
+    $value = $context['items']->getName() == 'field_dsj_document' ? 'internal' : 'external';
+    $parents = $element['#field_parents'];
+    $input_name = $parents[0] . '[' . $parents[1] . '][' . $parents[2] . '][field_dsj_internal_external]';
+    $element['#states'] = [
+      'visible' => [
+        ':input[name="' . $input_name . '"]' => ['value' => $value],
+      ],
+    ];
+  }
+
+  if ('field_dsj_date' === $context['items']->getName()) {
+    $element['field_dsj_date']['#attached']['library'][] = 'dsjp_content/form--timepicker';
+    $element['field_dsj_date']['#attached']['library'][] = 'dsjp_content/form--datepicker';
+  }
+}
+
+/**
+ * Set dynamic allowed values for the paragraph field.
+ *
+ * @param \Drupal\field\Entity\FieldStorageConfig $definition
+ *   The field definition.
+ * @param \Drupal\Core\Entity\ContentEntityInterface|null $entity
+ *   The entity being created if applicable.
+ * @param bool $cacheable
+ *   Boolean indicating if the results are cacheable.
+ *
+ * @return array
+ *   An array of possible key and value options.
+ */
+function dsjp_content_digital_technology_values(FieldStorageConfig $definition, ContentEntityInterface $entity = NULL, $cacheable) {
+  $options = [];
+  $field = Drupal::entityTypeManager()->getStorage('field_storage_config')->load('node.field_dsj_digital_technology');
+  if ($field instanceof FieldStorageConfig) {
+    $options = $field->getSetting('allowed_values');
+  }
+
+  return $options;
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_access().
+ */
+function dsjp_content_node_access(EntityInterface $entity, $operation, AccountInterface $account) {
+  if ($operation === 'update' && !$entity->isNew()) {
+    if ($entity->hasField('moderation_state')) {
+      $users = [$entity->getOwnerId()];
+      $current_state = $entity->get('moderation_state')->getString();
+      $states = ['needs_changes', 'draft'];
+      $roles = $account->getRoles();
+      $group_content = GroupContent::loadByEntity($entity);
+      foreach ($group_content as $gcontent) {
+        $group = $gcontent->getGroup();
+        if ($group->getGroupType()->id() == 'dsj_national_coalition') {
+          $users = [];
+          $members = $group->getMembers();
+          foreach ($members as $member) {
+            $users[] = $member->getUser()->id();
+          }
+        }
+      }
+      if (!in_array($account->id(), $users)) {
+        // If the current node is on "Imported" status, deny the access based on
+        // the user permissions.
+        if (($current_state == 'imported' && empty(array_intersect([
+          'dsj_content_editor',
+          'dsj_reviewer',
+        ], $roles))) ||
+          // If the current node is on ,,Needs changes" or "Draft" status and
+          // the user is not the author, restrict the access to edit page.
+          (!in_array('dsj_reviewer', $roles) && in_array($current_state, $states))) {
+          return AccessResult::forbidden();
+        }
+      }
+    }
+  }
+
+  return AccessResult::neutral();
+}
+
+/**
+ * Implements hook_views_query_alter().
+ */
+function dsjp_content_views_query_alter(ViewExecutable $view, QueryPluginBase $query) {
+  if ($view->id() == 'dsj_content_listing' && $view->getDisplay()->display['id']) {
+    $exposed = $view->getExposedInput();
+
+    if (isset($exposed['event_date_end']) && $exposed['event_date_end'] == 2) {
+      $sorts = &$query->getSort();
+      $sorts['field_dsj_date'] = 'DESC';
+    }
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function dsjp_content_form_views_exposed_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if (strpos($form['#id'], 'content-by-vocabulary-report') !== FALSE) {
+    $states_conditions = [
+      'country' => [
+        'dsj_article',
+        'dsj_digital_skills_resource',
+        'dsj_event',
+        'dsj_funding_opportunity',
+        'dsj_good_practice',
+        'dsj_initiative',
+        'dsj_organization',
+        'dsj_skills_intelligence',
+        'dsj_strategy',
+        'dsj_training_offer',
+      ],
+      'funding_form' => [
+        'dsj_funding_opportunity',
+      ],
+      'ds_level' => [
+        'dsj_article',
+        'dsj_digital_skills_resource',
+        'dsj_event',
+        'dsj_funding_opportunity',
+        'dsj_good_practice',
+        'dsj_initiative',
+        'dsj_skills_intelligence',
+        'dsj_strategy',
+        'dsj_training_offer',
+        'dsj_national_coalition',
+      ],
+      'technology' => [
+        'dsj_article',
+        'dsj_digital_skills_resource',
+        'dsj_event',
+        'dsj_funding_opportunity',
+        'dsj_good_practice',
+        'dsj_initiative',
+        'dsj_organization',
+        'dsj_skills_intelligence',
+        'dsj_strategy',
+        'dsj_training_offer',
+        'dsj_discussion',
+      ],
+      'industry' => [
+        'dsj_digital_skills_resource',
+        'dsj_event',
+        'dsj_funding_opportunity',
+        'dsj_good_practice',
+        'dsj_initiative',
+        'dsj_organization',
+        'dsj_skills_intelligence',
+        'dsj_strategy',
+        'dsj_training_offer',
+      ],
+      'audience' => [
+        'dsj_digital_skills_resource',
+        'dsj_event',
+        'dsj_funding_opportunity',
+        'dsj_good_practice',
+        'dsj_initiative',
+        'dsj_organization',
+        'dsj_skills_intelligence',
+        'dsj_strategy',
+        'dsj_training_offer',
+        'dsj_national_coalition',
+      ],
+      'group' => [
+        'dsj_digital_skills_resource',
+        'dsj_funding_opportunity',
+        'dsj_training_offer',
+      ],
+      'language' => [
+        'dsj_digital_skills_resource',
+        'dsj_event',
+        'dsj_strategy',
+        'dsj_training_offer',
+        'dsj_national_coalition',
+      ],
+      'initiative' => [
+        'dsj_article',
+        'dsj_digital_skills_resource',
+        'dsj_event',
+        'dsj_funding_opportunity',
+        'dsj_good_practice',
+        'dsj_initiative',
+        'dsj_skills_intelligence',
+        'dsj_strategy',
+        'dsj_training_offer',
+      ],
+      'resource_type' => [
+        'dsj_digital_skills_resource',
+      ],
+      'event_setting' => [
+        'dsj_event',
+      ],
+      'organisation_category' => [
+        'dsj_organization',
+      ],
+      'publication_type' => [
+        'dsj_skills_intelligence',
+      ],
+      'assessment' => [
+        'dsj_training_offer',
+      ],
+      'credential' => [
+        'dsj_training_offer',
+      ],
+      'effort' => [
+        'dsj_training_offer',
+      ],
+      'learning_activity' => [
+        'dsj_training_offer',
+      ],
+      'duration' => [
+        'dsj_training_offer',
+      ],
+      'typology' => [
+        'dsj_training_offer',
+      ],
+      'type_of_funding' => [
+        'dsj_good_practice',
+      ],
+      'title_organisation' => [
+        'dsj_good_practice',
+        'dsj_training_offer',
+        'dsj_strategy',
+        'dsj_event',
+        'dsj_digital_skills_resource',
+      ],
+      'article_type' => [
+        'dsj_article',
+      ],
+    ];
+    _dsjp_content_set_filters_states($form, $states_conditions, ':input[name="type"]');
+  }
+  if (strpos($form['#id'], 'content-report') !== FALSE) {
+    $states_conditions = [
+      'language' => [
+        'dsj_digital_skills_resource',
+        'dsj_event',
+        'dsj_national_coalition',
+        'dsj_strategy',
+        'dsj_training_offer',
+      ],
+      'link_type' => [
+        'dsj_article',
+        'dsj_digital_skills_resource',
+        'dsj_event',
+        'dsj_funding_opportunity',
+        'dsj_good_practice',
+        'dsj_initiative',
+        'dsj_national_coalition',
+        'dsj_organization',
+        'dsj_skills_intelligence',
+        'dsj_strategy',
+        'dsj_training_offer',
+      ],
+      'skill_level' => [
+        'dsj_article',
+        'dsj_digital_skills_resource',
+        'dsj_event',
+        'dsj_funding_opportunity',
+        'dsj_good_practice',
+        'dsj_initiative',
+        'dsj_national_coalition',
+        'dsj_skills_intelligence',
+        'dsj_strategy',
+        'dsj_training_offer',
+      ],
+      'industry' => [
+        'dsj_digital_skills_resource',
+        'dsj_event',
+        'dsj_funding_opportunity',
+        'dsj_good_practice',
+        'dsj_initiative',
+        'dsj_organization',
+        'dsj_skills_intelligence',
+        'dsj_strategy',
+        'dsj_training_offer',
+      ],
+      'initiative' => [
+        'dsj_article',
+        'dsj_digital_skills_resource',
+        'dsj_event',
+        'dsj_funding_opportunity',
+        'dsj_good_practice',
+        'dsj_initiative',
+        'dsj_skills_intelligence',
+        'dsj_strategy',
+        'dsj_training_offer',
+      ],
+      'article_type' => [
+        'dsj_article',
+      ],
+    ];
+    _dsjp_content_set_filters_states($form, $states_conditions, ':input[name="type[]"]', TRUE);
+  }
+  if (strpos($form['#id'], 'dsj-report') !== FALSE) {
+    array_unshift($form['#validate'], 'dsjp_content_reports_exposed_form_submit');
+  }
+}
+
+/**
+ * Adds the states key based on an array of conditions.
+ *
+ * @param array $form
+ *   The form the add the states conditions on.
+ * @param array $states_conditions
+ *   The conditions to add.
+ * @param string $input
+ *   The input to trigger the states from.
+ * @param bool $array_condition
+ *   Whether the condition should be an array or not.
+ */
+function _dsjp_content_set_filters_states(array &$form, array $states_conditions, $input, $array_condition = FALSE) {
+  foreach ($states_conditions as $key => $conditions) {
+    $key_state = [];
+    foreach ($conditions as $condition) {
+      $final_condition = $array_condition ? [$condition] : $condition;
+      $key_state[] = [$input => ['value' => $final_condition]];
+      $key_state[] = 'or';
+    }
+
+    $form[$key]['#states'] = [
+      'visible' => $key_state,
+    ];
+  }
+  $form['#attached']['library'][] = 'dsjp_content/exposed_filters';
+}
+
+/**
+ * Custom reports pages filters callback.
+ */
+function dsjp_content_reports_exposed_form_submit(array &$form, FormStateInterface $form_state) {
+  // For each date type filters, alter the end date value.
+  $values = $form_state->getValues();
+  foreach ($values as &$data) {
+    if (isset($data['min']) && isset($data['max']) && !empty($data['max'])) {
+      $data['max'] .= 'T23:59:59';
+    }
+  }
+  $form_state->setValues($values);
+}
+
+/**
+ * Set dynamic allowed values for the Industry field.
+ *
+ * @param \Drupal\field\Entity\FieldStorageConfig $definition
+ *   The field definition.
+ * @param \Drupal\Core\Entity\ContentEntityInterface|null $entity
+ *   The entity being created if applicable.
+ * @param bool $cacheable
+ *   Boolean indicating if the results are cacheable.
+ *
+ * @return array
+ *   An array of possible key and value options.
+ *
+ * @see options_allowed_values()
+ */
+function dsjp_content_industry_allowed_values_function(FieldStorageConfig $definition, ContentEntityInterface $entity = NULL, $cacheable) {
+  $options = [
+    (string) t('Generic programmes and qualifications not further defined') => [
+      'http://data.europa.eu/snb/isced-f/0000' => t('Generic programmes and qualifications not further defined'),
+    ],
+    (string) t('Basic programmes and qualifications') => [
+      'http://data.europa.eu/snb/isced-f/0011' => t('Basic programmes and qualifications'),
+    ],
+    (string) t('Literacy and numeracy') => [
+      'http://data.europa.eu/snb/isced-f/0021' => t('Literacy and numeracy'),
+    ],
+    (string) t('Personal skills and development') => [
+      'http://data.europa.eu/snb/isced-f/0031' => t('Personal skills and development'),
+    ],
+    (string) t('Generic programmes and qualifications not elsewhere classified') => [
+      'http://data.europa.eu/snb/isced-f/0099' => t('Generic programmes and qualifications not elsewhere classified'),
+    ],
+    (string) t('Education') => [
+      'http://data.europa.eu/snb/isced-f/0110' => t('Education not further defined'),
+      'http://data.europa.eu/snb/isced-f/0111' => t('Education science'),
+      'http://data.europa.eu/snb/isced-f/0112' => t('Training for pre-school teachers'),
+      'http://data.europa.eu/snb/isced-f/0113' => t('Teacher training without subject specialisation'),
+      'http://data.europa.eu/snb/isced-f/0114' => t('Teacher training with subject specialisation'),
+      'http://data.europa.eu/snb/isced-f/0119' => t('Education not elsewhere classified'),
+    ],
+    (string) t('Inter-disciplinary programmes and qualifications involving education') => [
+      'http://data.europa.eu/snb/isced-f/0188' => t('Inter-disciplinary programmes and qualifications involving education'),
+    ],
+    (string) t('Arts and humanities not further defined') => [
+      'http://data.europa.eu/snb/isced-f/0200' => t('Arts and humanities not further defined'),
+    ],
+    (string) t('Arts') => [
+      'http://data.europa.eu/snb/isced-f/0210' => t('Arts not further defined'),
+      'http://data.europa.eu/snb/isced-f/0211' => t('Audio-visual techniques and media production'),
+      'http://data.europa.eu/snb/isced-f/0212' => t('Fashion, interior and industrial design'),
+      'http://data.europa.eu/snb/isced-f/0213' => t('Fine arts'),
+      'http://data.europa.eu/snb/isced-f/0214' => t('Handicrafts'),
+      'http://data.europa.eu/snb/isced-f/0215' => t('Music and performing arts'),
+      'http://data.europa.eu/snb/isced-f/0219' => t('Arts not elsewhere classified'),
+    ],
+    (string) t('Humanities (except languages)') => [
+      'http://data.europa.eu/snb/isced-f/0220' => t('Humanities (except languages) not further defined'),
+      'http://data.europa.eu/snb/isced-f/0221' => t('Religion and theology'),
+      'http://data.europa.eu/snb/isced-f/0222' => t('History and archaeology'),
+      'http://data.europa.eu/snb/isced-f/0223' => t('Philosophy and ethics'),
+      'http://data.europa.eu/snb/isced-f/0228' => t('Inter-disciplinary programmes and qualifications involving humanities'),
+      'http://data.europa.eu/snb/isced-f/0229' => t('Humanities (except languages) not elsewhere classified'),
+    ],
+    (string) t('Languages') => [
+      'http://data.europa.eu/snb/isced-f/0230' => t('Languages not further defined'),
+      'http://data.europa.eu/snb/isced-f/0231' => t('Language acquisition'),
+      'http://data.europa.eu/snb/isced-f/0232' => t('Literature and linguistics'),
+      'http://data.europa.eu/snb/isced-f/0239' => t('Languages not elsewhere classified'),
+    ],
+    (string) t('Inter-disciplinary programmes and qualifications involving arts and humanities') => [
+      'http://data.europa.eu/snb/isced-f/0288' => t('Inter-disciplinary programmes and qualifications involving arts and humanities'),
+    ],
+    (string) t('Arts and humanities not elsewhere classified') => [
+      'http://data.europa.eu/snb/isced-f/0299' => t('Arts and humanities not elsewhere classified'),
+    ],
+    (string) t('Social sciences, journalism and information not further defined') => [
+      'http://data.europa.eu/snb/isced-f/0300' => t('Social sciences, journalism and information not further defined'),
+    ],
+    (string) t('Social and behavioural sciences') => [
+      'http://data.europa.eu/snb/isced-f/0310' => t('Social and behavioural sciences not further defined'),
+      'http://data.europa.eu/snb/isced-f/0311' => t('Economics'),
+      'http://data.europa.eu/snb/isced-f/0312' => t('Political sciences and civics'),
+      'http://data.europa.eu/snb/isced-f/0313' => t('Psychology'),
+      'http://data.europa.eu/snb/isced-f/0314' => t('Sociology and cultural studies'),
+      'http://data.europa.eu/snb/isced-f/0319' => t('Social and behavioural sciences not elsewhere classified'),
+    ],
+    (string) t('Journalism and information') => [
+      'http://data.europa.eu/snb/isced-f/0320' => t('Journalism and information not further defined'),
+      'http://data.europa.eu/snb/isced-f/0321' => t('Journalism and reporting'),
+      'http://data.europa.eu/snb/isced-f/0322' => t('Library, information and archival studies'),
+      'http://data.europa.eu/snb/isced-f/0329' => t('Journalism and information not elsewhere classified'),
+    ],
+    (string) t('Inter-disciplinary programmes and qualifications involving social sciences, journalism and information') => [
+      'http://data.europa.eu/snb/isced-f/0388' => t('Inter-disciplinary programmes and qualifications involving social sciences, journalism and information'),
+    ],
+    (string) t('Social sciences, journalism and information not elsewhere classified') => [
+      'http://data.europa.eu/snb/isced-f/0399' => t('Social sciences, journalism and information not elsewhere classified'),
+    ],
+    (string) t('Business, administration and law not further defined') => [
+      'http://data.europa.eu/snb/isced-f/0400' => t('Business, administration and law not further defined'),
+    ],
+    (string) t('Business and administration') => [
+      'http://data.europa.eu/snb/isced-f/0410' => t('Business and administration not further defined'),
+      'http://data.europa.eu/snb/isced-f/0411' => t('Accounting and taxation'),
+      'http://data.europa.eu/snb/isced-f/0412' => t('Finance, banking and insurance'),
+      'http://data.europa.eu/snb/isced-f/0413' => t('Management and administration'),
+      'http://data.europa.eu/snb/isced-f/0414' => t('Marketing and advertising'),
+      'http://data.europa.eu/snb/isced-f/0415' => t('Secretarial and office work'),
+      'http://data.europa.eu/snb/isced-f/0416' => t('Wholesale and retail sales'),
+      'http://data.europa.eu/snb/isced-f/0417' => t('Work skills'),
+      'http://data.europa.eu/snb/isced-f/0419' => t('Business and administration not elsewhere classified'),
+    ],
+    (string) t('Law') => [
+      'http://data.europa.eu/snb/isced-f/0421' => t('Law'),
+    ],
+    (string) t('Inter-disciplinary programmes and qualifications involving business, administration and law') => [
+      'http://data.europa.eu/snb/isced-f/0488' => t('Inter-disciplinary programmes and qualifications involving business, administration and law'),
+    ],
+    (string) t('Business, administration and law not elsewhere classified') => [
+      'http://data.europa.eu/snb/isced-f/0499' => t('Business, administration and law not elsewhere classified'),
+    ],
+    (string) t('Natural sciences, mathematics and statistics not further defined') => [
+      'http://data.europa.eu/snb/isced-f/0500' => t('Natural sciences, mathematics and statistics not further defined'),
+    ],
+    (string) t('Biological and related sciences') => [
+      'http://data.europa.eu/snb/isced-f/0510' => t('Biological and related sciences not further defined'),
+      'http://data.europa.eu/snb/isced-f/0511' => t('Biology'),
+      'http://data.europa.eu/snb/isced-f/0512' => t('Biochemistry'),
+      'http://data.europa.eu/snb/isced-f/0519' => t('Biological and related sciences not elsewhere classified'),
+    ],
+    (string) t('Environment') => [
+      'http://data.europa.eu/snb/isced-f/0520' => t('Environment not further defined'),
+      'http://data.europa.eu/snb/isced-f/0521' => t('Environmental sciences'),
+      'http://data.europa.eu/snb/isced-f/0522' => t('Natural environments and wildlife'),
+      'http://data.europa.eu/snb/isced-f/0529' => t('Environment not elsewhere classified'),
+    ],
+    (string) t('Physical sciences') => [
+      'http://data.europa.eu/snb/isced-f/0530' => t('Physical sciences not further defined'),
+      'http://data.europa.eu/snb/isced-f/0531' => t('Chemistry'),
+      'http://data.europa.eu/snb/isced-f/0532' => t('Earth sciences'),
+      'http://data.europa.eu/snb/isced-f/0533' => t('Physics'),
+      'http://data.europa.eu/snb/isced-f/0539' => t('Physical sciences not elsewhere classified'),
+    ],
+    (string) t('Mathematics and statistics') => [
+      'http://data.europa.eu/snb/isced-f/0540' => t('Mathematics and statistics not further defined'),
+      'http://data.europa.eu/snb/isced-f/0541' => t('Mathematics'),
+      'http://data.europa.eu/snb/isced-f/0542' => t('Statistics'),
+    ],
+    (string) t('Inter-disciplinary programmes and qualifications involving natural sciences, mathematics and statistics') => [
+      'http://data.europa.eu/snb/isced-f/0588' => t('Inter-disciplinary programmes and qualifications involving natural sciences, mathematics and statistics'),
+    ],
+    (string) t('Natural sciences, mathematics and statistics not elsewhere classified') => [
+      'http://data.europa.eu/snb/isced-f/0599' => t('Natural sciences, mathematics and statistics not elsewhere classified'),
+    ],
+    (string) t('Information and Communication Technologies (ICTs)') => [
+      'http://data.europa.eu/snb/isced-f/0610' => t('Information and Communication Technologies (ICTs) not further defined'),
+      'http://data.europa.eu/snb/isced-f/0611' => t('Computer use'),
+      'http://data.europa.eu/snb/isced-f/0612' => t('Database and network design and administration'),
+      'http://data.europa.eu/snb/isced-f/0613' => t('Software and applications development and analysis'),
+      'http://data.europa.eu/snb/isced-f/0619' => t('Information and communication technologies not elsewhere classified'),
+    ],
+    (string) t('Inter-disciplinary programmes and qualifications involving Information and Communication Technologies (ICTs)') => [
+      'http://data.europa.eu/snb/isced-f/0688' => t('Inter-disciplinary programmes and qualifications involving Information and Communication Technologies (ICTs)'),
+    ],
+    (string) t('Engineering, manufacturing and construction not further defined') => [
+      'http://data.europa.eu/snb/isced-f/0700' => t('Engineering, manufacturing and construction not further defined'),
+    ],
+    (string) t('Engineering and engineering trades') => [
+      'http://data.europa.eu/snb/isced-f/0710' => t('Engineering and engineering trades not further defined'),
+      'http://data.europa.eu/snb/isced-f/0711' => t('Chemical engineering and processes'),
+      'http://data.europa.eu/snb/isced-f/0712' => t('Environmental protection technology'),
+      'http://data.europa.eu/snb/isced-f/0713' => t('Electricity and energy'),
+      'http://data.europa.eu/snb/isced-f/0714' => t('Electronics and automation'),
+      'http://data.europa.eu/snb/isced-f/0715' => t('Mechanics and metal trades'),
+      'http://data.europa.eu/snb/isced-f/0716' => t('Motor vehicles, ships and aircraft'),
+      'http://data.europa.eu/snb/isced-f/0719' => t('Engineering and engineering trades not elsewhere classified'),
+    ],
+    (string) t('Manufacturing and processing') => [
+      'http://data.europa.eu/snb/isced-f/0720' => t('Manufacturing and processing not further defined'),
+      'http://data.europa.eu/snb/isced-f/0721' => t('Food processing'),
+      'http://data.europa.eu/snb/isced-f/0722' => t('Materials (glass, paper, plastic and wood)'),
+      'http://data.europa.eu/snb/isced-f/0723' => t('Textiles (clothes, footwear and leather)'),
+      'http://data.europa.eu/snb/isced-f/0724' => t('Mining and extraction'),
+      'http://data.europa.eu/snb/isced-f/0729' => t('Manufacturing and processing not elsewhere classified'),
+    ],
+    (string) t('Architecture and construction') => [
+      'http://data.europa.eu/snb/isced-f/0730' => t('Architecture and construction not further defined'),
+      'http://data.europa.eu/snb/isced-f/0731' => t('Architecture and town planning'),
+      'http://data.europa.eu/snb/isced-f/0732' => t('Building and civil engineering'),
+    ],
+    (string) t('Inter-disciplinary programmes and qualifications involving engineering, manufacturing and construction') => [
+      'http://data.europa.eu/snb/isced-f/0788' => t('Inter-disciplinary programmes and qualifications involving engineering, manufacturing and construction'),
+    ],
+    (string) t('Engineering, manufacturing and construction not elsewhere classified') => [
+      'http://data.europa.eu/snb/isced-f/0799' => t('Engineering, manufacturing and construction not elsewhere classified'),
+    ],
+    (string) t('Agriculture, forestry, fisheries and veterinary not further defined') => [
+      'http://data.europa.eu/snb/isced-f/0800' => t('Agriculture, forestry, fisheries and veterinary not further defined'),
+    ],
+    (string) t('Agriculture') => [
+      'http://data.europa.eu/snb/isced-f/0810' => t('Agriculture not further defined'),
+      'http://data.europa.eu/snb/isced-f/0811' => t('Crop and livestock production'),
+      'http://data.europa.eu/snb/isced-f/0812' => t('Horticulture'),
+      'http://data.europa.eu/snb/isced-f/0819' => t('Agriculture not elsewhere classified'),
+    ],
+    (string) t('Forestry') => [
+      'http://data.europa.eu/snb/isced-f/0821' => t('Forestry'),
+    ],
+    (string) t('Fisheries') => [
+      'http://data.europa.eu/snb/isced-f/0831' => t('Fisheries'),
+    ],
+    (string) t('Veterinary') => [
+      'http://data.europa.eu/snb/isced-f/0841' => t('Veterinary'),
+    ],
+    (string) t('Inter-disciplinary programmes and qualifications involving agriculture, forestry, fisheries and veterinary') => [
+      'http://data.europa.eu/snb/isced-f/0888' => t('Inter-disciplinary programmes and qualifications involving agriculture, forestry, fisheries and veterinary'),
+    ],
+    (string) t('Agriculture, forestry, fisheries and veterinary not elsewhere classified') => [
+      'http://data.europa.eu/snb/isced-f/0899' => t('Agriculture, forestry, fisheries and veterinary not elsewhere classified'),
+    ],
+    (string) t('Health and welfare not further defined') => [
+      'http://data.europa.eu/snb/isced-f/0900' => t('Health and welfare not further defined'),
+    ],
+    (string) t('Health') => [
+      'http://data.europa.eu/snb/isced-f/0910' => t('Health not further defined'),
+      'http://data.europa.eu/snb/isced-f/0911' => t('Dental studies'),
+      'http://data.europa.eu/snb/isced-f/0912' => t('Medicine'),
+      'http://data.europa.eu/snb/isced-f/0913' => t('Nursing and midwifery'),
+      'http://data.europa.eu/snb/isced-f/0914' => t('Medical diagnostic and treatment technology'),
+      'http://data.europa.eu/snb/isced-f/0915' => t('Therapy and rehabilitation'),
+      'http://data.europa.eu/snb/isced-f/0916' => t('Pharmacy'),
+      'http://data.europa.eu/snb/isced-f/0917' => t('Traditional and complementary medicine and therapy'),
+      'http://data.europa.eu/snb/isced-f/0919' => t('Health not elsewhere classified'),
+    ],
+    (string) t('Welfare') => [
+      'http://data.europa.eu/snb/isced-f/0920' => t('Welfare not further defined'),
+      'http://data.europa.eu/snb/isced-f/0921' => t('Care of the elderly and of disabled adults'),
+      'http://data.europa.eu/snb/isced-f/0922' => t('Child care and youth services'),
+      'http://data.europa.eu/snb/isced-f/0923' => t('Social work and counselling'),
+      'http://data.europa.eu/snb/isced-f/0929' => t('Welfare not elsewhere classified'),
+    ],
+    (string) t('Inter-disciplinary programmes and qualifications involving health and welfare') => [
+      'http://data.europa.eu/snb/isced-f/0988' => t('Inter-disciplinary programmes and qualifications involving health and welfare'),
+    ],
+    (string) t('Health and welfare not elsewhere classified') => [
+      'http://data.europa.eu/snb/isced-f/0999' => t('Health and welfare not elsewhere classified'),
+    ],
+    (string) t('Services not further defined') => [
+      'http://data.europa.eu/snb/isced-f/1000' => t('Services not further defined'),
+    ],
+    (string) t('Personal services') => [
+      'http://data.europa.eu/snb/isced-f/1010' => t('Personal services not further defined'),
+      'http://data.europa.eu/snb/isced-f/1011' => t('Domestic services'),
+      'http://data.europa.eu/snb/isced-f/1012' => t('Hair and beauty services'),
+      'http://data.europa.eu/snb/isced-f/1013' => t('Hotel, restaurants and catering'),
+      'http://data.europa.eu/snb/isced-f/1014' => t('Sports'),
+      'http://data.europa.eu/snb/isced-f/1015' => t('Travel, tourism and leisure'),
+      'http://data.europa.eu/snb/isced-f/1019' => t('Personal services not elsewhere classified'),
+    ],
+    (string) t('Hygiene and occupational health services') => [
+      'http://data.europa.eu/snb/isced-f/1020' => t('Hygiene and occupational health services not further defined'),
+      'http://data.europa.eu/snb/isced-f/1021' => t('Community sanitation'),
+      'http://data.europa.eu/snb/isced-f/1022' => t('Occupational health and safety'),
+      'http://data.europa.eu/snb/isced-f/1029' => t('Hygiene and occupational health services not elsewhere classified'),
+    ],
+    (string) t('Security services') => [
+      'http://data.europa.eu/snb/isced-f/1030' => t('Security services not further defined'),
+      'http://data.europa.eu/snb/isced-f/1031' => t('Military and defence'),
+      'http://data.europa.eu/snb/isced-f/1032' => t('Protection of persons and property'),
+      'http://data.europa.eu/snb/isced-f/1039' => t('Security services not elsewhere classified'),
+    ],
+    (string) t('Transport services') => [
+      'http://data.europa.eu/snb/isced-f/1041' => t('Transport services'),
+    ],
+    (string) t('Inter-disciplinary programmes and qualifications involving services') => [
+      'http://data.europa.eu/snb/isced-f/1088' => t('Inter-disciplinary programmes and qualifications involving services'),
+    ],
+    (string) t('Services not elsewhere classified') => [
+      'http://data.europa.eu/snb/isced-f/1099' => t('Services not elsewhere classified'),
+    ],
+    (string) t('Field unknown') => [
+      'http://data.europa.eu/snb/isced-f/9999' => t('Field unknown'),
+    ],
+  ];
+  return $options;
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function dsjp_content_form_node_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if (in_array($form_id, [
+    'node_dsj_discussion_edit_form',
+    'node_dsj_discussion_form',
+  ])) {
+    $form['actions']['submit']['#value'] = t('Publish');
+  }
+  if (isset($form['field_dsj_date'])) {
+    array_unshift($form['#validate'], 'dsj_content_event_form_validate');
+  }
+  // Hide metatags if the current user doesn't have any roles assigned.
+  $roles = \Drupal::currentUser()->getRoles();
+  if (count($roles) == 1 && $roles[0] == 'authenticated' && isset($form['field_dsj_meta_tags'])) {
+    $form['field_dsj_meta_tags']['#access'] = FALSE;
+  }
+}
+
+/**
+ * Validation callback for node forms containing date range field.
+ */
+function dsj_content_event_form_validate(array &$form, FormStateInterface $form_state) {
+  $date = $form_state->getValue('field_dsj_date');
+  if (!empty($date) && !empty($date[0]['value']) && !empty($date[0]['end_value'])) {
+    $start_date = $date[0]['value'];
+    $end_date = $date[0]['end_value'];
+    if ($start_date instanceof DrupalDateTime && $end_date instanceof DrupalDateTime && $start_date->getTimestamp() == $end_date->getTimestamp()) {
+      $form_state->setErrorByName('field_dsj_date', t('End datetime should be greater than start datetime.'));
+    }
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function dsjp_content_form_comment_dsj_comment_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $form['actions']['submit']['#value'] = t('Add comment');
+  /** @var \Drupal\comment\CommentInterface $comment */
+  $comment = $form_state->getFormObject()->getEntity();
+  if ($comment->hasParentComment()) {
+    $form['actions']['submit']['#value'] = t('Reply');
+    $parent = $comment->getParentComment();
+    $fullname = _edsjp_get_user_fullname($parent->getOwner());
+    $form['comment_body']['widget'][0]['#attributes']['data-parent-author'] = implode(' ', $fullname);
+  }
+}
+
+/**
+ * Implements hook_metatags_attachments_alter().
+ *
+ * This function allows you to define fallback tokens in case a field is empty.
+ */
+function dsjp_content_metatags_attachments_alter(array &$metatag_attachments) {
+  if (!empty($metatag_attachments['#attached']['html_head'])) {
+    foreach ($metatag_attachments['#attached']['html_head'] as &$attachment) {
+      // Schema_metatag module related attachments are structured different.
+      if (isset($attachment[1]) && strpos($attachment[1], 'schema_') === FALSE) {
+        // phpcs:disable DrupalPractice.CodeAnalysis.VariableAnalysis.UnusedVariable
+        if (isset($attachment[0]['#attributes']['content'])) {
+          $value = &$attachment[0]['#attributes']['content'];
+        }
+        elseif (isset($attachment[0]['#attributes']['href'])) {
+          $value = &$attachment[0]['#attributes']['href'];
+        }
+        if (isset($value) && strpos($value, '||') !== FALSE) {
+          _dsjp_content_alter_page_attachments_multiple_value($value);
+        }
+      }
+      else {
+        _dsjp_content_alter_schema_metatag($attachment[0]['#attributes']['content']);
+        if ($attachment[1] === 'schema_event_event_attendance_mode') {
+          _dsjp_content_add_event_attendance_mode($attachment[0]['#attributes']['content']);
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Alter the attendance mode based on the event settings.
+ *
+ * @param string $value
+ *   The value to alter.
+ */
+function _dsjp_content_add_event_attendance_mode(&$value) {
+  $node = \Drupal::routeMatch()->getParameter('node');
+  if ($node instanceof NodeInterface && $node->bundle() == 'dsj_event') {
+    $event_type = $node->get('field_dsj_event_setting')->getString();
+    if (strpos($event_type, 'virtual') !== FALSE) {
+      $attendance_type = 'https://schema.org/OnlineEventAttendanceMode';
+    }
+    elseif (strpos($event_type, 'blended') !== FALSE) {
+      $attendance_type = 'https://schema.org/MixedEventAttendanceMode';
+    }
+    else {
+      $attendance_type = 'https://schema.org/OfflineEventAttendanceMode';
+    }
+    $value = $attendance_type;
+  }
+}
+
+/**
+ * Alter the schema_metatag provided attachments.
+ *
+ * @param string|array $value
+ *   The attachment to alter.
+ */
+function _dsjp_content_alter_schema_metatag(&$value) {
+  if (isset($value['@type'])) {
+    if ($value['@type'] == 'ImageObject') {
+      foreach ($value as &$data) {
+        if (strpos($data, '||') !== FALSE) {
+          _dsjp_content_alter_page_attachments_multiple_value($data);
+        }
+      }
+    }
+    // If we are on an event page, make sure that the schema type is switched
+    // based on the event setting(online/offline).
+    elseif ($value['@type'] == 'Place') {
+      $node = \Drupal::routeMatch()->getParameter('node');
+      if ($node instanceof NodeInterface && $node->bundle() == 'dsj_event') {
+        $event_type = $node->get('field_dsj_event_setting')->getString();
+        if (strpos($event_type, 'on location') === FALSE && strpos($event_type, 'blended') === FALSE) {
+          $value['@type'] = 'VirtualLocation';
+        }
+      }
+    }
+    elseif (isset($value['logo']) && $value['logo']['@type'] == 'ImageObject') {
+      _dsjp_content_alter_schema_metatag($value['logo']);
+    }
+  }
+}
+
+/**
+ * Alters the page attachments that have a default value.
+ *
+ * @param string $value
+ *   The attachment to alter.
+ */
+function _dsjp_content_alter_page_attachments_multiple_value(&$value) {
+  $url = \Drupal::request()->getSchemeAndHttpHost();
+  $insecure_url = str_replace('https://', 'http://', $url);
+  $new_value = FALSE;
+  foreach (explode('||', $value) as $option) {
+    // We have to check against the URL because metatag will prepend our
+    // special tag value with the site URL if the tag plugin uses
+    // absolute URLs.
+    if (!empty($option) && $option !== $url && $option !== $insecure_url) {
+      // Make relative URLs absolute.
+      if (strpos($option, '/') === 0) {
+        $option = dsjp_content . modulertrim($url, '/');
+      }
+      $new_value = trim($option);
+      break;
+    }
+  }
+  $value = $new_value ?: '';
+}
+
+/**
+ * Implements hook_tokens_alter().
+ */
+function dsjp_content_tokens_alter(array &$replacements, array $context, BubbleableMetadata $bubbleable_metadata) {
+  // Alter the timezone token in order to have it in GMT difference format.
+  if (isset($context['type']) && $context['type'] == 'field_dsj_event_timezone') {
+    $token = $context['tokens']['value'];
+    $timezone_name = $replacements[$token];
+    $gmt = new DateTimeZone('GMT');
+    $date = new DateTime('now', $gmt);
+    $timezone_gmt = \Drupal::service('date.formatter')
+      ->format($date->getTimestamp(), 'custom', 'P', $timezone_name);
+    $replacements[$token] = $timezone_gmt;
+  }
+}
+
+/**
+ * Implements hook_slick_build_alter().
+ */
+function dsjp_content_slick_build_alter(&$data, &$context) {
+  // Alter the slick settings for the "Most Popular" component in order to
+  // include the featured content field too.
+  if (isset($context['bundle']) && $context['bundle'] == 'dsj_highlighted_listing') {
+    $paragraph = Paragraph::load($context['entity_id']);
+    if ($paragraph instanceof ParagraphInterface) {
+      $featured = $paragraph->get('field_dsj_featured_content')->referencedEntities();
+      if (!empty($featured)) {
+        array_unshift($data['#build']['items'], \Drupal::entityTypeManager()->getViewBuilder('node')->view(reset($featured), 'card'));
+        $data['#build']['settings']['count'] += 1;
+        $data['#build']['settings']['delta'] += 1;
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_page_attachments().
+ */
+function dsjp_content_page_attachments(array &$attachments) {
+  $popup_config = \Drupal::configFactory()->get('dsjp_content.popup_config');
+  if ($popup_config->get('show_popup') == 1) {
+    $data = [
+      'title' => $popup_config->get('title') ?? '',
+      'description' => [
+        '#markup' => $popup_config->get('description') ?? '',
+      ],
+      'image' => [],
+      'cta_button' => [],
+    ];
+    if (!empty($popup_config->get('image'))) {
+      $file = File::load($popup_config->get('image'));
+      if ($file instanceof FileInterface) {
+        $data['image'] = [
+          '#theme' => 'image',
+          '#uri' => file_create_url($file->getFileUri()),
+        ];
+      }
+    }
+    if (!empty($popup_config->get('cta_link')) && !empty($popup_config->get('cta_text'))) {
+      $data['cta_button'] = [
+        '#type' => 'link',
+        '#title' => $popup_config->get('cta_text'),
+        '#url' => Url::fromUri($popup_config->get('cta_link')),
+      ];
+    }
+    $popup = [
+      '#theme' => 'popup',
+      '#data' => $data,
+      '#cache' => [
+        'tags' => [
+          'popup_cta_block',
+        ],
+      ],
+    ];
+    $render = \Drupal::service('renderer')->renderPlain($popup);
+    $attachments['#attached']['library'][] = 'dsjp_content/popup';
+    $attachments['#attached']['drupalSettings']['dsjp_content']['popup_content'] = $render->__toString();
+    $attachments['#attached']['drupalSettings']['show_popup'] = $popup_config->get('show_popup');
+    $attachments['#cache']['tags'] = [
+      'popup_cta_block',
+    ];
+  }
+}

@@ -1,0 +1,18 @@
+uuid: 02b6a6a9-c40f-4448-9fd5-7bd7892a1a29
+langcode: en
+status: true
+dependencies: {  }
+id: dsj_pledge_organization_review
+workflow: dsj_organisation_flow
+transitions:
+  create_new_draft: create_new_draft
+roles:
+  dsj_reviewer: dsj_reviewer
+author: false
+site_mail: false
+emails: ''
+subject: 'A new organization has been created.'
+body:
+  value: "<p>Review the organization [group:title] here: [group:url]</p>\r\n"
+  format: full_html
+label: 'Pledge Organization Review'

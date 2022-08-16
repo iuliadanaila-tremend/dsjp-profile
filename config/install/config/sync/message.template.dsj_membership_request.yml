@@ -1,0 +1,19 @@
+uuid: 9e55780d-54bf-449e-bb12-03f6609c846f
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.full_html
+template: dsj_membership_request
+label: 'Membership request'
+description: ''
+text:
+  -
+    value: "<p>New membership request.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>[message:field_dsj_group_content:entity:field_dsj_request_message:value]</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>[message:field_dsj_group_content:entity:group:url]</p>\r\n"
+    format: full_html
+settings:
+  'token options':
+    clear: false
+    'token replace': true
+  purge_override: false
+  purge_methods: {  }

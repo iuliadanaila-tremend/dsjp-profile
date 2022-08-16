@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: 'Digital kompetens för arbetskraften.'
+    -
+      label: 'Digitala färdigheter för IKT-personal och andra digitala experter.'
+    -
+      label: 'Digitala färdigheter i utbildningen.'
+    -
+      label: 'Digitala färdigheter för alla'

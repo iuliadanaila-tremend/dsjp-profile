@@ -1,0 +1,19 @@
+uuid: c0731d2a-43ec-44c5-bb4c-ff48fb152197
+langcode: en
+status: true
+dependencies: {  }
+id: dsj_needs_changes
+workflow: dsj_main_workflow
+transitions:
+  needs_changes: needs_changes
+  needs_changes_safe_validation: needs_changes_safe_validation
+  needs_changes_publication: needs_changes_publication
+roles: {  }
+author: true
+site_mail: true
+emails: ''
+subject: 'Content changed to Needs changes'
+body:
+  value: "<p>[node:title] needs changes.&nbsp;[node:url]</p>\r\n"
+  format: full_html
+label: 'Needs changes'

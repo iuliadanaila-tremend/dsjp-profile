@@ -1,0 +1,14 @@
+uuid: 28cbedcf-13be-4007-8e6e-6116681cf5fe
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.message.dsj_user_notification.field_user
+    - message.template.dsj_user_notification
+id: message.dsj_user_notification.default
+targetEntityType: message
+bundle: dsj_user_notification
+mode: default
+content: {  }
+hidden:
+  field_user: true

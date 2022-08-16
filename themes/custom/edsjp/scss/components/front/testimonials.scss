@@ -1,0 +1,225 @@
+$card-spacing: $grid-gutter-width / 4;
+
+.testimonials {
+  @include media-breakpoint-down(md) {
+    padding-top: $grid-gutter-width * 1.5;
+  }
+  background: linear-gradient(
+    266.5deg,
+    transparentize($primary, .2) -6.59%,
+    transparentize($purple, .34) 102.17%
+  );
+  padding: 6.25rem 0;
+
+  &--title {
+    @include media-breakpoint-down(md) {
+      padding: 0 50px;
+      margin-bottom: 20px;
+    }
+
+    text-align: center;
+    font-size: $font-size-3xl;
+    line-height: $line-height-3xl;
+    color: $body-bg;
+    font-weight: bold;
+    margin-bottom: 3.125rem;
+  }
+
+  &--container {
+    max-width: 860px;
+    margin: auto;
+    position: relative;
+
+    .slick__arrow {
+      @include media-breakpoint-down(md) {
+        @include position(null, null 25% (-35px));
+        top: unset;
+        width: auto;
+      }
+    }
+
+    .slick-prev,
+    .slick-next {
+      border-radius: 0;
+      width: 20px;
+      height: 20px;
+      transform: rotate(45deg);
+      position: absolute;
+      top: 50%;
+      background: unset;
+      appearance: unset;
+      cursor: pointer;
+
+      &::before {
+        content: '';
+      }
+    }
+
+    .slick-prev {
+      @include media-breakpoint-down(md) {
+        left: 0;
+      }
+      left: -50px;
+      border-left: 3px solid $body-bg;
+      border-bottom: 3px solid $body-bg;
+      border-right: unset;
+      border-top: unset;
+    }
+
+    .slick-next {
+      @include media-breakpoint-down(md) {
+        right: 0;
+      }
+      right: -50px;
+      border-right: 3px solid $body-bg;
+      border-top: 3px solid $body-bg;
+      border-left: unset;
+      border-bottom: unset;
+    }
+
+    .slick-disabled {
+      opacity: .5;
+      cursor: default;
+    }
+
+    .slick-track {
+      min-height: 356px;
+      display: flex;
+      flex-direction: row;
+    }
+
+    .slide {
+      height: auto;
+      outline: 0;
+      padding: 0 5px;
+    }
+
+    @include media-breakpoint-down(md) {
+      max-width: calc(100% - 20px);
+    }
+  }
+
+  .paragraph--type--dsj-testimonial {
+    @include media-breakpoint-down(md) {
+      flex-direction: column;
+    }
+    @include border-radius(6px);
+    background: $body-bg;
+    display: flex;
+    margin-bottom: 15px;
+    position: relative;
+    height: calc(100% - 16px);
+
+    &::after,
+    &::before {
+      @include border-radius(6px);
+      content: '';
+      background-color: $body-bg;
+    }
+
+    &::after {
+      @include position(absolute, 0 $card-spacing (-$card-spacing));
+      opacity: .6;
+    }
+
+    &::before {
+      @include position(absolute, 0 $card-spacing * 2 (-$card-spacing * 2));
+      opacity: .3;
+    }
+  }
+
+  //max-height: 300px;
+  //min-height: 300px;
+
+  .testimonial--container {
+    @include media-breakpoint-down(md) {
+      order: 1;
+      padding: 0 $grid-gutter-width $grid-gutter-width / 2;
+    }
+    @include icon(quote);
+    padding: 0 $grid-gutter-width * 1.8 0;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+
+    &::before {
+      display: inline-block;
+      margin-top: $grid-gutter-width * .85;
+      font-size: $font-size-5xl;
+      color: theme-color('fourth');
+    }
+  }
+
+  .testimonials {
+    &--field-dsj-image {
+      @include media-breakpoint-down(md) {
+        order: 2;
+
+        .image-container {
+          line-height: 0;
+          padding: $grid-gutter-width / 3;
+          text-align: center;
+        }
+      }
+      position: relative;
+      z-index: 1;
+    }
+
+    &--field-dsj-text {
+      p {
+        @include media-breakpoint-down(sm) {
+          margin-bottom: 0;
+          margin-top: $grid-gutter-width * .8;
+          font-size: $font-size-lg;
+          line-height: $line-height-lg;
+        }
+        color: $blue;
+        font-size: $font-size-2xl;
+        line-height: $line-height-xs * 2;
+        margin: 2.75rem 0 1.5rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        min-height: auto;
+        overflow: hidden;
+        text-align: center;
+      }
+    }
+
+    &--field-dsj-job-title,
+    &--field-dsj-author {
+      @include media-breakpoint-down(sm) {
+        color: $gray-650;
+        font-size: $font-size-sm;
+        line-height: $line-height-sm;
+      }
+      
+      text-align: center;
+      color: theme-color('fourth');
+      font-size: $font-size-2md;
+      line-height: $line-height-lg;
+    }
+
+    &--field-dsj-author {
+      font-weight: bold;
+      padding-top: 1.5rem;
+    }
+  }
+
+  img {
+    @include media-breakpoint-down(md) {
+      @include border-radius(10px);
+      max-width: 100%;
+      max-height: unset;
+      display: inline-block;
+    }
+    @include border-radius(4px 0 0 4px);
+    max-height: 370px;
+    max-width: 275px;
+    display: block;
+  }
+
+  blockquote {
+    margin: 0;
+  }
+}

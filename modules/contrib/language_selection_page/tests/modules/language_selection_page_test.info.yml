@@ -1,0 +1,12 @@
+name: "Language Selection Page Test"
+description: "Test module for Language Selection Page"
+package: Testing
+dependencies:
+  - language_selection_page:language_selection_page
+core_version_requirement: ^8.8 || ^9
+type: module
+
+# Information added by Drupal.org packaging script on 2021-10-19
+version: '8.x-2.10'
+project: 'language_selection_page'
+datestamp: 1634641311

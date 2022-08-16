@@ -1,0 +1,21 @@
+uuid: 82eb2cc9-0e4a-47d1-8089-49fe073a8a3e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dsj_type_of_initiative
+    - node.type.dsj_event
+  module:
+    - options
+id: node.dsj_event.field_dsj_type_of_initiative
+field_name: field_dsj_type_of_initiative
+entity_type: node
+bundle: dsj_event
+label: 'Type of initiative'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

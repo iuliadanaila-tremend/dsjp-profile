@@ -1,0 +1,17 @@
+uuid: 58327a8b-f0b3-410c-894f-e30aba85551d
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.dsj_private_group
+  enforced:
+    config:
+      - user.role.administrator
+id: dsj_private_group-a416e6833
+label: Administrator
+weight: 3
+internal: true
+audience: outsider
+group_type: dsj_private_group
+permissions_ui: false
+permissions: {  }

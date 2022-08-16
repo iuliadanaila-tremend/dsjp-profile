@@ -1,0 +1,12 @@
+settings:
+  allowed_values:
+    -
+      label: 'Nástroj na vlastné hodnotenie'
+    -
+      label: Metodika
+    -
+      label: 'Vzdelávacie osnovy'
+    -
+      label: 'Prípadová štúdia'
+    -
+      label: 'Iný školiaci materiál'

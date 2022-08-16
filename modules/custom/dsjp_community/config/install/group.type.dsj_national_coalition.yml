@@ -1,0 +1,10 @@
+uuid: 04b8a57d-1753-46bf-9aad-c4a55bb0f2dd
+langcode: en
+status: true
+dependencies: {  }
+id: dsj_national_coalition
+label: 'National Coalition'
+description: ''
+creator_membership: true
+creator_wizard: false
+creator_roles: {  }

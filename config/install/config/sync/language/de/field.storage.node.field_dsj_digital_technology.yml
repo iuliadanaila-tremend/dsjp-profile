@@ -1,0 +1,34 @@
+settings:
+  allowed_values:
+    0:
+      label: 'Künstliche Intelligenz'
+    1:
+      label: Cybersicherheit
+    2:
+      label: 'Internet der Dinge'
+    4:
+      label: Blockchain-Technologie
+    5:
+      label: Robotik
+    6:
+      label: 'Erweiterte Realität'
+    7:
+      label: 'Virtuelle Realität'
+    8:
+      label: Hochleistungsrechnen
+    9:
+      label: 'Maschinelles Lernen'
+    10:
+      label: Cloud-Computing
+    12:
+      label: Telekommunikation
+    14:
+      label: Quantenrechnung
+    16:
+      label: 'Entwicklung mobiler Anwendungen'
+    17:
+      label: Webentwicklung
+    18:
+      label: Mikroelektronik
+    19:
+      label: 'Digitale Kompetenzen'

@@ -1,0 +1,34 @@
+settings:
+  allowed_values:
+    -
+      label: Prehľad
+    -
+      label: Prognóza
+    -
+      label: 'Všeobecné usmernenia'
+    -
+      label: 'Všeobecné informácie'
+    -
+      label: Časopis
+    -
+      label: 'Národný plán'
+    -
+      label: Spravodajstvo
+    -
+      label: 'Článok z tlače'
+    -
+      label: 'Informačný bulletin'
+    -
+      label: Prezentácia
+    -
+      label: 'Propagačný materiál'
+    -
+      label: Správa
+    -
+      label: Harmonogram
+    -
+      label: 'Vedecký článok'
+    -
+      label: Štúdia
+    -
+      label: 'Pracovný dokument'

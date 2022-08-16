@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Gemengd
+    -
+      label: 'Op locatie'
+    -
+      label: 'Virtueel leven'
+    -
+      label: 'Virtueel vooraf geregistreerd'

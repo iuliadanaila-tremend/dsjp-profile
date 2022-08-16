@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Público
+    -
+      label: Privado
+    -
+      label: 'Financiación participativa'
+    -
+      label: 'Sector público y privado'

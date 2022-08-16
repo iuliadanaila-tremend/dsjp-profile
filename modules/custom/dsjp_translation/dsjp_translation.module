@@ -1,0 +1,57 @@
+<?php
+
+/**
+ * @file
+ * Provides main functionality for dsjp_translation module.
+ */
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\dsjp_pledge\GroupServiceInterface;
+use Drupal\dsjp_translation\TypedLinkFieldProcessor;
+use Drupal\node\NodeInterface;
+use Drupal\tmgmt\JobItemInterface;
+
+/**
+ * Implements hook_field_info_alter().
+ */
+function dsjp_translation_field_info_alter(&$info) {
+  $info['typed_link']['tmgmt_field_processor'] = TypedLinkFieldProcessor::class;
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_presave().
+ */
+function dsjp_translation_tmgmt_job_item_presave(EntityInterface $entity) {
+  // Because the translation does not exist before saving the job, we need to
+  // set the node state when the job item gets saved.
+  if ($entity->get('state')->value == JobItemInterface::STATE_ACCEPTED) {
+    $item_entity_type = $entity->getItemType();
+    if ($item_entity_type == 'node') {
+      $item_entity_id = $entity->getItemId();
+      $target_language = $entity->getJob()->getTargetLangcode();
+      $node = \Drupal::entityTypeManager()->getStorage($item_entity_type)->load($item_entity_id);
+      if ($node instanceof NodeInterface && $node->hasTranslation($target_language)) {
+        // Set the new state to imported if the node is related to a national
+        // coalition group.
+        /** @var \Drupal\dsjp_pledge\GroupServiceInterface $service */
+        $service = Drupal::service('dsjp_pledge.group_service');
+        $new_state = $service->hasGroupByEntity($node, GroupServiceInterface::GROUP_TYPE_NATIONAL_COALITION)
+          ? 'imported'
+          : 'draft';
+
+        $translation = $node->getTranslation($target_language);
+        $translation->set('moderation_state', $new_state);
+        $translation->save();
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_insert().
+ */
+function dsjp_translation_tmgmt_job_insert(EntityInterface $entity) {
+  // Make sure "etranslation" plugin is set by default on a translation job.
+  $entity->translator = 'etranslation';
+  $entity->save();
+}

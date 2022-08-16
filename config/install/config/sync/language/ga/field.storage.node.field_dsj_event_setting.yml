@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Cumaiscthe
+    -
+      label: 'Maidir le Suíomh'
+    -
+      label: 'Fíorúil Beo'
+    -
+      label: 'Fíorúil Réamhthaifeadta'

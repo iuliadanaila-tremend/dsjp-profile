@@ -1,0 +1,21 @@
+uuid: 4a900206-f99d-4736-b304-fd70222ff1b9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.message_digest_interval
+  module:
+    - options
+    - user
+id: user.user.message_digest_interval
+field_name: message_digest_interval
+entity_type: user
+bundle: user
+label: 'Frequency of subscription notifications'
+description: 'This will set the frequency of message notifications regarding changes to content you have subscribed to.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

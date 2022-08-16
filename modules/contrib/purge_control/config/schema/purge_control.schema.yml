@@ -1,0 +1,10 @@
+purge_control.settings:
+  type: config_object
+  label: 'Purge Control settings.'
+  mapping:
+    purge_auto_control:
+      label: 'Automate control of enabling and disabling of purge'
+      type: boolean
+    disable_purge:
+      label: 'Disable purging'
+      type: boolean

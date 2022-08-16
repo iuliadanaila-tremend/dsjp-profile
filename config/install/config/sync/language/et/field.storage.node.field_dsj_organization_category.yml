@@ -1,0 +1,26 @@
+settings:
+  allowed_values:
+    -
+      label: VABAÜHENDUS
+    -
+      label: 'Avaliku sektori asutus'
+    -
+      label: 'Formaalhariduse ja -koolituse pakkuja'
+    -
+      label: Ettevõte/tööstus
+    -
+      label: 'Avaliku ja erasektori partnerlus'
+    -
+      label: Muu
+    -
+      label: 'Töötajate liit'
+    -
+      label: Eksperdirühmad
+    -
+      label: Ühendus
+    -
+      label: 'Avatud õppeplatvorm'
+    -
+      label: Huvirühm
+    -
+      label: Poliitikakujundaja

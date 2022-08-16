@@ -1,0 +1,148 @@
+.paragraph--type--dsj-grouped-cards {
+  @include media-breakpoint-down(md) {
+    margin-top: -150px;
+  }
+
+  margin-top: -200px !important;
+  position: relative;
+  z-index: 1;
+
+  h2 {
+    padding-bottom: 0;
+  }
+
+  .tabs {
+    padding: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 100%;
+
+    .tab {
+      padding-top: $grid-gutter-width / 1.5 !important;
+
+      .card-item {
+        @include media-breakpoint-down(sm) {
+          width: 50% !important;
+
+          .paragraph--view-mode--preview {
+            flex-direction: column;
+
+            span {
+              padding: 0;
+              margin-top: $grid-gutter-width / 2;
+              text-align: center;
+            }
+          }
+        }
+        @include media-breakpoint-down(xs) {
+          width: 100% !important;
+        }
+        margin-bottom: $grid-gutter-width / 1.5;
+        padding: 0 $grid-gutter-width / 3 !important;
+      }
+    }
+
+    label {
+      @include media-breakpoint-down(xs) {
+        padding: .5rem;
+      }
+
+      @include media-breakpoint-down(sm) {
+        width: 50%;
+        box-sizing: border-box;
+      }
+
+      @include media-breakpoint-up(sm) {
+        min-width: 250px;
+      }
+
+      order: 1;
+      display: block;
+      padding: .5rem 0;
+      cursor: pointer;
+      color: $primary;
+      background-color: transparentize($body-bg, .7);
+      border: 2px solid transparent;
+      transition: background ease .2s;
+      min-width: 130px;
+      text-align: center;
+
+      &:first-of-type {
+        @include border-left-radius(6px);
+      }
+
+      &:last-of-type {
+        @include border-right-radius(6px);
+        margin-left: -2px;
+      }
+    }
+  }
+
+  .tabs .tab {
+    @include media-breakpoint-down(sm) {
+      padding-top: $grid-gutter-width !important;
+    }
+    order: 99;
+    flex-grow: 1;
+    width: 100%;
+    display: none;
+    padding: 1rem 6px;
+  }
+
+  .tabs input[type='radio'] {
+    display: none;
+  }
+
+  .tabs input[type='radio']:checked + label {
+    font-weight: bold;
+    border-color: $body-bg;
+    background-color: $primary;
+    color: $body-bg;
+    border-radius: 6px;
+  }
+
+  .tabs input[type='radio']:checked + label + .tab {
+    display: block;
+  }
+
+  a {
+    transition-duration: .2s;
+    font-weight: bold;
+    color: $primary;
+    display: block;
+    border: 1px solid $body-bg;
+    background-color: $body-bg;
+    height: 100%;
+    border-radius: 6px;
+
+    &:hover {
+      transition-duration: .2s;
+      //transform: translateY(-10px);
+      box-shadow: 5px 20px 50px -10px transparentize($dark, .9);
+      border: 1px solid $gray-300;
+    }
+  }
+
+  .paragraph--type--dsj-card {
+    background-color: $body-bg;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    border-radius: 6px;
+
+    img {
+      width: 80px;
+    }
+
+    span {
+      display: inline-block;
+      padding-left: 24px;
+
+      a {
+        font-weight: bold;
+        color: $dark;
+      }
+    }
+  }
+}

@@ -1,0 +1,56 @@
+display:
+  default:
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Apstiprināt
+          reset_button_label: Attīrīt
+          exposed_sorts_label: 'Kārtot pēc'
+          sort_desc_label: Dilst.
+      pager:
+        options:
+          tags:
+            previous: '"'
+            next: '"'
+          expose:
+            items_per_page_options_all_label: '- Visi -'
+      fields:
+        title:
+          label: Virsraksts
+        type:
+          label: 'Satura veids'
+        status:
+          label: Statuss
+          settings:
+            format_custom_true: Publicēts
+        changed:
+          label: Atjaunināts
+        dropbutton:
+          label: Darbības
+      filters:
+        status:
+          group_info:
+            group_items:
+              1:
+                title: Publicēts
+        type:
+          expose:
+            label: 'Satura veids'
+      empty:
+        area_text_custom:
+          content: 'Nav pieejams nekāds saturs.'
+      arguments:
+        gid:
+          exception:
+            title: Visi
+      title: Mezgli
+  block_1:
+    display_options:
+      fields:
+        title:
+          label: Virsraksts
+  page_1:
+    display_title: Lapa
+    display_options:
+      menu:
+        title: Mezgli

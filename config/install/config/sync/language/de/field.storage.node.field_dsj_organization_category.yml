@@ -1,0 +1,26 @@
+settings:
+  allowed_values:
+    -
+      label: NRO
+    -
+      label: 'Öffentliche Einrichtung'
+    -
+      label: 'Anbieter von formaler allgemeiner und beruflicher Bildung'
+    -
+      label: Unternehmen/Industrie
+    -
+      label: 'Öffentlich-private Partnerschaften'
+    -
+      label: Andere
+    -
+      label: Arbeitsgewerkschaft
+    -
+      label: Denkfabrik
+    -
+      label: Vereinigung
+    -
+      label: 'Offene Lernplattform'
+    -
+      label: Interessengruppe
+    -
+      label: 'Politischer Entscheidungsträger'

@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Bażiku
+    -
+      label: Intermedji
+    -
+      label: Avvanzat
+    -
+      label: 'Espert Diġitali'

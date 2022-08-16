@@ -1,0 +1,14 @@
+settings:
+  allowed_values:
+    -
+      label: 'Basé sur le travail'
+    -
+      label: 'Basé sur un projet'
+    -
+      label: Presentiel
+    -
+      label: 'En ligne'
+    -
+      label: Mélangées
+    -
+      label: 'Recherche basée sur la Lab'

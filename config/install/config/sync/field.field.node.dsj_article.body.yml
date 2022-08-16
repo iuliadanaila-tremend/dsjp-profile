@@ -1,0 +1,23 @@
+uuid: 71686cfb-61d8-4b0c-97b6-6c31d8e41c14
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.dsj_article
+  module:
+    - text
+id: node.dsj_article.body
+field_name: body
+entity_type: node
+bundle: dsj_article
+label: Body
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+field_type: text_with_summary

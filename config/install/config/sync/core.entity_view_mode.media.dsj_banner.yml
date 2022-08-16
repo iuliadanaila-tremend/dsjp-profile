@@ -1,0 +1,10 @@
+uuid: b5ee004b-f86a-4dfa-82bb-95e6639ef3fb
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.dsj_banner
+label: Banner
+targetEntityType: media
+cache: true

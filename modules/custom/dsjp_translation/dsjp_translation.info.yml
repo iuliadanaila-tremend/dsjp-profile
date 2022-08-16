@@ -1,0 +1,9 @@
+name: dsjp_translation
+type: module
+description: Custom translation related functionalities.
+package: Custom
+dependencies:
+  - tmgmt:tmgmt
+core: 8.x
+core_version_requirement: ^8 || ^9
+php: 7.3

@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: 'Darbaspēka digitālās prasmes.'
+    -
+      label: 'Digitālās prasmes IKT profesionāļiem un citiem digitālajiem ekspertiem.'
+    -
+      label: 'Digitālās prasmes izglītībā.'
+    -
+      label: 'Digitālās prasmes visiem'

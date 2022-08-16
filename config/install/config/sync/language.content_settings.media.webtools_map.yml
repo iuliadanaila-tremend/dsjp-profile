@@ -1,0 +1,18 @@
+uuid: 71ecdeba-3033-4649-8c27-4d612cda025a
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.webtools_map
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: media.webtools_map
+target_entity_type_id: media
+target_bundle: webtools_map
+default_langcode: site_default
+language_alterable: false

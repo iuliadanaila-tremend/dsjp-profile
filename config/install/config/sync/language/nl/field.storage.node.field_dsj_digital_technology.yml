@@ -1,0 +1,40 @@
+settings:
+  allowed_values:
+    0:
+      label: 'Kunstmatige intelligentie'
+    1:
+      label: Cyberbeveiliging
+    2:
+      label: 'Internet van de dingen'
+    3:
+      label: 'Big data'
+    4:
+      label: Blockchaintechnologie
+    5:
+      label: Robotica
+    6:
+      label: 'Verbeterde realiteit'
+    7:
+      label: 'Virtuele realiteit'
+    8:
+      label: 'High-performance computing'
+    9:
+      label: 'Machinaal leren'
+    10:
+      label: Cloudcomputing
+    12:
+      label: Telecommunicatie
+    13:
+      label: Wifi
+    14:
+      label: Kwantumcomputing
+    15:
+      label: Programmatuur
+    16:
+      label: 'Ontwikkeling van mobiele applicaties'
+    17:
+      label: Webontwikkeling
+    18:
+      label: Micro-elektronica
+    19:
+      label: 'Digitale vaardigheden'

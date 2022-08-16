@@ -1,0 +1,10 @@
+uuid: 27ff9b6d-e052-40e3-b2b6-b0cb232def0d
+langcode: en
+status: true
+dependencies:
+  module:
+    - comment
+id: comment.dsj_listing_preview
+label: 'Listing Preview'
+targetEntityType: comment
+cache: true

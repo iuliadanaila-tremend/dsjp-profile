@@ -1,0 +1,12 @@
+settings:
+  allowed_values:
+    -
+      label: 'Narzędzie samooceny'
+    -
+      label: Metoda
+    -
+      label: 'Programy szkoleń'
+    -
+      label: 'Studium przypadku'
+    -
+      label: 'Inne materiały szkoleniowe'

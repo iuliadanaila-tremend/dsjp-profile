@@ -1,0 +1,29 @@
+{%
+  set classes = [
+  'paragraph',
+  'paragraph--type--' ~ paragraph.bundle|clean_class,
+  view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+  not paragraph.isPublished() ? 'paragraph--unpublished'
+]
+%}
+{% block paragraph %}
+  {% block content %}
+    <div class="region-social-media-split-wrapper">
+      <div class="ecl-container">
+        <div class="ecl-row">
+          {% if content.field_dsj_social_link %}
+            <div class="ecl-col-m-4">
+              {{ content.field_dsj_social_link }}
+            </div>
+          {% endif %}
+
+          {% if content.field_dsj_twitter_media_item %}
+            <div class="ecl-col-m-8">
+              {{ content.field_dsj_twitter_media_item }}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  {% endblock %}
+{% endblock paragraph %}

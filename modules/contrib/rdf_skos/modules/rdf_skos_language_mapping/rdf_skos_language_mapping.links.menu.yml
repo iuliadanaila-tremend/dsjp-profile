@@ -1,0 +1,6 @@
+rdf_skos_language_mapping.language_mapping_form:
+  title: RDF SKOS Language mapping
+  description: Map Drupal language codes to the ones in Skos entities.
+  parent: sparql_entity_storage.settings
+  route_name: rdf_skos_language_mapping.language_mapping_form
+  weight: 10

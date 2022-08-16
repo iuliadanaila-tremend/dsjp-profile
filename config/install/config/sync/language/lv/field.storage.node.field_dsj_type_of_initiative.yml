@@ -1,0 +1,12 @@
+settings:
+  allowed_values:
+    -
+      label: 'ES institucionālā iniciatīva'
+    -
+      label: 'Nacionālā iniciatīva'
+    -
+      label: 'Reģionālā iniciatīva'
+    -
+      label: 'Vietējā iniciatīva'
+    -
+      label: 'Starptautiska iniciatīva'

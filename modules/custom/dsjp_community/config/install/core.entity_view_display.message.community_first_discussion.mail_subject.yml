@@ -1,0 +1,22 @@
+uuid: 0ef0cc50-6f92-46c0-a9c5-cdea9e981f31
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.message.mail_subject
+    - field.field.message.community_first_discussion.field_node_reference
+    - message.template.community_first_discussion
+  module:
+    - user
+id: message.community_first_discussion.mail_subject
+targetEntityType: message
+bundle: community_first_discussion
+mode: mail_subject
+content:
+  partial_0:
+    weight: 0
+    region: content
+hidden:
+  field_node_reference: true
+  partial_1: true
+  search_api_excerpt: true

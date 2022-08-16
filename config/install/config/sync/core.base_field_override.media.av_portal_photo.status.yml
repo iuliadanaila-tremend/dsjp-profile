@@ -1,0 +1,22 @@
+uuid: 9e33eb12-c000-4740-ac35-a6232a29d211
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.av_portal_photo
+id: media.av_portal_photo.status
+field_name: status
+entity_type: media
+bundle: av_portal_photo
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

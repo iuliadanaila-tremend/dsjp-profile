@@ -1,0 +1,46 @@
+label: Wiadomość
+display:
+  default:
+    display_title: Główny
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Zastosuj
+          reset_button_label: Resetuj
+          exposed_sorts_label: 'Sortuj po'
+          sort_asc_label: Rosnąco
+          sort_desc_label: Malejąco
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'Elementów na stronę'
+            items_per_page_options_all_label: '- Wszystko -'
+            offset_label: Przesunięcie
+          tags:
+            previous: '‹ poprzednia'
+            next: 'następna ›'
+            first: '« pierwsza'
+            last: 'ostatnia »'
+      fields:
+        mid:
+          label: 'ID wiadomości'
+          separator: ', '
+        template:
+          separator: ', '
+        get_text:
+          label: 'Tekst wiadomości'
+        uid:
+          label: Autor
+          separator: ', '
+        created:
+          label: 'Data publikacji'
+      filters:
+        template:
+          expose:
+            label: Szablon
+      title: Wiadomość
+  page_1:
+    display_title: Strona
+    display_options:
+      menu:
+        title: Wiadomość

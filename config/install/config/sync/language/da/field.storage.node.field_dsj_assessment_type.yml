@@ -1,0 +1,14 @@
+settings:
+  allowed_values:
+    -
+      label: Arbejdsbaseret
+    -
+      label: Projektbaseret
+    -
+      label: Præsentationsform
+    -
+      label: Elektronisk
+    -
+      label: Blandet
+    -
+      label: Forskningslaboratoriet

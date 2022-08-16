@@ -1,0 +1,33 @@
+uuid: 1aed8ade-dadc-46f3-8de3-cdd388c24ab0
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - typed_link
+id: node.field_dsj_website_link
+field_name: field_dsj_website_link
+entity_type: node
+type: typed_link
+settings:
+  allowed_values:
+    organization_url: 'Organisation url'
+    training_url: 'Training url'
+    skills_intelligence_publication_url: 'Skills Intelligence publication url'
+    further_event_information_url: 'Further event information url'
+    financing_opportunity_url: 'Financing opportunity url'
+    strategy_full_document_url: 'Strategy full document url'
+    strategy_summary_document_url: 'Strategy summary document url'
+    strategy_brochure_url: 'Strategy brochure url'
+    skills_resource_url: 'Skills resource url'
+    skills_resource_supporting_document_url: 'Skills resource supporting document url'
+    background_information_url: 'Background information url'
+    same_as_url: 'Same as url'
+  allowed_values_function: ''
+module: typed_link
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

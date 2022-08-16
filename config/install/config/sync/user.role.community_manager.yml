@@ -1,0 +1,61 @@
+uuid: 255c1730-12a4-4763-b0df-6ff1f12a6068
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.dsj_discussion
+    - node.type.simplenews_issue
+  module:
+    - comment
+    - content_translation
+    - dsjp_pledge
+    - group
+    - node
+    - override_node_options
+    - simplenews
+    - system
+    - tmgmt
+    - toolbar
+id: community_manager
+label: 'Community Manager'
+weight: -4
+is_admin: null
+permissions:
+  - 'accept translation jobs'
+  - 'access administration pages'
+  - 'access content overview'
+  - 'access group overview'
+  - 'access toolbar'
+  - 'administer comments'
+  - 'administer group'
+  - 'administer newsletters'
+  - 'administer simplenews settings'
+  - 'administer simplenews subscriptions'
+  - 'administer users'
+  - 'bypass group access'
+  - 'create dsj_discussion content'
+  - 'create dsj_national_coalition group'
+  - 'create dsj_private_group group'
+  - 'create dsj_public_group group'
+  - 'create simplenews_issue content'
+  - 'create translation jobs'
+  - 'delete any dsj_discussion content'
+  - 'delete any simplenews_issue content'
+  - 'delete own simplenews_issue content'
+  - 'delete simplenews_issue revisions'
+  - 'dsj_pledge_initiative type description configuration'
+  - 'edit any dsj_discussion content'
+  - 'edit any simplenews_issue content'
+  - 'edit own dsj_discussion content'
+  - 'edit own simplenews_issue content'
+  - 'override dsj_discussion promote to front page option'
+  - 'override dsj_discussion sticky option'
+  - 'revert dsj_discussion revisions'
+  - 'revert simplenews_issue revisions'
+  - 'send newsletter'
+  - 'submit translation jobs'
+  - 'translate any entity'
+  - 'translate dsj_discussion node'
+  - 'view dsj_discussion revisions'
+  - 'view simplenews subscriptions'
+  - 'view simplenews_issue revisions'

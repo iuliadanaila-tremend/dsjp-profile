@@ -1,0 +1,11 @@
+uuid: e25be5c6-1ef4-4095-aae6-eaefda4b01cd
+langcode: en
+status: true
+dependencies:
+  config:
+    - message.template.dsj_user_mentioned
+id: message.dsj_user_mentioned
+target_entity_type_id: message
+target_bundle: dsj_user_mentioned
+default_langcode: site_default
+language_alterable: false

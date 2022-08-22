@@ -309,9 +309,6 @@
             "drupal/message_subscribe": {
               "Issue #3101137: Fix endless loop": "https://www.drupal.org/files/issues/2019-12-15/3101137-fix-endless-loop.patch"
             },
-            "openeuropa/oe_theme": {
-              "Pager breaks on ajax requests": "./patches/oe_theme_pager_crash_ajax_pages.patch"
-            },
             "drupal/group": {
               "Error when trying to set available content.": "https://www.drupal.org/files/issues/2018-08-08/group-error_set_available_content-2991390-2.patch",
               "Get a token of a node's parent group to create a pathauto pattern": "https://www.drupal.org/files/issues/2020-11-17/group-gnode_tokens-2774827-74.patch",

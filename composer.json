@@ -226,7 +226,7 @@
             }
           }
         },
-       {
+       "colorbutton": {
             "type": "package",
             "package": {
                 "name": "ckeditor/colorbutton",
@@ -238,7 +238,7 @@
                 }
             }
         },
-        {
+        "panelbutton": {
             "type": "package",
             "package": {
                 "name": "ckeditor/panelbutton",

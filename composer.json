@@ -326,6 +326,9 @@
             },
             "drupal/default_content": {
               "TypeError: Argument 1 passed to default_content": "https://www.drupal.org/files/issues/2021-05-03/default_content-3202244-null_dependency-5.patch"
+            },
+            "drupal/purge": {
+              "Fix compatibility": "https://www.drupal.org/files/issues/2022-02-24/3259320-10.patch"
             }
         }
     },

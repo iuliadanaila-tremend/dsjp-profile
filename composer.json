@@ -314,10 +314,6 @@
               "Get a token of a node's parent group to create a pathauto pattern": "https://www.drupal.org/files/issues/2020-11-17/group-gnode_tokens-2774827-74.patch",
               "Joining a group dumps the user on their account page instead of returning them to the group": "https://www.drupal.org/files/issues/2021-03-18/joined_user_redirection-2980034-18.patch"
             },
-            "drupal/legal": {
-              "Separate extra fields from the main additional checkboxes and add update trigger": "web/profiles/contrib/dsjp/patches/legal_extra_checkboxes.patch",
-              "Preserve CAS module returnto destiantion": "web/profiles/contrib/dsjp/patches/legal_cas_returnto.patch"
-            },
             "drupal/views_data_export": {
               "Hide empty columns for CSV export": "https://www.drupal.org/files/issues/2020-09-04/views_data_export-hide-empty-columns-csv-3169049-2.patch",
               "Feed icon is displaying irrespective of view access parameter in attached page": "https://www.drupal.org/files/issues/2020-09-25/feed_icon_displayed_irrespective_access-3135831-3.patch"

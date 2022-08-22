@@ -226,30 +226,6 @@
             }
           }
         },
-       "colorbutton": {
-            "type": "package",
-            "package": {
-                "name": "ckeditor/colorbutton",
-                "type": "drupal-library",
-                "version": "4.16.1",
-                "dist": {
-                    "url": "https://download.ckeditor.com/colorbutton/releases/colorbutton_4.16.1.zip",
-                    "type": "zip"
-                }
-            }
-        },
-        "panelbutton": {
-            "type": "package",
-            "package": {
-                "name": "ckeditor/panelbutton",
-                "type": "drupal-library",
-                "version": "4.16.1",
-                "dist": {
-                    "url": "https://download.ckeditor.com/panelbutton/releases/panelbutton_4.16.1.zip",
-                    "type": "zip"
-                }
-            }
-        },
         "sparql_entity_storage": {
           "type": "git",
           "url": "https://git.drupalcode.org/project/sparql_entity_storage.git"

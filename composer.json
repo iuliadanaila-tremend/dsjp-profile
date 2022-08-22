@@ -326,9 +326,6 @@
               "Hide empty columns for CSV export": "https://www.drupal.org/files/issues/2020-09-04/views_data_export-hide-empty-columns-csv-3169049-2.patch",
               "Feed icon is displaying irrespective of view access parameter in attached page": "https://www.drupal.org/files/issues/2020-09-25/feed_icon_displayed_irrespective_access-3135831-3.patch"
             },
-            "openeuropa/webtools-geocoding-provider": {
-              "Change webtools geocoding provider endpoint": "./patches/change_geocoding_url.patch"
-            },
             "drupal/group_permissions": {
               "Fix issue when group is missing but there are permissions set.": "./patches/group_permissions_deleted_group.patch"
             },

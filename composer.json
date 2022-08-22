@@ -100,7 +100,6 @@
         "drupal/yearonly": "^9.0",
         "drush/drush": "^10.0",
         "easyrdf/easyrdf": "1.0.0 as 0.9.1",
-        "furf/jquery-ui-touch-punch": "master",
         "harvesthq/chosen": "^1.8",
         "kenwheeler/slick": "^1.8",
         "npm-asset/moment": "^2.29",
@@ -190,18 +189,6 @@
           "type": "drupal-library",
           "dist": {
             "url": "https://github.com/alexsobolenko/flag-icons/archive/master.zip",
-            "type": "zip"
-          }
-        }
-      },
-      {
-        "type": "package",
-        "package": {
-          "name": "furf/jquery-ui-touch-punch",
-          "version": "dev-master",
-          "type": "drupal-library",
-          "dist": {
-            "url": "https://github.com/furf/jquery-ui-touch-punch/archive/refs/heads/master.zip",
             "type": "zip"
           }
         }

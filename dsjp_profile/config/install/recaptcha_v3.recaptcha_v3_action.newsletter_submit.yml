@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: newsletter_submit
+label: 'Newsletter submit'
+threshold: !!float 1
+challenge: captcha/Math

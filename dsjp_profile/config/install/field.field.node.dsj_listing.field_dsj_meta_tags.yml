@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dsj_meta_tags
+    - node.type.dsj_listing
+  module:
+    - metatag
+id: node.dsj_listing.field_dsj_meta_tags
+field_name: field_dsj_meta_tags
+entity_type: node
+bundle: dsj_listing
+label: 'Meta tags'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag

@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.dsj_public_group
+    - node.type.dsj_discussion
+  module:
+    - gnode
+    - node
+id: group_content_type_4ce7d25a0c280
+label: 'Community public group: Group node (Discussion)'
+description: 'Adds <em class="placeholder">Discussion</em> content to groups both publicly and privately.'
+group_type: dsj_public_group
+content_plugin: 'group_node:dsj_discussion'
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: false

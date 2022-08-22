@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.dsj_national_coalition
+  enforced:
+    config:
+      - user.role.dsj_reviewer
+id: dsj_national_coalition-d360ff30e
+label: Reviewer
+weight: 3
+internal: true
+audience: outsider
+group_type: dsj_national_coalition
+permissions_ui: false
+permissions: {  }

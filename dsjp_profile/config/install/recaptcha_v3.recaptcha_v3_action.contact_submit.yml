@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: contact_submit
+label: 'Contact submit'
+threshold: !!float 1
+challenge: default

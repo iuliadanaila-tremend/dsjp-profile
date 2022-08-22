@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies: {  }
+id: dsj_pledge_organization_published
+workflow: dsj_organisation_flow
+transitions:
+  publish: publish
+roles: {  }
+author: true
+site_mail: false
+emails: ''
+subject: 'Your organization has been published!'
+body:
+  value: "<p>Organization [group:title] has been published. See your group here: [group:url]</p>\r\n"
+  format: full_html
+label: 'Pledge Organization Published'

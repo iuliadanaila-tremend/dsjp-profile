@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - group_permissions
+id: group_permission.token
+label: Token
+targetEntityType: group_permission
+cache: true

@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.message.mail_subject
+    - field.field.message.dsj_user_notification.field_user
+    - message.template.dsj_user_notification
+id: message.dsj_user_notification.mail_subject
+targetEntityType: message
+bundle: dsj_user_notification
+mode: mail_subject
+content:
+  partial_0:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_user: true
+  partial_1: true
+  search_api_excerpt: true

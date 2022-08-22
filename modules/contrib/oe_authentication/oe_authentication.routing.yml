@@ -1,7 +1,0 @@
-oe_authentication.settings:
-  path: '/admin/config/system/oe_authentication'
-  defaults:
-    _form: 'Drupal\oe_authentication\Form\AuthenticationSettingsForm'
-    _title: 'Authentication settings'
-  requirements:
-    _permission: 'administer authentication configuration'

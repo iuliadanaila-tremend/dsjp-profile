@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dsj_organization
+    - node.type.dsj_digital_skills_resource
+    - node.type.dsj_organization
+id: node.dsj_digital_skills_resource.field_dsj_organization
+field_name: field_dsj_organization
+entity_type: node
+bundle: dsj_digital_skills_resource
+label: Organisation
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      dsj_organization: dsj_organization
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: proposal_submit
+label: 'Proposal submit'
+threshold: !!float 1
+challenge: default

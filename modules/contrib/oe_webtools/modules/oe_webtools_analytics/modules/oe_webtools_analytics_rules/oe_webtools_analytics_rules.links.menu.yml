@@ -1,6 +1,0 @@
-# Menu item definitions for the Webtools analytics rule module.
-entity.webtools_analytics_rule.collection:
-  title: 'Webtools Analytics rules'
-  route_name: entity.webtools_analytics_rule.collection
-  parent: system.admin_structure
-  weight: 99

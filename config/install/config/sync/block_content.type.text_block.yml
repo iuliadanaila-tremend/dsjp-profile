@@ -1,8 +1,0 @@
-uuid: ac7dc51f-3158-4a91-ac3e-ce80e7005616
-langcode: en
-status: true
-dependencies: {  }
-id: text_block
-label: 'Text block'
-revision: 0
-description: ''

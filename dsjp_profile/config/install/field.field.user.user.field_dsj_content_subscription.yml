@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_dsj_content_subscription
+  module:
+    - tmgmt_content
+    - user
+third_party_settings:
+  tmgmt_content:
+    excluded: false
+id: user.user.field_dsj_content_subscription
+field_name: field_dsj_content_subscription
+entity_type: user
+bundle: user
+label: 'Content subscription notification'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

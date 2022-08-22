@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_dsj_digital_technology
+    - paragraphs.paragraphs_type.dsj_listing
+  module:
+    - options
+id: paragraph.dsj_listing.field_dsj_digital_technology
+field_name: field_dsj_digital_technology
+entity_type: paragraph
+bundle: dsj_listing
+label: 'Filter by Digital technology/specialisation'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

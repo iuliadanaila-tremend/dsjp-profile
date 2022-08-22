@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - system
+id: edsjp_content_listing
+label: 'Content listing'
+logic: or
+conditions:
+  4bb5a04a-4d7f-4534-9adb-21e8310841a7:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 4bb5a04a-4d7f-4534-9adb-21e8310841a7
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      dsj_listing: dsj_listing
+  904d17fe-f93e-4c5e-b10c-6f32b6a67ad6:
+    id: request_path
+    negate: false
+    uuid: 904d17fe-f93e-4c5e-b10c-6f32b6a67ad6
+    context_mapping: {  }
+    pages: "/resources\r\n/training-offers\r\n/events\r\n/initiatives\r\n/actions/european-initiatives\r\n/good-practices\r\n/funding-opportunities\r\n/articles\r\n/news\r\n/opinions\r\n/latest/news\r\n/latest/opinions\r\n/strategies\r\n/publications\r\n/organisations\r\n/listing\r\n/national-coalitions\r\n/community/members-directory\r\n/search\r\n/taxonomy/term/*\r\n/pledges2\r\n/pledges/organisations\r\n/pledges/pledger-organisations"
+allow_other_conditions: false

@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies: {  }
+id: dsj_pledge_archived
+workflow: dsj_pledge_workflow
+transitions:
+  archive: archive
+roles: {  }
+author: true
+site_mail: false
+emails: ''
+subject: 'Your [node:content-type:name] has been archived.'
+body:
+  value: "<p>[node:content-type:name] [node:title] has been Archived.</p>\r\n"
+  format: full_html
+label: 'Pledge Archived'

@@ -1,9 +1,0 @@
-uuid: 10087717-0ca1-46be-aae7-f644c205a0b8
-langcode: en
-status: true
-dependencies: {  }
-id: search_api__views_page__dsj_content_listing__strategies
-name: 'search_api:views_page__dsj_content_listing__strategies'
-filter_key: null
-url_processor: query_string
-breadcrumb: {  }

@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.dsj_assessment.field_dsj_assessment_id
+    - field.field.paragraph.dsj_assessment.field_dsj_data
+    - field.field.paragraph.dsj_assessment.field_dsj_start_date
+    - paragraphs.paragraphs_type.dsj_assessment
+  module:
+    - dsjp_sat
+id: paragraph.dsj_assessment.default
+targetEntityType: paragraph
+bundle: dsj_assessment
+mode: default
+content:
+  field_dsj_data:
+    type: assessment_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_dsj_assessment_id: true
+  field_dsj_start_date: true
+  search_api_excerpt: true

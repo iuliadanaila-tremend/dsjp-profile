@@ -1,0 +1,129 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.basic_html
+    - filter.format.dsjp_basic_mention
+    - node.type.dsj_article
+    - node.type.dsj_digital_skills_resource
+    - node.type.dsj_discussion
+    - node.type.dsj_event
+    - node.type.dsj_funding_opportunity
+    - node.type.dsj_good_practice
+    - node.type.dsj_initiative
+    - node.type.dsj_landing_page
+    - node.type.dsj_national_coalition
+    - node.type.dsj_organization
+    - node.type.dsj_page
+    - node.type.dsj_pledge
+    - node.type.dsj_pledge_initiative
+    - node.type.dsj_skills_intelligence
+    - node.type.dsj_strategy
+    - node.type.dsj_training_offer
+    - taxonomy.vocabulary.dsj_country
+    - taxonomy.vocabulary.dsj_form_of_funding
+    - taxonomy.vocabulary.dsj_type_of_article
+    - workflows.workflow.dsj_main_workflow
+  module:
+    - content_moderation
+    - content_translation
+    - filter
+    - locale
+    - node
+    - tmgmt
+    - toolbar
+id: dsj_advanced_contributor
+label: 'Advanced Contributor'
+weight: -8
+is_admin: null
+permissions:
+  - 'accept translation jobs'
+  - 'access content overview'
+  - 'access toolbar'
+  - 'create content translations'
+  - 'create dsj_article content'
+  - 'create dsj_digital_skills_resource content'
+  - 'create dsj_discussion content'
+  - 'create dsj_event content'
+  - 'create dsj_funding_opportunity content'
+  - 'create dsj_good_practice content'
+  - 'create dsj_initiative content'
+  - 'create dsj_national_coalition content'
+  - 'create dsj_organization content'
+  - 'create dsj_page content'
+  - 'create dsj_pledge content'
+  - 'create dsj_pledge_initiative content'
+  - 'create dsj_skills_intelligence content'
+  - 'create dsj_strategy content'
+  - 'create dsj_training_offer content'
+  - 'create translation jobs'
+  - 'delete content translations'
+  - 'edit any dsj_article content'
+  - 'edit any dsj_digital_skills_resource content'
+  - 'edit any dsj_event content'
+  - 'edit any dsj_funding_opportunity content'
+  - 'edit any dsj_good_practice content'
+  - 'edit any dsj_initiative content'
+  - 'edit any dsj_national_coalition content'
+  - 'edit any dsj_organization content'
+  - 'edit any dsj_page content'
+  - 'edit any dsj_skills_intelligence content'
+  - 'edit any dsj_strategy content'
+  - 'edit any dsj_training_offer content'
+  - 'edit own dsj_article content'
+  - 'edit own dsj_digital_skills_resource content'
+  - 'edit own dsj_discussion content'
+  - 'edit own dsj_event content'
+  - 'edit own dsj_funding_opportunity content'
+  - 'edit own dsj_good_practice content'
+  - 'edit own dsj_initiative content'
+  - 'edit own dsj_national_coalition content'
+  - 'edit own dsj_organization content'
+  - 'edit own dsj_page content'
+  - 'edit own dsj_pledge content'
+  - 'edit own dsj_pledge_initiative content'
+  - 'edit own dsj_skills_intelligence content'
+  - 'edit own dsj_strategy content'
+  - 'edit own dsj_training_offer content'
+  - 'submit translation jobs'
+  - 'translate any entity'
+  - 'translate dsj_article node'
+  - 'translate dsj_country taxonomy_term'
+  - 'translate dsj_digital_skills_resource node'
+  - 'translate dsj_discussion node'
+  - 'translate dsj_event node'
+  - 'translate dsj_form_of_funding taxonomy_term'
+  - 'translate dsj_funding_opportunity node'
+  - 'translate dsj_good_practice node'
+  - 'translate dsj_initiative node'
+  - 'translate dsj_landing_page node'
+  - 'translate dsj_national_coalition node'
+  - 'translate dsj_organization node'
+  - 'translate dsj_page node'
+  - 'translate dsj_skills_intelligence node'
+  - 'translate dsj_strategy node'
+  - 'translate dsj_training_offer node'
+  - 'translate dsj_type_of_article taxonomy_term'
+  - 'translate interface'
+  - 'update content translations'
+  - 'use dsj_main_workflow transition create_new_draft'
+  - 'use dsj_main_workflow transition dsj_create_new_draft_archived'
+  - 'use dsj_main_workflow transition needs_changes'
+  - 'use dsj_main_workflow transition ready_for_review'
+  - 'use text format basic_html'
+  - 'use text format dsjp_basic_mention'
+  - 'view any unpublished content'
+  - 'view dsj_article revisions'
+  - 'view dsj_digital_skills_resource revisions'
+  - 'view dsj_discussion revisions'
+  - 'view dsj_event revisions'
+  - 'view dsj_funding_opportunity revisions'
+  - 'view dsj_good_practice revisions'
+  - 'view dsj_initiative revisions'
+  - 'view dsj_national_coalition revisions'
+  - 'view dsj_organization revisions'
+  - 'view dsj_page revisions'
+  - 'view dsj_skills_intelligence revisions'
+  - 'view dsj_strategy revisions'
+  - 'view dsj_training_offer revisions'
+  - 'view latest version'

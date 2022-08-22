@@ -1,0 +1,68 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_dsj_publication_type
+field_name: field_dsj_publication_type
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: 'http://publications.europa.eu/resource/authority/resource-type/FACTSHEET'
+      label: Factsheet
+    -
+      value: 'http://publications.europa.eu/resource/authority/resource-type/FORECAST'
+      label: Forecast
+    -
+      value: 'http://publications.europa.eu/resource/authority/resource-type/GUIDELINE_GEN'
+      label: 'General guidelines'
+    -
+      value: 'http://publications.europa.eu/resource/authority/resource-type/INFO_GEN'
+      label: 'General information'
+    -
+      value: 'http://publications.europa.eu/resource/authority/resource-type/MAGAZINE'
+      label: Magazine
+    -
+      value: 'http://publications.europa.eu/resource/authority/resource-type/PLAN_NATIONAL'
+      label: 'National plan'
+    -
+      value: 'http://publications.europa.eu/resource/authority/resource-type/ANNOUNC_NEWS'
+      label: 'News announcements'
+    -
+      value: 'http://publications.europa.eu/resource/authority/resource-type/ARTICLE_NEWS'
+      label: 'News article'
+    -
+      value: 'http://publications.europa.eu/resource/authority/resource-type/NEWSLETTER'
+      label: Newsletter
+    -
+      value: 'http://publications.europa.eu/resource/authority/resource-type/PRESENTATION'
+      label: Presentation
+    -
+      value: 'http://publications.europa.eu/resource/authority/resource-type/MATERIAL_PROM'
+      label: 'Promotional material'
+    -
+      value: 'http://publications.europa.eu/resource/authority/resource-type/REPORT'
+      label: Report
+    -
+      value: 'http://publications.europa.eu/resource/authority/resource-type/SCHEDULE'
+      label: Schedule
+    -
+      value: 'http://publications.europa.eu/resource/authority/resource-type/PAPER_SCIENTIFIC'
+      label: 'Scientific paper'
+    -
+      value: 'http://publications.europa.eu/resource/authority/resource-type/STU'
+      label: Study
+    -
+      value: 'http://publications.europa.eu/resource/authority/resource-type/WORK_DOC'
+      label: 'Working document'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - flag.flag.dsj_comment_voting
+  module:
+    - flag
+id: flag_action.dsj_comment_voting_flag
+label: Like
+type: comment
+plugin: 'flag_action:dsj_comment_voting_flag'
+configuration:
+  flag_id: dsj_comment_voting
+  flag_action: flag

@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.content_type.group_content_type_f77ec9f0781d4
+  module:
+    - path
+id: group_content.group_content_type_f77ec9f0781d4.path
+field_name: path
+entity_type: group_content
+bundle: group_content_type_f77ec9f0781d4
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

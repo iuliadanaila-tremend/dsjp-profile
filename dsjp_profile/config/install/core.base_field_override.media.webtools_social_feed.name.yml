@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.webtools_social_feed
+id: media.webtools_social_feed.name
+field_name: name
+entity_type: media
+bundle: webtools_social_feed
+label: Name
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: ''
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.full_html
+    - filter.format.plain_text
+template: private_message_notification
+label: 'Private Message Notification'
+description: 'The notification from a private message'
+text:
+  -
+    value: 'Private message at [site:name]'
+    format: plain_text
+  -
+    value: "<p>[user:user_fullname],</p>\r\n\r\n<p>You have received a private message at [site:name] from [private_message:sender_fullname]</p>\r\n\r\n<p>The message is as follows:</p>\r\n\r\n<p>[private_message:message]</p>\r\n\r\n<p>You can view the entire thread and reply to this message at:</p>\r\n\r\n<p>[private_message:dsj_thread_url]</p>\r\n\r\n<p><br />\r\nThank you,</p>\r\n\r\n<p>-- &nbsp;[site:name]</p>\r\n"
+    format: full_html
+settings:
+  'token options':
+    clear: false
+    'token replace': true
+  purge_override: false
+  purge_methods: {  }

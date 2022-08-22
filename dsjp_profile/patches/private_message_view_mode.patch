@@ -1,0 +1,26 @@
+diff --git a/js/private_message_inbox_block.js b/js/private_message_inbox_block.js
+index 307e1b7..aee4f81 100644
+--- a/js/private_message_inbox_block.js
++++ b/js/private_message_inbox_block.js
+@@ -178,7 +178,7 @@ Drupal.PrivateMessageInbox.updateInbox = {};
+   function init() {
+     if (!initialized) {
+       initialized = true;
+-      container = $('.block-private-message-inbox-block .private-message-thread--full-container');
++      container = $('.block-private-message-inbox-block .private-message-thread--default-container');
+       if (drupalSettings.privateMessageInboxBlock.totalThreads > drupalSettings.privateMessageInboxBlock.itemsToShow) {
+         $('<div/>', {id: 'load-previous-threads-button-wrapper'}).append($('<a/>', {href: '#', id: 'load-previous-threads-button'}).text(Drupal.t('Load Previous'))).insertAfter(container);
+         loadOlderThreadWatcher(document);
+diff --git a/js/private_message_thread.js b/js/private_message_thread.js
+index bc76867..1ae7462 100644
+--- a/js/private_message_thread.js
++++ b/js/private_message_thread.js
+@@ -264,7 +264,7 @@ Drupal.PrivateMessages.threadChange = {};
+     // new messages.
+     refreshRate = drupalSettings.privateMessageThread.refreshRate;
+     // Find the wrapper for the current thread.
+-    threadWrapper = $('.private-message-thread-full').parent();
++    threadWrapper = $('.private-message-thread-default').parent();
+     insertPreviousButton(threadWrapper);
+ 
+     if (!initialized) {

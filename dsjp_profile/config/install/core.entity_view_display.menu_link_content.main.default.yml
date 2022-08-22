@@ -1,0 +1,36 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.menu_link_content.main.field_dsj_icon
+    - field.field.menu_link_content.main.field_dsj_subtitle
+    - image.style.thumbnail
+    - system.menu.main
+  module:
+    - image
+id: menu_link_content.main.default
+targetEntityType: menu_link_content
+bundle: main
+mode: default
+content:
+  field_dsj_icon:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: thumbnail
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_dsj_subtitle:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  children: true
+  langcode: true
+  search_api_excerpt: true

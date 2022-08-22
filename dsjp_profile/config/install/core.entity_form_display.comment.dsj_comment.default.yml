@@ -1,0 +1,46 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.dsj_comment
+    - field.field.comment.dsj_comment.comment_body
+    - field.field.comment.dsj_comment.field_dsj_attachments
+  module:
+    - file
+    - maxlength
+    - text
+id: comment.dsj_comment.default
+targetEntityType: comment
+bundle: dsj_comment
+mode: default
+content:
+  comment_body:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 4
+      placeholder: 'Write your comment'
+    third_party_settings:
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+        maxlength_js_enforce: false
+        maxlength_js_truncate_html: false
+  field_dsj_attachments:
+    type: file_generic
+    weight: 2
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 0
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+hidden:
+  author: true
+  subject: true

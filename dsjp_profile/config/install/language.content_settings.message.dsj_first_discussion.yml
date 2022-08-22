@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - message.template.dsj_first_discussion
+id: message.dsj_first_discussion
+target_entity_type_id: message
+target_bundle: dsj_first_discussion
+default_langcode: site_default
+language_alterable: false

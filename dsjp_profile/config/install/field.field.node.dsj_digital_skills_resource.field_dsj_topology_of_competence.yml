@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dsj_topology_of_competence
+    - node.type.dsj_digital_skills_resource
+id: node.dsj_digital_skills_resource.field_dsj_topology_of_competence
+field_name: field_dsj_topology_of_competence
+entity_type: node
+bundle: dsj_digital_skills_resource
+label: 'Topology of competences'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: good_practice
+label: 'Good Practice'
+type: 'canonical_entities:node'
+pattern: 'inspiration/good-practices/[node:title]'
+selection_criteria:
+  2d744f6c-6960-47c0-a640-80448f21c435:
+    id: node_type
+    negate: false
+    uuid: 2d744f6c-6960-47c0-a640-80448f21c435
+    context_mapping:
+      node: node
+    bundles:
+      dsj_good_practice: dsj_good_practice
+selection_logic: and
+weight: -4
+relationships: {  }

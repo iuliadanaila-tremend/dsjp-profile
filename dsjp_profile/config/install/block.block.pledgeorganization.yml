@@ -1,0 +1,37 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - dsjp_pledge
+    - node
+    - system
+  theme:
+    - edsjp
+id: pledgeorganization
+theme: edsjp
+region: right_sidebar
+weight: -12
+provider: null
+plugin: pledge_organization_block
+settings:
+  id: pledge_organization_block
+  label: 'Pledge Organization'
+  label_display: '0'
+  provider: dsjp_pledge
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      dsj_pledge: dsj_pledge
+  request_path:
+    id: request_path
+    negate: false
+    pages: '/node/*'

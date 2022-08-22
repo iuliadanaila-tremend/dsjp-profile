@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.message.create_comment.field_comment_reference
+    - field.field.message.create_comment.field_published
+    - message.template.create_comment
+  module:
+    - user
+id: message.create_comment.default
+targetEntityType: message
+bundle: create_comment
+mode: default
+content:
+  partial_0:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  partial_1:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_comment_reference: true
+  field_published: true
+  search_api_excerpt: true

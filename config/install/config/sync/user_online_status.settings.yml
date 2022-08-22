@@ -1,7 +1,0 @@
-_core:
-  default_config_hash: BJlRvJVF0RRctp4sxmYQOALb0bhZ4wbMi-Udg0Mw-7c
-seconds_to_absent: 900
-seconds_to_offline: 1800
-css_classes_online: ''
-css_classes_absent: ''
-css_classes_offline: ''

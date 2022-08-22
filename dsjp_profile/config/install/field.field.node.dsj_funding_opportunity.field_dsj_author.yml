@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dsj_author
+    - node.type.dsj_funding_opportunity
+id: node.dsj_funding_opportunity.field_dsj_author
+field_name: field_dsj_author
+entity_type: node
+bundle: dsj_funding_opportunity
+label: Author
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

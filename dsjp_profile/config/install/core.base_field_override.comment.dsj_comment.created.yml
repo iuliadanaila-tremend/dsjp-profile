@@ -1,0 +1,17 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.dsj_comment
+id: comment.dsj_comment.created
+field_name: created
+entity_type: comment
+bundle: dsj_comment
+label: Created
+description: 'The time that the comment was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

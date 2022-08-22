@@ -1,0 +1,51 @@
+diff --git a/src/Form/RegisteringUserForm.php b/src/Form/RegisteringUserForm.php
+index 075ae53..96dacad 100644
+--- a/src/Form/RegisteringUserForm.php
++++ b/src/Form/RegisteringUserForm.php
+@@ -78,12 +78,13 @@ class RegisteringUserForm extends ConfigFormBase {
+       '#tree' => TRUE,
+     ];
+ 
++    $config = $this->configFactory()
++      ->get(SendinblueManager::CONFIG_SETTINGS_REGISTERING_USER)
++      ->get('sendinblue_put_registered_user');
+     $form['sendinblue_put_registered_user']['active'] = [
+       '#type' => 'radios',
+       '#title' => $this->t('Save SendInBlue User ?'),
+-      '#default_value' => $this->configFactory()
+-        ->get(SendinblueManager::CONFIG_SETTINGS_REGISTERING_USER)
+-        ->get('sendinblue_put_registered_user')['active'],
++      '#default_value' => isset($config['active']) ? $config['active'] : 0,
+       '#description' => $this->t('Register the user in SendInBlue list during registration'),
+       '#options' => [1 => $this->t('Yes'), 0 => $this->t('No')],
+     ];
+@@ -92,9 +93,7 @@ class RegisteringUserForm extends ConfigFormBase {
+       '#type' => 'select',
+       '#title' => $this->t('List where subscribers are saved'),
+       '#options' => $options,
+-      '#default_value' => $this->configFactory()
+-        ->get(SendinblueManager::CONFIG_SETTINGS_REGISTERING_USER)
+-        ->get('sendinblue_put_registered_user')['list'],
++      '#default_value' => isset($config['list']) ? $config['list'] : 0,
+       '#description' => $this->t('Select the list where you want to add your new subscribers'),
+       '#states' => [
+         // Hide unless needed.
+diff --git a/src/Tools/Api/SendinblueApiV3.php b/src/Tools/Api/SendinblueApiV3.php
+index 4e6dbd8..dd96567 100644
+--- a/src/Tools/Api/SendinblueApiV3.php
++++ b/src/Tools/Api/SendinblueApiV3.php
+@@ -343,10 +343,10 @@ class SendinblueApiV3 implements SendInBlueApiInterface {
+     $smtpDetails = $this->sibAccountApi->getAccount()->getRelay();
+ 
+     return new GetSmtpDetails(
+-      $smtpDetails->getData()->getUserName(),
+-      $smtpDetails->getData()->getRelay(),
+-      $smtpDetails->getData()->getPort(),
+-      (bool) $smtpDetails->getEnabled()
++      $smtpDetails->getData()->getUserName() ?: '',
++      $smtpDetails->getData()->getRelay() ?: '',
++      $smtpDetails->getData()->getPort() ?: 0,
++      (bool) $smtpDetails->getEnabled() ?: false
+     );
+   }
+ 

@@ -1,0 +1,6 @@
+theme: edsjp
+defaults:
+  sender: swiftmailer
+  formatter: swiftmailer
+modules:
+  swiftmailer: {  }

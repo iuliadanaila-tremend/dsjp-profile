@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_dsj_notification_step
+  module:
+    - tmgmt_content
+    - user
+third_party_settings:
+  tmgmt_content:
+    excluded: false
+id: user.user.field_dsj_notification_step
+field_name: field_dsj_notification_step
+entity_type: user
+bundle: user
+label: 'Notification step'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  min: 0
+  max: 2
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.twitter_feed
+  content:
+    - 'block_content:twitter_feed:93209306-58e0-475d-9e22-4493cf3c0da6'
+id: twitter_feed
+title: 'Twitter Feed'
+block_content_bundle: twitter_feed
+default_content: '{"_links":{"self":{"href":"http:\/\/127.0.0.1:8080\/web\/en\/block\/4?_format=hal_json"},"type":{"href":"http:\/\/fixed_block_content.drupal.org\/rest\/type\/block_content\/twitter_feed"},"http:\/\/fixed_block_content.drupal.org\/rest\/relation\/block_content\/twitter_feed\/content_translation_uid":[{"href":"http:\/\/127.0.0.1:8080\/web\/en\/user\/1?_format=hal_json","lang":"en"}]},"langcode":[{"value":"en","lang":"en"}],"type":[{"target_id":"twitter_feed"}],"status":[{"value":true,"lang":"en"}],"info":[{"value":"Twitter Feed","lang":"en"}],"reusable":[{"value":true}],"default_langcode":[{"value":true,"lang":"en"}],"revision_translation_affected":[{"value":true,"lang":"en"}],"content_translation_source":[{"value":"und","lang":"en"}],"content_translation_outdated":[{"value":false,"lang":"en"}],"_embedded":{"http:\/\/fixed_block_content.drupal.org\/rest\/relation\/block_content\/twitter_feed\/content_translation_uid":[{"_links":{"self":{"href":"http:\/\/127.0.0.1:8080\/web\/en\/user\/1?_format=hal_json"},"type":{"href":"http:\/\/fixed_block_content.drupal.org\/rest\/type\/user\/user"}},"uuid":[{"value":"4b51d405-acf9-47c3-b066-fbd1d61bff52"}],"lang":"en"}]},"content_translation_created":[{"value":"2021-01-28T09:03:40+00:00","lang":"en","format":"Y-m-d\\TH:i:sP"}]}'
+auto_export: 1
+protected: false

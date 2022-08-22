@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: twitter_feed
+label: 'Twitter Feed'
+revision: 0
+description: ''

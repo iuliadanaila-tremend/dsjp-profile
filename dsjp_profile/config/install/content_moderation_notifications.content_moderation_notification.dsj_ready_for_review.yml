@@ -1,0 +1,17 @@
+langcode: en
+status: true
+dependencies: {  }
+id: dsj_ready_for_review
+workflow: dsj_main_workflow
+transitions:
+  ready_for_review: ready_for_review
+roles:
+  dsj_content_editor: dsj_content_editor
+author: false
+site_mail: true
+emails: ''
+subject: 'Content changed to Needs Review'
+body:
+  value: "<p>[node:title] added to review.&nbsp;[node:url]</p>\r\n"
+  format: full_html
+label: 'Ready for review'

@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dsj_type_of_initiative
+    - node.type.dsj_good_practice
+  module:
+    - options
+id: node.dsj_good_practice.field_dsj_type_of_initiative
+field_name: field_dsj_type_of_initiative
+entity_type: node
+bundle: dsj_good_practice
+label: 'Type of initiative'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

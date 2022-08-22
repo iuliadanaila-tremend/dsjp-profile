@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: dsj_long_custom_date
+label: 'Long custom date'
+locked: false
+pattern: 'j F Y h:i A \G\M\T O'

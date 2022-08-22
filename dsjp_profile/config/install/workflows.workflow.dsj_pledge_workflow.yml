@@ -1,0 +1,99 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.dsj_pledge
+    - node.type.dsj_pledge_initiative
+  module:
+    - content_moderation
+id: dsj_pledge_workflow
+label: 'Pledge Workflow'
+type: content_moderation
+type_settings:
+  states:
+    archived:
+      label: Archived
+      weight: 6
+      published: false
+      default_revision: true
+    draft:
+      label: Draft
+      weight: 0
+      published: false
+      default_revision: false
+    needs_changes:
+      label: 'Needs changes'
+      weight: 3
+      published: false
+      default_revision: false
+    published:
+      label: Published
+      weight: 1
+      published: true
+      default_revision: true
+    ready_for_publication:
+      label: 'Ready for publication'
+      weight: 7
+      published: false
+      default_revision: false
+    ready_for_review:
+      label: 'Ready for review'
+      weight: 2
+      published: false
+      default_revision: false
+  transitions:
+    archive:
+      label: Archive
+      from:
+        - published
+      to: archived
+      weight: 6
+    create_new_draft:
+      label: 'Create New Draft'
+      from:
+        - draft
+        - published
+      to: draft
+      weight: 0
+    dsj_create_new_draft_archived:
+      label: 'Create new draft'
+      from:
+        - archived
+      to: draft
+      weight: 10
+    needs_changes:
+      label: 'Needs changes'
+      from:
+        - ready_for_review
+      to: needs_changes
+      weight: 4
+    needs_changes_publication:
+      label: 'Needs changes'
+      from:
+        - ready_for_publication
+      to: needs_changes
+      weight: 9
+    publish:
+      label: Publish
+      from:
+        - ready_for_publication
+      to: published
+      weight: 1
+    ready_for_publication:
+      label: 'Ready for publication'
+      from:
+        - ready_for_review
+      to: ready_for_publication
+      weight: 3
+    ready_for_review:
+      label: 'Ready for review'
+      from:
+        - draft
+        - needs_changes
+      to: ready_for_review
+      weight: 2
+  entity_types:
+    node:
+      - dsj_pledge
+      - dsj_pledge_initiative
+  default_moderation_state: draft

@@ -1,0 +1,31 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.group_thumbnail
+    - field.field.media.image.oe_media_image
+    - image.style.medium
+    - media.type.image
+  module:
+    - image
+id: media.image.group_thumbnail
+targetEntityType: media
+bundle: image
+mode: group_thumbnail
+content:
+  oe_media_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: medium
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  langcode: true
+  name: true
+  search_api_excerpt: true
+  thumbnail: true
+  uid: true

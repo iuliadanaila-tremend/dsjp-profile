@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dsj_strategy_state_of_play
+    - node.type.dsj_strategy
+  module:
+    - text
+id: node.dsj_strategy.field_dsj_strategy_state_of_play
+field_name: field_dsj_strategy_state_of_play
+entity_type: node
+bundle: dsj_strategy
+label: 'Strategy state-of-play'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

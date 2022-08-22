@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - simplenews
+id: simplenews_stop_action
+label: 'Stop sending'
+type: node
+plugin: simplenews_stop_action
+configuration: {  }

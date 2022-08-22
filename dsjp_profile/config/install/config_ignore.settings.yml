@@ -1,0 +1,10 @@
+ignored_config_entities:
+  - dsjp_content.popup_config
+  - dsjp_content.cta_config
+  - dsjp_pledge.initiative_type_description_config
+  - dsjp_sat.configuration
+  - 'message.template.*:text'
+  - 'simplenews.newsletter.*'
+  - private_message.mail
+  - 'simplenews.settings:subscription'
+  - 'dsjp_pledge_migration.configuration'

@@ -1,0 +1,149 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.dsj_pledge.body
+    - field.field.node.dsj_pledge.field_dsj_approved_date
+    - field.field.node.dsj_pledge.field_dsj_geographic_scope
+    - field.field.node.dsj_pledge.field_dsj_payment_agreed
+    - field.field.node.dsj_pledge.field_dsj_pledge_dates
+    - field.field.node.dsj_pledge.field_dsj_pledges_activity_pay
+    - field.field.node.dsj_pledge.field_dsj_sharing_best_practices
+    - field.field.node.dsj_pledge.field_dsj_store_impact
+    - field.field.node.dsj_pledge.field_dsj_submitted_date
+    - field.field.node.dsj_pledge.field_dsj_theme
+    - node.type.dsj_pledge
+  module:
+    - datetime_range
+    - field_group
+    - path
+    - text
+third_party_settings:
+  field_group:
+    group_authoring_information:
+      children:
+        - uid
+      label: 'Authoring information'
+      region: content
+      parent_name: ''
+      weight: 0
+      format_type: tab
+      format_settings:
+        classes: ''
+        id: ''
+        formatter: open
+        description: ''
+        required_fields: false
+id: node.dsj_pledge.default
+targetEntityType: node
+bundle: dsj_pledge
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 3
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  field_dsj_geographic_scope:
+    type: options_select
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_dsj_payment_agreed:
+    type: string_textarea
+    weight: 7
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_dsj_pledge_dates:
+    type: daterange_default
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_dsj_pledges_activity_pay:
+    type: boolean_checkbox
+    weight: 6
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_dsj_sharing_best_practices:
+    type: string_textarea
+    weight: 4
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_dsj_theme:
+    type: options_select
+    weight: 13
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    weight: 8
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 12
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    weight: 9
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 10
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  url_redirects:
+    weight: 11
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  field_dsj_approved_date: true
+  field_dsj_store_impact: true
+  field_dsj_submitted_date: true
+  langcode: true
+  moderation_state: true

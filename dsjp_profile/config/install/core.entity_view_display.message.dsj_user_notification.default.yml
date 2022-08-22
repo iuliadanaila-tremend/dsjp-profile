@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.message.dsj_user_notification.field_user
+    - message.template.dsj_user_notification
+id: message.dsj_user_notification.default
+targetEntityType: message
+bundle: dsj_user_notification
+mode: default
+content:
+  field_user:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  partial_1:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  partial_0: true
+  search_api_excerpt: true

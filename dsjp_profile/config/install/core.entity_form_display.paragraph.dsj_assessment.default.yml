@@ -1,0 +1,41 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.dsj_assessment.field_dsj_assessment_id
+    - field.field.paragraph.dsj_assessment.field_dsj_data
+    - field.field.paragraph.dsj_assessment.field_dsj_start_date
+    - paragraphs.paragraphs_type.dsj_assessment
+  module:
+    - datetime
+    - json_field
+id: paragraph.dsj_assessment.default
+targetEntityType: paragraph
+bundle: dsj_assessment
+mode: default
+content:
+  field_dsj_assessment_id:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_dsj_data:
+    type: json_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_dsj_start_date:
+    type: datetime_default
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

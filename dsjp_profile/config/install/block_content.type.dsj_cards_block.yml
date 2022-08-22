@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: dsj_cards_block
+label: 'Cards Block'
+revision: 0
+description: 'Use this block if you want to create components like What is the Digital Skills and Jobs Platform.'

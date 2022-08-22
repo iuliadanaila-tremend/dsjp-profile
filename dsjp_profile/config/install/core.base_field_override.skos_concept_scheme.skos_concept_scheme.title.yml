@@ -1,0 +1,17 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - rdf_skos
+id: skos_concept_scheme.skos_concept_scheme.title
+field_name: title
+entity_type: skos_concept_scheme
+bundle: skos_concept_scheme
+label: Title
+description: 'The title of the Concept Scheme.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,65 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - search_api.index.main_content
+    - views.view.dsj_search
+  module:
+    - search_api
+id: dsj_search_page_1_summary
+name: Summary
+facet_source_id: 'search_api:views_page__dsj_search__page_1'
+processor_configs:
+  hide_when_not_rendered:
+    processor_id: hide_when_not_rendered
+    weights:
+      build: '-8'
+    settings: {  }
+  reset_facets:
+    processor_id: reset_facets
+    weights:
+      build: '-10'
+    settings:
+      link_text: 'Clear all filters'
+  show_summary_with_reset:
+    processor_id: show_summary_with_reset
+    weights:
+      build: '-9'
+    settings: {  }
+facets:
+  dsj_search_digital_skill_level:
+    checked: true
+    label: 'Digital skill level'
+    separator: ''
+    show_count: false
+    weight: 0
+  dsj_search_geographic_scope:
+    checked: true
+    label: Country
+    separator: ''
+    show_count: false
+    weight: 0
+  dsj_search_target_audience:
+    checked: true
+    label: 'Target audience'
+    separator: ''
+    show_count: false
+    weight: 0
+  dsj_search_digital_technology:
+    checked: true
+    label: Tags
+    separator: ''
+    show_count: false
+    weight: 0
+  dsj_search_content_type:
+    checked: true
+    label: 'Content type'
+    separator: ''
+    show_count: false
+    weight: 0
+  dsj_search_created:
+    checked: true
+    label: 'Created date'
+    separator: ''
+    show_count: false
+    weight: 0

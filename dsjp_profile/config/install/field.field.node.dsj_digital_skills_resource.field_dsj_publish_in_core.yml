@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dsj_publish_in_core
+    - node.type.dsj_digital_skills_resource
+id: node.dsj_digital_skills_resource.field_dsj_publish_in_core
+field_name: field_dsj_publish_in_core
+entity_type: node
+bundle: dsj_digital_skills_resource
+label: 'Publish in core platform'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

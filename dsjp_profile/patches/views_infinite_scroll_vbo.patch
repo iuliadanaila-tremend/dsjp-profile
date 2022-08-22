@@ -1,0 +1,39 @@
+diff --git a/js/infinite-scroll.js b/js/infinite-scroll.js
+index 48abbcb..32b3d6e 100644
+--- a/js/infinite-scroll.js
++++ b/js/infinite-scroll.js
+@@ -53,12 +53,28 @@
+     var $newRows = $newView.find(contentWrapperSelector).children();
+     var $newPager = $newView.find(pagerSelector);
+ 
+-    view.$view.find(contentWrapperSelector)
+-      // Trigger a jQuery event on the wrapper to inform that new content was
+-      // loaded and allow other scripts to respond to the event.
+-      .trigger('views_infinite_scroll.new_content', $newRows.clone())
+-      // Add the new rows to existing view.
+-      .append($newRows);
++    if (view.$view.find(contentWrapperSelector).children().hasClass('vbo-view-form')) {
++      var $oldRows = view.$view.find(contentWrapperSelector);
++      var $newHeader = $newRows.find('div[id^=edit-header].js-form-wrapper');
++      $newRows.find('div[id^=edit-header].js-form-wrapper').remove();
++      $newRows.prepend($oldRows.children().find('.views-row'));
++      $newRows.prepend($newHeader);
++      $oldRows.children()
++        // Add the new rows to existing view.
++        .replaceWith($newRows);
++      $newRows
++        // Trigger a jQuery event on the wrapper to inform that new content was
++        // loaded and allow other scripts to respond to the event.
++        .trigger('views_infinite_scroll.new_content', $newRows.clone())
++    }
++    else {
++      view.$view.find(contentWrapperSelector)
++        // Trigger a jQuery event on the wrapper to inform that new content was
++        // loaded and allow other scripts to respond to the event.
++        .trigger('views_infinite_scroll.new_content', $newRows.clone())
++        // Add the new rows to existing view.
++        .append($newRows);
++    }
+ 
+     // Replace the pager link with the new link and ajaxPageState values.
+     $existingPager.replaceWith($newPager);

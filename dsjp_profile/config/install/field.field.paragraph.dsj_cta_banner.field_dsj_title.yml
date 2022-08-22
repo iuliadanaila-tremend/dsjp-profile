@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_dsj_title
+    - paragraphs.paragraphs_type.dsj_cta_banner
+id: paragraph.dsj_cta_banner.field_dsj_title
+field_name: field_dsj_title
+entity_type: paragraph
+bundle: dsj_cta_banner
+label: Title
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

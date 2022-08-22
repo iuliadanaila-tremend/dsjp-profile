@@ -1,0 +1,461 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.subscription_list
+    - flag.flag.subscribe_node
+  module:
+    - flag
+    - node
+    - user
+id: subscribe_node
+label: 'Subscribe node'
+module: views
+description: ''
+tag: ''
+base_table: node_field_data
+base_field: nid
+display:
+  default:
+    id: default
+    display_title: Master
+    display_plugin: default
+    position: 0
+    display_options:
+      fields:
+        rendered_entity:
+          id: rendered_entity
+          table: node
+          field: rendered_entity
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          plugin_id: rendered_entity
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          view_mode: subscription_list
+        link_flag:
+          id: link_flag
+          table: flagging
+          field: link_flag
+          relationship: flag_relationship
+          group_type: group
+          admin_label: ''
+          entity_type: flagging
+          plugin_id: flag_link
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+      pager:
+        type: full
+        options:
+          offset: 0
+          items_per_page: 10
+          total_pages: null
+          id: 0
+          tags:
+            next: ››
+            previous: ‹‹
+            first: '« First'
+            last: 'Last »'
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+          quantity: 9
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Apply
+          reset_button: false
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      access:
+        type: perm
+        options:
+          perm: 'access content'
+      cache:
+        type: tag
+        options: {  }
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          plugin_id: text_custom
+          empty: true
+          content: 'You are not subscribed to any items.'
+      sorts:
+        created:
+          id: created
+          table: node_field_data
+          field: created
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: created
+          plugin_id: date
+          order: DESC
+          expose:
+            label: ''
+            field_identifier: created
+          exposed: false
+          granularity: second
+      arguments:
+        uid:
+          id: uid
+          table: flagging
+          field: uid
+          relationship: flag_relationship
+          group_type: group
+          admin_label: ''
+          entity_type: flagging
+          entity_field: uid
+          plugin_id: numeric
+          default_action: 'not found'
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: fixed
+          default_argument_options:
+            argument: ''
+          default_argument_skip_url: false
+          summary_options:
+            base_path: ''
+            count: true
+            override: false
+            items_per_page: 25
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          break_phrase: false
+          not: false
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+      style:
+        type: table
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: true
+          columns:
+            title: title
+            link_flag: link_flag
+          default: '-1'
+          info:
+            title:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            link_flag:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+          override: true
+          sticky: false
+          summary: ''
+          empty_table: false
+          caption: ''
+          description: ''
+      row:
+        type: fields
+        options:
+          default_field_elements: true
+          inline: {  }
+          separator: ''
+          hide_empty: false
+      query:
+        type: views_query
+        options:
+          query_comment: ''
+          disable_sql_rewrite: false
+          distinct: false
+          replica: false
+          query_tags: {  }
+      relationships:
+        flag_relationship:
+          id: flag_relationship
+          table: node_field_data
+          field: flag_relationship
+          relationship: none
+          group_type: group
+          admin_label: Flags
+          entity_type: node
+          plugin_id: flag_relationship
+          required: true
+          flag: subscribe_node
+          user_scope: any
+      header: {  }
+      footer: {  }
+      display_extenders:
+        metatag_display_extender: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:core.entity_view_display.node.dsj_article.card'
+        - 'config:core.entity_view_display.node.dsj_article.default'
+        - 'config:core.entity_view_display.node.dsj_article.full'
+        - 'config:core.entity_view_display.node.dsj_article.listing'
+        - 'config:core.entity_view_display.node.dsj_article.most_popular_card'
+        - 'config:core.entity_view_display.node.dsj_article.search_index'
+        - 'config:core.entity_view_display.node.dsj_article.search_result'
+        - 'config:core.entity_view_display.node.dsj_article.subscription_list'
+        - 'config:core.entity_view_display.node.dsj_article.teaser'
+        - 'config:core.entity_view_display.node.dsj_article.wide_card'
+        - 'config:core.entity_view_display.node.dsj_digital_skills_resource.card'
+        - 'config:core.entity_view_display.node.dsj_digital_skills_resource.default'
+        - 'config:core.entity_view_display.node.dsj_digital_skills_resource.full'
+        - 'config:core.entity_view_display.node.dsj_digital_skills_resource.listing'
+        - 'config:core.entity_view_display.node.dsj_digital_skills_resource.listing_wide'
+        - 'config:core.entity_view_display.node.dsj_digital_skills_resource.most_popular_card'
+        - 'config:core.entity_view_display.node.dsj_digital_skills_resource.search_index'
+        - 'config:core.entity_view_display.node.dsj_digital_skills_resource.search_result'
+        - 'config:core.entity_view_display.node.dsj_digital_skills_resource.subscription_list'
+        - 'config:core.entity_view_display.node.dsj_digital_skills_resource.teaser'
+        - 'config:core.entity_view_display.node.dsj_digital_skills_resource.wide_card'
+        - 'config:core.entity_view_display.node.dsj_discussion.default'
+        - 'config:core.entity_view_display.node.dsj_discussion.full'
+        - 'config:core.entity_view_display.node.dsj_discussion.listing'
+        - 'config:core.entity_view_display.node.dsj_discussion.related'
+        - 'config:core.entity_view_display.node.dsj_discussion.search_index'
+        - 'config:core.entity_view_display.node.dsj_discussion.search_result'
+        - 'config:core.entity_view_display.node.dsj_discussion.subscription_list'
+        - 'config:core.entity_view_display.node.dsj_discussion.teaser'
+        - 'config:core.entity_view_display.node.dsj_event.calendar_listing'
+        - 'config:core.entity_view_display.node.dsj_event.card'
+        - 'config:core.entity_view_display.node.dsj_event.default'
+        - 'config:core.entity_view_display.node.dsj_event.full'
+        - 'config:core.entity_view_display.node.dsj_event.listing'
+        - 'config:core.entity_view_display.node.dsj_event.most_popular_card'
+        - 'config:core.entity_view_display.node.dsj_event.search_index'
+        - 'config:core.entity_view_display.node.dsj_event.search_result'
+        - 'config:core.entity_view_display.node.dsj_event.subscription_list'
+        - 'config:core.entity_view_display.node.dsj_event.teaser'
+        - 'config:core.entity_view_display.node.dsj_event.wide_card'
+        - 'config:core.entity_view_display.node.dsj_funding_opportunity.card'
+        - 'config:core.entity_view_display.node.dsj_funding_opportunity.default'
+        - 'config:core.entity_view_display.node.dsj_funding_opportunity.full'
+        - 'config:core.entity_view_display.node.dsj_funding_opportunity.listing'
+        - 'config:core.entity_view_display.node.dsj_funding_opportunity.listing_wide'
+        - 'config:core.entity_view_display.node.dsj_funding_opportunity.most_popular_card'
+        - 'config:core.entity_view_display.node.dsj_funding_opportunity.search_index'
+        - 'config:core.entity_view_display.node.dsj_funding_opportunity.search_result'
+        - 'config:core.entity_view_display.node.dsj_funding_opportunity.subscription_list'
+        - 'config:core.entity_view_display.node.dsj_funding_opportunity.teaser'
+        - 'config:core.entity_view_display.node.dsj_funding_opportunity.wide_card'
+        - 'config:core.entity_view_display.node.dsj_good_practice.card'
+        - 'config:core.entity_view_display.node.dsj_good_practice.default'
+        - 'config:core.entity_view_display.node.dsj_good_practice.full'
+        - 'config:core.entity_view_display.node.dsj_good_practice.listing'
+        - 'config:core.entity_view_display.node.dsj_good_practice.listing_wide'
+        - 'config:core.entity_view_display.node.dsj_good_practice.most_popular_card'
+        - 'config:core.entity_view_display.node.dsj_good_practice.search_index'
+        - 'config:core.entity_view_display.node.dsj_good_practice.search_result'
+        - 'config:core.entity_view_display.node.dsj_good_practice.subscription_list'
+        - 'config:core.entity_view_display.node.dsj_good_practice.teaser'
+        - 'config:core.entity_view_display.node.dsj_good_practice.wide_card'
+        - 'config:core.entity_view_display.node.dsj_initiative.card'
+        - 'config:core.entity_view_display.node.dsj_initiative.default'
+        - 'config:core.entity_view_display.node.dsj_initiative.full'
+        - 'config:core.entity_view_display.node.dsj_initiative.listing'
+        - 'config:core.entity_view_display.node.dsj_initiative.listing_wide'
+        - 'config:core.entity_view_display.node.dsj_initiative.most_popular_card'
+        - 'config:core.entity_view_display.node.dsj_initiative.search_index'
+        - 'config:core.entity_view_display.node.dsj_initiative.search_result'
+        - 'config:core.entity_view_display.node.dsj_initiative.subscription_list'
+        - 'config:core.entity_view_display.node.dsj_initiative.teaser'
+        - 'config:core.entity_view_display.node.dsj_initiative.wide_card'
+        - 'config:core.entity_view_display.node.dsj_landing_page.default'
+        - 'config:core.entity_view_display.node.dsj_landing_page.full'
+        - 'config:core.entity_view_display.node.dsj_landing_page.search_index'
+        - 'config:core.entity_view_display.node.dsj_landing_page.search_result'
+        - 'config:core.entity_view_display.node.dsj_landing_page.teaser'
+        - 'config:core.entity_view_display.node.dsj_listing.default'
+        - 'config:core.entity_view_display.node.dsj_listing.teaser'
+        - 'config:core.entity_view_display.node.dsj_national_coalition.card'
+        - 'config:core.entity_view_display.node.dsj_national_coalition.default'
+        - 'config:core.entity_view_display.node.dsj_national_coalition.full'
+        - 'config:core.entity_view_display.node.dsj_national_coalition.listing'
+        - 'config:core.entity_view_display.node.dsj_national_coalition.listing_wide'
+        - 'config:core.entity_view_display.node.dsj_national_coalition.most_popular_card'
+        - 'config:core.entity_view_display.node.dsj_national_coalition.search_index'
+        - 'config:core.entity_view_display.node.dsj_national_coalition.search_result'
+        - 'config:core.entity_view_display.node.dsj_national_coalition.subscription_list'
+        - 'config:core.entity_view_display.node.dsj_national_coalition.teaser'
+        - 'config:core.entity_view_display.node.dsj_national_coalition.wide_card'
+        - 'config:core.entity_view_display.node.dsj_organization.card'
+        - 'config:core.entity_view_display.node.dsj_organization.default'
+        - 'config:core.entity_view_display.node.dsj_organization.full'
+        - 'config:core.entity_view_display.node.dsj_organization.listing'
+        - 'config:core.entity_view_display.node.dsj_organization.listing_wide'
+        - 'config:core.entity_view_display.node.dsj_organization.most_popular_card'
+        - 'config:core.entity_view_display.node.dsj_organization.search_index'
+        - 'config:core.entity_view_display.node.dsj_organization.search_result'
+        - 'config:core.entity_view_display.node.dsj_organization.subscription_list'
+        - 'config:core.entity_view_display.node.dsj_organization.teaser'
+        - 'config:core.entity_view_display.node.dsj_organization.token'
+        - 'config:core.entity_view_display.node.dsj_organization.wide_card'
+        - 'config:core.entity_view_display.node.dsj_page.default'
+        - 'config:core.entity_view_display.node.dsj_page.full'
+        - 'config:core.entity_view_display.node.dsj_page.listing'
+        - 'config:core.entity_view_display.node.dsj_page.search_index'
+        - 'config:core.entity_view_display.node.dsj_page.search_result'
+        - 'config:core.entity_view_display.node.dsj_page.subscription_list'
+        - 'config:core.entity_view_display.node.dsj_page.teaser'
+        - 'config:core.entity_view_display.node.dsj_skills_intelligence.card'
+        - 'config:core.entity_view_display.node.dsj_skills_intelligence.default'
+        - 'config:core.entity_view_display.node.dsj_skills_intelligence.full'
+        - 'config:core.entity_view_display.node.dsj_skills_intelligence.listing'
+        - 'config:core.entity_view_display.node.dsj_skills_intelligence.listing_wide'
+        - 'config:core.entity_view_display.node.dsj_skills_intelligence.most_popular_card'
+        - 'config:core.entity_view_display.node.dsj_skills_intelligence.search_index'
+        - 'config:core.entity_view_display.node.dsj_skills_intelligence.search_result'
+        - 'config:core.entity_view_display.node.dsj_skills_intelligence.subscription_list'
+        - 'config:core.entity_view_display.node.dsj_skills_intelligence.teaser'
+        - 'config:core.entity_view_display.node.dsj_skills_intelligence.wide_card'
+        - 'config:core.entity_view_display.node.dsj_strategy.card'
+        - 'config:core.entity_view_display.node.dsj_strategy.default'
+        - 'config:core.entity_view_display.node.dsj_strategy.full'
+        - 'config:core.entity_view_display.node.dsj_strategy.listing'
+        - 'config:core.entity_view_display.node.dsj_strategy.listing_wide'
+        - 'config:core.entity_view_display.node.dsj_strategy.most_popular_card'
+        - 'config:core.entity_view_display.node.dsj_strategy.search_index'
+        - 'config:core.entity_view_display.node.dsj_strategy.search_result'
+        - 'config:core.entity_view_display.node.dsj_strategy.subscription_list'
+        - 'config:core.entity_view_display.node.dsj_strategy.teaser'
+        - 'config:core.entity_view_display.node.dsj_strategy.wide_card'
+        - 'config:core.entity_view_display.node.dsj_training_offer.card'
+        - 'config:core.entity_view_display.node.dsj_training_offer.default'
+        - 'config:core.entity_view_display.node.dsj_training_offer.full'
+        - 'config:core.entity_view_display.node.dsj_training_offer.listing'
+        - 'config:core.entity_view_display.node.dsj_training_offer.listing_wide'
+        - 'config:core.entity_view_display.node.dsj_training_offer.most_popular_card'
+        - 'config:core.entity_view_display.node.dsj_training_offer.search_index'
+        - 'config:core.entity_view_display.node.dsj_training_offer.search_result'
+        - 'config:core.entity_view_display.node.dsj_training_offer.subscription_list'
+        - 'config:core.entity_view_display.node.dsj_training_offer.teaser'
+        - 'config:core.entity_view_display.node.dsj_training_offer.wide_card'
+        - 'config:core.entity_view_display.node.simplenews_issue.default'
+        - 'config:core.entity_view_display.node.simplenews_issue.email_html'
+        - 'config:core.entity_view_display.node.simplenews_issue.email_plain'
+        - 'config:core.entity_view_display.node.simplenews_issue.email_textalt'
+        - 'config:core.entity_view_display.node.simplenews_issue.teaser'

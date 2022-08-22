@@ -1,0 +1,54 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - search_api.index.main_content
+    - views.view.dsj_search
+  module:
+    - search_api
+id: dsj_search_target_audience
+name: 'Target audience'
+weight: -9
+min_count: 1
+url_alias: target_audience
+facet_source_id: 'search_api:views_page__dsj_search__page_1'
+field_identifier: field_dsj_target_audience
+query_operator: and
+hard_limit: 0
+exclude: false
+use_hierarchy: false
+expand_hierarchy: false
+enable_parent_when_child_gets_disabled: false
+widget:
+  type: dropdown
+  config:
+    show_numbers: false
+    default_option_label: 'Please select'
+empty_behavior:
+  behavior: none
+only_visible_when_facet_source_is_visible: true
+show_only_one_result: true
+show_title: true
+processor_configs:
+  display_value_widget_order:
+    processor_id: display_value_widget_order
+    weights:
+      sort: 40
+    settings:
+      sort: ASC
+  hide_1_result_facet:
+    processor_id: hide_1_result_facet
+    weights:
+      build: 50
+    settings: {  }
+  list_item:
+    processor_id: list_item
+    weights:
+      build: 5
+    settings: {  }
+  url_processor_handler:
+    processor_id: url_processor_handler
+    weights:
+      pre_query: 50
+      build: 15
+    settings: {  }

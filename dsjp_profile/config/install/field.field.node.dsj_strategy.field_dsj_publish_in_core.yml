@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dsj_publish_in_core
+    - node.type.dsj_strategy
+id: node.dsj_strategy.field_dsj_publish_in_core
+field_name: field_dsj_publish_in_core
+entity_type: node
+bundle: dsj_strategy
+label: 'Publish in core platform'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

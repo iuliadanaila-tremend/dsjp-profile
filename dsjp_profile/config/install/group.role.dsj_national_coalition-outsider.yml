@@ -1,0 +1,70 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.dsj_national_coalition
+id: dsj_national_coalition-outsider
+label: Outsider
+weight: -101
+internal: true
+audience: outsider
+group_type: dsj_national_coalition
+permissions_ui: true
+permissions:
+  - 'access group_node overview'
+  - 'update any group_node:dsj_article content'
+  - 'update any group_node:dsj_article entity'
+  - 'update any group_node:dsj_digital_skills_resource content'
+  - 'update any group_node:dsj_digital_skills_resource entity'
+  - 'update any group_node:dsj_event content'
+  - 'update any group_node:dsj_event entity'
+  - 'update any group_node:dsj_funding_opportunity content'
+  - 'update any group_node:dsj_funding_opportunity entity'
+  - 'update any group_node:dsj_good_practice content'
+  - 'update any group_node:dsj_good_practice entity'
+  - 'update any group_node:dsj_initiative content'
+  - 'update any group_node:dsj_initiative entity'
+  - 'update any group_node:dsj_organization content'
+  - 'update any group_node:dsj_organization entity'
+  - 'update any group_node:dsj_page content'
+  - 'update any group_node:dsj_page entity'
+  - 'update any group_node:dsj_skills_intelligence content'
+  - 'update any group_node:dsj_skills_intelligence entity'
+  - 'update any group_node:dsj_strategy content'
+  - 'update any group_node:dsj_strategy entity'
+  - 'update any group_node:dsj_training_offer content'
+  - 'update any group_node:dsj_training_offer entity'
+  - 'view group'
+  - 'view group_node:dsj_article content'
+  - 'view group_node:dsj_article entity'
+  - 'view group_node:dsj_digital_skills_resource content'
+  - 'view group_node:dsj_digital_skills_resource entity'
+  - 'view group_node:dsj_event content'
+  - 'view group_node:dsj_event entity'
+  - 'view group_node:dsj_funding_opportunity content'
+  - 'view group_node:dsj_funding_opportunity entity'
+  - 'view group_node:dsj_good_practice content'
+  - 'view group_node:dsj_good_practice entity'
+  - 'view group_node:dsj_initiative content'
+  - 'view group_node:dsj_initiative entity'
+  - 'view group_node:dsj_organization content'
+  - 'view group_node:dsj_organization entity'
+  - 'view group_node:dsj_page content'
+  - 'view group_node:dsj_page entity'
+  - 'view group_node:dsj_skills_intelligence content'
+  - 'view group_node:dsj_skills_intelligence entity'
+  - 'view group_node:dsj_strategy content'
+  - 'view group_node:dsj_strategy entity'
+  - 'view group_node:dsj_training_offer content'
+  - 'view group_node:dsj_training_offer entity'
+  - 'view unpublished group_node:dsj_article entity'
+  - 'view unpublished group_node:dsj_digital_skills_resource entity'
+  - 'view unpublished group_node:dsj_event entity'
+  - 'view unpublished group_node:dsj_funding_opportunity entity'
+  - 'view unpublished group_node:dsj_good_practice entity'
+  - 'view unpublished group_node:dsj_initiative entity'
+  - 'view unpublished group_node:dsj_organization entity'
+  - 'view unpublished group_node:dsj_page entity'
+  - 'view unpublished group_node:dsj_skills_intelligence entity'
+  - 'view unpublished group_node:dsj_strategy entity'
+  - 'view unpublished group_node:dsj_training_offer entity'

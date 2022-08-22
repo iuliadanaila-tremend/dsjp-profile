@@ -1,0 +1,56 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_dsj_typology_of_training
+field_name: field_dsj_typology_of_training
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: 'http://data.europa.eu/snb/learning-opportunity/05053c1cbe'
+      label: Course
+    -
+      value: 'http://data.europa.eu/snb/learning-opportunity/0f7dac46ca'
+      label: 'Programme module'
+    -
+      value: 'http://data.europa.eu/snb/learning-opportunity/11252a5207'
+      label: Mentoring
+    -
+      value: 'http://data.europa.eu/snb/learning-opportunity/17744a2647'
+      label: MOOC
+    -
+      value: 'http://data.europa.eu/snb/learning-opportunity/63f9f6180c'
+      label: Apprenticeship
+    -
+      value: 'http://data.europa.eu/snb/learning-opportunity/65a4cf5de2'
+      label: 'Study visit'
+    -
+      value: 'http://data.europa.eu/snb/learning-opportunity/74a4a268e8'
+      label: 'Short learning programme'
+    -
+      value: 'http://data.europa.eu/snb/learning-opportunity/77b99de990'
+      label: Internship
+    -
+      value: 'http://data.europa.eu/snb/learning-opportunity/79343569f3'
+      label: 'Educational programme'
+    -
+      value: 'http://data.europa.eu/snb/learning-opportunity/7e1ac538db'
+      label: Class
+    -
+      value: 'http://data.europa.eu/snb/learning-opportunity/8b965da2d4'
+      label: 'Service learning'
+    -
+      value: 'http://data.europa.eu/snb/learning-opportunity/b2434ca358'
+      label: Thesis
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

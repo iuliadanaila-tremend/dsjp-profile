@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: organization
+label: Organisation
+type: 'canonical_entities:node'
+pattern: 'organisations/[node:title]'
+selection_criteria:
+  00991b19-0bbd-406e-af10-98916c8b3a24:
+    id: node_type
+    negate: false
+    uuid: 00991b19-0bbd-406e-af10-98916c8b3a24
+    context_mapping:
+      node: node
+    bundles:
+      dsj_organization: dsj_organization
+selection_logic: and
+weight: 1
+relationships: {  }

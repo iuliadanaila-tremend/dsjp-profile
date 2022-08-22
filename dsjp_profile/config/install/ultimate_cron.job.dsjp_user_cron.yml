@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - dsjp_user
+title: 'Default cron handler'
+id: dsjp_user_cron
+weight: 0
+module: dsjp_user
+callback: dsjp_user_cron
+scheduler:
+  id: simple
+launcher:
+  id: serial
+logger:
+  id: database

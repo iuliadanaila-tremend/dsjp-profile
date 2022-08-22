@@ -1,0 +1,32 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_dsj_target_audience
+field_name: field_dsj_target_audience
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: digital_skills_for_the_labour_force
+      label: 'Digital skills for the labour force.'
+    -
+      value: digital_skills_for_ict_professionals_and_other_digital_experts
+      label: 'Digital skills for ICT professionals and other digital experts.'
+    -
+      value: digital_skills_in_education
+      label: 'Digital skills in education.'
+    -
+      value: digital_skills_for_all
+      label: 'Digital skills for all'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

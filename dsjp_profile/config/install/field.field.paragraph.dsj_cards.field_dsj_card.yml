@@ -1,0 +1,45 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_dsj_card
+    - paragraphs.paragraphs_type.dsj_card
+    - paragraphs.paragraphs_type.dsj_cards
+  module:
+    - entity_reference_revisions
+id: paragraph.dsj_cards.field_dsj_card
+field_name: field_dsj_card
+entity_type: paragraph
+bundle: dsj_cards
+label: Card
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      dsj_card: dsj_card
+    negate: 0
+    target_bundles_drag_drop:
+      dsj_card:
+        weight: 7
+        enabled: true
+      dsj_cards:
+        weight: 8
+        enabled: false
+      dsj_highlighted_listing:
+        weight: 9
+        enabled: false
+      dsj_listing:
+        weight: 10
+        enabled: false
+      dsj_text:
+        weight: 11
+        enabled: false
+      dsj_top_banner:
+        weight: 12
+        enabled: false
+field_type: entity_reference_revisions

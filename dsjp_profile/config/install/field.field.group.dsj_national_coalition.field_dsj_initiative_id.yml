@@ -1,0 +1,24 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_dsj_initiative_id
+    - group.type.dsj_national_coalition
+  module:
+    - datetime
+    - tmgmt_content
+third_party_settings:
+  tmgmt_content:
+    excluded: false
+id: group.dsj_national_coalition.field_dsj_initiative_id
+field_name: field_dsj_initiative_id
+entity_type: group
+bundle: dsj_national_coalition
+label: 'Initiative Imported Date'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

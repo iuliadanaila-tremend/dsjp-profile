@@ -1,7 +1,0 @@
-services:
-  logger.channel.purge_control:
-    parent: logger.channel_base
-    arguments: ['purge_control']
-  purge_control.purge_control:
-    class: Drupal\purge_control\Services\PurgeControl
-    arguments: ['@config.factory', '@logger.channel.purge_control']

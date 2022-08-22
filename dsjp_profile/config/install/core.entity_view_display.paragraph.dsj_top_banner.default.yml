@@ -1,0 +1,41 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.dsj_top_banner.field_dsj_image
+    - field.field.paragraph.dsj_top_banner.field_dsj_subtitle
+    - field.field.paragraph.dsj_top_banner.field_dsj_text
+    - paragraphs.paragraphs_type.dsj_top_banner
+  module:
+    - text
+id: paragraph.dsj_top_banner.default
+targetEntityType: paragraph
+bundle: dsj_top_banner
+mode: default
+content:
+  field_dsj_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_dsj_subtitle:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_dsj_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+hidden:
+  search_api_excerpt: true

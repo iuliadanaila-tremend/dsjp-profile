@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.dsj_national_coalition
+  module:
+    - path
+id: group.dsj_national_coalition.path
+field_name: path
+entity_type: group
+bundle: dsj_national_coalition
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

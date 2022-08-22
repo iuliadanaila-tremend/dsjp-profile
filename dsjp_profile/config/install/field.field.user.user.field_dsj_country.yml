@@ -1,0 +1,34 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_dsj_country
+  module:
+    - rdf_skos
+    - user
+id: user.user.field_dsj_country
+field_name: field_dsj_country
+entity_type: user
+bundle: user
+label: Country
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:skos_concept'
+  handler_settings:
+    target_bundles: null
+    sort:
+      field: _none
+    auto_create: false
+    concept_schemes:
+      - 'http://publications.europa.eu/resource/authority/country'
+    field:
+      field_name: field_dsj_country
+      entity_type: user
+      bundle: user
+      concept_schemes:
+        - 'http://publications.europa.eu/resource/authority/country'
+field_type: skos_concept_entity_reference

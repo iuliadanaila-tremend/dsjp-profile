@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: dsj_banner_small
+label: 'Banner Small'
+effects:
+  05c6e764-4184-4191-87c3-56b282cf2f8e:
+    uuid: 05c6e764-4184-4191-87c3-56b282cf2f8e
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 540
+      height: 480
+      anchor: center-center

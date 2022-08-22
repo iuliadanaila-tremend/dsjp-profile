@@ -1,0 +1,24 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - crop.type.dsj_ratio_1_1_crop
+  module:
+    - crop
+name: thumbnail_100x100_crop
+label: 'Thumbnail (100x100) (crop)'
+effects:
+  32f07d92-1a8e-4b43-82f5-c6f4cf2e123a:
+    uuid: 32f07d92-1a8e-4b43-82f5-c6f4cf2e123a
+    id: crop_crop
+    weight: 2
+    data:
+      crop_type: dsj_ratio_1_1_crop
+  5bbbeead-6c48-4ddd-b373-2190a8703e3c:
+    uuid: 5bbbeead-6c48-4ddd-b373-2190a8703e3c
+    id: image_scale_and_crop
+    weight: 3
+    data:
+      width: 100
+      height: 100
+      anchor: center-center

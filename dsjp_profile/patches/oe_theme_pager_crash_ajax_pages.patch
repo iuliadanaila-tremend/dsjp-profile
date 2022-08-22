@@ -1,0 +1,20 @@
+diff --git a/oe_theme.theme b/oe_theme.theme
+index 27bf9a5e..224af799 100644
+--- a/oe_theme.theme
++++ b/oe_theme.theme
+@@ -603,6 +603,15 @@ function oe_theme_preprocess_pager(array &$variables): void {
+     $nav_link['link']['icon']['transform'] = 'rotate-90';
+     $ecl_items[] = $nav_link;
+   }
++  foreach ($ecl_items as &$item) {
++    if (isset($item['link'])) {
++      $options = $item['link']['link']['path']->getOptions();
++      if (isset($options['query']['_wrapper_format']) && $options['query']['_wrapper_format'] == 'drupal_ajax') {
++        unset($options['query']['_wrapper_format']);
++      }
++      $item['link']['link']['path']->setOptions($options);
++    }
++  }
+   $variables['label'] = t('Pagination');
+   $variables['ecl_items'] = $ecl_items;
+ }

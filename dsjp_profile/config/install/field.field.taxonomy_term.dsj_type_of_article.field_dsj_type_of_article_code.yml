@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_dsj_type_of_article_code
+    - taxonomy.vocabulary.dsj_type_of_article
+id: taxonomy_term.dsj_type_of_article.field_dsj_type_of_article_code
+field_name: field_dsj_type_of_article_code
+entity_type: taxonomy_term
+bundle: dsj_type_of_article
+label: 'Type of article code'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

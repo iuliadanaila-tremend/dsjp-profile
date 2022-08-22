@@ -1,0 +1,17 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.dsj_private_group
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: group.dsj_private_group
+target_entity_type_id: group
+target_bundle: dsj_private_group
+default_langcode: site_default
+language_alterable: false

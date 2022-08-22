@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_dsj_i_am_interested_in
+  module:
+    - options
+    - user
+id: user.user.field_dsj_i_am_interested_in
+field_name: field_dsj_i_am_interested_in
+entity_type: user
+bundle: user
+label: 'I am interested in these technologies/specialisations...'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

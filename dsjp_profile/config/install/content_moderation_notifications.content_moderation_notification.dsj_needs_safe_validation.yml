@@ -1,0 +1,17 @@
+langcode: en
+status: true
+dependencies: {  }
+id: dsj_needs_safe_validation
+workflow: dsj_main_workflow
+transitions:
+  needs_safe_validation: needs_safe_validation
+roles:
+  dsj_critical_reviewer: dsj_critical_reviewer
+author: false
+site_mail: true
+emails: ''
+subject: 'Content changed to Needs safe validation'
+body:
+  value: "<p>[node:title] added for safe validation.&nbsp;[node:url]</p>\r\n"
+  format: full_html
+label: 'Needs safe validation'

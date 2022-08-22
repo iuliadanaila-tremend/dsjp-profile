@@ -1,0 +1,69 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.basic_html
+    - filter.format.dsjp_basic_mention
+    - filter.format.full_html
+    - node.type.dsj_discussion
+    - node.type.dsj_pledge
+    - node.type.dsj_pledge_initiative
+    - workflows.workflow.dsj_organisation_flow
+    - workflows.workflow.dsj_pledge_workflow
+  module:
+    - comment
+    - content_moderation
+    - dsjp_views
+    - filter
+    - flag
+    - group
+    - legal
+    - media
+    - node
+    - private_message
+    - rdf_skos
+    - simplenews
+    - sitemap
+    - system
+    - webform
+id: authenticated
+label: 'Authenticated user'
+weight: -9
+is_admin: false
+permissions:
+  - 'access comments'
+  - 'access content'
+  - 'access sitemap'
+  - 'access user profiles'
+  - 'access webform submission user'
+  - 'administer comments'
+  - 'create dsj_discussion content'
+  - 'create dsj_organization group'
+  - 'create dsj_pledge_initiative content'
+  - 'edit own comments'
+  - 'edit own dsj_discussion content'
+  - 'edit own dsj_pledge content'
+  - 'edit own dsj_pledge_initiative content'
+  - 'flag dsj_comment_voting'
+  - 'flag subscribe_node'
+  - 'flag voting'
+  - 'post comments'
+  - 'skip comment approval'
+  - 'subscribe to newsletters'
+  - 'unflag dsj_comment_voting'
+  - 'unflag subscribe_node'
+  - 'unflag voting'
+  - 'use dsj_organisation_flow transition create_new_draft'
+  - 'use dsj_pledge_workflow transition create_new_draft'
+  - 'use dsj_pledge_workflow transition dsj_create_new_draft_archived'
+  - 'use dsj_pledge_workflow transition ready_for_review'
+  - 'use private messaging system'
+  - 'use rest endpoints'
+  - 'use text format basic_html'
+  - 'use text format dsjp_basic_mention'
+  - 'use text format full_html'
+  - 'view Terms and Conditions'
+  - 'view media'
+  - 'view own unpublished content'
+  - 'view own webform submission'
+  - 'view published skos concept entities'

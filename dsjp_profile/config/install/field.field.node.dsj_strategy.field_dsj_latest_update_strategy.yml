@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dsj_latest_update_strategy
+    - node.type.dsj_strategy
+  module:
+    - datetime
+id: node.dsj_strategy.field_dsj_latest_update_strategy
+field_name: field_dsj_latest_update_strategy
+entity_type: node
+bundle: dsj_strategy
+label: 'Latest update of strategy'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

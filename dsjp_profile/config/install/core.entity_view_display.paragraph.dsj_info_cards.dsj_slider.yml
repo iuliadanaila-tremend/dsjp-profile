@@ -1,0 +1,68 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.dsj_slider
+    - field.field.paragraph.dsj_info_cards.field_dsj_body
+    - field.field.paragraph.dsj_info_cards.field_dsj_left_group
+    - field.field.paragraph.dsj_info_cards.field_dsj_see_more_link
+    - field.field.paragraph.dsj_info_cards.paragraph_view_mode
+    - paragraphs.paragraphs_type.dsj_info_cards
+  module:
+    - link
+    - slick_paragraphs
+    - text
+id: paragraph.dsj_info_cards.dsj_slider
+targetEntityType: paragraph
+bundle: dsj_info_cards
+mode: dsj_slider
+content:
+  field_dsj_body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_dsj_left_group:
+    type: slick_paragraphs_vanilla
+    label: hidden
+    settings:
+      optionset: dsj_mobile_slick
+      view_mode: default
+      cache: 0
+      current_view_mode: default
+      skin: default
+      fx: ''
+      style: ''
+      overridables:
+        arrows: '0'
+        autoplay: '0'
+        dots: '0'
+        draggable: '0'
+        infinite: '0'
+        mouseWheel: '0'
+        randomize: '0'
+        variableWidth: '0'
+      override: false
+      skin_arrows: ''
+      skin_dots: ''
+      use_theme_field: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_dsj_see_more_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 150
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  paragraph_view_mode: true
+  search_api_excerpt: true

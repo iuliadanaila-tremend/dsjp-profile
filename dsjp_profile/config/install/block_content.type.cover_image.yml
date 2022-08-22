@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: cover_image
+label: 'Cover Image'
+revision: 0
+description: ''

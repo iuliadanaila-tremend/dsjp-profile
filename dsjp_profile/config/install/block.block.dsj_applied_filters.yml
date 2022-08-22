@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_visibility_groups.block_visibility_group.edsjp_content_listing
+  module:
+    - block_visibility_groups
+    - dsjp_content
+  theme:
+    - edsjp
+id: dsj_applied_filters
+theme: edsjp
+region: content
+weight: -11
+provider: null
+plugin: dsjp_facets_summary_block
+settings:
+  id: dsjp_facets_summary_block
+  label: 'Applied filters'
+  label_display: visible
+  provider: dsjp_content
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    context_mapping: {  }
+    block_visibility_group: edsjp_content_listing

@@ -1,0 +1,13 @@
+diff --git a/src/WebtoolsGeocoding.php b/src/WebtoolsGeocoding.php
+index a1f9804..e9b3dfc 100644
+--- a/src/WebtoolsGeocoding.php
++++ b/src/WebtoolsGeocoding.php
+@@ -24,7 +24,7 @@ class WebtoolsGeocoding extends AbstractHttpProvider
+     /**
+      * @var string
+      */
+-    const ENDPOINT_URL = 'https://europa.eu/webtools/rest/geocoding/?f=json&text=%s&maxLocations=%d&outFields=*';
++    const ENDPOINT_URL = 'https://europa.eu/webtools/rest/geocoding/?address=%s&maxLaocations=%d&outFields=*';
+ 
+     /**
+      * Optional referer.

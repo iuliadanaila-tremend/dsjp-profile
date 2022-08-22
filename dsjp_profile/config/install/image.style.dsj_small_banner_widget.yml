@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: dsj_small_banner_widget
+label: 'Small Banner Widget'
+effects:
+  a4ce5dce-322e-44ac-84e4-e7b1c3fe43f2:
+    uuid: a4ce5dce-322e-44ac-84e4-e7b1c3fe43f2
+    id: image_scale
+    weight: 1
+    data:
+      width: 1140
+      height: null
+      upscale: true

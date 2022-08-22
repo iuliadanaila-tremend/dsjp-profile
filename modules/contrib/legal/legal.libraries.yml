@@ -1,5 +1,0 @@
-css-scroll:
-  version: 1.x
-  css:
-    base:
-      css/css-scroll.css: {}

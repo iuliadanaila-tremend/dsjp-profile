@@ -1,0 +1,24 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_dsj_tooltip
+    - paragraphs.paragraphs_type.dsj_map_component
+  module:
+    - text
+    - tmgmt_content
+third_party_settings:
+  tmgmt_content:
+    excluded: false
+id: paragraph.dsj_map_component.field_dsj_tooltip
+field_name: field_dsj_tooltip
+entity_type: paragraph
+bundle: dsj_map_component
+label: Tooltip
+description: 'This text will be displayed when hovering over a country.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

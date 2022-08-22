@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+label: Default
+id: default
+description: ''
+matchers:
+  7dbfa51b-792b-43d9-907a-0af2d4569a5b:
+    id: 'entity:node'
+    uuid: 7dbfa51b-792b-43d9-907a-0af2d4569a5b
+    settings:
+      metadata: 'by [node:author] | [node:created:medium]'
+      bundles: {  }
+      group_by_bundle: false
+      substitution_type: canonical
+      limit: 100
+      include_unpublished: false
+      result_description: 'by [node:author] | [node:created:medium]'
+    weight: 0

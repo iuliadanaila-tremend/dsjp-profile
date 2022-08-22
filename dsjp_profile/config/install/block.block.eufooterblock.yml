@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - oe_corporate_blocks
+  theme:
+    - edsjp
+id: eufooterblock
+theme: edsjp
+region: footer_eu
+weight: -10
+provider: null
+plugin: oe_corporate_blocks_eu_footer
+settings:
+  id: oe_corporate_blocks_eu_footer
+  label: 'EU Footer block'
+  label_display: visible
+  provider: oe_corporate_blocks
+visibility: {  }

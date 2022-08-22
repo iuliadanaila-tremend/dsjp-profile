@@ -1,0 +1,241 @@
+{
+    "name": "dsjp/test",
+    "description": "A one-stop-shop for digital skills and jobs in the EU.",
+    "type": "project",
+    "license": "EUPL-1.2",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": ">=7.3",
+        "composer/installers": "^1.5",
+        "digit/dsjp": "dev-main",
+        "drupal/core": "^9.3",
+        "drupal/core-composer-scaffold": "^9.1",
+        "drush/drush": "^10.0"
+    },
+    "require-dev": {
+        "drupal/core-dev": "^9.3",
+        "drupal/devel": "^4.0",
+        "drupal/drupal-extension": "~4.0",
+        "drupal/masquerade": "^2.0@beta",
+        "drupal/purge_control": "^1.0",
+        "drupal/stage_file_proxy": "^1.1",
+        "ec-europa/toolkit": "^8.6.10",
+        "friendsoftwig/twigcs": ">=4"
+    },
+    "scripts": {
+        "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold"
+    },
+    "repositories": {
+        "drupal": {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        },
+        "assets": {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        },
+        "digit/dsjp": {
+            "type": "path",
+            "version": "*",
+            "url": "web/profiles/custom/dsjp_profile",
+            "options": {
+                "symlink": true
+            }
+        },
+        "chosen": {
+            "type": "package",
+            "package": {
+                "name": "harvesthq/chosen",
+                "version": "1.8.7",
+                "type": "drupal-library",
+                "source": {
+                    "url": "https://github.com/harvesthq/chosen-package.git",
+                    "type": "git",
+                    "reference": "v1.8.7"
+                }
+            }
+        },
+        "jquery-timepicker": {
+            "type": "package",
+            "package": {
+                "name": "bower-asset/timepicker",
+                "version": "1.11.14",
+                "type": "drupal-library",
+                "source": {
+                    "url": "https://github.com/jonthornton/jquery-timepicker.git",
+                    "type": "git",
+                    "reference": "1.11.14"
+                }
+            }
+        },
+        "slick": {
+            "type": "package",
+            "package": {
+                "name": "kenwheeler/slick",
+                "version": "1.8.1",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://github.com/kenwheeler/slick/archive/v1.8.1.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        "blazy": {
+            "type": "package",
+            "package": {
+                "name": "dinbror/blazy",
+                "version": "1.8.2",
+                "type": "drupal-library",
+                "extra": {
+                    "installer-name": "blazy"
+                },
+                "source": {
+                    "type": "git",
+                    "url": "https://github.com/dinbror/blazy",
+                    "reference": "1.8.2"
+                }
+            }
+        },
+        "flag-icons": {
+            "type": "package",
+            "package": {
+                "name": "alexsobolenko/flag-icons",
+                "version": "1.0",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://github.com/alexsobolenko/flag-icons/archive/master.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        "jquery-ui-touch-punch": {
+            "type": "package",
+            "package": {
+                "name": "furf/jquery-ui-touch-punch",
+                "version": "dev-master",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://github.com/furf/jquery-ui-touch-punch/archive/refs/heads/master.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        "colorbutton": {
+            "type": "package",
+            "package": {
+                "name": "ckeditor/colorbutton",
+                "version": "4.16.1",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://download.ckeditor.com/colorbutton/releases/colorbutton_4.16.1.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        "panelbutton": {
+            "type": "package",
+            "package": {
+                "name": "ckeditor/panelbutton",
+                "version": "4.16.1",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://download.ckeditor.com/panelbutton/releases/panelbutton_4.16.1.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        "sparql_entity_storage": {
+            "type": "git",
+            "url": "https://git.drupalcode.org/project/sparql_entity_storage.git"
+        },
+        "editorplaceholder": {
+            "type": "package",
+            "package": {
+                "name": "ckeditor/editorplaceholder",
+                "version": "4.16.2",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://download.ckeditor.com/editorplaceholder/releases/editorplaceholder_4.16.2.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        "oe_dashboard_agent": {
+            "type": "vcs",
+            "url": "https://github.com/openeuropa/oe_dashboard_agent"
+        }
+    },
+    "extra": {
+        "artifacts": {
+            "openeuropa/oe_theme": {
+                "dist": {
+                    "url": "https://github.com/{name}/releases/download/{pretty-version}/{project-name}-{pretty-version}.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        "composer-exit-on-patch-failure": false,
+        "enable-patching": true,
+        "installer-types": [
+            "bower-asset",
+            "npm-asset"
+        ],
+        "installer-paths": {
+            "web/core": [
+                "type:drupal-core"
+            ],
+            "web/libraries/{$name}": [
+                "type:drupal-library",
+                "type:bower-asset",
+                "type:npm-asset"
+            ],
+            "web/modules/contrib/{$name}": [
+                "type:drupal-module"
+            ],
+            "web/modules/custom/{$name}": [
+                "type:drupal-custom-module"
+            ],
+            "web/profiles/contrib/{$name}": [
+                "type:drupal-profile"
+            ],
+            "web/profiles/custom/{$name}": [
+                "type:drupal-custom-profile"
+            ],
+            "web/themes/contrib/{$name}": [
+                "type:drupal-theme"
+            ],
+            "web/themes/custom/{$name}": [
+                "type:drupal-custom-theme"
+            ]
+        },
+        "drupal-scaffold": {
+            "locations": {
+                "web-root": "./web"
+            }
+        }
+    },
+    "autoload": {
+        "classmap": [
+            "scripts/composer/SetupWizard.php"
+        ]
+    },
+    "conflict": {
+        "drupal/drupal": "*"
+    },
+    "config": {
+        "sort-packages": true,
+        "discard-changes": true,
+        "process-timeout": 0,
+        "allow-plugins": {
+            "cweagans/composer-patches": true,
+            "composer/installers": true,
+            "phpro/grumphp": true,
+            "openeuropa/composer-artifacts": true,
+            "oomphinc/composer-installers-extender": true,
+            "drupal-composer/drupal-scaffold": true,
+            "drupal/core-composer-scaffold": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    }
+}

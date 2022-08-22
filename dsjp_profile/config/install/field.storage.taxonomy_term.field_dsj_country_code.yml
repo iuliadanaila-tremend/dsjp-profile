@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - rdf_skos
+    - taxonomy
+id: taxonomy_term.field_dsj_country_code
+field_name: field_dsj_country_code
+entity_type: taxonomy_term
+type: skos_concept_entity_reference
+settings:
+  target_type: skos_concept
+module: rdf_skos
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

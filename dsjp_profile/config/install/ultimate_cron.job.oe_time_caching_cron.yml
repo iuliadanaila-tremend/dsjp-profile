@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - oe_time_caching
+title: 'Default cron handler'
+id: oe_time_caching_cron
+weight: 0
+module: oe_time_caching
+callback: oe_time_caching_cron
+scheduler:
+  id: simple
+launcher:
+  id: serial
+logger:
+  id: database

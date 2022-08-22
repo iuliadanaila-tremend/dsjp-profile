@@ -1,0 +1,220 @@
+diff --git a/modules/purge_tokens/purge_tokens.module b/modules/purge_tokens/purge_tokens.module
+index 8cd7471..8998bab 100644
+--- a/modules/purge_tokens/purge_tokens.module
++++ b/modules/purge_tokens/purge_tokens.module
+@@ -66,6 +66,7 @@ function purge_tokens_tokens($type, $tokens, array $data, array $options, Bubble
+       switch ($name) {
+         case 'expression':
+           if (is_string($expression = $data['invalidation']->getExpression())) {
++            $expression = \Drupal::service('purge.cache_tag_minificator')->minifyCacheTag($expression);
+             $replacements[$original] = $expression;
+           }
+           break;
+@@ -87,6 +88,9 @@ function purge_tokens_tokens($type, $tokens, array $data, array $options, Bubble
+           $expressions[] = $expression;
+         }
+       }
++
++      $cache_tag_minificator = \Drupal::service('purge.cache_tag_minificator');
++      $expressions = array_map([$cache_tag_minificator, 'minifyCacheTag'], $expressions);
+       return implode($separator, $expressions);
+     };
+ 
+diff --git a/purge.services.yml b/purge.services.yml
+index b203d21..2c655ec 100644
+--- a/purge.services.yml
++++ b/purge.services.yml
+@@ -140,3 +140,8 @@ services:
+     class: Drupal\purge\Plugin\Purge\TagsHeader\PluginManager
+     parent: default_plugin_manager
+     public: false
++
++  # Purge tag minificator.
++  purge.cache_tag_minificator:
++    class: Drupal\purge\CacheTagMinificator
++    arguments: ['@module_handler']
+diff --git a/src/CacheTagMinificator.php b/src/CacheTagMinificator.php
+new file mode 100644
+index 0000000..bf1e236
+--- /dev/null
++++ b/src/CacheTagMinificator.php
+@@ -0,0 +1,26 @@
++<?php
++
++namespace Drupal\purge;
++
++/**
++ * Cache tag minificator based on static dictionary.
++ */
++class CacheTagMinificator implements CacheTagMinificatorInterface {
++
++  /**
++   * {@inheritdoc}
++   */
++  public function minifyCacheTag($cache_tag) {
++    $raw_arr = explode(':', $cache_tag);
++    // Minimize first element - preserve only first character of each word.
++    $new_string = '';
++    $tok = strtok($raw_arr[0], "_");
++    while ($tok !== false) {
++      $new_string .= '_' . mb_substr($tok, 0, 1);
++      $tok = strtok("_");
++    }
++
++    $raw_arr[0] = $new_string;
++    return implode(':', $raw_arr);
++  }
++}
+diff --git a/src/CacheTagMinificatorInterface.php b/src/CacheTagMinificatorInterface.php
+new file mode 100644
+index 0000000..6e63733
+--- /dev/null
++++ b/src/CacheTagMinificatorInterface.php
+@@ -0,0 +1,28 @@
++<?php
++
++namespace Drupal\purge;
++
++/**
++ * Interface of a cache tag minificator.
++ *
++ * There is an upper limit in most web-servers / proxies on HTTP header length.
++ * Thus we minify cache tags to fit as much as possible into the imposed limit.
++ */
++interface CacheTagMinificatorInterface {
++
++  /**
++   * Minify a given cache tag.
++   *
++   * Create a hash with the given input.
++   *
++   * @see hook_purge_cache_tag_minify_dictionary()
++   *
++   * @param string $cache_tag
++   *   Cache tag to minify.
++   *
++   * @return string
++   *   Minified cache tag.
++   */
++  public function minifyCacheTag($cache_tag);
++
++}
+diff --git a/src/Plugin/Purge/Invalidation/TagInvalidation.php b/src/Plugin/Purge/Invalidation/TagInvalidation.php
+index d59583a..1cd498d 100644
+--- a/src/Plugin/Purge/Invalidation/TagInvalidation.php
++++ b/src/Plugin/Purge/Invalidation/TagInvalidation.php
+@@ -2,7 +2,9 @@
+ 
+ namespace Drupal\purge\Plugin\Purge\Invalidation;
+ 
++use Drupal\purge\CacheTagMinificatorInterface;
+ use Drupal\purge\Plugin\Purge\Invalidation\Exception\InvalidExpressionException;
++use Symfony\Component\DependencyInjection\ContainerInterface;
+ 
+ /**
+  * Describes invalidation by Drupal cache tag, e.g.: 'user:1', 'menu:footer'.
+@@ -19,6 +21,42 @@ use Drupal\purge\Plugin\Purge\Invalidation\Exception\InvalidExpressionException;
+  */
+ class TagInvalidation extends InvalidationBase implements InvalidationInterface {
+ 
++  /**
++   * The cache tag minificator service.
++   *
++   * @var \Drupal\purge\CacheTagMinificatorInterface
++   */
++  protected $cacheTagMinificator;
++
++  public function __construct(array $configuration, $plugin_id, $plugin_definition, $id, $expression, CacheTagMinificatorInterface $cache_tag_minificator) {
++    parent::__construct($configuration, $plugin_id, $plugin_definition, $id, $expression);
++
++    $this->cacheTagMinificator = $cache_tag_minificator;
++  }
++
++  /**
++   * {@inheritdoc}
++   */
++  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
++    return new static(
++      [],
++      $plugin_id,
++      $plugin_definition,
++      $configuration['id'],
++      $configuration['expression'],
++      $container->get('purge.cache_tag_minificator')
++    );
++ }
++
++  /**
++   * {@inheritdoc}
++   */
++  public function __toString() {
++    $string = parent::__toString();
++
++    return $this->cacheTagMinificator->minifyCacheTag($string);
++  }
++
+   /**
+    * {@inheritdoc}
+    */
+diff --git a/src/Plugin/Purge/TagsHeader/TagsHeaderBase.php b/src/Plugin/Purge/TagsHeader/TagsHeaderBase.php
+index 9a84b89..a318146 100644
+--- a/src/Plugin/Purge/TagsHeader/TagsHeaderBase.php
++++ b/src/Plugin/Purge/TagsHeader/TagsHeaderBase.php
+@@ -2,13 +2,38 @@
+ 
+ namespace Drupal\purge\Plugin\Purge\TagsHeader;
+ 
+-use Drupal\Core\Plugin\PluginBase;
++use Drupal\purge\CacheTagMinificatorInterface;
+ use Symfony\Component\DependencyInjection\ContainerInterface;
++use Drupal\Core\Plugin\PluginBase;
+ 
+ /**
+  * Base implementation for plugins that add and format a cache tags header.
+  */
+ abstract class TagsHeaderBase extends PluginBase implements TagsHeaderInterface {
++  /**
++  +   * The cache tag minificator service.
++  +   *
++  +   * @var \Drupal\purge\CacheTagMinificatorInterface
++  +   */
++  protected $cacheTagMinificator;
++
++  /**
++   * TagsHeaderBase constructor.
++   *
++   * @param array $configuration
++   *   A configuration array containing information about the plugin instance.
++   * @param string $plugin_id
++   *   The plugin_id for the plugin instance.
++   * @param mixed $plugin_definition
++   *   The plugin implementation definition
++   * @param \Drupal\purge\CacheTagMinificatorInterface $cache_tag_minificator
++   *   The cache tag minificator service.
++   */
++  public function __construct(array $configuration, $plugin_id, $plugin_definition, CacheTagMinificatorInterface $cache_tag_minificator) {
++    parent::__construct($configuration, $plugin_id, $plugin_definition);
++
++    $this->cacheTagMinificator = $cache_tag_minificator;
++  }
+ 
+   /**
+    * {@inheritdoc}
+@@ -17,7 +42,8 @@ abstract class TagsHeaderBase extends PluginBase implements TagsHeaderInterface
+     return new static(
+       $configuration,
+       $plugin_id,
+-      $plugin_definition
++      $plugin_definition,
++      $container->get('purge.cache_tag_minificator')
+     );
+   }
+ 
+@@ -32,6 +58,7 @@ abstract class TagsHeaderBase extends PluginBase implements TagsHeaderInterface
+    * {@inheritdoc}
+    */
+   public function getValue(array $tags) {
++    $tags = array_map([$this->cacheTagMinificator, 'minifyCacheTag'], $tags);
+     return implode(' ', $tags);
+   }
+ 

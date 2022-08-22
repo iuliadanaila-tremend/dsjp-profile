@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_dsj_text
+    - paragraphs.paragraphs_type.dsj_top_banner
+  module:
+    - text
+id: paragraph.dsj_top_banner.field_dsj_text
+field_name: field_dsj_text
+entity_type: paragraph
+bundle: dsj_top_banner
+label: Text
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

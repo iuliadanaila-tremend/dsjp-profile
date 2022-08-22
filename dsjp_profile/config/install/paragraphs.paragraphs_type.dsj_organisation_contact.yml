@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies: {  }
+id: dsj_organisation_contact
+label: 'Organisation contact'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

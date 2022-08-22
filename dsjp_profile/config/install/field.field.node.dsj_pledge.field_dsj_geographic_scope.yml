@@ -1,0 +1,33 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dsj_geographic_scope
+    - node.type.dsj_pledge
+    - taxonomy.vocabulary.dsj_country
+  module:
+    - tmgmt_content
+third_party_settings:
+  tmgmt_content:
+    excluded: false
+id: node.dsj_pledge.field_dsj_geographic_scope
+field_name: field_dsj_geographic_scope
+entity_type: node
+bundle: dsj_pledge
+label: Country
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      dsj_country: dsj_country
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

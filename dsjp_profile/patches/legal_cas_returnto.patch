@@ -1,0 +1,15 @@
+diff --git a/legal.module b/legal.module
+index f520046..7551834 100644
+--- a/legal.module
++++ b/legal.module
+@@ -496,6 +496,10 @@ function legal_user_login(UserInterface $account) {
+   if (!empty($_REQUEST['destination'])) {
+     $query = ['destination' => $_REQUEST['destination']];
+   }
++  // Preserve cas login destination.
++  if (!empty($_REQUEST['returnto'])) {
++    $query = ['destination' => $_REQUEST['returnto']];
++  }
+ 
+   unset($_GET['destination']);
+ 

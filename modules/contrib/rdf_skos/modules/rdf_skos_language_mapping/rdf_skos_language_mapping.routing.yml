@@ -1,7 +1,0 @@
-rdf_skos_language_mapping.language_mapping_form:
-  path: '/admin/config/sparql/language-mapping'
-  defaults:
-    _title: 'Language mapping configuration'
-    _form: 'Drupal\rdf_skos_language_mapping\Form\LanguageMappingForm'
-  requirements:
-    _permission: 'administer rdf skos language mapping'

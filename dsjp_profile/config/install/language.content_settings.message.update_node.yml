@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - message.template.update_node
+id: message.update_node
+target_entity_type_id: message
+target_bundle: update_node
+default_langcode: site_default
+language_alterable: false

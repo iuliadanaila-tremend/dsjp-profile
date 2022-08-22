@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies: {  }
+id: dsj_draft_notification
+workflow: dsj_main_workflow
+transitions:
+  dsj_create_new_draft_imported: dsj_create_new_draft_imported
+roles: {  }
+author: true
+site_mail: false
+emails: ''
+subject: 'Digital Skills & Jobs Platform – New language translation!'
+body:
+  value: "<p>[node:langcode] version of a content was move to Draft: <a href=\"[node:url:absolute]\">[node:url:absolute]</a>.</p>\r\n"
+  format: full_html
+label: 'Draft Notification'

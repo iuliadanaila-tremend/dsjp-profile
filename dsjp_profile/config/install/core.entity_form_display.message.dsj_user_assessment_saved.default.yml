@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.message.dsj_user_assessment_saved.field_user
+    - message.template.dsj_user_assessment_saved
+id: message.dsj_user_assessment_saved.default
+targetEntityType: message
+bundle: dsj_user_assessment_saved
+mode: default
+content: {  }
+hidden:
+  field_user: true

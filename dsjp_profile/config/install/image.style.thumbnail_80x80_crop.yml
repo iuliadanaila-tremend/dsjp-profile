@@ -1,0 +1,24 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - crop.type.dsj_ratio_1_1_crop
+  module:
+    - crop
+name: thumbnail_80x80_crop
+label: 'Thumbnail (80x80) (crop)'
+effects:
+  ceda0eb3-6cce-4620-a90f-68c843305640:
+    uuid: ceda0eb3-6cce-4620-a90f-68c843305640
+    id: image_scale_and_crop
+    weight: -9
+    data:
+      width: 80
+      height: 80
+      anchor: center-center
+  48d9f387-76ea-4ec5-bdfb-16766682551a:
+    uuid: 48d9f387-76ea-4ec5-bdfb-16766682551a
+    id: crop_crop
+    weight: -10
+    data:
+      crop_type: dsj_ratio_1_1_crop

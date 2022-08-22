@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dsj_website_link
+    - node.type.dsj_digital_skills_resource
+  module:
+    - typed_link
+id: node.dsj_digital_skills_resource.field_dsj_website_link
+field_name: field_dsj_website_link
+entity_type: node
+bundle: dsj_digital_skills_resource
+label: 'Website link'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 17
+field_type: typed_link

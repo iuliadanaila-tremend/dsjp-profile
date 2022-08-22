@@ -1,0 +1,97 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.group.dsj_listing
+    - field.field.group.dsj_national_coalition.field_dsj_api_url
+    - field.field.group.dsj_national_coalition.field_dsj_article_id
+    - field.field.group.dsj_national_coalition.field_dsj_body
+    - field.field.group.dsj_national_coalition.field_dsj_content_language
+    - field.field.group.dsj_national_coalition.field_dsj_digital_skills_id
+    - field.field.group.dsj_national_coalition.field_dsj_digital_technology
+    - field.field.group.dsj_national_coalition.field_dsj_event_id
+    - field.field.group.dsj_national_coalition.field_dsj_flag
+    - field.field.group.dsj_national_coalition.field_dsj_funding_opportunity_id
+    - field.field.group.dsj_national_coalition.field_dsj_good_practice_id
+    - field.field.group.dsj_national_coalition.field_dsj_initiative_id
+    - field.field.group.dsj_national_coalition.field_dsj_organization_id
+    - field.field.group.dsj_national_coalition.field_dsj_page_id
+    - field.field.group.dsj_national_coalition.field_dsj_skills_intelligence_id
+    - field.field.group.dsj_national_coalition.field_dsj_source_type
+    - field.field.group.dsj_national_coalition.field_dsj_strategy_id
+    - field.field.group.dsj_national_coalition.field_dsj_target_audience
+    - field.field.group.dsj_national_coalition.field_dsj_training_offer_id
+    - field.field.group.dsj_national_coalition.field_dsj_website_link
+    - group.type.dsj_national_coalition
+    - image.style.thumbnail_100x100_crop
+  module:
+    - field_group
+    - image
+third_party_settings:
+  field_group:
+    group_details:
+      children:
+        - field_dsj_website_link
+        - field_dsj_target_audience
+        - field_dsj_digital_technology
+      label: Details
+      parent_name: ''
+      region: hidden
+      weight: 3
+      format_type: html_element
+      format_settings:
+        classes: bordered-field-list
+        id: organization-details
+        element: div
+        show_label: true
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+id: group.dsj_national_coalition.dsj_listing
+targetEntityType: group
+bundle: dsj_national_coalition
+mode: dsj_listing
+content:
+  field_dsj_flag:
+    type: image
+    label: hidden
+    settings:
+      image_link: content
+      image_style: thumbnail_100x100_crop
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  label:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  changed: true
+  created: true
+  field_dsj_api_url: true
+  field_dsj_article_id: true
+  field_dsj_body: true
+  field_dsj_content_language: true
+  field_dsj_digital_skills_id: true
+  field_dsj_digital_technology: true
+  field_dsj_event_id: true
+  field_dsj_funding_opportunity_id: true
+  field_dsj_good_practice_id: true
+  field_dsj_initiative_id: true
+  field_dsj_organization_id: true
+  field_dsj_page_id: true
+  field_dsj_skills_intelligence_id: true
+  field_dsj_source_type: true
+  field_dsj_strategy_id: true
+  field_dsj_target_audience: true
+  field_dsj_training_offer_id: true
+  field_dsj_website_link: true
+  langcode: true
+  search_api_excerpt: true
+  uid: true

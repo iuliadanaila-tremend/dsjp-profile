@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - simplenews
+id: simplenews_subscriber.simplenews_subscriber.default
+targetEntityType: simplenews_subscriber
+bundle: simplenews_subscriber
+mode: default
+content:
+  mail:
+    type: email_default
+    weight: 0
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  uid: true

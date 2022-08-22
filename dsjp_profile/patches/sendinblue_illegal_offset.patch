@@ -1,0 +1,32 @@
+diff --git a/sendinblue.module b/sendinblue.module
+index 841c4f0..e27ce2e 100755
+--- a/sendinblue.module
++++ b/sendinblue.module
+@@ -91,13 +91,20 @@ function sendinblue_user_insert(UserInterface $user) {
+   /** @var \Drupal\Core\Config\ConfigFactoryInterface $configFactory */
+   $configFactory = \Drupal::service('config.factory');
+
+-  $sendinblue_registered_active = $configFactory->get(SendinblueManager::CONFIG_SETTINGS_REGISTERING_USER)
+-    ->get('sendinblue_put_registered_user')['active'];
+-  $sendinblue_registered_list = $configFactory->get(SendinblueManager::CONFIG_SETTINGS_REGISTERING_USER)
+-    ->get('sendinblue_put_registered_user')['list'];
++  if (isset($configFactory->get(SendinblueManager::CONFIG_SETTINGS_REGISTERING_USER)
++      ->get('sendinblue_put_registered_user')['active'])) {
++    $sendinblue_registered_active = $configFactory->get(SendinblueManager::CONFIG_SETTINGS_REGISTERING_USER)
++      ->get('sendinblue_put_registered_user')['active'];
+
+-  if ($sendInBlueManager->isLoggedInState() && $sendinblue_registered_active) {
+-    $sendInBlueManager->subscribeUser($user->getEmail(), ['nom' => $user->getAccountName()], [$sendinblue_registered_list]);
+-    return;
++    if (isset($configFactory->get(SendinblueManager::CONFIG_SETTINGS_REGISTERING_USER)
++        ->get('sendinblue_put_registered_user')['list'])) {
++      $sendinblue_registered_list = $configFactory->get(SendinblueManager::CONFIG_SETTINGS_REGISTERING_USER)
++        ->get('sendinblue_put_registered_user')['list'];
++    }
++
++    if ($sendInBlueManager->isLoggedInState() && $sendinblue_registered_active) {
++      $sendInBlueManager->subscribeUser($user->getEmail(), ['nom' => $user->getAccountName()], [$sendinblue_registered_list]);
++      return;
++    }
+   }
+ }

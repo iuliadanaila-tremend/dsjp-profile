@@ -1,9 +1,0 @@
-uuid: 0f265f2c-25d4-4011-a621-629853e1039d
-langcode: en
-status: true
-dependencies: {  }
-_core:
-  default_config_hash: a0Y-g5Fkawadu_V1DPPBJogYRAGP77_mNhWohOm50G4
-id: contact_us
-label: 'Contact us'
-weight: -10

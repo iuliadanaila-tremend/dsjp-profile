@@ -1,0 +1,61 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.dsj_grouped_cards.field_dsj_left_group
+    - field.field.paragraph.dsj_grouped_cards.field_dsj_left_title
+    - field.field.paragraph.dsj_grouped_cards.field_dsj_right_group
+    - field.field.paragraph.dsj_grouped_cards.field_dsj_right_title
+    - field.field.paragraph.dsj_grouped_cards.field_dsj_title
+    - paragraphs.paragraphs_type.dsj_grouped_cards
+  module:
+    - entity_reference_revisions
+id: paragraph.dsj_grouped_cards.default
+targetEntityType: paragraph
+bundle: dsj_grouped_cards
+mode: default
+content:
+  field_dsj_left_group:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: preview
+      link: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_dsj_left_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_dsj_right_group:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: preview
+      link: ''
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_dsj_right_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_dsj_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true

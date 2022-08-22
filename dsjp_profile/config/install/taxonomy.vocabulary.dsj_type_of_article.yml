@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Type of article'
+vid: dsj_type_of_article
+description: ''
+weight: 0

@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies: {  }
+id: UserMention
+name: UserMention
+description: 'User mentions'
+mention_type: entity
+input:
+  prefix: '@'
+  entity_type: user
+  inputvalue: name
+  suffix: ''
+output:
+  outputvalue: '[user:display-name]'
+  renderlink: 1
+  renderlinktextbox: 'user/[user:uid]'

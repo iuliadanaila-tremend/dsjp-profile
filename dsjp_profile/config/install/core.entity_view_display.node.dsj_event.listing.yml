@@ -1,0 +1,163 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.listing
+    - field.field.node.dsj_event.body
+    - field.field.node.dsj_event.field_dsj_author
+    - field.field.node.dsj_event.field_dsj_comments
+    - field.field.node.dsj_event.field_dsj_date
+    - field.field.node.dsj_event.field_dsj_digital_skill_level
+    - field.field.node.dsj_event.field_dsj_digital_technology
+    - field.field.node.dsj_event.field_dsj_event_coordinates
+    - field.field.node.dsj_event.field_dsj_event_location
+    - field.field.node.dsj_event.field_dsj_event_setting
+    - field.field.node.dsj_event.field_dsj_event_timezone
+    - field.field.node.dsj_event.field_dsj_external_id
+    - field.field.node.dsj_event.field_dsj_geographic_scope
+    - field.field.node.dsj_event.field_dsj_image
+    - field.field.node.dsj_event.field_dsj_industry
+    - field.field.node.dsj_event.field_dsj_meta_tags
+    - field.field.node.dsj_event.field_dsj_organization
+    - field.field.node.dsj_event.field_dsj_publish_in_core
+    - field.field.node.dsj_event.field_dsj_representative_image
+    - field.field.node.dsj_event.field_dsj_target_audience
+    - field.field.node.dsj_event.field_dsj_target_language
+    - field.field.node.dsj_event.field_dsj_type_of_initiative
+    - field.field.node.dsj_event.field_dsj_website_link
+    - node.type.dsj_event
+    - responsive_image.styles.listing_card
+  module:
+    - datetime_range
+    - field_group
+    - oe_theme_helper
+    - options
+    - responsive_image
+    - smart_trim
+    - user
+third_party_settings:
+  field_group:
+    group_event_details:
+      children:
+        - langcode
+        - field_dsj_website_link
+      label: 'Event Details'
+      parent_name: ''
+      region: hidden
+      weight: 24
+      format_type: html_element
+      format_settings:
+        classes: ''
+        id: event-details
+        element: div
+        show_label: true
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+    group_text:
+      children:
+        - body
+      label: Text
+      parent_name: ''
+      region: content
+      weight: 5
+      format_type: html_element
+      format_settings:
+        classes: text-area
+        id: ''
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+id: node.dsj_event.listing
+targetEntityType: node
+bundle: dsj_event
+mode: listing
+content:
+  body:
+    type: smart_trim
+    label: hidden
+    settings:
+      trim_length: 100
+      trim_type: chars
+      trim_suffix: ...
+      wrap_output: true
+      wrap_class: trimmed
+      more_link: false
+      more_class: more-link
+      more_text: 'Read more'
+      summary_handler: full
+      trim_options:
+        text: false
+        trim_zero: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_dsj_date:
+    type: daterange_default
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: dsj_long_custom_date
+      separator: '-'
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_dsj_digital_technology:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_dsj_event_location:
+    type: oe_theme_helper_address_inline
+    label: hidden
+    settings:
+      delimiter: ', '
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_dsj_event_setting:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_dsj_image:
+    type: responsive_image
+    label: hidden
+    settings:
+      responsive_image_style: listing_card
+      image_link: content
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  content_moderation_control: true
+  field_dsj_author: true
+  field_dsj_comments: true
+  field_dsj_digital_skill_level: true
+  field_dsj_event_coordinates: true
+  field_dsj_event_timezone: true
+  field_dsj_external_id: true
+  field_dsj_geographic_scope: true
+  field_dsj_industry: true
+  field_dsj_meta_tags: true
+  field_dsj_organization: true
+  field_dsj_target_audience: true
+  field_dsj_target_language: true
+  field_dsj_type_of_initiative: true
+  field_dsj_website_link: true
+  flag_subscribe_node: true
+  flag_voting: true
+  langcode: true
+  links: true
+  private_message_link: true
+  search_api_excerpt: true

@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dsj_effort
+    - node.type.dsj_training_offer
+  module:
+    - options
+id: node.dsj_training_offer.field_dsj_effort
+field_name: field_dsj_effort
+entity_type: node
+bundle: dsj_training_offer
+label: Effort
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

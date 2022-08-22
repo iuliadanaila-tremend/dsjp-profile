@@ -1,9 +1,0 @@
-uuid: 96ea6e68-1c18-4005-8954-b3f07e6ab820
-langcode: en
-status: true
-dependencies: {  }
-id: search_api__views_page__dsj_pledge_organizations__organisations
-name: 'search_api:views_page__dsj_pledge_organizations__organisations'
-filter_key: null
-url_processor: query_string
-breadcrumb: {  }

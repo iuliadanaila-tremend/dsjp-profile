@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies: {  }
+id: front
+label: 'Front page'
+tags:
+  canonical_url: '[site:url]'
+  shortlink: '[site:url]'
+  og_image_height: '1378'
+  og_image_width: '1378'

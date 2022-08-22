@@ -1,8 +1,0 @@
-uuid: 5ef52943-107e-4ed5-8e9c-4cd0a8787a7e
-langcode: en
-status: true
-dependencies: {  }
-id: dsj_long_custom_date
-label: 'Long custom date'
-locked: false
-pattern: 'j F Y h:i A \G\M\T O'

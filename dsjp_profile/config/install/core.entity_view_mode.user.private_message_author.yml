@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: user.private_message_author
+label: 'Private Message Author'
+targetEntityType: user
+cache: true

@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dsj_training_start_date
+    - node.type.dsj_training_offer
+  module:
+    - yearonly
+id: node.dsj_training_offer.field_dsj_training_start_date
+field_name: field_dsj_training_start_date
+entity_type: node
+bundle: dsj_training_offer
+label: 'Training start date'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  yearonly_from: '1900'
+  yearonly_to: now
+field_type: yearonly

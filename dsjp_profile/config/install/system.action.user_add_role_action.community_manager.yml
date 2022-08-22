@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.community_manager
+  module:
+    - user
+id: user_add_role_action.community_manager
+label: 'Add the Community Manager role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: community_manager

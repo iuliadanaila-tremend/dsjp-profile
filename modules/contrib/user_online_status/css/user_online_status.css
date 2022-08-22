@@ -1,7 +1,0 @@
-.user-online-status .label.inline::after {
-  content: ':';
-}
-
-.user-online-status .label.above {
-  display: block;
-}

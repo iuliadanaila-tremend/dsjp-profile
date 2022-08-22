@@ -1,0 +1,63 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.dsj_cards_block
+    - field.field.block_content.dsj_cards_block.body
+    - field.field.block_content.dsj_cards_block.field_dsj_card
+    - field.field.block_content.dsj_cards_block.field_dsj_read_more_link
+  module:
+    - link
+    - paragraphs
+    - text
+id: block_content.dsj_cards_block.default
+targetEntityType: block_content
+bundle: dsj_cards_block
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 3
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  field_dsj_card:
+    type: entity_reference_paragraphs
+    weight: 4
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: preview
+      default_paragraph_type: dsj_card
+    third_party_settings: {  }
+  field_dsj_read_more_link:
+    type: link_default
+    weight: 26
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  info:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+hidden: {  }

@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies: {  }
+id: dsj_national_coalition
+label: 'National Coalition'
+description: 'Group type used for content import from National Coalitions websites.'
+new_revision: false
+creator_membership: true
+creator_wizard: false
+creator_roles: {  }

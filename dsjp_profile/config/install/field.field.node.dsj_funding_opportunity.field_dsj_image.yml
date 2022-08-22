@@ -1,0 +1,44 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dsj_image
+    - node.type.dsj_funding_opportunity
+  module:
+    - content_translation
+    - image
+third_party_settings:
+  content_translation:
+    translation_sync:
+      alt: alt
+      title: title
+      file: '0'
+id: node.dsj_funding_opportunity.field_dsj_image
+field_name: field_dsj_image
+entity_type: node
+bundle: dsj_funding_opportunity
+label: Image
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'png gif jpg jpeg'
+  max_filesize: 10MB
+  max_resolution: ''
+  min_resolution: 480x480
+  alt_field: true
+  alt_field_required: true
+  title_field: true
+  title_field_required: true
+  default_image:
+    uuid: caa455c3-c996-47bc-892c-d54bffa2c65f
+    alt: ''
+    title: ''
+    width: 340
+    height: 191
+field_type: image

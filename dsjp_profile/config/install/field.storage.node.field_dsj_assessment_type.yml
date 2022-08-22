@@ -1,0 +1,38 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_dsj_assessment_type
+field_name: field_dsj_assessment_type
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: 'http://data.europa.eu/snb/learning-assessment/729f3bed4b'
+      label: Workbased
+    -
+      value: 'http://data.europa.eu/snb/learning-assessment/7813801c77'
+      label: 'Project based'
+    -
+      value: 'http://data.europa.eu/snb/learning-assessment/9191af2ed9'
+      label: Presential
+    -
+      value: 'http://data.europa.eu/snb/learning-assessment/920fbb3cbe'
+      label: Online
+    -
+      value: 'http://data.europa.eu/snb/learning-assessment/e92d221e4d'
+      label: Blended
+    -
+      value: 'http://data.europa.eu/snb/learning-assessment/ed4c557045'
+      label: 'Research-Lab based'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.message.dsj_membership_request.field_dsj_group_content
+    - message.template.dsj_membership_request
+  module:
+    - user
+id: message.dsj_membership_request.default
+targetEntityType: message
+bundle: dsj_membership_request
+mode: default
+content:
+  field_dsj_group_content:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  partial_0:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true

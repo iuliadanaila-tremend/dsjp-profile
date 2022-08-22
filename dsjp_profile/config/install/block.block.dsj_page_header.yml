@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - oe_theme_helper
+    - system
+  theme:
+    - edsjp
+id: dsj_page_header
+theme: edsjp
+region: page_header
+weight: -26
+provider: null
+plugin: oe_theme_helper_page_header
+settings:
+  id: oe_theme_helper_page_header
+  label: 'Page header'
+  label_display: '0'
+  provider: oe_theme_helper
+  context_mapping:
+    page_header: '@oe_theme_helper.page_header_context:page_header'
+visibility:
+  request_path:
+    id: request_path
+    negate: true
+    context_mapping: {  }
+    pages: "<front>\r\n/node/1\r\n/node/1/*"

@@ -1,0 +1,19 @@
+langcode: en
+status: false
+dependencies: {  }
+id: dev
+label: Dev
+description: ''
+weight: 0
+stackable: false
+storage: folder
+folder: ../config/dev
+module:
+  devel: 0
+  masquerade: 0
+  stage_file_proxy: 0
+theme: {  }
+complete_list: {  }
+partial_list:
+  - metatag.metatag_defaults.global
+  - system.performance

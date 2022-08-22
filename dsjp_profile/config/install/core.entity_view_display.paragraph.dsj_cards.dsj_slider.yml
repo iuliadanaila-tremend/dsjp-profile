@@ -1,0 +1,66 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.dsj_slider
+    - field.field.paragraph.dsj_cards.field_dsj_card
+    - field.field.paragraph.dsj_cards.paragraph_view_mode
+    - paragraphs.paragraphs_type.dsj_cards
+  module:
+    - field_group
+    - slick_paragraphs
+third_party_settings:
+  field_group:
+    group_dsj_cards_wrapper:
+      children:
+        - field_dsj_card
+      label: 'Cards Wrapper'
+      parent_name: ''
+      region: content
+      weight: 0
+      format_type: html_element
+      format_settings:
+        classes: cards-wrapper
+        id: ''
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+id: paragraph.dsj_cards.dsj_slider
+targetEntityType: paragraph
+bundle: dsj_cards
+mode: dsj_slider
+content:
+  field_dsj_card:
+    type: slick_paragraphs_vanilla
+    label: hidden
+    settings:
+      optionset: dsj_cards
+      view_mode: diagonal
+      cache: 0
+      current_view_mode: dsj_slider
+      skin: default
+      fx: ''
+      style: ''
+      overridables:
+        arrows: '0'
+        autoplay: '0'
+        dots: '0'
+        draggable: '0'
+        infinite: '0'
+        mouseWheel: '0'
+        randomize: '0'
+        variableWidth: '0'
+      override: false
+      skin_arrows: ''
+      skin_dots: ''
+      use_theme_field: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  paragraph_view_mode: true
+  search_api_excerpt: true

@@ -1,0 +1,83 @@
+diff --git a/legal.module b/legal.module
+index f520046..edf814a 100644
+--- a/legal.module
++++ b/legal.module
+@@ -712,7 +712,17 @@ function legal_get_conditions($language = '') {
+   }
+ 
+   $conditions['extras'] = empty($conditions['extras']) ? [] : unserialize($conditions['extras']);
+-
++  // Separate description and required fields from the contrib fields.
++  $conditions['extras-description'] = array_filter($conditions['extras'], function ($key) {
++    return strpos($key, 'required') != FALSE || strpos($key, '-description') != FALSE;
++  }, ARRAY_FILTER_USE_KEY);
++  // Separate the tos checkbox from the extra elements.
++  $conditions['tos'] = array_filter($conditions['extras'], function ($key) {
++    return $key == 'tos_checkbox_text' || $key == 'tos_checkbox_description';
++  }, ARRAY_FILTER_USE_KEY);
++  $conditions['extras'] = array_filter($conditions['extras'], function ($key) {
++    return strpos($key, 'required') === FALSE && strpos($key, 'description') === FALSE && strpos($key, 'tos_checkbox') === FALSE;
++  }, ARRAY_FILTER_USE_KEY);
+   return $conditions;
+ }
+ 
+diff --git a/src/Entity/Accepted.php b/src/Entity/Accepted.php
+index 0c40401..1e48f9f 100644
+--- a/src/Entity/Accepted.php
++++ b/src/Entity/Accepted.php
+@@ -127,6 +127,10 @@ class Accepted extends ContentEntityBase implements AcceptedInterface {
+       ->setLabel(t('Created'))
+       ->setDescription(t('When the Terms & Conditions were accepted.'));
+ 
++    $fields['extra_checkboxes'] = BaseFieldDefinition::create('string')
++      ->setLabel(t('Extra checkboxes'))
++      ->setDescription(t('Indicates the extra checkboxes statuses for the given user.'));
++
+     return $fields;
+   }
+ 
+diff --git a/src/Form/LegalAdminTermsForm.php b/src/Form/LegalAdminTermsForm.php
+index 8b27f16..7ed34b1 100644
+--- a/src/Form/LegalAdminTermsForm.php
++++ b/src/Form/LegalAdminTermsForm.php
+@@ -174,6 +174,20 @@ class LegalAdminTermsForm extends ConfigFormBase {
+       '#format'        => isset($conditions['format']) ? $conditions['format'] : filter_default_format(),
+       '#required'      => TRUE,
+     ];
++    // Terms of service text & description.
++    $form['terms_of_use']['tos_checkbox_text'] = [
++      '#type' => 'text_format',
++      '#title' => $this->t('Checkbox text'),
++      '#format' => 'basic_html',
++      '#required' => TRUE,
++      '#default_value' => !empty($conditions['tos']['tos_checkbox_text']) ? $conditions['tos']['tos_checkbox_text'] : '',
++    ];
++    $form['terms_of_use']['tos_checkbox_description'] = [
++      '#type' => 'text_format',
++      '#title' => $this->t('Checkbox description'),
++      '#format' => 'full_html',
++      '#default_value' => !empty($conditions['tos']['tos_checkbox_description']) ? $conditions['tos']['tos_checkbox_description'] : '',
++    ];
+ 
+     $form['registration'] = [
+       '#type'  => 'details',
+@@ -391,6 +405,10 @@ class LegalAdminTermsForm extends ConfigFormBase {
+     if ($this->legalConditionsUpdated($values)) {
+       $version = legal_version($values['version_handling'], $values['language']);
+ 
++      // Add the terms of service checkbox to the extras array.
++      $extras = $values['extras'];
++      $extras['tos_checkbox_description'] = $values['tos_checkbox_description']['value'];
++      $extras['tos_checkbox_text'] = $values['tos_checkbox_text']['value'];
+       Conditions::create([
+         'version'    => $version['version'],
+         'revision'   => $version['revision'],
+@@ -398,7 +416,7 @@ class LegalAdminTermsForm extends ConfigFormBase {
+         'conditions' => $values['conditions']['value'],
+         'format'     => $values['conditions']['format'],
+         'date'       => time(),
+-        'extras'     => serialize($values['extras']),
++        'extras'     => serialize($extras),
+         'changes'    => $values['changes'],
+       ])->save();
+ 

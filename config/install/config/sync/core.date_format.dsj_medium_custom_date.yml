@@ -1,8 +1,0 @@
-uuid: 0944f121-d617-4894-a97f-f6cc26b139bd
-langcode: en
-status: true
-dependencies: {  }
-id: dsj_medium_custom_date
-label: 'Medium custom date'
-locked: false
-pattern: 'j F Y'

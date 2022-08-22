@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.dsj_national_coalition
+    - node.type.dsj_good_practice
+  module:
+    - gnode
+    - node
+id: group_content_type_e8e8fb729da8b
+label: 'National Coalition: Group node (Good practice)'
+description: 'Adds <em class="placeholder">Good practice</em> content to groups both publicly and privately.'
+group_type: dsj_national_coalition
+content_plugin: 'group_node:dsj_good_practice'
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: false

@@ -1,7 +1,0 @@
-name: 'RDF SKOS test module'
-type: module
-description: 'Test functionality for the RDF SKOS module.'
-package: Testing
-core_version_requirement: ^8.9 || ^9
-dependencies:
-  - rdf_skos:rdf_skos

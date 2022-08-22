@@ -1,0 +1,48 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.dsj_country.field_dsj_country_code
+    - field.field.taxonomy_term.dsj_country.field_dsj_pledge_only
+    - taxonomy.vocabulary.dsj_country
+  module:
+    - rdf_skos
+    - text
+id: taxonomy_term.dsj_country.default
+targetEntityType: taxonomy_term
+bundle: dsj_country
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_dsj_country_code:
+    type: skos_concept_entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  field_dsj_pledge_only:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 12
+    region: content
+  flag_subscribe_term:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 10
+    region: content
+hidden:
+  langcode: true
+  search_api_excerpt: true

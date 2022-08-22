@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - content_translation
+    - rdf_skos
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: skos_concept.skos_concept
+target_entity_type_id: skos_concept
+target_bundle: skos_concept
+default_langcode: site_default
+language_alterable: false

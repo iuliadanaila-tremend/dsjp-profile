@@ -1,0 +1,40 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.group.dsj_listing
+    - field.field.group.dsj_public_group.field_dsj_group_image
+    - field.field.group.dsj_public_group.field_group_description
+    - group.type.dsj_public_group
+    - image.style.thumbnail_100x100_crop
+  module:
+    - image
+id: group.dsj_public_group.dsj_listing
+targetEntityType: group
+bundle: dsj_public_group
+mode: dsj_listing
+content:
+  field_dsj_group_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: content
+      image_style: thumbnail_100x100_crop
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  label:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  changed: true
+  created: true
+  field_group_description: true
+  langcode: true
+  search_api_excerpt: true
+  uid: true

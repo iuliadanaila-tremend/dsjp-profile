@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: dsj_content_icon
+label: 'Content icon'
+effects:
+  970e7c7e-7faa-487b-8728-c72212005fd4:
+    uuid: 970e7c7e-7faa-487b-8728-c72212005fd4
+    id: image_scale
+    weight: 1
+    data:
+      width: 130
+      height: null
+      upscale: false

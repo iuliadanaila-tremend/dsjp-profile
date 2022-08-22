@@ -1,9 +1,0 @@
-langcode: en
-status: true
-dependencies:
-  module:
-    - node
-id: node.oe_compact_teaser
-label: 'OpenEuropa: Compact teaser'
-targetEntityType: node
-cache: true

@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.dsj_pledge_theme
+id: taxonomy_term.dsj_pledge_theme
+target_entity_type_id: taxonomy_term
+target_bundle: dsj_pledge_theme
+default_langcode: site_default
+language_alterable: false

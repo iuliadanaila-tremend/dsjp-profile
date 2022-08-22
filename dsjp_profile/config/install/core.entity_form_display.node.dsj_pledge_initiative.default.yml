@@ -1,0 +1,176 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.dsj_pledge_initiative.body
+    - field.field.node.dsj_pledge_initiative.field_dsj_action_type
+    - field.field.node.dsj_pledge_initiative.field_dsj_digital_skill_level
+    - field.field.node.dsj_pledge_initiative.field_dsj_initiative_beneficiary
+    - field.field.node.dsj_pledge_initiative.field_dsj_initiative_status
+    - field.field.node.dsj_pledge_initiative.field_dsj_initiative_type
+    - field.field.node.dsj_pledge_initiative.field_dsj_performance
+    - field.field.node.dsj_pledge_initiative.field_dsj_pledge
+    - field.field.node.dsj_pledge_initiative.field_dsj_pledge_methodology
+    - field.field.node.dsj_pledge_initiative.field_dsj_quantity
+    - field.field.node.dsj_pledge_initiative.field_dsj_special_interest
+    - field.field.node.dsj_pledge_initiative.field_dsj_target_sector
+    - node.type.dsj_pledge_initiative
+    - workflows.workflow.dsj_pledge_workflow
+  module:
+    - content_moderation
+    - dsjp_pledge
+    - path
+    - text
+id: node.dsj_pledge_initiative.default
+targetEntityType: node
+bundle: dsj_pledge_initiative
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 10
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  created:
+    type: datetime_timestamp
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_dsj_action_type:
+    type: options_select
+    weight: 12
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_dsj_digital_skill_level:
+    type: options_select
+    weight: 13
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_dsj_initiative_beneficiary:
+    type: dsj_initiative_beneficiary_widget
+    weight: 19
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_dsj_initiative_type:
+    type: string_textfield
+    weight: 20
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_dsj_performance:
+    type: options_select
+    weight: 17
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_dsj_pledge:
+    type: entity_reference_autocomplete
+    weight: 21
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_dsj_pledge_methodology:
+    type: options_select
+    weight: 14
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_dsj_quantity:
+    type: number
+    weight: 18
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_dsj_special_interest:
+    type: options_select
+    weight: 16
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_dsj_target_sector:
+    type: options_select
+    weight: 15
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 1
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    weight: 4
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 9
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    weight: 5
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 2
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  url_redirects:
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_dsj_initiative_status: true

@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: strategy
+label: Strategy
+type: 'canonical_entities:node'
+pattern: 'actions/national-initiatives/national-strategies/[node:title]'
+selection_criteria:
+  9d2a28ac-2003-40d5-b7f8-9a36a640a738:
+    id: node_type
+    negate: false
+    uuid: 9d2a28ac-2003-40d5-b7f8-9a36a640a738
+    context_mapping:
+      node: node
+    bundles:
+      dsj_strategy: dsj_strategy
+selection_logic: and
+weight: 3
+relationships: {  }

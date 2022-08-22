@@ -1,0 +1,48 @@
+diff --git a/core/lib/Drupal/Core/Entity/ContentEntityStorageBase.php b/core/lib/Drupal/Core/Entity/ContentEntityStorageBase.php
+index b5cb8ce0fb..ce4d1bfbc8 100644
+--- a/core/lib/Drupal/Core/Entity/ContentEntityStorageBase.php
++++ b/core/lib/Drupal/Core/Entity/ContentEntityStorageBase.php
+@@ -371,8 +371,15 @@ public function createTranslation(ContentEntityInterface $entity, $langcode, arr
+    * {@inheritdoc}
+    */
+   public function createRevision(RevisionableInterface $entity, $default = TRUE, $keep_untranslatable_fields = NULL) {
++    $original = clone $entity;
++    $storage = \Drupal::entityTypeManager()->getStorage($entity->getEntityTypeId());
++    $langcode = $entity->language()->getId();
++    $latest_entity_revision_id = $storage->getLatestRevisionId($entity->id());
++    $entity = $storage->loadRevision($latest_entity_revision_id);
++
+     /** @var \Drupal\Core\Entity\ContentEntityInterface $entity */
+-    $new_revision = clone $entity;
++    $new_revision = $original->hasTranslation($langcode) ?
++      $original->getTranslation($langcode) : $entity->addTranslation($langcode);
+ 
+     $original_keep_untranslatable_fields = $keep_untranslatable_fields;
+ 
+@@ -380,8 +387,8 @@ public function createRevision(RevisionableInterface $entity, $default = TRUE, $
+     // translation and the other translations in the default revision. This
+     // permits the creation of pending revisions that can always be saved as the
+     // new default revision without reverting changes in other languages.
+-    if (!$entity->isNew() && !$entity->isDefaultRevision() && $entity->isTranslatable() && $this->isAnyRevisionTranslated($entity)) {
+-      $active_langcode = $entity->language()->getId();
++    if (!$original->isNew() && !$original->isDefaultRevision() && $original->isTranslatable() && $this->isAnyRevisionTranslated($original)) {
++      $active_langcode = $original->language()->getId();
+       $skipped_field_names = array_flip($this->getRevisionTranslationMergeSkippedFieldNames());
+ 
+       // By default we copy untranslatable field values from the default
+@@ -390,11 +397,13 @@ public function createRevision(RevisionableInterface $entity, $default = TRUE, $
+       // translation in pending revisions. This constraint is enforced by
+       // EntityUntranslatableFieldsConstraintValidator.
+       if (!isset($keep_untranslatable_fields)) {
+-        $keep_untranslatable_fields = $entity->isDefaultTranslation() && $entity->isDefaultTranslationAffectedOnly();
++        $keep_untranslatable_fields = $original->isDefaultTranslation() && $original->isDefaultTranslationAffectedOnly();
+       }
+ 
++      $storage = \Drupal::entityTypeManager()->getStorage($entity->getEntityTypeId());
++      $latest_revision_id = $storage->getLatestTranslationAffectedRevisionId($new_revision->id(), $new_revision->getUntranslated()->language()->getId());
+       /** @var \Drupal\Core\Entity\ContentEntityInterface $default_revision */
+-      $default_revision = $this->load($entity->id());
++      $default_revision = $storage->loadRevision($latest_revision_id);
+       $translation_languages = $default_revision->getTranslationLanguages();
+       foreach ($translation_languages as $langcode => $language) {
+         if ($langcode == $active_langcode) {

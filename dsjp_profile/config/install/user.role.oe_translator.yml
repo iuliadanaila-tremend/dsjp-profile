@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - content_translation
+    - node
+    - system
+    - tmgmt
+    - toolbar
+id: oe_translator
+label: 'Translate content'
+weight: 2
+is_admin: null
+permissions:
+  - 'accept translation jobs'
+  - 'access administration pages'
+  - 'access content'
+  - 'access content overview'
+  - 'access toolbar'
+  - 'translate any entity'

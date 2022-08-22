@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - crop.type.dsj_ratio_1_1_crop
+id: crop.dsj_ratio_1_1_crop
+target_entity_type_id: crop
+target_bundle: dsj_ratio_1_1_crop
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: dsj_banner
+label: Banner
+effects:
+  19d200f3-5b52-48ba-8386-485b01d142da:
+    uuid: 19d200f3-5b52-48ba-8386-485b01d142da
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 1920
+      height: 480
+      anchor: center-center

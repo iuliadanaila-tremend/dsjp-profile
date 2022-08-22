@@ -1,0 +1,152 @@
+diff --git a/config/install/tmgmt.settings.yml b/config/install/tmgmt.settings.yml
+index 9ddc86ab96d28f5fe4e0e94376306dc54eeaa707..9a89d172e54dcde85b1146675a67e20345e80271 100644
+--- a/config/install/tmgmt.settings.yml
++++ b/config/install/tmgmt.settings.yml
+@@ -1,4 +1,5 @@
+ quick_checkout: true
++create_revisions: true
+ anonymous_access: true
+ purge_finished: _never
+ word_count_exclude_tags: true
+diff --git a/config/schema/tmgmt.schema.yml b/config/schema/tmgmt.schema.yml
+index 0c41a2b289c0211aabf5a3f00977c631f8307f93..b4aa4f4ac576afed2c77a6a7378bc6fe4feaf13f 100644
+--- a/config/schema/tmgmt.schema.yml
++++ b/config/schema/tmgmt.schema.yml
+@@ -5,6 +5,9 @@ tmgmt.settings:
+     quick_checkout:
+       type: boolean
+       label: 'Allow quick-checkout'
++    create_revisions:
++      type: boolean
++      label: 'Create revisions'
+     anonymous_access:
+       type: boolean
+       label: 'Allow access to source for translators'
+diff --git a/sources/content/src/Plugin/tmgmt/Source/ContentEntitySource.php b/sources/content/src/Plugin/tmgmt/Source/ContentEntitySource.php
+index 23c2dc87dcd1f39585573715e7fd14e755ca7937..6183404523299861002297611ff8b5509d694117 100644
+--- a/sources/content/src/Plugin/tmgmt/Source/ContentEntitySource.php
++++ b/sources/content/src/Plugin/tmgmt/Source/ContentEntitySource.php
+@@ -2,6 +2,7 @@
+ 
+ namespace Drupal\tmgmt_content\Plugin\tmgmt\Source;
+ 
++use Drupal\Core\Config\ConfigFactoryInterface;
+ use Drupal\Core\Config\Entity\ThirdPartySettingsInterface;
+ use Drupal\Core\Entity\ContentEntityInterface;
+ use Drupal\Core\Entity\EntityInterface;
+@@ -12,6 +13,7 @@ use Drupal\Core\Entity\RevisionLogInterface;
+ use Drupal\Core\Entity\TranslatableRevisionableStorageInterface;
+ use Drupal\Core\Field\FieldDefinitionInterface;
+ use Drupal\Core\Field\FieldItemListInterface;
++use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+ use Drupal\Core\Session\AnonymousUserSession;
+ use Drupal\Core\Url;
+ use Drupal\entity_reference_revisions\EntityNeedsSaveInterface;
+@@ -24,6 +26,7 @@ use Drupal\tmgmt\TMGMTException;
+ use Drupal\Core\Render\Element;
+ use Drupal\Core\Form\FormStateInterface;
+ use Drupal\tmgmt\Entity\Job;
++use Symfony\Component\DependencyInjection\ContainerInterface;
+ 
+ /**
+  * Content entity source plugin controller.
+@@ -35,7 +38,40 @@ use Drupal\tmgmt\Entity\Job;
+  *   ui = "Drupal\tmgmt_content\ContentEntitySourcePluginUi"
+  * )
+  */
+-class ContentEntitySource extends SourcePluginBase implements SourcePreviewInterface, ContinuousSourceInterface {
++class ContentEntitySource extends SourcePluginBase implements SourcePreviewInterface, ContinuousSourceInterface, ContainerFactoryPluginInterface {
++
++  /**
++   * The config factory.
++   *
++   * @var \Drupal\Core\Config\ConfigFactoryInterface
++   */
++  protected $configFactory;
++
++  /**
++   * Constructor for content entity source.
++   *
++   * @param array $configuration
++   *   A configuration array containing information about the plugin instance.
++   * @param string $plugin_id
++   *   The plugin_id for the plugin instance.
++   * @param mixed $plugin_definition
++   *   The plugin implementation definition.
++   * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
++   *   The config factory service.
++   */
++  public function __construct(array $configuration, $plugin_id, $plugin_definition, ConfigFactoryInterface $config_factory) {
++    parent::__construct($configuration, $plugin_id, $plugin_definition);
++    $this->configFactory = $config_factory;
++  }
++
++  /**
++   * {@inheritdoc}
++   */
++  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
++    return new static(
++      $configuration, $plugin_id, $plugin_definition, $container->get('config.factory')
++    );
++  }
+ 
+   /**
+    * Returns the entity for the given job item.
+@@ -591,18 +627,20 @@ class ContentEntitySource extends SourcePluginBase implements SourcePreviewInter
+     }
+ 
+     if ($entity->getEntityType()->isRevisionable()) {
+-      /** @var \Drupal\Core\Entity\TranslatableRevisionableStorageInterface $storage */
+-      $storage = \Drupal::entityTypeManager()->getStorage($entity->getEntityTypeId());
+-
+-      if ($storage instanceof TranslatableRevisionableStorageInterface) {
+-        // Always create a new revision of the translation.
+-        $translation = $storage->createRevision($translation, $translation->isDefaultRevision());
+-
+-        if ($entity instanceof RevisionLogInterface) {
+-          $translation->setRevisionLogMessage($this->t('Created by translation job <a href=":url">@label</a>.', [
+-            ':url' => $item->getJob()->toUrl()->toString(),
+-            '@label' => $item->label(),
+-          ]));
++      if ($this->configFactory->get('tmgmt.settings')->get('create_revisions') ?? TRUE) {
++        /** @var \Drupal\Core\Entity\TranslatableRevisionableStorageInterface $storage */
++        $storage = \Drupal::entityTypeManager()->getStorage($entity->getEntityTypeId());
++
++        if ($storage instanceof TranslatableRevisionableStorageInterface) {
++          // Always create a new revision of the translation.
++          $translation = $storage->createRevision($translation, $translation->isDefaultRevision());
++
++          if ($entity instanceof RevisionLogInterface) {
++            $translation->setRevisionLogMessage($this->t('Created by translation job <a href=":url">@label</a>.', [
++              ':url' => $item->getJob()->toUrl()->toString(),
++              '@label' => $item->label(),
++            ]));
++          }
+         }
+       }
+     }
+diff --git a/src/Form/SettingsForm.php b/src/Form/SettingsForm.php
+index 64c253c5176dbff6071677b0523a41b70424b7b4..c1b44f511fd40fd51be8584ffda612dba05bd295 100644
+--- a/src/Form/SettingsForm.php
++++ b/src/Form/SettingsForm.php
+@@ -40,6 +40,12 @@ class SettingsForm extends ConfigFormBase {
+       '#description' => t("Enabling this will skip the checkout form and instead directly process the translation request in cases where there is only one translator available which doesn't provide any additional configuration options."),
+       '#default_value' => $config->get('quick_checkout'),
+     );
++    $form['workflow']['tmgmt_create_revisions'] = [
++      '#type' => 'checkbox',
++      '#title' => t('Create revisions'),
++      '#description' => t("Enabling this will create revisions for every translation made, if the entity supports revisions."),
++      '#default_value' => $config->get('create_revisions'),
++    ];
+     $form['performance'] = array(
+       '#type' => 'details',
+       '#title' => t('Performance settings'),
+@@ -121,6 +127,7 @@ class SettingsForm extends ConfigFormBase {
+   public function submitForm(array &$form, FormStateInterface $form_state) {
+     $this->config('tmgmt.settings')
+       ->set('quick_checkout', $form_state->getValue('tmgmt_quick_checkout'))
++      ->set('create_revisions', $form_state->getValue('tmgmt_create_revisions'))
+       ->set('purge_finished', $form_state->getValue('tmgmt_purge_finished'))
+       ->set('anonymous_access', $form_state->getValue('tmgmt_anonymous_access'))
+       ->set('respect_text_format', $form_state->getValue('respect_text_format'))

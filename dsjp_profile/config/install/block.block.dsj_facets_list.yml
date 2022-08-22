@@ -1,0 +1,32 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_visibility_groups.block_visibility_group.edsjp_content_listing
+  module:
+    - block_visibility_groups
+    - dsjp_content
+  theme:
+    - edsjp
+id: dsj_facets_list
+theme: edsjp
+region: right_sidebar
+weight: -9
+provider: null
+plugin: dsjp_facets_block
+settings:
+  id: dsjp_facets_block
+  label: 'Filter your results'
+  label_display: visible
+  provider: dsjp_content
+  show_title: 0
+  exclude_empty_facets: 1
+  include_search: 1
+  exclude_fields: field_dsj_digital_technology
+  select_fields: ''
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    context_mapping: {  }
+    block_visibility_group: edsjp_content_listing

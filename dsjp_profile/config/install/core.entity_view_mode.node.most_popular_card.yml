@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.most_popular_card
+label: 'Most Popular Card'
+targetEntityType: node
+cache: true

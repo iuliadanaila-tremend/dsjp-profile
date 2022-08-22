@@ -1,0 +1,41 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - dsjp_content
+  theme:
+    - edsjp
+id: dsj_followusblock
+theme: edsjp
+region: footer
+weight: -10
+provider: null
+plugin: follow_us_block
+settings:
+  id: follow_us_block
+  label: 'Follow us'
+  label_display: '0'
+  provider: dsjp_content
+  social_links:
+    email:
+      enabled: 1
+      link: 'internal:/contact'
+    twitter:
+      enabled: 1
+      link: 'https://twitter.com/DigitalSkillsEU'
+    facebook:
+      enabled: 1
+      link: 'https://www.facebook.com/DigitalSkillsEU'
+    youtube:
+      enabled: 1
+      link: 'https://youtube.com/DigitalEU'
+    instagram:
+      enabled: 1
+      link: 'https://www.instagram.com/DigitalEU'
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    context_mapping: {  }
+    block_visibility_group: ''

@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - flag.flag.voting
+  module:
+    - flag
+id: flag_action.voting_flag
+label: Like
+type: node
+plugin: 'flag_action:voting_flag'
+configuration:
+  flag_id: voting
+  flag_action: flag

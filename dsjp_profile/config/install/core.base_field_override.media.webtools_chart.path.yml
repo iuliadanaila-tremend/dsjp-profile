@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.webtools_chart
+  module:
+    - path
+id: media.webtools_chart.path
+field_name: path
+entity_type: media
+bundle: webtools_chart
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

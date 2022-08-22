@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - dsjp_content
+id: dsjp_webtools_geocoder
+label: 'Dsjp Webtools Geocoder'
+plugin: DsjpWebtoolsGeocoder
+configuration: {  }

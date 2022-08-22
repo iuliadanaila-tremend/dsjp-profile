@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.dsj_national_coalition
+  enforced:
+    config:
+      - user.role.dsj_content_editor
+id: dsj_national_coalition-111523d41
+label: 'Content Editor'
+weight: 5
+internal: true
+audience: outsider
+group_type: dsj_national_coalition
+permissions_ui: false
+permissions: {  }

@@ -1,0 +1,23 @@
+diff --git a/src/Access/GroupPermissionCalculator.php b/src/Access/GroupPermissionCalculator.php
+index cbb1074..36900b6 100644
+--- a/src/Access/GroupPermissionCalculator.php
++++ b/src/Access/GroupPermissionCalculator.php
+@@ -135,6 +135,9 @@ class GroupPermissionCalculator extends GroupPermissionCalculatorBase {
+     foreach ($group_permissions as $group_permission) {
+       if (!empty($group_permission)) {
+         $group = $group_permission->getGroup();
++        if(!$group){
++          continue;
++        }
+         $calculated_permissions->addCacheableDependency($group_permission);
+ 
+         // Get all outsider roles.
+@@ -147,7 +150,7 @@ class GroupPermissionCalculator extends GroupPermissionCalculatorBase {
+           $item = new CalculatedGroupPermissionsItem(
+             CalculatedGroupPermissionsItemInterface::SCOPE_GROUP,
+             $group->id(),
+-            $custom_permissions[$group_role->id()] ?? [],
++            $custom_permissions[$group_role->id()] ?? []
+           );
+ 
+           $calculated_permissions->addItem($item);

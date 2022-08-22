@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.dsj_national_coalition
+  enforced:
+    config:
+      - user.role.dsj_advanced_contributor
+id: dsj_national_coalition-d34efd773
+label: 'Advanced Contributor'
+weight: 2
+internal: true
+audience: outsider
+group_type: dsj_national_coalition
+permissions_ui: false
+permissions: {  }

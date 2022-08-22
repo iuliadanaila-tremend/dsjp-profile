@@ -1,0 +1,25 @@
+langcode: en
+status: false
+dependencies:
+  module:
+    - block_visibility_groups
+    - language
+  theme:
+    - edsjp
+id: languageswitchercontent
+theme: edsjp
+region: site_header_secondary
+weight: -9
+provider: null
+plugin: 'language_block:language_content'
+settings:
+  id: 'language_block:language_content'
+  label: 'Language switcher (Content)'
+  label_display: '0'
+  provider: language
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    context_mapping: {  }
+    block_visibility_group: ''

@@ -1,8 +1,0 @@
-uuid: dd801f45-5e5b-4109-bdce-bd5ffb6e3029
-langcode: en
-status: true
-dependencies: {  }
-id: proposal_submit
-label: 'Proposal submit'
-threshold: !!float 1
-challenge: default

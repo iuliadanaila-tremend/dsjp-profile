@@ -1,0 +1,43 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_dsj_featured_content
+    - node.type.dsj_article
+    - node.type.dsj_digital_skills_resource
+    - node.type.dsj_event
+    - node.type.dsj_funding_opportunity
+    - node.type.dsj_good_practice
+    - node.type.dsj_initiative
+    - node.type.dsj_organization
+    - node.type.dsj_skills_intelligence
+    - node.type.dsj_training_offer
+    - paragraphs.paragraphs_type.dsj_highlighted_listing
+id: paragraph.dsj_highlighted_listing.field_dsj_featured_content
+field_name: field_dsj_featured_content
+entity_type: paragraph
+bundle: dsj_highlighted_listing
+label: 'Featured content'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      dsj_article: dsj_article
+      dsj_digital_skills_resource: dsj_digital_skills_resource
+      dsj_event: dsj_event
+      dsj_funding_opportunity: dsj_funding_opportunity
+      dsj_good_practice: dsj_good_practice
+      dsj_initiative: dsj_initiative
+      dsj_organization: dsj_organization
+      dsj_skills_intelligence: dsj_skills_intelligence
+      dsj_training_offer: dsj_training_offer
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: dsj_article
+field_type: entity_reference

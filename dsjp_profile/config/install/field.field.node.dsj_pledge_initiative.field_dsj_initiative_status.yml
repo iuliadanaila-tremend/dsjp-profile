@@ -1,0 +1,24 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dsj_initiative_status
+    - node.type.dsj_pledge_initiative
+  module:
+    - json_field
+    - tmgmt_content
+third_party_settings:
+  tmgmt_content:
+    excluded: false
+id: node.dsj_pledge_initiative.field_dsj_initiative_status
+field_name: field_dsj_initiative_status
+entity_type: node
+bundle: dsj_pledge_initiative
+label: 'Initiative Beneficiary Status'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: json_native

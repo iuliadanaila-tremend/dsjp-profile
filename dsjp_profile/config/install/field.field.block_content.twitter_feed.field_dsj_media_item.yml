@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.twitter_feed
+    - field.storage.block_content.field_dsj_media_item
+    - media.type.webtools_social_feed
+id: block_content.twitter_feed.field_dsj_media_item
+field_name: field_dsj_media_item
+entity_type: block_content
+bundle: twitter_feed
+label: 'Media Item'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      webtools_social_feed: webtools_social_feed
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

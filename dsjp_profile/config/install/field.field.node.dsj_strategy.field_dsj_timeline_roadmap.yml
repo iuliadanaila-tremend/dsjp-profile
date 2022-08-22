@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dsj_timeline_roadmap
+    - node.type.dsj_strategy
+id: node.dsj_strategy.field_dsj_timeline_roadmap
+field_name: field_dsj_timeline_roadmap
+entity_type: node
+bundle: dsj_strategy
+label: Timeline/roadmap
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

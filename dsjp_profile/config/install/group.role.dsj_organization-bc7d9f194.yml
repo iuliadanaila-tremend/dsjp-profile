@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.dsj_organization
+  enforced:
+    config:
+      - user.role.dsj_advanced_contributor
+id: dsj_organization-bc7d9f194
+label: 'Advanced Contributor'
+weight: -8
+internal: true
+audience: outsider
+group_type: dsj_organization
+permissions_ui: false
+permissions: {  }

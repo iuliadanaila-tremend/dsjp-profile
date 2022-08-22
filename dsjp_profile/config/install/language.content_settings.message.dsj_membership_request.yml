@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - message.template.dsj_membership_request
+id: message.dsj_membership_request
+target_entity_type_id: message
+target_bundle: dsj_membership_request
+default_langcode: site_default
+language_alterable: false

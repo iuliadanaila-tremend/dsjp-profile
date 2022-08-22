@@ -1,0 +1,56 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_dsj_organization_category
+field_name: field_dsj_organization_category
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: ngo
+      label: NGO
+    -
+      value: public_institution
+      label: 'Public institution'
+    -
+      value: formal_education_and_training_provider
+      label: 'Formal Education and Training provider'
+    -
+      value: enterprise_industry
+      label: Enterprise/Industry
+    -
+      value: public_private_partnership
+      label: 'Public-private partnership'
+    -
+      value: other
+      label: Other
+    -
+      value: labor_union
+      label: 'Labor union'
+    -
+      value: think_tank
+      label: Think-tank
+    -
+      value: association
+      label: Association
+    -
+      value: open_learning_platform
+      label: 'Open learning platform'
+    -
+      value: interest_group
+      label: 'Interest group'
+    -
+      value: policy_maker
+      label: 'Policy maker'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

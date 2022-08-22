@@ -1,8 +1,0 @@
-uuid: 7ba7abdb-edf0-4518-bc9a-6218504d89ff
-langcode: en
-status: true
-dependencies: {  }
-name: 'Type of article'
-vid: dsj_type_of_article
-description: ''
-weight: 0

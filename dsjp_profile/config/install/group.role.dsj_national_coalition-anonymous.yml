@@ -1,0 +1,37 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.dsj_national_coalition
+id: dsj_national_coalition-anonymous
+label: Anonymous
+weight: -102
+internal: true
+audience: anonymous
+group_type: dsj_national_coalition
+permissions_ui: true
+permissions:
+  - 'view group_node:dsj_article content'
+  - 'view group_node:dsj_article entity'
+  - 'view group_node:dsj_digital_skills_resource content'
+  - 'view group_node:dsj_digital_skills_resource entity'
+  - 'view group_node:dsj_discussion content'
+  - 'view group_node:dsj_discussion entity'
+  - 'view group_node:dsj_event content'
+  - 'view group_node:dsj_event entity'
+  - 'view group_node:dsj_funding_opportunity content'
+  - 'view group_node:dsj_funding_opportunity entity'
+  - 'view group_node:dsj_good_practice content'
+  - 'view group_node:dsj_good_practice entity'
+  - 'view group_node:dsj_initiative content'
+  - 'view group_node:dsj_initiative entity'
+  - 'view group_node:dsj_organization content'
+  - 'view group_node:dsj_organization entity'
+  - 'view group_node:dsj_page content'
+  - 'view group_node:dsj_page entity'
+  - 'view group_node:dsj_skills_intelligence content'
+  - 'view group_node:dsj_skills_intelligence entity'
+  - 'view group_node:dsj_strategy content'
+  - 'view group_node:dsj_strategy entity'
+  - 'view group_node:dsj_training_offer content'
+  - 'view group_node:dsj_training_offer entity'

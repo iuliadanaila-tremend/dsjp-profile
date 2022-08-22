@@ -1,4 +1,0 @@
-purge_control.purge_settings:
-  title: 'Purge Control Settings'
-  route_name: purge_control.purge_settings
-  base_route: system.performance_settings

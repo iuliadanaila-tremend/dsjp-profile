@@ -1,0 +1,50 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.listing
+    - field.field.node.dsj_pledge_initiative.body
+    - field.field.node.dsj_pledge_initiative.field_dsj_action_type
+    - field.field.node.dsj_pledge_initiative.field_dsj_digital_skill_level
+    - field.field.node.dsj_pledge_initiative.field_dsj_initiative_beneficiary
+    - field.field.node.dsj_pledge_initiative.field_dsj_initiative_status
+    - field.field.node.dsj_pledge_initiative.field_dsj_initiative_type
+    - field.field.node.dsj_pledge_initiative.field_dsj_performance
+    - field.field.node.dsj_pledge_initiative.field_dsj_pledge
+    - field.field.node.dsj_pledge_initiative.field_dsj_pledge_methodology
+    - field.field.node.dsj_pledge_initiative.field_dsj_quantity
+    - field.field.node.dsj_pledge_initiative.field_dsj_special_interest
+    - field.field.node.dsj_pledge_initiative.field_dsj_target_sector
+    - node.type.dsj_pledge_initiative
+  module:
+    - user
+id: node.dsj_pledge_initiative.listing
+targetEntityType: node
+bundle: dsj_pledge_initiative
+mode: listing
+content:
+  field_dsj_initiative_type:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  body: true
+  content_moderation_control: true
+  field_dsj_action_type: true
+  field_dsj_digital_skill_level: true
+  field_dsj_initiative_beneficiary: true
+  field_dsj_initiative_status: true
+  field_dsj_performance: true
+  field_dsj_pledge: true
+  field_dsj_pledge_methodology: true
+  field_dsj_quantity: true
+  field_dsj_special_interest: true
+  field_dsj_target_sector: true
+  langcode: true
+  links: true
+  private_message_link: true
+  search_api_excerpt: true

@@ -1,0 +1,31 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - dsjp_private_message
+    - system
+  theme:
+    - edsjp
+id: privatemessagepagetextblock
+theme: edsjp
+region: content
+weight: -10
+provider: null
+plugin: private_messages_page_block
+settings:
+  id: private_messages_page_block
+  label: 'Private message page text block'
+  label_display: '0'
+  provider: dsjp_private_message
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    context_mapping: {  }
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    context_mapping: {  }
+    pages: "/user/*/private-messages\r\n/user/*/private-messages/*"

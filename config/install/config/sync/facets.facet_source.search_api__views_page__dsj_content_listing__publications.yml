@@ -1,9 +1,0 @@
-uuid: aa10437b-da6b-42f1-be98-99fd2a0ea208
-langcode: en
-status: true
-dependencies: {  }
-id: search_api__views_page__dsj_content_listing__publications
-name: 'search_api:views_page__dsj_content_listing__publications'
-filter_key: null
-url_processor: query_string
-breadcrumb: {  }

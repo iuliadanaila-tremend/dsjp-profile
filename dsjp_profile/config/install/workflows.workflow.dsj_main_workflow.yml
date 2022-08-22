@@ -1,0 +1,153 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.dsj_article
+    - node.type.dsj_digital_skills_resource
+    - node.type.dsj_event
+    - node.type.dsj_funding_opportunity
+    - node.type.dsj_good_practice
+    - node.type.dsj_initiative
+    - node.type.dsj_national_coalition
+    - node.type.dsj_organization
+    - node.type.dsj_page
+    - node.type.dsj_skills_intelligence
+    - node.type.dsj_strategy
+    - node.type.dsj_training_offer
+  module:
+    - content_moderation
+id: dsj_main_workflow
+label: 'Main Workflow'
+type: content_moderation
+type_settings:
+  states:
+    archived:
+      label: Archived
+      weight: 6
+      published: false
+      default_revision: true
+    draft:
+      label: Draft
+      weight: 0
+      published: false
+      default_revision: false
+    imported:
+      label: Imported
+      weight: 8
+      published: false
+      default_revision: false
+    needs_changes:
+      label: 'Needs changes'
+      weight: 3
+      published: false
+      default_revision: false
+    needs_safe_validation:
+      label: 'Needs safe validation'
+      weight: 5
+      published: false
+      default_revision: false
+    published:
+      label: Published
+      weight: 1
+      published: true
+      default_revision: true
+    ready_for_publication:
+      label: 'Ready for publication'
+      weight: 7
+      published: false
+      default_revision: false
+    ready_for_review:
+      label: 'Ready for review'
+      weight: 2
+      published: false
+      default_revision: false
+  transitions:
+    archive:
+      label: Archive
+      from:
+        - published
+      to: archived
+      weight: 6
+    create_new_draft:
+      label: 'Create New Draft'
+      from:
+        - draft
+        - published
+      to: draft
+      weight: 0
+    dsj_create_new_draft_archived:
+      label: 'Create new draft'
+      from:
+        - archived
+      to: draft
+      weight: 10
+    dsj_create_new_draft_imported:
+      label: 'Create new draft'
+      from:
+        - imported
+      to: draft
+      weight: 11
+    needs_changes:
+      label: 'Needs changes'
+      from:
+        - ready_for_review
+      to: needs_changes
+      weight: 4
+    needs_changes_publication:
+      label: 'Needs changes'
+      from:
+        - ready_for_publication
+      to: needs_changes
+      weight: 9
+    needs_changes_safe_validation:
+      label: 'Needs changes'
+      from:
+        - needs_safe_validation
+      to: needs_changes
+      weight: 8
+    needs_safe_validation:
+      label: 'Needs safe validation'
+      from:
+        - ready_for_publication
+      to: needs_safe_validation
+      weight: 5
+    publish:
+      label: Publish
+      from:
+        - ready_for_publication
+      to: published
+      weight: 1
+    publish_safe_validation:
+      label: Publish
+      from:
+        - needs_safe_validation
+      to: published
+      weight: 7
+    ready_for_publication:
+      label: 'Ready for publication'
+      from:
+        - ready_for_review
+      to: ready_for_publication
+      weight: 3
+    ready_for_review:
+      label: 'Ready for review'
+      from:
+        - draft
+        - needs_changes
+      to: ready_for_review
+      weight: 2
+  entity_types:
+    node:
+      - dsj_article
+      - dsj_digital_skills_resource
+      - dsj_event
+      - dsj_funding_opportunity
+      - dsj_good_practice
+      - dsj_initiative
+      - dsj_national_coalition
+      - dsj_organization
+      - dsj_page
+      - dsj_skills_intelligence
+      - dsj_strategy
+      - dsj_training_offer
+  default_moderation_state: draft

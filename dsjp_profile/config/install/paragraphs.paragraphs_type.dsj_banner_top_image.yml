@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies: {  }
+id: dsj_banner_top_image
+label: 'Banner Top Image'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

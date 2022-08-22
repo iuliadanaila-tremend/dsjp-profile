@@ -1,0 +1,17 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - rdf_skos
+id: skos_concept.skos_concept.definition
+field_name: definition
+entity_type: skos_concept
+bundle: skos_concept
+label: Definition
+description: 'The definition of the Concept.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -309,10 +309,6 @@
             "drupal/message_subscribe": {
               "Issue #3101137: Fix endless loop": "https://www.drupal.org/files/issues/2019-12-15/3101137-fix-endless-loop.patch"
             },
-            "openeuropa/oe_theme": {
-              "Infinite loop - Maximum call stack size exceeded.": "web/profiles/contrib/dsjp/patches/oe_theme_ecl_datepicker_infinite_loop.patch",
-              "Pager breaks on ajax requests": "web/profiles/contrib/dsjp/patches/oe_theme_pager_crash_ajax_pages.patch"
-            },
             "drupal/group": {
               "Error when trying to set available content.": "https://www.drupal.org/files/issues/2018-08-08/group-error_set_available_content-2991390-2.patch",
               "Get a token of a node's parent group to create a pathauto pattern": "https://www.drupal.org/files/issues/2020-11-17/group-gnode_tokens-2774827-74.patch",
@@ -326,21 +322,11 @@
               "Hide empty columns for CSV export": "https://www.drupal.org/files/issues/2020-09-04/views_data_export-hide-empty-columns-csv-3169049-2.patch",
               "Feed icon is displaying irrespective of view access parameter in attached page": "https://www.drupal.org/files/issues/2020-09-25/feed_icon_displayed_irrespective_access-3135831-3.patch"
             },
-            "openeuropa/webtools-geocoding-provider": {
-              "Change webtools geocoding provider endpoint": "web/profiles/contrib/dsjp/patches/change_geocoding_url.patch"
-            },
-            "drupal/group_permissions": {
-              "Fix issue when group is missing but there are permissions set.": "web/profiles/contrib/dsjp/patches/group_permissions_deleted_group.patch"
-            },
             "drupal/views_infinite_scroll": {
-              "Views infinite scroll VBO workaround": "web/profiles/contrib/dsjp/patches/views_infinite_scroll_vbo.patch",
               "Any way to Automatically Load Content when scrolling within a DIV?": "https://www.drupal.org/files/issues/2021-02-09/support_for_overflow-_scrolls--2894307-21.patch"
             },
             "drupal/field_group": {
               "Tabs with invalid input are not focused": "https://www.drupal.org/files/issues/2021-04-18/2894351-23.patch"
-            },
-            "drupal/private_message": {
-              "Fix view mode class wrapper": "web/profiles/contrib/dsjp/patches/private_message_view_mode.patch"
             },
             "drupal/default_content": {
               "TypeError: Argument 1 passed to default_content": "https://www.drupal.org/files/issues/2021-05-03/default_content-3202244-null_dependency-5.patch"

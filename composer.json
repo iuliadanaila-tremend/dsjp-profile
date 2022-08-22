@@ -310,7 +310,6 @@
               "Issue #3101137: Fix endless loop": "https://www.drupal.org/files/issues/2019-12-15/3101137-fix-endless-loop.patch"
             },
             "openeuropa/oe_theme": {
-              "Infinite loop - Maximum call stack size exceeded.": "./patches/oe_theme_ecl_datepicker_infinite_loop.patch",
               "Pager breaks on ajax requests": "./patches/oe_theme_pager_crash_ajax_pages.patch"
             },
             "drupal/group": {

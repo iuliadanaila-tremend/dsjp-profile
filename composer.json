@@ -101,7 +101,6 @@
         "drush/drush": "^10.0",
         "easyrdf/easyrdf": "1.0.0 as 0.9.1",
         "harvesthq/chosen": "^1.8",
-        "kenwheeler/slick": "^1.8",
         "npm-asset/moment": "^2.29",
         "npm-asset/moment-timezone": "^0.5.33",
         "npm-asset/select2": "^4.0",

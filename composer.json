@@ -108,7 +108,6 @@
         "openeuropa/composer-artifacts": "^1.0@alpha",
         "openeuropa/oe_authentication": "1.4.0",
         "openeuropa/oe_corporate_blocks": "^4.0",
-        "openeuropa/oe_dashboard_agent": "^0.3.0",
         "openeuropa/oe_media": "^1.12",
         "openeuropa/oe_multilingual": "^1.5",
         "openeuropa/oe_profile": "^0.5",

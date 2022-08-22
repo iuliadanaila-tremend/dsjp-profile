@@ -1,7 +1,7 @@
 {
     "name": "digit/dsjp",
     "description": "A one-stop-shop for digital skills and jobs in the EU.",
-    "type": "project",
+    "type": "profile",
     "license": "EUPL-1.2",
     "minimum-stability": "dev",
     "prefer-stable": true,

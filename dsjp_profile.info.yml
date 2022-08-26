@@ -48,11 +48,6 @@ install:
   - dblog
   - default_content
   - dropsolid_purge
-  - dsjp_authentication_user_fields
-  - dsjp_content
-  - dsjp_responsive_background_image
-  - dsjp_user
-  - dsjp_views
   - dynamic_page_cache
   - editor
   - editor_advanced_link
@@ -131,7 +126,6 @@ install:
   - oe_authentication
   - oe_corporate_blocks
   - oe_corporate_site_info
-  - oe_dashboard_agent
   - oe_media
   - oe_media_avportal
   - oe_media_webtools

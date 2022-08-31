@@ -108,7 +108,6 @@ install:
   - message_digest
   - message_notify
   - message_subscribe
-  - message_subscribe_custom
   - message_subscribe_ui
   - metatag
   - metatag_hreflang
@@ -122,6 +121,7 @@ install:
   - migrate_source_csv
   - migrate_tools
   - multivalue_form_element
+  - mysql
   - node
   - oe_authentication
   - oe_corporate_blocks

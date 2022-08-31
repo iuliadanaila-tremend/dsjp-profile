@@ -111,7 +111,6 @@ module:
   message_digest: 0
   message_notify: 0
   message_subscribe: 0
-  message_subscribe_custom: 0
   message_subscribe_ui: 0
   metatag: 0
   metatag_hreflang: 0

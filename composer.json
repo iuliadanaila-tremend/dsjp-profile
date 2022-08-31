@@ -301,7 +301,8 @@
               "Enabling aggregation breaks views with \"Moderation state\" fields": "https://www.drupal.org/files/issues/2020-08-07/3135409-6.patch",
               "Draft translations should be based on the latest draft of the source language, not the published version": "https://www.drupal.org/files/issues/2021-11-01/3007233-draft_translations_based_on_draft-16.patch",
               "Display Bug when using #states (Forms API) with Ajax Request": "https://www.drupal.org/files/issues/2021-11-05/1091852-150.patch",
-              "Allow end date to be optional": "https://www.drupal.org/files/issues/2022-06-16/drupal-datetime_range-allow_end_date_optional-2794481-139.patch"
+              "Allow end date to be optional": "https://www.drupal.org/files/issues/2022-06-16/drupal-datetime_range-allow_end_date_optional-2794481-139.patch",
+              "Profile parent": "https://www.drupal.org/files/issues/2022-08-15/Drupal-profile-parent-3266057-71.patch"
             },
             "drupal/message_ui": {
               "Deleted and replaced configuration entity error": "https://www.drupal.org/files/issues/2018-12-21/issue-3021923-deleted-replaced-config-error-1.patch"

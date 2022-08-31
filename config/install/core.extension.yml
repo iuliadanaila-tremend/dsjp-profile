@@ -44,13 +44,6 @@ module:
   datetime_range: 0
   dblog: 0
   dropsolid_purge: 0
-  dsjp_authentication_user_fields: 0
-  dsjp_content: 0
-  dsjp_pledge: 0
-  dsjp_pledge_migration: 0
-  dsjp_responsive_background_image: 0
-  dsjp_user: 0
-  dsjp_views: 0
   dynamic_page_cache: 0
   editor: 0
   editor_advanced_link: 0
@@ -111,6 +104,7 @@ module:
   message_digest: 0
   message_notify: 0
   message_subscribe: 0
+  message_subscribe_custom: 0
   message_subscribe_ui: 0
   metatag: 0
   metatag_hreflang: 0

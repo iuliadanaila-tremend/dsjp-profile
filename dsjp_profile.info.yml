@@ -2,8 +2,9 @@ name: DSJP Profile
 type: profile
 description: 'DSJP installation profile.'
 version: VERSION
+project: dsjp_profile
 core_version_requirement: ^8.9 || ^9.1
-install:
+dependencies:
   - address
   - admin_audit_trail
   - admin_audit_trail_auth
@@ -235,4 +236,4 @@ install:
 themes:
   - seven
   - edsjp
-keep_english: true
+config_install: true

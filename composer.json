@@ -330,6 +330,9 @@
             },
             "drupal/purge": {
               "Fix compatibility": "https://www.drupal.org/files/issues/2022-02-24/3259320-10.patch"
+            },
+            "drupal/private_message": {
+              "Missing text format: basic_html.": "https://www.drupal.org/files/issues/2022-02-24/3259320-10.patch"
             }
         }
     },

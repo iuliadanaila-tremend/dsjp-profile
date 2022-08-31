@@ -1,5 +1,8 @@
 display_extenders:
   - metatag_display_extender
+dependencies:
+  module:
+    - metatag_views
 skip_cache: false
 sql_signature: false
 ui:

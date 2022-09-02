@@ -24,6 +24,7 @@ function dsjp_profile_install() {
   \Drupal::service('module_installer')->install(['message_subscribe_custom'], TRUE);
   \Drupal::service('module_installer')->install(['menu_link_content'], TRUE);
   \Drupal::service('module_installer')->install(['menu_item_extras'], TRUE);
+  \Drupal::service('module_installer')->install(['dsjp_default_content'], TRUE);
 
   // We install some menu links, so we have to rebuild the router, to ensure the
   // menu links are valid.

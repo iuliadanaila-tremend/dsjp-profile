@@ -1,0 +1,31 @@
+_meta:
+  version: '1.0'
+  entity_type: media
+  uuid: f3fb057c-a375-4031-b226-1c6c39dda507
+  bundle: image
+  default_langcode: en
+  depends:
+    4751a087-c8d2-4bf0-b46e-2142087642b0: file
+default:
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  name:
+    -
+      value: 'hero image.png'
+  created:
+    -
+      value: 1662131184
+  revision_translation_affected:
+    -
+      value: true
+  oe_media_image:
+    -
+      entity: 4751a087-c8d2-4bf0-b46e-2142087642b0
+      alt: test
+      title: ''
+      width: 1440
+      height: 620

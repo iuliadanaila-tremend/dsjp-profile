@@ -1,0 +1,93 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: ee629ef4-1251-426e-9fc1-e7cacc56463d
+  bundle: dsj_landing_page
+  default_langcode: en
+  depends:
+    f3fb057c-a375-4031-b226-1c6c39dda507: media
+default:
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: Homepage
+  created:
+    -
+      value: 1610644910
+  promote:
+    -
+      value: true
+  sticky:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true
+  moderation_state:
+    -
+      value: published
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 0
+  content_translation_source:
+    -
+      value: und
+  content_translation_outdated:
+    -
+      value: false
+  field_dsj_components:
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: af03bcee-efc3-4292-bb4f-fa8b53bb8f04
+          bundle: dsj_top_banner
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1610958227
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          content_translation_source:
+            -
+              value: und
+          content_translation_outdated:
+            -
+              value: false
+          field_dsj_image:
+            -
+              entity: f3fb057c-a375-4031-b226-1c6c39dda507
+          field_dsj_subtitle:
+            -
+              value: 'The Platform is the home of digital skills information from across Europe and the heart of the Digital Skills & Jobs Community.'
+          field_dsj_text:
+            -
+              value: "<h1>Welcome to the <strong>Digital Skills</strong> and Jobs Platform &nbsp;</h1>\r\n"
+              format: full_html
+  field_dsj_content_proposal_link:
+    -
+      value: false
+  field_dsj_meta_tags:
+    -
+      value:
+        description: 'The Digital Skills and Jobs Platform is the home of digital skills information from across Europe and the heart of the Digital Skills & Jobs Community. '
+        title: 'Home | Digital Skills and Jobs Platform'

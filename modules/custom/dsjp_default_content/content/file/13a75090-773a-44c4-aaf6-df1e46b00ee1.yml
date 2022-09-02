@@ -1,0 +1,27 @@
+_meta:
+  version: '1.0'
+  entity_type: file
+  uuid: 13a75090-773a-44c4-aaf6-df1e46b00ee1
+  default_langcode: en
+default:
+  uid:
+    -
+      target_id: 1
+  filename:
+    -
+      value: Test-Logo-Small-Black-transparent-1-1.png
+  uri:
+    -
+      value: 'public://2022-09/Test-Logo-Small-Black-transparent-1-1.png'
+  filemime:
+    -
+      value: image/png
+  filesize:
+    -
+      value: 37257
+  status:
+    -
+      value: true
+  created:
+    -
+      value: 1662130483

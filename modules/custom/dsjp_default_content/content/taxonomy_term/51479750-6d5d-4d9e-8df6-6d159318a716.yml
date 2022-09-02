@@ -1,0 +1,601 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: 51479750-6d5d-4d9e-8df6-6d159318a716
+  bundle: dsj_country
+  default_langcode: en
+  depends:
+    c05f3364-4c5e-4538-b569-4fae8f14fdde: taxonomy_term
+    'http://publications.europa.eu/resource/authority/country/AUT': skos_concept
+translations:
+  bg:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: Австрия
+    path:
+      -
+        alias: ''
+        langcode: bg
+        pathauto: 0
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1614251955
+  cs:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: Rakousko
+    path:
+      -
+        alias: ''
+        langcode: cs
+        pathauto: 0
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1614251955
+  da:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: Østrig
+    path:
+      -
+        alias: ''
+        langcode: da
+        pathauto: 0
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1614251955
+  de:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: Österreich
+    path:
+      -
+        alias: ''
+        langcode: de
+        pathauto: 0
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1614251955
+  et:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: Austria
+    path:
+      -
+        alias: ''
+        langcode: et
+        pathauto: 0
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1614251955
+  el:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: Αυστρία
+    path:
+      -
+        alias: ''
+        langcode: el
+        pathauto: 0
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1614251955
+  es:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: Austria
+    path:
+      -
+        alias: ''
+        langcode: es
+        pathauto: 0
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1614251955
+  fr:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: Autriche
+    path:
+      -
+        alias: ''
+        langcode: fr
+        pathauto: 0
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1614251955
+  ga:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: 'An Ostair'
+    path:
+      -
+        alias: ''
+        langcode: ga
+        pathauto: 0
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1614251955
+  hr:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: Austrija
+    path:
+      -
+        alias: ''
+        langcode: hr
+        pathauto: 0
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1614251955
+  it:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: Austria
+    path:
+      -
+        alias: ''
+        langcode: it
+        pathauto: 0
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1614251955
+  lv:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: 'Apvienotā Karaliste'
+    path:
+      -
+        alias: ''
+        langcode: lv
+        pathauto: 0
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1614251955
+  lt:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: Austrija
+    revision_translation_affected:
+      -
+        value: true
+    path:
+      -
+        alias: ''
+        langcode: lt
+        pathauto: 0
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1614251955
+  hu:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: Ausztria
+    path:
+      -
+        alias: ''
+        langcode: hu
+        pathauto: 0
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1614251955
+  mt:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: L-Awstrija
+    path:
+      -
+        alias: ''
+        langcode: mt
+        pathauto: 0
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1614251955
+  nl:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: Oostenrijk
+    path:
+      -
+        alias: ''
+        langcode: nl
+        pathauto: 0
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1614251955
+  pl:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: Austrii
+    path:
+      -
+        alias: ''
+        langcode: pl
+        pathauto: 0
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1614251955
+  pt-pt:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: Áustria
+    path:
+      -
+        alias: ''
+        langcode: pt-pt
+        pathauto: 0
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1614251955
+  ro:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: Austria
+    path:
+      -
+        alias: ''
+        langcode: ro
+        pathauto: 0
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1614251955
+  sk:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: Rakúsko
+    path:
+      -
+        alias: ''
+        langcode: sk
+        pathauto: 0
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1614251955
+  sl:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: Avstrija
+    path:
+      -
+        alias: ''
+        langcode: sl
+        pathauto: 0
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1614251955
+  fi:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: Itävalta
+    path:
+      -
+        alias: ''
+        langcode: fi
+        pathauto: 0
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1614251955
+  sv:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: Österrike
+    path:
+      -
+        alias: ''
+        langcode: sv
+        pathauto: 0
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1614251955
+default:
+  revision_log_message:
+    -
+      value: 'Created by translation job <a href="/admin/tmgmt/jobs/3787">Austria</a>.'
+  status:
+    -
+      value: true
+  name:
+    -
+      value: Austria
+  weight:
+    -
+      value: 0
+  parent:
+    -
+      entity: c05f3364-4c5e-4538-b569-4fae8f14fdde
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 0
+  content_translation_source:
+    -
+      value: und
+  content_translation_outdated:
+    -
+      value: false
+  content_translation_uid:
+    -
+      target_id: 1
+  content_translation_created:
+    -
+      value: 1614251955
+  field_dsj_country_code:
+    -
+      entity: 'http://publications.europa.eu/resource/authority/country/AUT'

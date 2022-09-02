@@ -1,0 +1,27 @@
+_meta:
+  version: '1.0'
+  entity_type: file
+  uuid: 4751a087-c8d2-4bf0-b46e-2142087642b0
+  default_langcode: en
+default:
+  uid:
+    -
+      target_id: 1
+  filename:
+    -
+      value: 'hero image.png'
+  uri:
+    -
+      value: 'public://2022-09/hero image.png'
+  filemime:
+    -
+      value: image/png
+  filesize:
+    -
+      value: 634705
+  status:
+    -
+      value: true
+  created:
+    -
+      value: 1662131184

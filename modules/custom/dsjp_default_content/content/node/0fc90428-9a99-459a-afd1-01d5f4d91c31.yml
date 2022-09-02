@@ -1,0 +1,87 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: 0fc90428-9a99-459a-afd1-01d5f4d91c31
+  bundle: dsj_article
+  default_langcode: en
+  depends:
+    51479750-6d5d-4d9e-8df6-6d159318a716: taxonomy_term
+    13a75090-773a-44c4-aaf6-df1e46b00ee1: file
+    1aeb2096-171b-4ea9-a750-d97e7b680c5d: taxonomy_term
+default:
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: 'Test article'
+  created:
+    -
+      value: 1662130406
+  promote:
+    -
+      value: false
+  sticky:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true
+  moderation_state:
+    -
+      value: published
+  path:
+    -
+      alias: /latest/news/test-article
+      langcode: en
+      pathauto: 1
+  content_translation_source:
+    -
+      value: und
+  content_translation_outdated:
+    -
+      value: false
+  body:
+    -
+      value: "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&nbsp;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n"
+      format: full_html
+      summary: ''
+  field_dsj_comments:
+    -
+      status: 2
+      cid: 0
+      last_comment_timestamp: 1662130499
+      last_comment_name: ''
+      last_comment_uid: 1
+      comment_count: 0
+  field_dsj_digital_skill_level:
+    -
+      value: basic
+  field_dsj_digital_technology:
+    -
+      value: 'http://data.europa.eu/uxp/3030'
+  field_dsj_geographic_scope:
+    -
+      entity: 51479750-6d5d-4d9e-8df6-6d159318a716
+  field_dsj_image:
+    -
+      entity: 13a75090-773a-44c4-aaf6-df1e46b00ee1
+      alt: Test
+      title: Test
+      width: 2480
+      height: 2480
+  field_dsj_publish_in_core:
+    -
+      value: false
+  field_dsj_type_of_article:
+    -
+      entity: 1aeb2096-171b-4ea9-a750-d97e7b680c5d
+  field_dsj_type_of_initiative:
+    -
+      value: eu_institutional_initiative

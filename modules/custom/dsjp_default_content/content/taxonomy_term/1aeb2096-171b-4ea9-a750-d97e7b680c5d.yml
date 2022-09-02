@@ -1,0 +1,699 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: 1aeb2096-171b-4ea9-a750-d97e7b680c5d
+  bundle: dsj_type_of_article
+  default_langcode: en
+translations:
+  bg:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: Новини
+    description:
+      -
+        value: "<p>Следете актуалните тенденции в областта на цифровите технологии на национално, европейско и световно равнище.\_Тук можете да намерите информация за най-новите инициативи, проекти, възможности и развития в областта на цифровите умения и работни места.\_\_</p>\r\n\r\n<p>\_</p>\r\n"
+        format: full_html
+    path:
+      -
+        alias: /latest/novini
+        langcode: bg
+        pathauto: 1
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1618567160
+  cs:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: Zprávy
+    description:
+      -
+        value: "<p>Držet krok se současnými digitálními trendy na vnitrostátní, evropské a celosvětové úrovni.\_Zde naleznete informace o nejnovějších relevantních iniciativách, projektech, příležitostech a vývoji v oblasti digitálních dovedností a pracovních míst.\_\_</p>\r\n\r\n<p>\_</p>\r\n"
+        format: full_html
+    path:
+      -
+        alias: /latest/zpravy
+        langcode: cs
+        pathauto: 1
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1618567160
+  da:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: Nyheder
+    description:
+      -
+        value: "<p>Holde sig ajour med de nuværende digitale tendenser på nationalt, europæisk og globalt plan.\_Her kan du finde oplysninger om de seneste relevante initiativer, projekter, muligheder og udviklinger vedrørende digitale færdigheder og job.\_\_</p>\r\n\r\n<p>\_</p>\r\n"
+        format: full_html
+    path:
+      -
+        alias: /latest/nyheder
+        langcode: da
+        pathauto: 1
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1618567160
+  de:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: Nachrichten
+    description:
+      -
+        value: "<p>Halten Sie sich an die aktuellen digitalen Trends auf nationaler, europäischer und globaler Ebene.\_Hier finden Sie Informationen über die jüngsten einschlägigen Initiativen, Projekte, Chancen und Entwicklungen im Bereich digitale Kompetenzen und Arbeitsplätze.\_\_</p>\r\n\r\n<p>\_</p>\r\n"
+        format: full_html
+    path:
+      -
+        alias: /latest/nachrichten
+        langcode: de
+        pathauto: 1
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1618567160
+  et:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: Uudised
+    description:
+      -
+        value: "<p>Hoidke end kursis praeguste digitaalsete suundumustega riiklikul, Euroopa ja ülemaailmsel tasandil.\_Siit leiate teavet digitaalsete oskuste ja töökohtadega seotud uusimate asjakohaste algatuste, projektide, võimaluste ja arengute kohta.\_\_</p>\r\n\r\n<p>\_</p>\r\n"
+        format: full_html
+    path:
+      -
+        alias: /latest/uudised
+        langcode: et
+        pathauto: 1
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1618567160
+  el:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: Ειδήσεις
+    description:
+      -
+        value: "<p>Να ενημερώνεστε για τις τρέχουσες ψηφιακές τάσεις σε εθνικό, ευρωπαϊκό και παγκόσμιο επίπεδο.\_Εδώ μπορείτε να βρείτε πληροφορίες για τις τελευταίες σχετικές πρωτοβουλίες, έργα, ευκαιρίες και εξελίξεις σχετικά με τις ψηφιακές δεξιότητες και θέσεις εργασίας.\_\_</p>\r\n\r\n<p>\_</p>\r\n"
+        format: full_html
+    path:
+      -
+        alias: /latest/eidiseis
+        langcode: el
+        pathauto: 1
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1618567160
+  es:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: Noticias
+    description:
+      -
+        value: "<p>Mantenerse al día de las tendencias digitales actuales a escala nacional, europea y mundial.\_Aquí encontrará información sobre las últimas iniciativas, proyectos, oportunidades y avances en el ámbito de las competencias digitales y el empleo.\_\_</p>\r\n\r\n<p>\_</p>\r\n"
+        format: full_html
+    path:
+      -
+        alias: /latest/noticias
+        langcode: es
+        pathauto: 1
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1618567160
+  fr:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: Actualité
+    description:
+      -
+        value: "<p>Rester au courant des tendances numériques actuelles aux niveaux national, européen et mondial.\_Vous trouverez ici des informations sur les dernières initiatives, projets, possibilités et évolutions dans le domaine des compétences numériques et des emplois.\_\_</p>\r\n\r\n<p>\_</p>\r\n"
+        format: full_html
+    revision_translation_affected:
+      -
+        value: true
+    path:
+      -
+        alias: /latest/actualite
+        langcode: fr
+        pathauto: 1
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1618567160
+  ga:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: Nuacht
+    description:
+      -
+        value: "<p>Bí ar an eolas faoi na treochtaí digiteacha reatha ar an leibhéal náisiúnta, ar an leibhéal Eorpach agus ar an leibhéal domhanda.\_Gheobhaidh tú eolas anseo faoi na tionscnaimh, na tionscadail, na deiseanna agus na forbairtí is déanaí maidir le scileanna digiteacha agus poist dhigiteacha.\_\_</p>\r\n\r\n<p>\_</p>\r\n"
+        format: full_html
+    path:
+      -
+        alias: /latest/nuacht
+        langcode: ga
+        pathauto: 1
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1618567160
+  hr:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: Vijesti
+    description:
+      -
+        value: "<p>Budite u skladu s trenutačnim digitalnim trendovima na nacionalnoj, europskoj i globalnoj razini.\_Ovdje možete pronaći informacije o najnovijim relevantnim inicijativama, projektima, prilikama i kretanjima u području digitalnih vještina i radnih mjesta.\_\_</p>\r\n\r\n<p>\_</p>\r\n"
+        format: full_html
+    path:
+      -
+        alias: /latest/vijesti
+        langcode: hr
+        pathauto: 1
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1618567160
+  it:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: Notizie
+    description:
+      -
+        value: "<p>Restare al passo con le attuali tendenze digitali a livello nazionale, europeo e mondiale.\_Qui troverete informazioni sulle iniziative, i progetti, le opportunità e gli sviluppi più recenti in materia di competenze digitali e posti di lavoro.\_\_</p>\r\n\r\n<p>\_</p>\r\n"
+        format: full_html
+    path:
+      -
+        alias: /latest/notizie
+        langcode: it
+        pathauto: 1
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1618567160
+  lv:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: Jaunumi
+    description:
+      -
+        value: "<p>Sekot līdzi pašreizējām digitālajām tendencēm valstu, Eiropas un pasaules līmenī.\_Šeit varat atrast informāciju par jaunākajām attiecīgajām iniciatīvām, projektiem, iespējām un attīstību digitālo prasmju un darbvietu jomā.\_\_</p>\r\n\r\n<p>\_</p>\r\n"
+        format: full_html
+    path:
+      -
+        alias: /latest/jaunumi
+        langcode: lv
+        pathauto: 1
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1618567160
+  lt:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: Naujienos
+    description:
+      -
+        value: "<p>Domėkitės dabartinėmis skaitmeninėmis tendencijomis nacionaliniu, Europos ir pasauliniu lygmenimis.\_Čia rasite informacijos apie naujausias susijusias iniciatyvas, projektus, galimybes ir pokyčius skaitmeninių įgūdžių ir darbo srityje.\_\_</p>\r\n\r\n<p>\_</p>\r\n"
+        format: full_html
+    path:
+      -
+        alias: /latest/naujienos
+        langcode: lt
+        pathauto: 1
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1618567160
+  hu:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: Hírek
+    description:
+      -
+        value: "<p>Tartsa naprakészen a jelenlegi digitális trendeket nemzeti, európai és globális szinten egyaránt.\_Itt tájékozódhat a digitális készségekkel és munkahelyekkel kapcsolatos legújabb kezdeményezésekről, projektekről, lehetőségekről és fejleményekről.\_\_</p>\r\n\r\n<p>\_</p>\r\n"
+        format: full_html
+    path:
+      -
+        alias: /latest/hirek
+        langcode: hu
+        pathauto: 1
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1618567160
+  mt:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: Aħbarijiet
+    description:
+      -
+        value: "<p>Żomm ruħek aġġornat dwar ix-xejriet diġitali attwali fil-livell nazzjonali, Ewropew u globali.\_Hawnhekk tista’ ssib informazzjoni dwar l-aħħar inizjattivi, proġetti, opportunitajiet u żviluppi rilevanti dwar il-ħiliet diġitali u l-impjiegi.\_\_</p>\r\n\r\n<p>\_</p>\r\n"
+        format: full_html
+    path:
+      -
+        alias: /latest/ahbarijiet
+        langcode: mt
+        pathauto: 1
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1618567160
+  nl:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: Nieuws
+    description:
+      -
+        value: "<p>Blijf op de hoogte van de huidige digitale trends op nationaal, Europees en mondiaal niveau.\_Hier vindt u informatie over de meest recente relevante initiatieven, projecten, kansen en ontwikkelingen op het gebied van digitale vaardigheden en banen.\_\_</p>\r\n\r\n<p>\_</p>\r\n"
+        format: full_html
+    path:
+      -
+        alias: /latest/nieuws
+        langcode: nl
+        pathauto: 1
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1618567160
+  pl:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: Wiadomości
+    description:
+      -
+        value: "<p>Aktualizacja aktualnych tendencji cyfrowych na szczeblu krajowym, europejskim i światowym.\_Tutaj można znaleźć informacje na temat najnowszych istotnych inicjatyw, projektów, możliwości i rozwoju w zakresie umiejętności cyfrowych i miejsc pracy.\_\_</p>\r\n\r\n<p>\_</p>\r\n"
+        format: full_html
+    path:
+      -
+        alias: /latest/wiadomosci
+        langcode: pl
+        pathauto: 1
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1618567160
+  pt-pt:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: Notícias
+    description:
+      -
+        value: "<p>Manter-se a par das atuais tendências digitais a nível nacional, europeu e mundial.\_Aqui pode encontrar informações sobre as mais recentes iniciativas, projetos, oportunidades e desenvolvimentos em matéria de competências e empregos digitais.\_\_</p>\r\n\r\n<p>\_</p>\r\n"
+        format: full_html
+    path:
+      -
+        alias: /latest/noticias
+        langcode: pt-pt
+        pathauto: 1
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1618567160
+  ro:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: Știri
+    description:
+      -
+        value: "<p>Fiți la curent cu tendințele digitale actuale la nivel național, european și mondial.\_Aici puteți găsi informații despre cele mai recente inițiative, proiecte, oportunități și evoluții în materie de competențe digitale și locuri de muncă.\_\_</p>\r\n\r\n<p>\_</p>\r\n"
+        format: full_html
+    path:
+      -
+        alias: /latest/stiri
+        langcode: ro
+        pathauto: 1
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1618567160
+  sk:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: Správy
+    description:
+      -
+        value: "<p>Aktualizujte aktuálne digitálne trendy na vnútroštátnej, európskej a celosvetovej úrovni.\_Tu nájdete informácie o najnovších relevantných iniciatívach, projektoch, príležitostiach a vývoji v oblasti digitálnych zručností a pracovných miest.\_\_</p>\r\n\r\n<p>\_</p>\r\n"
+        format: full_html
+    path:
+      -
+        alias: /latest/spravy
+        langcode: sk
+        pathauto: 1
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1618567160
+  sl:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: Novice
+    description:
+      -
+        value: "<p>Spremljajte aktualne digitalne trende na nacionalni, evropski in svetovni ravni.\_Tukaj so na voljo informacije o najnovejših ustreznih pobudah, projektih, priložnostih in razvoju na področju digitalnih znanj in spretnosti ter delovnih mest.\_\_</p>\r\n\r\n<p>\_</p>\r\n"
+        format: full_html
+    path:
+      -
+        alias: /latest/novice
+        langcode: sl
+        pathauto: 1
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1618567160
+  fi:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: Uutiset
+    description:
+      -
+        value: "<p>Pysy ajan tasalla nykyisistä digitaalisista suuntauksista kansallisella, Euroopan ja maailmanlaajuisella tasolla.\_Täältä löytyy tietoa digitaalisiin taitoihin ja työpaikkoihin liittyvistä viimeisimmistä aloitteista, hankkeista, mahdollisuuksista ja kehityksestä.\_\_</p>\r\n\r\n<p>\_</p>\r\n"
+        format: full_html
+    path:
+      -
+        alias: /latest/uutiset
+        langcode: fi
+        pathauto: 1
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1618567160
+  sv:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: Nyheter
+    description:
+      -
+        value: "<p>Hålla sig à jour med aktuella digitala trender på nationell, europeisk och global nivå.\_Här hittar du information om de senaste initiativen, projekten, möjligheterna och utvecklingen när det gäller digitala färdigheter och jobb.\_\_</p>\r\n\r\n<p>\_</p>\r\n"
+        format: full_html
+    path:
+      -
+        alias: /latest/nyheter
+        langcode: sv
+        pathauto: 1
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1618567160
+default:
+  revision_log_message:
+    -
+      value: 'Created by translation job <a href="/admin/tmgmt/jobs/1825">News</a>.'
+  status:
+    -
+      value: true
+  name:
+    -
+      value: News
+  description:
+    -
+      value: "<p>Stay up to date with current digital trends&nbsp;on national, European and global level.&nbsp;Here you can find information on the latest&nbsp;relevant initiatives, projects, opportunities and&nbsp;developments on digital skills and jobs.&nbsp;&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n"
+      format: full_html
+  weight:
+    -
+      value: 0
+  parent:
+    -
+      target_id: 0
+  path:
+    -
+      alias: /latest/news
+      langcode: en
+      pathauto: 1
+  content_translation_source:
+    -
+      value: und
+  content_translation_outdated:
+    -
+      value: false
+  content_translation_uid:
+    -
+      target_id: 1
+  content_translation_created:
+    -
+      value: 1618567160
+  field_dsj_meta_tags:
+    -
+      value:
+        title: 'News – Digital Skills and Jobs Platform'
+        description: 'Latest information, initiatives, projects, opportunities and trends on digital skills and jobs at national, European and global level.'
+  field_dsj_type_of_article_code:
+    -
+      value: news

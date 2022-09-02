@@ -1,0 +1,27 @@
+_meta:
+  version: '1.0'
+  entity_type: file
+  uuid: 6ca4dcbc-64e3-472c-85c9-47e7057452fd
+  default_langcode: en
+default:
+  uid:
+    -
+      target_id: 1
+  filename:
+    -
+      value: 'Training provider@2.png'
+  uri:
+    -
+      value: 'public://2021-02/Training provider@2.png'
+  filemime:
+    -
+      value: image/png
+  filesize:
+    -
+      value: 1800
+  status:
+    -
+      value: true
+  created:
+    -
+      value: 1612339786

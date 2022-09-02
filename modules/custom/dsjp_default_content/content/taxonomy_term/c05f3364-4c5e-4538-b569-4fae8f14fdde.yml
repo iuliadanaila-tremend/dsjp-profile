@@ -1,0 +1,600 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: c05f3364-4c5e-4538-b569-4fae8f14fdde
+  bundle: dsj_country
+  default_langcode: en
+  depends:
+    'http://publications.europa.eu/resource/authority/country/EUR': skos_concept
+translations:
+  bg:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: 'Европейски съюз'
+    path:
+      -
+        alias: ''
+        langcode: bg
+        pathauto: 0
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1614251947
+  cs:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: 'Evropská Unie'
+    path:
+      -
+        alias: ''
+        langcode: cs
+        pathauto: 0
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1614251947
+  da:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: 'Den Europæiske Union'
+    path:
+      -
+        alias: ''
+        langcode: da
+        pathauto: 0
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1614251947
+  de:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: 'Europäischen Union'
+    path:
+      -
+        alias: ''
+        langcode: de
+        pathauto: 0
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1614251947
+  et:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: 'Euroopa Liit'
+    path:
+      -
+        alias: ''
+        langcode: et
+        pathauto: 0
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1614251947
+  el:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: 'Ευρωπαϊκής Ένωσης'
+    path:
+      -
+        alias: ''
+        langcode: el
+        pathauto: 0
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1614251947
+  es:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: 'Unión Europea'
+    path:
+      -
+        alias: ''
+        langcode: es
+        pathauto: 0
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1614251947
+  fr:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: 'L’Union européenne'
+    path:
+      -
+        alias: ''
+        langcode: fr
+        pathauto: 0
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1614251947
+  ga:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: 'An tAontas Eorpach'
+    path:
+      -
+        alias: ''
+        langcode: ga
+        pathauto: 0
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1614251947
+  hr:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: 'Europska Unija'
+    path:
+      -
+        alias: ''
+        langcode: hr
+        pathauto: 0
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1614251947
+  it:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: 'Unione europea'
+    path:
+      -
+        alias: ''
+        langcode: it
+        pathauto: 0
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1614251947
+  lv:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: 'Eiropas Savienība'
+    path:
+      -
+        alias: ''
+        langcode: lv
+        pathauto: 0
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1614251947
+  lt:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: 'Europos Sąjunga'
+    path:
+      -
+        alias: ''
+        langcode: lt
+        pathauto: 0
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1614251947
+  hu:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: 'Európai Unió'
+    path:
+      -
+        alias: ''
+        langcode: hu
+        pathauto: 0
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1614251947
+  mt:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: 'Unjoni Ewropea'
+    path:
+      -
+        alias: ''
+        langcode: mt
+        pathauto: 0
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1614251947
+  nl:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: 'Europese Unie'
+    path:
+      -
+        alias: ''
+        langcode: nl
+        pathauto: 0
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1614251947
+  pl:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: 'Unii Europejskiej'
+    path:
+      -
+        alias: ''
+        langcode: pl
+        pathauto: 0
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1614251947
+  pt-pt:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: 'União Europeia'
+    path:
+      -
+        alias: ''
+        langcode: pt-pt
+        pathauto: 0
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1614251947
+  ro:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: 'Uniunea Europeană'
+    path:
+      -
+        alias: ''
+        langcode: ro
+        pathauto: 0
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1614251947
+  sk:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: 'Európska únia'
+    path:
+      -
+        alias: ''
+        langcode: sk
+        pathauto: 0
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1614251947
+  sl:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: 'Evropska unija'
+    path:
+      -
+        alias: ''
+        langcode: sl
+        pathauto: 0
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1614251947
+  fi:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: 'Euroopan unioni'
+    path:
+      -
+        alias: ''
+        langcode: fi
+        pathauto: 0
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1614251947
+  sv:
+    status:
+      -
+        value: true
+    name:
+      -
+        value: 'Europeiska unionen'
+    revision_translation_affected:
+      -
+        value: true
+    path:
+      -
+        alias: ''
+        langcode: sv
+        pathauto: 0
+    content_translation_source:
+      -
+        value: en
+    content_translation_outdated:
+      -
+        value: false
+    content_translation_uid:
+      -
+        target_id: 1
+    content_translation_created:
+      -
+        value: 1614251947
+default:
+  revision_log_message:
+    -
+      value: 'Created by translation job <a href="/admin/tmgmt/jobs/4420">European Union</a>.'
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'European Union'
+  weight:
+    -
+      value: 4
+  parent:
+    -
+      target_id: 0
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 0
+  content_translation_source:
+    -
+      value: und
+  content_translation_outdated:
+    -
+      value: false
+  content_translation_uid:
+    -
+      target_id: 1
+  content_translation_created:
+    -
+      value: 1614251947
+  field_dsj_country_code:
+    -
+      entity: 'http://publications.europa.eu/resource/authority/country/EUR'

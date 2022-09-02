@@ -3,6 +3,7 @@ status: true
 dependencies:
   config:
     - filter.format.basic_html
+    - filter.format.dsjp_basic_mention
     - filter.format.full_html
     - node.type.dsj_discussion
     - node.type.dsj_pledge
@@ -59,6 +60,7 @@ permissions:
   - 'use private messaging system'
   - 'use rest endpoints'
   - 'use text format basic_html'
+  - 'use text format dsjp_basic_mention'
   - 'use text format full_html'
   - 'view Terms and Conditions'
   - 'view media'

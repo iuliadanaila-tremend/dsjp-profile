@@ -3,7 +3,6 @@ status: true
 dependencies:
   config:
     - filter.format.basic_html
-    - filter.format.dsjp_basic_mention
     - media.type.document
     - media.type.webtools_social_feed
     - node.type.dsj_article
@@ -170,7 +169,6 @@ permissions:
   - 'use dsj_main_workflow transition ready_for_publication'
   - 'use dsj_main_workflow transition ready_for_review'
   - 'use text format basic_html'
-  - 'use text format dsjp_basic_mention'
   - 'view any unpublished content'
   - 'view any webform submission'
   - 'view dsj_article revisions'

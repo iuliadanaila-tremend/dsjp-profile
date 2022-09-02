@@ -1,119 +1,199 @@
-# Digital Skills and Jobs profile
+# Digital Skills and Jobs Platform sample install
 
-Basic installation profile, all it does is:
+<p>An installation profile for a Digital Skills and Jobs Platform installation, a one-stop-shop for digital skills and jobs in the EU.
 
-1. Enable the bare minimum amount of core modules.
-2. Setup `seven` as administrative theme and edsjp as front-end theme.
+Provides custom modules, a custom theme and a configuration for all the functionality of DSJP.
+</p>
 
-## Rationale
+## 1. Development
 
-Opting for a minimalistic installation profile will make it easier to deal with a fully distributed approach: the
-installation profile is seen as an empty shell that will never pose any compatibility issue to any of the site's modules
-and themes. Most importantly this will allow modules and themes maintainers to properly version their work semantically.
+We recommend that you install this profile as part of the DSJP project distribution  using Composer.
 
-This profile will also be used to build a basic site using the multiple components of OpenEuropa.
+If the profile will be installed on a different Drupal project, please follow the instructions below:
 
-## Installation
 
-The recommended way of installing the OpenEuropa Profile is via a [Composer-based workflow][2].
-
-In the root of the project, run
-
-```
-$ composer install
+In your project’scomposer.json file make sure the following properties are set as shown:
+```bash
+"minimum-stability": "dev",
+"prefer-stable": true,
 ```
 
-Before setting up and installing the site make sure to customize default configuration values by copying `./runner.yml.dist`
-to `./runner.yml` and override relevant properties.
+and that you are using "drupal/core": "^9.4"
 
-To set up the project run:
-
-```
-$ ./vendor/bin/run drupal:site-setup
-```
-
-This will:
-
-- Symlink the profile in `./build/profiles/custom/oe_profile` so that it's available to the target site
-- Setup Drush and Drupal's settings using values from `./runner.yml.dist`
-- Setup Behat configuration file using values from `./runner.yml.dist`
-
-**Please note:** project files and directories are symlinked within the target site by using the
-[OpenEuropa Task Runner's Drupal project symlink](https://github.com/openeuropa/task-runner-drupal-project-symlink)
-command.
-
-If you add a new file or directory in the root of the project, you need to re-run `drupal:site-setup` in order to make
-sure they are correctly symlinked.
-
-If you don't want to re-run a full site setup for that, you can simply run:
-
-```
-$ ./vendor/bin/run drupal:symlink-project
-```
-
-After a successful setup install the site by running:
-
-```
-$ ./vendor/bin/run drupal:site-install
-```
-
-This will:
-
-- Install the target site
-- Set the OpenEuropa Theme as the default theme
-- Enable development modules
-
-### Using Docker Compose
-
-The setup procedure described above can be sensitively simplified by using Docker Compose.
-
-Requirements:
-
-- [Docker][3]
-- [Docker-compose][4]
-
-Copy docker-compose.yml.dist into docker-compose.yml.
-
-You can make any alterations you need for your local Docker setup. However, the defaults should be enough to set the project up.
-
-Run:
-
-```
-$ docker-compose up -d
-```
-
-Then:
-
-```
-$ docker-compose exec web composer install
-$ docker-compose exec web ./vendor/bin/run drupal:site-install
-```
-
-Your test site will be available at [http://localhost:8080/build](http://localhost:8080/build).
-
-Run tests as follows:
-
-```
-$ docker-compose exec web ./vendor/bin/behat
-```
-
-#### Step debugging
-
-To enable step debugging from the command line, pass the `XDEBUG_SESSION` environment variable with any value to
-the container:
+Add the following to the repositories section of composer.json:
 
 ```bash
-docker-compose exec -e XDEBUG_SESSION=1 web <your command>
+"repositories": {
+    "drupal": {
+      "type": "composer",
+      "url": "https://packages.drupal.org/8"
+    },
+    "assets": {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
+    },
+    "digit/dsjp": {
+      "type": "vcs",
+      "url": "https://github.com/iuliadanaila-tremend/dsjp-profile",
+      "name": "digit/dsjp"
+    },
+    "chosen": {
+      "type": "package",
+      "package": {
+        "name": "harvesthq/chosen",
+        "version": "1.8.7",
+        "type": "drupal-library",
+        "source": {
+          "url": "https://github.com/harvesthq/chosen-package.git",
+          "type": "git",
+          "reference": "v1.8.7"
+        }
+      }
+    },
+    "jquery-timepicker": {
+      "type": "package",
+      "package": {
+        "name": "bower-asset/timepicker",
+        "version": "1.11.14",
+        "type": "drupal-library",
+        "source": {
+          "url": "https://github.com/jonthornton/jquery-timepicker.git",
+          "type": "git",
+          "reference": "1.11.14"
+        }
+      }
+    },
+    "slick": {
+      "type": "package",
+      "package": {
+        "name": "kenwheeler/slick",
+        "version": "1.8.1",
+        "type": "drupal-library",
+        "dist": {
+          "url": "https://github.com/kenwheeler/slick/archive/v1.8.1.zip",
+          "type": "zip"
+        }
+      }
+    },
+    "blazy": {
+      "type": "package",
+      "package": {
+        "name": "dinbror/blazy",
+        "version": "1.8.2",
+        "type": "drupal-library",
+        "extra": {
+          "installer-name": "blazy"
+        },
+        "source": {
+          "type": "git",
+          "url": "https://github.com/dinbror/blazy",
+          "reference": "1.8.2"
+        }
+      }
+    },
+    "flag-icons": {
+      "type": "package",
+      "package": {
+        "name": "alexsobolenko/flag-icons",
+        "version": "1.0",
+        "type": "drupal-library",
+        "dist": {
+          "url": "https://github.com/alexsobolenko/flag-icons/archive/master.zip",
+          "type": "zip"
+        }
+      }
+    },
+    "jquery-ui-touch-punch": {
+      "type": "package",
+      "package": {
+        "name": "furf/jquery-ui-touch-punch",
+        "version": "dev-master",
+        "type": "drupal-library",
+        "dist": {
+          "url": "https://github.com/furf/jquery-ui-touch-punch/archive/refs/heads/master.zip",
+          "type": "zip"
+        }
+      }
+    },
+    "colorbutton": {
+      "type": "package",
+      "package": {
+        "name": "ckeditor/colorbutton",
+        "version": "4.16.1",
+        "type": "drupal-library",
+        "dist": {
+          "url": "https://download.ckeditor.com/colorbutton/releases/colorbutton_4.16.1.zip",
+          "type": "zip"
+        }
+      }
+    },
+    "panelbutton": {
+      "type": "package",
+      "package": {
+        "name": "ckeditor/panelbutton",
+        "version": "4.16.1",
+        "type": "drupal-library",
+        "dist": {
+          "url": "https://download.ckeditor.com/panelbutton/releases/panelbutton_4.16.1.zip",
+          "type": "zip"
+        }
+      }
+    },
+    "sparql_entity_storage": {
+      "type": "git",
+      "url": "https://git.drupalcode.org/project/sparql_entity_storage.git"
+    },
+    "editorplaceholder": {
+      "type": "package",
+      "package": {
+        "name": "ckeditor/editorplaceholder",
+        "version": "4.16.2",
+        "type": "drupal-library",
+        "dist": {
+          "url": "https://download.ckeditor.com/editorplaceholder/releases/editorplaceholder_4.16.2.zip",
+          "type": "zip"
+        }
+      }
+    }
+  }
 ```
 
-Please note that, starting from XDebug 3, a connection error message will be outputted in the console if the variable is
-set but your client is not listening for debugging connections. The error message will cause false negatives for PHPUnit
-tests.
+Require the digit/dsjp package for downloading all the modules, themes and configuration that come with the installation profile:
 
-To initiate step debugging from the browser, set the correct cookie using a browser extension or a bookmarklet
-like the ones generated at https://www.jetbrains.com/phpstorm/marklets/.
+```bash
+docker-compose exec web composer require digit/dsjp --update-with-dependencies
 
-[1]: https://github.com/openeuropa/oe_theme/releases
-[2]: https://www.drupal.org/docs/develop/using-composer/using-composer-to-manage-drupal-site-dependencies#managing-contributed
-[3]: https://www.docker.com/get-docker
-[4]: https://docs.docker.com/compose
+docker-compose exec web ./vendor/bin/run toolkit:build-dev
+
+docker-compose exec web ./vendor/bin/drush site-install dsjp_profile
+```
+
+What does the installation profile do?
+
+Drupal is installed in the web directory.
+
+The profile is placed in web/profiles/contrib/dsjp
+
+Installation:
+
+Request access to
+
+Add SSH key to your Github account.
+
+Steps
+
+Run the installation
+```bash
+docker-compose up -d
+
+docker-compose exec web composer install
+```
+Make sure the profile is installed:
+```bash
+docker-compose exec web composer require digit/dsjp --update-with-dependencies
+
+docker-compose exec web ./vendor/bin/run toolkit:build-dev
+
+docker-compose exec web ./vendor/bin/drush site-install dsjp_profile
+```
+Done! Visit  http://test:8080/web

@@ -3,6 +3,7 @@ status: true
 dependencies:
   config:
     - filter.format.basic_html
+    - filter.format.dsjp_basic_mention
     - media.type.document
     - media.type.image
     - media.type.webtools_social_feed
@@ -18,7 +19,6 @@ dependencies:
     - node.type.dsj_national_coalition
     - node.type.dsj_organization
     - node.type.dsj_page
-    - node.type.dsj_pledge
     - node.type.dsj_pledge_initiative
     - node.type.dsj_skills_intelligence
     - node.type.dsj_strategy
@@ -27,15 +27,11 @@ dependencies:
     - taxonomy.vocabulary.dsj_form_of_funding
     - taxonomy.vocabulary.dsj_type_of_article
     - workflows.workflow.dsj_main_workflow
-    - workflows.workflow.dsj_organisation_flow
-    - workflows.workflow.dsj_pledge_workflow
     - workflows.workflow.dsj_simple_workflow
   module:
     - block
-    - comment
     - content_moderation
     - content_translation
-    - dsjp_pledge
     - filter
     - locale
     - media
@@ -46,9 +42,9 @@ dependencies:
     - tmgmt
     - toolbar
     - webform
-id: dsj_reviewer
-label: Reviewer
-weight: -6
+id: dsj_critical_reviewer
+label: 'Critical Reviewer'
+weight: -5
 is_admin: null
 permissions:
   - 'accept translation jobs'
@@ -57,10 +53,7 @@ permissions:
   - 'access media overview'
   - 'access site reports'
   - 'access toolbar'
-  - 'administer account settings'
   - 'administer blocks'
-  - 'administer comments'
-  - 'administer menu'
   - 'administer message templates'
   - 'create content translations'
   - 'create document media'
@@ -73,10 +66,8 @@ permissions:
   - 'create dsj_initiative content'
   - 'create dsj_landing_page content'
   - 'create dsj_listing content'
-  - 'create dsj_national_coalition content'
   - 'create dsj_organization content'
   - 'create dsj_page content'
-  - 'create dsj_pledge content'
   - 'create dsj_pledge_initiative content'
   - 'create dsj_skills_intelligence content'
   - 'create dsj_strategy content'
@@ -90,7 +81,6 @@ permissions:
   - 'delete own document media'
   - 'delete own image media'
   - 'delete own webtools_social_feed media'
-  - 'dsj_pledge_initiative type description configuration'
   - 'edit any dsj_article content'
   - 'edit any dsj_digital_skills_resource content'
   - 'edit any dsj_discussion content'
@@ -103,8 +93,6 @@ permissions:
   - 'edit any dsj_national_coalition content'
   - 'edit any dsj_organization content'
   - 'edit any dsj_page content'
-  - 'edit any dsj_pledge content'
-  - 'edit any dsj_pledge_initiative content'
   - 'edit any dsj_skills_intelligence content'
   - 'edit any dsj_strategy content'
   - 'edit any dsj_training_offer content'
@@ -122,7 +110,6 @@ permissions:
   - 'edit own dsj_national_coalition content'
   - 'edit own dsj_organization content'
   - 'edit own dsj_page content'
-  - 'edit own dsj_pledge content'
   - 'edit own dsj_pledge_initiative content'
   - 'edit own dsj_skills_intelligence content'
   - 'edit own dsj_strategy content'
@@ -131,45 +118,34 @@ permissions:
   - 'edit own webtools_social_feed media'
   - 'override dsj_article authored by option'
   - 'override dsj_article authored on option'
-  - 'override dsj_article sticky option'
   - 'override dsj_digital_skills_resource authored by option'
   - 'override dsj_digital_skills_resource authored on option'
-  - 'override dsj_digital_skills_resource sticky option'
   - 'override dsj_discussion authored by option'
   - 'override dsj_discussion authored on option'
   - 'override dsj_event authored by option'
   - 'override dsj_event authored on option'
-  - 'override dsj_event sticky option'
   - 'override dsj_funding_opportunity authored by option'
   - 'override dsj_funding_opportunity authored on option'
-  - 'override dsj_funding_opportunity sticky option'
   - 'override dsj_good_practice authored by option'
   - 'override dsj_good_practice authored on option'
-  - 'override dsj_good_practice sticky option'
   - 'override dsj_initiative authored by option'
   - 'override dsj_initiative authored on option'
-  - 'override dsj_initiative sticky option'
   - 'override dsj_landing_page authored by option'
   - 'override dsj_landing_page authored on option'
   - 'override dsj_listing authored by option'
   - 'override dsj_listing authored on option'
   - 'override dsj_national_coalition authored by option'
   - 'override dsj_national_coalition authored on option'
-  - 'override dsj_national_coalition sticky option'
   - 'override dsj_organization authored by option'
   - 'override dsj_organization authored on option'
-  - 'override dsj_organization sticky option'
   - 'override dsj_page authored by option'
   - 'override dsj_page authored on option'
   - 'override dsj_skills_intelligence authored by option'
   - 'override dsj_skills_intelligence authored on option'
-  - 'override dsj_skills_intelligence sticky option'
   - 'override dsj_strategy authored by option'
   - 'override dsj_strategy authored on option'
-  - 'override dsj_strategy sticky option'
   - 'override dsj_training_offer authored by option'
   - 'override dsj_training_offer authored on option'
-  - 'override dsj_training_offer sticky option'
   - 'submit translation jobs'
   - 'translate any entity'
   - 'translate dsj_article node'
@@ -193,29 +169,14 @@ permissions:
   - 'update content translations'
   - 'use dsj_main_workflow transition archive'
   - 'use dsj_main_workflow transition create_new_draft'
-  - 'use dsj_main_workflow transition dsj_create_new_draft_archived'
-  - 'use dsj_main_workflow transition dsj_create_new_draft_imported'
-  - 'use dsj_main_workflow transition needs_changes'
-  - 'use dsj_main_workflow transition needs_changes_publication'
   - 'use dsj_main_workflow transition needs_changes_safe_validation'
-  - 'use dsj_main_workflow transition needs_safe_validation'
-  - 'use dsj_main_workflow transition publish'
   - 'use dsj_main_workflow transition publish_safe_validation'
-  - 'use dsj_main_workflow transition ready_for_publication'
   - 'use dsj_main_workflow transition ready_for_review'
-  - 'use dsj_organisation_flow transition publish'
-  - 'use dsj_organisation_flow transition reject'
-  - 'use dsj_pledge_workflow transition needs_changes'
-  - 'use dsj_pledge_workflow transition needs_changes_publication'
-  - 'use dsj_pledge_workflow transition needs_changes_safe_validation'
-  - 'use dsj_pledge_workflow transition needs_safe_validation'
-  - 'use dsj_pledge_workflow transition publish'
-  - 'use dsj_pledge_workflow transition publish_safe_validation'
-  - 'use dsj_pledge_workflow transition ready_for_publication'
   - 'use dsj_simple_workflow transition create_new_draft'
   - 'use dsj_simple_workflow transition dsj_unpublish'
   - 'use dsj_simple_workflow transition publish'
   - 'use text format basic_html'
+  - 'use text format dsjp_basic_mention'
   - 'view any unpublished content'
   - 'view any webform submission'
   - 'view dsj_article revisions'
@@ -230,8 +191,6 @@ permissions:
   - 'view dsj_national_coalition revisions'
   - 'view dsj_organization revisions'
   - 'view dsj_page revisions'
-  - 'view dsj_pledge revisions'
-  - 'view dsj_pledge_initiative revisions'
   - 'view dsj_skills_intelligence revisions'
   - 'view dsj_strategy revisions'
   - 'view dsj_training_offer revisions'

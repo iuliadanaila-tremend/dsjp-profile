@@ -52,6 +52,9 @@ dependencies:
   - dsjp_authentication_user_fields
   - dsjp_content
   - dsjp_responsive_background_image
+  - dsjp_pledge
+  - dsjp_private_message
+  - dsjp_translation
   - dsjp_user
   - dsjp_views
   - dynamic_page_cache
@@ -107,14 +110,11 @@ dependencies:
   - media_avportal
   - media_library
   - mentions
-  - menu_item_extras
-  - menu_link_content
   - menu_ui
   - message
   - message_digest
   - message_notify
   - message_subscribe
-  - message_subscribe_custom
   - message_subscribe_ui
   - metatag
   - metatag_hreflang

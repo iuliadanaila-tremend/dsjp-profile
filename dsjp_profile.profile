@@ -15,5 +15,5 @@ function dsjp_profile_install_tasks_alter(&$tasks, $install_state): void {
   unset($tasks['install_config_download_translations']);
   unset($tasks['install_import_translations']);
   unset($tasks['install_finish_translations']);
-  //unset($tasks['install_configure_form']);
+  unset($tasks['install_configure_form']);
 }

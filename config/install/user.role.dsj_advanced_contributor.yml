@@ -3,7 +3,6 @@ status: true
 dependencies:
   config:
     - filter.format.basic_html
-    - filter.format.dsjp_basic_mention
     - node.type.dsj_article
     - node.type.dsj_digital_skills_resource
     - node.type.dsj_discussion
@@ -111,7 +110,6 @@ permissions:
   - 'use dsj_main_workflow transition needs_changes'
   - 'use dsj_main_workflow transition ready_for_review'
   - 'use text format basic_html'
-  - 'use text format dsjp_basic_mention'
   - 'view any unpublished content'
   - 'view dsj_article revisions'
   - 'view dsj_digital_skills_resource revisions'

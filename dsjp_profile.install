@@ -1,0 +1,31 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the dsjp_profile installation profile.
+ */
+
+use Drupal\user\Entity\User;
+
+/**
+ * Implements hook_install().
+ *
+ * Perform actions to set up the site for this profile.
+ *
+ * @see system_install()
+ */
+function dsjp_profile_install() {
+  // Assign user 1 the "administrator" role.
+  /** @var \Drupal\user\Entity\User $user */
+  $user = User::load(1);
+  $user->addRole('administrator');
+  $user->save();
+
+  \Drupal::service('module_installer')->install(['message_subscribe_custom'], TRUE);
+  \Drupal::service('module_installer')->install(['menu_link_content'], TRUE);
+  \Drupal::service('module_installer')->install(['menu_item_extras'], TRUE);
+
+  // We install some menu links, so we have to rebuild the router, to ensure the
+  // menu links are valid.
+  \Drupal::service('router.builder')->rebuildIfNeeded();
+}

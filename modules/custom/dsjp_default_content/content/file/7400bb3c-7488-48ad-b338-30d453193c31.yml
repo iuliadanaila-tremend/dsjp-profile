@@ -1,0 +1,29 @@
+_meta:
+  version: '1.0'
+  entity_type: file
+  uuid: 7400bb3c-7488-48ad-b338-30d453193c31
+  default_langcode: en
+  depends:
+    1c704e7d-3a3c-4cd0-96d3-2bd22d658fe0: user
+default:
+  uid:
+    -
+      entity: 1c704e7d-3a3c-4cd0-96d3-2bd22d658fe0
+  filename:
+    -
+      value: 'D icon square - 1.jpg'
+  uri:
+    -
+      value: 'public://2022-07/D icon square - 1.jpg'
+  filemime:
+    -
+      value: image/jpeg
+  filesize:
+    -
+      value: 313580
+  status:
+    -
+      value: true
+  created:
+    -
+      value: 1658151070

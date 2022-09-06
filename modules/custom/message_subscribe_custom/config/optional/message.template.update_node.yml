@@ -1,9 +1,6 @@
 langcode: en
 status: true
-dependencies:
-  config:
-    - filter.format.full_html
-    - filter.format.plain_text
+dependencies: {  }
 template: update_node
 label: 'Update Node'
 description: 'Node was updated.'
@@ -13,7 +10,7 @@ text:
     format: plain_text
   -
     value: "<h2>[message:field_node_reference:entity:content-type:name] updated</h2>\r\n\r\n<p>Title: [message:field_node_reference:entity:title]<br />\r\nAuthor:&nbsp;[message:field_node_reference:entity:author]<br />\r\nTimestamp:&nbsp;[message:field_node_reference:entity:created]</p>\r\n\r\n<p>[message:field_node_reference:entity:summary] ...</p>\r\n\r\n<p>Read more:&nbsp;[message:field_node_reference:entity:url]</p>\r\n"
-    format: full_html
+    format: plain_text
 settings:
   'token options':
     clear: false

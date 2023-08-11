@@ -55,6 +55,8 @@ process:
   field_dsj_organization_category: category
   field_dsj_industry: industry
   field_dsj_target_audience: targetAudience
+  field_dsj_publish_in_core:
+    plugin: default_value
     default_value: 1
   field_dsj_website_link: website
   field_dsj_image:

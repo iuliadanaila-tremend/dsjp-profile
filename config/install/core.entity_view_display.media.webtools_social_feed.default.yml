@@ -6,6 +6,8 @@ dependencies:
     - media.type.webtools_social_feed
   module:
     - oe_webtools
+_core:
+  default_config_hash: 6UrCJ7U1I1_f4Rov0rxTgZy9Gc7lFs4MAou6NQLKDGY
 id: media.webtools_social_feed.default
 targetEntityType: media
 bundle: webtools_social_feed

@@ -31,6 +31,8 @@ dependencies:
   module:
     - smart_trim
     - user
+_core:
+  default_config_hash: 7LGQUY9fCU6072af5eoPZJHghNb45zWnrZQ5Yu6f3R4
 id: node.dsj_digital_skills_resource.search_result
 targetEntityType: node
 bundle: dsj_digital_skills_resource
@@ -75,6 +77,8 @@ hidden:
   field_dsj_meta_tags: true
   field_dsj_methodology: true
   field_dsj_organization: true
+  field_dsj_publish_in_core: true
+  field_dsj_representative_image: true
   field_dsj_skills_resource_type: true
   field_dsj_supporting_document: true
   field_dsj_target_audience: true

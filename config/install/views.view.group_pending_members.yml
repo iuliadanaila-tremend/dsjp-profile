@@ -10,6 +10,8 @@ dependencies:
     module:
       - group
       - grequest
+_core:
+  default_config_hash: EFCKzYe9QfXioxm4vIdum_8GgzphR0tRU8bvYIQMuKM
 id: group_pending_members
 label: 'Group pending members'
 module: views

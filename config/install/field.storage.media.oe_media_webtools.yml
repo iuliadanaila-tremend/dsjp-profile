@@ -4,6 +4,8 @@ dependencies:
   module:
     - json_field
     - media
+_core:
+  default_config_hash: D10GqUk_nea7YIpQKKbSE1P16ZLGyawFEGlj9qOyaNk
 id: media.oe_media_webtools
 field_name: oe_media_webtools
 entity_type: media

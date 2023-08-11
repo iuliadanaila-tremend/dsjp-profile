@@ -112,6 +112,8 @@ process:
     entity_type: node
     value_key: title
     source: organization
+  field_dsj_publish_in_core:
+    plugin: default_value
     default_value: 1
   field_dsj_stakeholder: stakeholder_involvement
   field_dsj_strategy_state_of_play:

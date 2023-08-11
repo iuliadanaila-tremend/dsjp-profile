@@ -102,6 +102,8 @@ process:
       source: TypeOfInitiative
       index:
         - Id
+  field_dsj_publish_in_core:
+    plugin: default_value
     default_value: 1
   field_dsj_event_timezone:
     plugin: default_value

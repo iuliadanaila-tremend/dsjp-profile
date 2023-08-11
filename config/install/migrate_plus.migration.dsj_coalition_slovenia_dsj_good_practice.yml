@@ -188,6 +188,8 @@ process:
     source: end_date_time
   field_dsj_type_of_funding: type_of_founding
   field_dsj_type_of_initiative: type_of_initiative
+  field_dsj_publish_in_core:
+    plugin: default_value
     default_value: 1
   field_dsj_organization:
     plugin: entity_lookup

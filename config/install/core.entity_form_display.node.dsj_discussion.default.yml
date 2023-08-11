@@ -20,6 +20,8 @@ dependencies:
     - metatag
     - path
     - text
+_core:
+  default_config_hash: sp2dBvrh0VWMqvmcxKkz-oz_L-_LaJhpLU98iJ9yOhI
 id: node.dsj_discussion.default
 targetEntityType: node
 bundle: dsj_discussion
@@ -154,3 +156,4 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  field_dsj_publish_in_core: true

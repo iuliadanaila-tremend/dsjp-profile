@@ -4,6 +4,8 @@ dependencies:
   config:
     - field.storage.node.field_dsj_topology_of_competence
     - node.type.dsj_digital_skills_resource
+_core:
+  default_config_hash: i5-yJgP7jj2aU4H9bq0aSSAgTdXSJZCIKjwNEOfRCXU
 id: node.dsj_digital_skills_resource.field_dsj_topology_of_competence
 field_name: field_dsj_topology_of_competence
 entity_type: node

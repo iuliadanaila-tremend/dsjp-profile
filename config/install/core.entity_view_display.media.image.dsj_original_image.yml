@@ -7,6 +7,8 @@ dependencies:
     - media.type.image
   module:
     - image
+_core:
+  default_config_hash: Io7rEAP7BEHAdpaOQIYMsl7N7Cpqh8MHlFFOf-jQbfI
 id: media.image.dsj_original_image
 targetEntityType: media
 bundle: image

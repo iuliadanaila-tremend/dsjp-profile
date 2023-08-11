@@ -1,6 +1,8 @@
 langcode: en
 status: true
 dependencies: {  }
+_core:
+  default_config_hash: W9DhFI4zUz1Zmn1aeLgeuMLW0MPDQJx2gSIZlgj5VP8
 id: text_phonetic_el_7_0_0
 label: 'Fulltext Phonetic Greek'
 minimum_solr_version: 7.0.0

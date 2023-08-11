@@ -4,6 +4,8 @@ dependencies:
   enforced:
     module:
       - webform
+_core:
+  default_config_hash: ZzqAn7UdvtnFlSB_Zr3nMHRam9K03TiMtBjuD0lWrog
 weight: 0
 open: null
 close: null

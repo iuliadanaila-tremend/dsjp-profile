@@ -1,6 +1,8 @@
 langcode: en
 status: true
 dependencies: {  }
+_core:
+  default_config_hash: xZQw3BcgOIZR64ij9oWeAtpz__i5n4oBFIlhTmlpGeo
 id: de
 label: German
 direction: ltr

@@ -1,6 +1,8 @@
 langcode: en
 status: true
 dependencies: {  }
+_core:
+  default_config_hash: HuF5l3AktoJ3dbibSdGI0aLfp2-8W3YI7Fn_JJxd8Bg
 id: document
 label: Document
 description: 'Basic document media type'

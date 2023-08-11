@@ -56,6 +56,8 @@ process:
         source: value
   field_dsj_type_of_initiative: typeOfInitiative
   field_dsj_publication_type: publicationType
+  field_dsj_publish_in_core: field_dsj_publish_in_core
+  field_dsj_website_link: website
   field_dsj_image:
     -
       plugin: skip_on_empty

@@ -1,6 +1,8 @@
 langcode: en
 status: true
 dependencies: {  }
+_core:
+  default_config_hash: BtzHedfJFAnFXwjcEpvK8nEUjZxrDJQE682gyQnEKmM
 id: text_nl_7_0_0
 label: 'Dutch Text Field'
 minimum_solr_version: 7.0.0

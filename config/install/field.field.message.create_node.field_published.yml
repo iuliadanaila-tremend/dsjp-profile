@@ -4,6 +4,8 @@ dependencies:
   config:
     - field.storage.message.field_published
     - message.template.create_node
+_core:
+  default_config_hash: I1OsEqPPXPAl3yG-ciX0cU-WY3gffaExJ-xX3JiANtU
 id: message.create_node.field_published
 field_name: field_published
 entity_type: message

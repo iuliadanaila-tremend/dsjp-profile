@@ -178,6 +178,8 @@ process:
       source: acf
       index:
         - field_dsj_topology_of_competence
+  field_dsj_publish_in_core:
+    plugin: extract
     source: acf
     index:
       - publish_in_core_platform

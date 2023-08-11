@@ -4,6 +4,8 @@ dependencies:
   config:
     - field.storage.node.field_dsj_author
     - node.type.dsj_digital_skills_resource
+_core:
+  default_config_hash: T1eRTPIuoIPpkUexIvz8O_R3loH8FEdbp9ZCe6stjUg
 id: node.dsj_digital_skills_resource.field_dsj_author
 field_name: field_dsj_author
 entity_type: node

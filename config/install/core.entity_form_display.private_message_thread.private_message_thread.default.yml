@@ -3,6 +3,8 @@ status: true
 dependencies:
   module:
     - private_message
+_core:
+  default_config_hash: MC8mdpqmm7Ondq2Unne60vCjJD_m-jRjtS18alTkr08
 id: private_message_thread.private_message_thread.default
 targetEntityType: private_message_thread
 bundle: private_message_thread

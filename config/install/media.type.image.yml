@@ -1,6 +1,8 @@
 langcode: en
 status: true
 dependencies: {  }
+_core:
+  default_config_hash: k48AAVKfdUvGnATdWLGrGA1cn_YlWzz8ZOJg0enmT_w
 id: image
 label: Image
 description: 'Image media type'

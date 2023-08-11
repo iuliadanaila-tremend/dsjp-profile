@@ -4,6 +4,8 @@ dependencies:
   module:
     - message
     - node
+_core:
+  default_config_hash: jGlGA8y4kGJw-68osbNP25z4NmdgqvhmfWZPzrRoowY
 id: message.field_node_reference
 field_name: field_node_reference
 entity_type: message

@@ -6,6 +6,8 @@ dependencies:
     - media.type.webtools_chart
   module:
     - oe_webtools
+_core:
+  default_config_hash: NAgjCBzFimM9W0slBUZYkJyP55AaDuKSDOnkIiipUc4
 id: media.webtools_chart.default
 targetEntityType: media
 bundle: webtools_chart

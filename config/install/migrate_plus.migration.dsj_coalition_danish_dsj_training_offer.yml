@@ -171,6 +171,8 @@ process:
       source: TypologyOfTrainingOpportunity
       index:
         - Id
+  field_dsj_publish_in_core: field_dsj_publish_in_core
+  field_dsj_image:
     -
       plugin: skip_on_empty
       method: process

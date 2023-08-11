@@ -1,6 +1,8 @@
 langcode: en
 status: true
 dependencies: {  }
+_core:
+  default_config_hash: fzllgbUk0pR3LG6H7o40sR53izj9TRUOXBmPtnC7Vko
 id: hu
 label: Hungarian
 direction: ltr

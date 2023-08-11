@@ -1,6 +1,8 @@
 langcode: en
 status: true
 dependencies: {  }
+_core:
+  default_config_hash: Y3Xu0Ane35ktmJKdLU5u1ZN-PJE10LjZVIWqZLUUbDI
 id: text_de_7_0_0
 label: 'German Text Field'
 minimum_solr_version: 7.0.0

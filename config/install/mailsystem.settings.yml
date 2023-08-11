@@ -1,3 +1,5 @@
+_core:
+  default_config_hash: IhwTepsVwtbtbcT5GzQKhCXDCRvbk3MNkWqPiuiZ10s
 theme: edsjp
 defaults:
   sender: swiftmailer

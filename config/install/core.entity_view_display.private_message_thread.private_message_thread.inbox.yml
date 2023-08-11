@@ -5,6 +5,8 @@ dependencies:
     - core.entity_view_mode.private_message_thread.inbox
   module:
     - private_message
+_core:
+  default_config_hash: bpWbY1Lst0WiDfYRrbk2HfaT0nGu3zhRzJlrfxOfX7I
 id: private_message_thread.private_message_thread.inbox
 targetEntityType: private_message_thread
 bundle: private_message_thread

@@ -3,6 +3,8 @@ status: true
 dependencies:
   module:
     - media_avportal
+_core:
+  default_config_hash: bSL37U-_2fxqwsrz-lJJiFPa0lERNATk7G-bg2xfl4A
 id: av_portal_photo
 label: 'AV Portal Photo'
 description: 'Remote photo from <em>AV Portal</em> service.'

@@ -4,6 +4,8 @@ dependencies:
   config:
     - field.storage.media.oe_media_avportal_photo
     - media.type.av_portal_photo
+_core:
+  default_config_hash: otOqes2Bv-l7LPl4VxXdkZjM-96Y9HD25qQBQ58HOmY
 id: media.av_portal_photo.oe_media_avportal_photo
 field_name: oe_media_avportal_photo
 entity_type: media

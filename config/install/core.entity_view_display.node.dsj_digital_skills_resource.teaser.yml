@@ -32,6 +32,8 @@ dependencies:
   module:
     - image
     - user
+_core:
+  default_config_hash: VjNGd58dCG1HDRxU98TtV-TESf93DT90yrM7IB1wMAg
 id: node.dsj_digital_skills_resource.teaser
 targetEntityType: node
 bundle: dsj_digital_skills_resource
@@ -63,6 +65,8 @@ hidden:
   field_dsj_meta_tags: true
   field_dsj_methodology: true
   field_dsj_organization: true
+  field_dsj_publish_in_core: true
+  field_dsj_representative_image: true
   field_dsj_skills_resource_type: true
   field_dsj_supporting_document: true
   field_dsj_target_audience: true

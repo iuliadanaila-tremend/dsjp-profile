@@ -7,6 +7,8 @@ dependencies:
   module:
     - group
     - user
+_core:
+  default_config_hash: 8kODeKlUTzVjtaT3w8BcGpNLcTq3mDoT9hdqif-3QNM
 id: my_invitations
 label: 'My invitations'
 module: group

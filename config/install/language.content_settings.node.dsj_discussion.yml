@@ -10,6 +10,8 @@ third_party_settings:
     enabled: true
     bundle_settings:
       untranslatable_fields_hide: '1'
+_core:
+  default_config_hash: eDHz7biLLAvi9YWUJjf5lq7AUQdNlqhS06RSOsxIAGQ
 id: node.dsj_discussion
 target_entity_type_id: node
 target_bundle: dsj_discussion

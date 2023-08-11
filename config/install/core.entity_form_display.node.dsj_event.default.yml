@@ -287,3 +287,4 @@ content:
 hidden:
   field_dsj_country: true
   field_dsj_external_id: true
+  field_dsj_publish_in_core: true

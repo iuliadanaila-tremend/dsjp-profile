@@ -1,6 +1,8 @@
 langcode: en
 status: true
 dependencies: {  }
+_core:
+  default_config_hash: T0xVUPLXklJ1liu4ukvaguMb-aMY1oMxO2PsCRB8-qg
 name: 'Newsletter Issue'
 type: simplenews_issue
 description: 'Use <em>Newsletter Issue</em> for newsletters.'

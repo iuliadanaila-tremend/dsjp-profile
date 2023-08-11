@@ -7,6 +7,8 @@ dependencies:
   enforced:
     module:
       - webform
+_core:
+  default_config_hash: YPgxGC8TmLtfCOLGCCHJcdH2llA7QksUkdi1abhB7Ro
 id: webform_submissions
 label: 'Webform submissions'
 module: views

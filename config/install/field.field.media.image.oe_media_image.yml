@@ -6,6 +6,8 @@ dependencies:
     - media.type.image
   module:
     - image
+_core:
+  default_config_hash: lkOOYQg4ynqcso2KgnNQRPMFMoiT2PsdcLJRQvAukNw
 id: media.image.oe_media_image
 field_name: oe_media_image
 entity_type: media

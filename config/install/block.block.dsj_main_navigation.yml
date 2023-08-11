@@ -7,6 +7,8 @@ dependencies:
     - system
   theme:
     - edsjp
+_core:
+  default_config_hash: rpSSgOcLwXjxice5LeGLhEKmp0DyiNB4jdYOOP1eRjg
 id: dsj_main_navigation
 theme: edsjp
 region: navigation

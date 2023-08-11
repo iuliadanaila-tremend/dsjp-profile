@@ -3,6 +3,8 @@ status: true
 dependencies:
   module:
     - oe_webtools_media
+_core:
+  default_config_hash: o3HNVXmS80GNBsbJm9yLLsyPJnlPc5AKrlrpXwrX1xg
 id: webtools_social_feed
 label: 'Webtools social feed'
 description: 'Media type for Webtools social feed'

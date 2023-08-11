@@ -1,6 +1,8 @@
 langcode: en
 status: true
 dependencies: {  }
+_core:
+  default_config_hash: SRqllTwbKOrp0_AOKaobXDY6MxTkI0kaKcUMgKSKCo0
 id: text_phonetic_pl_7_0_0
 label: 'Fulltext Phonetic Polish'
 minimum_solr_version: 7.0.0

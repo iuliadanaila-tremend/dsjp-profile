@@ -1,6 +1,8 @@
 langcode: en
 status: true
 dependencies: {  }
+_core:
+  default_config_hash: IDcwJRoUF5tDmoSQxffKHzAx8X_1dnm3ziCkAqrrOj4
 id: et
 label: Estonian
 direction: ltr

@@ -1,6 +1,8 @@
 langcode: en
 status: true
 dependencies: {  }
+_core:
+  default_config_hash: iF_NOyHm0V5M4l9GBYH2tNqNrZPThikJYzusyxhI7zw
 id: text_fi_7_0_0
 label: 'Finnish Text Field'
 minimum_solr_version: 7.0.0

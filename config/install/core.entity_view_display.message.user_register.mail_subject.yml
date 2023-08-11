@@ -8,6 +8,8 @@ dependencies:
     - message.template.user_register
   module:
     - user
+_core:
+  default_config_hash: g95gkyD3TcAGZb440M51BIe3F3YyJ_R0Cqu3oYyd2po
 id: message.user_register.mail_subject
 targetEntityType: message
 bundle: user_register

@@ -204,6 +204,8 @@ hidden:
   field_dsj_digital_technology: true
   field_dsj_external_id: true
   field_dsj_linked_content: true
+  field_dsj_publish_in_core: true
+  field_dsj_representative_image: true
   field_dsj_target_group: true
   langcode: true
   links: true

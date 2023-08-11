@@ -1,6 +1,8 @@
 langcode: en
 status: true
 dependencies: {  }
+_core:
+  default_config_hash: j5y1tvdWQ_68ZXRUuPMH4-m3f6upBNmx0_RaMUFQBGs
 id: text_el_7_0_0
 label: 'Greek Text Field'
 minimum_solr_version: 7.0.0

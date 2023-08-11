@@ -1,6 +1,8 @@
 langcode: en
 status: true
 dependencies: {  }
+_core:
+  default_config_hash: wUmchtQ3Bj3srSvNnA9Ey2UBgRpUvuDDN1FLH44VH4c
 name: 'Digital Skills and Jobs Digest'
 id: default
 description: ''

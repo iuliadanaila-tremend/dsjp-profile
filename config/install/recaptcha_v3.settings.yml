@@ -1,3 +1,5 @@
+_core:
+  default_config_hash: jv0PKCJEOq2bOwY9RspuPZCf67ifVJ4tfTk-BfZMw8k
 site_key: 6Lf7Zd4aAAAAAK2KQrp5kz9cl87lUgniKY4YRcCQ
 secret_key: 6Lf7Zd4aAAAAAOedWy4l7P-YI9pfKEcTpIlHr2yM
 verify_hostname: false

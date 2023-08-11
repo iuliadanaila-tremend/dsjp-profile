@@ -7,6 +7,8 @@ dependencies:
     - message.template.update_node
   module:
     - user
+_core:
+  default_config_hash: cMFhdIRDM0Pbg0JBwEt315MwdJcPuRz65uSOr45vnoE
 id: message.update_node.default
 targetEntityType: message
 bundle: update_node

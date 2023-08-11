@@ -4,6 +4,8 @@ dependencies:
   config:
     - field.storage.message.field_published
     - message.template.user_register
+_core:
+  default_config_hash: th4FjZDQuhDMYr-XU473SAz87w1GW9PcSnrLMfWbdyU
 id: message.user_register.field_published
 field_name: field_published
 entity_type: message

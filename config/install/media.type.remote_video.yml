@@ -1,6 +1,8 @@
 langcode: en
 status: true
 dependencies: {  }
+_core:
+  default_config_hash: kCRECEzqlzrW1eAUGoypHHifM3vXzFMxkZjEceEYHtM
 id: remote_video
 label: 'Remote video'
 description: 'Remote video types for external video embed.'

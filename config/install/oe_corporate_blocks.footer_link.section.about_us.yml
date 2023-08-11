@@ -1,6 +1,8 @@
 langcode: en
 status: true
 dependencies: {  }
+_core:
+  default_config_hash: '-j4fRBdUGCtenBagnrz6EV6SkOU1chalB3nrLzluq3c'
 id: about_us
 label: 'About us'
 weight: -9

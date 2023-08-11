@@ -3,6 +3,8 @@ status: true
 dependencies:
   module:
     - user
+_core:
+  default_config_hash: VEHCMtzYQhn_odUXRiJXTgPWCne9GQvuxWhUGV_pwQk
 id: user.private_message_author
 label: 'Private Message Author'
 targetEntityType: user

@@ -194,6 +194,8 @@ process:
       source: field_dsj_date/end_value
   field_dsj_type_of_funding: field_dsj_type_of_funding
   field_dsj_type_of_initiative: field_dsj_type_of_initiative
+  field_dsj_publish_in_core: field_dsj_publish_in_core
+  field_dsj_organization:
     plugin: sub_process
     source: field_dsj_organization
     process:

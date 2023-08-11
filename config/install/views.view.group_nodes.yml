@@ -10,6 +10,8 @@ dependencies:
     - gnode
     - group
     - node
+_core:
+  default_config_hash: za6rNdVPn3HsOOwx2Yka3EmWEkXSdUIlaUpT8qOAxG0
 id: group_nodes
 label: 'Group nodes'
 module: gnode

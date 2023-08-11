@@ -6,6 +6,8 @@ dependencies:
     - node.type.dsj_discussion
   module:
     - text
+_core:
+  default_config_hash: wznmpu0WDu7xSGZHxu3A4M0gp2gyEsqY1AJapBxJwFk
 id: node.dsj_discussion.body
 field_name: body
 entity_type: node

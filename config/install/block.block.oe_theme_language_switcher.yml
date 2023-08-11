@@ -5,6 +5,8 @@ dependencies:
     - language
   theme:
     - oe_theme
+_core:
+  default_config_hash: X7M99tgyZQ-HsXQyyNmgrIdUFjtCF7qdhc8M-n61GzA
 id: oe_theme_language_switcher
 theme: oe_theme
 region: site_header_secondary

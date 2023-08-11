@@ -3,6 +3,8 @@ status: true
 dependencies:
   module:
     - message
+_core:
+  default_config_hash: 1-8mcJ8YHxmlsh2HC52er_5MI_MQoDud2ZKCANEXNr8
 id: message.field_published
 field_name: field_published
 entity_type: message

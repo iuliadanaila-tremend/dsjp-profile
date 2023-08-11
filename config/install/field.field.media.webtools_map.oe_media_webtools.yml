@@ -6,6 +6,8 @@ dependencies:
     - media.type.webtools_map
   module:
     - json_field
+_core:
+  default_config_hash: WU_AJsgpvfh1j5E2M1d_MtAVtoFq50LdyJ2QVs5N7is
 id: media.webtools_map.oe_media_webtools
 field_name: oe_media_webtools
 entity_type: media

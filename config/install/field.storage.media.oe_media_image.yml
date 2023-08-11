@@ -5,6 +5,8 @@ dependencies:
     - file
     - image
     - media
+_core:
+  default_config_hash: TJWQijg_st8LHn7YN8KSgsrcDIzls0tYWCzHeHkzBjE
 id: media.oe_media_image
 field_name: oe_media_image
 entity_type: media

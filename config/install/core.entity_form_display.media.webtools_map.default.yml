@@ -7,6 +7,8 @@ dependencies:
   module:
     - json_field
     - path
+_core:
+  default_config_hash: qFWn46Ny7Hr8gG8w3y8FM2GZugbk29qeqpiGM9-x6fA
 id: media.webtools_map.default
 targetEntityType: media
 bundle: webtools_map

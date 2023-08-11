@@ -4,6 +4,8 @@ dependencies:
   config:
     - field.storage.node.field_dsj_publish_in_core
     - node.type.dsj_digital_skills_resource
+_core:
+  default_config_hash: IOry6vJrS6Zu9AwPDYWJoVjQH5EmsnfXnuWgXdNvfbQ
 id: node.dsj_digital_skills_resource.field_dsj_publish_in_core
 field_name: field_dsj_publish_in_core
 entity_type: node

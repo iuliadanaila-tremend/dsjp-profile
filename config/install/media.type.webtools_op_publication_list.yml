@@ -3,6 +3,8 @@ status: true
 dependencies:
   module:
     - oe_webtools_media
+_core:
+  default_config_hash: FIXBReH4Q_1zZky1SF5CPF99vBBkQg3E8Axoh7zESnw
 id: webtools_op_publication_list
 label: 'Webtools op publication list'
 description: 'Media type for webtools op publication lists.'

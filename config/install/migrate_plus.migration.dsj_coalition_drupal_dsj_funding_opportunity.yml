@@ -99,6 +99,8 @@ process:
         value_field: field_dsj_country_code
         source: field_dsj_country_code
   field_dsj_type_of_initiative: field_dsj_type_of_initiative
+  field_dsj_publish_in_core: field_dsj_publish_in_core
+  field_dsj_website_link:
     -
       plugin: skip_on_empty
       method: process

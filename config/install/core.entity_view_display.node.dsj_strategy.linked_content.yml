@@ -239,6 +239,8 @@ hidden:
   field_dsj_author: true
   field_dsj_external_id: true
   field_dsj_linked_content: true
+  field_dsj_publish_in_core: true
+  field_dsj_representative_image: true
   langcode: true
   links: true
   private_message_link: true

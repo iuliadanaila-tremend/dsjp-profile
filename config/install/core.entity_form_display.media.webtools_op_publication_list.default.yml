@@ -7,6 +7,8 @@ dependencies:
   module:
     - oe_media_webtools
     - path
+_core:
+  default_config_hash: ILjVnwXOWzdSogc3O9j0x3CKPBM_kG5DdM9KHE56_B4
 id: media.webtools_op_publication_list.default
 targetEntityType: media
 bundle: webtools_op_publication_list

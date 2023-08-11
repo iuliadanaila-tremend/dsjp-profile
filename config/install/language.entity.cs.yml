@@ -1,6 +1,8 @@
 langcode: en
 status: true
 dependencies: {  }
+_core:
+  default_config_hash: J3hXR5PoLhEV37WVQiKmd77fdZUTksmOUucNpNEEZ1E
 id: cs
 label: Czech
 direction: ltr

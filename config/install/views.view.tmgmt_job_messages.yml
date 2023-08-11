@@ -4,6 +4,8 @@ dependencies:
   module:
     - tmgmt
     - user
+_core:
+  default_config_hash: Oc4rgGJ1UsWBRKlkWEX36de0R9bhbnGTY-x4DCCdN7k
 id: tmgmt_job_messages
 label: 'Translation Job messages'
 module: views

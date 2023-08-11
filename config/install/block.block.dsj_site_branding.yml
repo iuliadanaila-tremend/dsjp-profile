@@ -5,6 +5,8 @@ dependencies:
     - system
   theme:
     - edsjp
+_core:
+  default_config_hash: srD-xdd3JdU8nrH08J0aENrUFBrCU-vuGT6BX9FLIpQ
 id: dsj_site_branding
 theme: edsjp
 region: site_header

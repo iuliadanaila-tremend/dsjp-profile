@@ -1,6 +1,8 @@
 langcode: en
 status: true
 dependencies: {  }
+_core:
+  default_config_hash: DSdQsrwIgz5CweZuLFK5rz8yKjypHJfZYRYW7qnt9Gk
 id: text_phonetic_fr_7_0_0
 label: 'Fulltext Phonetic French'
 minimum_solr_version: 7.0.0

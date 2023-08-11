@@ -4,6 +4,8 @@ dependencies:
   module:
     - media
     - views_bulk_edit
+_core:
+  default_config_hash: xN0kWpQZeiYp9xWNycp37rmLmAcnEyS9LDjPPTPce2w
 id: media_edit_action
 label: 'Edit media'
 type: media

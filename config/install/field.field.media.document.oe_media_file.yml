@@ -6,6 +6,8 @@ dependencies:
     - media.type.document
   module:
     - file
+_core:
+  default_config_hash: k9EECPpDNGkeQfpuqhmpClz9_hRTSr8sD3E6g4gdE1I
 id: media.document.oe_media_file
 field_name: oe_media_file
 entity_type: media

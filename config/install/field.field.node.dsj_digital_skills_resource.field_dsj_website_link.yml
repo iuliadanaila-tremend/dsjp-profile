@@ -6,6 +6,8 @@ dependencies:
     - node.type.dsj_digital_skills_resource
   module:
     - typed_link
+_core:
+  default_config_hash: 581tP6hWjWDDjq3M3vonGIOvbQ9Cr-jhPp90AWa_diI
 id: node.dsj_digital_skills_resource.field_dsj_website_link
 field_name: field_dsj_website_link
 entity_type: node

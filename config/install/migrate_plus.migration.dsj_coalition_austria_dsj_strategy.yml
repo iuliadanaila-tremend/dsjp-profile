@@ -88,6 +88,8 @@ process:
         bundle: dsj_organization
         value_key: title
         source: value
+  field_dsj_publish_in_core:
+    plugin: default_value
     default_value: 1
   field_dsj_stakeholder: stakeholderInvolvement
   field_dsj_strategy_state_of_play:

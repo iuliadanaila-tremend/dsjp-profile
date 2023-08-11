@@ -9,6 +9,8 @@ dependencies:
     - image
     - media
     - user
+_core:
+  default_config_hash: MlMxCCOsCUCFp_Sh5z_q1gNw4uLnqFGIGgVV4S9AH-4
 id: media.remote_video.default
 targetEntityType: media
 bundle: remote_video

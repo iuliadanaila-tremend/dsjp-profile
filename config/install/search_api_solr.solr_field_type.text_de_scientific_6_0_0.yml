@@ -1,6 +1,8 @@
 langcode: en
 status: true
 dependencies: {  }
+_core:
+  default_config_hash: P5LdhPwcLP4f8u5dVVWL_4G2wZjLYeWwuVPyCeBPX8k
 id: text_de_scientific_6_0_0
 label: 'German Scientific Text Field'
 minimum_solr_version: 6.0.0

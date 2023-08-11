@@ -4,6 +4,8 @@ dependencies:
   config:
     - field.storage.message.field_node_reference
     - message.template.create_node
+_core:
+  default_config_hash: _mY_LjSMO9v56uGSNsRRDb-RiJwSkZcLKxmsIXY01gc
 id: message.create_node.field_node_reference
 field_name: field_node_reference
 entity_type: message

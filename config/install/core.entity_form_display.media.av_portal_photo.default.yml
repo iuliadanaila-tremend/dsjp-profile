@@ -7,6 +7,8 @@ dependencies:
   module:
     - media_avportal
     - path
+_core:
+  default_config_hash: XXDKg-Vet7Yq2ZvzAv_jrJzWZtF1ExfOOHp3tQtkOuw
 id: media.av_portal_photo.default
 targetEntityType: media
 bundle: av_portal_photo

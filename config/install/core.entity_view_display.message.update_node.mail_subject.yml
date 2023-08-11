@@ -8,6 +8,8 @@ dependencies:
     - message.template.update_node
   module:
     - user
+_core:
+  default_config_hash: DXWkRvEcTAX6jvFcXPk7IioM-IbrWyUSQdNW_V76qso
 id: message.update_node.mail_subject
 targetEntityType: message
 bundle: update_node

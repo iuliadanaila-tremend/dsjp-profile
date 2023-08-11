@@ -61,6 +61,8 @@ hidden:
   field_dsj_meta_tags: true
   field_dsj_nc_member: true
   field_dsj_organization_category: true
+  field_dsj_publish_in_core: true
+  field_dsj_representative_image: true
   field_dsj_target_audience: true
   field_dsj_website_link: true
   flag_subscribe_node: true

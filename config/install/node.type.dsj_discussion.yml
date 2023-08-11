@@ -8,6 +8,8 @@ third_party_settings:
     available_menus:
       - main
     parent: 'main:'
+_core:
+  default_config_hash: Pwu31XMSreqMx4OGcnDicwxwJe-BrtxUcGNkXEUGmlc
 name: Discussion
 type: dsj_discussion
 description: ''

@@ -106,6 +106,8 @@ process:
         entity_type: node
         value_key: title
         source: title
+  field_dsj_publish_in_core: field_dsj_publish_in_core
+  field_dsj_stakeholder: field_dsj_stakeholder
   field_dsj_strategy_state_of_play:
     -
       plugin: skip_on_empty

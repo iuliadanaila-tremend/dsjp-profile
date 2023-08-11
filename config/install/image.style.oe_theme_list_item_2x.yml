@@ -1,6 +1,8 @@
 langcode: en
 status: true
 dependencies: {  }
+_core:
+  default_config_hash: ESC9MGLxVc0UWsOnE9-CWutDMyDMJf4_Y9sQtpBuK2w
 name: oe_theme_list_item_2x
 label: 'List item 2x'
 effects:

@@ -7,6 +7,8 @@ dependencies:
     - system
   theme:
     - oe_theme
+_core:
+  default_config_hash: rpSSgOcLwXjxice5LeGLhEKmp0DyiNB4jdYOOP1eRjg
 id: oe_theme_main_navigation
 theme: oe_theme
 region: navigation

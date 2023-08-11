@@ -8,6 +8,8 @@ dependencies:
     - flag
     - node
     - user
+_core:
+  default_config_hash: e-2oG-f5BzrhbTf9CUy3UzDazaIs1xfR4ze0rn3e580
 id: subscribe_node
 label: 'Subscribe node'
 module: views

@@ -3,6 +3,8 @@ status: true
 dependencies:
   theme:
     - oe_theme
+_core:
+  default_config_hash: PnhvOOg3dp0eO7NMXGJQijwuDBdEqDF2hag3eVvSMzk
 id: oe_theme_tabs
 theme: oe_theme
 region: content

@@ -1,6 +1,8 @@
 langcode: en
 status: true
 dependencies: {  }
+_core:
+  default_config_hash: udxb3IKRFhAS60NYiB_NGjbes9AC4H8r_zUr4-0RWY0
 id: sl
 label: Slovenian
 direction: ltr

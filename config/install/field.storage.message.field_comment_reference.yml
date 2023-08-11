@@ -4,6 +4,8 @@ dependencies:
   module:
     - comment
     - message
+_core:
+  default_config_hash: 0hhbH-sxJuMZq-bhpmvwp3_YeI5KXSeExN_EHDsMhlc
 id: message.field_comment_reference
 field_name: field_comment_reference
 entity_type: message

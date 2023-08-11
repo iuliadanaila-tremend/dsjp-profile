@@ -1,6 +1,8 @@
 langcode: en
 status: true
 dependencies: {  }
+_core:
+  default_config_hash: b-qqKUV9as5vqSDcs0MnBeQPglrbo2AGYtpWnu_YNSM
 id: es
 label: Spanish
 direction: ltr

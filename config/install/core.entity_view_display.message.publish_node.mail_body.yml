@@ -8,6 +8,8 @@ dependencies:
     - message.template.publish_node
   module:
     - user
+_core:
+  default_config_hash: D4QxnVvVrqmf_OSm3VDOzSkkZTfuB3iA95dr9i8KsD0
 id: message.publish_node.mail_body
 targetEntityType: message
 bundle: publish_node

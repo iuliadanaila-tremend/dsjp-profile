@@ -18,13 +18,20 @@
 
       .form-select {
         @include dropdown-styling($filter: false);
-
-        .chosen-single {
-          span {
-            color: $gray-800;
-          }
-        }
       }
+    }
+  }
+}
+
+.user-logged-in.path-node .node-form.ecl-form {
+  .js-form-type-vertical-tabs {
+    width: fit-content;
+
+    .entity-meta.vertical-tabs__panes {
+      max-height: 75vh;
+      overflow: auto;
+      width: fit-content;
+      position: relative;
     }
   }
 }

@@ -5,9 +5,11 @@ dependencies:
     - core.entity_view_mode.node.wide_card
     - field.field.node.dsj_national_coalition.body
     - field.field.node.dsj_national_coalition.field_dsj_author
+    - field.field.node.dsj_national_coalition.field_dsj_components
     - field.field.node.dsj_national_coalition.field_dsj_digital_skill_level
     - field.field.node.dsj_national_coalition.field_dsj_geographic_scope
     - field.field.node.dsj_national_coalition.field_dsj_image
+    - field.field.node.dsj_national_coalition.field_dsj_linked_content
     - field.field.node.dsj_national_coalition.field_dsj_meta_tags
     - field.field.node.dsj_national_coalition.field_dsj_nc_partner
     - field.field.node.dsj_national_coalition.field_dsj_nc_priority
@@ -61,8 +63,10 @@ content:
     region: content
 hidden:
   field_dsj_author: true
+  field_dsj_components: true
   field_dsj_digital_skill_level: true
   field_dsj_geographic_scope: true
+  field_dsj_linked_content: true
   field_dsj_meta_tags: true
   field_dsj_nc_partner: true
   field_dsj_nc_priority: true
@@ -73,4 +77,5 @@ hidden:
   field_dsj_website_link: true
   langcode: true
   links: true
+  private_message_link: true
   search_api_excerpt: true

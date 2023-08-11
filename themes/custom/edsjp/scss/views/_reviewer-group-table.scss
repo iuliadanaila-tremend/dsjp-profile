@@ -1,0 +1,35 @@
+.region-content #block-dsj-main-page-content {
+  table tbody tr td .dropbutton-wrapper {
+    position: relative;
+    min-height: unset;
+    right: 0;
+    width: 100%;
+
+    .dropbutton-widget {
+      width: 100%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      margin-left: 0;
+      padding-left: 0;
+      text-align: center;
+      border-radius: $border-radius / 2;
+    }
+  }
+
+  // Necessary for groups tables dropdown styling
+  table tbody tr td.views-field.views-field-operations {
+    background-color: inherit;
+    .dropbutton-wrapper {
+      background-color: inherit;
+      @include dropdown-color-inherit;
+    }
+  }
+
+  table tbody tr td {
+    .dropbutton-wrapper {
+      background-color: $gray;
+      @include dropdown-color-inherit;
+    }
+  }
+}

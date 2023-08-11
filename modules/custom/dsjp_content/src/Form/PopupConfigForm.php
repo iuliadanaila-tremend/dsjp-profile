@@ -20,12 +20,21 @@ class PopupConfigForm extends ConfigFormBase {
    */
   protected $entityTypeManager;
 
+
+  /**
+   * The file usage service.
+   *
+   * @var \Drupal\file\FileUsage\FileUsageInterface
+   */
+  protected $fileUsage;
+
   /**
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container) {
     $instance = parent::create($container);
     $instance->entityTypeManager = $container->get('entity_type.manager');
+    $instance->fileUsage = $container->get('file.usage');
 
     return $instance;
   }
@@ -183,6 +192,10 @@ class PopupConfigForm extends ConfigFormBase {
       $file = $this->entityTypeManager->getStorage('file')->load($image[0]);
       if ($file instanceof FileInterface && $file->isPermanent() == FALSE) {
         $file->setPermanent();
+        $usage = $this->fileUsage->listUsage($file);
+        if (empty($usage)) {
+          $this->fileUsage->add($file, 'dsjp_content', 'image', $file->id());
+        }
         $file->save();
         $config->set('image', $file->id());
       }

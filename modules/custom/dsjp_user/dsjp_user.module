@@ -6,10 +6,15 @@
  */
 
 use Drupal\comment\CommentInterface;
+use Drupal\comment\Entity\Comment;
+use Drupal\Component\Render\PlainTextOutput;
+use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Link;
 use Drupal\Core\Render\BubbleableMetadata;
+use Drupal\Core\Render\Markup;
+use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Url;
 use Drupal\legal\AcceptedInterface;
 use Drupal\legal\Entity\Accepted;
@@ -35,6 +40,8 @@ function dsjp_user_module_implements_alter(&$implementations, $hook) {
 
 /**
  * Implements hook_form_alter().
+ *
+ * phpcs:disable QualityAssurance.Functions.DrupalForbiddenHooks.ForbiddenHook
  */
 function dsjp_user_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   if ($form_id == 'legal_admin_terms') {
@@ -73,6 +80,82 @@ function dsjp_user_form_alter(&$form, FormStateInterface $form_state, $form_id) 
       $form['cas_login_link']['#url'] = $url;
     }
   }
+  elseif ($form_id === 'user_form' || $form_id === 'user_register_form') {
+    if (isset($form['field_dsj_country_interest']['widget']['#options']['_none'])) {
+      unset($form['field_dsj_country_interest']['widget']['#options']['_none']);
+    }
+
+    if (isset($form['field_dsj_language_preference']['widget']['#options']['_none'])) {
+      unset($form['field_dsj_language_preference']['widget']['#options']['_none']);
+    }
+
+    if (isset($form['field_dsj_training_type']['widget']['#options']['_none'])) {
+      unset($form['field_dsj_training_type']['widget']['#options']['_none']);
+    }
+
+    if (isset($form['field_dsj_learning_schedule']['widget']['#options']['_none'])) {
+      unset($form['field_dsj_learning_schedule']['widget']['#options']['_none']);
+    }
+
+    if (isset($form['field_dsj_learning_activity']['widget']['#options']['_none'])) {
+      unset($form['field_dsj_learning_activity']['widget']['#options']['_none']);
+    }
+
+    if (isset($form['field_dsj_geographical_sphere']['widget']['#options']['_none'])) {
+      unset($form['field_dsj_geographical_sphere']['widget']['#options']['_none']);
+    }
+
+    if (isset($form['field_dsj_organisation_category']['widget']['#options']['_none'])) {
+      unset($form['field_dsj_organisation_category']['widget']['#options']['_none']);
+    }
+    // Duplicate first tab fields.
+    $form['group_dsj_content_preferences_in']['field_dsj_i_am_interested_in'] = $form['field_dsj_i_am_interested_in'];
+    $form['group_dsj_content_preferences_in']['field_dsj_i_am_interested_in']['#weight'] = 57;
+    $form['group_dsj_content_preferences_in']['field_dsj_skill_level_interest'] = $form['field_dsj_skill_level_interest'];
+    $form['group_dsj_content_preferences_in']['field_dsj_skill_level_interest']['#weight'] = 57;
+
+    // Remove the N/A option.
+    if (isset($form['field_dsj_represent_organisation']['widget']['#options']['_none'])) {
+      unset($form['field_dsj_represent_organisation']['widget']['#options']['_none']);
+    }
+
+    if (isset($form['field_dsj_content_geographical']['widget']['#options']['_none'])) {
+      unset($form['field_dsj_content_geographical']['widget']['#options']['_none']);
+    }
+
+    if (isset($form['field_dsj_partnership_check']['widget']['#options']['_none'])) {
+      unset($form['field_dsj_partnership_check']['widget']['#options']['_none']);
+    }
+
+    $roles = \Drupal::currentUser()->getRoles();
+    $form['field_dsj_blocked']['#access'] = in_array('administrator', $roles) || in_array('community_manager', $roles);
+
+    // On the edit/create form, replace label 'Blocked' with 'Pending approval'.
+    if (isset($form['account']['status']['#options'][0])) {
+      $form['account']['status']['#options'][0] = t('Pending approval');
+    }
+  }
+  elseif ($form_id === 'views_form_user_admin_people_page_1' && isset($form['header']['user_bulk_form']['action']['#options'])) {
+    if (isset($form['header']['user_bulk_form']['action']['#options']['user_block_user_action'])) {
+      $form['header']['user_bulk_form']['action']['#options']['user_block_user_action'] = t('Disable the selected user(s)');
+    }
+    if (isset($form['header']['user_bulk_form']['action']['#options']['user_unblock_user_action'])) {
+      $form['header']['user_bulk_form']['action']['#options']['user_unblock_user_action'] = t('Enable the selected user(s)');
+    }
+  }
+  elseif ($form_id === 'bulk_edit_form') {
+    if (isset($form['user']['user']['_field_selector'])) {
+      $form['user']['user']['_field_selector']['field_dsj_blocked']['#title'] = t('Do you want to mark this user as spam?');
+      foreach ($form['user']['user']['_field_selector'] as $key => $item) {
+        if (strpos($key, 'field_dsj') !== FALSE && $key != 'field_dsj_blocked') {
+          unset($form['user']['user']['_field_selector'][$key]);
+        }
+      }
+      unset($form['user']['user']['_field_selector']['message_digest_interval']);
+      unset($form['user']['user']['_field_selector']['path']);
+    }
+  }
+
   if (isset($form['legal'])) {
     $conditions = _dsjp_user_get_legal_conditions();
     // Make sure we have a default value for the checkbox.
@@ -313,7 +396,7 @@ function dsjp_user_legal_profiling_submit(&$form, FormStateInterface $form_state
  * Implements hook_field_widget_form_alter().
  */
 function dsjp_user_field_widget_form_alter(&$element, FormStateInterface $form_state, $context) {
-  if ($context['items']->getName() === 'field_dsj_organisation' && $element['#entity_type'] === 'user') {
+  if ($context['items']->getName() === 'field_dsj_organisation' && isset($element['#entity_type']) && $element['#entity_type'] === 'user') {
     // Add the autocomplete functionality controller on the organisaton field.
     $element['value']['#autocomplete_route_name'] = 'dsjp_user.organisation_autocomplete';
   }
@@ -477,7 +560,7 @@ function dsjp_user_cron() {
     ->condition('field_dsj_registration_status', ['created', 'incomplete'], 'IN')
     ->notExists('field_dsj_registration_status');
   $query->condition($or_group);
-  $uids = $query->execute();
+  $uids = $query->accessCheck(TRUE)->execute();
   $conditions = legal_get_conditions();
   if (!empty($uids)) {
     foreach ($uids as $uid) {
@@ -539,25 +622,80 @@ function dsjp_user_cron() {
 }
 
 /**
+ * Implements hook_ENTITY_TYPE_access().
+ */
+function dsjp_user_comment_access(CommentInterface $comment, $operation, AccountInterface $account) {
+  if ($operation === 'delete') {
+    $commentId = $comment->id();
+    if (dsjp_user_can_access_comment_delete($commentId, $account)) {
+      return AccessResult::allowed();
+    }
+  }
+
+  return AccessResult::neutral();
+}
+
+/**
+ * Checks if the user is allowed to delete a comment.
+ */
+function dsjp_user_can_access_comment_delete($commentId, $account) {
+  if ($commentId && $account->isAuthenticated()) {
+    $comment = Comment::load($commentId);
+    if ($comment->getOwnerId() === $account->id() || $account->hasPermission('administer comments')) {
+      return TRUE;
+    }
+  }
+
+  return FALSE;
+}
+
+/**
  * Implements hook_comment_links_alter().
  */
 function dsjp_user_comment_links_alter(array &$links, CommentInterface $entity, array &$context) {
-  // Roles having access to edit & delete comments.
-  $roles_to_check = [
-    'administrator',
-    'community_manager',
-    'dsj_reviewer',
-  ];
-  // If the current user is not the comment owner or it doesn't have one of the
-  // administrator, community manager or reviewer role, remove the delete and
-  // edit links.
-  $intersect = array_intersect($roles_to_check, \Drupal::currentUser()->getRoles());
-  if ($entity->getOwnerId() != \Drupal::currentUser()->id() && count($intersect) == 0) {
+  if (!dsjp_user_can_access_comment_delete($entity->id(), \Drupal::currentUser())) {
     if (isset($links['comment']['#links']['comment-delete'])) {
       unset($links['comment']['#links']['comment-delete']);
     }
+
     if (isset($links['comment']['#links']['comment-edit'])) {
       unset($links['comment']['#links']['comment-edit']);
+    }
+  }
+}
+
+/**
+ * Implements hook_mail_alter().
+ */
+function dsjp_user_mail_alter(&$message) {
+  switch ($message['key']) {
+    case 'invite':
+      $message['headers']['Content-Type'] = 'text/html; charset=UTF-8; format=flowed; delsp=yes';
+      foreach ($message['body'] as $key => $body) {
+        $message['body'][$key] = PlainTextOutput::renderFromHtml($body);
+      }
+      break;
+
+    case 'status_activated':
+      // Set the format to HTML.
+      $message['headers']['Content-Type'] = 'text/html; charset=UTF-8; format=flowed; delsp=yes';
+      // Allow the body to rendered.
+      $message['body'][0] = Markup::create($message['body'][0]);
+      break;
+  }
+}
+
+/**
+ * Implements hook_user_format_name_alter().
+ */
+function dsjp_user_user_format_name_alter(&$name, AccountInterface $account) {
+  if (!$account->isAnonymous()) {
+    $user = \Drupal::entityTypeManager()->getStorage('user')->load($account->id());
+    if ($user instanceof UserInterface) {
+      $composedName = $user->get('field_dsj_firstname')->value . ' ' . $user->get('field_dsj_lastname')->value;
+      if ($composedName !== " ") {
+        $name = $composedName;
+      }
     }
   }
 }

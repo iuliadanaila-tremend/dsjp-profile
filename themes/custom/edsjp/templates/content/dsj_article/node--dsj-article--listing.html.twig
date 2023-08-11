@@ -14,13 +14,16 @@
     <div class="image-area">
       {{ content.field_dsj_image }}
     </div>
-    {{ author_picture }}
-
-    {{ title_prefix }}
-    <h3{{ title_attributes }}>
-      <a href="{{ url }}" rel="bookmark" title="{{ title }}">{{ title }}</a>
-    </h3>
-    {{ title_suffix }}
+    <div class="text-area">
+      {{ title_prefix }}
+      <h3{{ title_attributes }}>
+        <a href="{{ url }}" rel="bookmark" title="{{ title }}">{{ title }}</a>
+      </h3>
+      {{ title_suffix }}
+      {{ content.field_dsj_digital_technology }}
+      {{ content.body }}
+    </div>
   </div>
+
   <div class="more-link"><a href="{{ url }}" class="more-link">{% trans %}Read more{% endtrans %}</a></div>
 </article>

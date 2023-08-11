@@ -13,6 +13,7 @@ dependencies:
     - field.field.node.dsj_good_practice.field_dsj_geographic_scope
     - field.field.node.dsj_good_practice.field_dsj_image
     - field.field.node.dsj_good_practice.field_dsj_industry
+    - field.field.node.dsj_good_practice.field_dsj_linked_content
     - field.field.node.dsj_good_practice.field_dsj_media_audio
     - field.field.node.dsj_good_practice.field_dsj_media_document
     - field.field.node.dsj_good_practice.field_dsj_media_image
@@ -241,6 +242,7 @@ content:
 hidden:
   field_dsj_author: true
   field_dsj_external_id: true
+  field_dsj_linked_content: true
   langcode: true
   links: true
   private_message_link: true

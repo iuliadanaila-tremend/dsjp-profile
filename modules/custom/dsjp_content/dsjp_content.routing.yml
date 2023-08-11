@@ -4,3 +4,11 @@ dsjp_content.popup_config:
     _form: '\Drupal\dsjp_content\Form\PopupConfigForm'
   requirements:
     _role: 'dsj_reviewer+dsj_critical_reviewer+administrator'
+
+dsjp_content.reporting:
+  path: '/admin/reports/reporting'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Reporting'
+  requirements:
+    _permission: 'access dsjp reporting'

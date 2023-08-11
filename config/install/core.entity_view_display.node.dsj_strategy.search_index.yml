@@ -14,6 +14,7 @@ dependencies:
     - field.field.node.dsj_strategy.field_dsj_geographic_scope
     - field.field.node.dsj_strategy.field_dsj_image
     - field.field.node.dsj_strategy.field_dsj_latest_update_strategy
+    - field.field.node.dsj_strategy.field_dsj_linked_content
     - field.field.node.dsj_strategy.field_dsj_meta_tags
     - field.field.node.dsj_strategy.field_dsj_organization
     - field.field.node.dsj_strategy.field_dsj_publish_in_core
@@ -167,6 +168,7 @@ hidden:
   field_dsj_comments: true
   field_dsj_external_id: true
   field_dsj_image: true
+  field_dsj_linked_content: true
   field_dsj_meta_tags: true
   flag_subscribe_node: true
   flag_voting: true

@@ -14,7 +14,7 @@ id: group.dsj_organization.field_dsj_target_sector
 field_name: field_dsj_target_sector
 entity_type: group
 bundle: dsj_organization
-label: 'In which sector does your organisation operate ?/ Target sector (NACE)'
+label: 'In which sector does your organisation operate ?'
 description: ''
 required: false
 translatable: false

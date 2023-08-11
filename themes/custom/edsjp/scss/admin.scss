@@ -47,7 +47,8 @@ $tabs-line-height: 20px;
 }
 
 /*============ TABS ============*/
-.ecl-navigation-list {
+.ecl-navigation-list,
+.ecl-navigation {
   display: inline-block;
   padding: 0 1rem .75rem !important;
   line-height: $tabs-line-height;
@@ -407,16 +408,8 @@ fieldset {
     }
   }
 
-  .chosen-container {
-    height: 50px;
-    width: 100% !important;
-  }
-
-  .chosen-single,
-  .chosen-choices {
-    @include border-radius($border-radius-lg);
-    height: 100%;
-    padding: $grid-gutter-width / 8 $grid-gutter-width / 4
+  .select2-container {
+    @include dropdown-styling(false);
   }
 }
 
@@ -424,6 +417,24 @@ fieldset {
   input[type="text"],
   select {
     width: 100%;
+  }
+
+  .js-pager__items {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+  
+    li {
+      font-weight: bold;
+  
+      span {
+        position: relative;
+        top: -3px;
+        font-size: $font-size-xl;
+        font-weight: bold;
+        padding: 0 $grid-gutter-width / 2;
+      }
+    }
   }
 }
 
@@ -438,4 +449,8 @@ fieldset {
       color: $black;
     }
   }
+}
+
+a#edit-cancel {
+  margin-left: 25px;
 }

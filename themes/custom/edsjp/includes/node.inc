@@ -5,13 +5,13 @@
  * Theme and preprocess functions for nodes.
  */
 
+use Drupal\Core\File\FileSystemInterface;
+use Drupal\Core\Link;
+use Drupal\Core\Url;
 use Drupal\group\Entity\GroupContent;
 use Drupal\node\NodeInterface;
 use Drupal\user\Entity\User;
-use Drupal\Core\Link;
-use Drupal\Core\Url;
 use Drupal\views\Views;
-use Drupal\Core\File\FileSystemInterface;
 
 /**
  * Implements hook_preprocess_HOOK().
@@ -54,7 +54,7 @@ function edsjp_preprocess_node(&$variables) {
   if (isset($variables["content"]["field_dsj_image"]) && empty($variables['node']->get('field_dsj_image')
     ->getValue())) {
     if ($variables['view_mode'] == 'full' &&
-      in_array($variables['node']->getType(), ['dsj_article', 'dsj_event'],)) {
+      in_array($variables['node']->getType(), ['dsj_article', 'dsj_event'])) {
       unset($variables["content"]["field_dsj_image"][0]);
     }
     else {
@@ -77,18 +77,22 @@ function edsjp_preprocess_node(&$variables) {
   _edsjp_set_listing_url($variables);
   _edsjp_preprocess_dsj_pledge($variables);
   _edsjp_preprocess_dsj_pledge_initiative($variables);
+  // Hide learning state form.
+  // _edsjp_add_learning_states_form($variables);
 }
 
 /**
  * Implements hook_preprocess_HOOK().
  */
 function edsjp_preprocess_node__dsj_listing(&$variables) {
-  $view = Views::getView('dsj_search');
-  $view->setDisplay('listing_block');
-  $view->execute();
+  if (isset($variables['view_mode']) && $variables['view_mode'] == 'full') {
+    $view = Views::getView('dsj_search');
+    $view->setDisplay('listing_block');
+    $view->execute();
 
-  $variables['content']['view'] = $view->buildRenderable('listing_block');
-  $variables['content']['view']['#weight'] = 120;
+    $variables['content']['view'] = $view->buildRenderable('listing_block');
+    $variables['content']['view']['#weight'] = 120;
+  }
 }
 
 /**
@@ -245,7 +249,9 @@ function _edsjp_preprocess_discussion_node(array &$variables) {
   );
 
   $account = User::load($variables['node']->getOwnerId());
-  $variables = _edsp_get_author_variables($variables, $account, TRUE, 'thumbnail_image_with_crop');
+
+  $user_view_mode = ($variables['view_mode'] == 'teaser') ? 'thumbnail_image_with_crop' : 'compact';
+  $variables = _edsp_get_author_variables($variables, $account, TRUE, $user_view_mode);
 }
 
 /**
@@ -320,6 +326,7 @@ function _edsjp_set_node_image_placehoders(array &$variables) {
       'default.png',
     ];
 
+    $filePaths = _edsjp_set_pledge_placeholder($contentType, $filePaths, $view_mode);
     foreach ($filePaths as $filePath) {
       $uri = $extension_path->getPath('theme', 'edsjp') . '/assets/placeholders/' . $filePath;
       if (file_exists($uri)) {
@@ -349,7 +356,29 @@ function _edsjp_set_node_image_placehoders(array &$variables) {
       }
     }
   }
+}
 
+/**
+ * Set the pledge image placeholder paths.
+ *
+ * @param string $contentType
+ *   The content type name.
+ * @param array $filePaths
+ *   The file paths currently available.
+ *
+ * @return array
+ *   Returns the new file paths.
+ */
+function _edsjp_set_pledge_placeholder($contentType, array $filePaths, $view_mode = NULL) {
+  if ($contentType == 'dsj_pledge') {
+    $filePaths = [
+      "$contentType/$view_mode.png",
+      "$contentType/default_1.png",
+      'default.png',
+    ];
+  }
+
+  return $filePaths;
 }
 
 /**
@@ -491,7 +520,7 @@ function _edsjp_set_listing_url(array &$variables) {
     'dsj_good_practice' => '/good-practices',
     'dsj_digital_skills_resource' => '/resources',
     'dsj_skills_intelligence' => '/publications',
-    'dsj_pledge' => '/pledges',
+    'dsj_pledge' => '/inspiration/pledges',
     'dsj_strategy' => '/strategies',
     'dsj_training_offer' => '/training-offers',
     'dsj_discussion' => '/discussions',
@@ -569,5 +598,33 @@ function edsjp_preprocess_field_group_html_element(&$variables) {
         ]);
       }
     }
+  }
+}
+
+/**
+ * Adds the form that saves the learning states.
+ *
+ * @param array $variables
+ *   Current node preprocess variables.
+ */
+function _edsjp_add_learning_states_form(array &$variables) {
+  if ((in_array($variables['node']->getType(), [
+    'dsj_learning_content',
+    'dsj_learning_path',
+    'dsj_digital_skills_resource',
+    'dsj_skills_intelligence',
+    'dsj_training_offer',
+  ])) && (in_array($variables['view_mode'], [
+    'full',
+    'listing',
+    'listing_wide',
+    'learning_experience',
+  ]))) {
+    $mode = in_array($variables['view_mode'], ['listing', 'listing_wide']) ? 'listing' : $variables['view_mode'];
+    $variables['learning_states_form'] = \Drupal::formBuilder()
+      ->getForm('\Drupal\dsjp_learning_states\Form\DsjpLearningStatesChangeStateForm', [
+        'entity' => $variables['node'],
+        'mode' => $mode,
+      ]);
   }
 }

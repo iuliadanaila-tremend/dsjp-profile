@@ -81,6 +81,7 @@ function edsjp_preprocess_views_view_unformatted(&$variables) {
         ->condition('members', [\Drupal::routeMatch()->getRawParameter('user')], 'IN')
         ->sort('updated', 'DESC')
         ->range(0, 1)
+        ->accessCheck(TRUE)
         ->execute();
       $tid = reset($latest_thread);
     }
@@ -140,6 +141,9 @@ function edsjp_preprocess_private_message_notification_block(&$variables) {
  * Implements hook_preprocess_HOOK().
  */
 function edsjp_preprocess_views_view(&$variables) {
+  // Add total pages to the views templates.
+  $pager_manager = \Drupal::service('pager.manager');
+  $variables['total_pages'] = $pager_manager->getPager() ? \Drupal::service('pager.manager')->getPager()->getTotalPages() : 0;
   if ($variables['view']->id() == 'dsj_private_messages' && $variables['view']->current_display == 'private_messages_page') {
     $argument = \Drupal::routeMatch()->getRawParameter('arg_1');
     if (empty($argument) || $argument == 'last') {

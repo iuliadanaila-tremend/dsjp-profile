@@ -1,0 +1,92 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.wide_card
+    - field.field.node.dsj_learning_content.body
+    - field.field.node.dsj_learning_content.field_dsj_comments
+    - field.field.node.dsj_learning_content.field_dsj_digital_skill_level
+    - field.field.node.dsj_learning_content.field_dsj_digital_technology
+    - field.field.node.dsj_learning_content.field_dsj_geographic_scope
+    - field.field.node.dsj_learning_content.field_dsj_image
+    - field.field.node.dsj_learning_content.field_dsj_learning_content_type
+    - field.field.node.dsj_learning_content.field_dsj_linked_content
+    - field.field.node.dsj_learning_content.field_dsj_target_audience
+    - field.field.node.dsj_learning_content.field_dsj_website_link
+    - node.type.dsj_learning_content
+    - responsive_image.styles.card_image
+  module:
+    - field_group
+    - responsive_image
+    - text
+    - user
+third_party_settings:
+  field_group:
+    group_learning_content:
+      children:
+        - field_dsj_website_link
+        - field_dsj_target_audience
+        - field_dsj_digital_skill_level
+        - field_dsj_geographic_scope
+      label: 'Learning content'
+      parent_name: ''
+      region: hidden
+      weight: 3
+      format_type: html_element
+      format_settings:
+        classes: bordered-field-list
+        show_empty_fields: false
+        id: learning-content-details
+        element: div
+        show_label: true
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+id: node.dsj_learning_content.wide_card
+targetEntityType: node
+bundle: dsj_learning_content
+mode: wide_card
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 400
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_dsj_image:
+    type: responsive_image
+    label: hidden
+    settings:
+      responsive_image_style: card_image
+      image_link: content
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  flag_subscribe_node:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  flag_voting:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 10
+    region: content
+hidden:
+  content_moderation_control: true
+  field_dsj_comments: true
+  field_dsj_digital_skill_level: true
+  field_dsj_digital_technology: true
+  field_dsj_geographic_scope: true
+  field_dsj_learning_content_type: true
+  field_dsj_linked_content: true
+  field_dsj_target_audience: true
+  field_dsj_website_link: true
+  langcode: true
+  links: true
+  private_message_link: true
+  search_api_excerpt: true

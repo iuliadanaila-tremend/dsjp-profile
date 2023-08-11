@@ -1,49 +1,180 @@
-.paragraph--type--dsj-highlighted-listing {
-  padding-bottom: $grid-gutter-width * 2;
+.path-frontpage {
+  .paragraph--type--dsj-highlighted-listing {
+    padding-top: $grid-gutter-width * 2;
+    padding-bottom: 0px !important;
 
-  .ecl-u-type-heading-2 {
-    @include font($h2-font-size, $line-height-2xl, $font-ec-square-regular, 600, true);
-  }
+    &.paragraph-banner-background {
+      background-repeat: no-repeat;
 
-  .more-link {
+      @include media-breakpoint-up(lg) {
+        background-size: 100% 50%;
+      }
 
-    a {
-      @include icon(right-arrow);
-      color: $primary !important;
-      font-size: $font-size-base;
-      line-height: $line-height-lg;
-      margin-top: $grid-gutter-width / 2;
-      padding-right: 20px;
-      position: relative;
-      text-align: right;
+      @include media-breakpoint-down(lg) {
+        background-size: 100%;
+      }
+
 
       &::before {
-        @include position(absolute, 2px 0 null null);
-        font-size: $font-size-xs;
+        content: "";
+        background: linear-gradient(180deg,rgba(242,245,249,0) 0%,#f2f5f9 90%,#f2f5f9 100%);
+        height: 300px;
+        display: flex;
+        position: relative;
+        top: 420px;
+        margin-top: -300px;
       }
 
-      &:hover {
-        color: $latest-category-color !important;
+      .ecl-u-type-heading-2 {
+        @include font($font-size-5xl, $line-height-4xl, $font-ec-square-regular, 500, true);
+        color: $white;
+
+        @include media-breakpoint-down(lg) {
+          @include font($font-size-3xl, $line-height-3xl, $font-ec-square-regular, 500, true);
+        }
       }
 
-      &:focus {
+
+      .listing-more-link {
+
+        a {
+          color: map-get($theme-colors, third );
+        }
+      }
+    }
+
+    .ecl-u-type-heading-2 {
+      @include font($font-size-5xl, $line-height-4xl, $font-ec-square-regular, 500, true);
+        color: $gray-900;
+
+      @include media-breakpoint-down(lg) {
+        @include font($font-size-3xl, $line-height-3xl, $font-ec-square-regular, 500, true);
+      }
+    }
+
+    .listing-more-link {
+
+      a {
+        @include icon(right-arrow);
+        padding-right: $grid-gutter-width * 1.25;
+        font-weight: 700;
+        color: $gray-900;
+
+        @include media-breakpoint-up(lg) {
+          &::before {
+            @include position(absolute, 20px $grid-gutter-width * 1.125 null null);
+            font-size: $font-size-xs;
+          }
+        }
+
+        @include media-breakpoint-between(sm, lg) {
+          display: flex;
+          justify-content: center;
+          width: 30%;
+          margin: 0 auto;
+          &::before {
+            @include position(relative, 6px null null $grid-gutter-width-mobile * 5);
+            font-size: $font-size-xs;
+          }
+        }
+
+        @include media-breakpoint-down(sm) {
+          display: flex;
+          justify-content: center;
+          &::before {
+            @include position(relative, 6px null null $grid-gutter-width-mobile * 5);
+            font-size: $font-size-xs;
+          }
+        }
+      }
+    }
+
+    .more-link {
+
+      a {
+        @include icon(right-arrow);
         color: $primary !important;
-      }
+        font-size: $font-size-base;
+        line-height: $line-height-lg;
+        margin-top: $grid-gutter-width / 2;
+        padding-right: 20px;
+        position: relative;
+        text-align: right;
+        font-weight: 700;
 
-      &:disabled {
-        color: $primary-disabled !important;
+        &::before {
+          @include position(absolute, 4px 0 null null);
+          font-size: $font-size-xs;
+        }
+
+        &:hover {
+          color: $latest-category-color !important;
+        }
+
+        &:focus {
+          color: $primary !important;
+        }
+
+        &:disabled {
+          color: $primary-disabled !important;
+        }
       }
+    }
+
+    .node--content {
+
+      h3 {
+        margin-top: ($grid-gutter-width * .875rem) / $grid-gutter-width !important;
+
+        a {
+          color: inherit;
+          font-weight: bold;
+        }
+      }
+    }
+
+    .node--footer {
+      justify-content: end;
+
+      .type-pill {
+        margin-right: auto;
+      }
+    }
+
+    .slick__slide {
+      height: auto;
+      .ecl-col-m-4 {
+        height: 100%;
+        padding: calc(#{$grid-gutter-width-mobile} / 1.6);
+        .node--card {
+          height: inherit;
+        }
+      }
+    }
+
+    .dsj-article--wide-card {
+      margin-bottom: $grid-gutter-width / 4 !important; // overriding general class in template
     }
   }
 
-  .node--content {
+}
 
-    h3 {
-      margin-top: ($grid-gutter-width * .875rem) / $grid-gutter-width !important;
+.page-node-type-dsj-national-coalition {
+  .paragraph--type--dsj-highlighted-listing {
+    .listing-header {
+      display: none;
+    }
 
-      a {
-        color: inherit;
+    &.has-title {
+      .listing-header {
+        display:flex
       }
     }
+  }
+}
+
+.paragraph--type--dsj-highlighted-listing {
+  .node--wide-card h3 a {
+    font-weight: bold;
   }
 }

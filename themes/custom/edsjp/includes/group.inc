@@ -6,9 +6,15 @@
  */
 
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Link;
+use Drupal\Core\Url;
+use Drupal\dsjp_pledge\GroupServiceInterface;
+use Drupal\user\Entity\User;
 
 /**
  * Implements hook_preprocess_group().
+ *
+ * @SuppressWarnings(PHPMD.CyclomaticComplexity)
  */
 function edsjp_preprocess_group(&$variables) {
   global $base_url;
@@ -31,7 +37,8 @@ function edsjp_preprocess_group(&$variables) {
         break;
       }
     }
-
+    $user = User::load(\Drupal::currentUser()->id());
+    $variables['has_pending_invitation'] = \Drupal::service('dsjp_pledge.group_service')->userHasPendingInvitation($user, GroupServiceInterface::GROUP_TYPE_ORGANIZATION, $group->id());
     $is_pledger = $variables['group']->get('field_dsj_is_pledger')->getValue();
     $prefix_class = '';
     if (isset($is_pledger[0]['value']) && $is_pledger[0]['value'] == 1) {
@@ -40,7 +47,31 @@ function edsjp_preprocess_group(&$variables) {
     $variables['content']['field_dsj_is_pledger']['#prefix'] = '<div class="' . $prefix_class . '">';
     $variables['content']['field_dsj_is_pledger']['#suffix'] = '</div>';
     if ($variables['view_mode'] == 'dsj_listing') {
+      $variables['content']['field_dsj_country']['#title'] = t('Geographical scope:');
       _edsjp_organisation_set_states($variables);
+      $variables['add_node_link'] = _dsjp_pledge_get_add_pledge_link($variables['group']);
+    }
+    elseif ($variables['view_mode'] == 'full') {
+      $variables['add_node_link'] = _dsjp_pledge_get_add_pledge_link($variables['group']);
+      $variables['add_node_link']['#attributes']['class'][] = 'link-subscribe';
+    }
+    _edsjp_organisation_alter_contact_details($variables);
+  }
+}
+
+/**
+ * Change the contact details of an organisation.
+ *
+ * @param array $variables
+ *   The preprocess variables.
+ */
+function _edsjp_organisation_alter_contact_details(array &$variables) {
+  if ($variables['view_mode'] == 'dsj_block') {
+    $mail = $variables['group']->get('field_dsj_contact_email_pledges')->value;
+    $name = $variables['group']->get('field_dsj_contact_person_pledges')->value;
+    if (!empty($mail) && !empty($name)) {
+      $url = Url::fromUri('mailto:' . $mail);
+      $variables['content']['field_dsj_contact_person_pledges'][0] = Link::fromTextAndUrl($name, $url)->toRenderable();
     }
   }
 }

@@ -14,6 +14,7 @@ dependencies:
     - field.field.node.dsj_strategy.field_dsj_geographic_scope
     - field.field.node.dsj_strategy.field_dsj_image
     - field.field.node.dsj_strategy.field_dsj_latest_update_strategy
+    - field.field.node.dsj_strategy.field_dsj_linked_content
     - field.field.node.dsj_strategy.field_dsj_meta_tags
     - field.field.node.dsj_strategy.field_dsj_organization
     - field.field.node.dsj_strategy.field_dsj_publish_in_core
@@ -39,8 +40,8 @@ third_party_settings:
       children: {  }
       label: Text
       parent_name: ''
-      region: content
-      weight: 3
+      region: hidden
+      weight: 4
       format_type: html_element
       format_settings:
         classes: ''
@@ -66,22 +67,22 @@ content:
       trim_suffix: ''
       wrap_output: false
       wrap_class: trimmed
-      more_link: false
-      more_class: more-link
-      more_text: More
       summary_handler: full
       trim_options:
         text: true
         trim_zero: false
+      more_link: false
+      more_class: more-link
+      more_text: More
     third_party_settings: {  }
-    weight: 1
+    weight: 2
     region: content
   field_dsj_digital_technology:
     type: list_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 0
+    weight: 1
     region: content
   field_dsj_image:
     type: image
@@ -89,8 +90,17 @@ content:
     settings:
       image_link: content
       image_style: thumbnail
+      image_loading:
+        attribute: lazy
     third_party_settings: {  }
-    weight: 2
+    weight: 0
+    region: content
+  field_dsj_type_of_initiative:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
     region: content
 hidden:
   content_moderation_control: true
@@ -102,6 +112,7 @@ hidden:
   field_dsj_file_for_download: true
   field_dsj_geographic_scope: true
   field_dsj_latest_update_strategy: true
+  field_dsj_linked_content: true
   field_dsj_meta_tags: true
   field_dsj_organization: true
   field_dsj_stakeholder: true
@@ -109,7 +120,6 @@ hidden:
   field_dsj_target_audience: true
   field_dsj_target_language: true
   field_dsj_timeline_roadmap: true
-  field_dsj_type_of_initiative: true
   field_dsj_website_link: true
   flag_subscribe_node: true
   flag_voting: true

@@ -14,16 +14,51 @@
         <div class="image-area">
             {{ content.field_dsj_image }}
         </div>
+        <div class="text-area">
+          {{ title_prefix }}
+          <h3{{ title_attributes }}>
+              <a href="{{ url }}" rel="bookmark" title="{{ title }}">{{ title }}</a>
+          </h3>
+          {{ title_suffix }}
+          {{ content | without('field_dsj_image', 'group_text', 'field_dsj_event_location', 'field_dsj_date', 'field_dsj_event_setting', 'field_dsj_organization') }}
+          {{ content.group_text }}
+        </div>
+    </div>
+  <div class="node--footer">
+    {% if node.field_dsj_date.value %}
+      <div class="field field--name-field-dsj-date field__item">
+        {% set year = node.field_dsj_date.value | date('Y') %}
+        {% set month = node.field_dsj_date.value | date('M') %}
+        {% set day = node.field_dsj_date.value | date('d') %}
 
-        {{ content | without('field_dsj_image', 'group_text', 'field_dsj_event_location') }}
-        {{ title_prefix }}
-        <h3{{ title_attributes }}>
-            <a href="{{ url }}" rel="bookmark" title="{{ title }}">{{ title }}</a>
-        </h3>
-        {{ title_suffix }}
-        {{ content.group_text }}
-    </div>
+        {% set year_end = node.field_dsj_date.value | date('Y') %}
+        {% set month_end = node.field_dsj_date.end_date | date('M') %}
+        {% set day_end = node.field_dsj_date.end_date | date('d') %}
+
+        {% set fulltime = node.field_dsj_date.value | date('d M Y') %}
+        {% set endTime = node.field_dsj_date.end_date | date('d M Y') %}
+
+        {% if fulltime == endTime %}
+          {{ fulltime }}
+        {% elseif year == year_end and month == month_end %}
+          {{ day }} - {{ day_end }} {{ month }} {{ year }}
+        {% elseif year == year_end %}
+          {{ day }} {{ month }} - {{ day_end }} {{ month_end }} {{ year_end }}
+        {% else %}
+          {{ fulltime }} - {{ endTime }}
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {{ content.field_dsj_event_setting }}
+    {% if content.field_dsj_organization | render %}
+      <div class="field field--name-field-dsj-organization field__items">
+        <div class="field__item">{{ content.field_dsj_organization[0]['#plain_text'] }}</div>
+      </div>
+    {% endif %}
     <div class="more-link">
-        <a href="{{ url }}" class="more-link">{{ 'Read more' | t }}</a>
+      <a href="{{ url }}" class="more-link">{{ 'Read more' | t }}</a>
     </div>
+  </div>
+
 </article>

@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: search_api__views_page__dsj_content_listing__learning_content
+name: 'search_api:views_page__dsj_content_listing__learning_content'
+filter_key: null
+url_processor: query_string
+breadcrumb: {  }

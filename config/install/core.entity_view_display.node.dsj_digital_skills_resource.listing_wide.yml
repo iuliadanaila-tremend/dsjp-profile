@@ -12,6 +12,7 @@ dependencies:
     - field.field.node.dsj_digital_skills_resource.field_dsj_geographic_scope
     - field.field.node.dsj_digital_skills_resource.field_dsj_image
     - field.field.node.dsj_digital_skills_resource.field_dsj_industry
+    - field.field.node.dsj_digital_skills_resource.field_dsj_linked_content
     - field.field.node.dsj_digital_skills_resource.field_dsj_main_file_for_download
     - field.field.node.dsj_digital_skills_resource.field_dsj_meta_tags
     - field.field.node.dsj_digital_skills_resource.field_dsj_methodology
@@ -26,11 +27,12 @@ dependencies:
     - field.field.node.dsj_digital_skills_resource.field_dsj_topology_of_competence
     - field.field.node.dsj_digital_skills_resource.field_dsj_type_of_initiative
     - field.field.node.dsj_digital_skills_resource.field_dsj_website_link
-    - image.style.thumbnail
+    - image.style.thumbnail_100x100_crop
     - node.type.dsj_digital_skills_resource
   module:
     - field_group
     - image
+    - options
     - smart_trim
     - user
 third_party_settings:
@@ -38,26 +40,26 @@ third_party_settings:
     group_resource_details:
       children:
         - field_dsj_comments
-        - field_dsj_target_audience
-        - flag_subscribe_node
-        - content_moderation_control
-        - field_dsj_website_link
-        - field_dsj_type_of_initiative
-        - field_dsj_topology_of_competence
-        - field_dsj_target_language
-        - field_dsj_supporting_document
         - field_dsj_digital_skill_level
-        - field_dsj_skills_resource_type
-        - field_dsj_organization
-        - field_dsj_methodology
-        - field_dsj_main_file_for_download
-        - field_dsj_industry
         - field_dsj_geographic_scope
+        - field_dsj_industry
+        - field_dsj_main_file_for_download
+        - field_dsj_methodology
+        - field_dsj_organization
+        - field_dsj_skills_resource_type
+        - field_dsj_supporting_document
+        - field_dsj_target_audience
+        - field_dsj_target_language
+        - field_dsj_topology_of_competence
+        - field_dsj_type_of_initiative
+        - field_dsj_website_link
+        - content_moderation_control
+        - flag_subscribe_node
         - links
       label: 'Digital skills resource details'
       parent_name: ''
       region: hidden
-      weight: 10
+      weight: 14
       format_type: html_element
       format_settings:
         classes: ''
@@ -83,13 +85,20 @@ content:
       trim_suffix: ...
       wrap_output: false
       wrap_class: trimmed
-      more_link: false
-      more_class: more-link
-      more_text: More
       summary_handler: trim
       trim_options:
         text: true
         trim_zero: false
+      more_link: false
+      more_class: more-link
+      more_text: More
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_dsj_digital_technology:
+    type: list_default
+    label: hidden
+    settings: {  }
     third_party_settings: {  }
     weight: 1
     region: content
@@ -98,7 +107,9 @@ content:
     label: hidden
     settings:
       image_link: content
-      image_style: thumbnail
+      image_style: thumbnail_100x100_crop
+      image_loading:
+        attribute: lazy
     third_party_settings: {  }
     weight: 0
     region: content
@@ -107,10 +118,10 @@ hidden:
   field_dsj_author: true
   field_dsj_comments: true
   field_dsj_digital_skill_level: true
-  field_dsj_digital_technology: true
   field_dsj_external_id: true
   field_dsj_geographic_scope: true
   field_dsj_industry: true
+  field_dsj_linked_content: true
   field_dsj_main_file_for_download: true
   field_dsj_meta_tags: true
   field_dsj_methodology: true

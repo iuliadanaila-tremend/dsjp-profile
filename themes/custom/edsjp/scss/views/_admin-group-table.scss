@@ -1,0 +1,135 @@
+%admin-group-table {
+  table {
+
+    &:not(.cols-5) {
+      @include media-breakpoint-down(md) {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+    }
+
+    &.cols-5 {
+      @include media-breakpoint-down(sm) {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+    }
+
+    width: 100%;
+    border-collapse: collapse;
+
+    thead,
+    tbody {
+      tr {
+        &:not(.odd) {
+          border-bottom: 1px solid $gray-400;
+        }
+      }
+
+      td,
+      th {
+        padding-top: $grid-gutter-width / 2;
+        padding-bottom: $grid-gutter-width / 2;
+        text-align: center;
+
+        &:not(:first-child) {
+          padding-left: $grid-gutter-width / 4;
+        }
+
+        &:not(:last-child) {
+          padding-right: $grid-gutter-width / 4;
+        }
+
+        &.views-field-dropbutton {
+          min-width: 130px;
+        }
+      }
+    }
+
+    thead {
+      tr {
+        th {
+          a {
+            font-weight: bold;
+          }
+        }
+      }
+    }
+
+    tbody {
+      td {
+        a {
+          white-space: break-spaces;
+        }
+
+        .dropbutton-wrapper {
+          position: relative;
+          min-height: unset;
+          padding-right: 4rem;
+          right: 0;
+          width: 100%;
+
+          .dropbutton {
+            padding-top: $grid-gutter-width-mobile / 2;
+            padding-bottom: $grid-gutter-width-mobile / 2;
+
+            &-action {
+              padding-bottom: $grid-gutter-width-mobile / 4;
+            }
+
+            &-widget {
+              max-width: 200px;
+              width: 100%;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              margin-left: 0;
+              padding-left: 0;
+              text-align: center;
+            }
+
+            &-toggle {
+              width: $grid-gutter-width * 1.5;
+
+              .path-group & {
+                button {
+                  padding-left: 0;
+                }
+              }
+            }
+
+            &-arrow {
+              margin: 0 auto;
+            }
+          }
+        }
+
+        .item-list {
+          margin-bottom: 0;
+
+          li,
+          ul {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+
+    ul {
+      list-style-type: none;
+    }
+  }
+}
+
+.view-group {
+  &-invitations,
+  &-members,
+  &-pending-members,
+  &-nodes.view-display-id-page_1 {
+    .view-rows {
+      @extend %admin-group-table;
+    }
+  }
+}

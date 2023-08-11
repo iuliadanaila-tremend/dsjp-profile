@@ -3,10 +3,13 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.card
+    - node.type.dsj_article
+    - node.type.dsj_pledge
   module:
     - node
     - options
     - slick_views
+    - taxonomy
     - user
 id: dsj_paragraph_component_listing
 label: 'Paragraph Component Listing'
@@ -270,6 +273,181 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
+        status_1:
+          id: status_1
+          table: node_field_data
+          field: status
+          relationship: reverse__node__field_dsj_pledge
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 2
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          operator: 'not in'
+          value:
+            dsj_pledge: dsj_pledge
+          group: 2
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        tid_raw:
+          id: tid_raw
+          table: taxonomy_term_field_data
+          field: tid_raw
+          relationship: field_dsj_type_of_article
+          group_type: group
+          admin_label: ''
+          entity_type: taxonomy_term
+          plugin_id: numeric
+          operator: empty
+          value:
+            min: ''
+            max: ''
+            value: ''
+          group: 3
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        type_1:
+          id: type_1
+          table: node_field_data
+          field: type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          operator: 'not in'
+          value:
+            dsj_article: dsj_article
+          group: 3
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+          2: OR
+          3: OR
       style:
         type: slick
         options:
@@ -285,11 +463,11 @@ display:
           vanilla: true
           layout: ''
           cache: 0
-          current_view_mode: dsj_component_listing
-          skin: ''
-          grid: null
-          grid_medium: null
-          grid_small: null
+          skin: default
+          style: ''
+          grid: ''
+          grid_medium: ''
+          grid_small: ''
           overridables:
             arrows: '0'
             autoplay: '0'
@@ -321,7 +499,26 @@ display:
           distinct: true
           replica: false
           query_tags: {  }
-      relationships: {  }
+      relationships:
+        reverse__node__field_dsj_pledge:
+          id: reverse__node__field_dsj_pledge
+          table: node_field_data
+          field: reverse__node__field_dsj_pledge
+          relationship: none
+          group_type: group
+          admin_label: field_dsj_pledge
+          entity_type: node
+          plugin_id: entity_reverse
+          required: false
+        field_dsj_type_of_article:
+          id: field_dsj_type_of_article
+          table: node__field_dsj_type_of_article
+          field: field_dsj_type_of_article
+          relationship: none
+          group_type: group
+          admin_label: 'field_dsj_type_of_article: Taxonomy term'
+          plugin_id: standard
+          required: false
       use_ajax: false
       header: {  }
       footer: {  }
@@ -373,7 +570,9 @@ display:
     position: 1
     display_options:
       display_extenders:
-        metatag_display_extender: {  }
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
     cache_metadata:
       max-age: -1
       contexts:

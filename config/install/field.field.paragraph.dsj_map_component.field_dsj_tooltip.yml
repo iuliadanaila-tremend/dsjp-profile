@@ -17,7 +17,7 @@ bundle: dsj_map_component
 label: Tooltip
 description: 'This text will be displayed when hovering over a country.'
 required: true
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }

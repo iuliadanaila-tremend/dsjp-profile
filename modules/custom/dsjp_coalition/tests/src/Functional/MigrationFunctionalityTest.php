@@ -16,7 +16,7 @@ class MigrationFunctionalityTest extends BrowserTestBase {
    *
    * @var array
    */
-  public static $modules = [
+  protected static $modules = [
     'migrate',
     'migrate_tools',
     'dsjp_coalition_test',
@@ -30,7 +30,7 @@ class MigrationFunctionalityTest extends BrowserTestBase {
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  protected function setUp(): void {
     parent::setUp();
 
     $admin_user = $this->drupalCreateUser([], NULL, TRUE);

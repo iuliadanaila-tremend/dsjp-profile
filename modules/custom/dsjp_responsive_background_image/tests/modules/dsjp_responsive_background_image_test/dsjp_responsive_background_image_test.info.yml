@@ -2,8 +2,8 @@ name: 'Responsive Background Image'
 description: 'Custom Test Responsive Background Image'
 package: Custom
 type: module
-core: 8.x
+
 php: 7.3
-core_version_requirement: ^8 || ^9
+core_version_requirement: ^9 || ^10
 dependencies:
   - drupal:dsjp_responsive_background_image

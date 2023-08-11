@@ -16,7 +16,7 @@ class ResponsiveBackgroundTest extends BrowserTestBase {
    *
    * @var array
    */
-  public static $modules = [
+  protected static $modules = [
     'node',
     'views',
     'dsjp_responsive_background_image',
@@ -30,7 +30,7 @@ class ResponsiveBackgroundTest extends BrowserTestBase {
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  protected function setUp(): void {
     // Make sure to complete the normal setup steps first.
     parent::setUp();
 
@@ -52,7 +52,11 @@ class ResponsiveBackgroundTest extends BrowserTestBase {
     $this->assertSession()->statusCodeEquals(200);
 
     // Confirm that the front page contains the standard text.
-    $this->assertText('Welcome to Drupal');
+    // Verify the assertion: pageTextContains() for HTML responses,
+    // responseContains() for non-HTML responses.
+    // The passed text should be HTML decoded,
+    // exactly as a human sees it in the browser.
+    $this->assertSession()->pageTextContains('Welcome to Drupal');
   }
 
 }

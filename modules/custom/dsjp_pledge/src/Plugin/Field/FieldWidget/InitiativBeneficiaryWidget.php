@@ -105,7 +105,7 @@ class InitiativBeneficiaryWidget extends WidgetBase {
         '#cardinality' => $cardinality,
         '#cardinality_multiple' => $this->fieldDefinition->getFieldStorageDefinition()->isMultiple(),
         '#required' => $this->fieldDefinition->isRequired(),
-        '#title' => $this->t('Target Number'),
+        '#title' => $this->t('Beneficiaries - target'),
         '#description' => $description,
         '#max_delta' => $max,
       ];
@@ -183,6 +183,11 @@ class InitiativBeneficiaryWidget extends WidgetBase {
     $element['value'] = [
       '#type' => 'textfield',
       '#default_value' => $defaultValue,
+      '#states' => [
+        'required' => [
+          ':input[name="field_dsj_initiative_beneficiary[' . $delta . '][status]"]' => ['checked' => TRUE],
+        ],
+      ],
     ];
     if ($defaultValue != NULL) {
       $element['value']['#value'] = $defaultValue;

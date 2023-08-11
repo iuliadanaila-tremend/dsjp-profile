@@ -3,6 +3,9 @@ status: true
 dependencies:
   config:
     - search_api.index.main_content
+    - system.menu.main
+  content:
+    - 'block_content:text_block:aa8c7250-5dcd-4b05-aff0-db11cba9d42f'
   module:
     - search_api
 id: dsj_pledge_organizations
@@ -130,9 +133,22 @@ display:
         type: none
         options: {  }
       cache:
-        type: tag
+        type: none
         options: {  }
-      empty: {  }
+      empty:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text
+          empty: true
+          content:
+            value: 'If you can''t find the content that you are looking for, please use the <a href="/group/add/dsj_organization">Organisation creation form</a> to create one.'
+            format: full_html
+          tokenize: false
       sorts: {  }
       arguments: {  }
       filters:
@@ -266,13 +282,26 @@ display:
             'entity:user':
               user: default
       query:
-        type: views_query
+        type: search_api_query
         options:
           bypass_access: false
           skip_access: false
           preserve_facet_query_args: false
       relationships: {  }
-      header: {  }
+      header:
+        entity_block_content:
+          id: entity_block_content
+          table: views
+          field: entity_block_content
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: entity
+          empty: false
+          target: aa8c7250-5dcd-4b05-aff0-db11cba9d42f
+          view_mode: default
+          tokenize: false
+          bypass_access: false
       footer: {  }
       display_extenders: {  }
     cache_metadata:
@@ -302,7 +331,16 @@ display:
         metatag_display_extender:
           metatags: {  }
           tokenize: false
-      path: pledges/organisations
+      path: community/networking/organisations
+      menu:
+        type: normal
+        title: Organisations
+        description: ''
+        weight: -48
+        expanded: false
+        menu_name: main
+        parent: 'menu_link_content:b4f12a69-0a3f-4f19-a6da-5c0fd8d678f3'
+        context: '0'
     cache_metadata:
       max-age: -1
       contexts:
@@ -476,23 +514,34 @@ display:
         header: false
       display_description: ''
       header:
-        area_text_custom:
-          id: area_text_custom
+        entity_block_content:
+          id: entity_block_content
           table: views
-          field: area_text_custom
+          field: entity_block_content
           relationship: none
           group_type: group
           admin_label: ''
-          plugin_id: text_custom
-          empty: false
-          content: "<div>Organisations can apply to become members by <a href>registering here</a>. Membership includes Pledgers.</div>\r\n<h2>Pledger Organizations</h2>"
+          plugin_id: entity
+          empty: true
+          target: '24'
+          view_mode: default
           tokenize: false
+          bypass_access: false
       exposed_block: true
       display_extenders:
         metatag_display_extender:
           metatags: {  }
           tokenize: false
-      path: pledges/pledger-organisations
+      path: community/networking/organisations/pledgers
+      menu:
+        type: normal
+        title: Pledgers
+        description: ''
+        weight: -47
+        expanded: false
+        menu_name: main
+        parent: 'menu_link_content:b4f12a69-0a3f-4f19-a6da-5c0fd8d678f3'
+        context: '0'
     cache_metadata:
       max-age: -1
       contexts:

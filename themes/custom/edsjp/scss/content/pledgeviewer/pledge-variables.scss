@@ -4,6 +4,12 @@ $labour-force-color: $secondary-hover;
 $other-color: $primary-default;
 $pledge-border-radius: $border-radius-lg * 1.25;
 
+// pillars color
+$pillar-education: #aa4e71;
+$pillar-ict-professionals: #7189a2;
+$pillar-labor-force: #d4a643;
+$pillar-other: #9cab4c;
+
 %pledge-icons-settings {
   &::before {
     margin-right: $grid-gutter-width / 4;

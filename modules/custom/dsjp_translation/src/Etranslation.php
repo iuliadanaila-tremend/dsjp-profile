@@ -180,6 +180,8 @@ class Etranslation {
         return FALSE;
       }
     }
+
+    return FALSE;
   }
 
   /**

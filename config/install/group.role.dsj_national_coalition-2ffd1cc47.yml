@@ -13,4 +13,5 @@ internal: true
 audience: outsider
 group_type: dsj_national_coalition
 permissions_ui: false
-permissions: {  }
+permissions:
+  - 'invite users to group'

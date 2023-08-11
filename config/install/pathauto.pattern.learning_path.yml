@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: learning_path
+label: 'Learning path'
+type: 'canonical_entities:node'
+pattern: 'opportunities/learning-path/[node:title]'
+selection_criteria:
+  d2856cf0-94ed-4209-acc1-18ecc0e08412:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: d2856cf0-94ed-4209-acc1-18ecc0e08412
+    context_mapping:
+      node: node
+    bundles:
+      dsj_learning_path: dsj_learning_path
+selection_logic: and
+weight: -5
+relationships: {  }

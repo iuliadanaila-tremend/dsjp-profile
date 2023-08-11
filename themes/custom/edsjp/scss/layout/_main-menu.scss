@@ -2,9 +2,10 @@
 .ecl-site-header-core {
   @include media-breakpoint-down(lg) {
     @include position(sticky, 0 0 null);
-    z-index: $zindex-tooltip;
+    z-index: calc(#{$zindex-tooltip} + 3);
   }
   position: relative;
+  z-index: auto;
 }
 
 .ecl-menu {
@@ -180,10 +181,14 @@
 
       &:not(.ecl-menu--forced-close) {
         .ecl-menu__item--col2 {
-          .ecl-menu__sublist {
-            grid-auto-flow: column;
-            grid-template-rows: auto auto auto auto;
-            column-count: 1;
+          .ecl-menu__mega {
+            width: 490px;
+          }
+        }
+
+        .ecl-menu__item--col3 {
+          .ecl-menu__mega {
+            width: 910px;
           }
         }
 
@@ -199,6 +204,10 @@
           box-sizing: border-box;
           display: flex;
           min-width: 13.56rem;
+
+          @include media-breakpoint-up (xl) {
+            display: inline-flex;
+          }
         }
       }
 
@@ -212,6 +221,8 @@
           .ecl-menu__sublink--container {
             .ecl-menu__sublink--current {
               font-weight: 600;
+              box-shadow: none;
+              font-weight: bold;
             }
           }
         }
@@ -268,6 +279,7 @@
       }
 
       .ecl-menu__item {
+        background-color: $blue;
         &:first-child {
           &::after {
             @include position(absolute, 15px 0 15px null);
@@ -279,7 +291,10 @@
         }
 
         &:first-child {
+          color: $blue;
+          .ecl-menu__link {
           padding-right: 25px;
+          }
         }
 
         a,
@@ -287,6 +302,13 @@
           font-size: $font-size-sm !important;
           border-bottom: 0 !important;
           text-decoration: none;
+          color: $white;
+          padding-left: $grid-gutter-width / 2;
+          padding-right: $grid-gutter-width / 2;
+        }
+
+        a.ecl-menu__link {
+          font-weight: bold;
         }
 
         &:hover {
@@ -300,6 +322,10 @@
           > a {
             color: $body-bg !important;
           }
+        }
+
+        &::before {
+          display: none;
         }
       }
     }
@@ -348,6 +374,11 @@
       display: none;
     }
   }
+
+  .ecl-menu__item--current .ecl-menu__link {
+    box-shadow: none;
+    font-weight: bold;
+  }
 }
 
 .ecl-site-header-core {
@@ -363,12 +394,12 @@
 
       @include media-breakpoint-up(lg) {
         bottom: 13px;
-        width: 27%;
+        width: 23%;
       }
 
       @include media-breakpoint-up(xl) {
         bottom: 13px;
-        width: 37%;
+        width: 30%;
       }
 
       @include media-breakpoint-down(md) {

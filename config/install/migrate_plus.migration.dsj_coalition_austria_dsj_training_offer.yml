@@ -116,8 +116,6 @@ process:
       - database
   field_dsj_typology_of_training: typologyOfTrainingOpportunities
   field_dsj_type_of_initiative: typeOfInitiative
-  field_dsj_publish_in_core:
-    plugin: default_value
     default_value: 1
   field_dsj_website_link: website
   field_dsj_image:

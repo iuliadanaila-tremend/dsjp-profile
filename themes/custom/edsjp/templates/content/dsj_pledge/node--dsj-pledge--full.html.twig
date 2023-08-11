@@ -18,7 +18,18 @@
     {{ title_suffix }}
   </div>
 
-  {{ content.field_dsj_date }}
+  {% if node.field_dsj_pledge_dates.value|render|striptags|trim is not empty %}
+    {% set startdate = node.field_dsj_pledge_dates.value | date('d/m/Y') %}
+    <div class="pledge-date">
+      {{ 'Start date'|t }} {{ startdate }}
+    </div>
+  {% endif %}
+  {% if node.field_dsj_pledge_dates.end_date|render|striptags|trim is not empty %}
+    {% set enddate = node.field_dsj_pledge_dates.end_date | date('d/m/Y')  %}
+    <div class="pledge-date">
+      {{ 'End date'|t }} {{ enddate }}
+    </div>
+  {% endif %}
 
   <div class="pledge-geographic-scope ecl-u-d-flex">
     <span class="icon icon-location"></span>
@@ -30,22 +41,26 @@
   </div>
 
   <div class="pledge-details bordered-field-list">
-    <h2>{{ 'Pledges Details'|t }}</h2>
+    <h2>{{ 'Pledge duration'|t }}</h2>
     {{ content|without('flag_voting', 'field_dsj_date', 'body', 'field_dsj_geographic_scope', 'content_moderation_control') }}
   </div>
 
-  {% if content.flag_voting or socialShare %}
-    <div class="voteShare-container">
-      {% if content.flag_voting %}
-        <div class="voting">{{ content.flag_voting }}</div>
-      {% endif %}
-
-      {% if socialShare %}
-        <div class="sharing">{{ socialShare }}</div>
-      {% endif %}
-    </div>
-  {% endif %}
   {{ content.content_moderation_control }}
+
+  {% if node.isPublished() %}
+    {% if content.flag_voting or socialShare %}
+      <div class="voteShare-container">
+        {% if content.flag_voting %}
+          <div class="voting">{{ content.flag_voting }}</div>
+        {% endif %}
+
+        {% if socialShare %}
+          <div class="sharing">{{ socialShare }}</div>
+        {% endif %}
+      </div>
+    {% endif %}
+  {% endif %}
+
 </article>
 {% if organization_group %}
   {{ organization_group }}

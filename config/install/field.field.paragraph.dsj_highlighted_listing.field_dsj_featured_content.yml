@@ -9,10 +9,20 @@ dependencies:
     - node.type.dsj_funding_opportunity
     - node.type.dsj_good_practice
     - node.type.dsj_initiative
+    - node.type.dsj_landing_page
+    - node.type.dsj_learning_content
+    - node.type.dsj_learning_path
+    - node.type.dsj_listing
     - node.type.dsj_organization
+    - node.type.dsj_pledge
     - node.type.dsj_skills_intelligence
     - node.type.dsj_training_offer
     - paragraphs.paragraphs_type.dsj_highlighted_listing
+  module:
+    - tmgmt_content
+third_party_settings:
+  tmgmt_content:
+    excluded: false
 id: paragraph.dsj_highlighted_listing.field_dsj_featured_content
 field_name: field_dsj_featured_content
 entity_type: paragraph
@@ -33,11 +43,17 @@ settings:
       dsj_funding_opportunity: dsj_funding_opportunity
       dsj_good_practice: dsj_good_practice
       dsj_initiative: dsj_initiative
+      dsj_landing_page: dsj_landing_page
+      dsj_learning_content: dsj_learning_content
+      dsj_learning_path: dsj_learning_path
+      dsj_listing: dsj_listing
       dsj_organization: dsj_organization
+      dsj_pledge: dsj_pledge
       dsj_skills_intelligence: dsj_skills_intelligence
       dsj_training_offer: dsj_training_offer
     sort:
       field: _none
+      direction: ASC
     auto_create: false
     auto_create_bundle: dsj_article
 field_type: entity_reference

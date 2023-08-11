@@ -1,0 +1,100 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.dsj_stories.field_dsj_image
+    - field.field.paragraph.dsj_stories.field_dsj_link
+    - field.field.paragraph.dsj_stories.field_dsj_national_highlights
+    - field.field.paragraph.dsj_stories.field_dsj_see_more_link
+    - field.field.paragraph.dsj_stories.field_dsj_subtitle
+    - field.field.paragraph.dsj_stories.field_dsj_title
+    - paragraphs.paragraphs_type.dsj_stories
+  module:
+    - link
+    - media
+    - slick_entityreference
+id: paragraph.dsj_stories.default
+targetEntityType: paragraph
+bundle: dsj_stories
+mode: default
+content:
+  field_dsj_image:
+    type: media_thumbnail
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_dsj_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_dsj_national_highlights:
+    type: slick_entityreference_vanilla
+    label: hidden
+    settings:
+      optionset: dsj_mobile_slick
+      view_mode: card
+      cache: 0
+      skin: ''
+      lazy: ''
+      style: ''
+      overridables:
+        arrows: '0'
+        autoplay: '0'
+        dots: '0'
+        draggable: '0'
+        infinite: '0'
+        mouseWheel: '0'
+        randomize: '0'
+        variableWidth: '0'
+      override: false
+      skin_arrows: ''
+      skin_dots: ''
+      use_theme_field: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_dsj_see_more_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_dsj_subtitle:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_dsj_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_dsj_text: true
+  search_api_excerpt: true

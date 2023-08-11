@@ -75,34 +75,8 @@
       }
     }
 
-    .chosen-container-single {
-      .chosen-single {
-        height: auto;
-        padding: 0;
-        border: 0;
-        border-radius: 0;
-        background: transparent;
-        box-shadow: none;
-
-        > div {
-          display: none;
-        }
-
-        span {
-          line-height: $line-height-sm;
-          color: $gray-100;
-          font-size: $font-size-sm;
-        }
-
-      }
-
-      .chosen-drop {
-        @include border-radius($border-radius-lg);
-
-        left: 0;
-        margin-top: 0;
-        border-color: $gray-100;
-      }
+    .select2-container {
+      @include dropdown-styling(false);
     }
   }
 
@@ -113,26 +87,6 @@
   input,
   textarea {
     max-width: 100% !important;
-  }
-
-  .chosen-container {
-    width: 100% !important;
-
-    &.form-select {
-      .chosen-single {
-        @include border-radius($border-radius-lg);
-        @include padding($grid-gutter-width / 2);
-  
-        border: 1px solid $gray-100;
-      }
-    }
-  }
-
-  .chosen-choices {
-    @include border-radius($border-radius-lg);
-    background-image: none;
-    height: 100%;
-    padding: .7rem 1rem;
   }
 
   .ecl-select__icon {

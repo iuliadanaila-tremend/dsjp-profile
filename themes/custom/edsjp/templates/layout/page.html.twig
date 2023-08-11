@@ -40,7 +40,7 @@
 {% block content %}
   <main{{ main_attributes }}>
     <div class="ecl-container">
-      <div class="ecl-row">
+      <div class="ecl-row {{ reverse_layout ? 'ecl-row-reverse' : '' }} ">
         <div class="ecl-col-s-12 ecl-col-m-{{ content_columns }}">
           {{ page.content }}
         </div>

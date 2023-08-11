@@ -33,6 +33,13 @@ class TextImageExtractor extends Get implements ContainerFactoryPluginInterface 
   protected $fileSystem;
 
   /**
+   * The file repository.
+   *
+   * @var \Drupal\file\FileRepositoryInterface
+   */
+  protected $fileRepository;
+
+  /**
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container, array $configuration, $pluginId, $pluginDefinition) {
@@ -42,6 +49,8 @@ class TextImageExtractor extends Get implements ContainerFactoryPluginInterface 
       $pluginDefinition
     );
     $instance->fileSystem = $container->get('file_system');
+    $instance->fileRepository = $container->get('file.repository');
+
     return $instance;
   }
 
@@ -58,11 +67,12 @@ class TextImageExtractor extends Get implements ContainerFactoryPluginInterface 
         foreach ($matches[1] as $src) {
           // Create a new file object, set is as permanent, and replace the old
           // src with the file's one.
-          $file = file_save_data(file_get_contents($src), $constants['file_destination'] . $this->fileSystem->basename($src));
+          $file = $this->fileRepository->writeData(file_get_contents($src), $constants['file_destination'] . $this->fileSystem->basename($src));
           if ($file instanceof FileInterface) {
             $file->status = 1;
             $file->save();
-            $newSrc = file_create_url($file->getFileUri());
+
+            $newSrc = $file->createFileUrl(FALSE);
             $value = str_replace($src, $newSrc, $value);
           }
         }

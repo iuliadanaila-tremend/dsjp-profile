@@ -4,14 +4,17 @@ namespace Drupal\dsjp_content\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Block\BlockManagerInterface;
+use Drupal\Core\Block\Plugin\Block\Broken;
 use Drupal\Core\Cache\UncacheableDependencyTrait;
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Form\FormBuilderInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Path\CurrentPathStack;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Routing\CurrentRouteMatch;
 use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\facets\FacetManager\DefaultFacetManager;
+use Drupal\path_alias\AliasManagerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -90,6 +93,20 @@ class FacetsListBlock extends BlockBase implements ContainerFactoryPluginInterfa
   private $formBuilder;
 
   /**
+   * Current path.
+   *
+   * @var \Drupal\Core\Path\CurrentPathStack
+   */
+  private $currentPath;
+
+  /**
+   * Path manager.
+   *
+   * @var \Drupal\path_alias\AliasManagerInterface
+   */
+  private $pathManager;
+
+  /**
    * FacetsBlock constructor.
    *
    * @param array $configuration
@@ -110,8 +127,14 @@ class FacetsListBlock extends BlockBase implements ContainerFactoryPluginInterfa
    *   Current route.
    * @param \Drupal\Core\Form\FormBuilderInterface $formBuilder
    *   Form builder.
+   * @param \Drupal\Core\Path\CurrentPathStack $currentPath
+   *   Current path.
+   * @param \Drupal\path_alias\AliasManagerInterface $pathManager
+   *   Path manager.
+   *
+   * @SuppressWarnings(PHPMD.ExcessiveParameterList)
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, DefaultFacetManager $facets_manager, ModuleHandlerInterface $module_handler, BlockManagerInterface $plugin_manager_block, AccountProxyInterface $current_user, CurrentRouteMatch $currentRouteMatch, FormBuilderInterface $formBuilder) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, DefaultFacetManager $facets_manager, ModuleHandlerInterface $module_handler, BlockManagerInterface $plugin_manager_block, AccountProxyInterface $current_user, CurrentRouteMatch $currentRouteMatch, FormBuilderInterface $formBuilder, CurrentPathStack $currentPath, AliasManagerInterface $pathManager) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->facetsManager = $facets_manager;
     $this->moduleHandler = $module_handler;
@@ -119,6 +142,8 @@ class FacetsListBlock extends BlockBase implements ContainerFactoryPluginInterfa
     $this->currentUser = $current_user;
     $this->currentRouteMatch = $currentRouteMatch;
     $this->formBuilder = $formBuilder;
+    $this->currentPath = $currentPath;
+    $this->pathManager = $pathManager;
 
     // @todo Find better solution to get facet source id.
     $this->currentRouteName = $currentRouteMatch->getRouteName();
@@ -138,6 +163,9 @@ class FacetsListBlock extends BlockBase implements ContainerFactoryPluginInterfa
     elseif ($this->currentRouteName == 'entity.node.canonical') {
       $this->facetSourceId = 'search_api:views_block__dsj_search__listing_block';
     }
+    elseif ($this->currentRouteName == 'dsj_map.country_listing') {
+      $this->facetSourceId = 'search_api:views_page__dsj_regionally_related_content__page_1';
+    }
   }
 
   /**
@@ -153,7 +181,9 @@ class FacetsListBlock extends BlockBase implements ContainerFactoryPluginInterfa
       $container->get('plugin.manager.block'),
       $container->get('current_user'),
       $container->get('current_route_match'),
-      $container->get('form_builder')
+      $container->get('form_builder'),
+      $container->get('path.current'),
+      $container->get('path_alias.manager'),
     );
   }
 
@@ -190,6 +220,8 @@ class FacetsListBlock extends BlockBase implements ContainerFactoryPluginInterfa
       '#title' => $this->t('Exclude fields'),
       '#description' => $this->t("Comma separated list of fields exclude(if present in facets lists for current view)."),
       '#default_value' => $this->configuration['exclude_fields'] ?? TRUE,
+      '#maxlength' => 400,
+      '#size' => 400,
     ];
 
     $form['block_settings']['select_fields'] = [
@@ -197,6 +229,16 @@ class FacetsListBlock extends BlockBase implements ContainerFactoryPluginInterfa
       '#title' => $this->t('Select fields to display'),
       '#description' => $this->t("Comma separated list of fields to filter by(if present in facets lists for current view)."),
       '#default_value' => $this->configuration['select_fields'] ?? TRUE,
+      '#maxlength' => 400,
+      '#size' => 400,
+    ];
+
+    $form['block_settings']['titles'] = [
+      '#type' => 'textarea',
+      '#title' => $this->t('Filters titles'),
+      '#description' => $this->t("Titles of filters block by view."),
+      '#cols' => 5,
+      '#default_value' => $this->configuration['titles'] ?? '',
     ];
 
     return $form;
@@ -226,6 +268,10 @@ class FacetsListBlock extends BlockBase implements ContainerFactoryPluginInterfa
       'block_settings',
       'select_fields',
     ]);
+    $this->configuration['titles'] = $form_state->getValue([
+      'block_settings',
+      'titles',
+    ]);
   }
 
   /**
@@ -237,11 +283,13 @@ class FacetsListBlock extends BlockBase implements ContainerFactoryPluginInterfa
    *   Comma separated fields to exclude.
    * @param string $select_fields
    *   Comma separated fields to include.
+   * @param string $label
+   *   The facets block label.
    *
    * @return array
    *   List of active facets
    */
-  private function getAvailableFacets($facetSourceId, $exclude_fields, $select_fields) {
+  private function getAvailableFacets($facetSourceId, $exclude_fields, $select_fields, $label) {
     $available_facets = $this->facetsManager->getFacetsByFacetSourceId($facetSourceId);
 
     if (!empty($available_facets)) {
@@ -255,19 +303,55 @@ class FacetsListBlock extends BlockBase implements ContainerFactoryPluginInterfa
 
         return ($a_weight < $b_weight) ? -1 : 1;
       });
-
       if (!empty($exclude_fields)) {
-        $exclude_fields_arr = array_map('trim', explode(',', $exclude_fields));
-        $available_facets = array_filter($available_facets, function ($var) use ($exclude_fields_arr) {
-          return !in_array($var->getFieldIdentifier(), $exclude_fields_arr);
-        });
+        $available_facets = $this->processFacets($available_facets, $exclude_fields, $facetSourceId, $label, TRUE);
       }
       elseif (!empty($select_fields)) {
-        $select_fields_array = array_map('trim', explode(',', $select_fields));
-        $available_facets = array_filter($available_facets, function ($var) use ($select_fields_array) {
-          return in_array($var->getFieldIdentifier(), $select_fields_array);
-        });
+        $available_facets = $this->processFacets($available_facets, $select_fields, $facetSourceId, $label);
       }
+    }
+
+    return $available_facets;
+  }
+
+  /**
+   * Process facets according to flags.
+   *
+   * @param array $available_facets
+   *   The current facets.
+   * @param string $fields
+   *   The list of fields.
+   * @param string $facetSourceId
+   *   Id of facet source.
+   * @param string $label
+   *   Block label.
+   * @param bool $exclude
+   *   Exclude flag.
+   *
+   * @return array
+   *   List of active facets
+   */
+  private function processFacets(array $available_facets, string $fields, string $facetSourceId, string $label, bool $exclude = FALSE) {
+    $fields_arr = array_map('trim', explode(',', $fields));
+
+    // For this particular view we have a different behaviour.
+    if ($facetSourceId == 'search_api:views_page__dsj_regionally_related_content__page_1') {
+      if ($exclude || $label != 'Filter your results') {
+        if (($key = array_search("field_dsj_type_of_initiative", $fields_arr)) !== FALSE) {
+          unset($fields_arr[$key]);
+        }
+      }
+    }
+
+    if ($exclude) {
+      $available_facets = array_filter($available_facets, function ($var) use ($fields_arr) {
+        return !in_array($var->getFieldIdentifier(), $fields_arr);
+      });
+    }
+    else {
+      $available_facets = array_filter($available_facets, function ($var) use ($fields_arr) {
+        return in_array($var->getFieldIdentifier(), $fields_arr);
+      });
     }
 
     return $available_facets;
@@ -335,7 +419,7 @@ class FacetsListBlock extends BlockBase implements ContainerFactoryPluginInterfa
       }
     }
 
-    /** @var Drupal\facets\Entity\Facet $facet */
+    /** @var \Drupal\facets\Entity\Facet $facet */
     foreach ($available_facets as $facet) {
       $facet_title = $facet->getName();
       $plugin_id = 'facet_block:' . $facet->id();
@@ -369,9 +453,12 @@ class FacetsListBlock extends BlockBase implements ContainerFactoryPluginInterfa
     $selectFields = $this->configuration['select_fields'] ?? "";
     $exclude_empty_facets = $this->configuration['exclude_empty_facets'] ?? TRUE;
     $include_search = $this->configuration['include_search'] ? TRUE : FALSE;
+    $titles = $this->configuration['titles'] ?? "";
+    $current_title = $this->getLabel($titles);
+    $label = $this->configuration['label'];
 
     if (!empty($this->facetSourceId)) {
-      $available_facets = $this->getAvailableFacets($this->facetSourceId, $excludeFields, $selectFields);
+      $available_facets = $this->getAvailableFacets($this->facetSourceId, $excludeFields, $selectFields, $label);
       $exposedFormBid = $this->exposedFormBid;
       if ($this->currentRouteName == "view.dsj_search.page_1") {
         $include_search = FALSE;
@@ -384,13 +471,47 @@ class FacetsListBlock extends BlockBase implements ContainerFactoryPluginInterfa
             '#theme' => 'facets_list_block',
             '#show_title' => $show_title,
             '#facets' => $facets,
+            '#attached' => [
+              'library' => ['dsjp_content/facet-select2'],
+            ],
           ];
-          chosen_attach_library($build);
+
+          if ($current_title) {
+            $build['#title'] = $current_title;
+          }
 
           return $build;
         }
       }
     }
+
+    return [];
+  }
+
+  /**
+   * Get the block title by route.
+   *
+   * @param string $titles
+   *   The block titles.
+   *
+   * @return false|string
+   *   Return value.
+   */
+  public function getLabel(string $titles) {
+    $titles = explode(PHP_EOL, $titles);
+    $current_path = $this->currentPath->getPath();
+    $result = mb_substr($this->pathManager->getAliasByPath($current_path), 1);
+
+    foreach ($titles as $title) {
+      if (str_contains($title, $result)) {
+        return mb_substr($title, strpos($title, "|") + 1);
+      }
+      elseif (str_contains($result, 'european-interactive-map') && str_contains($title, 'european-interactive-map')) {
+        return mb_substr($title, strpos($title, "|") + 1);
+      }
+    }
+
+    return FALSE;
   }
 
 }

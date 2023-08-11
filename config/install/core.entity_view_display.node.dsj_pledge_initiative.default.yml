@@ -62,7 +62,8 @@ content:
   field_dsj_initiative_status:
     type: json
     label: above
-    settings: {  }
+    settings:
+      attach_library: true
     third_party_settings: {  }
     weight: 116
     region: content

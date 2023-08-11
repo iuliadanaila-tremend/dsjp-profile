@@ -41,10 +41,10 @@
           }
         });
       }
-      $('span.comment-attachment-toggle').on('click', function () {
+      $('span.comment-attachment-toggle').once('toggleAttachment').on('click', function () {
         $(this).next('div').toggleClass('hidden');
       });
-      $('input[name*="dsj_attachments"]').change(function () {
+      $('input[name*="dsj_attachments"]').once('toggleAttachAttachment').change(function () {
         var spanText = $(this).prev().find('span').text();
         $(this).prev().find('span').after('<div class="file-name">' + this.value.replace(/.*[\/\\]/, '') + '</div>')
         $(this).next('button').addClass('is-visible');
@@ -57,38 +57,32 @@
       $(".load-more-btn", context).bind("click", function (e) {
         e.preventDefault();
 
-        var $parentFieldWrapper = $(this).parents(".field-load-more");
+        var $parentFieldWrapper = $(this).closest(".field-load-more");
         var parentWrapperClass = $(this).attr("data-field-class");
+        var $itemsWrapper = $parentFieldWrapper.hasClass('field__items') ? $parentFieldWrapper : $(".field__items", $parentFieldWrapper).first();
         var itemLimit =
           drupalSettings.field_load_more[parentWrapperClass].limit;
         var count = 0;
-        $(".field__item.hidden", $parentFieldWrapper).each(function () {
-          if (count < itemLimit) {
-            $(this).removeClass("hidden");
-          } else {
-            return false;
-          }
-          count++;
+        $itemsWrapper.children(".field__item.hidden").each(function () {
+          $(this).removeClass("hidden");
         });
-        var invisibleItemsCount = $(
-          ".field__item.hidden",
-          $parentFieldWrapper
-        ).length;
-
+        var invisibleItemsCount = $itemsWrapper.children(".field__item.hidden").length;
         if (invisibleItemsCount === 0) {
           $(this).addClass("hidden");
-          $("a.view-less-btn", $parentFieldWrapper).removeClass("hidden");
+          $itemsWrapper.children("div").children("a.view-less-btn").removeClass("hidden");
         }
       });
       $(".view-less-btn", context).bind("click", function (e) {
         e.preventDefault();
 
-        var $parentFieldWrapper = $(this).parents(".field-load-more");
+        var $parentFieldWrapper = $(this).closest(".field-load-more");
+        var $itemsWrapper = $parentFieldWrapper.hasClass('field__items') ? $parentFieldWrapper : $(".field__items", $parentFieldWrapper).first();
         var parentWrapperClass = $(this).attr("data-field-class");
         var itemLimit =
           drupalSettings.field_load_more[parentWrapperClass].limit;
 
-        $(".field__item:not(.hidden)", $parentFieldWrapper).each(function (
+        // Take only the first field items in case we have nested "Show more" buttons.
+        $itemsWrapper.children(".field__item:not(.hidden)").each(function (
           index,
           element
         ) {
@@ -97,7 +91,7 @@
           }
         });
         $(this).addClass("hidden");
-        $("a.load-more-btn", $parentFieldWrapper).removeClass("hidden");
+        $itemsWrapper.children("div").children("a.load-more-btn").removeClass("hidden");
       });
 
       /** self assessment */
@@ -147,10 +141,17 @@
   Drupal.behaviors.enableSelect2 = {
     attach: function (context, settings) {
       $(".form-item select", context).select2({
-        width: '100%'
+        width: '100%',
+        placeholder: Drupal.t('Choose some options'),
+        templateSelection: function (data) {
+          if (data.selected) {
+            return data.text;
+          }
+          return  Drupal.t('Choose some options');
+        }
       });
-    },
-  };
+    }
+  }
 
   function scrollDown($groupedCards) {
     $("html, body").animate(

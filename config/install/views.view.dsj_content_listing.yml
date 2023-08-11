@@ -3,20 +3,13 @@ status: true
 dependencies:
   config:
     - search_api.index.main_content
-  content:
-    - 'block_content:text_block:08fcff04-d3d1-4d49-8aa5-109410a1c1fa'
-    - 'block_content:text_block:2fbd336b-20af-429a-863e-c1ca5de771da'
-    - 'block_content:text_block:427e4039-2c86-48b3-a7d5-deb4d0e9ad6c'
-    - 'block_content:text_block:4adad455-f6b0-4ae1-9b4b-5284fb1d7472'
-    - 'block_content:text_block:50d78357-e7e1-4cbd-ace6-7bd2994b9de0'
-    - 'block_content:text_block:59039f61-3149-4fa0-a75a-4b649ddf0e2a'
-    - 'block_content:text_block:b38e010f-6322-4616-b8c3-805f4101ca83'
-    - 'block_content:text_block:c577674e-6a07-4899-9910-113ebd92e4bc'
-    - 'block_content:text_block:cd798bc8-4326-4b9a-a5a1-098819c8738f'
-    - 'block_content:text_block:d2a30729-e61a-4365-801b-33df630c73e1'
+    - user.role.administrator
+    - user.role.dsj_critical_reviewer
+    - user.role.dsj_reviewer
   module:
     - better_exposed_filters
     - search_api
+    - user
 id: dsj_content_listing
 label: 'Content Listing'
 module: views
@@ -337,7 +330,7 @@ display:
           default_row_class: true
           uses_fields: false
           type: ul
-          wrapper_class: 'item-list item--columned'
+          wrapper_class: 'item-list item--wide item--img-right'
           class: ''
       row:
         type: search_api
@@ -366,7 +359,7 @@ display:
             'entity:user':
               user: default
       query:
-        type: views_query
+        type: search_api_query
         options:
           bypass_access: false
           skip_access: false
@@ -613,15 +606,18 @@ display:
           default_row_class: true
           uses_fields: false
           type: ul
-          wrapper_class: 'item-list item--wide'
+          wrapper_class: 'item-list item--wide item--img-right'
           class: ''
       row:
         type: search_api
         options:
           view_modes:
+            'entity:group':
+              dsj_organization: default
             'entity:node':
               dsj_article: listing
-              dsj_digital_skills_resource: listing_wide
+              dsj_country_page: default
+              dsj_digital_skills_resource: listing
               dsj_discussion: listing
               dsj_event: listing
               dsj_funding_opportunity: listing
@@ -631,9 +627,12 @@ display:
               dsj_national_coalition: listing
               dsj_organization: listing
               dsj_page: listing
+              dsj_pledge: default
               dsj_skills_intelligence: listing
               dsj_strategy: listing
               dsj_training_offer: listing
+            'entity:taxonomy_term':
+              dsj_type_of_article: default
             'entity:user':
               user: default
       defaults:
@@ -646,20 +645,7 @@ display:
         filter_groups: false
         header: false
       display_description: ''
-      header:
-        entity_block_content:
-          id: entity_block_content
-          table: views
-          field: entity_block_content
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: entity
-          empty: false
-          target: d2a30729-e61a-4365-801b-33df630c73e1
-          view_mode: default
-          tokenize: false
-          bypass_access: false
+      header: {  }
       exposed_block: true
       display_extenders:
         metatag_display_extender:
@@ -1015,20 +1001,7 @@ display:
         filter_groups: false
         header: false
       display_description: ''
-      header:
-        entity_block_content:
-          id: entity_block_content
-          table: views
-          field: entity_block_content
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: entity
-          empty: false
-          target: 50d78357-e7e1-4cbd-ace6-7bd2994b9de0
-          view_mode: default
-          tokenize: false
-          bypass_access: false
+      header: {  }
       exposed_block: true
       display_extenders:
         metatag_display_extender:
@@ -1241,7 +1214,7 @@ display:
           default_row_class: true
           uses_fields: false
           type: ul
-          wrapper_class: 'item-list item--wide'
+          wrapper_class: 'item-list item--wide item--img-right'
           class: ''
       row:
         type: search_api
@@ -1273,20 +1246,7 @@ display:
         filter_groups: false
         header: false
       display_description: ''
-      header:
-        entity_block_content:
-          id: entity_block_content
-          table: views
-          field: entity_block_content
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: entity
-          empty: false
-          target: 08fcff04-d3d1-4d49-8aa5-109410a1c1fa
-          view_mode: default
-          tokenize: false
-          bypass_access: false
+      header: {  }
       exposed_block: true
       display_extenders:
         metatag_display_extender:
@@ -1499,27 +1459,33 @@ display:
           default_row_class: true
           uses_fields: false
           type: ul
-          wrapper_class: 'item-list item--wide'
+          wrapper_class: 'item-list item--wide item--img-right'
           class: ''
       row:
         type: search_api
         options:
           view_modes:
+            'entity:group':
+              dsj_organization: default
             'entity:node':
               dsj_article: listing
+              dsj_country_page: default
               dsj_digital_skills_resource: listing
               dsj_discussion: listing
               dsj_event: listing
               dsj_funding_opportunity: listing
-              dsj_good_practice: listing_wide
+              dsj_good_practice: listing
               dsj_initiative: listing
               dsj_landing_page: listing
               dsj_national_coalition: listing
               dsj_organization: listing
               dsj_page: listing
+              dsj_pledge: default
               dsj_skills_intelligence: listing
               dsj_strategy: listing
               dsj_training_offer: listing
+            'entity:taxonomy_term':
+              dsj_type_of_article: default
             'entity:user':
               user: default
       defaults:
@@ -1531,20 +1497,7 @@ display:
         filter_groups: false
         header: false
       display_description: ''
-      header:
-        entity_block_content:
-          id: entity_block_content
-          table: views
-          field: entity_block_content
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: entity
-          empty: false
-          target: c577674e-6a07-4899-9910-113ebd92e4bc
-          view_mode: default
-          tokenize: false
-          bypass_access: false
+      header: {  }
       exposed_block: true
       display_extenders:
         metatag_display_extender:
@@ -1757,27 +1710,33 @@ display:
           default_row_class: true
           uses_fields: false
           type: ul
-          wrapper_class: 'item-list item--wide'
+          wrapper_class: 'item-list item--wide item--img-right'
           class: ''
       row:
         type: search_api
         options:
           view_modes:
+            'entity:group':
+              dsj_organization: default
             'entity:node':
               dsj_article: listing
+              dsj_country_page: default
               dsj_digital_skills_resource: listing
               dsj_discussion: listing
               dsj_event: listing
               dsj_funding_opportunity: listing
               dsj_good_practice: listing
-              dsj_initiative: listing_wide
+              dsj_initiative: listing
               dsj_landing_page: listing
               dsj_national_coalition: listing
               dsj_organization: listing
               dsj_page: listing
+              dsj_pledge: default
               dsj_skills_intelligence: listing
               dsj_strategy: listing
               dsj_training_offer: listing
+            'entity:taxonomy_term':
+              dsj_type_of_article: default
             'entity:user':
               user: default
       defaults:
@@ -1789,20 +1748,7 @@ display:
         filter_groups: false
         header: false
       display_description: ''
-      header:
-        entity_block_content:
-          id: entity_block_content
-          table: views
-          field: entity_block_content
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: entity
-          empty: false
-          target: 4adad455-f6b0-4ae1-9b4b-5284fb1d7472
-          view_mode: default
-          tokenize: false
-          bypass_access: false
+      header: {  }
       exposed_block: true
       display_extenders:
         metatag_display_extender:
@@ -1811,6 +1757,509 @@ display:
             description: 'EU, national and global upskilling initiatives on digital skills and jobs – for all citizens, labour force, education sector and ICT sector professionals.'
           tokenize: false
       path: initiatives
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+      tags:
+        - 'config:search_api.index.main_content'
+  learning_content:
+    id: learning_content
+    display_title: 'Learning Content'
+    display_plugin: page
+    position: 5
+    display_options:
+      title: 'Learning Content'
+      cache:
+        type: none
+      filters:
+        search_api_language:
+          id: search_api_language
+          table: search_api_index_main_content
+          field: search_api_language
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api_language
+          operator: in
+          value:
+            '***LANGUAGE_language_content***': '***LANGUAGE_language_content***'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        type:
+          id: type
+          table: search_api_index_main_content
+          field: type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api_options
+          operator: or
+          value:
+            dsj_learning_content: dsj_learning_content
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+        search_api_fulltext:
+          id: search_api_fulltext
+          table: search_api_index_main_content
+          field: search_api_fulltext
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api_fulltext
+          operator: or
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: search_api_fulltext_op
+            label: ''
+            description: Keywords
+            use_operator: false
+            operator: search_api_fulltext_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: keywords
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              dsj_advanced_contributor: '0'
+              dsj_content_editor: '0'
+              dsj_reviewer: '0'
+              dsj_critical_reviewer: '0'
+              community_manager: '0'
+            expose_fields: false
+            placeholder: ''
+            searched_fields_id: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          parse_mode: terms
+          min_length: null
+          fields: {  }
+        search_api_datasource:
+          id: search_api_datasource
+          table: search_api_index_main_content
+          field: search_api_datasource
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api_datasource
+          operator: or
+          value:
+            'entity:node': 'entity:node'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      style:
+        type: html_list
+        options:
+          row_class: ''
+          default_row_class: true
+          uses_fields: false
+          type: ul
+          wrapper_class: 'item-list item--wide item--img-right'
+          class: ''
+      row:
+        type: search_api
+        options:
+          view_modes:
+            'entity:group':
+              dsj_organization: default
+            'entity:node':
+              dsj_article: listing
+              dsj_country_page: default
+              dsj_digital_skills_resource: listing
+              dsj_discussion: listing
+              dsj_event: listing
+              dsj_funding_opportunity: listing
+              dsj_good_practice: listing
+              dsj_initiative: listing
+              dsj_landing_page: listing
+              dsj_learning_content: listing
+              dsj_national_coalition: listing
+              dsj_organization: listing
+              dsj_page: listing
+              dsj_pledge: default
+              dsj_skills_intelligence: listing
+              dsj_strategy: listing
+              dsj_training_offer: listing_wide
+            'entity:taxonomy_term':
+              dsj_type_of_article: default
+            'entity:user':
+              user: default
+      defaults:
+        cache: false
+        title: false
+        style: false
+        row: false
+        sorts: true
+        filters: false
+        filter_groups: false
+        header: false
+      display_description: ''
+      header: {  }
+      exposed_block: true
+      display_extenders:
+        metatag_display_extender:
+          metatags:
+            title: 'Learning Content I Digital Skills and Jobs Platform'
+          tokenize: false
+      path: learning-content
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+      tags:
+        - 'config:search_api.index.main_content'
+  learning_path:
+    id: learning_path
+    display_title: 'Learning Path'
+    display_plugin: page
+    position: 5
+    display_options:
+      title: 'Learning Path'
+      cache:
+        type: none
+      filters:
+        search_api_language:
+          id: search_api_language
+          table: search_api_index_main_content
+          field: search_api_language
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api_language
+          operator: in
+          value:
+            '***LANGUAGE_language_content***': '***LANGUAGE_language_content***'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        type:
+          id: type
+          table: search_api_index_main_content
+          field: type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api_options
+          operator: or
+          value:
+            dsj_learning_path: dsj_learning_path
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+        search_api_fulltext:
+          id: search_api_fulltext
+          table: search_api_index_main_content
+          field: search_api_fulltext
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api_fulltext
+          operator: or
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: search_api_fulltext_op
+            label: ''
+            description: Keywords
+            use_operator: false
+            operator: search_api_fulltext_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: keywords
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              dsj_advanced_contributor: '0'
+              dsj_content_editor: '0'
+              dsj_reviewer: '0'
+              dsj_critical_reviewer: '0'
+              community_manager: '0'
+            expose_fields: false
+            placeholder: ''
+            searched_fields_id: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          parse_mode: terms
+          min_length: null
+          fields: {  }
+        search_api_datasource:
+          id: search_api_datasource
+          table: search_api_index_main_content
+          field: search_api_datasource
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api_datasource
+          operator: or
+          value:
+            'entity:node': 'entity:node'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      style:
+        type: html_list
+        options:
+          row_class: ''
+          default_row_class: true
+          uses_fields: false
+          type: ul
+          wrapper_class: 'item-list item--wide item--img-right'
+          class: ''
+      row:
+        type: search_api
+        options:
+          view_modes:
+            'entity:group':
+              dsj_organization: default
+            'entity:node':
+              dsj_article: listing
+              dsj_country_page: default
+              dsj_digital_skills_resource: listing
+              dsj_discussion: listing
+              dsj_event: listing
+              dsj_funding_opportunity: listing
+              dsj_good_practice: listing
+              dsj_initiative: listing
+              dsj_landing_page: listing
+              dsj_learning_content: listing
+              dsj_learning_path: listing
+              dsj_national_coalition: listing
+              dsj_organization: listing
+              dsj_page: listing
+              dsj_pledge: default
+              dsj_skills_intelligence: listing
+              dsj_strategy: listing
+              dsj_training_offer: listing_wide
+            'entity:taxonomy_term':
+              dsj_type_of_article: default
+            'entity:user':
+              user: default
+      defaults:
+        cache: false
+        title: false
+        style: false
+        row: false
+        sorts: true
+        filters: false
+        filter_groups: false
+        header: false
+      display_description: ''
+      header: {  }
+      exposed_block: true
+      display_extenders:
+        metatag_display_extender:
+          metatags:
+            title: 'Learning Path I Digital Skills and Jobs Platform'
+          tokenize: false
+      path: learning-path
     cache_metadata:
       max-age: -1
       contexts:
@@ -2078,20 +2527,7 @@ display:
         filter_groups: false
         header: false
       display_description: ''
-      header:
-        entity_block_content:
-          id: entity_block_content
-          table: views
-          field: entity_block_content
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: entity
-          empty: false
-          target: cd798bc8-4326-4b9a-a5a1-098819c8738f
-          view_mode: default
-          tokenize: false
-          bypass_access: false
+      header: {  }
       exposed_block: true
       display_extenders:
         metatag_display_extender:
@@ -2116,6 +2552,13 @@ display:
     position: 6
     display_options:
       title: Organisations
+      access:
+        type: role
+        options:
+          role:
+            dsj_reviewer: dsj_reviewer
+            dsj_critical_reviewer: dsj_critical_reviewer
+            administrator: administrator
       cache:
         type: none
         options: {  }
@@ -2327,6 +2770,7 @@ display:
             'entity:user':
               user: default
       defaults:
+        access: false
         cache: false
         title: false
         style: false
@@ -2335,26 +2779,312 @@ display:
         filter_groups: false
         header: false
       display_description: ''
-      header:
-        entity_block_content:
-          id: entity_block_content
-          table: views
-          field: entity_block_content
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: entity
-          empty: false
-          target: 427e4039-2c86-48b3-a7d5-deb4d0e9ad6c
-          view_mode: default
-          tokenize: false
-          bypass_access: false
+      header: {  }
       exposed_block: true
       display_extenders:
         metatag_display_extender:
           metatags: {  }
           tokenize: false
       path: organisations
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.roles
+      tags:
+        - 'config:search_api.index.main_content'
+  pledges:
+    id: pledges
+    display_title: Pledges
+    display_plugin: page
+    position: 5
+    display_options:
+      title: Pledges
+      cache:
+        type: none
+      sorts:
+        created:
+          id: created
+          table: search_api_index_main_content
+          field: created
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api
+          order: DESC
+          expose:
+            label: ''
+            field_identifier: created
+          exposed: false
+      filters:
+        search_api_language:
+          id: search_api_language
+          table: search_api_index_main_content
+          field: search_api_language
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api_language
+          operator: in
+          value:
+            '***LANGUAGE_language_content***': '***LANGUAGE_language_content***'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        type:
+          id: type
+          table: search_api_index_main_content
+          field: type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api_options
+          operator: or
+          value:
+            dsj_pledge: dsj_pledge
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+        search_api_fulltext:
+          id: search_api_fulltext
+          table: search_api_index_main_content
+          field: search_api_fulltext
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api_fulltext
+          operator: or
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: search_api_fulltext_op
+            label: ''
+            description: Keywords
+            use_operator: false
+            operator: search_api_fulltext_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: keywords
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              dsj_advanced_contributor: '0'
+              dsj_content_editor: '0'
+              dsj_reviewer: '0'
+              dsj_critical_reviewer: '0'
+              community_manager: '0'
+            expose_fields: false
+            placeholder: ''
+            searched_fields_id: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          parse_mode: terms
+          min_length: null
+          fields: {  }
+        search_api_datasource:
+          id: search_api_datasource
+          table: search_api_index_main_content
+          field: search_api_datasource
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api_datasource
+          operator: or
+          value:
+            'entity:node': 'entity:node'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+        status_1:
+          id: status_1
+          table: search_api_index_main_content
+          field: status_1
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api_boolean
+          operator: '='
+          value: '1'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      style:
+        type: default
+        options:
+          row_class: ''
+          default_row_class: true
+          uses_fields: true
+      row:
+        type: search_api
+        options:
+          view_modes:
+            'entity:group':
+              dsj_organization: default
+            'entity:node':
+              dsj_article: default
+              dsj_country_page: default
+              dsj_digital_skills_resource: default
+              dsj_discussion: default
+              dsj_event: default
+              dsj_funding_opportunity: default
+              dsj_good_practice: default
+              dsj_initiative: default
+              dsj_landing_page: default
+              dsj_national_coalition: default
+              dsj_organization: default
+              dsj_page: default
+              dsj_pledge: listing
+              dsj_skills_intelligence: default
+              dsj_strategy: default
+              dsj_training_offer: default
+            'entity:taxonomy_term':
+              dsj_type_of_article: default
+            'entity:user':
+              user: default
+      defaults:
+        cache: false
+        title: false
+        style: false
+        row: false
+        sorts: false
+        filters: false
+        filter_groups: false
+        header: false
+      display_description: ''
+      header: {  }
+      exposed_block: true
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
+      path: inspiration/pledges
     cache_metadata:
       max-age: -1
       contexts:
@@ -2559,14 +3289,17 @@ display:
           default_row_class: true
           uses_fields: false
           type: ul
-          wrapper_class: 'item-list item--wide'
+          wrapper_class: 'item-list item--wide item--img-right'
           class: ''
       row:
         type: search_api
         options:
           view_modes:
+            'entity:group':
+              dsj_organization: default
             'entity:node':
               dsj_article: listing
+              dsj_country_page: default
               dsj_digital_skills_resource: listing
               dsj_discussion: listing
               dsj_event: listing
@@ -2577,9 +3310,12 @@ display:
               dsj_national_coalition: listing
               dsj_organization: listing
               dsj_page: listing
-              dsj_skills_intelligence: listing_wide
+              dsj_pledge: default
+              dsj_skills_intelligence: listing
               dsj_strategy: listing
               dsj_training_offer: listing
+            'entity:taxonomy_term':
+              dsj_type_of_article: default
             'entity:user':
               user: default
       defaults:
@@ -2591,20 +3327,7 @@ display:
         filter_groups: false
         header: false
       display_description: ''
-      header:
-        entity_block_content:
-          id: entity_block_content
-          table: views
-          field: entity_block_content
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: entity
-          empty: false
-          target: 59039f61-3149-4fa0-a75a-4b649ddf0e2a
-          view_mode: default
-          tokenize: false
-          bypass_access: false
+      header: {  }
       exposed_block: true
       display_extenders:
         metatag_display_extender:
@@ -2870,14 +3593,17 @@ display:
           default_row_class: true
           uses_fields: false
           type: ul
-          wrapper_class: 'item-list item--wide'
+          wrapper_class: 'item-list item--wide item--img-right'
           class: ''
       row:
         type: search_api
         options:
           view_modes:
+            'entity:group':
+              dsj_organization: default
             'entity:node':
               dsj_article: listing
+              dsj_country_page: default
               dsj_digital_skills_resource: listing
               dsj_discussion: listing
               dsj_event: listing
@@ -2885,12 +3611,17 @@ display:
               dsj_good_practice: listing
               dsj_initiative: listing
               dsj_landing_page: listing
+              dsj_learning_content: listing
+              dsj_learning_path: listing
               dsj_national_coalition: listing
               dsj_organization: listing
               dsj_page: listing
+              dsj_pledge: default
               dsj_skills_intelligence: listing
-              dsj_strategy: listing_wide
+              dsj_strategy: listing
               dsj_training_offer: listing
+            'entity:taxonomy_term':
+              dsj_type_of_article: default
             'entity:user':
               user: default
       defaults:
@@ -2903,20 +3634,7 @@ display:
         filter_groups: false
         header: false
       display_description: ''
-      header:
-        entity_block_content:
-          id: entity_block_content
-          table: views
-          field: entity_block_content
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: entity
-          empty: false
-          target: 2fbd336b-20af-429a-863e-c1ca5de771da
-          view_mode: default
-          tokenize: false
-          bypass_access: false
+      header: {  }
       exposed_block: true
       display_extenders:
         metatag_display_extender:
@@ -3129,7 +3847,7 @@ display:
           default_row_class: true
           uses_fields: false
           type: ul
-          wrapper_class: 'item-list item--wide'
+          wrapper_class: 'item-list item--wide item--img-right'
           class: ''
       row:
         type: search_api
@@ -3162,20 +3880,7 @@ display:
         filter_groups: false
         header: false
       display_description: ''
-      header:
-        entity_block_content:
-          id: entity_block_content
-          table: views
-          field: entity_block_content
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: entity
-          empty: false
-          target: b38e010f-6322-4616-b8c3-805f4101ca83
-          view_mode: default
-          tokenize: false
-          bypass_access: false
+      header: {  }
       exposed_block: true
       display_extenders:
         metatag_display_extender:

@@ -2,6 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - node.type.dsj_discussion
     - node.type.dsj_landing_page
     - node.type.dsj_listing
   module:
@@ -50,6 +51,7 @@ type_settings:
       weight: 1
   entity_types:
     node:
+      - dsj_discussion
       - dsj_landing_page
       - dsj_listing
   default_moderation_state: draft

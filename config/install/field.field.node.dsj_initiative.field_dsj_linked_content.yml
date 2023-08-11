@@ -1,0 +1,66 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dsj_linked_content
+    - node.type.dsj_article
+    - node.type.dsj_country_page
+    - node.type.dsj_digital_skills_resource
+    - node.type.dsj_discussion
+    - node.type.dsj_event
+    - node.type.dsj_funding_opportunity
+    - node.type.dsj_good_practice
+    - node.type.dsj_initiative
+    - node.type.dsj_landing_page
+    - node.type.dsj_learning_content
+    - node.type.dsj_listing
+    - node.type.dsj_national_coalition
+    - node.type.dsj_organization
+    - node.type.dsj_page
+    - node.type.dsj_pledge
+    - node.type.dsj_skills_intelligence
+    - node.type.dsj_strategy
+    - node.type.dsj_training_offer
+  module:
+    - tmgmt_content
+third_party_settings:
+  tmgmt_content:
+    excluded: false
+id: node.dsj_initiative.field_dsj_linked_content
+field_name: field_dsj_linked_content
+entity_type: node
+bundle: dsj_initiative
+label: 'Linked content'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      dsj_article: dsj_article
+      dsj_page: dsj_page
+      dsj_country_page: dsj_country_page
+      dsj_digital_skills_resource: dsj_digital_skills_resource
+      dsj_discussion: dsj_discussion
+      dsj_event: dsj_event
+      dsj_funding_opportunity: dsj_funding_opportunity
+      dsj_good_practice: dsj_good_practice
+      dsj_initiative: dsj_initiative
+      dsj_landing_page: dsj_landing_page
+      dsj_learning_content: dsj_learning_content
+      dsj_listing: dsj_listing
+      dsj_national_coalition: dsj_national_coalition
+      dsj_organization: dsj_organization
+      dsj_pledge: dsj_pledge
+      dsj_skills_intelligence: dsj_skills_intelligence
+      dsj_strategy: dsj_strategy
+      dsj_training_offer: dsj_training_offer
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: dsj_article
+field_type: entity_reference

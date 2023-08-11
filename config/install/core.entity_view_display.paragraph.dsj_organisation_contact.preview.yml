@@ -1,0 +1,45 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.preview
+    - field.field.paragraph.dsj_organisation_contact.field_dsj_contact_email
+    - field.field.paragraph.dsj_organisation_contact.field_dsj_contact_name
+    - field.field.paragraph.dsj_organisation_contact.field_dsj_link
+    - paragraphs.paragraphs_type.dsj_organisation_contact
+  module:
+    - link
+id: paragraph.dsj_organisation_contact.preview
+targetEntityType: paragraph
+bundle: dsj_organisation_contact
+mode: preview
+content:
+  field_dsj_contact_email:
+    type: basic_string
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_dsj_contact_name:
+    type: string
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_dsj_link:
+    type: link
+    label: inline
+    settings:
+      trim_length: null
+      url_only: false
+      url_plain: false
+      rel: '0'
+      target: _blank
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  search_api_excerpt: true

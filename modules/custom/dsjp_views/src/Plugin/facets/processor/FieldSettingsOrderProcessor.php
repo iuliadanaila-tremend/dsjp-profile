@@ -2,8 +2,8 @@
 
 namespace Drupal\dsjp_views\Plugin\facets\processor;
 
-use Drupal\facets\Processor\SortProcessorPluginBase;
 use Drupal\facets\Processor\SortProcessorInterface;
+use Drupal\facets\Processor\SortProcessorPluginBase;
 use Drupal\facets\Result\Result;
 use Drupal\field\Entity\FieldStorageConfig;
 
@@ -27,9 +27,12 @@ class FieldSettingsOrderProcessor extends SortProcessorPluginBase implements Sor
   public function sortResults(Result $a, Result $b) {
     $fieldId = $a->getFacet()->getFieldIdentifier();
     $settings = FieldStorageConfig::loadByName('node', $fieldId)->getSetting('allowed_values');
-    $order = array_flip(array_keys($settings));
+    if (is_array($settings)) {
+      $order = array_flip(array_keys($settings));
+      return $order[$a->getRawValue()] > $order[$b->getRawValue()];
+    }
 
-    return $order[$a->getRawValue()] > $order[$b->getRawValue()];
+    return 0;
   }
 
 }

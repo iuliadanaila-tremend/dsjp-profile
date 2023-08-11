@@ -23,11 +23,13 @@
           {{ node.title.value }}
         </h1>
         {{ title_suffix }}
-        {% if content.flag_subscribe_node and logged_in %}
-          <div class="subscribe">
-            {{ content.flag_subscribe_node }}
-          </div>
-        {% endif %}
+        <div class="subscribe-button-wrapper">
+          {% if learning_states_form and logged_in %}
+            <div class="subscribe">
+              {{ learning_states_form }}
+            </div>
+          {% endif %}
+        </div>
       </div>
       {% include '@edsjp/content/partials/author-extended-info.html.twig' %}
     </div>
@@ -38,7 +40,7 @@
       </div>
     {% endif %}
 
-    {% if content.flag_voting or socialShare %}
+    {% if content.flag_voting or socialShare or (content.flag_subscribe_node and logged_in) %}
       <div class="voteShare-container">
         {% if content.flag_voting %}
           <div class="voting">{{ content.flag_voting }}</div>
@@ -47,9 +49,14 @@
         {% if socialShare %}
           <div class="sharing">{{ socialShare }}</div>
         {% endif %}
+
+        {% if content.flag_subscribe_node and logged_in %}
+          <div class="subscribe">
+            {{ content.flag_subscribe_node }}
+          </div>
+        {% endif %}
       </div>
     {% endif %}
-
   </div>
 
   {% include '@edsjp/content/partials/comments-area.html.twig' %}

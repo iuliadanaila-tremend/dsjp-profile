@@ -124,8 +124,6 @@ process:
       plugin: get
       source: field_dsj_topology_of_competence
   field_dsj_type_of_initiative: field_dsj_type_of_initiative
-  field_dsj_publish_in_core: field_dsj_publish_in_core
-  field_dsj_website_link:
     -
       plugin: skip_on_empty
       method: process

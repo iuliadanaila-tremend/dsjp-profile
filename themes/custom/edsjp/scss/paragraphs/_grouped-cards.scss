@@ -1,14 +1,37 @@
 .paragraph--type--dsj-grouped-cards {
-  @include media-breakpoint-down(md) {
-    margin-top: -150px;
-  }
-
-  margin-top: -200px !important;
   position: relative;
   z-index: 1;
+  background: linear-gradient(269.17deg, rgba(23, 0, 114, 0.8) -3.97%, rgba(113, 0, 177, 0.8) 103.42%);
+
+  @include media-breakpoint-up (sm) {
+    padding-top: calc(#{$grid-gutter-width} / 1.45);
+  }
+
+  @include media-breakpoint-up(lg) {
+    height: 250px;
+  }
 
   h2 {
+    @include font($h2-font-size, $line-height-2xl, $font-ec-square-regular, 600, true);
+    margin: 0;
+    color: $body-bg;
     padding-bottom: 0;
+    padding-right: $grid-gutter-width;
+    align-self: center;
+
+    @include media-breakpoint-down(xs) {
+      padding-top: $grid-gutter-width;
+      padding-left: 0;
+    }
+
+    @include media-breakpoint-down (md) {
+      flex-basis: 100%;
+      padding-bottom: $grid-gutter-width-mobile * 0.75;
+    }
+
+    @include media-breakpoint-between (md, lg) {
+      flex-basis: auto;
+    }
   }
 
   .tabs {
@@ -18,8 +41,14 @@
     justify-content: flex-start;
     width: 100%;
 
+    @include media-breakpoint-down(sm) {
+      label {
+        min-width: unset;
+      }
+    }
+
     .tab {
-      padding-top: $grid-gutter-width / 1.5 !important;
+      padding-top: $grid-gutter-width * 1.375;
 
       .card-item {
         @include media-breakpoint-down(sm) {
@@ -40,6 +69,10 @@
         }
         margin-bottom: $grid-gutter-width / 1.5;
         padding: 0 $grid-gutter-width / 3 !important;
+        a {
+          width: 144px;
+          height: 94px;
+        }
       }
     }
 
@@ -49,12 +82,12 @@
       }
 
       @include media-breakpoint-down(sm) {
-        width: 50%;
+        width: 45%;
         box-sizing: border-box;
       }
 
       @include media-breakpoint-up(sm) {
-        min-width: 250px;
+        min-width: 240px;
       }
 
       order: 1;
@@ -80,14 +113,13 @@
   }
 
   .tabs .tab {
-    @include media-breakpoint-down(sm) {
-      padding-top: $grid-gutter-width !important;
-    }
+
     order: 99;
     flex-grow: 1;
     width: 100%;
-    display: none;
-    padding: 1rem 6px;
+    overflow-y: hidden;
+    height: 0;
+    padding: 0;
   }
 
   .tabs input[type='radio'] {
@@ -97,13 +129,18 @@
   .tabs input[type='radio']:checked + label {
     font-weight: bold;
     border-color: $body-bg;
-    background-color: $primary;
-    color: $body-bg;
+    background-color: $white;
+    color: $primary;
     border-radius: 6px;
   }
 
+  .tabs input[type='radio']:not(:checked) + label{
+    color: $white;
+  }
+
   .tabs input[type='radio']:checked + label + .tab {
-    display: block;
+    height: auto;
+    padding-top: $grid-gutter-width;
   }
 
   a {
@@ -118,7 +155,6 @@
 
     &:hover {
       transition-duration: .2s;
-      //transform: translateY(-10px);
       box-shadow: 5px 20px 50px -10px transparentize($dark, .9);
       border: 1px solid $gray-300;
     }
@@ -126,22 +162,371 @@
 
   .paragraph--type--dsj-card {
     background-color: $body-bg;
-    padding: 24px;
     display: flex;
     align-items: center;
     border-radius: 6px;
 
+    @include media-breakpoint-up(md) {
+      flex-direction: column;
+    }
+
     img {
-      width: 80px;
+      width: 40px;
+      height: 40px;
+      margin: 10px 0 8px 0;
     }
 
     span {
       display: inline-block;
-      padding-left: 24px;
+      font-size: $font-size-sm;
+      line-height: $line-height-sm;
+      text-align: center;
+      color: $gray-800;
 
       a {
         font-weight: bold;
-        color: $dark;
+      }
+    }
+  }
+  .slick--optionset--mobile-only-2-cards .slick-slide > div {
+    float:left;
+  }
+
+  @include media-breakpoint-down (sm) {
+    .ecl-u-mb-2xl.ecl-row {
+      margin-bottom: 0 !important;
+    }
+
+    .slick--field-dsj {
+      &-left-group,
+      &-right-group {
+        margin-top: 0;
+
+        .slick-list.draggable {
+          margin-left: $grid-gutter-width-mobile * (-2);
+
+          .slick-slide {
+            display: flex;
+            justify-content: space-evenly;
+
+            .slick__slide span{
+              margin-top: $grid-gutter-width-mobile / 4;
+            }
+          }
+        }
+
+        .slick-dots {
+          margin-left: $grid-gutter-width-mobile * (-1);
+
+          li {
+            margin: 0;
+          }
+
+          button::before {
+            color: $white;
+            display: block;
+            font-size: $font-size-xs;
+            height: 20px;
+            line-height: 20px;
+            top: 1px;
+            width: 20px;
+          }
+        }
+      }
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+    .slick--field-dsj-left-group > div,
+    .slick--field-dsj-right-group > div {
+      display: flex;
+      justify-content: space-between;
+
+      .slick__slide {
+        position: relative;
+        visibility: visible;
+      }
+    }
+  }
+
+  @include media-breakpoint-up(xl) {
+    .slick--field-dsj-left-group > div,
+    .slick--field-dsj-right-group > div {
+      margin-left: $grid-gutter-width * (-1);
+    }
+  }
+}
+
+.paragraph--type--dsj-cards {
+  //general rules - looks good for default and slider of 2 - no title
+  .cards-wrapper {
+    flex-direction: column;
+
+    @include media-breakpoint-up(sm) {
+      justify-content: center;
+      flex-wrap: wrap;
+      display: flex;
+
+      &::after {
+        background-image: url('../assets/images/right-corner-shape.svg');
+        right: 0;
+      }
+
+      &::before {
+        background-image: url('../assets/images/left-corner-shape.svg');
+        left: 0;
+      }
+    }
+
+    @include media-breakpoint-up(md) {
+      .card-title h2 {
+        margin-bottom: $grid-gutter-width / 8;
+      }
+
+      .card-description {
+        line-height: $line-height-sm;
+      }
+    }
+
+    &::after,
+    &::before {
+      content: '';
+      display: block;
+      height: 100%;
+      width: 35vw;
+      position: absolute;
+      top: 0;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+  }
+
+  h2.ecl-container {
+    @include media-breakpoint-down(md){
+      padding: 0;
+    }
+    color: $white;
+  }
+
+  .card-container a {
+    padding: 1rem 1.5rem;
+
+    @include media-breakpoint-down(md) {
+      display: flex;
+
+      .card-info {
+        flex-direction: column;
+        padding-left: .5rem;
+        text-align: left;
+      }
+    }
+
+    img {
+      width: 40px;
+      height: 40px;
+    }
+
+  }
+  // card styling for default view (no sliders) w && w/o title for tablet
+  &.paragraph--view-mode--default {
+    .cards-wrapper .card-container {
+      @media (min-width: $min-sm-width) and (max-width: $max-sm-width)  {
+        min-height: 140px;
+      }
+    }
+  }
+
+  // slider of 4 - no title
+  &.paragraph--view-mode--dsj-slider-4 {
+    .cards-wrapper {
+      padding-top: ($grid-gutter-width * 2);
+      padding-bottom: ($grid-gutter-width * 1.5);
+
+      h2.ecl-container {
+        margin-top: 0;
+        padding-bottom: ($grid-gutter-width / 2);
+      }
+
+      .slick--field-dsj-card--dsj-diagonal-4  {
+        @include media-breakpoint-down (xs) {
+          margin-top: 0;
+
+          .card-container a {
+            margin-bottom: ($grid-gutter-width / 2);
+          }
+
+          .slick__arrow {
+            top: 105% !important;
+
+            .slick-arrow {
+              width: 20px;
+              height: 20px;
+            }
+
+            .slick-prev {
+              left: 86px;
+            }
+
+            .slick-next {
+              right: 80px;
+            }
+          }
+        }
+
+        @include media-breakpoint-between(xs,sm) {
+          .slick__arrow {
+
+            .slick-arrow {
+              width: 20px;
+              height: 20px;
+            }
+
+            .slick-prev {
+              left: 116px;
+            }
+
+            .slick-next {
+              right: 110px;
+            }
+          }
+        }
+
+        @include media-breakpoint-between (sm, md) {
+          margin-top: 0;
+
+          .card-container a {
+            margin-bottom: ($grid-gutter-width / 2);
+          }
+
+          .slick__arrow {
+
+            .slick-arrow {
+              width: 20px;
+              height: 20px;
+            }
+
+            .slick-prev {
+              left: 166px;
+            }
+
+            .slick-next {
+              right: 160px;
+            }
+          }
+        }
+
+        @include media-breakpoint-up (md) {
+          .slick-slide {
+            margin-left: 3rem;
+          }
+
+          .slick-arrow {
+            width: 30px;
+            height: 30px;
+
+            &.slick-next {
+              right: 15px;
+            }
+
+            &.slick-prev {
+              left: 10px;
+            }
+          }
+        }
+
+      }
+
+    }
+  }
+}
+
+//cards component with title
+.paragraph--type--dsj-cards.has-title {
+  .cards-wrapper {
+    padding: ($grid-gutter-width / 2);
+
+    h2.ecl-container {
+      margin: $grid-gutter-width / 2 0;
+      padding-left: ($grid-gutter-width / 2);
+      line-height: $line-height-3xl;
+    }
+
+    @include media-breakpoint-up(md) {
+      .card-title h2 {
+        margin-bottom: $grid-gutter-width / 8;
+      }
+
+      .card-description {
+        line-height: $line-height-sm;
+      }
+    }
+  }
+
+  &.paragraph--view-mode--dsj-slider {
+    .cards-wrapper {
+      padding-bottom: ($grid-gutter-width * 1.5);
+
+      @include media-breakpoint-down (md) {
+        h2.ecl-container {
+          margin-bottom: 0;
+          margin-top: ($grid-gutter-width / 2);
+          line-height: 28.8px;
+        }
+      }
+    }
+  }
+
+  &.paragraph--view-mode--dsj-slider-4 {
+    @include media-breakpoint-down (md) {
+      h2.ecl-container {
+        margin: 0;
+        line-height: $font-size-3xl;
+      }
+
+      .cards-wrapper {
+        padding-bottom: ($grid-gutter-width * 1.5);
+      }
+
+      .slick-slider {
+        margin-bottom: $grid-gutter-width-mobile;
+      }
+
+      .slick__slide {
+        height: auto;
+
+        div {
+          height: 100%;
+        }
+
+        .card-container a {
+          height: inherit;
+          margin-bottom: 0;
+
+          .card-title {
+            height: unset;
+          }
+        }
+      }
+    }
+
+    @include media-breakpoint-up (md) {
+      h2.ecl-container {
+        padding-left: ($grid-gutter-width * 1.75);
+      }
+    }
+  }
+}
+
+.paragraph--type--dsj-cards {
+  &.paragraph--view-mode--dsj-slider {
+    .cards-wrapper .slick--field-dsj-card--diagonal .slick__slide > a {
+      @include media-breakpoint-up(lg) {
+        min-height: 150px;
+      }
+
+      @media (min-width: $min-sm-width) and (max-width: $max-sm-width) {
+        min-height: 246px;
       }
     }
   }

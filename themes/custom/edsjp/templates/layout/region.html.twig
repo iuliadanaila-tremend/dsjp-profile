@@ -4,7 +4,8 @@ set classes = [
 'region-' ~ region|clean_class,
 ]
 %}
-{% if content %}
+
+{% if content|render %}
     <div{{ attributes.addClass(['region', 'region-content']) }}>
       {% if dashboard_info %}
         <div class="user-dashboard-intro">

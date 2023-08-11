@@ -117,6 +117,9 @@ class FacetsSummaryBlock extends BlockBase implements ContainerFactoryPluginInte
     elseif ($this->currentRouteName == 'entity.node.canonical') {
       $this->summaryFacetId = 'dsj_listing_component_summary';
     }
+    elseif ($this->currentRouteName == 'dsj_map.country_listing') {
+      $this->summaryFacetId = 'dsj_regionally_related_content_page_1_summary';
+    }
 
   }
 
@@ -152,6 +155,8 @@ class FacetsSummaryBlock extends BlockBase implements ContainerFactoryPluginInte
         }
       }
     }
+
+    return [];
   }
 
 }

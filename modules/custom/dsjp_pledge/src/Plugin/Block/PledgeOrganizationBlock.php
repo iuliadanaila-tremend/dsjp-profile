@@ -3,6 +3,7 @@
 namespace Drupal\dsjp_pledge\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
+use Drupal\Core\Cache\Cache;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -57,8 +58,27 @@ class PledgeOrganizationBlock extends BlockBase implements ContainerFactoryPlugi
         return $this->entityTypeManager->getViewBuilder('group')->view($group_content->getGroup(), 'dsj_block');
       }
     }
+    $organisation = $this->routeMatch->getParameter('group');
+    if ($organisation && $organisation->bundle() == 'dsj_organization') {
+      return $this->entityTypeManager->getViewBuilder('group')->view($organisation, 'dsj_block');
+    }
 
     return [];
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getCacheContexts() {
+    return Cache::mergeContexts(parent::getCacheContexts(), ['url']);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getCacheTags() {
+    $organization = $this->routeMatch->getRawParameter('node');
+    return Cache::mergeTags(parent::getCacheTags(), ['node:' . $organization]);
   }
 
 }

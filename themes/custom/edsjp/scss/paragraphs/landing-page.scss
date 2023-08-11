@@ -1,7 +1,5 @@
 .field--name-field-dsj-components {
-  // display: flex;
   justify-content: center;
-  margin-bottom: $grid-gutter-width * 3;
 
   .paragraph--type--dsj-banner-top-image {
     background-color: $body-bg;
@@ -105,6 +103,18 @@
           a {
             color: $body-bg;
           }
+        }
+      }
+    }
+  }
+
+  .paragraph--type--dsj-text {
+    .video-embed-field-provider-youtube {
+      iframe {
+        @include media-breakpoint-down(lg) {
+          height: unset;
+          aspect-ratio: 16/9;
+          width: 100%;
         }
       }
     }

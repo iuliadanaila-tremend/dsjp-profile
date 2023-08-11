@@ -7,4 +7,5 @@ ignored_config_entities:
   - 'simplenews.newsletter.*'
   - private_message.mail
   - 'simplenews.settings:subscription'
-  - 'dsjp_pledge_migration.configuration'
+  - dsjp_pledge_migration.configuration
+  - 'block.block.pledgewelcome:settings.text_content'

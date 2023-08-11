@@ -2,8 +2,8 @@ name: dsjp_views
 type: module
 description: Custom Views Alterations.
 package: Custom
-core: 8.x
+
 php: 7.3
-core_version_requirement: ^8 || ^9
+core_version_requirement: ^9 || ^10
 dependencies:
   - drupal:views

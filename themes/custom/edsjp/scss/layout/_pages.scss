@@ -197,7 +197,8 @@ p {
 .node--dsj-good-practice,
 .node--dsj-training-offer,
 .node--dsj-national-coalition,
-.node--dsj-page {
+.node--dsj-page,
+.node--dsj-learning-content {
   &.node--full {
     .node--content {
       @include border-radius(6px);
@@ -217,6 +218,21 @@ p {
           word-break: break-word;
         }
       }
+
+      .page-header {
+        .upper {
+          h1 {
+            color: $gray-650;
+            font-weight: bold;
+          }
+        }
+      }
+
+      .posted-time {
+        @include font($font-size-sm, $line-height-sm, $font-ec-square-light, normal);
+        color: $gray-700;
+        margin: $grid-gutter-width-mobile * 1.5 0;
+      }
     }
   }
 }
@@ -224,13 +240,14 @@ p {
 /* spacing under the images - details pages */
 .node--full {
   .field--name-field-dsj-image {
-    margin-bottom: ($grid-gutter-width * 1.5rem) / $grid-gutter-width;
+    margin-bottom: ($grid-gutter-width * 0.5rem) / $grid-gutter-width;
   }
 }
 
 #block-dsj-filter-results-button {
   @include media-breakpoint-down(sm) {
-    @include position(absolute, -50px $grid-gutter-width / 2 null 50%);
+    @include position(absolute, 88px $grid-gutter-width / 2 null $grid-gutter-width / 4);
+    z-index: 72;
   }
 }
 
@@ -299,7 +316,7 @@ p {
 
   a {
     @include border-radius(6px);
-    background-color: $header-second-bgcolor;
+    background-color: $purple-medium;
     color: $body-bg;
     padding: .75rem 1.5625rem;
     font-weight: bold;

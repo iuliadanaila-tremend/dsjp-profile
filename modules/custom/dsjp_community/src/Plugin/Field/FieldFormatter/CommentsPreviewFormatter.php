@@ -119,6 +119,7 @@ class CommentsPreviewFormatter extends FormatterBase implements ContainerFactory
     $query->condition('entity_id', $eid);
     $query->sort('cid', 'DESC');
     $query->range(0, $numberOfComments);
+    $query->accessCheck(TRUE);
 
     return $query->execute();
   }

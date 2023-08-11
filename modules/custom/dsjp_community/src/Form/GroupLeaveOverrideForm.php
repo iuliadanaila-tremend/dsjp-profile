@@ -14,6 +14,23 @@ class GroupLeaveOverrideForm extends GroupLeaveForm {
   /**
    * {@inheritdoc}
    */
+  public function getDescription() {
+    $message = '<span class="group-leave-message">' . $this->t('Are you sure you want to leave %group?', ['%group' => $this->getEntity()->getGroup()->label()]) . '</span>';
+    $warning = '<span class="group-leave-warning">' . $this->t('This action will end your membership of the group') . '</span>';
+    return $message . '<br />' . $warning;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getQuestion() {
+    $message = $this->getEntity()->getGroup()->label();
+    return $message;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function getCancelUrl() {
     /** @var \Drupal\group\Entity\GroupContent $group_content */
     $group_content = $this->getEntity();

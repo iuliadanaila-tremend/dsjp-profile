@@ -60,6 +60,20 @@
       }
     }
   }
+
+  @media only screen and (max-width: 376px) {
+    img {
+      max-width: 275px;
+    }
+
+    .text-container {
+      padding: 0 $grid-gutter-width * .75 $grid-gutter-width * .5;
+
+      p {
+        padding-bottom: $grid-gutter-width * .75;
+      }
+    }
+  }
 }
 
 #cookie-consent-banner {

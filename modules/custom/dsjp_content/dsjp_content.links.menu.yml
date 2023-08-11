@@ -3,3 +3,9 @@ dsjp_content.popup:
   parent: system.admin_config_ui
   description: 'Configuration for popup and & navigation button.'
   route_name: dsjp_content.popup_config
+
+dsjp_content.reporting:
+  title: 'Reporting'
+  route_name: dsjp_content.reporting
+  parent: system.admin_reports
+  description: 'DSJP Reports.'

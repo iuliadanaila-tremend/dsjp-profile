@@ -2,11 +2,13 @@
 
 namespace Drupal\dsjp_content;
 
-use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
-use Drupal\field\Entity\FieldStorageConfig;
-use Drupal\field\Entity\FieldConfig;
+use Drupal\Core\Config\FileStorage;
+use Drupal\Core\Config\StorageInterface;
 use Drupal\Core\Database\Connection;
+use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
+use Drupal\field\Entity\FieldConfig;
+use Drupal\field\Entity\FieldStorageConfig;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Defines a helper class for changing field types.
@@ -23,13 +25,23 @@ class InstallHelper implements ContainerInjectionInterface {
   protected $database;
 
   /**
+   * The active configuration storage.
+   *
+   * @var \Drupal\Core\Config\StorageInterface
+   */
+  protected $activeStorage;
+
+  /**
    * Constructs a new InstallHelper object.
    *
    * @param \Drupal\Core\Database\Connection $database
    *   The databse connection service.
+   * @param \Drupal\Core\Config\StorageInterface $active_storage
+   *   The active configuration storage.
    */
-  public function __construct(Connection $database) {
+  public function __construct(Connection $database, StorageInterface $active_storage) {
     $this->database = $database;
+    $this->activeStorage = $active_storage;
   }
 
   /**
@@ -37,7 +49,8 @@ class InstallHelper implements ContainerInjectionInterface {
    */
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('database')
+      $container->get('database'),
+      $container->get('config.storage')
     );
   }
 
@@ -357,6 +370,152 @@ class InstallHelper implements ContainerInjectionInterface {
       'http://publications.europa.eu/resource/authority/language/SPA' => 'Spanish',
       'http://publications.europa.eu/resource/authority/language/SWE' => 'Swedish',
     ];
+  }
+
+  /**
+   * Update the configurations.
+   *
+   * @param array $configs
+   *   Names of configurations.
+   */
+  public function updateConfigurations(array $configs) {
+    $config_path = realpath('../config/sync');
+    $source = new FileStorage($config_path);
+    $config_storage = $this->activeStorage;
+
+    foreach ($configs as $splitFile) {
+      $config_storage->write($splitFile, $source->read($splitFile));
+    }
+  }
+
+  /**
+   * Move values from a field to another.
+   *
+   * @param string $entity_type
+   *   Entity type, usually node.
+   * @param string $from_field
+   *   Name of the field from which we migrate.
+   * @param string $to_field
+   *   Name of the field to which we migrate.
+   * @param array $additional_replacements
+   *   If we replace some other values in the meanwhile.
+   *
+   * @SuppressWarnings(PHPMD.CyclomaticComplexity)
+   */
+  public function moveValues(string $entity_type, string $from_field, string $to_field, array $additional_replacements) {
+    $database = $this->database;
+    $table = $entity_type . '__' . $from_field;
+    $revision_table = $entity_type . '_revision__' . $from_field;
+    $field_storage = FieldStorageConfig::loadByName($entity_type, $from_field);
+
+    $to_table = $entity_type . '__' . $to_field;
+    $to_revisionTable = $entity_type . '_revision__' . $to_field;
+
+    if (is_null($field_storage)) {
+      return;
+    }
+
+    $rows = NULL;
+    $revisionRows = NULL;
+
+    if ($database->schema()->tableExists($table)) {
+      // The table data to restore after the update is completed.
+      $rows = $this->select($table);
+      $revisionRows = $this->select($revision_table);
+    }
+
+    // This is not in our case, but in case we import again. So we don't get the
+    // mysql integrity error.
+    $existing_rows = NULL;
+    $existing_revisionRows = NULL;
+    $primary_keys = ['entity_id', 'deleted', 'delta', 'langcode'];
+    $primary_keys_revisions = [
+      'entity_id',
+      'deleted',
+      'delta',
+      'langcode',
+      'revision_id',
+    ];
+
+    // Get the values already in the destination table.
+    if ($database->schema()->tableExists($to_table)) {
+      // The table data to restore after the update is completed.
+      $existing_rows = $this->select($to_table);
+      $existing_rows = $this->assignPrimaryKeys($existing_rows, $primary_keys);
+      $existing_revisionRows = $this->select($to_revisionTable);
+      $existing_revisionRows = $this->assignPrimaryKeys($existing_revisionRows, $primary_keys_revisions);
+    }
+    // Copy data in the other field.
+    if (!is_null($rows)) {
+      foreach ($rows as $row) {
+        if ($this->checkFieldValueIfAlreadyExists($row, $existing_rows, $primary_keys)) {
+          continue;
+        }
+        $oldColumnName = $from_field . '_value';
+        $columnName = $to_field . '_value';
+        $row->{$columnName} = $additional_replacements[$row->{$oldColumnName}] ?? $row->{$oldColumnName};
+        unset($row->{$oldColumnName});
+        $this->insert($to_table, $row);
+      }
+    }
+    if (!is_null($revisionRows)) {
+      foreach ($revisionRows as $row) {
+        if ($this->checkFieldValueIfAlreadyExists($row, $existing_revisionRows, $primary_keys_revisions)) {
+          continue;
+        }
+        $oldColumnName = $from_field . '_value';
+        $columnName = $to_field . '_value';
+        $row->{$columnName} = $additional_replacements[$row->{$oldColumnName}] ?? $row->{$oldColumnName};
+        unset($row->{$oldColumnName});
+        $this->insert($to_revisionTable, $row);
+      }
+    }
+  }
+
+  /**
+   * Group values with database primary keys as key.
+   *
+   * @param array $existing_rows
+   *   Database object rows.
+   * @param array $keys
+   *   Primary keys.
+   *
+   * @return array
+   *   The same array keyed by primary keys.
+   */
+  private function assignPrimaryKeys(array $existing_rows, array $keys) {
+    $result = [];
+    if (!empty($existing_rows)) {
+      foreach ($existing_rows as $row) {
+        $new_key_array = [];
+        foreach ($keys as $key) {
+          $new_key_array[] = $row->{$key};
+        }
+        $result[implode("_", $new_key_array)] = $row;
+      }
+    }
+    return $result;
+  }
+
+  /**
+   * Test if the value already exists in the rows.
+   *
+   * @param object $row
+   *   Values that is tested (Needle).
+   * @param array $existing_rows
+   *   The existing rows (Haystack).
+   * @param array $keys
+   *   The primary keys.
+   *
+   * @return bool
+   *   True if key exists, false otherwise.
+   */
+  private function checkFieldValueIfAlreadyExists(object $row, array $existing_rows, array $keys) {
+    $new_key_array = [];
+    foreach ($keys as $key) {
+      $new_key_array[] = $row->{$key};
+    }
+    return isset($existing_rows[implode("_", $new_key_array)]);
   }
 
 }

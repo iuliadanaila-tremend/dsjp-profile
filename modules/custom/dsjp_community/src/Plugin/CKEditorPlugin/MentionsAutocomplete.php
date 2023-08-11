@@ -3,11 +3,11 @@
 namespace Drupal\dsjp_community\Plugin\CKEditorPlugin;
 
 use Drupal\ckeditor\CKEditorPluginBase;
-use Drupal\editor\Entity\Editor;
 use Drupal\ckeditor\CKEditorPluginContextualInterface;
-use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Config\ConfigFactory;
+use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+use Drupal\editor\Entity\Editor;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Defines the "Mentions Autocomplete" plugin.
@@ -63,7 +63,7 @@ class MentionsAutocomplete extends CKEditorPluginBase implements CKEditorPluginC
     return [
       'mentionsautocomplete' => [
         'label' => $this->t('Mentions'),
-        'image' => drupal_get_path('module', 'mentions') . '/mentions.png',
+        'image' => $this->getModulePath('mentions') . '/mentions.png',
       ],
     ];
   }
@@ -88,7 +88,7 @@ class MentionsAutocomplete extends CKEditorPluginBase implements CKEditorPluginC
    * {@inheritdoc}
    */
   public function getFile() {
-    return drupal_get_path('module', 'dsjp_community') . '/js/plugins/mentionsautocomplete/plugin.js';
+    return $this->getModulePath('dsjp_community') . '/js/plugins/mentionsautocomplete/plugin.js';
   }
 
   /**

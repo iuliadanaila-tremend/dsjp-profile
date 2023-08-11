@@ -1,0 +1,33 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_dsj_article_type
+    - paragraphs.paragraphs_type.dsj_listing
+    - taxonomy.vocabulary.dsj_type_of_article
+  module:
+    - tmgmt_content
+third_party_settings:
+  tmgmt_content:
+    excluded: false
+id: paragraph.dsj_listing.field_dsj_article_type
+field_name: field_dsj_article_type
+entity_type: paragraph
+bundle: dsj_listing
+label: 'Article type'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      dsj_type_of_article: dsj_type_of_article
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

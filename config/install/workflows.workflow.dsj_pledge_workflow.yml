@@ -70,6 +70,7 @@ type_settings:
     needs_changes_publication:
       label: 'Needs changes'
       from:
+        - published
         - ready_for_publication
       to: needs_changes
       weight: 9
@@ -77,6 +78,7 @@ type_settings:
       label: Publish
       from:
         - ready_for_publication
+        - ready_for_review
       to: published
       weight: 1
     ready_for_publication:

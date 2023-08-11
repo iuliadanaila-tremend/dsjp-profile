@@ -18,9 +18,7 @@
     <div class="node--content">
       {{ content.field_dsj_image }}
 
-      <div class="node--author" {{ author_attributes }}>
-        {{ author_picture }}
-      </div>
+      <div class="node-date">{{ node.getCreatedTime|format_date('custom', 'd F Y') }}</div>
 
       <div {{ title_attributes.addClass('node--title') }}>
         {{ title_prefix }}

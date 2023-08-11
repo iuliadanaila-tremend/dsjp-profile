@@ -2,13 +2,21 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.storage.group.field_dsj_contact_email_pledges
+    - field.storage.group.field_dsj_contact_person_pledges
     - field.storage.group.field_dsj_country
+    - field.storage.group.field_dsj_endorse
+    - field.storage.group.field_dsj_facebook_link
     - field.storage.group.field_dsj_geographic_sphere
     - field.storage.group.field_dsj_is_pledger
+    - field.storage.group.field_dsj_linkedin_link
+    - field.storage.group.field_dsj_number_of_employees
     - field.storage.group.field_dsj_organization_category
     - field.storage.group.field_dsj_role
     - field.storage.group.field_dsj_target_sector
     - field.storage.group.field_dsj_town
+    - field.storage.group.field_dsj_twitter_link
+    - field.storage.group.field_group_description
     - field.storage.paragraph.field_dsj_contact_email
     - field.storage.paragraph.field_dsj_contact_name
     - field.storage.paragraph.field_dsj_job_title
@@ -31,6 +39,7 @@ dependencies:
     - rest
     - serialization
     - taxonomy
+    - text
     - user
     - views_data_export
 id: dsj_group_report
@@ -300,6 +309,130 @@ display:
           hide_alter_empty: true
           click_sort_column: value
           type: content_moderation_state
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_group_description:
+          id: field_group_description
+          table: group__field_group_description
+          field: field_group_description
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: 'Organisation description'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: text_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_dsj_number_of_employees:
+          id: field_dsj_number_of_employees
+          table: group__field_dsj_number_of_employees
+          field: field_dsj_number_of_employees
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: 'Number of employees'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: list_default
           settings: {  }
           group_column: value
           group_columns: {  }
@@ -665,6 +798,131 @@ display:
           hide_alter_empty: true
           click_sort_column: value
           type: string
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_dsj_contact_person_pledges:
+          id: field_dsj_contact_person_pledges
+          table: group__field_dsj_contact_person_pledges
+          field: field_dsj_contact_person_pledges
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: 'Contact Person For Pledges'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_dsj_contact_email_pledges:
+          id: field_dsj_contact_email_pledges
+          table: group__field_dsj_contact_email_pledges
+          field: field_dsj_contact_email_pledges
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: 'Contact Email For Pledges'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: email_mailto
           settings: {  }
           group_column: value
           group_columns: {  }
@@ -1117,6 +1375,272 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+        field_dsj_facebook_link:
+          id: field_dsj_facebook_link
+          table: group__field_dsj_facebook_link
+          field: field_dsj_facebook_link
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: Facebook
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: uri
+          type: link
+          settings:
+            trim_length: 80
+            url_only: false
+            url_plain: false
+            rel: '0'
+            target: '0'
+          group_column: ''
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_dsj_twitter_link:
+          id: field_dsj_twitter_link
+          table: group__field_dsj_twitter_link
+          field: field_dsj_twitter_link
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: Twitter
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: uri
+          type: link
+          settings:
+            trim_length: 80
+            url_only: false
+            url_plain: false
+            rel: '0'
+            target: '0'
+          group_column: ''
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_dsj_linkedin_link:
+          id: field_dsj_linkedin_link
+          table: group__field_dsj_linkedin_link
+          field: field_dsj_linkedin_link
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: Linkedin
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: uri
+          type: link
+          settings:
+            trim_length: 80
+            url_only: false
+            url_plain: false
+            rel: '0'
+            target: '0'
+          group_column: ''
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_dsj_endorse:
+          id: field_dsj_endorse
+          table: group__field_dsj_endorse
+          field: field_dsj_endorse
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: 'Endorse the Digital Skills and Jobs Charter'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: boolean
+          settings:
+            format: yes-no
+            format_custom_false: ''
+            format_custom_true: ''
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
         field_dsj_is_pledger:
           id: field_dsj_is_pledger
           table: group__field_dsj_is_pledger
@@ -1490,6 +2014,54 @@ display:
                 operator: in
                 value:
                   dsj_organisation_flow-rejected: dsj_organisation_flow-rejected
+        field_dsj_number_of_employees_value:
+          id: field_dsj_number_of_employees_value
+          table: group__field_dsj_number_of_employees
+          field: field_dsj_number_of_employees_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: list_field
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_dsj_number_of_employees_value_op
+            label: 'Number of employees'
+            description: ''
+            use_operator: false
+            operator: field_dsj_number_of_employees_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_dsj_number_of_employees_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              dsj_advanced_contributor: '0'
+              dsj_content_editor: '0'
+              dsj_reviewer: '0'
+              dsj_critical_reviewer: '0'
+              community_manager: '0'
+              oe_translator: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
         field_dsj_contact_name_value:
           id: field_dsj_contact_name_value
           table: paragraph__field_dsj_contact_name
@@ -1876,6 +2448,52 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           reduce_duplicates: false
+        field_dsj_endorse_value:
+          id: field_dsj_endorse_value
+          table: group__field_dsj_endorse
+          field: field_dsj_endorse_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: boolean
+          operator: '='
+          value: All
+          group: 1
+          exposed: true
+          expose:
+            operator_id: ''
+            label: 'Endorse the Digital Skills and Jobs Charter'
+            description: ''
+            use_operator: false
+            operator: field_dsj_endorse_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_dsj_endorse_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              dsj_advanced_contributor: '0'
+              dsj_content_editor: '0'
+              dsj_reviewer: '0'
+              dsj_critical_reviewer: '0'
+              community_manager: '0'
+              oe_translator: '0'
+              administrator: '0'
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
         field_dsj_is_pledger_value:
           id: field_dsj_is_pledger_value
           table: group__field_dsj_is_pledger
@@ -2093,13 +2711,21 @@ display:
         - user
         - user.roles
       tags:
+        - 'config:field.storage.group.field_dsj_contact_email_pledges'
+        - 'config:field.storage.group.field_dsj_contact_person_pledges'
         - 'config:field.storage.group.field_dsj_country'
+        - 'config:field.storage.group.field_dsj_endorse'
+        - 'config:field.storage.group.field_dsj_facebook_link'
         - 'config:field.storage.group.field_dsj_geographic_sphere'
         - 'config:field.storage.group.field_dsj_is_pledger'
+        - 'config:field.storage.group.field_dsj_linkedin_link'
+        - 'config:field.storage.group.field_dsj_number_of_employees'
         - 'config:field.storage.group.field_dsj_organization_category'
         - 'config:field.storage.group.field_dsj_role'
         - 'config:field.storage.group.field_dsj_target_sector'
         - 'config:field.storage.group.field_dsj_town'
+        - 'config:field.storage.group.field_dsj_twitter_link'
+        - 'config:field.storage.group.field_group_description'
         - 'config:field.storage.paragraph.field_dsj_contact_email'
         - 'config:field.storage.paragraph.field_dsj_contact_name'
         - 'config:field.storage.paragraph.field_dsj_job_title'
@@ -2151,13 +2777,21 @@ display:
         - user
         - user.roles
       tags:
+        - 'config:field.storage.group.field_dsj_contact_email_pledges'
+        - 'config:field.storage.group.field_dsj_contact_person_pledges'
         - 'config:field.storage.group.field_dsj_country'
+        - 'config:field.storage.group.field_dsj_endorse'
+        - 'config:field.storage.group.field_dsj_facebook_link'
         - 'config:field.storage.group.field_dsj_geographic_sphere'
         - 'config:field.storage.group.field_dsj_is_pledger'
+        - 'config:field.storage.group.field_dsj_linkedin_link'
+        - 'config:field.storage.group.field_dsj_number_of_employees'
         - 'config:field.storage.group.field_dsj_organization_category'
         - 'config:field.storage.group.field_dsj_role'
         - 'config:field.storage.group.field_dsj_target_sector'
         - 'config:field.storage.group.field_dsj_town'
+        - 'config:field.storage.group.field_dsj_twitter_link'
+        - 'config:field.storage.group.field_group_description'
         - 'config:field.storage.paragraph.field_dsj_contact_email'
         - 'config:field.storage.paragraph.field_dsj_contact_name'
         - 'config:field.storage.paragraph.field_dsj_job_title'
@@ -2174,15 +2808,15 @@ display:
         metatag_display_extender:
           metatags: {  }
           tokenize: false
-      path: admin/reports/organization-report
+      path: admin/reports/reporting/organization-report
       menu:
         type: normal
-        title: 'Organization Report'
+        title: 'Organization report'
         description: ''
         weight: 0
         expanded: false
         menu_name: admin
-        parent: system.admin_reports
+        parent: dsjp_content.reporting
         context: '0'
     cache_metadata:
       max-age: -1
@@ -2194,13 +2828,21 @@ display:
         - user
         - user.roles
       tags:
+        - 'config:field.storage.group.field_dsj_contact_email_pledges'
+        - 'config:field.storage.group.field_dsj_contact_person_pledges'
         - 'config:field.storage.group.field_dsj_country'
+        - 'config:field.storage.group.field_dsj_endorse'
+        - 'config:field.storage.group.field_dsj_facebook_link'
         - 'config:field.storage.group.field_dsj_geographic_sphere'
         - 'config:field.storage.group.field_dsj_is_pledger'
+        - 'config:field.storage.group.field_dsj_linkedin_link'
+        - 'config:field.storage.group.field_dsj_number_of_employees'
         - 'config:field.storage.group.field_dsj_organization_category'
         - 'config:field.storage.group.field_dsj_role'
         - 'config:field.storage.group.field_dsj_target_sector'
         - 'config:field.storage.group.field_dsj_town'
+        - 'config:field.storage.group.field_dsj_twitter_link'
+        - 'config:field.storage.group.field_group_description'
         - 'config:field.storage.paragraph.field_dsj_contact_email'
         - 'config:field.storage.paragraph.field_dsj_contact_name'
         - 'config:field.storage.paragraph.field_dsj_job_title'

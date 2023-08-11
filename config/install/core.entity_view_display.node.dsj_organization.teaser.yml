@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.dsj_organization.field_dsj_geographic_scope
     - field.field.node.dsj_organization.field_dsj_image
     - field.field.node.dsj_organization.field_dsj_industry
+    - field.field.node.dsj_organization.field_dsj_linked_content
     - field.field.node.dsj_organization.field_dsj_meta_tags
     - field.field.node.dsj_organization.field_dsj_nc_member
     - field.field.node.dsj_organization.field_dsj_organization_category
@@ -43,6 +44,8 @@ content:
     settings:
       image_link: content
       image_style: thumbnail_100x100_crop
+      image_loading:
+        attribute: lazy
     third_party_settings: {  }
     weight: 0
     region: content
@@ -54,6 +57,7 @@ hidden:
   field_dsj_external_id: true
   field_dsj_geographic_scope: true
   field_dsj_industry: true
+  field_dsj_linked_content: true
   field_dsj_meta_tags: true
   field_dsj_nc_member: true
   field_dsj_organization_category: true

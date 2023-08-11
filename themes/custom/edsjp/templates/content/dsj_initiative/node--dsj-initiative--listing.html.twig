@@ -21,9 +21,11 @@
             </h3>
             {{ title_suffix }}
 
-            <div class="article-date">{{ node.getCreatedTime|format_date('custom', 'd F Y') }}</div>
-            {{ content| without('field_dsj_image') }}
+            {{ content| without('field_dsj_image', 'field_dsj_type_of_initiative') }}
         </div>
     </div>
-    <div class="more-link"><a href="{{ url }}" class="more-link">{% trans %}Read more{% endtrans %}</a></div>
+    <div class="node--footer">
+        {{ content.field_dsj_type_of_initiative }}
+        <div class="more-link"><a href="{{ url }}" class="more-link">{% trans %}Read more{% endtrans %}</a></div>
+    </div>
 </article>

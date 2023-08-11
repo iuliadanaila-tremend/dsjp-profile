@@ -4,6 +4,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.search_result
     - field.field.node.dsj_funding_opportunity.body
+    - field.field.node.dsj_funding_opportunity.field_dsj_application_deadline
     - field.field.node.dsj_funding_opportunity.field_dsj_author
     - field.field.node.dsj_funding_opportunity.field_dsj_beneficiary
     - field.field.node.dsj_funding_opportunity.field_dsj_comments
@@ -16,6 +17,7 @@ dependencies:
     - field.field.node.dsj_funding_opportunity.field_dsj_geographic_scope
     - field.field.node.dsj_funding_opportunity.field_dsj_image
     - field.field.node.dsj_funding_opportunity.field_dsj_industry
+    - field.field.node.dsj_funding_opportunity.field_dsj_linked_content
     - field.field.node.dsj_funding_opportunity.field_dsj_meta_tags
     - field.field.node.dsj_funding_opportunity.field_dsj_publish_in_core
     - field.field.node.dsj_funding_opportunity.field_dsj_representative_image
@@ -41,13 +43,13 @@ content:
       trim_suffix: ...
       wrap_output: false
       wrap_class: trimmed
-      more_link: false
-      more_class: more-link
-      more_text: More
       summary_handler: trim
       trim_options:
         text: true
         trim_zero: false
+      more_link: false
+      more_class: more-link
+      more_text: More
     third_party_settings: {  }
     weight: 1
     region: content
@@ -58,6 +60,7 @@ content:
     region: content
 hidden:
   content_moderation_control: true
+  field_dsj_application_deadline: true
   field_dsj_author: true
   field_dsj_beneficiary: true
   field_dsj_comments: true
@@ -70,6 +73,7 @@ hidden:
   field_dsj_geographic_scope: true
   field_dsj_image: true
   field_dsj_industry: true
+  field_dsj_linked_content: true
   field_dsj_meta_tags: true
   field_dsj_target_audience: true
   field_dsj_target_group: true

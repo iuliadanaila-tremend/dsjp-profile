@@ -10,7 +10,7 @@ dependencies:
 id: privatemessagepagetextblock
 theme: edsjp
 region: content
-weight: -10
+weight: -13
 provider: null
 plugin: private_messages_page_block
 settings:

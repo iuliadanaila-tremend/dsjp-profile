@@ -99,8 +99,6 @@ process:
         value_field: field_dsj_country_code
         source: field_dsj_country_code
   field_dsj_type_of_initiative: field_dsj_type_of_initiative
-  field_dsj_publish_in_core: field_dsj_publish_in_core
-  field_dsj_website_link:
     -
       plugin: skip_on_empty
       method: process
@@ -131,6 +129,7 @@ process:
       rename: true
       uid: '@uid'
       skip_on_error: true
+  field_application_deadline: field_application_deadline
   langcode:
     plugin: default_value
     source: constants/language

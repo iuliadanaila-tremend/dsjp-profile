@@ -5,6 +5,8 @@ dependencies:
     - field.field.node.dsj_listing.body
     - field.field.node.dsj_listing.field_dsj_content_type
     - field.field.node.dsj_listing.field_dsj_digital_technology
+    - field.field.node.dsj_listing.field_dsj_filters
+    - field.field.node.dsj_listing.field_dsj_image
     - field.field.node.dsj_listing.field_dsj_meta_tags
     - field.field.node.dsj_listing.field_dsj_representative_image
     - node.type.dsj_listing
@@ -57,6 +59,9 @@ content:
     weight: 1
     region: content
 hidden:
+  field_dsj_filters: true
+  field_dsj_image: true
   field_dsj_representative_image: true
   langcode: true
+  private_message_link: true
   search_api_excerpt: true

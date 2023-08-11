@@ -349,8 +349,11 @@ display:
         type: search_api
         options:
           view_modes:
+            'entity:group':
+              dsj_organization: default
             'entity:node':
               dsj_article: search_result
+              dsj_country_page: search_result
               dsj_digital_skills_resource: search_result
               dsj_discussion: search_result
               dsj_event: search_result
@@ -358,21 +361,27 @@ display:
               dsj_good_practice: search_result
               dsj_initiative: search_result
               dsj_landing_page: search_result
+              dsj_learning_content: search_result
+              dsj_learning_path: search_result
               dsj_national_coalition: search_result
               dsj_organization: search_result
               dsj_page: search_result
+              dsj_pledge: search_result
               dsj_skills_intelligence: search_result
               dsj_strategy: search_result
               dsj_training_offer: search_result
+            'entity:taxonomy_term':
+              dsj_type_of_article: default
             'entity:user':
               user: default
       query:
-        type: views_query
+        type: search_api_query
         options:
           bypass_access: false
           skip_access: false
           preserve_facet_query_args: false
       relationships: {  }
+      css_class: ''
       header:
         extended_result:
           id: extended_result
@@ -429,7 +438,7 @@ display:
           sort_asc_label: Asc
           sort_desc_label: Desc
       cache:
-        type: search_api_tag
+        type: none
         options: {  }
       sorts:
         sticky:
@@ -730,30 +739,43 @@ display:
         groups:
           1: AND
       style:
-        type: default
+        type: html_list
         options:
           row_class: ''
           default_row_class: true
           uses_fields: false
+          type: ul
+          wrapper_class: 'item-list item--wide item--img-right'
+          class: ''
       row:
         type: search_api
         options:
           view_modes:
+            'entity:group':
+              dsj_organization: default
             'entity:node':
-              dsj_article: card
-              dsj_digital_skills_resource: card
-              dsj_discussion: card
-              dsj_event: card
-              dsj_funding_opportunity: card
-              dsj_good_practice: card
-              dsj_initiative: card
-              dsj_landing_page: card
-              dsj_national_coalition: card
-              dsj_organization: card
-              dsj_page: card
-              dsj_skills_intelligence: card
-              dsj_strategy: card
-              dsj_training_offer: card
+              dsj_article: listing_wide
+              dsj_country_page: listing_wide
+              dsj_digital_skills_resource: listing_wide
+              dsj_discussion: listing_wide
+              dsj_event: listing_wide
+              dsj_funding_opportunity: listing_wide
+              dsj_good_practice: listing_wide
+              dsj_initiative: listing_wide
+              dsj_landing_page: listing_wide
+              dsj_learning_content: listing_wide
+              dsj_learning_path: listing_wide
+              dsj_national_coalition: listing_wide
+              dsj_organization: listing_wide
+              dsj_page: listing_wide
+              dsj_pledge: listing_wide
+              dsj_skills_intelligence: listing_wide
+              dsj_strategy: listing_wide
+              dsj_training_offer: listing_wide
+            'entity:taxonomy_term':
+              dsj_type_of_article: default
+            'entity:user':
+              user: default
       defaults:
         cache: false
         title: false
@@ -769,7 +791,9 @@ display:
       header: {  }
       exposed_block: true
       display_extenders:
-        metatag_display_extender: {  }
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
     cache_metadata:
       max-age: -1
       contexts:
@@ -1006,7 +1030,9 @@ display:
           content_one_no_search: '<span>One result found</span>'
       exposed_block: true
       display_extenders:
-        metatag_display_extender: {  }
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
       path: search
     cache_metadata:
       max-age: -1
@@ -1322,7 +1348,7 @@ display:
         metatag_display_extender: {  }
       path: listing
     cache_metadata:
-      max-age: -1
+      max-age: 0
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
@@ -1330,4 +1356,10 @@ display:
         - url.query_args
         - 'user.node_grants:view'
       tags:
+        - 'config:facets.facet.dsj_list_content_type'
+        - 'config:facets.facet.dsj_list_created'
+        - 'config:facets.facet.dsj_list_digital_skill_level'
+        - 'config:facets.facet.dsj_list_digital_technology'
+        - 'config:facets.facet.dsj_list_geographic_scope'
+        - 'config:facets.facet.dsj_list_target_audience'
         - 'config:search_api.index.main_content'

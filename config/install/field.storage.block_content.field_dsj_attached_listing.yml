@@ -1,0 +1,68 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+    - options
+id: block_content.field_dsj_attached_listing
+field_name: field_dsj_attached_listing
+entity_type: block_content
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: dsj_article
+      label: Article
+    -
+      value: dsj_opinion
+      label: Opinion
+    -
+      value: dsj_brief
+      label: Brief
+    -
+      value: dsj_digital_skills_resource
+      label: 'Digital skills resource'
+    -
+      value: dsj_event
+      label: Event
+    -
+      value: dsj_discussion
+      label: Discussion
+    -
+      value: dsj_funding_opportunity
+      label: 'Funding opportunity'
+    -
+      value: dsj_good_practice
+      label: 'Good Practice'
+    -
+      value: dsj_initiative
+      label: Initiative
+    -
+      value: dsj_national_coalition
+      label: 'National coalition'
+    -
+      value: dsj_pledge
+      label: Pledge
+    -
+      value: dsj_skills_intelligence
+      label: 'Skills intelligence publication'
+    -
+      value: dsj_strategy
+      label: Strategy
+    -
+      value: dsj_training_offer
+      label: 'Training offer'
+    -
+      value: dsj_learning_content
+      label: 'Learning Content'
+    -
+      value: dsj_learning_path
+      label: 'Learning Path'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

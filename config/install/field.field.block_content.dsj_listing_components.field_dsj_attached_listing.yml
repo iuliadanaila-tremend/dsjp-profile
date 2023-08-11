@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.dsj_listing_components
+    - field.storage.block_content.field_dsj_attached_listing
+  module:
+    - options
+id: block_content.dsj_listing_components.field_dsj_attached_listing
+field_name: field_dsj_attached_listing
+entity_type: block_content
+bundle: dsj_listing_components
+label: 'Attached listing'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

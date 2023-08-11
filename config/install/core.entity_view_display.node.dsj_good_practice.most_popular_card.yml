@@ -13,6 +13,7 @@ dependencies:
     - field.field.node.dsj_good_practice.field_dsj_geographic_scope
     - field.field.node.dsj_good_practice.field_dsj_image
     - field.field.node.dsj_good_practice.field_dsj_industry
+    - field.field.node.dsj_good_practice.field_dsj_linked_content
     - field.field.node.dsj_good_practice.field_dsj_media_audio
     - field.field.node.dsj_good_practice.field_dsj_media_document
     - field.field.node.dsj_good_practice.field_dsj_media_image
@@ -73,6 +74,8 @@ content:
     settings:
       image_link: content
       image_style: dsj_most_popular_card
+      image_loading:
+        attribute: lazy
     third_party_settings: {  }
     weight: 0
     region: content
@@ -87,6 +90,7 @@ hidden:
   field_dsj_external_id: true
   field_dsj_geographic_scope: true
   field_dsj_industry: true
+  field_dsj_linked_content: true
   field_dsj_media_audio: true
   field_dsj_media_document: true
   field_dsj_media_image: true

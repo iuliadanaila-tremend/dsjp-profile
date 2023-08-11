@@ -1,0 +1,242 @@
+.page-node-type-dsj-learning-path .ecl-col-m-8 {
+	@include media-breakpoint-up (sm) {
+		flex: 0 0 100%;
+		max-width: 100%;
+	}
+}
+
+.dsj-learning-path--full {
+	.ecl p {
+		background-color: $white;
+		padding: $grid-gutter-width * 0.75 !important;
+		border-radius: $border-radius-default;
+	}
+
+	.field--name-field-dsj {
+		&-introductory-learning {
+			margin-top: $grid-gutter-width * 2;
+		}
+
+		&-advanced-learning {
+			margin-top: $grid-gutter-width * 4;
+		}
+
+		&-introductory-learning, &-advanced-learning {
+			.load-more-btn, .view-less-btn  {
+				width: fit-content;
+				display: block;
+				margin-left: auto;
+				font-weight: bold;
+
+				&::before {
+					font-size: $font-size-xl;
+					position: absolute;
+					line-height: $line-height-base;
+					right: 0px;
+				}
+
+				&:hover {
+					text-decoration: underline;
+					color: $blue;
+				}
+			}
+
+			.load-more-btn {
+				@include icon (keyboard_arrow_down);
+				padding-right: $grid-gutter-width * 0.75;
+			}
+
+			.view-less-btn {
+				@include icon (keyboard_arrow_up);
+				padding-right: $grid-gutter-width * 0.75;
+			}
+		}
+	}
+
+	.field__label {
+		font-size: $font-size-3xl;
+		font-weight: bold;
+		color: $gray-650;
+		margin-bottom: $grid-gutter-width;
+
+		@include media-breakpoint-down (sm) {
+			line-height: $line-height-3xl;
+		}
+	}
+
+
+	.paragraph--type--dsj-learning-material {
+		background-color: $white;
+		padding: $grid-gutter-width / 3.2 * 2;
+		margin-bottom: $grid-gutter-width * 0.75;
+		border-radius: $border-radius-default;
+	}
+
+	.image-area {
+		margin-right: $grid-gutter-width * 0.75;
+
+		@include media-breakpoint-down (sm) {
+			width: $grid-gutter-width-mobile * 4;
+			height: $grid-gutter-width-mobile *4;
+		}
+
+		.field--name-field-dsj-image {
+			width: 130px;
+			height: 130px;
+
+			@include media-breakpoint-down (sm) {
+				width: $grid-gutter-width-mobile * 4;
+				height: $grid-gutter-width-mobile *4;
+			}
+		}
+	}
+
+	.text-area {
+		width: 100%;
+
+		.card-states-wrapper {
+			display: flex;
+
+			@include media-breakpoint-down (sm) {
+				flex-direction: column-reverse;
+			}
+
+			.subscribe {
+				margin-left: auto;
+
+				.ecl-button {
+					margin: 0;
+					padding: 0;
+					font-weight: 400;
+					font-size: $font-size-sm;
+					color: $primary-default;
+					box-shadow: none;
+					@include icon(plus);
+
+					&::before {
+						margin-right: $grid-gutter-width / 8;
+						font-size: $font-size-base;
+						position: relative;
+						top: 3px;
+					}
+				}
+
+				.learning-saved {
+					font-size: $font-size-sm;
+					color: $blue;
+					@include icon(check);
+
+					&::before {
+						margin-right: $grid-gutter-width / 8;
+						font-size: $font-size-sm;
+						color: $white;
+						background-color: $blue;
+						border-radius: 50%;
+						position: relative;
+						top: 1px;
+					}
+				}
+			}
+		}
+
+		h3 {
+			width: fit-content;
+		}
+
+		.field--name-field-dsj-body {
+			padding-left: 0px;
+		}
+
+		.field--name-field-dsj-digital-technology {
+			.load-more-btn, .view-less-btn {
+				position: relative;
+				width: unset;
+				color: $blue;
+				padding-right: $grid-gutter-width * 0.5;
+
+				&::before {
+					position:absolute;
+					right: 0px;
+					top: 1px;
+					font-size: $font-size-sm;
+					font-weight: bold;
+				}
+
+				&:hover {
+					text-decoration: none;
+				}
+			}
+		}
+
+		p {
+			overflow: hidden;
+			text-overflow: ellipsis;
+			display: -webkit-box;
+			-webkit-box-orient: vertical;
+			-webkit-line-clamp: 3;
+			line-height: $line-height-base;
+			font-size: $font-size-base;
+		}
+	}
+
+	.item-list .node--footer {
+		padding: $grid-gutter-width / 2 0 0;
+		display: flex;
+		justify-content: right;
+
+		@include media-breakpoint-down (md) {
+			flex-direction: column;
+		}
+
+		.business-it {
+			display: flex;
+
+			.field--name-name {
+				margin-left: $grid-gutter-width / 8;
+				font-size: $font-size-sm ;
+			}
+
+			&::before {
+				color: $gray-100;
+				position: relative;
+				top: 2px;
+			}
+
+			&.business {
+				@include icon (business-focused)
+			}
+
+			&.general {
+				@include icon (learning-path)
+			}
+
+			&.information-technology {
+				@include icon (it-focused)
+			}
+		}
+
+		.more-link {
+			margin-left: auto;
+
+			a {
+				@include icon(right-arrow);
+				padding-right: $grid-gutter-width * 0.75;
+				font-weight: bold;
+				position: relative;
+
+				&::before {
+					position: absolute;
+					top: 0px;
+					right: 0px;
+				}
+			}
+		}
+	}
+
+	#learning-content-details .field__label{
+		font-size: $font-size-base; 
+    font-weight: normal;
+    margin-bottom: 0;
+	}
+
+}

@@ -49,16 +49,18 @@
 ]
 %}
 {% block paragraph %}
+  <div>
+
   <div{{ attributes.addClass(classes) }}>
     {% block content %}
       <div class="ecl-container">
         <div class="ecl-row">
           <div class="ecl-col-xl-12">
-            <h2>
-              {{ content | without('field_dsj_left_title', 'field_dsj_right_title', 'field_dsj_left_group', 'field_dsj_right_group') }}
-            </h2>
             <div class="ecl-u-mb-2xl ecl-row ">
               <div class="tabs">
+                <h2>
+                  {{ content | without('field_dsj_left_title', 'field_dsj_right_title', 'field_dsj_left_group', 'field_dsj_right_group') }}
+                </h2>
                 <input type="radio" name="tabs" id="tabone" checked="checked">
                 <label for="tabone">{{ content.field_dsj_left_title }}</label>
                 <div class="tab">
@@ -76,5 +78,6 @@
         </div>
       </div>
     {% endblock %}
+  </div>
   </div>
 {% endblock paragraph %}

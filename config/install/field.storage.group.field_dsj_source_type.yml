@@ -23,8 +23,17 @@ settings:
       value: austria
       label: Austria
     -
-      value: slovenia
-      label: Slovenia
+      value: poland
+      label: Poland
+    -
+      value: sweden
+      label: Sweden
+    -
+      value: danish
+      label: Danish
+    -
+      value: portugal
+      label: Portugal
   allowed_values_function: ''
 module: options
 locked: false

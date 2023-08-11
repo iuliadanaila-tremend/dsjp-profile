@@ -1,0 +1,211 @@
+.paragraph--type--dsj-stories {
+  @include media-breakpoint-up(lg) {
+    height: 500px;
+  }
+
+  .listing-more-link {
+    margin-left: auto;
+    margin-right: $grid-gutter-width;
+    padding: $line-height-xl / 2 $line-height-xl;
+    border: 2px solid $primary-default;
+    font-size: $font-size-sm;
+    background-color: $white;
+    color: $primary-default;
+    border-radius: 6px;
+    text-align: center;
+
+    a {
+      @include icon(right-arrow);
+      font-size: $font-size-base;
+      line-height: $line-height-lg;
+      padding-right: 20px;
+      position: relative;
+      font-weight: 700;
+
+      &::before {
+        @include position(absolute, 5px 0 null null);
+        font-size: $font-size-xs;
+      }
+    }
+  }
+
+  .header {
+    display: flex;
+    margin-bottom: 1rem;
+    align-items: center;
+
+    h2 {
+      margin-left: $grid-gutter-width / 2;
+    }
+
+    @include media-breakpoint-down (sm) {
+      .listing-more-link {
+        display: none;
+      }
+    }
+  }
+
+    .stories-map {
+      @include media-breakpoint-down (md) {
+        height: unset;
+      }
+
+      height: 355px;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: $grid-gutter-width;
+
+      .subtitle {
+        margin-top: $grid-gutter-width / 2;
+
+        @include media-breakpoint-down (md) {
+          margin-bottom: $grid-gutter-width-mobile* 1.25;
+        }
+      }
+
+      .subtitle a {
+        color: $blue;
+        font-weight: 600;
+        font-size: $font-size-lg;
+      }
+
+      .colored-more-link {
+        font-size: $font-size-sm;
+        padding: $line-height-xl / 2 $line-height-xl;
+        background-color: theme-color('secondary');
+        border-radius: 6px;
+        width: 30%;
+        margin-top: auto;
+        align-self: self-end;
+        text-align: center;
+
+        @include media-breakpoint-between(sm, md) {
+          width: 40%;
+        }
+
+        a {
+          color: $white;
+        }
+      }
+    }
+
+    .stories-map a {
+      @include media-breakpoint-down(md) {
+        width: 100%;
+
+        img {
+        width: inherit;
+        }
+      }
+    }
+
+  .national-highlights {
+    .slick__slide {
+      @include media-breakpoint-up (md) {
+        flex-basis: 33%;
+      }
+    }
+
+    .ecl-col-m-4 {
+      margin-bottom: $grid-gutter-width !important;
+    }
+
+    .node {
+      &--card {
+        @include media-breakpoint-down (lg) {
+          height: 98%;
+        }
+
+        @include media-breakpoint-up(xl) {
+          padding: $grid-gutter-width / 2;
+        }
+
+        height: 355px;
+        display: flex;
+        align-content: space-between;
+      }
+
+      &-date {
+        @include icon(calendar);
+
+        &::before {
+          padding-right: 12px;
+        }
+
+        @include font($font-size-sm, $line-height-sm, $font-ec-square-light, normal);
+        color: $gray-700;
+        margin: $grid-gutter-width-mobile * 1.5 0;
+      }
+
+      &--title {
+        a {
+          font-weight: bold;
+        }
+      }
+
+      &--footer {
+        display: flex;
+        width: 100%;
+        padding: 0 0 !important;
+
+        .type-pill {
+          display: block;
+          max-width: $grid-gutter-width * 4;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          border-radius: 16px;
+
+          @include media-breakpoint-between(sm, md) {
+            max-width: $grid-gutter-width-mobile * 4;
+          }
+        }
+
+        .more-link {
+          text-align: right;
+          margin-left: auto;
+          flex-shrink: 0;
+
+          a {
+            font-weight: 600;
+          }
+
+          &::before {
+            top: 4px;
+          }
+        }
+      }
+    }
+
+    @include media-breakpoint-up(md) {
+      .slick--field-dsj-national-highlights {
+        margin-top: 0;
+
+        > div {
+          display: flex;
+
+          .slick__slide {
+            position: relative;
+            visibility: visible;
+
+            .ecl-col-m-4 {
+              max-width: 100%;
+            }
+          }
+        }
+      }
+
+    }
+  }
+
+
+    .hidden-desktop.listing-more-link {
+      @include media-breakpoint-up(md) {
+        display: none;
+      }
+
+      margin-right: 0;
+      margin-bottom: $grid-gutter-width;
+    }
+
+}

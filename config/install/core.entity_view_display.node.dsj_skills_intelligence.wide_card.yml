@@ -12,6 +12,7 @@ dependencies:
     - field.field.node.dsj_skills_intelligence.field_dsj_geographic_scope
     - field.field.node.dsj_skills_intelligence.field_dsj_image
     - field.field.node.dsj_skills_intelligence.field_dsj_industry
+    - field.field.node.dsj_skills_intelligence.field_dsj_linked_content
     - field.field.node.dsj_skills_intelligence.field_dsj_meta_tags
     - field.field.node.dsj_skills_intelligence.field_dsj_publication_type
     - field.field.node.dsj_skills_intelligence.field_dsj_publish_in_core
@@ -85,6 +86,7 @@ hidden:
   field_dsj_external_id: true
   field_dsj_geographic_scope: true
   field_dsj_industry: true
+  field_dsj_linked_content: true
   field_dsj_meta_tags: true
   field_dsj_publication_type: true
   field_dsj_target_audience: true

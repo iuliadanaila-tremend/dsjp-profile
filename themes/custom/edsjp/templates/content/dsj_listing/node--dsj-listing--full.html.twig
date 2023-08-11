@@ -19,6 +19,15 @@
   {{ title_suffix }}
 
   <div{{ content_attributes }}>
-    {{ content|without('field_dsj_content_type', 'field_dsj_digital_technology') }}
+
+    {% if content.content_moderation_control %}
+      <div class="ecl-container">
+        <div class="ecl-row">
+          {{ content.content_moderation_control }}
+        </div>
+      </div>
+    {% endif %}
+
+    {{ content | without('field_dsj_content_type', 'field_dsj_digital_technology', 'content_moderation_control') }}
   </div>
 </article>

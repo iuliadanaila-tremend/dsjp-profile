@@ -69,13 +69,9 @@ settings:
             - SpecialChar
             - Maximize
   plugins:
-    stylescombo:
-      styles: ''
     drupallink:
       linkit_enabled: true
       linkit_profile: default
-    language:
-      language_list: un
     font:
       font_names: ''
       font_sizes: "14px|14px\r\n15px|15px\r\n16px|16px\r\n17px|17px\r\n18px|18px\r\n19px|19px\r\n20px|20px"

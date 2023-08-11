@@ -3,6 +3,7 @@ status: true
 dependencies:
   config:
     - field.field.node.dsj_funding_opportunity.body
+    - field.field.node.dsj_funding_opportunity.field_dsj_application_deadline
     - field.field.node.dsj_funding_opportunity.field_dsj_author
     - field.field.node.dsj_funding_opportunity.field_dsj_beneficiary
     - field.field.node.dsj_funding_opportunity.field_dsj_comments
@@ -15,6 +16,7 @@ dependencies:
     - field.field.node.dsj_funding_opportunity.field_dsj_geographic_scope
     - field.field.node.dsj_funding_opportunity.field_dsj_image
     - field.field.node.dsj_funding_opportunity.field_dsj_industry
+    - field.field.node.dsj_funding_opportunity.field_dsj_linked_content
     - field.field.node.dsj_funding_opportunity.field_dsj_meta_tags
     - field.field.node.dsj_funding_opportunity.field_dsj_publish_in_core
     - field.field.node.dsj_funding_opportunity.field_dsj_representative_image
@@ -28,6 +30,7 @@ dependencies:
   module:
     - comment
     - content_moderation
+    - datetime
     - image
     - image_widget_crop
     - metatag
@@ -52,13 +55,19 @@ content:
     third_party_settings: {  }
   created:
     type: datetime_timestamp
-    weight: 18
+    weight: 19
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_dsj_application_deadline:
+    type: datetime_default
+    weight: 2
     region: content
     settings: {  }
     third_party_settings: {  }
   field_dsj_author:
     type: string_textfield
-    weight: 3
+    weight: 4
     region: content
     settings:
       size: 60
@@ -66,7 +75,7 @@ content:
     third_party_settings: {  }
   field_dsj_beneficiary:
     type: text_textarea
-    weight: 14
+    weight: 15
     region: content
     settings:
       rows: 5
@@ -74,25 +83,25 @@ content:
     third_party_settings: {  }
   field_dsj_comments:
     type: comment_default
-    weight: 25
+    weight: 26
     region: content
     settings: {  }
     third_party_settings: {  }
   field_dsj_digital_skill_level:
     type: options_select
-    weight: 7
+    weight: 8
     region: content
     settings: {  }
     third_party_settings: {  }
   field_dsj_digital_technology:
     type: options_select
-    weight: 6
+    weight: 7
     region: content
     settings: {  }
     third_party_settings: {  }
   field_dsj_financing_condition:
     type: text_textarea
-    weight: 15
+    weight: 16
     region: content
     settings:
       rows: 5
@@ -100,7 +109,7 @@ content:
     third_party_settings: {  }
   field_dsj_financing_intermediary:
     type: string_textfield
-    weight: 13
+    weight: 14
     region: content
     settings:
       size: 60
@@ -108,7 +117,7 @@ content:
     third_party_settings: {  }
   field_dsj_form_of_funding:
     type: options_shs
-    weight: 12
+    weight: 13
     region: content
     settings:
       display_node_count: false
@@ -118,13 +127,13 @@ content:
     third_party_settings: {  }
   field_dsj_geographic_scope:
     type: options_select
-    weight: 8
+    weight: 9
     region: content
     settings: {  }
     third_party_settings: {  }
   field_dsj_image:
     type: image_widget_crop
-    weight: 2
+    weight: 3
     region: content
     settings:
       progress_indicator: throbber
@@ -140,20 +149,31 @@ content:
     third_party_settings: {  }
   field_dsj_industry:
     type: options_select
-    weight: 9
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_dsj_linked_content:
+    type: entity_reference_autocomplete
+    weight: 30
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_dsj_meta_tags:
     type: metatag_firehose
-    weight: 27
+    weight: 28
     region: content
     settings:
       sidebar: true
+      use_details: true
     third_party_settings: {  }
   field_dsj_representative_image:
     type: image_image
-    weight: 28
+    weight: 29
     region: content
     settings:
       progress_indicator: throbber
@@ -161,25 +181,25 @@ content:
     third_party_settings: {  }
   field_dsj_target_audience:
     type: options_select
-    weight: 5
+    weight: 6
     region: content
     settings: {  }
     third_party_settings: {  }
   field_dsj_target_group:
     type: options_select
-    weight: 11
+    weight: 12
     region: content
     settings: {  }
     third_party_settings: {  }
   field_dsj_type_of_initiative:
     type: options_select
-    weight: 10
+    weight: 11
     region: content
     settings: {  }
     third_party_settings: {  }
   field_dsj_website_link:
     type: typed_link
-    weight: 4
+    weight: 5
     region: content
     settings:
       placeholder_url: ''
@@ -187,40 +207,40 @@ content:
     third_party_settings: {  }
   langcode:
     type: language_select
-    weight: 16
+    weight: 17
     region: content
     settings:
       include_locked: true
     third_party_settings: {  }
   moderation_state:
     type: moderation_state_default
-    weight: 24
+    weight: 25
     region: content
     settings: {  }
     third_party_settings: {  }
   path:
     type: path
-    weight: 21
+    weight: 22
     region: content
     settings: {  }
     third_party_settings: {  }
   promote:
     type: boolean_checkbox
-    weight: 19
+    weight: 20
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 22
+    weight: 23
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
-    weight: 20
+    weight: 21
     region: content
     settings:
       display_label: true
@@ -234,13 +254,13 @@ content:
       placeholder: ''
     third_party_settings: {  }
   translation:
-    weight: 23
+    weight: 24
     region: content
     settings: {  }
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 17
+    weight: 18
     region: content
     settings:
       match_operator: CONTAINS
@@ -249,7 +269,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
   url_redirects:
-    weight: 26
+    weight: 27
     region: content
     settings: {  }
     third_party_settings: {  }

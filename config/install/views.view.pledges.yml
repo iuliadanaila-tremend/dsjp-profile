@@ -8,7 +8,9 @@ dependencies:
     - taxonomy.vocabulary.dsj_country
   module:
     - better_exposed_filters
+    - datetime
     - dsjp_pledge
+    - dsjp_views
     - node
     - options
     - taxonomy
@@ -591,6 +593,75 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
+        field_dsj_pledge_dates_end_value:
+          id: field_dsj_pledge_dates_end_value
+          table: node__field_dsj_pledge_dates
+          field: field_dsj_pledge_dates_end_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: datetime
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: ''
+            type: date
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_dsj_pledge_dates_end_value_op
+            label: 'Please enter the pledge dates (field_dsj_pledge_dates:end_value)'
+            description: null
+            use_operator: false
+            operator: field_dsj_pledge_dates_end_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_dsj_pledge_dates_end_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            min_placeholder: null
+            max_placeholder: null
+            placeholder: null
+          is_grouped: true
+          group_info:
+            label: 'End date'
+            description: ''
+            identifier: field_dsj_pledge_dates_end_value
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items:
+              1:
+                title: Active
+                operator: '>='
+                value:
+                  min: ''
+                  max: ''
+                  value: now
+                  type: offset
+              2:
+                title: Ended
+                operator: '<'
+                value:
+                  min: ''
+                  max: ''
+                  value: now
+                  type: offset
+              3:
+                title: ''
+                operator: '='
+                value:
+                  min: ''
+                  max: ''
+                  value: ''
+                  type: date
       filter_groups:
         operator: AND
         groups:
@@ -627,7 +698,22 @@ display:
           required: false
       use_ajax: false
       group_by: true
-      header: {  }
+      header:
+        extended_result:
+          id: extended_result
+          table: views
+          field: extended_result
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: extended_result
+          empty: false
+          content: "Displaying @start - @end of @total\r\n\r\nCountry : @exposed_country \r\n"
+          content_short: "Displaying @total results\r\n\r\nCountry : @exposed_country "
+          content_one: 'One result found'
+          content_no_search: "Displaying @start - @end of @total\r\n\r\nCountry : @exposed_country \r\n"
+          content_short_no_search: 'Displaying @total results'
+          content_one_no_search: 'One result found'
       footer: {  }
       display_extenders: {  }
     cache_metadata:
@@ -648,10 +734,420 @@ display:
     display_plugin: page
     position: 1
     display_options:
+      enabled: false
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          value:
+            dsj_pledge: dsj_pledge
+          group: 1
+          expose:
+            operator_limit_selection: false
+            operator_list: {  }
+        field_dsj_initiative_type_value:
+          id: field_dsj_initiative_type_value
+          table: node__field_dsj_initiative_type
+          field: field_dsj_initiative_type_value
+          relationship: reverse__node__field_dsj_pledge
+          group_type: group
+          admin_label: ''
+          plugin_id: string
+          operator: '='
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_dsj_initiative_type_value_op
+            label: 'Type (field_dsj_initiative_type)'
+            description: null
+            use_operator: false
+            operator: field_dsj_initiative_type_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_dsj_initiative_type_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: null
+          is_grouped: true
+          group_info:
+            label: 'Target audience'
+            description: ''
+            identifier: initiative_type
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items:
+              1:
+                title: Education
+                operator: '='
+                value: education
+              2:
+                title: 'Labour Force'
+                operator: '='
+                value: labour_force
+              3:
+                title: 'ICT Professionals'
+                operator: '='
+                value: ict_proffessionals
+              4:
+                title: 'All Citizens'
+                operator: '='
+                value: other
+        combine:
+          id: combine
+          table: views
+          field: combine
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: combine
+          operator: contains
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: combine_op
+            label: ''
+            description: ''
+            use_operator: false
+            operator: combine_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: keyword
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              dsj_advanced_contributor: '0'
+              dsj_content_editor: '0'
+              dsj_reviewer: '0'
+              dsj_critical_reviewer: '0'
+              community_manager: '0'
+              oe_translator: '0'
+              administrator: '0'
+            placeholder: 'Search by Keywords'
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          fields:
+            title: title
+            body: body
+        beneficiary:
+          id: beneficiary
+          table: node__field_dsj_initiative_beneficiary
+          field: beneficiary
+          relationship: reverse__node__field_dsj_pledge
+          group_type: group
+          admin_label: ''
+          plugin_id: dsj_pledge_initiative_beneficiary
+          operator: in
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: beneficiary_op
+            label: 'Principal Beneficiary'
+            description: ''
+            use_operator: false
+            operator: beneficiary_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: beneficiary
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              dsj_advanced_contributor: '0'
+              dsj_content_editor: '0'
+              dsj_reviewer: '0'
+              dsj_critical_reviewer: '0'
+              community_manager: '0'
+              oe_translator: '0'
+              administrator: '0'
+            reduce: 0
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_dsj_geographic_scope_target_id:
+          id: field_dsj_geographic_scope_target_id
+          table: node__field_dsj_geographic_scope
+          field: field_dsj_geographic_scope_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_dsj_geographic_scope_target_id_op
+            label: 'Geographic scope - Country'
+            description: ''
+            use_operator: false
+            operator: field_dsj_geographic_scope_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: country
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              dsj_advanced_contributor: '0'
+              dsj_content_editor: '0'
+              dsj_reviewer: '0'
+              dsj_critical_reviewer: '0'
+              community_manager: '0'
+              oe_translator: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: dsj_country
+          type: select
+          hierarchy: true
+          limit: true
+          error_message: true
+        field_dsj_action_type_value:
+          id: field_dsj_action_type_value
+          table: node__field_dsj_action_type
+          field: field_dsj_action_type_value
+          relationship: reverse__node__field_dsj_pledge
+          group_type: group
+          admin_label: ''
+          plugin_id: list_field
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_dsj_action_type_value_op
+            label: 'Pledge activities'
+            description: ''
+            use_operator: false
+            operator: field_dsj_action_type_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: action_type
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              dsj_advanced_contributor: '0'
+              dsj_content_editor: '0'
+              dsj_reviewer: '0'
+              dsj_critical_reviewer: '0'
+              community_manager: '0'
+              oe_translator: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+        status_1:
+          id: status_1
+          table: node_field_data
+          field: status
+          relationship: reverse__node__field_dsj_pledge
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_dsj_pledge_dates_end_value:
+          id: field_dsj_pledge_dates_end_value
+          table: node__field_dsj_pledge_dates
+          field: field_dsj_pledge_dates_end_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: datetime
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: ''
+            type: date
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_dsj_pledge_dates_end_value_op
+            label: 'Please enter the pledge dates (field_dsj_pledge_dates:end_value)'
+            description: null
+            use_operator: false
+            operator: field_dsj_pledge_dates_end_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_dsj_pledge_dates_end_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            min_placeholder: null
+            max_placeholder: null
+            placeholder: null
+          is_grouped: true
+          group_info:
+            label: 'End date'
+            description: ''
+            identifier: field_dsj_pledge_dates_end_value
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items:
+              1:
+                title: Active
+                operator: '>='
+                value:
+                  min: ''
+                  max: ''
+                  value: now
+                  type: offset
+              2:
+                title: Ended
+                operator: '<'
+                value:
+                  min: ''
+                  max: ''
+                  value: now
+                  type: offset
+              3:
+                title: ''
+                operator: '='
+                value:
+                  min: ''
+                  max: ''
+                  value: ''
+                  type: date
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      defaults:
+        filters: false
+        filter_groups: false
+        header: false
+      header: {  }
       exposed_block: true
       display_extenders:
-        metatag_display_extender: {  }
-      path: pledges
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
+      path: inspiration/pledges
+      menu:
+        type: none
+        title: Pledges
+        description: ''
+        weight: 5
+        expanded: false
+        menu_name: main
+        parent: 'menu_link_content:71916320-5065-44bf-a4f3-6d420ff989b0'
+        context: '0'
     cache_metadata:
       max-age: -1
       contexts:
@@ -671,6 +1167,10 @@ display:
     position: 2
     display_options:
       title: 'My Pledges'
+      access:
+        type: perm
+        options:
+          perm: 'access content'
       empty:
         area:
           id: area
@@ -743,6 +1243,7 @@ display:
           1: AND
       defaults:
         empty: false
+        access: false
         title: false
         arguments: false
         filters: false

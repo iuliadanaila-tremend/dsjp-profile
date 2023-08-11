@@ -1,3 +1,4 @@
+uuid: 0988fe53-83ce-4888-91cd-f2a51de8e321
 langcode: en
 status: true
 dependencies:
@@ -7,13 +8,9 @@ dependencies:
     - field.field.node.dsj_discussion.field_dsj_attachment
     - field.field.node.dsj_discussion.field_dsj_comments
     - field.field.node.dsj_discussion.field_dsj_digital_technology
-    - field.field.node.dsj_discussion.field_dsj_meta_tags
     - field.field.node.dsj_discussion.field_dsj_publish_in_core
-    - field.field.node.dsj_discussion.field_dsj_representative_image
     - node.type.dsj_discussion
   module:
-    - ajax_comments
-    - dsjp_community
     - field_group
     - options
     - smart_trim
@@ -23,14 +20,13 @@ third_party_settings:
     group_text:
       children:
         - body
-      label: Text
       parent_name: ''
-      region: content
       weight: 0
       format_type: html_element
+      region: content
       format_settings:
-        classes: text-area
         id: ''
+        classes: text-area
         element: div
         show_label: false
         label_element: h3
@@ -38,17 +34,15 @@ third_party_settings:
         attributes: ''
         effect: none
         speed: fast
+      label: Text
     group_tags:
       children:
         - field_dsj_digital_technology
-      label: Tags
       parent_name: ''
-      region: content
       weight: 1
       format_type: html_element
+      region: content
       format_settings:
-        classes: tags-area
-        id: ''
         element: div
         show_label: true
         label_element: h3
@@ -56,60 +50,56 @@ third_party_settings:
         attributes: ''
         effect: none
         speed: fast
+        id: ''
+        classes: tags-area
+      label: Tags
+_core:
+  default_config_hash: '-mRA9q4xXBAZUu94aW0wb13jf8ZoVuhGVzJkZpcsctk'
 id: node.dsj_discussion.listing
 targetEntityType: node
 bundle: dsj_discussion
 mode: listing
 content:
   body:
-    type: smart_trim
     label: hidden
+    type: smart_trim
+    weight: 1
     settings:
       trim_length: 285
       trim_type: chars
-      trim_suffix: ...
-      wrap_output: false
+      trim_suffix: ''
       wrap_class: trimmed
-      more_link: false
-      more_class: more-link
       more_text: More
+      more_class: more-link
       summary_handler: trim
       trim_options:
         text: true
         trim_zero: false
+      wrap_output: false
+      more_link: false
     third_party_settings: {  }
-    weight: 1
     region: content
   content_moderation_control:
-    settings: {  }
-    third_party_settings: {  }
     weight: -20
     region: content
-  field_dsj_comments:
-    type: dsj_comment_preview
-    label: hidden
-    settings:
-      number_of_comments: '2'
-    third_party_settings:
-      ajax_comments:
-        enable_ajax_comments: '0'
-    weight: 3
-    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_dsj_digital_technology:
     type: list_default
+    weight: 2
+    region: content
     label: hidden
     settings: {  }
     third_party_settings: {  }
+  flag_voting:
     weight: 2
     region: content
-  flag_voting:
     settings: {  }
     third_party_settings: {  }
-    weight: 2
-    region: content
 hidden:
   field_dsj_attachment: true
-  field_dsj_meta_tags: true
+  field_dsj_comments: true
+  field_dsj_publish_in_core: true
   flag_subscribe_node: true
   langcode: true
   links: true

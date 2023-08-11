@@ -1,0 +1,35 @@
+diff --git a/mentions.module b/mentions.module
+index 5412278..a67b527 100644
+--- a/mentions.module
++++ b/mentions.module
+@@ -86,17 +86,19 @@ function mentions_insert_or_update(EntityInterface $entity): void {
+   foreach ($fields_with_text as $text_field) {
+     $entity_text_field = $entity->get($text_field);
+     $value = $entity_text_field->value;
+-    $format = !empty($entity_text_field->format) ? $entity_text_field->format : 'basic_html';
+-    if (empty($enabled_formats[$format])) {
+-      continue;
+-    }
+-    $filter_configuration = $enabled_formats[$format]->filters('filter_mentions')->getConfiguration();
+-    /** @var \Drupal\mentions\Plugin\Filter\MentionsFilter $filter_mentions */
+-    $filter_mentions = \Drupal::service('plugin.manager.filter')->createInstance('filter_mentions', $filter_configuration);
+-    if ($filter_mentions->shouldApplyFilter()) {
+-      $mentions = $filter_mentions->getMentions($value);
+-      $auid = \Drupal::currentUser()->id();
+-      mentions_crud_update($type, $mentions, $entity->id(), $auid);
++    if (!empty($value)) {
++      $format = !empty($entity_text_field->format) ? $entity_text_field->format : 'basic_html';
++      if (empty($enabled_formats[$format])) {
++        continue;
++      }
++      $filter_configuration = $enabled_formats[$format]->filters('filter_mentions')->getConfiguration();
++      /** @var \Drupal\mentions\Plugin\Filter\MentionsFilter $filter_mentions */
++      $filter_mentions = \Drupal::service('plugin.manager.filter')->createInstance('filter_mentions', $filter_configuration);
++      if ($filter_mentions->shouldApplyFilter()) {
++        $mentions = $filter_mentions->getMentions($value);
++        $auid = \Drupal::currentUser()->id();
++        mentions_crud_update($type, $mentions, $entity->id(), $auid);
++      }
+     }
+   }
+ }

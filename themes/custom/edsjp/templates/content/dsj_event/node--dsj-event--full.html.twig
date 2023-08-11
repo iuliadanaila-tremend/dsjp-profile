@@ -59,11 +59,6 @@
               {% endif %}
             </div>
           </div>
-          {% if content.flag_subscribe_node and logged_in %}
-            <div class="subscribe">
-              {{ content.flag_subscribe_node }}
-            </div>
-          {% endif %}
         </div>
       {% endif %}
     </header>
@@ -93,7 +88,7 @@
         {{ content|without('field_dsj_event_timezone', 'content_moderation_control', 'field_dsj_event_location', 'body', 'flag_voting', 'flag_subscribe_node', 'field_dsj_comments', 'field_dsj_image', 'field_dsj_date') }}
       </div>
 
-      {% if content.flag_voting or socialShare %}
+      {% if content.flag_voting or socialShare or (content.flag_subscribe_node and logged_in) %}
         <div class="voteShare-container">
           {% if content.flag_voting %}
             <div class="voting">{{ content.flag_voting }}</div>
@@ -101,6 +96,12 @@
 
           {% if socialShare %}
             <div class="sharing">{{ socialShare }}</div>
+          {% endif %}
+
+          {% if content.flag_subscribe_node and logged_in %}
+            <div class="subscribe">
+              {{ content.flag_subscribe_node }}
+            </div>
           {% endif %}
         </div>
       {% endif %}

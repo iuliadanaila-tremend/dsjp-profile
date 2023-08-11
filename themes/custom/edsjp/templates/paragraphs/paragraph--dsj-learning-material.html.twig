@@ -1,0 +1,45 @@
+{% extends "@paragraphs/paragraph.html.twig" %}
+{% block content %}
+  <div class="ecl-container">
+    <div class="ecl-row">
+
+      <div class="node--content learning-material-card">
+        <div class="image-area">
+          {{ node_reference.field_dsj_image }}
+        </div>
+
+        <div class="text-area">
+
+          <div class="card-states-wrapper">
+            {{ node_reference.field_dsj_digital_skill_level }}
+            {% if learning_states_form and logged_in %}
+              <div class="subscribe">
+                {{ learning_states_form }}
+              </div>
+            {% endif %}
+            {% if node_reference.learning_states_form and logged_in %}
+              <div class="subscribe">
+                {{ node_reference.learning_states_form }}
+              </div>
+            {% endif %}
+          </div>
+          {{ node_reference.title_prefix }}
+          <h3{{ title_attributes }}>
+            <a href="{{ node_reference.url }}" rel="bookmark" title="{{ node_reference.title[0] }}">{{ node_reference.title }}</a>
+          </h3>
+          {{ node_reference.title_suffix }}
+
+          {{ node_reference.field_dsj_digital_technology }}
+
+          {{ content.field_dsj_body }}
+        </div>
+      </div>
+
+      <div class="node--footer">
+        {{ content.field_dsj_business_it }}
+        <div class="more-link"><a href="{{ node_reference.url }}" class="more-link">{% trans %}Read more{% endtrans %}</a></div>
+      </div>
+
+    </div>
+  </div>
+{% endblock %}

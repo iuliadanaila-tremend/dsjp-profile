@@ -22,7 +22,7 @@ entity_type: group
 bundle: dsj_organization
 label: Logo
 description: ''
-required: false
+required: true
 translatable: true
 default_value: {  }
 default_value_callback: ''

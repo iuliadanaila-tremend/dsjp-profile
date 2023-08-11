@@ -6,7 +6,12 @@ dependencies:
     - node.type.dsj_article
     - taxonomy.vocabulary.dsj_type_of_article
   content:
-    - 'taxonomy_term:dsj_type_of_article:dfc34ce3-057e-4d70-9170-989d425d23bd'
+    - 'taxonomy_term:dsj_type_of_article:1aeb2096-171b-4ea9-a750-d97e7b680c5d'
+  module:
+    - tmgmt_content
+third_party_settings:
+  tmgmt_content:
+    excluded: false
 id: node.dsj_article.field_dsj_type_of_article
 field_name: field_dsj_type_of_article
 entity_type: node
@@ -17,7 +22,7 @@ required: true
 translatable: false
 default_value:
   -
-    target_uuid: dfc34ce3-057e-4d70-9170-989d425d23bd
+    target_uuid: 1aeb2096-171b-4ea9-a750-d97e7b680c5d
 default_value_callback: ''
 settings:
   handler: 'default:taxonomy_term'

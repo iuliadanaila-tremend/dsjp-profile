@@ -76,7 +76,6 @@ class InitiativeUpdateForm extends FormBase {
             ]),
             '#default_value' => isset($default_value[$index]) ? $default_value[$index]['value'] : 0,
             '#min' => isset($default_value[$index]) ? $default_value[$index]['value'] : 0,
-            '#max' => $beneficiary['number'],
           ];
           $form['initiative_beneficiary'][$index]['target_number'] = [
             '#type' => 'number',

@@ -7,7 +7,16 @@ id: groups
 label: Groups
 type: 'canonical_entities:group'
 pattern: 'community/groups/[group:title]'
-selection_criteria: {  }
+selection_criteria:
+  6410bdc0-6709-460c-9ea0-3a5ce90f0e88:
+    id: 'entity_bundle:group'
+    negate: false
+    uuid: 6410bdc0-6709-460c-9ea0-3a5ce90f0e88
+    context_mapping:
+      group: group
+    bundles:
+      dsj_private_group: dsj_private_group
+      dsj_public_group: dsj_public_group
 selection_logic: and
 weight: -1
 relationships: {  }

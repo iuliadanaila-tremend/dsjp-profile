@@ -7,9 +7,16 @@
         $(this).closest('form')[0].reset();
         $(this).closest('form').find('input[type="text"]').val('');
         $(this).closest('form').find('select option').removeAttr('selected');
-        $(this).closest('form').find('select:not([name^="type"])').trigger('chosen:updated');
         $(this).val(value);
       });
+      // Display Learning content type column only for Learning content.
+      var selectedOption = $('select[name^="type"] option:selected');
+      if(selectedOption.val() === 'dsj_learning_content' || selectedOption.text() === 'Learning content') {
+        $(".views-field.views-field-field-dsj-learning-content-type").show();
+      }
+      else {
+        $(".views-field.views-field-field-dsj-learning-content-type").hide();
+      }
       // Hide the status filter.
       $('div.form-item-status').addClass('hidden');
       // When moderation state changes and the discussion is set as a filter,

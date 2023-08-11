@@ -124,8 +124,6 @@ process:
       source: endDate
   field_dsj_type_of_funding: typeOfFunding
   field_dsj_type_of_initiative: typeOfInitiative
-  field_dsj_publish_in_core:
-    plugin: default_value
     default_value: 1
   organizations:
     plugin: deepen

@@ -4,3 +4,24 @@ dsjp_community.userlist:
     _controller: '\Drupal\dsjp_community\Controller\MentionsUserList::userList'
   requirements:
     _role: 'authenticated'
+
+dsjp_community.invitation.bulk.confirm:
+  path: '/group/{group}/invite-members/confirm'
+  defaults:
+    _form: '\Drupal\dsjp_community\Form\BulkGroupInvitationConfirmOverride'
+    _title_callback: '\Drupal\ginvite\Controller\InvitationOperations::invitationTitle'
+  requirements:
+    _custom_access: '\Drupal\ginvite\Controller\InvitationOperations::access'
+  options:
+    parameters:
+      group:
+        type: 'entity:group'
+
+dsjp_community.group.join:
+  path: '/group/{group}/join'
+  defaults:
+    _controller: '\Drupal\group\Controller\GroupMembershipController::join'
+    _title_callback: '\Drupal\dsjp_community\Controller\GroupMembershipControllerOverride::joinTitle'
+  requirements:
+    _group_permission: 'join group'
+    _group_member: 'FALSE'

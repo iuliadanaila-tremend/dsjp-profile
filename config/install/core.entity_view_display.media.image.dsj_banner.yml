@@ -20,13 +20,10 @@ content:
       caption:
         title: '0'
         alt: '0'
-      icon: ''
       layout: ''
       view_mode: ''
       cache: 0
-      current_view_mode: dsj_banner
       skin: ''
-      fx: ''
       style: ''
       background: false
       box_caption: ''
@@ -38,13 +35,16 @@ content:
       media_switch: ''
       ratio: ''
       thumbnail_style: ''
-      _uri: ''
+      grid: '0'
+      grid_medium: '0'
+      grid_small: '0'
       breakpoints: {  }
+      current_view_mode: dsj_banner
+      fx: ''
+      icon: ''
       sizes: ''
       grid_header: ''
-      grid: 0
-      grid_medium: 0
-      grid_small: 0
+      _uri: ''
     third_party_settings: {  }
     weight: 0
     region: content

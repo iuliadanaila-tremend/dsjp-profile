@@ -2,6 +2,6 @@ name: dsjp_sat
 type: module
 description: Custom SAT related functionalities.
 package: Custom
-core: 8.x
-core_version_requirement: ^8 || ^9
+
+core_version_requirement: ^9 || ^10
 php: 7.3

@@ -1,0 +1,50 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.wide_card
+    - field.field.node.dsj_pledge.body
+    - field.field.node.dsj_pledge.field_dsj_approved_date
+    - field.field.node.dsj_pledge.field_dsj_digital_technology
+    - field.field.node.dsj_pledge.field_dsj_geographic_scope
+    - field.field.node.dsj_pledge.field_dsj_linked_content
+    - field.field.node.dsj_pledge.field_dsj_payment_agreed
+    - field.field.node.dsj_pledge.field_dsj_pledge_dates
+    - field.field.node.dsj_pledge.field_dsj_pledges_activity_pay
+    - field.field.node.dsj_pledge.field_dsj_store_impact
+    - field.field.node.dsj_pledge.field_dsj_submitted_date
+    - field.field.node.dsj_pledge.field_dsj_theme
+    - node.type.dsj_pledge
+  module:
+    - text
+    - user
+id: node.dsj_pledge.wide_card
+targetEntityType: node
+bundle: dsj_pledge
+mode: wide_card
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 400
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  content_moderation_control: true
+  field_dsj_approved_date: true
+  field_dsj_digital_technology: true
+  field_dsj_geographic_scope: true
+  field_dsj_linked_content: true
+  field_dsj_payment_agreed: true
+  field_dsj_pledge_dates: true
+  field_dsj_pledges_activity_pay: true
+  field_dsj_store_impact: true
+  field_dsj_submitted_date: true
+  field_dsj_theme: true
+  flag_voting: true
+  langcode: true
+  links: true
+  private_message_link: true
+  search_api_excerpt: true

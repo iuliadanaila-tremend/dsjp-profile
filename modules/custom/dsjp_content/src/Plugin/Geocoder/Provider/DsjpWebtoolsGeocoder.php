@@ -5,8 +5,10 @@ namespace Drupal\dsjp_content\Plugin\Geocoder\Provider;
 use Drupal\Core\Cache\CacheBackendInterface;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Language\LanguageManagerInterface;
+use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\geocoder\ProviderUsingHandlerWithAdapterBase;
 use Drupal\geofield\GeoPHP\GeoPHPInterface;
+use GuzzleHttp\ClientInterface;
 use Http\Client\HttpClient;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -29,6 +31,20 @@ class DsjpWebtoolsGeocoder extends ProviderUsingHandlerWithAdapterBase {
   private $geophpWrapper;
 
   /**
+   * The http client service.
+   *
+   * @var \GuzzleHttp\ClientInterface
+   */
+  private $httpClient;
+
+  /**
+   * The logger factory.
+   *
+   * @var \Drupal\Core\Logger\LoggerChannelFactoryInterface
+   */
+  private $loggerFactory;
+
+  /**
    * Constructs a geocoder provider plugin object.
    *
    * @param array $configuration
@@ -47,6 +63,10 @@ class DsjpWebtoolsGeocoder extends ProviderUsingHandlerWithAdapterBase {
    *   The HTTP adapter.
    * @param \Drupal\geofield\GeoPHP\GeoPHPInterface $geophpWrapper
    *   Geophp wrapper.
+   * @param \GuzzleHttp\ClientInterface $httpClient
+   *   Http client.
+   * @param \Drupal\Core\Logger\LoggerChannelFactoryInterface $loggerFactory
+   *   Logger factory.
    *
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
    */
@@ -57,11 +77,15 @@ class DsjpWebtoolsGeocoder extends ProviderUsingHandlerWithAdapterBase {
                               CacheBackendInterface $cache_backend,
                               LanguageManagerInterface $language_manager,
                               HttpClient $http_adapter,
-                              GeoPHPInterface $geophpWrapper
+                              GeoPHPInterface $geophpWrapper,
+                              ClientInterface $httpClient,
+                              LoggerChannelFactoryInterface $loggerFactory
   ) {
     parent::__construct($configuration, $plugin_id, $plugin_definition, $config_factory, $cache_backend, $language_manager, $http_adapter);
 
     $this->geophpWrapper = $geophpWrapper;
+    $this->httpClient = $httpClient;
+    $this->loggerFactory = $loggerFactory;
   }
 
   /**
@@ -78,7 +102,9 @@ class DsjpWebtoolsGeocoder extends ProviderUsingHandlerWithAdapterBase {
       $container->get('cache.geocoder'),
       $container->get('language_manager'),
       $container->get('geocoder.http_adapter'),
-      $container->get('geofield.geophp')
+      $container->get('geofield.geophp'),
+      $container->get('http_client'),
+      $container->get('logger.factory')
     );
   }
 
@@ -91,8 +117,7 @@ class DsjpWebtoolsGeocoder extends ProviderUsingHandlerWithAdapterBase {
       $chars = [" ", ","];
       $query = trim(str_replace($chars, '+', $source));
       $url = "https://europa.eu/webtools/rest/geocoding/?address=" . $query;
-      $request = \Drupal::httpClient()
-        ->get($url, ['headers' => ['Accept' => 'application/json']]);
+      $request = $this->httpClient->get($url, ['headers' => ['Accept' => 'application/json']]);
 
       $response = json_decode($request->getBody());
       $data = $response->geocodingRequestsCollection[0];
@@ -103,18 +128,18 @@ class DsjpWebtoolsGeocoder extends ProviderUsingHandlerWithAdapterBase {
           '@error' => $response->responseMessage,
         ];
         $message = $this->t('HTTP request to Webtools Geocoder API failed.\nCode: @code\nError: @error', $args);
-        \Drupal::logger('ec_geocoder')->error($message);
+        $this->loggerFactory->get('ec_geocoder')->error($message);
       }
 
       if ($response->addressesCount == 0) {
         $args = ['@status' => $data->status, '@address' => $source];
         $message = $this->t('Webtools Geocoder API returned zero results on @address status.\nStatus: @status', $args);
-        \Drupal::logger('ec_geocoder')->notice($message);
+        $this->loggerFactory->get('ec_geocoder')->notice($message);
       }
       elseif (isset($data->responseMessage) && $data->responseMessage != 'OK') {
         $args = ['@status' => $data->responseMessage];
         $message = $this->t('Webtools Geocoder API returned bad status.\nStatus: @status', $args);
-        \Drupal::logger('ec_geocoder')->warning($message);
+        $this->loggerFactory->get('ec_geocoder')->warning($message);
       }
 
       $geometries = [];

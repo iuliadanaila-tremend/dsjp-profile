@@ -79,7 +79,7 @@ $variant-medium-gray: #cfcfcf;
 $gray-dropdown-hover: #f6f5f9;
 $gray-private-message: #4d4d4d;
 $border-white: #f5f5f5;
-$border-radius-default: $border-radius * 1.5;
+$border-radius-default: $border-radius * 1.5; // 6px
 
 $border-gray: #ccc;
 $orange: #f1853d;
@@ -87,9 +87,11 @@ $yellow: #f3cc00;
 $white: #fff;
 $warning: $yellow;
 $warning-hover: #ffbe17;
+$dark-pink: #b13e65;
 
 $purple: #9b66ff;
 $purple-900: #331133;
+$purple-medium: #7100B1;
 
 $teal: #1ac0c6;
 $red: #f01421;

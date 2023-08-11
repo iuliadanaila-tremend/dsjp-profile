@@ -31,6 +31,7 @@ class OrganisationAutocomplete extends ControllerBase {
         ->condition('title', $input, 'CONTAINS')
         ->condition('type', 'dsj_organization')
         ->sort('created', 'DESC')
+        ->accessCheck(TRUE)
         ->range(0, 10);
 
       $ids = $query->execute();

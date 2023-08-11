@@ -1,0 +1,272 @@
+langcode: en
+status: true
+dependencies: {  }
+id: dsj_coalition_sweden_dsj_event
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: null
+migration_group: default
+label: 'Sweden Event content migration'
+source:
+  plugin: embedded_data
+  data_rows: {  }
+  ids:
+    id:
+      type: integer
+    gid:
+      type: integer
+process:
+  uid: constants/group_owner
+  created:
+    plugin: format_date
+    from_format: 'Y-m-d\TH:i:s'
+    to_format: U
+    to_timezone: GMT
+    source: date_gmt
+  changed:
+    plugin: format_date
+    from_format: 'Y-m-d\TH:i:s'
+    to_format: U
+    to_timezone: GMT
+    source: modified_gmt
+  title:
+    plugin: extract
+    source: title
+    index:
+      - rendered
+  body/value:
+    -
+      plugin: extract
+      source: content
+      index:
+        - rendered
+    -
+      plugin: text_image_extractor
+      source: content/rendered
+  body/format:
+    plugin: default_value
+    default_value: full_html
+  field_dsj_author:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: acf/field_dsj_author
+    -
+      plugin: extract
+      source: acf
+      index:
+        - field_dsj_author
+  field_dsj_date/value:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: acf/field_dsj_date
+    -
+      plugin: extract
+      source: acf
+      index:
+        - field_dsj_date
+    -
+      plugin: format_date
+      from_format: 'd F H:i'
+      to_format: 'Y-m-d\TH:i:s'
+      to_timezone: GMT
+      source: acf/field_dsj_date
+  field_dsj_date/end_value:
+    -
+      plugin: default_value
+      source: acf/field_dsj_end_date
+      default_value: acf/field_dsj_date
+    -
+      plugin: extract
+      source: acf
+      index:
+        - field_dsj_end_date
+    -
+      plugin: format_date
+      from_format: 'd F H:i'
+      to_format: 'Y-m-d\TH:i:s'
+      to_timezone: GMT
+      source: acf/field_dsj_end_date
+  field_dsj_digital_skill_level:
+    plugin: extract
+    source: acf
+    index:
+      - field_dsj_digital_skill_level
+  field_dsj_digital_technology:
+    plugin: extract
+    source: acf
+    index:
+      - field_dsj_digital_technology
+  field_dsj_industry:
+    plugin: extract
+    source: acf
+    index:
+      - field_dsj_industry
+  countries:
+    plugin: deepen
+    source: acf/field_dsj_geographic_scope/code
+  field_dsj_geographic_scope:
+    plugin: dsj_sub_process
+    source: '@countries'
+    process:
+      target_id:
+        plugin: custom_field_entity_lookup
+        entity_type: taxonomy_term
+        bundle_key: vid
+        bundle: dsj_country
+        value_field: field_dsj_country_code
+        source: value
+  field_dsj_type_of_initiative:
+    plugin: extract
+    source: acf
+    index:
+      - field_dsj_initiative_type
+  field_dsj_target_audience:
+    plugin: extract
+    source: acf
+    index:
+      - field_dsj_target_audience
+  field_dsj_target_language:
+    plugin: extract
+    source: acf
+    index:
+      - field_dsj_target_language
+  field_dsj_event_setting:
+    plugin: extract
+    source: acf
+    index:
+      - field_dsj_event_setting
+  field_dsj_event_timezone:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: acf/field_dsj_event_timezone
+    -
+      plugin: extract
+      source: acf
+      index:
+        - field_dsj_event_timezone
+  field_dsj_event_location/country_code:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: acf/field_dsj_event_location/country_code
+    -
+      plugin: extract
+      source: acf
+      index:
+        - field_dsj_event_location
+        - country_code
+  field_dsj_event_location/locality:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: acf/field_dsj_event_location/locality
+    -
+      plugin: extract
+      source: acf
+      index:
+        - field_dsj_event_location
+        - locality
+  field_dsj_event_location/postal_code:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: acf/field_dsj_event_location/postal_code
+    -
+      plugin: extract
+      source: acf
+      index:
+        - field_dsj_event_location
+        - postal_code
+  field_dsj_event_location/address_line1:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: acf/field_dsj_event_location/address_line1
+    -
+      plugin: extract
+      source: acf
+      index:
+        - field_dsj_event_location
+        - address_line1
+  field_dsj_organization:
+    plugin: sub_process
+    source: acf/field_dsj_organization
+    process:
+      target_id:
+        plugin: entity_lookup
+        entity_type: node
+        bundle_key: type
+        bundle: dsj_organization
+        value_key: title
+        source: post_title
+    source: acf
+    index:
+      - publish_in_core_platform
+  field_dsj_website_link/uri:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: acf/field_dsj_website_link/uri
+    -
+      plugin: extract
+      source: acf
+      index:
+        - field_dsj_website_link
+        - uri
+  field_dsj_website_link/title:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: acf/field_dsj_website_link/link_text
+    -
+      plugin: extract
+      source: acf
+      index:
+        - field_dsj_website_link
+        - title
+  field_dsj_website_link/link_type:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: acf/field_dsj_website_link/link_type
+    -
+      plugin: extract
+      source: acf
+      index:
+        - field_dsj_website_link
+        - link_type
+  field_dsj_image:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: acf/field_dsj_image
+    -
+      plugin: extract
+      source: acf
+      index:
+        - field_dsj_image
+    -
+      plugin: file_import
+      field: field_dsj_image
+      destination: constants/file_destination
+      rename: true
+      uid: '@uid'
+      skip_on_error: true
+  langcode:
+    plugin: default_value
+    source: constants/language
+    default_value: und
+  status:
+    plugin: default_value
+    default_value: 0
+  moderation_state:
+    plugin: default_value
+    default_value: imported
+destination:
+  plugin: 'entity:node'
+  default_bundle: dsj_event
+migration_dependencies: null

@@ -4,8 +4,10 @@ dependencies:
   config:
     - node.type.dsj_discussion
     - node.type.simplenews_issue
+    - workflows.workflow.dsj_organisation_flow
   module:
     - comment
+    - content_moderation
     - content_translation
     - dsjp_pledge
     - group
@@ -15,6 +17,7 @@ dependencies:
     - system
     - tmgmt
     - toolbar
+    - views_bulk_edit
 id: community_manager
 label: 'Community Manager'
 weight: -4
@@ -55,6 +58,10 @@ permissions:
   - 'submit translation jobs'
   - 'translate any entity'
   - 'translate dsj_discussion node'
+  - 'use dsj_organisation_flow transition ask_for_approval'
+  - 'use dsj_organisation_flow transition publish'
+  - 'use dsj_organisation_flow transition reject'
+  - 'use views bulk edit'
   - 'view dsj_discussion revisions'
   - 'view simplenews subscriptions'
   - 'view simplenews_issue revisions'

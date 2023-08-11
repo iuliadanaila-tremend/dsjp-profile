@@ -106,3 +106,13 @@
     font-size: $font-size-2xl;
   }
 }
+
+.js-form-type-radio .ecl-radio {
+  .ecl-radio__box .ecl-radio__box-inner {
+    position: relative;
+    margin: unset;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

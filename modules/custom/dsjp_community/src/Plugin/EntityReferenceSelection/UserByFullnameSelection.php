@@ -26,6 +26,13 @@ class UserByFullnameSelection extends DefaultSelection {
   protected $database;
 
   /**
+   * Drupal renderer.
+   *
+   * @var \Drupal\Core\Render\RendererInterface
+   */
+  protected $renderer;
+
+  /**
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
@@ -41,8 +48,9 @@ class UserByFullnameSelection extends DefaultSelection {
       $container->get('entity.repository'),
       $container->get('database')
     );
-    $instance->database = $container->get('database');
 
+    $instance->database = $container->get('database');
+    $instance->renderer = $container->get('renderer');
     return $instance;
   }
 
@@ -50,10 +58,10 @@ class UserByFullnameSelection extends DefaultSelection {
    * {@inheritdoc}
    */
   public function getReferenceableEntities($match = NULL, $match_operator = 'CONTAINS', $limit = 0) {
-    $query = \Drupal::database()->select('users_field_data', 'u')
+    $query = $this->database->select('users_field_data', 'u')
       ->fields('u', ['uid'])
       ->where("CONCAT_WS(' ', u.field_dsj_firstname, ' ', u.field_dsj_lastname) LIKE :input", [
-        ':input' => '%' . \Drupal::database()->escapeLike($match) . '%',
+        ':input' => '%' . $this->database->escapeLike($match) . '%',
       ])
       ->condition('u.uid', $this->currentUser->id(), '!=')
       ->range(0, 10)
@@ -68,14 +76,14 @@ class UserByFullnameSelection extends DefaultSelection {
     foreach ($entities as $entity_id => $entity) {
       $firstname = $entity->get('field_dsj_firstname')->getString();
       $lastname = $entity->get('field_dsj_lastname')->getString();
-      $authorInitials = UserByFullnameSelection . phpmb_strtoupper(mb_substr($firstname, 0, 1));
+      $authorInitials = mb_strtoupper(mb_substr($firstname, 0, 1)) . mb_strtoupper(mb_substr($lastname, 0, 1));
       if (!$entity->get('field_dsj_picture')->isEmpty()) {
         $imageArray = [
           '#theme' => 'image_style',
           '#style_name' => 'thumbnail',
           '#uri' => $entity->get('field_dsj_picture')->entity->getFileUri(),
         ];
-        $image = render($imageArray);
+        $image = $this->renderer->render($imageArray);
       }
       else {
         $image = '<p data-letters="' . $authorInitials . '"></p>';

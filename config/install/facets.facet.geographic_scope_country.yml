@@ -10,6 +10,8 @@ id: geographic_scope_country
 name: 'Geographic Scope - Country'
 weight: 0
 min_count: 1
+missing: false
+missing_label: others
 url_alias: geographic_scope_country
 facet_source_id: 'search_api:views_page__dsj_pledge_organizations__page_pledger_organization'
 field_identifier: field_dsj_country_1
@@ -18,6 +20,9 @@ hard_limit: 0
 exclude: false
 use_hierarchy: false
 keep_hierarchy_parents_active: false
+hierarchy:
+  type: taxonomy
+  config: {  }
 expand_hierarchy: false
 enable_parent_when_child_gets_disabled: true
 widget:
@@ -29,7 +34,7 @@ empty_behavior:
   behavior: none
 only_visible_when_facet_source_is_visible: true
 show_only_one_result: true
-show_title: false
+show_title: true
 processor_configs:
   active_widget_order:
     processor_id: active_widget_order

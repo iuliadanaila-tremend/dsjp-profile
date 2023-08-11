@@ -64,15 +64,12 @@
         </div>
         <div class="organisation-content">
           <div class="organisation-contact-name">
-            {{ content.field_dsj_contact_name }}
-          </div>
-          <div class="organisation-contact-email">
-            {{ content.field_dsj_contact_email }}
+            <a href="mailto:{{ content.field_dsj_contact_email|render|striptags|trim }}">{{ content.field_dsj_contact_name }}</a>
           </div>
         </div>
       </div>
 
-      {{ content|without('field_dsj_link', 'field_dsj_contact_email', 'field_dsj_contact_name', 'field_dsj_job_title') }}
+      {{ content|without('field_dsj_link', 'field_dsj_contact_email', 'field_dsj_contact_name') }}
     {% endblock %}
   </div>
 {% endblock paragraph %}

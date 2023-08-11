@@ -26,6 +26,8 @@ function dsjp_pledge_migration_cron() {
         $queue->createItem([
           'id' => 'dsj_pledge',
           'path' => $path,
+          'file_location' => '',
+          'file_destination' => '',
         ]);
       }
     }
@@ -40,6 +42,8 @@ function dsjp_pledge_migration_cron() {
         $queue->createItem([
           'id' => 'dsj_pledge_initiative',
           'path' => $path,
+          'file_location' => '',
+          'file_destination' => '',
         ]);
       }
     }
@@ -60,12 +64,106 @@ function dsjp_pledge_migration_cron() {
       }
     }
   }
+  if ($step == 4) {
+    _dsjp_pledge_migration_connect_migrated_data();
+  }
+  if ($step == 5) {
+    _dsjp_pledge_migration_migrate_existing_user();
+  }
   // Make sure that each migration works separately using steps.
-  if ($step < 4) {
+  if ($step < 6) {
     $new_step = $step + 1;
     \Drupal::configFactory()->getEditable('dsjp_pledge_migration.configuration')
       ->set('pledge_migration_step', $new_step)
       ->save();
+  }
+
+  $config = \Drupal::configFactory()->get('dsjp_pledge_migration.organisations_configuration');
+  $step = $config->get('migration_step');
+  if ($step == 1) {
+    $queue = \Drupal::service('queue')->get('dsjp_pledge_migration_organisations_social_queue');
+    $fid = $config->get('organisation');
+    if (!empty($fid)) {
+      $file_object = File::load($fid);
+      if ($file_object instanceof FileInterface) {
+        $rows = [];
+        // Read rows from csv.
+        if (($handle = fopen(\Drupal::service('file_system')->realpath($file_object->getFileUri()), "r")) !== FALSE) {
+          while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+            if (isset($data[1])) {
+              $rows[] = [
+                'name' => $data[1],
+                'mail' => $data[2],
+                'pledge_mail' => $data[3],
+                'pledge_person' => $data[4],
+                'social' => $data[5],
+              ];
+            }
+          }
+          fclose($handle);
+        }
+        if (!empty($rows)) {
+          foreach (array_chunk($rows, 10) as $chunk) {
+            $queue->createItem($chunk);
+          }
+        }
+      }
+    }
+    \Drupal::configFactory()->getEditable('dsjp_pledge_migration.organisations_configuration')
+      ->set('migration_step', 2)
+      ->save();
+  }
+}
+
+/**
+ * Connected pledges and organisations migrated.
+ */
+function _dsjp_pledge_migration_connect_migrated_data() {
+  $query = \Drupal::database()->select('dsj_pledge_users', 'pu')
+    ->fields('pu', ['mail', 'pid', 'oid']);
+  $r = $query->execute()->fetchAll(PDO::FETCH_ASSOC);
+  $grouped = [];
+  foreach ($r as $data) {
+    if (!empty($data['pid']) || !empty($data['oid'])) {
+      $grouped[$data['mail']][] = $data;
+    }
+  }
+  foreach ($grouped as $content) {
+    $oid = array_filter(array_column($content, 'oid'));
+    if (!empty($oid)) {
+      $queue = \Drupal::service('queue')->get('dsj_pledge_migration_connection');
+      $queue->createItem([
+        'oid' => reset($oid),
+        'content' => $content,
+      ]);
+    }
+  }
+}
+
+/**
+ * Assigns imported data to existing users.
+ */
+function _dsjp_pledge_migration_migrate_existing_user() {
+  // Get user data to be assigned.
+  $query = \Drupal::database()->select('users_field_data', 'u')
+    ->fields('pu', ['pid', 'piid', 'oid'])
+    ->fields('u', ['uid']);
+  $query->innerJoin('dsj_pledge_users', 'pu', 'pu.mail = u.mail');
+  $results = $query->execute()->fetchAll(PDO::FETCH_ASSOC);
+  if (!empty($results)) {
+    $queue = \Drupal::service('queue')->get('dsj_pledge_user_fetcher');
+    foreach ($results as $result) {
+      $queue->createItem([
+        'data' => [
+          [
+            'pid' => $result['pid'],
+            'piid' => $result['piid'],
+            'oid' => $result['oid'],
+          ],
+        ],
+        'uid' => $result['uid'],
+      ]);
+    }
   }
 }
 

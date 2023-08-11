@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.dsj_organization.field_dsj_geographic_scope
     - field.field.node.dsj_organization.field_dsj_image
     - field.field.node.dsj_organization.field_dsj_industry
+    - field.field.node.dsj_organization.field_dsj_linked_content
     - field.field.node.dsj_organization.field_dsj_meta_tags
     - field.field.node.dsj_organization.field_dsj_nc_member
     - field.field.node.dsj_organization.field_dsj_organization_category
@@ -101,6 +102,7 @@ hidden:
   field_dsj_digital_technology: true
   field_dsj_external_id: true
   field_dsj_image: true
+  field_dsj_linked_content: true
   field_dsj_meta_tags: true
   flag_subscribe_node: true
   flag_voting: true

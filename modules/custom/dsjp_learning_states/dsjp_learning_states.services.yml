@@ -1,0 +1,4 @@
+services:
+  dsjp_learning_states.learning_states_manager:
+    class: 'Drupal\dsjp_learning_states\Manager\LearningStatesManager'
+    arguments: [ '@logger.factory' , '@entity_type.manager', '@current_user']

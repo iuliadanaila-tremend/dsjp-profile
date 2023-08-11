@@ -1,0 +1,7 @@
+name: Dsjp Learning states
+type: module
+description: 'Provides a dsjp_learning_states entity.'
+package: Custom
+core_version_requirement: ^9 || ^10 || ^10
+dependencies:
+  - drupal:node

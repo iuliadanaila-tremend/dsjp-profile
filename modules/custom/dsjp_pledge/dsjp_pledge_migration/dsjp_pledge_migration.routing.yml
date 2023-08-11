@@ -4,3 +4,10 @@ dsjp_pledge_migration.config_form:
     _form: '\Drupal\dsjp_pledge_migration\Form\MigrationConfigurationForm'
   requirements:
     _role: 'administrator'
+
+dsjp_pledge_migration.organisation_socials_form:
+  path: '/admin/config/user-interface/migration-organisations-config'
+  defaults:
+    _form: '\Drupal\dsjp_pledge_migration\Form\MigrationOrganisationConfigurationForm'
+  requirements:
+    _role: 'administrator'

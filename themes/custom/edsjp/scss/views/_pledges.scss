@@ -1,6 +1,8 @@
 @import "../content/pledgeviewer/pledge-variables";
 
-.view-pledges {
+.view-display-id-page_group_pledges,
+.view-pledges,
+.view-display-id-pledges {
   .view {
     &-header {
       display: flex;
@@ -118,7 +120,7 @@
                   display: inline-block;
                   width: $grid-gutter-width;
                   height: $grid-gutter-width;
-                  line-height: $grid-gutter-width;
+                  line-height: $grid-gutter-width !important;
                   vertical-align: middle;
                   margin-right: $grid-gutter-width / 4;
                   border-radius: 100%;
@@ -193,7 +195,7 @@
                 @include icon(education);
 
                 &::before {
-                  background-color: $education-color;
+                  background-color: $pillar-education;
                 }
               }
             }
@@ -203,7 +205,7 @@
                 @include icon(labour-force);
 
                 &::before {
-                  background-color: $labour-force-color;
+                  background-color: $pillar-labor-force;
                 }
               }
             }
@@ -213,7 +215,7 @@
                 @include icon(ict-professional);
 
                 &::before {
-                  background-color: $ict-color;
+                  background-color: $pillar-ict-professionals;
                 }
               }
             }
@@ -223,7 +225,7 @@
                 @include icon(citizens);
 
                 &::before {
-                  background-color: $other-color;
+                  background-color: $pillar-other;
                 }
               }
             }

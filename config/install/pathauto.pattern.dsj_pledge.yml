@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: dsj_pledge
+label: Pledge
+type: 'canonical_entities:node'
+pattern: 'inspiration/pledges/[node:title]'
+selection_criteria:
+  dd6bdbcf-2e93-4d93-b588-6a44a8a61b86:
+    id: node_type
+    negate: false
+    uuid: dd6bdbcf-2e93-4d93-b588-6a44a8a61b86
+    context_mapping:
+      node: node
+    bundles:
+      dsj_pledge: dsj_pledge
+selection_logic: and
+weight: -5
+relationships: {  }

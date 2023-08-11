@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.dsj_article.field_dsj_external_id
     - field.field.node.dsj_article.field_dsj_geographic_scope
     - field.field.node.dsj_article.field_dsj_image
+    - field.field.node.dsj_article.field_dsj_linked_content
     - field.field.node.dsj_article.field_dsj_meta_tags
     - field.field.node.dsj_article.field_dsj_publish_in_core
     - field.field.node.dsj_article.field_dsj_representative_image
@@ -33,6 +34,8 @@ content:
     settings:
       image_link: content
       image_style: dsj_most_popular_card
+      image_loading:
+        attribute: lazy
     third_party_settings: {  }
     weight: 0
     region: content
@@ -45,6 +48,7 @@ hidden:
   field_dsj_digital_technology: true
   field_dsj_external_id: true
   field_dsj_geographic_scope: true
+  field_dsj_linked_content: true
   field_dsj_meta_tags: true
   field_dsj_type_of_article: true
   field_dsj_type_of_initiative: true

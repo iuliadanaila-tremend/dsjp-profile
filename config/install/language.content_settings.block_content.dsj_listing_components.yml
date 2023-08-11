@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.dsj_listing_components
+id: block_content.dsj_listing_components
+target_entity_type_id: block_content
+target_bundle: dsj_listing_components
+default_langcode: site_default
+language_alterable: false

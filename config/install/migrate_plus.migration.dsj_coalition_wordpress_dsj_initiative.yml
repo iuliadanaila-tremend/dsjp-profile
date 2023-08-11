@@ -88,8 +88,6 @@ process:
     source: acf
     index:
       - initiative_type
-  field_dsj_publish_in_core:
-    plugin: extract
     source: acf
     index:
       - publish_in_core_platform

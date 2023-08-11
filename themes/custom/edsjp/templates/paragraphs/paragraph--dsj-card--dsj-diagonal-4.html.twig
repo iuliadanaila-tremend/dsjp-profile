@@ -1,0 +1,26 @@
+{% extends "@paragraphs/paragraph.html.twig" %}
+{% block paragraph %}
+  {% block content %}
+<div><div><div class="card-container">
+    {% if content.field_dsj_link | render %}
+      <a href="{{ content.field_dsj_link.0['#url'] }}">
+    {% endif %}
+      {% if content.field_dsj_image %}
+        <div class="card-image">
+          {{ content.field_dsj_image }}
+        </div>
+      {% endif %}
+      <div class="card-info">
+        <div class="card-title">
+          <h2>{{ content.field_dsj_title }}</h2>
+        </div>
+        <div class="card-description">
+          {{ content | without('field_dsj_image', 'field_dsj_title', 'field_dsj_link') }}
+        </div>
+      </div>
+    {% if content.field_dsj_link | render %}
+      </a>
+    {% endif %}
+  </div></div></div>
+  {% endblock %}
+{% endblock paragraph %}

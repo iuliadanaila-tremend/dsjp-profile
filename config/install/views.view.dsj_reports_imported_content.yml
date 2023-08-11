@@ -2137,8 +2137,10 @@ display:
           empty: false
           content: 'Total number of items: @total. This is calculated based on the filters selected, if any.'
       display_extenders:
-        metatag_display_extender: {  }
-      path: admin/reports/imported-content
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
+      path: admin/reports/reporting/imported-content
       menu:
         type: normal
         title: 'Imported content report'
@@ -2146,7 +2148,7 @@ display:
         weight: 0
         expanded: false
         menu_name: admin
-        parent: system.admin_reports
+        parent: dsjp_content.reporting
         context: '0'
     cache_metadata:
       max-age: -1

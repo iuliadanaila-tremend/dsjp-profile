@@ -12,67 +12,67 @@ settings:
   allowed_values:
     -
       value: agriculture
-      label: 'A - Agriculture, Forestry and Fishing'
+      label: 'Agriculture, Forestry and Fishing'
     -
       value: mining
-      label: 'B - Mining and Quarrying'
+      label: 'Mining and Quarrying'
     -
       value: manufacturing
-      label: 'C - Manufacturing'
+      label: Manufacturing
     -
       value: electricity
-      label: 'D - Electricity, Gas, Steam and Air Conditioning Supply'
+      label: 'Electricity, Gas, Steam and Air Conditioning Supply'
     -
       value: water_supply
-      label: 'E - Water Supply; Sewerage, Waste Management and Remediation Activities'
+      label: 'Water Supply; Sewerage, Waste Management and Remediation Activities'
     -
       value: construction
-      label: 'F - Construction'
+      label: Construction
     -
       value: wholesale
-      label: 'G - Wholesale and Retail Trade; Repair of Motor Vehicles and Motorcycles'
+      label: 'Wholesale and Retail Trade; Repair of Motor Vehicles and Motorcycles'
     -
       value: transportation
-      label: 'H - Transportation and Storage'
+      label: 'Transportation and Storage'
     -
       value: accomodation
-      label: 'I - Accommodation and Food Service Activities'
+      label: 'Accommodation and Food Service Activities'
     -
       value: information
-      label: 'J - Information and Communication'
+      label: 'Information and Communication'
     -
       value: financial
-      label: 'K - Financial and Insurance Activities'
+      label: 'Financial and Insurance Activities'
     -
       value: real_estate
-      label: 'L - Real Estate Activities'
+      label: 'Real Estate Activities'
     -
       value: professional_scientific
-      label: 'M - Professional, Scientific and Technical Activities'
+      label: 'Professional, Scientific and Technical Activities'
     -
       value: administrative_support
-      label: 'N - Administrative and Support Service Activities'
+      label: 'Administrative and Support Service Activities'
     -
       value: public_administration
-      label: 'O - Public Administration and Defence; Compulsory Social Security'
+      label: 'Public Administration and Defence; Compulsory Social Security'
     -
       value: education
-      label: 'P - Education'
+      label: ' Education'
     -
       value: human_health
-      label: 'Q - Human Health and Social Work Activities'
+      label: 'Human Health and Social Work Activities'
     -
       value: arts
-      label: 'R - Arts, Entertainment and Recreation'
+      label: 'Arts, Entertainment and Recreation'
     -
       value: other
-      label: 'S - Other Service Activities'
+      label: 'Other Service Activities'
     -
       value: household_activities
-      label: 'T - Activities of Households as Employers; Undifferentiate Goods and Services Producing Activities of Households for Own Use'
+      label: 'Activities of Households as Employers; Undifferentiate Goods and Services Producing Activities of Households for Own Use'
     -
       value: extraterritorial_activities
-      label: 'U - Activities of Extraterritorial Organisations and Bodies'
+      label: 'Activities of Extraterritorial Organisations and Bodies'
   allowed_values_function: ''
 module: options
 locked: false

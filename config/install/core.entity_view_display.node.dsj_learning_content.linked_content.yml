@@ -1,0 +1,78 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.linked_content
+    - field.field.node.dsj_learning_content.body
+    - field.field.node.dsj_learning_content.field_dsj_comments
+    - field.field.node.dsj_learning_content.field_dsj_digital_skill_level
+    - field.field.node.dsj_learning_content.field_dsj_digital_technology
+    - field.field.node.dsj_learning_content.field_dsj_geographic_scope
+    - field.field.node.dsj_learning_content.field_dsj_image
+    - field.field.node.dsj_learning_content.field_dsj_learning_content_type
+    - field.field.node.dsj_learning_content.field_dsj_linked_content
+    - field.field.node.dsj_learning_content.field_dsj_target_audience
+    - field.field.node.dsj_learning_content.field_dsj_website_link
+    - image.style.thumbnail_130x130_crop
+    - node.type.dsj_learning_content
+  module:
+    - field_group
+    - image
+    - user
+third_party_settings:
+  field_group:
+    group_learning_content:
+      children:
+        - field_dsj_website_link
+        - field_dsj_target_audience
+        - field_dsj_digital_skill_level
+        - field_dsj_geographic_scope
+      label: 'Learning content'
+      parent_name: ''
+      region: hidden
+      weight: 3
+      format_type: html_element
+      format_settings:
+        classes: bordered-field-list
+        show_empty_fields: false
+        id: learning-content-details
+        element: div
+        show_label: true
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+id: node.dsj_learning_content.linked_content
+targetEntityType: node
+bundle: dsj_learning_content
+mode: linked_content
+content:
+  field_dsj_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: content
+      image_style: thumbnail_130x130_crop
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  body: true
+  content_moderation_control: true
+  field_dsj_comments: true
+  field_dsj_digital_skill_level: true
+  field_dsj_digital_technology: true
+  field_dsj_geographic_scope: true
+  field_dsj_learning_content_type: true
+  field_dsj_linked_content: true
+  field_dsj_target_audience: true
+  field_dsj_website_link: true
+  flag_subscribe_node: true
+  flag_voting: true
+  langcode: true
+  links: true
+  private_message_link: true
+  search_api_excerpt: true

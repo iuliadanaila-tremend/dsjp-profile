@@ -5,17 +5,18 @@ dependencies:
     - core.entity_view_mode.node.listing
     - field.field.node.dsj_pledge.body
     - field.field.node.dsj_pledge.field_dsj_approved_date
+    - field.field.node.dsj_pledge.field_dsj_digital_technology
     - field.field.node.dsj_pledge.field_dsj_geographic_scope
+    - field.field.node.dsj_pledge.field_dsj_linked_content
     - field.field.node.dsj_pledge.field_dsj_payment_agreed
     - field.field.node.dsj_pledge.field_dsj_pledge_dates
     - field.field.node.dsj_pledge.field_dsj_pledges_activity_pay
-    - field.field.node.dsj_pledge.field_dsj_sharing_best_practices
     - field.field.node.dsj_pledge.field_dsj_store_impact
     - field.field.node.dsj_pledge.field_dsj_submitted_date
     - field.field.node.dsj_pledge.field_dsj_theme
     - node.type.dsj_pledge
   module:
-    - text
+    - smart_trim
     - user
 id: node.dsj_pledge.listing
 targetEntityType: node
@@ -23,21 +24,33 @@ bundle: dsj_pledge
 mode: listing
 content:
   body:
-    type: text_summary_or_trimmed
+    type: smart_trim
     label: hidden
     settings:
-      trim_length: 300
+      trim_length: 250
+      trim_type: chars
+      trim_suffix: ...
+      wrap_output: false
+      wrap_class: trimmed
+      summary_handler: full
+      trim_options:
+        text: true
+        trim_zero: false
+      more_link: false
+      more_class: more-link
+      more_text: More
     third_party_settings: {  }
     weight: 0
     region: content
 hidden:
   content_moderation_control: true
   field_dsj_approved_date: true
+  field_dsj_digital_technology: true
   field_dsj_geographic_scope: true
+  field_dsj_linked_content: true
   field_dsj_payment_agreed: true
   field_dsj_pledge_dates: true
   field_dsj_pledges_activity_pay: true
-  field_dsj_sharing_best_practices: true
   field_dsj_store_impact: true
   field_dsj_submitted_date: true
   field_dsj_theme: true

@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.dsj_organization.field_dsj_geographic_scope
     - field.field.node.dsj_organization.field_dsj_image
     - field.field.node.dsj_organization.field_dsj_industry
+    - field.field.node.dsj_organization.field_dsj_linked_content
     - field.field.node.dsj_organization.field_dsj_meta_tags
     - field.field.node.dsj_organization.field_dsj_nc_member
     - field.field.node.dsj_organization.field_dsj_organization_category
@@ -21,6 +22,7 @@ dependencies:
     - node.type.dsj_organization
   module:
     - field_group
+    - options
     - smart_trim
     - user
 third_party_settings:
@@ -30,7 +32,7 @@ third_party_settings:
       label: text-area
       parent_name: ''
       region: hidden
-      weight: 1
+      weight: 22
       format_type: html_element
       format_settings:
         classes: text-area
@@ -56,25 +58,32 @@ content:
       trim_suffix: ''
       wrap_output: false
       wrap_class: trimmed
-      more_link: false
-      more_class: more-link
-      more_text: More
       summary_handler: trim
       trim_options:
         text: true
         trim_zero: false
+      more_link: false
+      more_class: more-link
+      more_text: More
     third_party_settings: {  }
     weight: 0
+    region: content
+  field_dsj_digital_technology:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
     region: content
 hidden:
   content_moderation_control: true
   field_dsj_author: true
   field_dsj_comments: true
-  field_dsj_digital_technology: true
   field_dsj_external_id: true
   field_dsj_geographic_scope: true
   field_dsj_image: true
   field_dsj_industry: true
+  field_dsj_linked_content: true
   field_dsj_meta_tags: true
   field_dsj_nc_member: true
   field_dsj_organization_category: true

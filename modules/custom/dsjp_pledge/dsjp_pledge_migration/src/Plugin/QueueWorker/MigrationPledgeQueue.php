@@ -6,7 +6,6 @@ use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Queue\QueueWorkerBase;
 use Drupal\group\Entity\GroupInterface;
-use Drupal\node\NodeInterface;
 use Drupal\user\UserInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -47,11 +46,10 @@ class MigrationPledgeQueue extends QueueWorkerBase implements ContainerFactoryPl
   public function processItem($data) {
     $organisations = array_filter(array_column($data['data'], 'oid'));
     $this->setEntityOwner($organisations, 'group', $data['uid']);
-    $oid = reset($organisations);
     $pledges = array_filter(array_column($data['data'], 'pid'));
-    $this->setEntityOwner($pledges, 'node', $data['uid'], $oid);
+    $this->setEntityOwner($pledges, 'node', $data['uid']);
     $initiatives = array_filter(array_column($data['data'], 'piid'));
-    $this->setEntityOwner($initiatives, 'node', $data['uid'], $oid);
+    $this->setEntityOwner($initiatives, 'node', $data['uid']);
   }
 
   /**
@@ -63,46 +61,25 @@ class MigrationPledgeQueue extends QueueWorkerBase implements ContainerFactoryPl
    *   The entity type id.
    * @param mixed $uid
    *   The user id.
-   * @param mixed $oid
-   *   The organisation id.
    */
-  public function setEntityOwner(array $entities, $entityType, $uid, $oid = '') {
+  public function setEntityOwner(array $entities, $entityType, $uid) {
     foreach ($entities as $id) {
       if (!empty($id)) {
         $entity = $this->entityTypeManager->getStorage($entityType)->load($id);
         if ($entity instanceof EntityInterface) {
           $entity->setOwnerId($uid);
+          // Use this variable for not sending
+          // notifications when linking the author.
+          $entity->isAutoAssign = TRUE;
           $entity->save();
           if ($entity instanceof GroupInterface) {
             $user = $this->entityTypeManager->getStorage('user')->load($uid);
             if ($user instanceof UserInterface) {
-              $entity->addMember($user, ['group_roles' => 'dsj_organization-member']);
-            }
-          }
-          if (!empty($oid) && $entity->getType() == 'dsj_pledge') {
-            $group = $this->entityTypeManager->getStorage('group')->load($oid);
-            if ($group instanceof GroupInterface) {
-              $this->addGroupContent($group, $entity);
+              $entity->addMember($user, ['group_roles' => 'dsj_organization-admin']);
             }
           }
         }
       }
-    }
-  }
-
-  /**
-   * Adds pledges to a group.
-   *
-   * @param \Drupal\group\Entity\GroupInterface $group
-   *   The group object.
-   * @param \Drupal\node\NodeInterface $entity
-   *   The node object.
-   */
-  public function addGroupContent(GroupInterface $group, NodeInterface $entity) {
-    $pluginId = 'group_node:' . $entity->getType();
-    $relation = $group->getContentByEntityId($pluginId, $entity->id());
-    if (!$relation) {
-      $group->addContent($entity, $pluginId);
     }
   }
 

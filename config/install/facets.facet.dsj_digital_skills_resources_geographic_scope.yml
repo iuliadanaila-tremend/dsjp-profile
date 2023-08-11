@@ -10,6 +10,8 @@ id: dsj_digital_skills_resources_geographic_scope
 name: Country
 weight: 0
 min_count: 0
+missing: false
+missing_label: others
 url_alias: geographic_scope
 facet_source_id: 'search_api:views_page__dsj_content_listing__digital_skills_resources'
 field_identifier: field_dsj_geographic_scope
@@ -17,6 +19,10 @@ query_operator: and
 hard_limit: 0
 exclude: false
 use_hierarchy: true
+keep_hierarchy_parents_active: false
+hierarchy:
+  type: taxonomy
+  config: {  }
 expand_hierarchy: true
 enable_parent_when_child_gets_disabled: false
 widget:

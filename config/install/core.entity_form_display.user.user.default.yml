@@ -4,29 +4,45 @@ dependencies:
   config:
     - field.field.user.user.field_dsj_assessment
     - field.field.user.user.field_dsj_bio
+    - field.field.user.user.field_dsj_blocked
     - field.field.user.user.field_dsj_city
+    - field.field.user.user.field_dsj_content_geographical
     - field.field.user.user.field_dsj_content_subscription
     - field.field.user.user.field_dsj_country
+    - field.field.user.user.field_dsj_country_interest
+    - field.field.user.user.field_dsj_form_of_funding
+    - field.field.user.user.field_dsj_funding_opportunities
+    - field.field.user.user.field_dsj_geographical_sphere
     - field.field.user.user.field_dsj_i_am_interested_in
     - field.field.user.user.field_dsj_i_am_job_seeker
     - field.field.user.user.field_dsj_i_am_student
     - field.field.user.user.field_dsj_job_title
+    - field.field.user.user.field_dsj_language_preference
+    - field.field.user.user.field_dsj_learning_activity
+    - field.field.user.user.field_dsj_learning_schedule
     - field.field.user.user.field_dsj_notification_step
     - field.field.user.user.field_dsj_organisation
+    - field.field.user.user.field_dsj_organisation_category
+    - field.field.user.user.field_dsj_partnership_check
     - field.field.user.user.field_dsj_picture
     - field.field.user.user.field_dsj_registration_status
+    - field.field.user.user.field_dsj_represent_organisation
     - field.field.user.user.field_dsj_skill_level_interest
+    - field.field.user.user.field_dsj_training_opportunities
+    - field.field.user.user.field_dsj_training_type
     - field.field.user.user.field_dsj_website_link
     - field.field.user.user.message_digest_interval
     - field.field.user.user.tmgmt_translation_skills
     - image.style.thumbnail
   module:
+    - conditional_fields
     - field_group
     - image
     - link
     - maxlength
     - path
     - rdf_skos
+    - shs
     - user
 third_party_settings:
   field_group:
@@ -64,7 +80,7 @@ third_party_settings:
       label: Preferences
       region: content
       parent_name: group_dsj_user_details
-      weight: 4
+      weight: 3
       format_type: tab
       format_settings:
         classes: ''
@@ -77,6 +93,7 @@ third_party_settings:
         - group_dsj_profile_details
         - group_dsj_account_information
         - group_dsj_preferences
+        - group_dsj_content_preferences
       label: 'User details'
       region: content
       parent_name: ''
@@ -120,6 +137,7 @@ third_party_settings:
     group_account_information:
       children:
         - account
+        - group_dsj_blocked
       label: 'Account Information'
       region: content
       parent_name: group_dsj_account_information
@@ -158,6 +176,153 @@ third_party_settings:
         effect: none
         speed: fast
         required_fields: true
+    group_dsj_blocked:
+      children:
+        - field_dsj_blocked
+      label: 'Blocked status'
+      region: content
+      parent_name: group_account_information
+      weight: 22
+      format_type: html_element
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        element: span
+        show_label: true
+        label_element: strong
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+        required_fields: false
+    group_dsj_content_preferences:
+      children:
+        - group_dsj_content_preferences_in
+      label: 'User content preferences'
+      region: content
+      parent_name: group_dsj_user_details
+      weight: 4
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: user-content-preferences
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_dsj_content_preferences_in:
+      children:
+        - field_dsj_country_interest
+        - field_dsj_language_preference
+        - field_dsj_represent_organisation
+        - group_dsj_subgroup
+        - field_dsj_training_opportunities
+        - group_dsj_subgroup2
+        - field_dsj_funding_opportunities
+        - group_dsj_subgroup3
+        - field_dsj_content_geographical
+        - group_dsj_subgroup4
+        - field_dsj_partnership_check
+      label: 'User content preferences'
+      region: content
+      parent_name: group_dsj_content_preferences
+      weight: 20
+      format_type: html_element
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: user-content-preferences-inner
+        element: div
+        show_label: true
+        label_element: h3
+        label_element_classes: content-preferences-title
+        attributes: ''
+        effect: none
+        speed: fast
+        required_fields: true
+    group_dsj_subgroup:
+      children:
+        - field_dsj_organisation_category
+      label: 'Subgroup wrapper'
+      region: content
+      parent_name: group_dsj_content_preferences_in
+      weight: 58
+      format_type: html_element
+      format_settings:
+        classes: subgroup-wrapper
+        show_empty_fields: false
+        id: ''
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+        required_fields: false
+    group_dsj_subgroup2:
+      children:
+        - field_dsj_training_type
+        - field_dsj_learning_schedule
+        - field_dsj_learning_activity
+      label: 'Subgroup wrapper'
+      region: content
+      parent_name: group_dsj_content_preferences_in
+      weight: 60
+      format_type: html_element
+      format_settings:
+        classes: subgroup-wrapper
+        show_empty_fields: false
+        id: ''
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+        required_fields: false
+    group_dsj_subgroup3:
+      children:
+        - field_dsj_form_of_funding
+      label: 'Subgroup wrapper'
+      region: content
+      parent_name: group_dsj_content_preferences_in
+      weight: 62
+      format_type: html_element
+      format_settings:
+        classes: subgroup-wrapper
+        show_empty_fields: false
+        id: ''
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+        required_fields: false
+    group_dsj_subgroup4:
+      children:
+        - field_dsj_geographical_sphere
+      label: 'Subgroup wrapper'
+      region: content
+      parent_name: group_dsj_content_preferences_in
+      weight: 64
+      format_type: html_element
+      format_settings:
+        classes: subgroup-wrapper
+        show_empty_fields: false
+        id: ''
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+        required_fields: false
 id: user.user.default
 targetEntityType: user
 bundle: user
@@ -186,6 +351,13 @@ content:
         maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
         maxlength_js_enforce: false
         maxlength_js_truncate_html: false
+  field_dsj_blocked:
+    type: boolean_checkbox
+    weight: 23
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   field_dsj_city:
     type: string_textfield
     weight: 39
@@ -193,6 +365,12 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_dsj_content_geographical:
+    type: options_buttons
+    weight: 63
+    region: content
+    settings: {  }
     third_party_settings: {  }
   field_dsj_country:
     type: skos_concept_entity_reference_autocomplete
@@ -204,6 +382,12 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_dsj_country_interest:
+    type: options_select
+    weight: 55
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_dsj_firstname:
     type: string_textfield
     weight: 32
@@ -212,6 +396,84 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_dsj_form_of_funding:
+    type: options_shs
+    weight: 52
+    region: content
+    settings:
+      display_node_count: false
+      create_new_items: false
+      create_new_levels: false
+      force_deepest: true
+    third_party_settings:
+      conditional_fields:
+        256f5165-8c2a-489c-b6fa-286b30a1d199:
+          entity_type: user
+          bundle: user
+          dependee: field_dsj_funding_opportunities
+          settings:
+            state: visible
+            reset: false
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: '1'
+            effect: show
+            effect_options: {  }
+            selector: ''
+  field_dsj_funding_opportunities:
+    type: options_buttons
+    weight: 61
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_dsj_geographical_sphere:
+    type: options_select
+    weight: 54
+    region: content
+    settings: {  }
+    third_party_settings:
+      conditional_fields:
+        00663057-4111-4900-8846-f0bc66c5692b:
+          entity_type: user
+          bundle: user
+          dependee: field_dsj_content_geographical
+          settings:
+            state: required
+            reset: false
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: '1'
+            effect: show
+            effect_options: {  }
+            selector: ''
+        8b229a9b-0d74-4846-a577-c46e662ddd11:
+          entity_type: user
+          bundle: user
+          dependee: field_dsj_content_geographical
+          settings:
+            state: visible
+            reset: false
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: '1'
+            effect: show
+            effect_options: {  }
+            selector: ''
   field_dsj_i_am_interested_in:
     type: options_select
     weight: 40
@@ -240,6 +502,12 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_dsj_language_preference:
+    type: options_select
+    weight: 56
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_dsj_lastname:
     type: string_textfield
     weight: 33
@@ -248,6 +516,56 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_dsj_learning_activity:
+    type: options_select
+    weight: 52
+    region: content
+    settings: {  }
+    third_party_settings:
+      conditional_fields:
+        e103c6aa-591e-42d8-8b49-0da6a7e2f3c3:
+          entity_type: user
+          bundle: user
+          dependee: field_dsj_training_opportunities
+          settings:
+            state: visible
+            reset: false
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: '1'
+            effect: show
+            effect_options: {  }
+            selector: ''
+  field_dsj_learning_schedule:
+    type: options_select
+    weight: 51
+    region: content
+    settings: {  }
+    third_party_settings:
+      conditional_fields:
+        7a1cf8fe-5d0b-42f1-b84f-725179c7ef20:
+          entity_type: user
+          bundle: user
+          dependee: field_dsj_training_opportunities
+          settings:
+            state: visible
+            reset: false
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: '1'
+            effect: show
+            effect_options: {  }
+            selector: ''
   field_dsj_organisation:
     type: string_textfield
     weight: 37
@@ -255,6 +573,37 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_dsj_organisation_category:
+    type: options_select
+    weight: 48
+    region: content
+    settings: {  }
+    third_party_settings:
+      conditional_fields:
+        b926c251-57dc-4df5-a3a7-6018650b4d13:
+          entity_type: user
+          bundle: user
+          dependee: field_dsj_represent_organisation
+          settings:
+            state: visible
+            reset: false
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: '1'
+            effect: show
+            effect_options: {  }
+            selector: ''
+  field_dsj_partnership_check:
+    type: options_buttons
+    weight: 65
+    region: content
+    settings: {  }
     third_party_settings: {  }
   field_dsj_picture:
     type: image_image
@@ -264,12 +613,49 @@ content:
       progress_indicator: throbber
       preview_image_style: thumbnail
     third_party_settings: {  }
+  field_dsj_represent_organisation:
+    type: options_buttons
+    weight: 57
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_dsj_skill_level_interest:
     type: options_select
     weight: 41
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_dsj_training_opportunities:
+    type: options_buttons
+    weight: 59
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_dsj_training_type:
+    type: options_select
+    weight: 50
+    region: content
+    settings: {  }
+    third_party_settings:
+      conditional_fields:
+        7ca36539-082e-4af1-b88a-73d3515fbe6c:
+          entity_type: user
+          bundle: user
+          dependee: field_dsj_training_opportunities
+          settings:
+            state: visible
+            reset: false
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: '1'
+            effect: show
+            effect_options: {  }
+            selector: ''
   field_dsj_website_link:
     type: link_default
     weight: 35

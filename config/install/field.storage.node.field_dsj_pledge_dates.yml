@@ -10,6 +10,7 @@ entity_type: node
 type: daterange
 settings:
   datetime_type: date
+  optional_start_date: true
   optional_end_date: false
 module: datetime_range
 locked: false

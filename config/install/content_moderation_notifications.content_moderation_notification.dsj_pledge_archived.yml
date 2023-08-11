@@ -9,8 +9,8 @@ roles: {  }
 author: true
 site_mail: false
 emails: ''
-subject: 'Your [node:content-type:name] has been archived.'
+subject: 'Your [node:content-type:name] for Digital Skills has been archived'
 body:
-  value: "<p>[node:content-type:name] [node:title] has been Archived.</p>\r\n"
+  value: "<p>Dear Pledger,&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Thank you very much for joining the Pledges for Digital Skills initiative and for submitting your Pledges and Initiatives.&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>One of your [node:content-type:name]&nbsp;has been archived by the <a href=\"https://digital-skills-jobs.europa.eu/en/latest/events/partner-digital-skills\" rel=\"noreferrer noopener\" target=\"_blank\">Digital Skills and Jobs Platform</a> Team, since we have noticed that it was not active anymore.&nbsp;</p>\r\n\r\n<p>[node:content-type:name] title: [node:title]</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>To review the state of your Pledges and Initiatives or to submit a new Pledge or Initiative, you can access your personal profile (top left of the navigation bar) and selected the tab My Pledges in your dashboard there.&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>The Platform Team may contact you again to promote the Pledges new activities. We hope to see a new Pledge from your organisation in the future!&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Thank you for your commitment to the Digital Decade objectives and to the Pledges initiative!&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Our kindest regards,&nbsp;</p>\r\n\r\n<p>The Platform Team&nbsp;</p>\r\n\r\n<p>&nbsp;<br />\r\nContact us at <a href=\"mailto:communications@digitalskillsjobs.eu\" rel=\"noreferrer noopener\" target=\"_blank\">communications@digitalskillsjobs.eu</a>&nbsp;</p>\r\n\r\n<p>More information on Pledges for Digital Skills and User guide on the <a href=\"https://digital-skills-jobs.europa.eu/en/about/digital-skills-and-jobs-coalition\" rel=\"noreferrer noopener\" target=\"_blank\">Digital Skills and Job Coalition page</a>&nbsp;</p>\r\n"
   format: full_html
 label: 'Pledge Archived'

@@ -1,0 +1,18 @@
+entity.dsjp_learning_states.view:
+  title: View
+  route_name: entity.dsjp_learning_states.canonical
+  base_route: entity.dsjp_learning_states.canonical
+entity.dsjp_learning_states.edit_form:
+  title: Edit
+  route_name: entity.dsjp_learning_states.edit_form
+  base_route: entity.dsjp_learning_states.canonical
+entity.dsjp_learning_states.delete_form:
+  title: Delete
+  route_name: entity.dsjp_learning_states.delete_form
+  base_route: entity.dsjp_learning_states.canonical
+  weight: 10
+entity.dsjp_learning_states.collection:
+  title: Learning states
+  route_name: entity.dsjp_learning_states.collection
+  base_route: system.admin_content
+  weight: 10

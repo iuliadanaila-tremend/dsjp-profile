@@ -16,7 +16,7 @@ class CommunityGroupTest extends BrowserTestBase {
    *
    * @var array
    */
-  public static $modules = [
+  protected static $modules = [
     'dsjp_community_test',
   ];
 
@@ -35,7 +35,7 @@ class CommunityGroupTest extends BrowserTestBase {
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  protected function setUp(): void {
     parent::setUp();
     $admin_user = $this->drupalCreateUser([], NULL, TRUE);
     $this->entityTypeManager = $this->container->get('entity_type.manager');

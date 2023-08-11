@@ -4,6 +4,6 @@ description: Custom translation related functionalities.
 package: Custom
 dependencies:
   - tmgmt:tmgmt
-core: 8.x
-core_version_requirement: ^8 || ^9
+
+core_version_requirement: ^9 || ^10
 php: 7.3

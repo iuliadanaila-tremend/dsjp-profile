@@ -7,17 +7,21 @@ dependencies:
     - field.field.group.dsj_organization.field_dsj_contact_person_pledges
     - field.field.group.dsj_organization.field_dsj_country
     - field.field.group.dsj_organization.field_dsj_endorse
+    - field.field.group.dsj_organization.field_dsj_facebook_link
     - field.field.group.dsj_organization.field_dsj_geographic_sphere
     - field.field.group.dsj_organization.field_dsj_group_image
     - field.field.group.dsj_organization.field_dsj_is_pledger
+    - field.field.group.dsj_organization.field_dsj_linkedin_link
     - field.field.group.dsj_organization.field_dsj_number_of_employees
     - field.field.group.dsj_organization.field_dsj_organization_category
     - field.field.group.dsj_organization.field_dsj_role
     - field.field.group.dsj_organization.field_dsj_target_sector
     - field.field.group.dsj_organization.field_dsj_town
+    - field.field.group.dsj_organization.field_dsj_twitter_link
     - field.field.group.dsj_organization.field_group_description
     - group.type.dsj_organization
   module:
+    - entity_reference_revisions
     - options
     - text
 id: group.dsj_organization.default
@@ -30,13 +34,12 @@ content:
     third_party_settings: {  }
     weight: 0
     region: content
-  field_dsj_endorse:
-    type: boolean
-    label: above
+  field_dsj_contact:
+    type: entity_reference_revisions_entity_view
+    label: inline
     settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
+      view_mode: preview
+      link: ''
     third_party_settings: {  }
     weight: 8
     region: content
@@ -96,13 +99,16 @@ content:
 hidden:
   changed: true
   created: true
-  field_dsj_contact: true
   field_dsj_contact_email_pledges: true
   field_dsj_contact_person_pledges: true
   field_dsj_country: true
+  field_dsj_endorse: true
+  field_dsj_facebook_link: true
   field_dsj_group_image: true
+  field_dsj_linkedin_link: true
   field_dsj_number_of_employees: true
   field_dsj_town: true
+  field_dsj_twitter_link: true
   langcode: true
   search_api_excerpt: true
   uid: true

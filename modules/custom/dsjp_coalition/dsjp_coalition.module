@@ -46,7 +46,8 @@ function dsjp_coalition_cron() {
           'strategies' => 'dsj_strategy',
           'training-offers' => 'dsj_training_offer',
         ];
-        if ($apiUrl == 'https://cyfrowekompetencje.pl/wp-json/wp/v2') {
+        // If the NC is Poland, change the endpoints.
+        if ($sourceType == 'poland') {
           $contentTypes = [
             'organizations' => 'dsj_organization',
             'articles' => 'dsj_article',
@@ -59,6 +60,7 @@ function dsjp_coalition_cron() {
             'strategic-documents' => 'dsj_strategy',
             'training-offers' => 'dsj_training_offer',
           ];
+          $sourceType = 'wordpress';
         }
 
         foreach ($contentTypes as $fromContentType => $toContentType) {
@@ -111,6 +113,11 @@ function dsjp_coalition_content_moderation_notification_mail_data_alter(EntityIn
       }
     }
   }
+  elseif ($data['notification']->id() == 'dsj_pledge_organization_review'
+    && isset($entity->isAutoAssign) && $entity->isAutoAssign === TRUE) {
+    // Do not send any email if the edit was caused by the author being linked.
+    $data['to'] = [];
+  }
 }
 
 /**
@@ -137,7 +144,10 @@ function _dsjp_coalition_group_nc_form_alter(&$form, FormStateInterface $form_st
     '#tree' => TRUE,
     '#states' => [
       'visible' => [
-        ':input[name="field_dsj_source_type"]' => ['value' => 'austria'],
+        ':input[name="field_dsj_source_type"]' => [
+          ['value' => 'austria'],
+          ['value' => 'portugal'],
+        ],
       ],
     ],
     'token_url' => [
@@ -190,6 +200,7 @@ function _dsjp_coalition_group_nc_form_alter(&$form, FormStateInterface $form_st
  */
 function dsjp_coalition_nc_group_submit(array &$form, FormStateInterface $form_state) {
   $group = $form_state->getFormObject()->getEntity();
-  \Drupal::state()->set('group_nc_' . $group->id(), $form_state->getValue('api_credentials'));
-  \Drupal::state()->set('group_nc_' . $group->id(), ['auth_header' => $form_state->getValue('auth_header')]);
+  $credentials = $form_state->getValue('api_credentials');
+  $credentials['auth_header'] = $form_state->getValue('auth_header');
+  \Drupal::state()->set('group_nc_' . $group->id(), $credentials);
 }

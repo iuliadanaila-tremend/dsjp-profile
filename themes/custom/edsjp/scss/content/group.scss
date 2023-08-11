@@ -241,9 +241,122 @@
     }
   }
 
-  .node-dsj-funding-opportunity-form {
-    .chosen-container {
-      width: auto !important;
+  #block-dsj-main-page-content {
+    /* different style than %admin-group-table */
+    table {
+
+      @include media-breakpoint-down(sm) {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+
+      width: 100%;
+      border-collapse: collapse;
+
+      thead,
+      tbody {
+        tr {
+          border-bottom: 1px solid $gray-400;
+        }
+
+        td,
+        th {
+          max-width: 200px;
+          padding-top: $grid-gutter-width / 2;
+          padding-bottom: $grid-gutter-width / 2;
+          text-align: center;
+
+          &:last-child {
+            min-width: 130px;
+          }
+
+          &:not(:first-child) {
+            padding-left: $grid-gutter-width / 4;
+          }
+
+          &:not(:last-child) {
+            padding-right: $grid-gutter-width / 4;
+          }
+
+          &.views-field-dropbutton {
+            min-width: 130px;
+          }
+        }
+      }
+
+      thead {
+        tr {
+          th {
+            a {
+              font-weight: bold;
+            }
+          }
+        }
+      }
+
+      tbody {
+        td {
+          a {
+            white-space: break-spaces;
+          }
+
+          .dropbutton-wrapper {
+            position: relative;
+            min-height: unset;
+            padding-right: 4rem;
+            right: 0;
+            width: 100%;
+
+            .dropbutton {
+              padding-top: $grid-gutter-width-mobile / 2;
+              padding-bottom: $grid-gutter-width-mobile / 2;
+
+              &-action {
+                padding-bottom: $grid-gutter-width-mobile / 4;
+              }
+
+              &-widget {
+                max-width: 200px;
+                width: 100%;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                margin-left: 0;
+                padding-left: 0;
+                text-align: center;
+              }
+
+              &-toggle {
+                width: $grid-gutter-width * 1.5;
+
+                .path-group & {
+                  button {
+                    padding-left: 0;
+                  }
+                }
+              }
+
+              &-arrow {
+                margin: 0 auto;
+              }
+            }
+          }
+
+          .item-list {
+            margin-bottom: 0;
+
+            li,
+            ul {
+              margin-bottom: 0;
+            }
+          }
+        }
+      }
+
+      ul {
+        list-style-type: none;
+      }
     }
   }
 }

@@ -81,6 +81,7 @@ function _edsjp_set_user_pledger_status(array &$variables) {
     ->condition('type', ['dsj_pledge', 'dsj_pledge_initiative'], 'IN')
     ->condition('uid', \Drupal::currentUser()->id())
     ->condition('status', 1)
+    ->accessCheck(TRUE)
     ->range(0, 1)
     ->execute();
   $variables['is_pledger'] = !empty($content);

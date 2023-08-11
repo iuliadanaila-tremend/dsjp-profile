@@ -13,6 +13,11 @@
   {{ content.field_dsj_country }}
 </div>
 <div class="group-actions">
+    <div class="button-primary">
+      {% if add_node_link %}
+        {{ add_node_link }}
+      {% endif %}
+    </div>
   <div class="more-link">
     <a href="{{ url }}">{{ 'Read more'|t }}</a>
   </div>

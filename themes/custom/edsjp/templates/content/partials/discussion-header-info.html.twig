@@ -1,0 +1,21 @@
+<div class="content content-header">
+  <div{{ author_attributes }}>
+    <div class="started-by"><span class="hidden-mobile">{{ 'Posted by' | t }}</span>
+      <div class="user author-picture">
+        {{ author_avatar }}
+      </div>
+      {% if node.getOwner.isAnonymous %}
+        {{ author_name }}
+      {% else %}
+        <a href="{{ path('entity.user.canonical', {'user': node.getOwnerId}) }}">{{ author_name }}</a>
+      {% endif %}
+    </div>
+    <span class="delimiter">|</span>
+    {% set timestamp = node.getCreatedTime|format_date('custom', 'U') %}
+    {% if date(timestamp) < date('-6 days') %}
+      <time>{{ node.getCreatedTime|format_date('custom', 'd F Y') }}</time>
+    {% else %}
+      <time class="time-ago-wrapper" data-date="{{ timestamp }}"></time> <span>{{ 'ago' | t }}</span>
+    {% endif %}
+  </div>
+</div>

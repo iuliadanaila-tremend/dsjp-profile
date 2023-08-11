@@ -1,0 +1,92 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - user
+id: user.field_dsj_language_preference
+field_name: field_dsj_language_preference
+entity_type: user
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: bg
+      label: Bulgarian
+    -
+      value: cs
+      label: Czech
+    -
+      value: da
+      label: Danish
+    -
+      value: de
+      label: German
+    -
+      value: et
+      label: Estonian
+    -
+      value: el
+      label: Greek
+    -
+      value: 'en" selected="selected'
+      label: English
+    -
+      value: es
+      label: Spanish
+    -
+      value: fr
+      label: French
+    -
+      value: ga
+      label: Irish
+    -
+      value: hr
+      label: Croatian
+    -
+      value: it
+      label: Italian
+    -
+      value: lv
+      label: Latvian
+    -
+      value: lt
+      label: Lithuanian
+    -
+      value: hu
+      label: Hungarian
+    -
+      value: mt
+      label: Maltese
+    -
+      value: nl
+      label: Dutch
+    -
+      value: pl
+      label: Polish
+    -
+      value: pt-pt
+      label: Portuguese
+    -
+      value: ro
+      label: Romanian
+    -
+      value: sk
+      label: Slovak
+    -
+      value: sl
+      label: Slovenian
+    -
+      value: fi
+      label: Finnish
+    -
+      value: sv
+      label: Swedish
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

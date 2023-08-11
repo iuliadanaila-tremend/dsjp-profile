@@ -1,0 +1,55 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_dsj_national_highlights
+    - node.type.dsj_article
+    - node.type.dsj_digital_skills_resource
+    - node.type.dsj_event
+    - node.type.dsj_funding_opportunity
+    - node.type.dsj_good_practice
+    - node.type.dsj_initiative
+    - node.type.dsj_learning_content
+    - node.type.dsj_learning_path
+    - node.type.dsj_organization
+    - node.type.dsj_skills_intelligence
+    - node.type.dsj_strategy
+    - node.type.dsj_training_offer
+    - paragraphs.paragraphs_type.dsj_stories
+  module:
+    - tmgmt_content
+third_party_settings:
+  tmgmt_content:
+    excluded: false
+id: paragraph.dsj_stories.field_dsj_national_highlights
+field_name: field_dsj_national_highlights
+entity_type: paragraph
+bundle: dsj_stories
+label: 'National Highlights'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      dsj_article: dsj_article
+      dsj_digital_skills_resource: dsj_digital_skills_resource
+      dsj_event: dsj_event
+      dsj_funding_opportunity: dsj_funding_opportunity
+      dsj_good_practice: dsj_good_practice
+      dsj_initiative: dsj_initiative
+      dsj_learning_content: dsj_learning_content
+      dsj_learning_path: dsj_learning_path
+      dsj_organization: dsj_organization
+      dsj_skills_intelligence: dsj_skills_intelligence
+      dsj_strategy: dsj_strategy
+      dsj_training_offer: dsj_training_offer
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: dsj_article
+field_type: entity_reference

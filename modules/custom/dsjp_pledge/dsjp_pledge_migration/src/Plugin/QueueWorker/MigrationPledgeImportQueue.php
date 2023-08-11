@@ -4,8 +4,8 @@ namespace Drupal\dsjp_pledge_migration\Plugin\QueueWorker;
 
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Queue\QueueWorkerBase;
-use Drupal\migrate\MigrateExecutable;
 use Drupal\migrate\MigrateMessage;
+use Drupal\migrate_tools\MigrateExecutable;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -62,7 +62,9 @@ class MigrationPledgeImportQueue extends QueueWorkerBase implements ContainerFac
           ],
         ],
       ]);
-    $executable = new MigrateExecutable($migration, new MigrateMessage());
+    $executable = new MigrateExecutable($migration, new MigrateMessage(), [
+      'update' => 1,
+    ]);
     $executable->import();
   }
 

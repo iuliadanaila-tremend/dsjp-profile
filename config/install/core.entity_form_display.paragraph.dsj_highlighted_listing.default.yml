@@ -4,12 +4,14 @@ dependencies:
   config:
     - field.field.paragraph.dsj_highlighted_listing.field_dsj_content
     - field.field.paragraph.dsj_highlighted_listing.field_dsj_featured_content
+    - field.field.paragraph.dsj_highlighted_listing.field_dsj_image
     - field.field.paragraph.dsj_highlighted_listing.field_dsj_see_more_link
     - field.field.paragraph.dsj_highlighted_listing.field_dsj_title
     - field.field.paragraph.dsj_highlighted_listing.paragraph_view_mode
     - paragraphs.paragraphs_type.dsj_highlighted_listing
   module:
     - link
+    - media_library
     - paragraph_view_mode
 id: paragraph.dsj_highlighted_listing.default
 targetEntityType: paragraph
@@ -18,7 +20,7 @@ mode: default
 content:
   field_dsj_content:
     type: entity_reference_autocomplete
-    weight: 2
+    weight: 4
     region: content
     settings:
       match_operator: CONTAINS
@@ -28,7 +30,7 @@ content:
     third_party_settings: {  }
   field_dsj_featured_content:
     type: entity_reference_autocomplete
-    weight: 1
+    weight: 3
     region: content
     settings:
       match_operator: CONTAINS
@@ -36,9 +38,16 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_dsj_image:
+    type: media_library_widget
+    weight: 2
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
   field_dsj_see_more_link:
     type: link_default
-    weight: 3
+    weight: 5
     region: content
     settings:
       placeholder_url: ''
@@ -46,7 +55,7 @@ content:
     third_party_settings: {  }
   field_dsj_title:
     type: string_textfield
-    weight: 0
+    weight: 1
     region: content
     settings:
       size: 60
@@ -54,7 +63,7 @@ content:
     third_party_settings: {  }
   paragraph_view_mode:
     type: paragraph_view_mode
-    weight: -100
+    weight: 0
     region: content
     settings:
       view_modes:
@@ -63,7 +72,7 @@ content:
       default_view_mode: default
     third_party_settings: {  }
   translation:
-    weight: 10
+    weight: 6
     region: content
     settings: {  }
     third_party_settings: {  }

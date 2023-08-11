@@ -13,7 +13,7 @@ dependencies:
 id: dsj_views__dsj_content_tags
 theme: edsjp
 region: right_sidebar
-weight: -10
+weight: -14
 provider: null
 plugin: 'views_block:dsj_content_tags-dsj_content_tags'
 settings:

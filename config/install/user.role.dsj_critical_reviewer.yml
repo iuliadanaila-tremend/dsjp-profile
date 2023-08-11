@@ -3,10 +3,12 @@ status: true
 dependencies:
   config:
     - filter.format.basic_html
+    - filter.format.dsjp_basic_mention
     - media.type.document
     - media.type.image
     - media.type.webtools_social_feed
     - node.type.dsj_article
+    - node.type.dsj_country_page
     - node.type.dsj_digital_skills_resource
     - node.type.dsj_discussion
     - node.type.dsj_event
@@ -14,6 +16,8 @@ dependencies:
     - node.type.dsj_good_practice
     - node.type.dsj_initiative
     - node.type.dsj_landing_page
+    - node.type.dsj_learning_content
+    - node.type.dsj_learning_path
     - node.type.dsj_listing
     - node.type.dsj_national_coalition
     - node.type.dsj_organization
@@ -22,6 +26,7 @@ dependencies:
     - node.type.dsj_skills_intelligence
     - node.type.dsj_strategy
     - node.type.dsj_training_offer
+    - taxonomy.vocabulary.business_it
     - taxonomy.vocabulary.dsj_country
     - taxonomy.vocabulary.dsj_form_of_funding
     - taxonomy.vocabulary.dsj_type_of_article
@@ -31,6 +36,7 @@ dependencies:
     - block
     - content_moderation
     - content_translation
+    - dsjp_content
     - filter
     - locale
     - media
@@ -49,6 +55,7 @@ permissions:
   - 'accept translation jobs'
   - 'access administration pages'
   - 'access content overview'
+  - 'access dsjp reporting'
   - 'access media overview'
   - 'access site reports'
   - 'access toolbar'
@@ -57,6 +64,7 @@ permissions:
   - 'create content translations'
   - 'create document media'
   - 'create dsj_article content'
+  - 'create dsj_country_page content'
   - 'create dsj_digital_skills_resource content'
   - 'create dsj_discussion content'
   - 'create dsj_event content'
@@ -64,6 +72,8 @@ permissions:
   - 'create dsj_good_practice content'
   - 'create dsj_initiative content'
   - 'create dsj_landing_page content'
+  - 'create dsj_learning_content content'
+  - 'create dsj_learning_path content'
   - 'create dsj_listing content'
   - 'create dsj_organization content'
   - 'create dsj_page content'
@@ -81,6 +91,7 @@ permissions:
   - 'delete own image media'
   - 'delete own webtools_social_feed media'
   - 'edit any dsj_article content'
+  - 'edit any dsj_country_page content'
   - 'edit any dsj_digital_skills_resource content'
   - 'edit any dsj_discussion content'
   - 'edit any dsj_event content'
@@ -88,6 +99,8 @@ permissions:
   - 'edit any dsj_good_practice content'
   - 'edit any dsj_initiative content'
   - 'edit any dsj_landing_page content'
+  - 'edit any dsj_learning_content content'
+  - 'edit any dsj_learning_path content'
   - 'edit any dsj_listing content'
   - 'edit any dsj_national_coalition content'
   - 'edit any dsj_organization content'
@@ -98,6 +111,7 @@ permissions:
   - 'edit any webtools_social_feed media'
   - 'edit own document media'
   - 'edit own dsj_article content'
+  - 'edit own dsj_country_page content'
   - 'edit own dsj_digital_skills_resource content'
   - 'edit own dsj_discussion content'
   - 'edit own dsj_event content'
@@ -105,6 +119,8 @@ permissions:
   - 'edit own dsj_good_practice content'
   - 'edit own dsj_initiative content'
   - 'edit own dsj_landing_page content'
+  - 'edit own dsj_learning_content content'
+  - 'edit own dsj_learning_path content'
   - 'edit own dsj_listing content'
   - 'edit own dsj_national_coalition content'
   - 'edit own dsj_organization content'
@@ -117,6 +133,8 @@ permissions:
   - 'edit own webtools_social_feed media'
   - 'override dsj_article authored by option'
   - 'override dsj_article authored on option'
+  - 'override dsj_country_page authored by option'
+  - 'override dsj_country_page authored on option'
   - 'override dsj_digital_skills_resource authored by option'
   - 'override dsj_digital_skills_resource authored on option'
   - 'override dsj_discussion authored by option'
@@ -131,6 +149,10 @@ permissions:
   - 'override dsj_initiative authored on option'
   - 'override dsj_landing_page authored by option'
   - 'override dsj_landing_page authored on option'
+  - 'override dsj_learning_content authored by option'
+  - 'override dsj_learning_content authored on option'
+  - 'override dsj_learning_path authored by option'
+  - 'override dsj_learning_path authored on option'
   - 'override dsj_listing authored by option'
   - 'override dsj_listing authored on option'
   - 'override dsj_national_coalition authored by option'
@@ -147,8 +169,10 @@ permissions:
   - 'override dsj_training_offer authored on option'
   - 'submit translation jobs'
   - 'translate any entity'
+  - 'translate business_it taxonomy_term'
   - 'translate dsj_article node'
   - 'translate dsj_country taxonomy_term'
+  - 'translate dsj_country_page node'
   - 'translate dsj_digital_skills_resource node'
   - 'translate dsj_discussion node'
   - 'translate dsj_event node'
@@ -157,6 +181,9 @@ permissions:
   - 'translate dsj_good_practice node'
   - 'translate dsj_initiative node'
   - 'translate dsj_landing_page node'
+  - 'translate dsj_learning_content node'
+  - 'translate dsj_learning_path node'
+  - 'translate dsj_listing node'
   - 'translate dsj_national_coalition node'
   - 'translate dsj_organization node'
   - 'translate dsj_page node'
@@ -175,9 +202,11 @@ permissions:
   - 'use dsj_simple_workflow transition dsj_unpublish'
   - 'use dsj_simple_workflow transition publish'
   - 'use text format basic_html'
+  - 'use text format dsjp_basic_mention'
   - 'view any unpublished content'
   - 'view any webform submission'
   - 'view dsj_article revisions'
+  - 'view dsj_country_page revisions'
   - 'view dsj_digital_skills_resource revisions'
   - 'view dsj_discussion revisions'
   - 'view dsj_event revisions'
@@ -185,6 +214,8 @@ permissions:
   - 'view dsj_good_practice revisions'
   - 'view dsj_initiative revisions'
   - 'view dsj_landing_page revisions'
+  - 'view dsj_learning_content revisions'
+  - 'view dsj_learning_path revisions'
   - 'view dsj_listing revisions'
   - 'view dsj_national_coalition revisions'
   - 'view dsj_organization revisions'

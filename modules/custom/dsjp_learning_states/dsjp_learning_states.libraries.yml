@@ -1,0 +1,7 @@
+learning_states:
+  js:
+    js/learning_states.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+    - core/drupal

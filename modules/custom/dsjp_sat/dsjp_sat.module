@@ -25,7 +25,7 @@ function dsjp_sat_theme($existing, $type, $theme, $path) {
           6 => t('Advanced'),
         ],
       ],
-      'path' => drupal_get_path('module', 'dsjp_sat') . '/templates',
+      'path' => \Drupal::service('extension.list.module')->getPath('dsjp_sat') . '/templates',
     ],
   ];
 }

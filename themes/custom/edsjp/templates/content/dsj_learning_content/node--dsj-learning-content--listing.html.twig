@@ -1,0 +1,39 @@
+{% set classes = [
+  'node',
+  node.isPromoted() ? 'node--promoted',
+  node.isSticky() ? 'node--sticky',
+  not node.isPublished() ? 'node--unpublished',
+  node.bundle|clean_class,
+  node.bundle|clean_class ~ '--' ~ view_mode|clean_class,
+  'node' ~ '--' ~ view_mode|clean_class,
+  'node' ~ '--' ~ node.bundle|clean_class,
+  term_type ? node.bundle|clean_class ~ '--' ~ term_type|clean_class,
+] %}
+<article{{ attributes.addClass(classes) }}>
+  <div class="node--content" {{ content_attributes }}>
+    <div class="image-area">
+      {{ content.field_dsj_image }}
+    </div>
+    <div class="text-area">
+      <div class="card-states-wrapper">
+        {{ title_prefix }}
+        <h3{{ title_attributes }}>
+          <a href="{{ url }}" rel="bookmark" title="{{ title }}">{{ title }}</a>
+        </h3>
+        {{ title_suffix }}
+        {% if learning_states_form and logged_in %}
+          <div class="subscribe">
+            {{ learning_states_form }}
+          </div>
+        {% endif %}
+      </div>
+      {{ content.field_dsj_digital_technology }}
+      {{ content.body }}
+    </div>
+  </div>
+  <div class="node--footer">
+    {{ content.field_dsj_learning_content_type }}
+    <div class="more-link"><a href="{{ url }}" class="more-link">{% trans %}Read more{% endtrans %}</a>
+    </div>
+  </div>
+</article>

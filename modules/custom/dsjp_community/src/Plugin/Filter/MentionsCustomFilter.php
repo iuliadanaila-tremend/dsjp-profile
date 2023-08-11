@@ -101,7 +101,7 @@ class MentionsCustomFilter extends MentionsFilter {
    * @return bool
    *   TRUE if filter should applied, otherwise FALSE.
    */
-  public function shouldApplyFilter() {
+  public function shouldApplyFilter(): bool {
     if ($this->checkMentionTypes()) {
       return TRUE;
     }
@@ -142,7 +142,7 @@ class MentionsCustomFilter extends MentionsFilter {
    * @return array
    *   A list of mentions.
    */
-  public function getMentions($text) {
+  public function getMentions($text): array {
     $mentions = [];
     $config_names = $this->mentionTypes;
     foreach ($config_names as $config_name) {
@@ -168,7 +168,7 @@ class MentionsCustomFilter extends MentionsFilter {
       $mention_type = $settings->get('mention_type');
       $mention = $this->mentionsManager->createInstance($mention_type);
 
-      if ($mention instanceof MentionsPluginInterface) {
+      if ($mention instanceof MentionsPluginInterface && !empty($text)) {
 
         $pattern = '/(?:' . preg_quote($input_settings['prefix']) . ')([\w]+[( )[\w]+]? [(][\d]+[)])' . preg_quote($input_settings['suffix']) . '/';
         preg_match_all($pattern, $text, $matches, PREG_SET_ORDER);
@@ -203,7 +203,7 @@ class MentionsCustomFilter extends MentionsFilter {
    * @return string
    *   The processed text.
    */
-  public function filterMentions($text) {
+  public function filterMentions($text): string {
     $mentions = $this->getMentions($text);
     foreach ($mentions as $match) {
       $mention = $this->mentionsManager->createInstance($match['type']);

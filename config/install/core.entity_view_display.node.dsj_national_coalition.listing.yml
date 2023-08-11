@@ -5,9 +5,11 @@ dependencies:
     - core.entity_view_mode.node.listing
     - field.field.node.dsj_national_coalition.body
     - field.field.node.dsj_national_coalition.field_dsj_author
+    - field.field.node.dsj_national_coalition.field_dsj_components
     - field.field.node.dsj_national_coalition.field_dsj_digital_skill_level
     - field.field.node.dsj_national_coalition.field_dsj_geographic_scope
     - field.field.node.dsj_national_coalition.field_dsj_image
+    - field.field.node.dsj_national_coalition.field_dsj_linked_content
     - field.field.node.dsj_national_coalition.field_dsj_meta_tags
     - field.field.node.dsj_national_coalition.field_dsj_nc_partner
     - field.field.node.dsj_national_coalition.field_dsj_nc_priority
@@ -36,13 +38,13 @@ content:
       trim_suffix: ''
       wrap_output: false
       wrap_class: trimmed
-      more_link: false
-      more_class: more-link
-      more_text: More
       summary_handler: full
       trim_options:
         text: true
         trim_zero: false
+      more_link: false
+      more_class: more-link
+      more_text: More
     third_party_settings: {  }
     weight: 0
     region: content
@@ -52,6 +54,8 @@ content:
     settings:
       image_link: content
       image_style: ''
+      image_loading:
+        attribute: lazy
     third_party_settings: {  }
     weight: 1
     region: content
@@ -70,8 +74,10 @@ content:
 hidden:
   content_moderation_control: true
   field_dsj_author: true
+  field_dsj_components: true
   field_dsj_digital_skill_level: true
   field_dsj_geographic_scope: true
+  field_dsj_linked_content: true
   field_dsj_meta_tags: true
   field_dsj_nc_partner: true
   field_dsj_nc_priority: true

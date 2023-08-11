@@ -1,4 +1,9 @@
 services:
   dsjp_pledge.group_service:
     class: Drupal\dsjp_pledge\Service\GroupService
-    arguments: [ '@entity_type.manager' ]
+    arguments: [ '@entity_type.manager', '@group.membership_loader' ]
+
+  dsjp_pledge.route_subscriber:
+    class: Drupal\dsjp_pledge\Routing\RouteSubscriber
+    tags:
+      - { name: event_subscriber }

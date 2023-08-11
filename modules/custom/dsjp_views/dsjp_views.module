@@ -13,8 +13,8 @@ use Drupal\Core\Link;
 use Drupal\Core\Url;
 use Drupal\node\Entity\Node;
 use Drupal\views\Plugin\views\field\EntityField;
-use Drupal\views\ViewExecutable;
 use Drupal\views\Plugin\views\query\QueryPluginBase;
+use Drupal\views\ViewExecutable;
 
 /**
  * Implements hook_views_pre_build().
@@ -61,6 +61,13 @@ function dsjp_views_views_pre_build(ViewExecutable $view) {
         unset($view->filter['field_dsj_digital_technology_value']);
       }
 
+      // Force the filters set in the edit node into the view.
+      $paragraph_addition_categories = $node->get('field_dsj_filters')
+        ->getValue();
+      if ($paragraph_addition_categories) {
+        _dsjp_views_listing_content_type_view_additional_filters($filters, $paragraph_addition_categories);
+      }
+
       $exposed = $view->getExposedInput();
       if (isset($exposed['keywords']) && !empty($exposed['keywords'])) {
         $filters['search_api_fulltext']['value'] = $exposed['keywords'];
@@ -68,6 +75,23 @@ function dsjp_views_views_pre_build(ViewExecutable $view) {
 
       $view->display_handler->overrideOption('filters', $filters);
     }
+  }
+}
+
+/**
+ * Adds additional filters on the content listing page.
+ *
+ * @param array $filters
+ *   Existing view filters.
+ * @param array $paragraph_addition_categories
+ *   Additional serialized filters.
+ */
+function _dsjp_views_listing_content_type_view_additional_filters(array &$filters, array $paragraph_addition_categories) {
+  $additional_categories = unserialize($paragraph_addition_categories[0]['value'], ['allowed_classes' => FALSE]);
+  if (!empty($additional_categories)) {
+    $listing_manager = \Drupal::service('dsj_content.listing_manager');
+    $query = [];
+    $listing_manager->addViewFilters($filters, $query, $additional_categories, TRUE);
   }
 }
 
@@ -155,6 +179,16 @@ function dsjp_views_preprocess_views_view(&$variables) {
       unset($variables['attachment_before']);
     }
   }
+  elseif ($variables['view']->id() == 'dsj_articles_listing' || $variables['view']->id() == 'dsj_content_listing'
+        || $variables['view']->id() == 'pledges') {
+    if ($variables['view']->pager->current_page == 0) {
+      _dsjp_views_add_component_listing($variables);
+    }
+    else {
+      // Removes the header from the second page forward.
+      unset($variables['header']);
+    }
+  }
 }
 
 /**
@@ -195,13 +229,118 @@ function dsjp_views_preprocess_views_view_field(&$variables) {
         /** @var \Drupal\node\NodeInterface $node */
         $node = $variables['row']->_entity;
         if ($node->bundle() == 'dsj_pledge_initiative') {
-          $url = Url::fromRoute('entity.node.canonical', ['node' => $node->get('field_dsj_pledge')->first()->getString()]);
-          $link = Link::fromTextAndUrl($node->getTitle(), $url);
-          $variables['output'] = [
-            '#markup' => $link->toString(),
-          ];
+          if (!$node->get('field_dsj_pledge')->isEmpty()) {
+            $url = Url::fromRoute('entity.node.canonical', ['node' => $node->get('field_dsj_pledge')->first()->getString()]);
+            $link = Link::fromTextAndUrl($node->getTitle(), $url);
+            $variables['output'] = [
+              '#markup' => $link->toString(),
+            ];
+          }
         }
         break;
     }
+  }
+}
+
+/**
+ * Adds a custom block in the view header.
+ */
+function _dsjp_views_add_component_listing(&$variables) {
+  $taxonomyTermCode = FALSE;
+  $taxonomyTerm = \Drupal::routeMatch()->getParameter('taxonomy_term');
+  if ($taxonomyTerm && $taxonomyTerm->hasField('field_dsj_type_of_article_code')) {
+    $taxonomyTermField = $taxonomyTerm->get('field_dsj_type_of_article_code')->getValue();
+    if (!empty($taxonomyTermField)) {
+      $taxonomyTermCode = $taxonomyTermField[0]['value'];
+    }
+  }
+  $content_type = _dsjp_views_get_ct_by_view($variables['view']->current_display, $taxonomyTermCode);
+  if ($content_type) {
+    $storage = \Drupal::entityTypeManager()->getStorage('block_content');
+    $query = $storage->getQuery()->condition('type', 'dsj_listing_components')
+      ->condition('field_dsj_attached_listing', $content_type)->accessCheck(TRUE);
+    $bid = $query->execute();
+    if (!empty($bid)) {
+      $bid = reset($bid);
+      $block = $storage->load($bid);
+      $result = \Drupal::entityTypeManager()->getViewBuilder('block_content')->view($block);
+      $variables['header']['result'] = $result;
+    }
+  }
+}
+
+/**
+ * Return the content type based on view display.
+ */
+function _dsjp_views_get_ct_by_view($display, $taxonomyTermCode) {
+  $content_type = FALSE;
+  switch ($display) {
+    case 'articles':
+      $content_type = 'dsj_article';
+      if ($taxonomyTermCode) {
+        if ($taxonomyTermCode == 'opinions') {
+          $content_type = 'dsj_opinion';
+        }
+        elseif ($taxonomyTermCode == 'briefs') {
+          $content_type = 'dsj_brief';
+        }
+      }
+      break;
+
+    case 'pledges':
+      $content_type = 'dsj_pledge';
+      break;
+
+    case 'events':
+      $content_type = 'dsj_event';
+      break;
+
+    case 'digital_skills_resources':
+      $content_type = 'dsj_digital_skills_resource';
+      break;
+
+    case 'funding_opportunities':
+      $content_type = 'dsj_funding_opportunity';
+      break;
+
+    case 'good_practices':
+      $content_type = 'dsj_good_practice';
+      break;
+
+    case 'training_offers':
+      $content_type = 'dsj_training_offer';
+      break;
+
+    case 'publications':
+      $content_type = 'dsj_skills_intelligence';
+      break;
+
+    case 'strategies':
+      $content_type = 'dsj_strategy';
+      break;
+
+    case 'initiatives':
+      $content_type = 'dsj_initiative';
+      break;
+
+    case 'national_coalitions':
+      $content_type = 'dsj_national_coalition';
+      break;
+
+    case 'dsj_discussion_listing':
+      $content_type = 'dsj_discussion';
+      break;
+
+    case 'learning_content':
+      $content_type = 'dsj_learning_content';
+      break;
+
+    case 'learning_path':
+      $content_type = 'dsj_learning_path';
+      break;
+  }
+
+  if ($content_type) {
+    return $content_type;
   }
 }

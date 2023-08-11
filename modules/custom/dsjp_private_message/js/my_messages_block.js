@@ -54,7 +54,14 @@
             $tooltip.addClass('hidden');
           });
       }
-      
+
+      if (window.location.href.includes('scroll')) {
+        var $redirectTarget = $('#block-privatemessagepagetextblock');
+        if ($redirectTarget.length) {
+          var scrollPosition = $redirectTarget.offset().top + 2;
+          $('html, body').animate({ scrollTop: scrollPosition }, 1000);
+        }
+      }
     },
   };
 })(jQuery, Drupal, drupalSettings);

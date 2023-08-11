@@ -213,8 +213,6 @@ process:
     source: acf
     index:
       - type_of_funding
-  field_dsj_publish_in_core:
-    plugin: extract
     source: acf
     index:
       - publish_in_core_platform

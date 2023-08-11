@@ -13,7 +13,7 @@ id: node.dsj_pledge.field_dsj_pledges_activity_pay
 field_name: field_dsj_pledges_activity_pay
 entity_type: node
 bundle: dsj_pledge
-label: 'Will the intended beneficiaries be expected to pay at any point for the pledge activities?'
+label: 'The intended beneficiaries will be expected to pay at any point for the pledge activities'
 description: ''
 required: false
 translatable: false

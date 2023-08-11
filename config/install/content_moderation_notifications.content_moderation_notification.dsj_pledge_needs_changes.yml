@@ -10,8 +10,8 @@ roles: {  }
 author: true
 site_mail: false
 emails: ''
-subject: 'Your [node:content-type:name] has been moved to Needs Changes.'
+subject: 'Your [node:content-type:name] for Digital Skills has been reviewed'
 body:
-  value: "<p>The [node:content-type:name] [node:title] was moved to Needs Changes.</p>\r\n\r\n<p>Update the content here: [node:url]&nbsp;</p>\r\n"
+  value: "<p>Dear Pledger,&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Thank you very much for joining the Pledges for Digital Skills initiative and for submitting your Pledges and Initiatives.&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>We are happy to inform that your [node:content-type:name]&nbsp;has been reviewed by the <a href=\"https://digital-skills-jobs.europa.eu/en/latest/events/partner-digital-skills\" rel=\"noreferrer noopener\" target=\"_blank\">Digital Skills and Jobs Platform</a> Team!&nbsp;</p>\r\n\r\n<p>[node:content-type:name] title: <a href=\"[node:url]\">[node:title]</a></p>\r\n\r\n<p>Submission date: [node:changed:default_timeless_short_date]</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Your proposal may require some revision, and the Platform Team will contact you shortly with some questions and suggestions to proceed to the approval and publication of your initiative.&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Thank you for your commitment to the Digital Decade objectives and to the Pledges initiative!&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Our kindest regards,&nbsp;</p>\r\n\r\n<p>The Platform Team&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Contact us at <a href=\"mailto:communications@digitalskillsjobs.eu\" rel=\"noreferrer noopener\" target=\"_blank\">communications@digitalskillsjobs.eu</a>&nbsp;</p>\r\n\r\n<p>More information on Pledges for Digital Skills and User guide on the <a href=\"https://digital-skills-jobs.europa.eu/en/about/digital-skills-and-jobs-coalition\" rel=\"noreferrer noopener\" target=\"_blank\">Digital Skills and Job Coalition page</a>&nbsp;</p>\r\n"
   format: full_html
 label: 'Pledge Needs Changes'

@@ -2,8 +2,8 @@ name: dsjp_coalition_test
 type: module
 description: Test module for integration with national coalitions websites.
 package: Custom
-core: 8.x
-core_version_requirement: ^8 || ^9
+
+core_version_requirement: ^9 || ^10
 php: 7.3
 dependencies:
   - drupal:migrate

@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - group
+id: community_organisations
+label: 'Community organisations'
+type: 'canonical_entities:group'
+pattern: 'community/networking/organisations/[group:title]'
+selection_criteria:
+  bdfb8dea-7c08-4acd-81a7-6a5d8844c6fe:
+    id: 'entity_bundle:group'
+    negate: false
+    uuid: bdfb8dea-7c08-4acd-81a7-6a5d8844c6fe
+    context_mapping:
+      group: group
+    bundles:
+      dsj_organization: dsj_organization
+selection_logic: and
+weight: -5
+relationships: {  }

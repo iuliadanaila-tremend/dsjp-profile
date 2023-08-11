@@ -6,11 +6,15 @@ dependencies:
     - node.type.dsj_event
   module:
     - options
+    - tmgmt_content
+third_party_settings:
+  tmgmt_content:
+    excluded: false
 id: node.dsj_event.field_dsj_type_of_initiative
 field_name: field_dsj_type_of_initiative
 entity_type: node
 bundle: dsj_event
-label: 'Type of initiative'
+label: 'Geographical sphere'
 description: ''
 required: true
 translatable: false

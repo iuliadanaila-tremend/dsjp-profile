@@ -27,6 +27,11 @@ class CustomSubProcess extends SubProcess {
           'label' => 'Non-EU',
         ];
       }
+      if (!is_array($new_value)) {
+        $new_value = [
+          'value' => $new_value,
+        ];
+      }
     }
     return parent::transform($value, $migrate_executable, $row, $destination_property);
   }

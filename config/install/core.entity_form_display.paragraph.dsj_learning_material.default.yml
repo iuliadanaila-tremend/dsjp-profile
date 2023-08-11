@@ -1,0 +1,42 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.dsj_learning_material.field_dsj_body
+    - field.field.paragraph.dsj_learning_material.field_dsj_business_it
+    - field.field.paragraph.dsj_learning_material.field_dsj_learning_material
+    - paragraphs.paragraphs_type.dsj_learning_material
+  module:
+    - text
+id: paragraph.dsj_learning_material.default
+targetEntityType: paragraph
+bundle: dsj_learning_material
+mode: default
+content:
+  field_dsj_body:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_dsj_business_it:
+    type: options_select
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_dsj_learning_material:
+    type: entity_reference_autocomplete
+    weight: 0
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

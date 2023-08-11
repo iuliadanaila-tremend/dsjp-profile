@@ -1,0 +1,4 @@
+services:
+  dsjp_map.country_service:
+    class: 'Drupal\dsjp_map\Services\CountryService'
+    arguments: [ '@logger.factory' , '@entity_type.manager']

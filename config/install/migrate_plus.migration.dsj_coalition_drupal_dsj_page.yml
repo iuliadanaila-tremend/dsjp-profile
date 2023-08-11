@@ -51,8 +51,6 @@ process:
     -
       plugin: get
       source: field_dsj_author
-  field_dsj_publish_in_core: field_dsj_publish_in_core
-  field_dsj_website_link:
     -
       plugin: skip_on_empty
       method: process

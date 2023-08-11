@@ -8,13 +8,13 @@
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Entity\ContentEntityInterface;
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\BubbleableMetadata;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Url;
 use Drupal\field\Entity\FieldStorageConfig;
-use Drupal\Core\Entity\EntityInterface;
-use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 use Drupal\file\Entity\File;
 use Drupal\file\FileInterface;
 use Drupal\group\Entity\GroupContent;
@@ -170,16 +170,18 @@ function dsjp_content_field_widget_multivalue_form_alter(&$element, FormStateInt
     'field_dsj_geographic_scope',
     'field_dsj_country',
   ])) {
-    // Hide pledge only countries based on the form entity.
-    $entity = $form_state->getFormObject()->getEntity();
-    if ($entity->bundle() != 'dsj_pledge' && !$entity instanceof GroupInterface) {
-      if (!empty($element['#options'])) {
-        foreach (array_keys($element['#options']) as $option) {
-          $term = Term::load($option);
-          if ($term instanceof TermInterface) {
-            $pledge_only = $term->get('field_dsj_pledge_only')->value;
-            if ($pledge_only) {
-              unset($element['#options'][$option]);
+    if (method_exists($form_state->getFormObject(), 'getEntity')) {
+      // Hide pledge only countries based on the form entity.
+      $entity = $form_state->getFormObject()->getEntity();
+      if ($entity->bundle() != 'dsj_pledge' && !$entity instanceof GroupInterface) {
+        if (!empty($element['#options'])) {
+          foreach (array_keys($element['#options']) as $option) {
+            $term = Term::load($option);
+            if ($term instanceof TermInterface) {
+              $pledge_only = $term->get('field_dsj_pledge_only')->value;
+              if ($pledge_only) {
+                unset($element['#options'][$option]);
+              }
             }
           }
         }
@@ -245,6 +247,10 @@ function dsjp_content_node_access(EntityInterface $entity, $operation, AccountIn
       $states = ['needs_changes', 'draft'];
       $roles = $account->getRoles();
       $group_content = GroupContent::loadByEntity($entity);
+      // If there is no group, ignore this check.
+      if (empty($group_content)) {
+        return AccessResult::neutral();
+      }
       foreach ($group_content as $gcontent) {
         $group = $gcontent->getGroup();
         if ($group->getGroupType()->id() == 'dsj_national_coalition') {
@@ -485,6 +491,9 @@ function dsjp_content_form_views_exposed_form_alter(&$form, FormStateInterface $
       'article_type' => [
         'dsj_article',
       ],
+      'learning_content_type' => [
+        'dsj_learning_content',
+      ],
     ];
     _dsjp_content_set_filters_states($form, $states_conditions, ':input[name="type[]"]', TRUE);
   }
@@ -528,7 +537,8 @@ function dsjp_content_reports_exposed_form_submit(array &$form, FormStateInterfa
   // For each date type filters, alter the end date value.
   $values = $form_state->getValues();
   foreach ($values as &$data) {
-    if (isset($data['min']) && isset($data['max']) && !empty($data['max'])) {
+    if (isset($data['min']) && isset($data['max']) && !empty($data['max'])
+      && !str_contains($data['max'], 'T23:59:59')) {
       $data['max'] .= 'T23:59:59';
     }
   }
@@ -833,19 +843,46 @@ function dsjp_content_form_node_form_alter(&$form, FormStateInterface $form_stat
     $form['actions']['submit']['#value'] = t('Publish');
   }
   if (isset($form['field_dsj_date'])) {
-    array_unshift($form['#validate'], 'dsj_content_event_form_validate');
+    array_unshift($form['#validate'], 'dsjp_content_event_form_validate');
   }
   // Hide metatags if the current user doesn't have any roles assigned.
   $roles = \Drupal::currentUser()->getRoles();
   if (count($roles) == 1 && $roles[0] == 'authenticated' && isset($form['field_dsj_meta_tags'])) {
     $form['field_dsj_meta_tags']['#access'] = FALSE;
   }
+
+  if ($form_id == 'node_dsj_listing_edit_form' || $form_id == 'node_dsj_listing_form') {
+    $listing_manager = \Drupal::service('dsj_content.listing_manager');
+    $listing_manager->createCategorizations($form, 'field_dsj_filters', 'field_dsj_content_type');
+    $form['#validate'][] = '_dsjp_content_node_dsj_listing_edit_form_validate';
+  }
+}
+
+/**
+ * Validate function for the content type listing to add filters.
+ *
+ * @param array $form
+ *   Content type form.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   Content type form state.
+ */
+function _dsjp_content_node_dsj_listing_edit_form_validate(array $form, FormStateInterface $form_state) {
+  $current_values = $form_state->getValues();
+  $filters = [];
+  foreach ($current_values['field_dsj_filters_wrapper'] as $key => $filter_value) {
+    if (!empty($filter_value)) {
+      $filters[$key] = $filter_value;
+    }
+  }
+
+  // Override the value in this field with the values of all the custom filters.
+  $form_state->setValue('field_dsj_filters', [0 => ['value' => serialize($filters)]]);
 }
 
 /**
  * Validation callback for node forms containing date range field.
  */
-function dsj_content_event_form_validate(array &$form, FormStateInterface $form_state) {
+function dsjp_content_event_form_validate(array &$form, FormStateInterface $form_state) {
   $date = $form_state->getValue('field_dsj_date');
   if (!empty($date) && !empty($date[0]['value']) && !empty($date[0]['end_value'])) {
     $start_date = $date[0]['value'];
@@ -974,7 +1011,7 @@ function _dsjp_content_alter_page_attachments_multiple_value(&$value) {
     if (!empty($option) && $option !== $url && $option !== $insecure_url) {
       // Make relative URLs absolute.
       if (strpos($option, '/') === 0) {
-        $option = dsjp_content . modulertrim($url, '/');
+        $option = rtrim($url, '/') . $option;
       }
       $new_value = trim($option);
       break;
@@ -1006,7 +1043,14 @@ function dsjp_content_slick_build_alter(&$data, &$context) {
   // Alter the slick settings for the "Most Popular" component in order to
   // include the featured content field too.
   if (isset($context['bundle']) && $context['bundle'] == 'dsj_highlighted_listing') {
-    $paragraph = Paragraph::load($context['entity_id']);
+    // Get paragraph id based on slick widget used.
+    if (isset($context['plugin_id']) && $context['plugin_id'] == 'slick_entityreference_vanilla') {
+      $entity_id = $context['blazies']->get('entity')['id'];
+    }
+    else {
+      $entity_id = $context['entity_id'];
+    }
+    $paragraph = Paragraph::load($entity_id);
     if ($paragraph instanceof ParagraphInterface) {
       $featured = $paragraph->get('field_dsj_featured_content')->referencedEntities();
       if (!empty($featured)) {
@@ -1037,7 +1081,7 @@ function dsjp_content_page_attachments(array &$attachments) {
       if ($file instanceof FileInterface) {
         $data['image'] = [
           '#theme' => 'image',
-          '#uri' => file_create_url($file->getFileUri()),
+          '#uri' => $file->createFileUrl(),
         ];
       }
     }
@@ -1065,4 +1109,85 @@ function dsjp_content_page_attachments(array &$attachments) {
       'popup_cta_block',
     ];
   }
+}
+
+/**
+ * Implements hook_metatags_alter().
+ */
+function dsjp_content_metatags_alter(array &$metatags, array &$context) {
+  if (isset($context['entity']) && $context['entity'] instanceof NodeInterface && $context['entity']->language()->getId() != 'en') {
+    $metatags['robots'] = 'noindex, nofollow';
+  }
+}
+
+/**
+ * Implements hook_field_widget_WIDGET_TYPE_form_alter().
+ */
+function dsjp_content_field_widget_paragraphs_form_alter(&$element, &$form_state, $context) {
+
+  // Customize the listing paragraph form.
+  if ($element['#paragraph_type'] == 'dsj_listing'
+    && isset($element['subform']['field_dsj_content_types'])
+    && isset($element['subform']['field_dsj_article_type'])) {
+    // Need to do this for multiple paragraphs of the same type in the page.
+    $variation_field = $element['subform']['field_dsj_content_types'];
+    // Construct variation input name to use it in #states.
+    $variation_input_name_parents = array_shift($variation_field['widget']['#parents']);
+    $variation_input_name_parents .= '[' . implode('][', $variation_field['widget']['#parents']) . ']';
+    $variation_input_name = $variation_input_name_parents . '[dsj_article]';
+    $element['subform']['field_dsj_article_type']['#states'] = [
+      'visible' => [
+        ':input[name="' . $variation_input_name . '"][value="dsj_article"]' => ['checked' => TRUE],
+      ],
+    ];
+
+    // Dynamically add all the categorizations.
+    if ($element['subform']['field_dsj_filters']) {
+      $listing_manager = \Drupal::service('dsj_content.listing_manager');
+      $listing_manager->createCategorizations($element['subform'], 'field_dsj_filters', 'field_dsj_content_types');
+      $element['#element_validate'][] = '_dsjp_content_field_widget_paragraphs_filters_validate';
+    }
+  }
+}
+
+/**
+ * Custom form validate to save the filter values inside the field dsj filters.
+ *
+ * @param array $element
+ *   Current element.
+ * @param Drupal\Core\Form\FormStateInterface $form_state
+ *   Form state.
+ * @param array $form
+ *   Form with all the subforms.
+ */
+function _dsjp_content_field_widget_paragraphs_filters_validate(array $element, FormStateInterface &$form_state, array $form) {
+  // If this will be used in listing content type, merge them into one method.
+  $current_values = $form_state->getValues();
+  foreach ($element['#parents'] as $parent) {
+    $current_values = $current_values[$parent];
+  }
+  $filters = [];
+  if (isset($current_values['subform']['field_dsj_filters_wrapper'])) {
+    foreach ($current_values['subform']['field_dsj_filters_wrapper'] as $key => $filter_value) {
+      if (!empty($filter_value)) {
+        $filters[$key] = $filter_value;
+      }
+    }
+  }
+  $filter_parents = array_merge($element['#parents'], [
+    'subform',
+    'field_dsj_filters',
+  ]);
+  // Override the value in this field with the values of all the custom filters.
+  $form_state->setValue($filter_parents, [0 => ['value' => serialize($filters)]]);
+}
+
+/**
+ * Implements hook_facets_search_api_query_type_mapping_alter().
+ */
+function dsjp_content_facets_search_api_query_type_mapping_alter(
+  $backend_plugin_id,
+  array &$query_types
+) {
+  $query_types['current_date_interval'] = 'search_api_current_date_interval';
 }

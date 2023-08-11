@@ -1,0 +1,13 @@
+diff --git a/oe_authentication.module b/oe_authentication.module
+index 81400e5..1be6550 100644
+--- a/oe_authentication.module
++++ b/oe_authentication.module
+@@ -13,7 +13,7 @@ declare(strict_types = 1);
+  * Remove the option to delete users while keeping the option to block them.
+  */
+ function oe_authentication_user_cancel_methods_alter(&$methods) {
+-  if (\Drupal::currentUser()->id() == 1) {
++  if (\Drupal::currentUser()->id() == 1 || in_array('administrator', \Drupal::currentUser()->getRoles())) {
+     return;
+   }
+   $restricted_options = [

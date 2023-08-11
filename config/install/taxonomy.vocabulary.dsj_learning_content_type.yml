@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Learning content type'
+vid: dsj_learning_content_type
+description: ''
+weight: 0

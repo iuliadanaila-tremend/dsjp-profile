@@ -1,0 +1,63 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_result
+    - field.field.node.dsj_learning_path.body
+    - field.field.node.dsj_learning_path.field_dsj_advanced_learning
+    - field.field.node.dsj_learning_path.field_dsj_digital_skill_level
+    - field.field.node.dsj_learning_path.field_dsj_digital_technology
+    - field.field.node.dsj_learning_path.field_dsj_image
+    - field.field.node.dsj_learning_path.field_dsj_introductory_learning
+    - node.type.dsj_learning_path
+  module:
+    - smart_trim
+    - user
+id: node.dsj_learning_path.search_result
+targetEntityType: node
+bundle: dsj_learning_path
+mode: search_result
+content:
+  body:
+    type: smart_trim
+    label: hidden
+    settings:
+      trim_length: 250
+      trim_type: chars
+      trim_suffix: ...
+      wrap_output: false
+      wrap_class: trimmed
+      summary_handler: full
+      trim_options:
+        text: false
+        trim_zero: false
+      more_link: false
+      more_class: more-link
+      more_text: More
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  flag_subscribe_node:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  search_api_excerpt:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_dsj_advanced_learning: true
+  field_dsj_digital_skill_level: true
+  field_dsj_digital_technology: true
+  field_dsj_image: true
+  field_dsj_introductory_learning: true
+  langcode: true
+  links: true
+  private_message_link: true

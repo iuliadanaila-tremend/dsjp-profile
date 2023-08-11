@@ -1,0 +1,78 @@
+{% set classes = [
+    'node',
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    node.bundle|clean_class,
+    node.bundle|clean_class ~ '--' ~ view_mode|clean_class,
+    'node' ~ '--' ~ view_mode|clean_class,
+    'node' ~ '--' ~ node.bundle|clean_class,
+    term_type ? node.bundle|clean_class ~ '--' ~ term_type|clean_class,
+] %}
+<article{{ attributes.addClass(classes) }}>
+
+    {{ title_prefix }}
+    <h1{{ title_attributes }}>
+        {{ label }}
+    </h1>
+    {{ title_suffix }}
+
+    <div{{ content_attributes }}>
+        <div class="body-wrapper">
+            <span class="flag-icon flag-icon-{{ threeCode }}"></span>
+            {{ content.body }}
+        </div>
+        {{ content.field_dsj_desi_title }}
+        <div class="progress-description">
+            <div class="country-avg-score">{{ 'EU average score'|t }}: <span>{{ country.avg_score }}</span></div>
+            <div class="country-score">{{ '@country score'|t({'@country': country.label }) }}: <span>{{ country.score }}</span>
+            </div>
+        </div>
+        <div class="progress-bar">
+            <div class="progress-generated">
+                <div class="progress-dynamic progress-dynamic-avg"
+                     style="width: {{ country.avg_position }}%;">
+                  <span class="progress-end avg_score">
+                  <span class="country-number {% if country.avg_score|raw > country.score|raw %}pos-right{% else %}pos-left{% endif %}">
+                  {{ country.avg_score }}
+                  <span class="tooltip_score">
+                  {{ 'EU average score'|t }}
+                  </span>
+                  </span>
+                  </span>
+                </div>
+                <div class="progress-dynamic"
+                     style="width: {{ country.position }}%;">
+                  <span class="progress-end country-score">
+                  <span class="country-number {% if country.avg_score|raw > country.score|raw %}pos-left{% else %}pos-right{% endif %}">
+                  {{ country.score }}
+                  <span class="tooltip_score">
+                  {{ 'Country score'|t }}
+                  </span>
+                  </span>
+                  </span>
+                </div>
+            </div>
+            <div class="progress-static">
+                {% for i in 1..4 %}
+                    {% set counter = 20 * i %}
+                    <div class="progress progress-{{ counter }}"
+                         style="background-color: {{ colors[i - 1] }} ">
+                        {% if counter == 20 %}
+                            <span class="progress-start">
+                  <span>{{ intervals[0] }}</span>
+                  </span>
+                        {% endif %}
+                        <span class="progress-end">
+                  <span>{{ intervals[i] }}</span>
+                  </span>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        {{ content | without('field_dsj_desi_title', 'body') }}
+
+        {{ regionaly_related_view_block }}
+    </div>
+
+</article>

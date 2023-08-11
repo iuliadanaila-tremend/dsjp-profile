@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_dsj_language_preference
+  module:
+    - options
+    - user
+id: user.user.field_dsj_language_preference
+field_name: field_dsj_language_preference
+entity_type: user
+bundle: user
+label: 'Language preference'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

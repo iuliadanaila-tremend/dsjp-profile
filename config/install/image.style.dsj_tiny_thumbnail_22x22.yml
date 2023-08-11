@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - crop.type.dsj_ratio_1_1_crop
+  module:
+    - crop
+name: dsj_tiny_thumbnail_22x22
+label: 'Tiny Thumbnail 22x22'
+effects:
+  e0dd9bbc-97aa-4d91-852c-43034c31a0fb:
+    uuid: e0dd9bbc-97aa-4d91-852c-43034c31a0fb
+    id: image_scale_and_crop
+    weight: -9
+    data:
+      width: 22
+      height: 22
+      anchor: center-center
+  259566f7-51cb-4a2b-a455-53396a20a48d:
+    uuid: 259566f7-51cb-4a2b-a455-53396a20a48d
+    id: crop_crop
+    weight: -10
+    data:
+      crop_type: dsj_ratio_1_1_crop
+      automatic_crop_provider: null

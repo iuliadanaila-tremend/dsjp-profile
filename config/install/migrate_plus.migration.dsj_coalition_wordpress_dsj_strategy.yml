@@ -199,10 +199,10 @@ process:
       method: process
       source: acf/roadmap
     -
-      plugin: extract
-      source: acf
-      index:
-        - roadmap
+      plugin: substr
+      source: acf/roadmap
+      start: 0
+      length: 63
   field_dsj_type_of_initiative:
     plugin: extract
     source: acf
@@ -213,8 +213,6 @@ process:
     source: acf
     index:
       - target_audience
-  field_dsj_publish_in_core:
-    plugin: extract
     source: acf
     index:
       - publish_in_core_platform

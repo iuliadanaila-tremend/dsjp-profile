@@ -1,0 +1,102 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.dsj_listing_components
+    - field.storage.block_content.field_dsj_components
+    - paragraphs.paragraphs_type.dsj_highlighted_listing
+    - paragraphs.paragraphs_type.dsj_listing
+  module:
+    - entity_reference_revisions
+    - tmgmt_content
+third_party_settings:
+  tmgmt_content:
+    excluded: false
+id: block_content.dsj_listing_components.field_dsj_components
+field_name: field_dsj_components
+entity_type: block_content
+bundle: dsj_listing_components
+label: Components
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      dsj_highlighted_listing: dsj_highlighted_listing
+      dsj_listing: dsj_listing
+    negate: 0
+    target_bundles_drag_drop:
+      dsj_assessment:
+        weight: 24
+        enabled: false
+      dsj_banner_top_image:
+        weight: 25
+        enabled: false
+      dsj_blank_card:
+        weight: 26
+        enabled: false
+      dsj_blank_cards:
+        weight: 27
+        enabled: false
+      dsj_card:
+        weight: 28
+        enabled: false
+      dsj_cards:
+        weight: 29
+        enabled: false
+      dsj_cta_banner:
+        weight: 30
+        enabled: false
+      dsj_events_community_quotes:
+        weight: 31
+        enabled: false
+      dsj_grouped_cards:
+        weight: 32
+        enabled: false
+      dsj_highlighted_listing:
+        weight: 33
+        enabled: true
+      dsj_info_cards:
+        weight: 34
+        enabled: false
+      dsj_listing:
+        weight: 35
+        enabled: true
+      dsj_map:
+        weight: 36
+        enabled: false
+      dsj_map_component:
+        weight: 37
+        enabled: false
+      dsj_organisation_contact:
+        weight: 38
+        enabled: false
+      dsj_small_banner:
+        weight: 39
+        enabled: false
+      dsj_social_media:
+        weight: 40
+        enabled: false
+      dsj_stories:
+        weight: 41
+        enabled: false
+      dsj_testimonial:
+        weight: 42
+        enabled: false
+      dsj_testimonials:
+        weight: 43
+        enabled: false
+      dsj_text:
+        weight: 44
+        enabled: false
+      dsj_top_banner:
+        weight: 45
+        enabled: false
+      dsj_widget:
+        weight: 46
+        enabled: false
+field_type: entity_reference_revisions

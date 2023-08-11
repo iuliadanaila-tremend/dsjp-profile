@@ -14,7 +14,7 @@ id: node.dsj_article.field_dsj_type_of_initiative
 field_name: field_dsj_type_of_initiative
 entity_type: node
 bundle: dsj_article
-label: 'Type of initiative'
+label: 'Geographical sphere'
 description: ''
 required: true
 translatable: false

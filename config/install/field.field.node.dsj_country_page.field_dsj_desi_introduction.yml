@@ -1,0 +1,24 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dsj_desi_introduction
+    - node.type.dsj_country_page
+  module:
+    - text
+    - tmgmt_content
+third_party_settings:
+  tmgmt_content:
+    excluded: false
+id: node.dsj_country_page.field_dsj_desi_introduction
+field_name: field_dsj_desi_introduction
+entity_type: node
+bundle: dsj_country_page
+label: Introduction
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

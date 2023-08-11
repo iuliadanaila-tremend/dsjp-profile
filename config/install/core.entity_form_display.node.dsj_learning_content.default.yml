@@ -1,0 +1,176 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.dsj_learning_content.body
+    - field.field.node.dsj_learning_content.field_dsj_comments
+    - field.field.node.dsj_learning_content.field_dsj_digital_skill_level
+    - field.field.node.dsj_learning_content.field_dsj_digital_technology
+    - field.field.node.dsj_learning_content.field_dsj_geographic_scope
+    - field.field.node.dsj_learning_content.field_dsj_image
+    - field.field.node.dsj_learning_content.field_dsj_learning_content_type
+    - field.field.node.dsj_learning_content.field_dsj_linked_content
+    - field.field.node.dsj_learning_content.field_dsj_target_audience
+    - field.field.node.dsj_learning_content.field_dsj_website_link
+    - image.style.thumbnail
+    - node.type.dsj_learning_content
+    - workflows.workflow.dsj_main_workflow
+  module:
+    - comment
+    - content_moderation
+    - image
+    - path
+    - text
+    - typed_link
+id: node.dsj_learning_content.default
+targetEntityType: node
+bundle: dsj_learning_content
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 11
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  created:
+    type: datetime_timestamp
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_dsj_comments:
+    type: comment_default
+    weight: 27
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_dsj_digital_skill_level:
+    type: options_select
+    weight: 17
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_dsj_digital_technology:
+    type: options_select
+    weight: 16
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_dsj_geographic_scope:
+    type: options_select
+    weight: 18
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_dsj_image:
+    type: image_image
+    weight: 12
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_dsj_learning_content_type:
+    type: options_select
+    weight: 13
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_dsj_linked_content:
+    type: entity_reference_autocomplete
+    weight: 26
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_dsj_target_audience:
+    type: options_select
+    weight: 15
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_dsj_website_link:
+    type: typed_link
+    weight: 14
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 1
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    weight: 5
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 10
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    weight: 6
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 2
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  url_redirects:
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

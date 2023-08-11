@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - key_auth
+id: dsj_api_user
+label: 'Api user'
+weight: 4
+is_admin: null
+permissions:
+  - 'use key authentication'

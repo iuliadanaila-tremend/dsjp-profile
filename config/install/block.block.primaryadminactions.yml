@@ -9,7 +9,7 @@ dependencies:
 id: primaryadminactions
 theme: edsjp
 region: content
-weight: -14
+weight: -16
 provider: null
 plugin: local_actions_block
 settings:
@@ -24,6 +24,7 @@ visibility:
     context_mapping:
       user: '@user.current_user_context:current_user'
     roles:
+      authenticated: authenticated
       dsj_advanced_contributor: dsj_advanced_contributor
       dsj_content_editor: dsj_content_editor
       dsj_reviewer: dsj_reviewer

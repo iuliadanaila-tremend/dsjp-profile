@@ -8,8 +8,10 @@ dependencies:
     - search_api
 id: dsj_funding_opportunities_form_of_funding
 name: 'Form of funding'
-weight: -3
-min_count: 0
+weight: -1
+min_count: 1
+missing: false
+missing_label: others
 url_alias: form_of_funding
 facet_source_id: 'search_api:views_page__dsj_content_listing__funding_opportunities'
 field_identifier: field_dsj_form_of_funding
@@ -17,17 +19,21 @@ query_operator: or
 hard_limit: 0
 exclude: false
 use_hierarchy: true
-expand_hierarchy: true
+keep_hierarchy_parents_active: false
+hierarchy:
+  type: taxonomy
+  config: {  }
+expand_hierarchy: false
 enable_parent_when_child_gets_disabled: false
 widget:
   type: dropdown
   config:
     show_numbers: false
-    default_option_label: Choose
+    default_option_label: 'Please select'
 empty_behavior:
   behavior: none
 only_visible_when_facet_source_is_visible: true
-show_only_one_result: false
+show_only_one_result: true
 show_title: true
 processor_configs:
   display_value_widget_order:
@@ -40,6 +46,11 @@ processor_configs:
     processor_id: hide_1_result_facet
     weights:
       build: 50
+    settings: {  }
+  hierarchy_processor:
+    processor_id: hierarchy_processor
+    weights:
+      build: 100
     settings: {  }
   list_item:
     processor_id: list_item

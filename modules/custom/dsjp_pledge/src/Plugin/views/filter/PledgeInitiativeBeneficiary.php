@@ -47,12 +47,13 @@ class PledgeInitiativeBeneficiary extends InOperator {
    */
   public function generateOptions() {
     $options = [];
-    $query = $this->database->select('node__field_dsj_initiative_beneficiary', 'b')
-      ->fields('b', ['field_dsj_initiative_beneficiary_value'])
-      ->condition('b.field_dsj_initiative_beneficiary_status', 1)
-      ->distinct()
-      ->execute();
-    $results = $query->fetchAll(\PDO::FETCH_ASSOC);
+    $query = $this->database->select('node__field_dsj_initiative_beneficiary', 'b');
+    $query->innerJoin('node_field_data', 'nfd', 'b.entity_id = nfd.nid');
+    $query->fields('b', ['field_dsj_initiative_beneficiary_value']);
+    $query->condition('nfd.status', 1);
+    $query->condition('b.field_dsj_initiative_beneficiary_status', 1);
+    $query->distinct();
+    $results = $query->execute()->fetchAll(\PDO::FETCH_ASSOC);
 
     if (!empty($results)) {
       foreach ($results as $value) {
@@ -67,7 +68,7 @@ class PledgeInitiativeBeneficiary extends InOperator {
    * {@inheritdoc}
    */
   protected function opSimple() {
-    if (empty($this->value)) {
+    if (empty($this->value) || empty(reset($this->value))) {
       return;
     }
     $this->ensureMyTable();

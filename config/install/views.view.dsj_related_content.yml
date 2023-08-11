@@ -114,7 +114,7 @@ display:
         type: none
         options: {  }
       cache:
-        type: search_api_tag
+        type: none
         options: {  }
       empty: {  }
       sorts:
@@ -305,8 +305,11 @@ display:
         type: search_api
         options:
           view_modes:
+            'entity:group':
+              dsj_organization: default
             'entity:node':
               dsj_article: teaser
+              dsj_country_page: teaser
               dsj_digital_skills_resource: teaser
               dsj_discussion: related
               dsj_event: teaser
@@ -314,20 +317,40 @@ display:
               dsj_good_practice: teaser
               dsj_initiative: teaser
               dsj_landing_page: teaser
+              dsj_learning_content: teaser
+              dsj_learning_path: teaser
               dsj_national_coalition: teaser
               dsj_organization: teaser
               dsj_page: teaser
+              dsj_pledge: teaser
               dsj_skills_intelligence: teaser
               dsj_strategy: teaser
               dsj_training_offer: teaser
+            'entity:taxonomy_term':
+              dsj_type_of_article: default
+            'entity:user':
+              user: default
       query:
-        type: views_query
+        type: search_api_query
         options:
           bypass_access: false
           skip_access: false
           preserve_facet_query_args: false
       relationships: {  }
-      header: {  }
+      header:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text
+          empty: false
+          content:
+            value: 'Please check more content related to "[current-page:title]"'
+            format: full_html
+          tokenize: false
       footer: {  }
       display_extenders: {  }
     cache_metadata:
@@ -346,7 +369,9 @@ display:
     position: 1
     display_options:
       display_extenders:
-        metatag_display_extender: {  }
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
       block_description: 'Related Content'
       block_hide_empty: true
     cache_metadata:

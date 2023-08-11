@@ -61,3 +61,25 @@ function dsjp_content_update_8003() {
     }
   }
 }
+
+/**
+ * Move field_dsj_theme values to field_dsj_digital_technology in pledges.
+ */
+function dsjp_content_update_8004() {
+  // Assuming there are not many pledge nodes, we don't need to split in batch
+  // operations. Currently, in prod: 427.
+  $additional_mapping = [
+    'edge_computing' => 'http://data.europa.eu/uxp/det_106',
+    'robotic_process_automation' => 'http://data.europa.eu/uxp/det_107',
+  ];
+
+  // Or, import YAML config from an arbitrary file.
+  $configFiles = [
+    'field.storage.node.field_dsj_digital_technology',
+    'field.field.node.dsj_pledge.field_dsj_digital_technology',
+  ];
+
+  $installHelper = \Drupal::classResolver(InstallHelper::class);
+  $installHelper->updateConfigurations($configFiles);
+  $installHelper->moveValues('node', 'field_dsj_theme', 'field_dsj_digital_technology', $additional_mapping);
+}

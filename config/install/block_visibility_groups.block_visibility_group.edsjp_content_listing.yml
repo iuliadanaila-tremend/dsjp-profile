@@ -21,5 +21,5 @@ conditions:
     negate: false
     uuid: 904d17fe-f93e-4c5e-b10c-6f32b6a67ad6
     context_mapping: {  }
-    pages: "/resources\r\n/training-offers\r\n/events\r\n/initiatives\r\n/actions/european-initiatives\r\n/good-practices\r\n/funding-opportunities\r\n/articles\r\n/news\r\n/opinions\r\n/latest/news\r\n/latest/opinions\r\n/strategies\r\n/publications\r\n/organisations\r\n/listing\r\n/national-coalitions\r\n/community/members-directory\r\n/search\r\n/taxonomy/term/*\r\n/pledges2\r\n/pledges/organisations\r\n/pledges/pledger-organisations"
+    pages: "/resources\r\n/training-offers\r\n/events\r\n/initiatives\r\n/actions/european-initiatives\r\n/good-practices\r\n/funding-opportunities\r\n/articles\r\n/news\r\n/opinions\r\n/latest/news\r\n/latest/opinions\r\n/strategies\r\n/publications\r\n/organisations\r\n/listing\r\n/national-coalitions\r\n/community/networking/members-directory\r\n/search\r\n/taxonomy/term/*\r\n/community/networking/organisations\r\n/community/networking/organisations/pledgers\r\n/european-interactive-map/*/listing\r\n/inspiration/pledges\r\n/pledges\r\n/learning-content\r\n/learning-path"
 allow_other_conditions: false

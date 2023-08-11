@@ -114,6 +114,7 @@ class MentionsUserList extends ControllerBase {
       $entityIds = $query
         ->condition('status', 1)
         ->sort('name')
+        ->accessCheck(TRUE)
         ->execute();
       // Load the entities.
       $entities = $this->entityTypeManager->getStorage('user')->loadMultiple($entityIds);

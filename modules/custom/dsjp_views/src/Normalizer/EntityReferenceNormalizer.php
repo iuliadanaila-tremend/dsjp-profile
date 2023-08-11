@@ -55,7 +55,7 @@ class EntityReferenceNormalizer extends ComplexDataNormalizer {
       elseif ($object->getDataDefinition()->getSetting('target_type') == 'file') {
         $entity = $this->entityTypeManager->getStorage('file')->load($object->getValue()['target_id']);
         if ($entity instanceof FileInterface) {
-          $return['url'] = file_create_url($entity->getFileUri());
+          $return['url'] = $entity->createFileUrl(FALSE);
         }
       }
       // Show the node name.

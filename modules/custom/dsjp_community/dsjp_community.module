@@ -7,14 +7,15 @@
 
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Url;
-use Drupal\group\Entity\Group;
-use Drupal\node\NodeInterface;
-use Drupal\message\Entity\Message;
-use Drupal\group\Entity\GroupInterface;
-use Drupal\dsjp_community\Plugin\Filter\MentionsCustomFilter;
-use Drupal\group\Entity\GroupContent;
+use Drupal\Core\Link;
 use Drupal\Core\Render\BubbleableMetadata;
+use Drupal\Core\Url;
+use Drupal\dsjp_community\Plugin\Filter\MentionsCustomFilter;
+use Drupal\group\Entity\Group;
+use Drupal\group\Entity\GroupContent;
+use Drupal\group\Entity\GroupInterface;
+use Drupal\message\Entity\Message;
+use Drupal\node\NodeInterface;
 use Drupal\user\Entity\User;
 
 /**
@@ -132,6 +133,8 @@ function dsjp_community_group_content_insert(EntityInterface $entity) {
 
 /**
  * Implements hook_form_alter().
+ *
+ * phpcs:disable QualityAssurance.Functions.DrupalForbiddenHooks.ForbiddenHook
  */
 function dsjp_community_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   switch ($form_id) {
@@ -164,6 +167,7 @@ function dsjp_community_form_alter(&$form, FormStateInterface $form_state, $form
           ->condition('uid', $uid)
           ->condition('status', 1)
           ->range(0, 1)
+          ->accessCheck(TRUE)
           ->execute();
         if (empty($user_has_comments)) {
           $form['actions']['submit']['#submit'][] = 'dsjp_community_comment_submit';
@@ -182,10 +186,15 @@ function dsjp_community_form_alter(&$form, FormStateInterface $form_state, $form
     // Get the group from the route.
     $group = \Drupal::routeMatch()->getParameter('group');
     if ($group instanceof Group && 'dsj_public_group' === $group->bundle()) {
-      $markup = t('Confirm request to join the %title', ['%title' => $group->label()]);
+      $markup = '<span class="group-join-message">' . t('Request membership for group @title.', [
+        '@title' => $group->label(),
+      ]) . '</span>';
+      $markup_confirm = '<span class="group-join-message-confirm">' . t('Confirm request to join @title', [
+        '@title' => $group->label(),
+      ]) . '</span>';
       $form['help'] = [
         '#type' => 'item',
-        '#markup' => $markup,
+        '#markup' => $markup . '<br/>' . $markup_confirm,
       ];
     }
   }
@@ -564,4 +573,40 @@ function dsjp_community_tokens($type, $tokens, array $data, array $options, Bubb
  */
 function dsjp_community_entity_type_alter(array &$entity_types) {
   $entity_types['group_content']->setFormClass('group-leave', 'Drupal\dsjp_community\Form\GroupLeaveOverrideForm');
+  $entity_types['group_content']->setFormClass('delete', 'Drupal\dsjp_community\Form\GroupContentDeleteOverrideForm');
+}
+
+/**
+ * Helper function to generate the link to add existing Pledge to group.
+ *
+ * @return array|mixed[]|null
+ *   Return Link to add an exist Pledge node.
+ */
+function _dsjp_community_add_exist_related_content_link(array $roles = []): ?array {
+  $link = NULL;
+  $route_match = Drupal::routeMatch();
+  $group = $route_match->getParameter('group');
+
+  if (Drupal::currentUser()->isAuthenticated() && !empty($group) && $group instanceof Group) {
+    /** @var \Drupal\user\Entity\User $user */
+    $user = User::load(Drupal::currentUser()->id());
+    $access = $user->hasPermission('create dsj_pledge content');
+
+    if (!empty($roles)) {
+      foreach ($roles as $role) {
+        $access = $user->hasRole($role);
+        if ($access) {
+          break;
+        }
+      }
+    }
+
+    if ($access) {
+      $url = Url::fromRoute('entity.group_content.group_node_relate_page', ['group' => $group->id()]);
+      $link = Link::fromTextAndUrl(t('Add existing content'), $url)->toRenderable();
+      $link['#attributes']['class'][] = 'add-exist-pledge';
+    }
+  }
+
+  return $link;
 }

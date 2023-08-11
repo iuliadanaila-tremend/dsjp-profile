@@ -13,7 +13,7 @@ id: group.dsj_organization.field_dsj_town
 field_name: field_dsj_town
 entity_type: group
 bundle: dsj_organization
-label: Town
+label: City
 description: ''
 required: true
 translatable: false

@@ -88,7 +88,7 @@ class AustriaMigrationService implements MigrationServiceInterface {
     if (!empty($token)) {
       $options['query']['access_token'] = $token;
       $date = !empty($data['last_imported']) ? $data['last_imported'] : 1;
-      $url = $this->getBaseUrl($data) . 'AustriaMigrationService.php/' . $date;
+      $url = $this->getBaseUrl($data) . '/' . $date;
       try {
         $request = $this->requestEndpoint('GET', $url, $options);
         if ($request->getStatusCode() == 200) {
@@ -211,7 +211,7 @@ class AustriaMigrationService implements MigrationServiceInterface {
     $config = $this->state->get('group_nc_' . $data['group_id'], []);
     $options['query']['access_token'] = $config['access_token'];
     $date = !empty($data['last_imported']) ? $data['last_imported'] : 1;
-    $url = $this->getBaseUrl($data) . 'AustriaMigrationService.php/' . $date;
+    $url = $this->getBaseUrl($data) . '/' . $date;
     try {
       $request = $this->requestEndpoint('GET', $url, $options);
       $contents = $request->getBody()->getContents();

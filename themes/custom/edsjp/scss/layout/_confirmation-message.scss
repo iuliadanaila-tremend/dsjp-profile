@@ -1,0 +1,61 @@
+.group-content-confirm-form.confirmation.ecl-form,
+.bulk-group-invitation-confirm.confirmation.ecl-form,
+form[id$="-group-join-form"] {
+  background-color: $white;
+  border: 2px solid $yellow;
+  border-radius: $border-radius-default;
+  padding: $grid-gutter-width $grid-gutter-width * 0.75 0;
+
+  @include media-breakpoint-down (sm) {
+    margin-top: $grid-gutter-width-mobile * 2;
+  }
+
+  .group-leave-message,
+  .group-delete-member-message,
+  .group-invitation-confirm-message,
+  .group-join-message {
+    font-size: $font-size-2xl;
+    font-weight: bold;
+    margin-left: $grid-gutter-width;
+    display: block;
+    @include icon(danger);
+
+    &::before {
+      color: $yellow;
+      position: absolute;
+      left: $grid-gutter-width-mobile * 2.5;
+      top: $grid-gutter-width-mobile * 2;
+      @include media-breakpoint-down (sm) {
+        top: $grid-gutter-width-mobile * 4;
+      }
+
+    }
+
+    .placeholder {
+      margin-right: $grid-gutter-width / 8;
+    }
+  }
+
+  .group-leave-warning,
+  .group-delete-member-warning,
+  .group-invitation-confirm-recipients,
+  .group-join-message-confirm {
+    display: block;
+    margin: 0 0 0 $grid-gutter-width;
+    font-size: $font-size-lg;
+  }
+
+  .form-actions.ecl-form-group {
+    button {
+      margin-left: $grid-gutter-width;
+    }
+
+    a {
+      border: 2px solid $blue;
+      border-radius: $border-radius-default;
+      padding: $grid-gutter-width / 3.2 $grid-gutter-width * 0.75;
+      font-weight: bold;
+      font-size: $font-size-sm;
+    }
+  }
+}

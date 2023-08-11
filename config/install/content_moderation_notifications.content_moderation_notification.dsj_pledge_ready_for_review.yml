@@ -10,8 +10,8 @@ roles:
 author: false
 site_mail: false
 emails: ''
-subject: 'A new [node:content-type:name] was moved in Ready for Review.'
+subject: 'A new [node:content-type:name] has been submitted'
 body:
-  value: "<p>New [node:content-type:name] moved in Ready for Review.</p>\r\n\r\n<p>[node:title]: [node:url]</p>\r\n"
+  value: "<p>Dear reviewer,&nbsp;</p>\r\n\r\n<p>A new [node:content-type:name]&nbsp;has been submitted for review in the Digital Skills and Jobs Platform.&nbsp;</p>\r\n\r\n<p>[node:content-type:name] title: <a href=\"[node:url]\">[node:title]</a></p>\r\n\r\n<p>Submission date: [node:changed:default_timeless_short_date]</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Thank you for reviewing this content!&nbsp;</p>\r\n\r\n<p>The Platform Team&nbsp;</p>\r\n"
   format: full_html
 label: 'Pledge Ready for review'

@@ -10,6 +10,8 @@ id: dsj_listing_component_content_type
 name: 'Content type'
 weight: -11
 min_count: 1
+missing: false
+missing_label: others
 url_alias: content_type
 facet_source_id: 'search_api:views_block__dsj_search__listing_block'
 field_identifier: type
@@ -17,6 +19,10 @@ query_operator: or
 hard_limit: 0
 exclude: false
 use_hierarchy: false
+keep_hierarchy_parents_active: false
+hierarchy:
+  type: taxonomy
+  config: {  }
 expand_hierarchy: false
 enable_parent_when_child_gets_disabled: false
 widget:

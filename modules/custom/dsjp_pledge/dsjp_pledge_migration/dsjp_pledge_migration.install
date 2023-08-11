@@ -5,6 +5,9 @@
  * Provides install and update functionality for pledges migration.
  */
 
+use Drupal\node\Entity\Node;
+use Drupal\node\NodeInterface;
+
 /**
  * Implements hook_schema().
  */
@@ -44,4 +47,63 @@ function dsjp_pledge_migration_schema() {
   ];
 
   return $schema;
+}
+
+/**
+ * Update initiative type for existing initiatives.
+ */
+function dsjp_pledge_migration_update_9001(&$sandbox) {
+  $query = \Drupal::database()->select('node__field_dsj_initiative_type', 't')
+    ->fields('t', ['entity_id'])
+    ->condition('t.field_dsj_initiative_type_value', 'all');
+  $results = $query->execute()->fetchCol();
+  if (!empty($results)) {
+    foreach ($results as $entity_id) {
+      $node = Node::load($entity_id);
+      if ($node instanceof NodeInterface) {
+        $node->set('field_dsj_initiative_type', 'other');
+        $node->save();
+      }
+    }
+  }
+}
+
+/**
+ * Update organizations pledger status.
+ */
+function dsjp_pledge_migration_update_9002(&$sandbox) {
+  if (!isset($sandbox['total'])) {
+    $groups = \Drupal::entityTypeManager()->getStorage('group')->loadByProperties([
+      'type' => 'dsj_organization',
+    ]);
+    $chunks = array_chunk($groups, 10);
+    $sandbox['chunks'] = $chunks;
+    $sandbox['total'] = count($sandbox['chunks']);
+    $sandbox['current'] = 0;
+    if (empty($sandbox['total'])) {
+      $sandbox['#finished'] = 1;
+      return;
+    }
+  }
+  if (!empty($sandbox['chunks'])) {
+    foreach ($sandbox['chunks'][$sandbox['current']] as $group) {
+      $query = \Drupal::database()->select('group_content_field_data', 'gc')
+        ->fields('gc', ['id'])
+        ->condition('gc.type', 'group_content_type_f6f0037bdd458')
+        ->condition('gc.gid', $group->id())
+        ->countQuery();
+      $result = $query->execute()->fetchField();
+      if (!empty($result) && $result > 0) {
+        $group->set('field_dsj_is_pledger', TRUE);
+        $group->save();
+      }
+    }
+  }
+  $sandbox['current']++;
+  if ($sandbox['current'] >= $sandbox['total']) {
+    $sandbox['#finished'] = 1;
+  }
+  else {
+    $sandbox['#finished'] = ($sandbox['current'] / $sandbox['total']);
+  }
 }

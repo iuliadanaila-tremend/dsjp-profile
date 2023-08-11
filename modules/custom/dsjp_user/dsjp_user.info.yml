@@ -2,9 +2,9 @@ name: dsjp_user
 type: module
 description: Custom User related functionalities.
 package: Custom
-core: 8.x
+
 php: 7.3
 weight: 1
-core_version_requirement: ^8 || ^9
+core_version_requirement: ^9 || ^10
 dependencies:
   - drupal:legal

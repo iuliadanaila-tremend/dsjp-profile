@@ -92,7 +92,7 @@ class CustomFieldEntityLookup extends ProcessPluginBase implements ContainerFact
     else {
       $query->condition($this->configuration['value_field'], $value);
     }
-    $result = $query->execute();
+    $result = $query->accessCheck(TRUE)->execute();
 
     if (!empty($result)) {
       $entity = $this->entityTypeManager->getStorage($this->configuration['entity_type'])->load(reset($result));

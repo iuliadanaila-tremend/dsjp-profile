@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: dsj_listing_components
+label: 'Listing Components'
+revision: 0
+description: 'Use this block if you want to create components linked to listing pages.'

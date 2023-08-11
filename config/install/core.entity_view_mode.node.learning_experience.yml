@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.learning_experience
+label: 'Learning experience'
+targetEntityType: node
+cache: true

@@ -11,7 +11,7 @@ dependencies:
 id: pledgeorganization
 theme: edsjp
 region: right_sidebar
-weight: -12
+weight: -16
 provider: null
 plugin: pledge_organization_block
 settings:
@@ -33,5 +33,5 @@ visibility:
       dsj_pledge: dsj_pledge
   request_path:
     id: request_path
-    negate: false
-    pages: '/node/*'
+    negate: true
+    pages: '/node/*/edit'

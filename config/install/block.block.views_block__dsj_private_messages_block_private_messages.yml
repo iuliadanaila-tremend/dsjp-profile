@@ -12,7 +12,7 @@ dependencies:
 id: views_block__dsj_private_messages_block_private_messages
 theme: edsjp
 region: content
-weight: -3
+weight: -6
 provider: null
 plugin: 'views_block:dsj_private_messages-block_private_messages'
 settings:

@@ -1,0 +1,6 @@
+dsj_map.country_listing:
+  path: '/european-interactive-map/{country_name}/listing'
+  defaults:
+    _controller: '\Drupal\dsjp_map\Controller\EuropeanMapController::listing'
+  requirements:
+    _permission: 'access content'

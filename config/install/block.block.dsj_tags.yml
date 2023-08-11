@@ -11,19 +11,20 @@ dependencies:
 id: dsj_tags
 theme: edsjp
 region: right_sidebar
-weight: -8
+weight: -12
 provider: null
 plugin: dsjp_facets_block
 settings:
   id: dsjp_facets_block
-  label: Tags
+  label: 'Content by topic'
   label_display: visible
   provider: dsjp_content
   show_title: 0
   exclude_empty_facets: 1
   include_search: 0
   exclude_fields: ''
-  select_fields: field_dsj_digital_technology
+  select_fields: 'field_dsj_digital_technology,field_dsj_type_of_initiative,field_dsj_skills_resource_type,field_dsj_initiative_type'
+  titles: "latest/news|Explore news by topic\r\nlatest/opinions|Explore opinions by topic\r\nlatest/briefs|Explore briefs by topic\r\ninspiration/resources|Explore resources by topic and type\r\nlatest/events|Explore events by topic and date\r\nopportunities/funding|Explore funding by topic\r\ninspiration/good-practices|Explore good practices by topic and geographic context\r\nactions/european-initiatives|Explore initiatives by topic and geographic context\r\ninspiration/pledges|Explore pledges by topic and audience\r\ninspiration/research|Explore publications by topic\r\nactions/national-initiatives/national-strategies|Explore strategies by topic and geographic context\r\nopportunities/training|Explore training by topic\r\npledges|Explore pledges by topic and audience\r\neuropean-interactive-map|Explore more content by topic\r\nopportunities/learning-content|Explore learning contents by topic\r\nopportunities/learning-path|Explore learning paths by topic"
 visibility:
   condition_group:
     id: condition_group

@@ -1,5 +1,5 @@
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - views.view.pledges
@@ -29,4 +29,4 @@ visibility:
   request_path:
     id: request_path
     negate: false
-    pages: /pledges
+    pages: /inspiration/pledges

@@ -111,6 +111,7 @@ class WordpressMigrationService implements MigrationServiceInterface {
     $options = [
       'headers' => ['Content-Type' => "application/json"],
     ];
+
     $options['query'] = [
       'page' => $page,
       'orderby' => 'modified',

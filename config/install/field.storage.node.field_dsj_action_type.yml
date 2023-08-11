@@ -12,25 +12,25 @@ settings:
   allowed_values:
     -
       value: training
-      label: 'Tier 1 - Training'
+      label: Training
     -
       value: placement
-      label: 'Tier 1 - Placement'
+      label: Placement
     -
       value: awareness_raising
-      label: 'Tier 2 - Awareness Raising'
+      label: 'Awareness Raising'
     -
       value: courses_programmes
-      label: 'Tier 2 - Courses/ Programmes'
+      label: 'Courses/ Programmes'
     -
       value: facilitating_employment
-      label: 'Tier 2 - Facilitating Employment'
+      label: 'Facilitating Employment'
     -
       value: collaboration
-      label: 'Tier 2 - Collaboration'
+      label: Collaboration
     -
       value: honorary_pledge
-      label: 'Tier 3 - Honorary Pledge'
+      label: 'Honorary Pledge'
   allowed_values_function: ''
 module: options
 locked: false

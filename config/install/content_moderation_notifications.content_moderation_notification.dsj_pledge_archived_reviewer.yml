@@ -1,0 +1,17 @@
+langcode: en
+status: true
+dependencies: {  }
+id: dsj_pledge_archived_reviewer
+workflow: dsj_pledge_workflow
+transitions:
+  archive: archive
+roles:
+  dsj_reviewer: dsj_reviewer
+author: false
+site_mail: false
+emails: ''
+subject: 'A [node:content-type:name] has been archived'
+body:
+  value: "<p>Dear reviewer,&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>A [node:content-type:name] has been archived by its owner.&nbsp;</p>\r\n\r\n<>[node:content-type:name] title: [node:title]</p>\r\n\r\n<p>Submission date: [node:changed:default_timeless_short_date]</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Thank you for reviewing this content!&nbsp;</p>\r\n\r\n<p>The Platform Team&nbsp;</p>\r\n"
+  format: full_html
+label: 'Pledge Archived - Reviewer'

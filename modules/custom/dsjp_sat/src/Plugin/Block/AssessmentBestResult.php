@@ -67,11 +67,15 @@ class AssessmentBestResult extends BlockBase implements ContainerFactoryPluginIn
         $bestResults = _dsjp_sat_map_skill_data($bestResults);
       }
     }
-    return [
-      '#theme' => 'dsjp_assessment',
-      '#skills' => $bestResults,
-      '#overall' => max($bestResults),
-    ];
+    if (!empty($bestResults)) {
+      return [
+        '#theme' => 'dsjp_assessment',
+        '#skills' => $bestResults,
+        '#overall' => max($bestResults),
+      ];
+    }
+
+    return [];
   }
 
   /**

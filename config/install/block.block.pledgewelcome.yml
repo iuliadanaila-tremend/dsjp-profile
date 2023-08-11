@@ -10,7 +10,7 @@ dependencies:
 id: pledgewelcome
 theme: edsjp
 region: content
-weight: -7
+weight: -10
 provider: null
 plugin: pledge_welcome_block
 settings:
@@ -19,7 +19,7 @@ settings:
   label_display: '0'
   provider: dsjp_pledge
   text_content:
-    value: "<h2>Welcome</h2>\r\n\r\n<p>The Pledge Viewer is the home of the Digital Skills and Jobs Coalition for making, viewing and managing pledges and membership. Register to apply to become a member and join hundreds of organisations who demonstrate their role in closing the digital skills gap in Europe.</p>\r\n\r\n<p>&nbsp;</p>\r\n"
+    value: "\r\n<p>A Pledge is a commitment made on top of the core filed of activity of an organisation, big or small, private, public or non-profit, to make a direct contribution to reduce the digital skills gap in Europe. Commitments are provided in good faith and free of conditions to the beneficiaries. \r\n\r\nBrowse through pledges to see how organisations contribute to reaching the Digital Decade targets of training 20 million ICT Specialists and ensuring basic digital skills for 80 % of the population.  .</p>\r\n\r\n<p>&nbsp;</p>\r\n"
     format: plain_text
 visibility:
   condition_group:
@@ -29,4 +29,4 @@ visibility:
   request_path:
     id: request_path
     negate: false
-    pages: /pledges
+    pages: /inspiration/pledges

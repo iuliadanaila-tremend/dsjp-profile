@@ -8,9 +8,19 @@
           $('div#tooltip-' + countryId).toggleClass('hidden');
         })
         .on('click', function () {
-          $('.world-map-container').addClass("info-opened");
+          $('div.active-country svg').each(function(){
+            $(this).find("path").css({ fill: $(this).attr('originalfill') });
+          });
+          $('div.active-country').removeClass('active-country');
+          $('.world-map-container').addClass('info-opened');
           $('div.country-container:not(.hidden)').toggleClass('hidden');
           $('div.country-container.code-' + $(this).find('svg').attr('id')).toggleClass('hidden');
+
+          $(this).addClass('active-country');
+          $(this).each(function(){
+            $(this).find("path").css({ fill: '#b13e65' });
+          });
+          $('#'+ $('#world-map').attr("data-active-country")).attr('fill', $('#world-map').attr("data-active-color"));
         });
     }
   };

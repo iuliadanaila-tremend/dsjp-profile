@@ -1,0 +1,24 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dsj_target_audience
+    - node.type.dsj_learning_content
+  module:
+    - options
+    - tmgmt_content
+third_party_settings:
+  tmgmt_content:
+    excluded: false
+id: node.dsj_learning_content.field_dsj_target_audience
+field_name: field_dsj_target_audience
+entity_type: node
+bundle: dsj_learning_content
+label: 'Target audience'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

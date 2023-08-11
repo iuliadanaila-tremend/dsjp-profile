@@ -15,6 +15,9 @@ function dsjp_map_preprocess_paragraph(&$variables) {
 
   $paragraph = $variables['paragraph'];
   if ($paragraph->bundle() == 'dsj_map') {
+
+    $country_service = \Drupal::service('dsjp_map.country_service');
+
     $colors = [
       "#4073AF",
       "#004494",
@@ -22,49 +25,7 @@ function dsjp_map_preprocess_paragraph(&$variables) {
       "#003776",
     ];
 
-    $countriesMap = [
-      'BEL' => 'BE',
-      'BGR' => 'BG',
-      'BIH' => 'BA',
-      'BLR' => 'BY',
-      'SRB' => 'RS',
-      'ROU' => 'RO',
-      'GRC' => 'EL',
-      'GBR' => 'UK',
-      'HRV' => 'HR',
-      'HUN' => 'HU',
-      'PRT' => 'PT-',
-      'POL' => 'PL',
-      'EST' => 'EE',
-      'ITA' => 'IT',
-      'ESP' => 'ES-',
-      'MNE' => 'ME',
-      'MDA' => 'MD',
-      'MKD' => 'MK',
-      'MLT' => 'MT',
-      'FRA' => 'FR-',
-      'FIN' => 'FI',
-      'NLD' => 'NL',
-      'NOR' => 'NO',
-      'CHE' => 'CH',
-      'CZE' => 'CZ',
-      'SVK' => 'SK',
-      'SVN' => 'SI',
-      'SWE' => 'SE',
-      'DNK' => 'DK',
-      'DEU' => 'DE',
-      'LVA' => 'LV',
-      'LTU' => 'LT',
-      'LUX' => 'LU',
-      'ISL' => 'IS',
-      'ALB' => 'AL',
-      'AUT' => 'AT',
-      'ALA' => 'AX',
-      'IRL' => 'IE',
-      'UKR' => 'UA',
-      'CYP' => 'CY',
-      'UK' => 'UK',
-    ];
+    $countriesMap = $country_service->getCountriesMap();
 
     // Set defaults for small countries data.
     $variables['small_countries'] = [
@@ -97,7 +58,7 @@ function dsjp_map_preprocess_paragraph(&$variables) {
       $chunkSize,
       $intervals,
       $avg,
-    ] = _dsj_map_get_scores_interval($components, $eu_average);
+    ] = dsjp_map_get_scores_interval($components, $eu_average);
 
     if (!empty($components)) {
       foreach ($components as $component) {
@@ -113,7 +74,6 @@ function dsjp_map_preprocess_paragraph(&$variables) {
           $segment = ($score != $maxScore) ? floor(($score - $minScore) / $chunkSize) : 3;
           $data['color'][$code] = $colors[$segment];
           $data['threeCode'][$code] = $threeCode;
-
           $variables['countries'][$code] = [
             'code' => $code,
             'threeCode' => $threeCode,
@@ -124,6 +84,7 @@ function dsjp_map_preprocess_paragraph(&$variables) {
             'avg_score' => $avg,
             'avg_position' => (100 * ($avg - $minScore)) / ($maxScore - $minScore),
             'title' => $component->get('field_dsj_title')->value,
+            'linked_page' => _dsjp_map_get_country_page_by_tid($country_term->id()),
           ];
           // For some countries, we need to pass some variables to twig.
           if (in_array($code, ['MT', 'CY'])) {
@@ -146,7 +107,7 @@ function dsjp_map_preprocess_paragraph(&$variables) {
       '#value' => Json::encode([
         'service' => 'map',
         'version' => '3.0',
-        'custom' => $base_url . '/' . drupal_get_path('module', 'dsjp_map') . '/js/dsjp_map.js',
+        'custom' => $base_url . '/' . \Drupal::service('extension.list.module')->getPath('dsjp_map') . '/js/dsjp_map.js',
       ]),
       '#attributes' => ['type' => 'application/json'],
     ];
@@ -168,7 +129,7 @@ function dsjp_map_preprocess_paragraph(&$variables) {
  * @return int[]
  *   Return min and max scores for map
  */
-function _dsj_map_get_scores_interval(array $components, $eu_average): array {
+function  dsjp_map_get_scores_interval(array $components, $eu_average): array {
   $minScore = $maxScore = 0;
   $sum = 0;
   $avg = 0;
@@ -244,4 +205,82 @@ function _dsjp_map_get_country_code_by_name($skosCode, array $countriesMap) {
   $twoCode = $countriesMap[$threeCode];
 
   return [$twoCode, $threeCode];
+}
+
+/**
+ * Gets the country page CT by country tid.
+ *
+ * @param int $tid
+ *   Country tid.
+ *
+ * @return false
+ *   The return value.
+ *
+ * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+ * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+ */
+function _dsjp_map_get_country_page_by_tid($tid) {
+  $countryPages = \Drupal::entityTypeManager()->getStorage('node')->loadByProperties([
+    'field_dsj_geographic_scope' => $tid,
+    'type' => 'dsj_country_page',
+  ]);
+
+  if (!empty($countryPages)) {
+    $node = array_shift($countryPages);
+    return $node->toUrl()->toString();
+  }
+
+  return FALSE;
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function dsjp_map_preprocess_node(&$variables) {
+  if ($variables['node']->getType() !== 'dsj_country_page') {
+    return FALSE;
+  }
+  $country_service = \Drupal::service('dsjp_map.country_service');
+
+  $country_field = $variables['node']->get('field_dsj_geographic_scope')
+    ->referencedEntities();
+  $country_term = reset($country_field);
+
+  // Calculate progress variables.
+  $country_codes = $country_service->getCountriesMap();
+
+  if ($country_term) {
+    [$code, $threeCode] = _dsjp_map_get_country_code_by_name($country_term->get('field_dsj_country_code')->getValue()[0]['target_id'], $country_codes);
+
+    $variables['threeCode'] = mb_strtolower($threeCode);
+
+    $all_countries = $country_service->getAllCountryPages();
+    $override_avg = $country_service->getMapAverage();
+    $intervals = $country_service->getScoresIntervals($all_countries, $override_avg);
+    $score = $variables['node']->get('field_dsj_score')->value;
+    $variables['country'] = [
+      'code' => $code,
+      'threeCode' => $threeCode,
+      'label' => $country_term->label(),
+      'score' => $score,
+      'position' => (100 * ($score - $intervals['minScore'])) / ($intervals['maxScore'] - $intervals['minScore']),
+      'avg_score' => $intervals['avg'],
+      'avg_position' => (100 * ($intervals['avg'] - $intervals['minScore'])) / ($intervals['maxScore'] - $intervals['minScore']),
+    ];
+    $variables['colors'] = $country_service->getProgressColors();
+    $variables['intervals'] = $intervals['intervals'];
+
+    // Add regionally related views block.
+    $variables['regionaly_related_view_block'] = [
+      '#type' => 'html_tag',
+      '#tag' => 'div',
+      '#prefix' => '<div class="ecl-container"><div class="ecl-row"><div class="ecl-col-xl-12">',
+      'suffix' => '</div></div></div>',
+    ];
+    $variables['regionaly_related_view_block']['header'] = $country_service->getRegionRelatedContentHeader($country_term);
+    $variables['regionaly_related_view_block']['view'] = $country_service->getRegionRelatedContentView($country_term->id());
+  }
+
+  // Add library for the flag.
+  $variables['#attached']['library'][] = 'dsjp_map/flags';
 }

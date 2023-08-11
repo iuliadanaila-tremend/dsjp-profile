@@ -75,7 +75,7 @@ display:
         type: some
         options:
           offset: 0
-          items_per_page: 2
+          items_per_page: 3
       exposed_form:
         type: basic
         options:
@@ -277,13 +277,15 @@ display:
       tags: {  }
   dsj_two_more:
     id: dsj_two_more
-    display_title: 'Upcoming 2 events'
+    display_title: 'Upcoming 3 events'
     display_plugin: block
     position: 1
     display_options:
       display_description: ''
       display_extenders:
-        metatag_display_extender: {  }
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
       allow:
         items_per_page: false
     cache_metadata:

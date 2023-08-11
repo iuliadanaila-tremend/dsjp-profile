@@ -8,8 +8,10 @@ dependencies:
     - search_api
 id: dsj_training_offers_target_language
 name: 'Target language'
-weight: -4
+weight: -3
 min_count: 1
+missing: false
+missing_label: others
 url_alias: dsj_training_offers_target_language
 facet_source_id: 'search_api:views_page__dsj_content_listing__training_offers'
 field_identifier: field_dsj_target_language
@@ -17,6 +19,10 @@ query_operator: and
 hard_limit: 0
 exclude: false
 use_hierarchy: false
+keep_hierarchy_parents_active: false
+hierarchy:
+  type: taxonomy
+  config: {  }
 expand_hierarchy: false
 enable_parent_when_child_gets_disabled: false
 widget:

@@ -10,6 +10,8 @@ id: dsj_list_created
 name: 'Created date'
 weight: -8
 min_count: 1
+missing: false
+missing_label: others
 url_alias: created
 facet_source_id: 'search_api:views_page__dsj_search__page_2'
 field_identifier: created
@@ -17,6 +19,10 @@ query_operator: and
 hard_limit: 0
 exclude: false
 use_hierarchy: false
+keep_hierarchy_parents_active: false
+hierarchy:
+  type: taxonomy
+  config: {  }
 expand_hierarchy: false
 enable_parent_when_child_gets_disabled: false
 widget:

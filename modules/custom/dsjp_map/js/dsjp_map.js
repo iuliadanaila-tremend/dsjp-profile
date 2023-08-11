@@ -7,15 +7,15 @@
       map: {
         center: [51, 16],
         zoom: 4.3,
-        minZoom: 4.3,
+        minZoom: 3,
         maxZoom: 10,
         background: false,
         // height: 500,
-        epsg: 3035,
-        maxBounds: [
-          [45.80335250387521, 75.95315876396032],
-          [25.192146759129614, -32.18334520833237]
-        ],
+        // epsg: 3035,
+        // maxBounds: [
+        //   [45.80335250387521, 75.95315876396032],
+        //   [25.192146759129614, -32.18334520833237]
+        // ],
       },
       config: {
         menu: false,
@@ -23,6 +23,29 @@
     })
     .ready(function (map) {
       $('.wt-map.wtWaiting').css('display', 'none');
+      var prevLayerClicked = null;
+
+      function originalStyle(layer, CNTR_ID) {
+        var excludedCountries = ['RU', 'TR'];
+        var layerColor = "#ffffff";
+        if (typeof mapColor[CNTR_ID] !== "undefined") {
+          layerColor = mapColor[CNTR_ID];
+        }
+        else if ($.inArray(CNTR_ID, excludedCountries) !== -1) {
+          layerColor = '#E0ECFD';
+        }
+        else if (CNTR_ID === 'KS') {
+          layerColor = '#F8F8F8';
+        }
+        return {
+          weight: 3,
+          fillColor: layerColor,
+          color: "#E0ECFD",
+          fillOpacity: 1,
+          dashArray: "3",
+          stroke: true,
+        };
+      }
       map
         .countries(drupalSettings.dsjp_map.mapData.countries, {
           style: function (layer) {
@@ -48,15 +71,32 @@
           },
           events: {
             click: function (layer) {
+              // Restyle the small countries - Malta, Cyprus
+              $('div.active-country svg').each(function(){
+                $(this).find("path").css({ fill: $(this).attr('originalfill') });
+              });
+              $("active-country").removeClass("active-country");
+              if (prevLayerClicked !== null) {
+                prevLayerClicked.setStyle(originalStyle(prevLayerClicked, prevLayerClicked.feature.properties.CNTR_ID));
+              }
               // zoom in only if we have data for the given country.
               if (typeof mapColor[layer.feature.properties.CNTR_ID] !== 'undefined') {
                 map.fitBounds(layer.getBounds());
               }
               $(".world-map-container").addClass("info-opened");
               $("div.country-container:not(.hidden)").toggleClass("hidden");
-              $(
-                "div.country-container.code-" + layer.feature.properties.CNTR_ID
-              ).toggleClass("hidden");
+              $("div.country-container.code-" + layer.feature.properties.CNTR_ID).toggleClass("hidden");
+
+              $("div.country-name--" + layer.feature.properties.CNTR_ID).addClass("active-country");
+              layer.setStyle({
+                weight: 5,
+                fillColor: '#B13E65',
+              });
+              prevLayerClicked = layer;
+              $('#world-map').attr({
+                "data-active-country": layer._path.id,
+                "data-active-color": mapColor[layer.feature.properties.CNTR_ID],
+              });
             },
             tooltip: function (layer) {
               var tpString = tooltipData[layer.feature.properties.CNTR_ID];
@@ -109,8 +149,7 @@
           },
         })
         .addTo(map);
-
-    });
+  });
 
   $(".map-toggler").on("click", function (event) {
     $(".map-wrapper").addClass("map-opened");

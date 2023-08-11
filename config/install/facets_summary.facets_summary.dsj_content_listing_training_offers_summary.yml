@@ -1,0 +1,72 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - search_api.index.main_content
+    - views.view.dsj_content_listing
+  module:
+    - search_api
+id: dsj_content_listing_training_offers_summary
+name: Summary
+facet_source_id: 'search_api:views_page__dsj_content_listing__training_offers'
+processor_configs:
+  hide_when_not_rendered:
+    processor_id: hide_when_not_rendered
+    weights:
+      build: '-8'
+    settings: {  }
+  reset_facets:
+    processor_id: reset_facets
+    weights:
+      build: '-10'
+    settings:
+      link_text: 'Clear all filters'
+      position: before
+  show_summary_with_reset:
+    processor_id: show_summary_with_reset
+    weights:
+      build: '-9'
+    settings: {  }
+facets:
+  dsj_training_offers_geographic_scope:
+    checked: true
+    label: Country
+    separator: ''
+    show_count: false
+    weight: 0
+  dsj_training_offers_target_language:
+    checked: true
+    label: 'Target language'
+    separator: ''
+    show_count: false
+    weight: 0
+  dsj_training_offers_typology_of_training:
+    checked: true
+    label: 'Typology of training opportunties'
+    separator: ''
+    show_count: false
+    weight: 0
+  dsj_training_offers_digital_technology:
+    checked: true
+    label: Tags
+    separator: ''
+    show_count: false
+    weight: 0
+  dsj_training_offers_training_duration:
+    checked: true
+    label: 'Training duration'
+    separator: ''
+    show_count: false
+    weight: 0
+  dsj_training_offers_effort:
+    checked: true
+    label: Effort
+    separator: ''
+    show_count: false
+    weight: 0
+  dsj_training_offers_digital_skill_level:
+    checked: true
+    label: 'Digital Skill level'
+    separator: ''
+    show_count: false
+    weight: 0

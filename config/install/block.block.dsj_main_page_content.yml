@@ -8,7 +8,7 @@ dependencies:
 id: dsj_main_page_content
 theme: edsjp
 region: content
-weight: -6
+weight: -9
 provider: null
 plugin: system_main_block
 settings:

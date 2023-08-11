@@ -4,7 +4,6 @@ dependencies:
   config:
     - field.field.paragraph.dsj_organisation_contact.field_dsj_contact_email
     - field.field.paragraph.dsj_organisation_contact.field_dsj_contact_name
-    - field.field.paragraph.dsj_organisation_contact.field_dsj_job_title
     - field.field.paragraph.dsj_organisation_contact.field_dsj_link
     - paragraphs.paragraphs_type.dsj_organisation_contact
   module:
@@ -28,14 +27,6 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 0
-    region: content
-  field_dsj_job_title:
-    type: string
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 2
     region: content
   field_dsj_link:
     type: link

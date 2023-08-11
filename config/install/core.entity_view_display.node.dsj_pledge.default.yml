@@ -4,11 +4,12 @@ dependencies:
   config:
     - field.field.node.dsj_pledge.body
     - field.field.node.dsj_pledge.field_dsj_approved_date
+    - field.field.node.dsj_pledge.field_dsj_digital_technology
     - field.field.node.dsj_pledge.field_dsj_geographic_scope
+    - field.field.node.dsj_pledge.field_dsj_linked_content
     - field.field.node.dsj_pledge.field_dsj_payment_agreed
     - field.field.node.dsj_pledge.field_dsj_pledge_dates
     - field.field.node.dsj_pledge.field_dsj_pledges_activity_pay
-    - field.field.node.dsj_pledge.field_dsj_sharing_best_practices
     - field.field.node.dsj_pledge.field_dsj_store_impact
     - field.field.node.dsj_pledge.field_dsj_submitted_date
     - field.field.node.dsj_pledge.field_dsj_theme
@@ -35,6 +36,13 @@ content:
     third_party_settings: {  }
     weight: 0
     region: content
+  field_dsj_digital_technology:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
   field_dsj_geographic_scope:
     type: entity_reference_label
     label: inline
@@ -53,27 +61,10 @@ content:
     third_party_settings: {  }
     weight: 3
     region: content
-  field_dsj_pledges_activity_pay:
-    type: boolean
-    label: inline
-    settings:
-      format: yes-no
-      format_custom_false: ''
-      format_custom_true: ''
-    third_party_settings: {  }
-    weight: 5
-    region: content
-  field_dsj_theme:
-    type: list_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 7
-    region: content
   flag_voting:
     settings: {  }
     third_party_settings: {  }
-    weight: 6
+    weight: 5
     region: content
   links:
     settings: {  }
@@ -82,10 +73,12 @@ content:
     region: content
 hidden:
   field_dsj_approved_date: true
+  field_dsj_linked_content: true
   field_dsj_payment_agreed: true
-  field_dsj_sharing_best_practices: true
+  field_dsj_pledges_activity_pay: true
   field_dsj_store_impact: true
   field_dsj_submitted_date: true
+  field_dsj_theme: true
   langcode: true
   private_message_link: true
   search_api_excerpt: true

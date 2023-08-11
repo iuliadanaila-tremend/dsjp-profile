@@ -405,7 +405,7 @@ display:
             'entity:user':
               user: listing
       query:
-        type: views_query
+        type: search_api_query
         options:
           bypass_access: false
           skip_access: false
@@ -746,7 +746,7 @@ display:
         metatag_display_extender:
           metatags: {  }
           tokenize: false
-      path: community/members-directory/export
+      path: community/networking/members-directory/export
       displays:
         dsj_members_directory: dsj_members_directory
         default: '0'
@@ -786,7 +786,7 @@ display:
         metatag_display_extender:
           metatags: {  }
           tokenize: false
-      path: community/members-directory
+      path: community/networking/members-directory
     cache_metadata:
       max-age: -1
       contexts:

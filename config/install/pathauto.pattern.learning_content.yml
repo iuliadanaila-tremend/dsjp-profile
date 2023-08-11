@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: learning_content
+label: 'Learning content'
+type: 'canonical_entities:node'
+pattern: 'opportunities/learning-content/[node:title]'
+selection_criteria:
+  7f0dd58a-29e3-4ce8-a642-05d62ee55b7b:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 7f0dd58a-29e3-4ce8-a642-05d62ee55b7b
+    context_mapping:
+      node: node
+    bundles:
+      dsj_learning_content: dsj_learning_content
+selection_logic: and
+weight: -5
+relationships: {  }

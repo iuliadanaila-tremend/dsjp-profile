@@ -70,6 +70,15 @@ settings:
     -
       value: 'http://data.europa.eu/uxp/437655'
       label: 'Digital skills'
+    -
+      value: 'http://data.europa.eu/uxp/det_107'
+      label: 'Robotic process automation'
+    -
+      value: 'http://data.europa.eu/uxp/det_106'
+      label: 'Edge computing'
+    -
+      value: 'http://data.europa.eu/uxp/5383'
+      label: 'Digital transformation'
   allowed_values_function: ''
 module: options
 locked: false

@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.dsj_digital_skills_resource.field_dsj_geographic_scope
     - field.field.node.dsj_digital_skills_resource.field_dsj_image
     - field.field.node.dsj_digital_skills_resource.field_dsj_industry
+    - field.field.node.dsj_digital_skills_resource.field_dsj_linked_content
     - field.field.node.dsj_digital_skills_resource.field_dsj_main_file_for_download
     - field.field.node.dsj_digital_skills_resource.field_dsj_meta_tags
     - field.field.node.dsj_digital_skills_resource.field_dsj_methodology
@@ -27,7 +28,6 @@ dependencies:
     - field.field.node.dsj_digital_skills_resource.field_dsj_website_link
     - image.style.thumbnail
     - node.type.dsj_digital_skills_resource
-    - workflows.workflow.dsj_main_workflow
   module:
     - comment
     - content_moderation
@@ -112,6 +112,16 @@ content:
     weight: 9
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_dsj_linked_content:
+    type: entity_reference_autocomplete
+    weight: 53
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   field_dsj_main_file_for_download:
     type: file_generic

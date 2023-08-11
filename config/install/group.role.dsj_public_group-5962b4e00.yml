@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.dsj_public_group
+  enforced:
+    config:
+      - user.role.dsj_api_user
+id: dsj_public_group-5962b4e00
+label: 'Api user'
+weight: 4
+internal: true
+audience: outsider
+group_type: dsj_public_group
+permissions_ui: false
+permissions: {  }

@@ -4,6 +4,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.card
     - field.field.node.dsj_funding_opportunity.body
+    - field.field.node.dsj_funding_opportunity.field_dsj_application_deadline
     - field.field.node.dsj_funding_opportunity.field_dsj_author
     - field.field.node.dsj_funding_opportunity.field_dsj_beneficiary
     - field.field.node.dsj_funding_opportunity.field_dsj_comments
@@ -16,6 +17,7 @@ dependencies:
     - field.field.node.dsj_funding_opportunity.field_dsj_geographic_scope
     - field.field.node.dsj_funding_opportunity.field_dsj_image
     - field.field.node.dsj_funding_opportunity.field_dsj_industry
+    - field.field.node.dsj_funding_opportunity.field_dsj_linked_content
     - field.field.node.dsj_funding_opportunity.field_dsj_meta_tags
     - field.field.node.dsj_funding_opportunity.field_dsj_publish_in_core
     - field.field.node.dsj_funding_opportunity.field_dsj_representative_image
@@ -78,6 +80,7 @@ content:
 hidden:
   body: true
   content_moderation_control: true
+  field_dsj_application_deadline: true
   field_dsj_author: true
   field_dsj_beneficiary: true
   field_dsj_comments: true
@@ -89,6 +92,7 @@ hidden:
   field_dsj_form_of_funding: true
   field_dsj_geographic_scope: true
   field_dsj_industry: true
+  field_dsj_linked_content: true
   field_dsj_meta_tags: true
   field_dsj_target_audience: true
   field_dsj_target_group: true

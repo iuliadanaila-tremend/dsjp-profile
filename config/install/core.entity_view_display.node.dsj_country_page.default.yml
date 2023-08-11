@@ -1,0 +1,73 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.dsj_country_page.body
+    - field.field.node.dsj_country_page.field_dsj_components
+    - field.field.node.dsj_country_page.field_dsj_desi_introduction
+    - field.field.node.dsj_country_page.field_dsj_desi_title
+    - field.field.node.dsj_country_page.field_dsj_geographic_scope
+    - field.field.node.dsj_country_page.field_dsj_map_body
+    - field.field.node.dsj_country_page.field_dsj_map_title
+    - field.field.node.dsj_country_page.field_dsj_map_tooltip
+    - field.field.node.dsj_country_page.field_dsj_score
+    - node.type.dsj_country_page
+  module:
+    - entity_reference_revisions
+    - text
+    - user
+id: node.dsj_country_page.default
+targetEntityType: node
+bundle: dsj_country_page
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_dsj_components:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_dsj_desi_introduction:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_dsj_desi_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  field_dsj_geographic_scope: true
+  field_dsj_map_body: true
+  field_dsj_map_title: true
+  field_dsj_map_tooltip: true
+  field_dsj_score: true
+  langcode: true
+  private_message_link: true
+  search_api_excerpt: true

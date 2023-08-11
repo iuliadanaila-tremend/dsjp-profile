@@ -2,7 +2,6 @@
 
 namespace Drupal\dsjp_content\Plugin\search_api\processor;
 
-use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Entity\TypedData\EntityDataDefinitionInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Plugin\PluginFormInterface;
@@ -53,32 +52,9 @@ class AddReverseHierarchy extends ProcessorPluginBase implements PluginFormInter
     /** @var static $processor */
     $processor = parent::create($container, $configuration, $plugin_id, $plugin_definition);
 
-    $processor->setEntityTypeManager($container->get('entity_type.manager'));
+    $processor->entityTypeManager = $container->get('entity_type.manager');
 
     return $processor;
-  }
-
-  /**
-   * Retrieves the entity type manager service.
-   *
-   * @return \Drupal\Core\Entity\EntityTypeManagerInterface
-   *   The entity type manager service.
-   */
-  public function getEntityTypeManager() {
-    return $this->entityTypeManager ?: \Drupal::entityTypeManager();
-  }
-
-  /**
-   * Sets the entity type manager service.
-   *
-   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
-   *   The entity type manager service.
-   *
-   * @return $this
-   */
-  public function setEntityTypeManager(EntityTypeManagerInterface $entity_type_manager) {
-    $this->entityTypeManager = $entity_type_manager;
-    return $this;
   }
 
   /**
@@ -316,11 +292,12 @@ class AddReverseHierarchy extends ProcessorPluginBase implements PluginFormInter
    *   Thrown if a referenced entity's storage handler couldn't be loaded.
    */
   protected function addHierarchyValues($entityTypeId, $entityId, $property, FieldInterface $field) {
+    $childrens = [];
     if ("$entityTypeId-$property" == 'taxonomy_term-parent') {
       /** @var \Drupal\taxonomy\TermStorageInterface $entity_storage */
-      $entity_storage = $this->getEntityTypeManager()
+      $entity_storage = $this->entityTypeManager
         ->getStorage('taxonomy_term');
-      $childrens = [];
+
       foreach ($entity_storage->loadChildren($entityId) as $term) {
         $childrens[] = $term->id();
       }

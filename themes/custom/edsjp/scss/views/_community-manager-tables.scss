@@ -1,0 +1,63 @@
+
+.ecl-u-pb-xl .ecl-container .ecl-col-s-12.ecl-col-m-12 {
+
+  // People table
+  .view-user-admin-people .view-rows {
+    .cols-8.responsive-enabled {
+      border-spacing: 0;
+      @include community-manager-tables;
+      @include media-breakpoint-up (md) {
+        width: 100%;
+      }
+    }
+  }
+
+  // People - Subscribers table
+  .view-simplenews-subscribers .view-rows {
+    .vbo-table.cols-7 {
+      border-spacing: 0;
+      @include community-manager-tables;
+      tbody td {
+        max-width: unset;
+        min-width: unset;
+      }
+    }
+  }
+
+  // Group table
+  .view-dsj-group-admin .view-rows {
+    .cols-6 {
+      border-spacing: 0;
+      @include community-manager-tables;
+      @include media-breakpoint-up (md) {
+        width: 100%;
+      }
+    }
+  }
+
+  // Translation - Job items table
+  .view-tmgmt-translation-all-job-items.view-display-id-page_1 .view-rows {
+    .cols-11 {
+      border-spacing: 0;
+      @include community-manager-tables;
+      tbody td {
+        min-width: unset;
+      }
+    }
+  }
+
+  // Translation - Jobs table
+  .view-tmgmt-job-overview.view-display-id-page_1 .view-rows {
+    .cols-10 {
+      border-spacing: 0;
+      @include community-manager-tables;
+      @include media-breakpoint-up (md) {
+        width: 100%;
+      }
+
+      tbody td {
+        min-width: unset;
+      }
+    }
+  }
+}

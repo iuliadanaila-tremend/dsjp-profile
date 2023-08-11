@@ -9,8 +9,8 @@ roles: {  }
 author: true
 site_mail: false
 emails: ''
-subject: 'Your [node:content-type:name] has been published!'
+subject: 'Your [node:content-type:name] for Digital Skills has been approved and published'
 body:
-  value: "<p>[node:content-type:name] [node:title] was published. You can view it here: [node:url]</p>\r\n"
+  value: "<p>Dear Pledger,&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Thank you very much for joining the Pledges for Digital Skills initiative and for submitting your Pledges and Initiatives.&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>We are happy to inform that your [node:content-type:name]&nbsp;has been now approved and published in the <a href=\"https://digital-skills-jobs.europa.eu/en/latest/events/partner-digital-skills\" rel=\"noreferrer noopener\" target=\"_blank\">Digital Skills and Jobs Platform</a>!&nbsp;</p>\r\n\r\n<p>[node:content-type:name] title: [node:title]</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>To update the status of your Initiatives or to submit a new Pledge or Initiative, you can access your personal profile (top left of the navigation bar) and selected the tab My Pledges in your dashboard there.&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Thank you for your commitment to the Digital Decade objectives and to the Pledges initiative!&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Our kindest regards,&nbsp;</p>\r\n\r\n<p>The Platform Team&nbsp;</p>\r\n\r\n<p>&nbsp;<br />\r\nContact us at <a href=\"mailto:communications@digitalskillsjobs.eu\" rel=\"noreferrer noopener\" target=\"_blank\">communications@digitalskillsjobs.eu</a>&nbsp;</p>\r\n\r\n<p>More information on Pledges for Digital Skills and User guide on the <a href=\"https://digital-skills-jobs.europa.eu/en/about/digital-skills-and-jobs-coalition\" rel=\"noreferrer noopener\" target=\"_blank\">Digital Skills and Job Coalition page</a>&nbsp;</p>\r\n"
   format: full_html
 label: 'Pledge Published'

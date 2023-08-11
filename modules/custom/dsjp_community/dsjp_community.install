@@ -51,7 +51,7 @@ function dsjp_community_update_8003() {
           $attachment->save();
           $directory = \Drupal::service('file_system')->dirname($uri);
           if (\Drupal::service('file_system')->prepareDirectory($directory, FileSystemInterface::CREATE_DIRECTORY | FileSystemInterface::MODIFY_PERMISSIONS)) {
-            file_move($attachment, $path, FileSystemInterface::EXISTS_RENAME);
+            \Drupal::service('file.repository')->move($attachment, $path, FileSystemInterface::EXISTS_RENAME);
           }
         }
       }

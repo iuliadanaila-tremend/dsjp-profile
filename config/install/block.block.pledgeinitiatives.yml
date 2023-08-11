@@ -11,7 +11,7 @@ dependencies:
 id: pledgeinitiatives
 theme: edsjp
 region: content
-weight: -5
+weight: -8
 provider: null
 plugin: pledge_initiative_block
 settings:

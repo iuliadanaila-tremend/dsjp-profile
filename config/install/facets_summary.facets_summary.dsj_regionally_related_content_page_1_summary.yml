@@ -1,0 +1,49 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - search_api.index.main_content
+    - views.view.dsj_regionally_related_content
+  module:
+    - search_api
+id: dsj_regionally_related_content_page_1_summary
+name: Summary
+facet_source_id: 'search_api:views_page__dsj_regionally_related_content__page_1'
+processor_configs:
+  reset_facets:
+    processor_id: reset_facets
+    weights:
+      build: '30'
+    settings:
+      link_text: 'Clear all filters'
+      position: after
+  show_summary_with_reset:
+    processor_id: show_summary_with_reset
+    weights:
+      build: '20'
+    settings: {  }
+facets:
+  digital_skill_level:
+    checked: true
+    label: 'Digital Skill level'
+    separator: ''
+    show_count: false
+    weight: 0
+  digital_technology_specialisation:
+    checked: true
+    label: 'Digital technology / specialisation'
+    separator: ''
+    show_count: false
+    weight: 0
+  dsj_content_type:
+    checked: true
+    label: 'Content type'
+    separator: ''
+    show_count: false
+    weight: 0
+  dsj_type_of_initiative:
+    checked: true
+    label: 'Geographical sphere'
+    separator: ''
+    show_count: false
+    weight: 0

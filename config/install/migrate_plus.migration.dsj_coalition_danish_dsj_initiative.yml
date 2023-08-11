@@ -1,0 +1,131 @@
+langcode: en
+status: true
+dependencies: {  }
+id: dsj_coalition_danish_dsj_initiative
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: null
+migration_group: default
+label: 'Danish Coalition Initiative content migration'
+source:
+  plugin: embedded_data
+  data_rows: {  }
+  ids:
+    Id:
+      type: string
+    gid:
+      type: integer
+process:
+  uid: constants/group_owner
+  created:
+    plugin: format_date
+    from_format: 'Y-m-d\TH:i:s\Z'
+    to_format: U
+    to_timezone: GMT
+    source: Date
+  changed:
+    plugin: format_date
+    from_format: 'Y-m-d\TH:i:s\Z'
+    to_format: U
+    to_timezone: GMT
+    source: Modified
+  title: Title
+  body/value: Content
+  body/summary: Summary
+  body/format:
+    plugin: default_value
+    default_value: full_html
+  field_dsj_author: Authors
+  field_dsj_digital_skill_level:
+    plugin: sub_process
+    source: DigitalSkillsLevel
+    process:
+      value:
+        plugin: get
+        source: Id
+  field_dsj_digital_technology:
+    plugin: sub_process
+    source: DigitalTechnologySpecialization
+    process:
+      value:
+        plugin: get
+        source: Id
+  field_dsj_industry:
+    plugin: sub_process
+    source: Industry
+    process:
+      value:
+        plugin: get
+        source: Id
+  field_dsj_geographic_scope:
+    plugin: sub_process
+    source: GeographicScope
+    process:
+      target_id:
+        plugin: custom_field_entity_lookup
+        entity_type: taxonomy_term
+        bundle_key: vid
+        bundle: dsj_country
+        value_field: field_dsj_country_code
+        source: Id
+  organizations:
+    plugin: deepen
+    source: Organization
+  field_dsj_organization:
+    plugin: sub_process
+    source: '@organizations'
+    process:
+      target_id:
+        plugin: entity_lookup
+        entity_type: node
+        bundle_key: type
+        bundle: dsj_organization
+        value_key: title
+        source: value
+  field_dsj_target_audience:
+    plugin: sub_process
+    source: TargetAudiences
+    process:
+      value:
+        plugin: get
+        source: Id
+  field_dsj_type_of_initiative:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: TypeOfInitiative/Id
+    -
+      plugin: extract
+      source: TypeOfInitiative
+      index:
+        - Id
+    default_value: 1
+  field_dsj_website_link: WebsiteLinks
+  field_dsj_image:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: ImageUrl
+    -
+      plugin: file_import
+      field: ImageUrl
+      destination: constants/file_destination
+      rename: true
+      uid: '@uid'
+      skip_on_error: true
+  field_dsj_external_id: Id
+  langcode:
+    plugin: default_value
+    source: constants/language
+    default_value: und
+  status:
+    plugin: default_value
+    default_value: 0
+  moderation_state:
+    plugin: default_value
+    default_value: imported
+destination:
+  plugin: 'entity:node'
+  default_bundle: dsj_initiative
+migration_dependencies: null

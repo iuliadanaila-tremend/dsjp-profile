@@ -46,16 +46,16 @@ process:
   field_dsj_digital_skill_level: field_dsj_digital_skill_level
   field_dsj_digital_technology: field_dsj_digital_technology
   field_dsj_geographic_scope:
-      plugin: sub_process
-      source: field_dsj_geographic_scope
-      process:
-        target_id:
-          plugin: custom_field_entity_lookup
-          entity_type: taxonomy_term
-          bundle_key: vid
-          bundle: dsj_country
-          value_field: field_dsj_country_code
-          source: field_dsj_country_code
+    plugin: sub_process
+    source: field_dsj_geographic_scope
+    process:
+      target_id:
+        plugin: custom_field_entity_lookup
+        entity_type: taxonomy_term
+        bundle_key: vid
+        bundle: dsj_country
+        value_field: field_dsj_country_code
+        source: field_dsj_country_code
   field_dsj_type_of_initiative: field_dsj_type_of_initiative
   field_dsj_publish_in_core: field_dsj_publish_in_core
   field_dsj_website_link:

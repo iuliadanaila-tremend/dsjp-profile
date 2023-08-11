@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: country_page
+label: 'Country page'
+type: 'canonical_entities:node'
+pattern: 'european-interactive-map/[node:title]'
+selection_criteria:
+  bf237dfc-7643-4f45-a5ff-f462eb15ddc3:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: bf237dfc-7643-4f45-a5ff-f462eb15ddc3
+    context_mapping:
+      node: node
+    bundles:
+      dsj_country_page: dsj_country_page
+selection_logic: and
+weight: -5
+relationships: {  }

@@ -1,0 +1,5 @@
+services:
+  dsjp_community.breadcrumb_groups:
+    class: Drupal\dsjp_community\Breadcrumb\BreadcrumbGroupsBuilder
+    tags:
+      - { name: breadcrumb_builder, priority: 100 }

@@ -5,9 +5,11 @@ dependencies:
     - core.entity_view_mode.node.full
     - field.field.node.dsj_national_coalition.body
     - field.field.node.dsj_national_coalition.field_dsj_author
+    - field.field.node.dsj_national_coalition.field_dsj_components
     - field.field.node.dsj_national_coalition.field_dsj_digital_skill_level
     - field.field.node.dsj_national_coalition.field_dsj_geographic_scope
     - field.field.node.dsj_national_coalition.field_dsj_image
+    - field.field.node.dsj_national_coalition.field_dsj_linked_content
     - field.field.node.dsj_national_coalition.field_dsj_meta_tags
     - field.field.node.dsj_national_coalition.field_dsj_nc_partner
     - field.field.node.dsj_national_coalition.field_dsj_nc_priority
@@ -19,6 +21,7 @@ dependencies:
     - image.style.dsj_content_icon
     - node.type.dsj_national_coalition
   module:
+    - entity_reference_revisions
     - field_group
     - image
     - options
@@ -40,7 +43,7 @@ third_party_settings:
       label: 'National coalition details'
       parent_name: ''
       region: content
-      weight: 4
+      weight: 5
       format_type: html_element
       format_settings:
         classes: ''
@@ -62,12 +65,21 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 3
+    weight: 4
     region: content
   content_moderation_control:
     settings: {  }
     third_party_settings: {  }
     weight: 0
+    region: content
+  field_dsj_components:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 2
     region: content
   field_dsj_digital_skill_level:
     type: list_default
@@ -90,8 +102,10 @@ content:
     settings:
       image_link: ''
       image_style: dsj_content_icon
+      image_loading:
+        attribute: lazy
     third_party_settings: {  }
-    weight: 2
+    weight: 3
     region: content
   field_dsj_nc_partner:
     type: text_default
@@ -144,12 +158,12 @@ content:
   flag_subscribe_node:
     settings: {  }
     third_party_settings: {  }
-    weight: 5
+    weight: 6
     region: content
   flag_voting:
     settings: {  }
     third_party_settings: {  }
-    weight: 6
+    weight: 7
     region: content
   links:
     settings: {  }
@@ -158,6 +172,7 @@ content:
     region: content
 hidden:
   field_dsj_author: true
+  field_dsj_linked_content: true
   field_dsj_meta_tags: true
   field_dsj_representative_image: true
   langcode: true

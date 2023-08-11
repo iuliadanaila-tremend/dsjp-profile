@@ -3,11 +3,14 @@ status: true
 dependencies:
   config:
     - node.type.dsj_article
+    - node.type.dsj_country_page
     - node.type.dsj_digital_skills_resource
     - node.type.dsj_event
     - node.type.dsj_funding_opportunity
     - node.type.dsj_good_practice
     - node.type.dsj_initiative
+    - node.type.dsj_learning_content
+    - node.type.dsj_learning_path
     - node.type.dsj_national_coalition
     - node.type.dsj_organization
     - node.type.dsj_page
@@ -139,11 +142,14 @@ type_settings:
   entity_types:
     node:
       - dsj_article
+      - dsj_country_page
       - dsj_digital_skills_resource
       - dsj_event
       - dsj_funding_opportunity
       - dsj_good_practice
       - dsj_initiative
+      - dsj_learning_content
+      - dsj_learning_path
       - dsj_national_coalition
       - dsj_organization
       - dsj_page

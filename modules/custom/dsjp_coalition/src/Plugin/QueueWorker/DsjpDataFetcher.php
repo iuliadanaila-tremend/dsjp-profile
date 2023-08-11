@@ -6,6 +6,7 @@ use Drupal\Component\Plugin\Exception\PluginException;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Queue\QueueWorkerBase;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
+use Drupal\dsjp_coalition\DanishMigrationService;
 use Drupal\migrate\MigrateException;
 use Drupal\migrate\MigrateExecutable;
 use Drupal\migrate\MigrateMessage;
@@ -109,6 +110,34 @@ class DsjpDataFetcher extends QueueWorkerBase implements ContainerFactoryPluginI
   protected $austriaService;
 
   /**
+   * The sweden migration service.
+   *
+   * @var \Drupal\dsjp_coalition\SwedenMigrationService
+   */
+  protected $swedenService;
+
+  /**
+   * The danish migration service.
+   *
+   * @var \Drupal\dsjp_coalition\DanishMigrationService
+   */
+  protected $danishService;
+
+  /**
+   * The portugal migration service.
+   *
+   * @var \Drupal\dsjp_coalition\PortugalMigrationService
+   */
+  protected $portugalService;
+
+  /**
+   * Date formatter.
+   *
+   * @var \Drupal\Core\Datetime\DateFormatterInterface
+   */
+  protected $dateFormatter;
+
+  /**
    * {@inheritdoc}
    */
   public static function create(
@@ -125,15 +154,22 @@ class DsjpDataFetcher extends QueueWorkerBase implements ContainerFactoryPluginI
     $instance->json = $container->get('serialization.json');
     $instance->logger = $container->get('logger.factory');
     $instance->migrationManager = $container->get('plugin.manager.migration');
+    $instance->dateFormatter = $container->get('date.formatter');
     $instance->drupalService = $container->get('dsjp_coalition.migration_service_drupal');
     $instance->wordpressService = $container->get('dsjp_coalition.migration_service_wordpress');
     $instance->austriaService = $container->get('dsjp_coalition.migration_service_austria');
     $instance->sloveniaService = $container->get('dsjp_coalition.migration_service_slovenia');
+    $instance->swedenService = $container->get('dsjp_coalition.migration_service_sweden');
+    $instance->danishService = $container->get('dsjp_coalition.migration_service_danish');
+    $instance->portugalService = $container->get('dsjp_coalition.migration_service_portugal');
+
     return $instance;
   }
 
   /**
    * {@inheritdoc}
+   *
+   * @SuppressWarnings(PHPMD.CyclomaticComplexity)
    */
   public function processItem($data) {
     switch ($data['source_type']) {
@@ -152,6 +188,18 @@ class DsjpDataFetcher extends QueueWorkerBase implements ContainerFactoryPluginI
       case 'slovenia':
         $this->migrationService = $this->sloveniaService;
         break;
+
+      case 'sweden':
+        $this->migrationService = $this->swedenService;
+        break;
+
+      case 'danish':
+        $this->migrationService = $this->danishService;
+        break;
+
+      case 'portugal':
+        $this->migrationService = $this->portugalService;
+        break;
     }
     $this->totalPages = $this->migrationService->getTotalPages($data);
     // Get number of pages we have to call.
@@ -161,6 +209,13 @@ class DsjpDataFetcher extends QueueWorkerBase implements ContainerFactoryPluginI
         $dataArr = $this->migrationService->fetchData($page, $data);
         $this->executeMigration($dataArr, $data);
 
+        // Don't run the migration if we found an already imported content.
+        if ($this->migrationService instanceof DanishMigrationService) {
+          $hasImportData = array_search($this->dateFormatter->format((int) $data['last_imported'], 'custom', 'Y-m-d\TH:i:s\Z'), array_column($dataArr, 'Modified'));
+          if ($hasImportData != FALSE) {
+            $page = $this->totalPages;
+          }
+        }
         $page++;
       } while ($page <= $this->totalPages);
     }
@@ -175,11 +230,12 @@ class DsjpDataFetcher extends QueueWorkerBase implements ContainerFactoryPluginI
    *   The coalition details.
    */
   protected function executeMigration(array $data, array $coalitionData) {
+    $now = time();
     $constants = [
       'group_id' => $coalitionData['group_id'],
       'group_owner' => $coalitionData['group_owner'],
       'language' => $coalitionData['default_language'],
-      'file_destination' => 'public://' . $coalitionData['to_content_type'] . '/' . date('Y') . '-' . date('m') . '/',
+      'file_destination' => 'public://' . $coalitionData['to_content_type'] . '/' . $this->dateFormatter->format($now, 'custom', 'Y') . '-' . $this->dateFormatter->format($now, 'custom', 'm') . '/',
       'file_location' => $this->migrationService->getBasePath($coalitionData['api_base_url']),
       'news_article_type' => $coalitionData['news_article_type'],
     ];

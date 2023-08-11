@@ -11,7 +11,7 @@ dependencies:
 id: dsj_filter_results_button
 theme: edsjp
 region: content
-weight: -12
+weight: -14
 provider: null
 plugin: dsjp_filter_results_btn_block
 settings:

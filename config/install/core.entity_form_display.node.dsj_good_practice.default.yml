@@ -12,6 +12,7 @@ dependencies:
     - field.field.node.dsj_good_practice.field_dsj_geographic_scope
     - field.field.node.dsj_good_practice.field_dsj_image
     - field.field.node.dsj_good_practice.field_dsj_industry
+    - field.field.node.dsj_good_practice.field_dsj_linked_content
     - field.field.node.dsj_good_practice.field_dsj_media_audio
     - field.field.node.dsj_good_practice.field_dsj_media_document
     - field.field.node.dsj_good_practice.field_dsj_media_image
@@ -118,6 +119,16 @@ content:
     weight: 9
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_dsj_linked_content:
+    type: entity_reference_autocomplete
+    weight: 53
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   field_dsj_media_audio:
     type: file_generic

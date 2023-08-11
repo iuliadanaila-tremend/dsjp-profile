@@ -171,11 +171,9 @@ process:
     source: acf
     index:
       - industry
-  field_dsj_publish_in_core:
-    plugin: extract
     source: acf
     index:
-      - author
+      - publish_in_core_platform
   field_dsj_target_audience:
     plugin: extract
     source: acf
@@ -191,6 +189,16 @@ process:
     source: acf
     index:
       - initiative_type
+  field_dsj_application_deadline:
+    -
+      plugin: extract
+      source: acf
+      index:
+        - application_deadline
+    -
+      plugin: format_date
+      from_format: d/m/Y
+      to_format: Y-m-d
   langcode:
     plugin: default_value
     source: constants/language

@@ -16,26 +16,28 @@ source:
   ids:
     - counter
   column_names:
-    0:
-      counter: 'Identifier'
-    1:
+    -
+      counter: Identifier
+    -
       name: 'Pledge name'
-    2:
+    -
       field_activities_completion_date: 'End date'
-    3:
+    -
       field_pledge_start_date: 'Start date'
-    4:
+    -
       field_store_impact: 'Store impact'
-    5:
-      field_theme: 'Theme'
-    6:
-      field_pledge_activities_payment: 'Payment'
-    7:
+    -
+      field_theme: Theme
+    -
+      field_pledge_activities_payment: Payment
+    -
       field_payment_agreed: 'Payment details'
-    8:
-      field_geographical_scope: 'Country'
-    9:
-      field_description: 'Body'
+    -
+      field_geographical_scope: Country
+    -
+      field_description: Body
+    -
+      custom_pledge_states: 'Moderation states'
 process:
   title: name
   body: field_description
@@ -98,6 +100,24 @@ process:
     -
       plugin: get
       source: field_payment_agreed
+  field_dsj_theme:
+    -
+      plugin: explode
+      source: field_theme
+      delimiter: ', '
+    -
+      plugin: static_map
+      map:
+        'Artificial Intelligence': 'http://data.europa.eu/uxp/3030'
+        'Robotic Process Automation': robotic_process_automation
+        Blockchain: 'http://data.europa.eu/uxp/c_ab84e157'
+        'Edge Computing': edge_computing
+        'Virtual Reality': 'http://data.europa.eu/uxp/6261'
+        'Cyber Security': 'http://data.europa.eu/uxp/c_04ae3ba8'
+        'Internet of Things': 'http://data.europa.eu/uxp/c_b12a760a'
+        'Cloud Computing': 'http://data.europa.eu/uxp/c_433922a6'
+        'Big Data': 'http://data.europa.eu/uxp/c_bf1e2c81'
+      default_value: ''
   uid:
     plugin: default_value
     default_value: 0
@@ -105,10 +125,9 @@ process:
     plugin: default_value
     default_value: 0
   moderation_state:
-    plugin: default_value
-    default_value: 'ready_for_publication'
+    plugin: get
+    source: custom_pledge_states
 destination:
   plugin: 'entity:node'
   default_bundle: dsj_pledge
 migration_dependencies: null
-

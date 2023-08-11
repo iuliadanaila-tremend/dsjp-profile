@@ -16,7 +16,7 @@ entity_type: node
 bundle: dsj_pledge
 label: 'Please enter the pledge dates'
 description: ''
-required: false
+required: true
 translatable: false
 default_value: {  }
 default_value_callback: ''

@@ -1,0 +1,33 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_dsj_business_it
+    - paragraphs.paragraphs_type.dsj_learning_material
+    - taxonomy.vocabulary.business_it
+  module:
+    - tmgmt_content
+third_party_settings:
+  tmgmt_content:
+    excluded: false
+id: paragraph.dsj_learning_material.field_dsj_business_it
+field_name: field_dsj_business_it
+entity_type: paragraph
+bundle: dsj_learning_material
+label: 'Business/ IT'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      business_it: business_it
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

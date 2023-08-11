@@ -1,0 +1,20 @@
+.node-dsj-learning-content-edit-form,
+.node-dsj-national-coalition-edit-form,
+.node-dsj-article-edit-form, 
+.node-dsj-page-edit-form,
+.node-dsj-country-page-edit-form,
+.node-dsj-digital-skills-resource-edit-form,
+.node-dsj-discussion-edit-form,
+.node-dsj-event-edit-form,
+.node-dsj-funding-opportunity-edit-form,
+.node-dsj-good-practice-edit-form,
+.node-dsj-initiative-edit-form,
+.node-dsj-learning-path-edit-form,
+.node-dsj-organization-edit-form,
+.node-dsj-skills-intelligence-edit-form,
+.node-dsj-strategy-edit-form,
+.node-dsj-training-offer-edit-form {
+  .select2-container {
+    @include dropdown-styling(false);
+  }
+}

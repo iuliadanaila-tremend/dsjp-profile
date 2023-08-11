@@ -2,8 +2,10 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.dsj_listing.field_dsj_article_type
     - field.field.paragraph.dsj_listing.field_dsj_content_types
     - field.field.paragraph.dsj_listing.field_dsj_digital_technology
+    - field.field.paragraph.dsj_listing.field_dsj_filters
     - field.field.paragraph.dsj_listing.field_dsj_see_more_link
     - field.field.paragraph.dsj_listing.field_dsj_title
     - field.field.paragraph.dsj_listing.paragraph_view_mode
@@ -36,7 +38,9 @@ content:
     weight: 0
     region: content
 hidden:
+  field_dsj_article_type: true
   field_dsj_content_types: true
   field_dsj_digital_technology: true
+  field_dsj_filters: true
   paragraph_view_mode: true
   search_api_excerpt: true

@@ -21,6 +21,19 @@ services:
     class: 'Drupal\dsjp_coalition\SloveniaMigrationService'
     arguments: [ '@http_client', '@serialization.json', '@logger.factory', '@state' ]
 
+  dsjp_coalition.migration_service_sweden:
+    class: 'Drupal\dsjp_coalition\SwedenMigrationService'
+    arguments: [ '@http_client', '@serialization.json', '@logger.factory' ]
+
+
+  dsjp_coalition.migration_service_danish:
+    class: 'Drupal\dsjp_coalition\DanishMigrationService'
+    arguments: [ '@http_client', '@serialization.json', '@logger.factory', '@state' ]
+
+  dsjp_coalition.migration_service_portugal:
+    class: 'Drupal\dsjp_coalition\PortugalMigrationService'
+    arguments: [ '@http_client', '@serialization.json', '@logger.factory', '@state' ]
+
   dsjp_coalition:migrate_imported_subscriber:
     class: 'Drupal\dsjp_coalition\EventSubscriber\MigrationImportedSubscriber'
     arguments: ['@date.formatter']

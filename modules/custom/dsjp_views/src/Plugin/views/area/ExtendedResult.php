@@ -5,8 +5,8 @@ namespace Drupal\dsjp_views\Plugin\views\area;
 use Drupal\Component\Utility\Html;
 use Drupal\Component\Utility\Xss;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\views\Plugin\views\style\DefaultSummary;
 use Drupal\views\Plugin\views\area\AreaPluginBase;
+use Drupal\views\Plugin\views\style\DefaultSummary;
 
 /**
  * Views area handler to display some configurable result summary.

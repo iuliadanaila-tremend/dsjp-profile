@@ -13,6 +13,7 @@ bundles:
   - dsj_funding_opportunity
   - dsj_good_practice
   - dsj_initiative
+  - dsj_learning_content
   - dsj_national_coalition
   - dsj_organization
   - dsj_page

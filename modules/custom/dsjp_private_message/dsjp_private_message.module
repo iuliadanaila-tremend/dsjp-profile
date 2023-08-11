@@ -24,6 +24,8 @@ use Drupal\views\ViewExecutable;
 
 /**
  * Implements hook_form_alter().
+ *
+ * phpcs:disable QualityAssurance.Functions.DrupalForbiddenHooks.ForbiddenHook
  */
 function dsjp_private_message_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   if (strpos($form_id, 'views_form_dsj_private_messages_block_private_message') === 0) {

@@ -2,15 +2,17 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.storage.node.field_dsj_pledge_dates
     - field.storage.node.field_dsj_assessment_type
     - field.storage.user.field_dsj_bio
-
     - field.storage.user.field_dsj_city
     - field.storage.user.field_dsj_country
     - field.storage.group.field_dsj_country
     - field.storage.node.field_dsj_date
     - field.storage.node.field_dsj_digital_skill_level
     - field.storage.node.field_dsj_digital_technology
+    - field.storage.node.field_dsj_effort
+    - field.storage.node.field_dsj_event_setting
     - field.storage.node.field_dsj_form_of_funding
     - field.storage.node.field_dsj_geographic_scope
     - field.storage.user.field_dsj_i_am_interested_in
@@ -20,6 +22,7 @@ dependencies:
     - field.storage.group.field_dsj_is_pledger
     - field.storage.user.field_dsj_job_title
     - field.storage.node.field_dsj_latest_update_strategy
+    - field.storage.node.field_dsj_learning_content_type
     - field.storage.node.field_dsj_nc_member
     - field.storage.user.field_dsj_organisation
     - field.storage.node.field_dsj_organization
@@ -29,6 +32,7 @@ dependencies:
     - field.storage.node.field_dsj_target_audience
     - field.storage.node.field_dsj_target_group
     - field.storage.node.field_dsj_target_language
+    - field.storage.node.field_dsj_theme
     - field.storage.node.field_dsj_training_duration
     - field.storage.node.field_dsj_training_start_date
     - field.storage.node.field_dsj_type_of_article
@@ -92,6 +96,31 @@ third_party_settings:
     multilingual:
       limit_to_content_language: false
       include_language_independent: true
+      specific_languages:
+        bg: '0'
+        cs: '0'
+        da: '0'
+        de: '0'
+        et: '0'
+        el: '0'
+        en: '0'
+        es: '0'
+        fr: '0'
+        ga: '0'
+        hr: '0'
+        it: '0'
+        lv: '0'
+        lt: '0'
+        hu: '0'
+        mt: '0'
+        nl: '0'
+        pl: '0'
+        pt-pt: '0'
+        ro: '0'
+        sk: '0'
+        sl: '0'
+        fi: '0'
+        sv: '0'
 id: main_content
 name: 'Main Content'
 description: ''
@@ -121,6 +150,19 @@ field_settings:
     dependencies:
       module:
         - taxonomy
+  end_value:
+    label: 'End date value'
+    datasource_id: 'entity:node'
+    property_path: 'field_dsj_pledge_dates:end_value'
+    type: date
+    dependencies:
+      config:
+        - field.storage.node.field_dsj_pledge_dates
+  field_dsj_action_type:
+    label: 'Action type'
+    datasource_id: 'entity:node'
+    property_path: 'search_api_reverse_entity_references_node__field_dsj_pledge:field_dsj_action_type'
+    type: string
   field_dsj_assessment_type:
     label: 'Assessment type'
     datasource_id: 'entity:node'
@@ -201,6 +243,22 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_dsj_digital_technology
+  field_dsj_effort:
+    label: Effort
+    datasource_id: 'entity:node'
+    property_path: field_dsj_effort
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_dsj_effort
+  field_dsj_event_setting:
+    label: 'Event setting'
+    datasource_id: 'entity:node'
+    property_path: field_dsj_event_setting
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_dsj_event_setting
   field_dsj_firstname:
     label: 'First Name'
     datasource_id: 'entity:user'
@@ -241,6 +299,16 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_dsj_industry
+  field_dsj_initiative_beneficiary:
+    label: Beneficiary
+    datasource_id: 'entity:node'
+    property_path: 'search_api_reverse_entity_references_node__field_dsj_pledge:field_dsj_initiative_beneficiary'
+    type: string
+  field_dsj_initiative_type:
+    label: 'Initiative Type'
+    datasource_id: 'entity:node'
+    property_path: 'search_api_reverse_entity_references_node__field_dsj_pledge:field_dsj_initiative_type'
+    type: string
   field_dsj_is_certificate_free:
     label: 'Is the certificate / credential free'
     datasource_id: 'entity:node'
@@ -290,6 +358,14 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_dsj_latest_update_strategy
+  field_dsj_learning_content_type:
+    label: 'Learning content type'
+    datasource_id: 'entity:node'
+    property_path: field_dsj_learning_content_type
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_dsj_learning_content_type
   field_dsj_nc_member:
     label: 'National coalition member'
     datasource_id: 'entity:node'
@@ -322,6 +398,11 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_dsj_organization_category
+  field_dsj_pledge:
+    label: Pledge
+    datasource_id: 'entity:node'
+    property_path: 'search_api_reverse_entity_references_node__field_dsj_pledge:field_dsj_pledge'
+    type: integer
   field_dsj_publication_type:
     label: 'Publication type'
     datasource_id: 'entity:node'
@@ -362,11 +443,27 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_dsj_target_language
+  field_dsj_theme:
+    label: Theme
+    datasource_id: 'entity:node'
+    property_path: field_dsj_theme
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_dsj_theme
   field_dsj_training_duration:
     label: 'Training duration'
     datasource_id: 'entity:node'
     property_path: field_dsj_training_duration
     type: text
+    dependencies:
+      config:
+        - field.storage.node.field_dsj_training_duration
+  field_dsj_training_duration_listing:
+    label: 'Training duration'
+    datasource_id: 'entity:node'
+    property_path: field_dsj_training_duration
+    type: string
     dependencies:
       config:
         - field.storage.node.field_dsj_training_duration
@@ -503,7 +600,7 @@ field_settings:
     type: text
     configuration:
       roles:
-        anonymous: anonymous
+        - anonymous
       view_mode:
         'entity:group':
           dsj_organization: search_index
@@ -539,6 +636,11 @@ field_settings:
     dependencies:
       module:
         - node
+  status_1:
+    label: 'Pledge Published'
+    datasource_id: 'entity:node'
+    property_path: 'search_api_reverse_entity_references_node__field_dsj_pledge:status'
+    type: boolean
   sticky:
     label: 'Sticky at top of lists'
     datasource_id: 'entity:node'
@@ -603,6 +705,8 @@ datasource_settings:
       default: true
       selected:
         - dsj_listing
+        - dsj_pledge_initiative
+        - simplenews_issue
     languages:
       default: false
       selected:
@@ -623,6 +727,7 @@ datasource_settings:
 processor_settings:
   add_url: {  }
   aggregated_field: {  }
+  auto_aggregated_fulltext_field: {  }
   content_access:
     weights:
       preprocess_query: -30
@@ -681,6 +786,7 @@ processor_settings:
       strong: 2
   language_with_fallback: {  }
   rendered_item: {  }
+  reverse_entity_references: {  }
   reverse_hierarchy:
     weights:
       preprocess_index: -45

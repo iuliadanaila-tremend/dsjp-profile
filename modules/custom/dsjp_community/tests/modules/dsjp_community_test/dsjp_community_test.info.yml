@@ -2,8 +2,8 @@ name: dsjp_community_test
 type: module
 description: Custom Community tests related functionalities.
 package: Custom
-core: 8.x
+
 php: 7.3
-core_version_requirement: ^8 || ^9
+core_version_requirement: ^9 || ^10
 dependencies:
   - drupal:group

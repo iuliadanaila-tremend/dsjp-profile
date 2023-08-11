@@ -1,0 +1,15 @@
+diff --git a/lib/Sparql/Client.php b/lib/Sparql/Client.php
+index 66ed473..b77ba77 100644
+--- a/lib/Sparql/Client.php
++++ b/lib/Sparql/Client.php
+@@ -71,7 +71,9 @@ class Client
+     {
+         $this->queryUri = $queryUri;
+
+-        if (strlen(parse_url($queryUri, PHP_URL_QUERY)) > 0) {
++        $url = parse_url($queryUri, PHP_URL_QUERY);
++
++        if ($url && mb_strlen($url) > 0) {
+             $this->queryUri_has_params = true;
+         } else {
+             $this->queryUri_has_params = false;

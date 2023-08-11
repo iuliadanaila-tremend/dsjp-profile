@@ -5,6 +5,7 @@
  * Provides main functionality for dsjp_translation module.
  */
 
+use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\dsjp_pledge\GroupServiceInterface;
 use Drupal\dsjp_translation\TypedLinkFieldProcessor;
@@ -42,6 +43,10 @@ function dsjp_translation_tmgmt_job_item_presave(EntityInterface $entity) {
         $translation = $node->getTranslation($target_language);
         $translation->set('moderation_state', $new_state);
         $translation->save();
+
+        // Set the default status as unpublished.
+        $translation->setUnpublished();
+        $node->save();
       }
     }
   }
@@ -54,4 +59,15 @@ function dsjp_translation_tmgmt_job_insert(EntityInterface $entity) {
   // Make sure "etranslation" plugin is set by default on a translation job.
   $entity->translator = 'etranslation';
   $entity->save();
+}
+
+/**
+ * Implements hook_tmgmt_presave_translation().
+ */
+function dsjp_translation_tmgmt_presave_translation(ContentEntityInterface $translation, ContentEntityInterface $entity) {
+  // Hotfix for translations not being saved.
+  $new_translation = $entity->getTranslation($translation->language()->getId());
+  foreach ($new_translation->getTranslatableFields(FALSE) as $field_name => $field_data) {
+    $translation->$field_name = $new_translation->$field_name;
+  }
 }

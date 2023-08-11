@@ -16,14 +16,18 @@ use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Link;
+use Drupal\Core\Render\BubbleableMetadata;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Url;
+use Drupal\dsjp_pledge\GroupServiceInterface;
 use Drupal\field\Entity\FieldStorageConfig;
+use Drupal\group\Entity\GroupContent;
 use Drupal\group\Entity\GroupContentInterface;
 use Drupal\group\Entity\GroupInterface;
 use Drupal\node\Entity\Node;
 use Drupal\node\NodeInterface;
 use Drupal\user\Entity\User;
+use Drupal\views\ViewExecutable;
 
 /**
  * Implements hook_theme().
@@ -36,6 +40,7 @@ function dsjp_pledge_theme($existing, $type, $theme, $path) {
         'labour_force' => [],
         'ict_professionals' => [],
         'other' => [],
+        'url_access' => FALSE,
       ],
     ],
     'pledge_welcome' => [
@@ -50,7 +55,7 @@ function dsjp_pledge_theme($existing, $type, $theme, $path) {
  * Implements hook_field_group_form_process_alter().
  */
 function dsjp_pledge_field_group_form_process_alter(array &$element, &$group, &$complete_form) {
-  if ($element['#group_name'] == 'group_authoring_information' && $element['#bundle'] == 'dsj_pledge') {
+  if (isset($element['#group_name']) && $element['#group_name'] == 'group_authoring_information' && $element['#bundle'] == 'dsj_pledge') {
     $element['#access'] = in_array('dsj_reviewer', \Drupal::currentUser()->getRoles());
   }
 }
@@ -89,8 +94,14 @@ function dsjp_pledge_field_widget_form_alter(&$element, FormStateInterface $form
       $element['value']['#default_value'] = \Drupal::currentUser()->getEmail();
     }
   }
-  if ($context['items']->getName() === 'entity_id' && $element['#entity_type'] = 'group_content') {
+  $target_type = $context['items']->getFieldDefinition()->getFieldStorageDefinition()->getSetting('target_type');
+  if ($context['items']->getName() === 'entity_id' && $element['#entity_type'] = 'group_content' && $target_type == 'user') {
     $element['target_id']['#selection_handler'] = 'default:user_pledge_organization';
+  }
+  if ($context['items']->getName() == 'field_dsj_contact' && isset($element['#paragraph_type']) && $element['#paragraph_type'] == 'dsj_organisation_contact') {
+    if (isset($element['top'])) {
+      unset($element['top']);
+    }
   }
 }
 
@@ -101,6 +112,7 @@ function dsjp_pledge_form_node_form_alter(&$form, FormStateInterface $form_state
   if ($form_id == 'node_dsj_pledge_initiative_form' || $form_id == 'node_dsj_pledge_initiative_edit_form') {
     $query = \Drupal::requestStack()->getCurrentRequest()->query;
     $node = $form_state->getFormObject()->getEntity();
+    $initiative_type = "";
     if (!empty($query->get('type'))) {
       $initiative_type = $query->get('type');
     }
@@ -157,7 +169,7 @@ function dsjp_pledge_form_node_form_alter(&$form, FormStateInterface $form_state
       ],
     ];
     $form['field_dsj_initiative_type']['#access'] = FALSE;
-    $form['field_dsj_pledge']['#access'] = FALSE;
+    $form['field_dsj_pledge']['#access'] = in_array('administrator', \Drupal::currentUser()->getRoles());
     $form['field_dsj_quantity']['#access'] = FALSE;
 
     if (!empty($form_state->getValues())) {
@@ -190,16 +202,20 @@ function dsjp_pledge_form_node_form_alter(&$form, FormStateInterface $form_state
       'description' => [
         '#markup' => _dsjp_pledge_get_initiative_markup($initiative_type),
         '#prefix' => '<div>' . t('@type - Beneficiaries.', [
-          '@type' => Unicode::ucwords(str_replace('_', ' ', $initiative_type)),
+          '@type' => dsjp_pledge_initiative_type($initiative_type),
         ]) . '</div>',
       ],
     ];
     array_unshift($form['#validate'], 'dsjp_pledge_validate_initiative_callback');
     $form['actions']['submit']['#submit'][] = 'dsjp_pledge_submit_initiative_callback';
+    $form['body']['widget'][0]['#allowed_formats'] = ['full_html'];
   }
   elseif ($form_id == 'node_dsj_pledge_form' || $form_id == 'node_dsj_pledge_edit_form') {
     if ($form_id == 'node_dsj_pledge_form') {
       $form['actions']['submit']['#submit'][] = 'dsjp_pledge_submit_callback';
+      $form['moderation_state']['widget'][0]['state']['#options'] = [
+        'draft' => t('Draft'),
+      ];
     }
     $form['field_dsj_payment_agreed']['#states'] = [
       'visible' => [
@@ -212,6 +228,35 @@ function dsjp_pledge_form_node_form_alter(&$form, FormStateInterface $form_state
       $build['#weight'] = -10;
       $form['description'] = $build;
     }
+    $form['body']['widget'][0]['#allowed_formats'] = ['full_html'];
+    $roles = \Drupal::currentUser()->getRoles();
+    $form['moderation_state']['#access'] = in_array('administrator', $roles) || in_array('dsj_reviewer', $roles) || in_array('community_manager', $roles);
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function dsjp_pledge_form_content_moderation_entity_moderation_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  array_unshift($form['#validate'], 'dsjp_pledge_content_moderation_validate');
+}
+
+/**
+ * Compose the initiative type title.
+ */
+function dsjp_pledge_initiative_type($initiative_type) {
+  if ($initiative_type == 'ict_professionals') {
+    return 'ICT professionals';
+  }
+  return Unicode::ucwords(str_replace('_', ' ', $initiative_type));
+}
+
+/**
+ * Validation callback for pledge content moderation form.
+ */
+function dsjp_pledge_content_moderation_validate(array &$form, FormStateInterface $form_state) {
+  if (empty($form_state->getValue('new_state'))) {
+    $form_state->setErrorByName('new_state', t('Please provide the new moderation state before submitting.'));
   }
 }
 
@@ -255,9 +300,33 @@ function dsjp_pledge_form_group_content_form_alter(&$form, FormStateInterface $f
   $group = \Drupal::routeMatch()->getParameter('group');
   if ($group instanceof GroupInterface && strpos($form_id, 'group_content_group_content_type') !== FALSE) {
     $groupContent = $form_state->getFormObject()->getEntity();
-    if ($groupContent instanceof GroupContentInterface && $groupContent->getGroupContentType()->getContentPluginId() == 'group_node:dsj_pledge') {
-      $form['actions']['submit']['#submit'][] = 'dsjp_pledge_submit_organization_callback';
+    if ($groupContent instanceof GroupContentInterface) {
+      if ($groupContent->getGroupContentType()->getContentPluginId() == 'group_node:dsj_pledge') {
+        $form['actions']['submit']['#submit'][] = 'dsjp_pledge_submit_organization_callback';
+      }
+      elseif ($groupContent->getGroupContentType()->getContentPluginId() == 'group_invitation' && $groupContent->getGroup()->bundle() == 'dsj_organization') {
+        $form['#validate'][] = 'dsjp_pledge_validate_invitee_mail';
+      }
     }
+
+  }
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function dsjp_pledge_form_group_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  // Hide the revision message for authenticated only users.
+  if (strpos($form_id, 'group_dsj_organization') === 0) {
+    $roles = \Drupal::currentUser()->getRoles();
+    $form['revision_log_message']['#access'] = in_array('administrator', $roles);
+    $form['moderation_state']['#access'] = in_array('community_manager', $roles) || in_array('administrator', $roles);
+    $form['field_group_description']['widget'][0]['#allowed_formats'] = ['full_html'];
+    $form['field_dsj_endorse']['widget']['value']['#title'] = t("My organisation is actively improving digital skills in Europe and I would like it to join the European Digital Skills and Jobs Coalition. On behalf of my organisation I commit to the objectives of the <a href='@proposition_url' target='_blank'>Coalition's value proposition</a> and I support the EU-wide efforts to reach the digital skills targets described in the <a href='@strategy_url' target='_blank'>Digital decade strategy</a>", [
+      '@proposition_url' => Url::fromUserInput('/valueproposition')->toString(),
+      '@strategy_url' => Url::fromUserInput('/actions/european-initiatives/digital-decade')->toString(),
+    ]);
+    $form['uid']['#access'] = in_array('community_manager', $roles) || in_array('administrator', $roles);
   }
 }
 
@@ -309,6 +378,9 @@ function dsjp_pledge_validate_initiative_callback(array &$form, FormStateInterfa
         if ($beneficiary['number'] > 0) {
           $valid = TRUE;
         }
+        else {
+          $form_state->setErrorByName('field_dsj_pledge', t('Unable to create initiative if target number is not greater than 0.'));
+        }
       }
     }
   }
@@ -356,6 +428,17 @@ function dsjp_pledge_preprocess_facets_item_list(&$variables) {
       }
     }
   }
+  elseif (isset($variables['facet']) && $variables['facet']->id() == 'dsj_pledges_initiative_type') {
+    $facet = $variables['facet'];
+    $widget = $facet->getWidget();
+
+    if ($widget['type'] == 'links') {
+      foreach ($variables['items'] as &$item) {
+        $item['#wrapper_attributes']['class'][] = str_replace(' ', '', $item['#title']['#raw_value']);
+      }
+    }
+  }
+
 }
 
 /**
@@ -363,8 +446,42 @@ function dsjp_pledge_preprocess_facets_item_list(&$variables) {
  */
 function dsjp_pledge_node_access(EntityInterface $entity, $operation, AccountInterface $account) {
   if ($entity->bundle() == 'dsj_pledge_initiative') {
-    if (\Drupal::currentUser()->id() != $entity->getOwnerId() || $operation == 'view') {
+    if ($operation == 'view' && !in_array('dsj_reviewer', \Drupal::currentUser()->getRoles())) {
       return AccessResult::forbidden();
+    }
+    if ($operation == 'view' && in_array('dsj_reviewer', \Drupal::currentUser()->getRoles())) {
+      return AccessResult::allowed();
+    }
+    if ($operation == 'update') {
+      $current_state = $entity->get('moderation_state')->getString();
+      if (in_array($current_state, ['draft', 'needs_changes'])) {
+        if ($account->id() != $entity->getOwnerId()) {
+          return AccessResult::forbidden();
+        }
+      }
+      elseif (in_array($current_state, [
+        'needs_safe_validation',
+        'ready_for_review',
+        'archived',
+      ])) {
+        if (empty(array_intersect(['dsj_content_editor', 'dsj_reviewer'], $account->getRoles()))) {
+          return AccessResult::forbidden();
+        }
+      }
+    }
+  }
+
+  return AccessResult::neutral();
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_access().
+ */
+function dsjp_pledge_group_access(EntityInterface $entity, $operation, AccountInterface $account) {
+  if ($entity->bundle() == 'dsj_organization' && $operation == 'view' && !$account->isAnonymous()) {
+    $membership = \Drupal::service('dsjp_pledge.group_service')->loadMembershipByUser($account, GroupServiceInterface::GROUP_TYPE_ORGANIZATION);
+    if (!empty($membership) && $membership->getGroup()->id() == $entity->id()) {
+      return AccessResult::allowed();
     }
   }
 
@@ -408,11 +525,18 @@ function dsjp_pledge_preprocess_views_view(&$variables) {
     $url = _dsjp_pledge_get_add_pledge_url() ?? Url::fromRoute('view.groups.user_pledge_organisations', [
       'user' => \Drupal::currentUser()->id(),
     ]);
-
     $variables['add_pledge_url'] = $url->toString();
     $variables['empty'] = t("If you can't find the content that you are looking for, create a new pledge for one of your organisations @link.", [
       '@link' => Link::fromTextAndUrl(t('here'), $url)->toString(),
     ]);
+    $current_path = \Drupal::service('path.current')->getPath();
+    $path_args = explode('/', $current_path);
+    if (\Drupal::currentUser()->id() == $path_args[2]) {
+      $variables['show_add_pledge_button'] = TRUE;
+    }
+    else {
+      $variables['show_add_pledge_button'] = FALSE;
+    }
   }
 }
 
@@ -422,14 +546,14 @@ function dsjp_pledge_preprocess_views_view(&$variables) {
  * @return \Drupal\Core\Url|null
  *   Return Url to add a new Pledge node.
  */
-function _dsjp_pledge_get_add_pledge_url() {
+function _dsjp_pledge_get_add_pledge_url(): ?Url {
   $url = NULL;
   /** @var \Drupal\group\GroupMembership[] $memberships */
   $memberships = \Drupal::service('group.membership_loader')
     ->loadByUser(\Drupal::currentUser());
   if (!empty($memberships)) {
     foreach ($memberships as $membership) {
-      if ($membership->getGroup()->getGroupType()->id() == 'dsj_organization') {
+      if ($membership->getGroup()->getGroupType()->id() == GroupServiceInterface::GROUP_TYPE_ORGANIZATION) {
         $url = Url::fromRoute('entity.group_content.create_form', [
           'group' => $membership->getGroup()->id(),
           'plugin_id' => 'group_node:dsj_pledge',
@@ -440,6 +564,48 @@ function _dsjp_pledge_get_add_pledge_url() {
   }
 
   return $url;
+}
+
+/**
+ * Helper function to generate the link to add Pledge.
+ *
+ * @param \Drupal\group\Entity\GroupInterface|null $group
+ *   The group entity.
+ *
+ * @return array|mixed[]|null
+ *   Return Link to add a new Pledge node.
+ */
+function _dsjp_pledge_get_add_pledge_link($group = NULL): ?array {
+  $link = NULL;
+  if (Drupal::currentUser()->isAuthenticated()) {
+    $service = Drupal::service('dsjp_pledge.group_service');
+    $membership = $service->userHasOrganizationGroupRole(Drupal::currentUser(), [
+      'dsj_organization-coordinator',
+      'dsj_organization-admin',
+    ], ['administrator', 'dsj_reviewer']);
+    if ($membership) {
+      $show_link = FALSE;
+      if (!empty($group)) {
+        $user = User::load(\Drupal::currentUser()->id());
+        $group_membership = $service->loadMembershipByUser($user, GroupServiceInterface::GROUP_TYPE_ORGANIZATION);
+        if (!empty($group_membership) && $group_membership->getGroup()->id() == $group->id()) {
+          $show_link = TRUE;
+        }
+      }
+      else {
+        $show_link = TRUE;
+      }
+      if ($show_link) {
+        $url = _dsjp_pledge_get_add_pledge_url() ?? Url::fromRoute('view.pledges.user_pledges', [
+          'user' => Drupal::currentUser()->id(),
+        ]);
+        $link = Link::fromTextAndUrl(t('Create a new pledge'), $url)->toRenderable();
+        $link['#attributes']['class'][] = 'add-new-pledge';
+      }
+    }
+  }
+
+  return $link;
 }
 
 /**
@@ -590,8 +756,10 @@ function dsjp_pledge_preprocess_node(&$variables) {
       'field_dsj_pledge' => $variables['node']->id(),
       'type' => 'dsj_pledge_initiative',
     ]);
-    $variables['content']['content_moderation_control']['submit']['#prefix'] = t('Note that in order to submit a pledge, you have to create at least one initiative');
-    $variables['content']['content_moderation_control']['submit']['#value'] = t('Submit');
+    if ($variables['content']['content_moderation_control']['submit']) {
+      $variables['content']['content_moderation_control']['submit']['#prefix'] = t('In order to submit a pledge, you have to create at least one initiative');
+      $variables['content']['content_moderation_control']['submit']['#value'] = t('Submit');
+    }
     if (empty($initiatives)) {
       $variables['content']['content_moderation_control']['submit']['#attributes']['disabled'] = TRUE;
     }
@@ -607,4 +775,167 @@ function dsjp_pledge_block_access(Block $block, $operation, AccountInterface $ac
   }
 
   return AccessResult::neutral();
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_insert().
+ */
+function dsjp_pledge_group_insert(EntityInterface $entity) {
+  // Add admin role to organization group creator when the group gets created.
+  if ($entity->bundle() == GroupServiceInterface::GROUP_TYPE_ORGANIZATION) {
+    $membership = $entity->getMember($entity->getOwner());
+    $group_content = $membership->getGroupContent();
+    if ($group_content instanceof GroupContentInterface) {
+      $group_content->group_roles->target_id = 'dsj_organization-admin';
+      $group_content->save();
+    }
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_access().
+ */
+function dsjp_pledge_dsj_pledge_access(EntityInterface $entity, $operation, AccountInterface $account) {
+  if ($operation === 'update' && !$entity->isNew()) {
+    if ($entity->hasField('moderation_state')) {
+      $current_state = $entity->get('moderation_state')->getString();
+      $states = ['needs_changes', 'draft'];
+      if ($entity->getOwnerId() == $account->id() && in_array($current_state, $states)) {
+        return AccessResult::allowed();
+      }
+      $group_content = GroupContent::loadByEntity($entity);
+      foreach ($group_content as $gcontent) {
+        $group = $gcontent->getGroup();
+        if ($group->getGroupType()->id() == GroupServiceInterface::GROUP_TYPE_ORGANIZATION) {
+          $members = $group->getMembers();
+          foreach ($members as $member) {
+            if ($member->getUser()->id() == $account->id()) {
+              $service = \Drupal::service('dsjp_pledge.group_service');
+              $membership = $service->userHasOrganizationGroupRole($account, [
+                'dsj_organization-coordinator',
+                'dsj_organization-admin',
+              ]);
+              if ($membership) {
+                return AccessResult::allowed();
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  return AccessResult::neutral();
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function dsjp_pledge_preprocess_block(&$variables) {
+  if ($variables['plugin_id'] == 'local_actions_block' && $variables['elements']['#id'] == 'primaryadminactions') {
+    $route = \Drupal::routeMatch();
+    if ($route->getRouteName() == 'view.group_members.page_1' && $route->getParameter('group')->bundle() == 'dsj_organization') {
+      $block = \Drupal::entityTypeManager()->getStorage('block_content')->load(23);
+      if ($block instanceof BlockContentInterface) {
+        $variables['content']['information'] = \Drupal::entityTypeManager()->getViewBuilder('block_content')->view($block);
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_tokens_alter().
+ */
+function dsjp_pledge_tokens_alter(array &$replacements, array $context, BubbleableMetadata $bubbleable_metadata) {
+  if (isset($replacements['[node:url]']) && isset($context['data']['node'])) {
+    // Replace pledge initiative url with the parent pledge one.
+    if ($context['data']['node']->bundle() == 'dsj_pledge_initiative') {
+      $pledge = $context['data']['node']->get('field_dsj_pledge')->referencedEntities();
+      if (!empty($pledge)) {
+        $replacements['[node:url]'] = Url::fromRoute(
+          'entity.node.canonical',
+          ['node' => reset($pledge)->id()],
+          ['absolute' => TRUE],
+        )->toString();
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function dsjp_pledge_form_bulk_group_invitation_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $group = \Drupal::routeMatch()->getParameter('group');
+  if ($group instanceof GroupInterface && $group->bundle() == 'dsj_organization') {
+    $form['#validate'][] = 'dsjp_pledge_validate_invitee_mail';
+  }
+}
+
+/**
+ * Validation callback for organisation invite.
+ */
+function dsjp_pledge_validate_invitee_mail(&$form, FormStateInterface $form_state) {
+  $invalid_mails = [];
+  $name = "";
+  if ($form_state->hasValue('invitee_mail')) {
+    $mails = $form_state->getValue('invitee_mail');
+    $name = 'invitee_mail';
+  }
+  elseif ($form_state->hasValue('email_address')) {
+    $mails = $form_state->getValue('email_address');
+    $mails = preg_split('/\r\n/', $mails);
+    $name = 'email_address';
+  }
+  if (!empty($mails)) {
+    foreach ($mails as $mail) {
+      $user = \Drupal::entityTypeManager()->getStorage('user')->loadByProperties([
+        'mail' => $mail,
+      ]);
+      if (!empty($user)) {
+        $user = reset($user);
+        $group_content = \Drupal::service('dsjp_pledge.group_service')->loadMembershipByUser($user, GroupServiceInterface::GROUP_TYPE_ORGANIZATION);
+        if (!empty($group_content)) {
+          $invalid_mails[] = $mail;
+        }
+      }
+    }
+    if (!empty($invalid_mails)) {
+      $form_state->setErrorByName($name, t('The following mail(s) are already part of an organisation: @mails.', [
+        '@mails' => implode(', ', $invalid_mails),
+      ]));
+    }
+  }
+}
+
+/**
+ * Modified view values for initiative status field.
+ */
+function dsjp_pledge_views_pre_render(ViewExecutable $view) {
+  if ($view->id() == 'dsj_reports'  && $view->current_display == 'page_2') {
+    foreach ($view->result as $value) {
+      $quantity = $value->_entity->get('field_dsj_quantity')->value;
+      if ($quantity == 0) {
+        $value->_entity->set('field_dsj_initiative_status', 0);
+      }
+      elseif (!empty($quantity[0])) {
+        $json = $value->_entity->get('field_dsj_initiative_status')->value;
+        if (!empty($json[0])) {
+          $data = json_decode($json, TRUE);
+          $data_value = array_sum(array_column($data, 'value'));
+          $percentage = ($data_value * 100) / $quantity;
+          $percentage = $percentage > 0 ? number_format((float) $percentage, 2) : 0;
+          if (floor(floatval($percentage)) == $percentage) {
+            $value->_entity->set('field_dsj_initiative_status', floor(floatval($percentage)));
+          }
+          else {
+            $value->_entity->set('field_dsj_initiative_status', $percentage);
+          }
+        }
+        else {
+          $value->_entity->set('field_dsj_initiative_status', 0);
+        }
+      }
+    }
+  }
 }

@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.dsj_article.field_dsj_external_id
     - field.field.node.dsj_article.field_dsj_geographic_scope
     - field.field.node.dsj_article.field_dsj_image
+    - field.field.node.dsj_article.field_dsj_linked_content
     - field.field.node.dsj_article.field_dsj_meta_tags
     - field.field.node.dsj_article.field_dsj_publish_in_core
     - field.field.node.dsj_article.field_dsj_representative_image
@@ -35,13 +36,13 @@ content:
       trim_suffix: ...
       wrap_output: false
       wrap_class: trimmed
-      more_link: false
-      more_class: more-link
-      more_text: More
       summary_handler: trim
       trim_options:
         text: true
         trim_zero: false
+      more_link: false
+      more_class: more-link
+      more_text: More
     third_party_settings: {  }
     weight: 1
     region: content
@@ -59,6 +60,7 @@ hidden:
   field_dsj_external_id: true
   field_dsj_geographic_scope: true
   field_dsj_image: true
+  field_dsj_linked_content: true
   field_dsj_meta_tags: true
   field_dsj_type_of_article: true
   field_dsj_type_of_initiative: true

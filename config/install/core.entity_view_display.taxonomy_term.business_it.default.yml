@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.business_it.field_dsj_css_class
+    - taxonomy.vocabulary.business_it
+id: taxonomy_term.business_it.default
+targetEntityType: taxonomy_term
+bundle: business_it
+mode: default
+content:
+  field_dsj_css_class:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  description: true
+  langcode: true
+  search_api_excerpt: true

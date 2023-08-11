@@ -15,6 +15,7 @@ dependencies:
     - field.field.node.dsj_strategy.field_dsj_geographic_scope
     - field.field.node.dsj_strategy.field_dsj_image
     - field.field.node.dsj_strategy.field_dsj_latest_update_strategy
+    - field.field.node.dsj_strategy.field_dsj_linked_content
     - field.field.node.dsj_strategy.field_dsj_meta_tags
     - field.field.node.dsj_strategy.field_dsj_organization
     - field.field.node.dsj_strategy.field_dsj_publish_in_core
@@ -47,7 +48,6 @@ third_party_settings:
         - field_dsj_digital_technology
         - field_dsj_digital_skill_level
         - field_dsj_geographic_scope
-        - field_dsj_industry
         - field_dsj_target_language
         - field_dsj_type_of_initiative
         - field_dsj_organization
@@ -87,7 +87,7 @@ content:
   content_moderation_control:
     settings: {  }
     third_party_settings: {  }
-    weight: -20
+    weight: 0
     region: content
   field_dsj_budget:
     type: text_default
@@ -141,6 +141,8 @@ content:
     settings:
       image_link: ''
       image_style: dsj_content_icon
+      image_loading:
+        attribute: lazy
     third_party_settings: {  }
     weight: 1
     region: content
@@ -219,16 +221,17 @@ content:
   flag_subscribe_node:
     settings: {  }
     third_party_settings: {  }
-    weight: 10
+    weight: 5
     region: content
   flag_voting:
     settings: {  }
     third_party_settings: {  }
-    weight: 10
+    weight: 6
     region: content
 hidden:
   field_dsj_author: true
   field_dsj_external_id: true
+  field_dsj_linked_content: true
   field_dsj_meta_tags: true
   langcode: true
   links: true

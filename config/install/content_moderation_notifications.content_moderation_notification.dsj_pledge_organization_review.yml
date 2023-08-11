@@ -6,7 +6,7 @@ workflow: dsj_organisation_flow
 transitions:
   create_new_draft: create_new_draft
 roles:
-  dsj_reviewer: dsj_reviewer
+  community_manager: community_manager
 author: false
 site_mail: false
 emails: ''

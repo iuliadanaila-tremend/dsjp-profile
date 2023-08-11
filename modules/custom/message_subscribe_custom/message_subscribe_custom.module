@@ -5,13 +5,13 @@
  * Holds hook implementation for the Message Subscribe Custom module.
  */
 
-use Drupal\Core\Entity\ContentEntityBase;
-use Drupal\node\Entity\Node;
 use Drupal\comment\Entity\Comment;
-use Drupal\message\Entity\Message;
+use Drupal\Core\Entity\ContentEntityBase;
 use Drupal\Core\Entity\FieldableEntityInterface;
 use Drupal\Core\Field\FieldStorageDefinitionInterface;
+use Drupal\message\Entity\Message;
 use Drupal\message_digest\Plugin\Notifier\DigestInterface;
+use Drupal\node\Entity\Node;
 
 /**
  * Implements callback_allowed_values_function().
@@ -61,6 +61,12 @@ function message_subscribe_custom_message_subscribe_get_subscribers_alter(array 
       // Completely replace all notifiers with the digest one.
       $delivery_candidate->setNotifiers([$digest_mapping[$uid]]);
     }
+    // If the entity saved is in a different language than the user's language,
+    // don't send the notification.
+    if ($accounts[$uid]->getPreferredLangcode() != $values['entity']->language()->getId()) {
+      unset($uids[$uid]);
+    }
+
   }
 
   return $uids;

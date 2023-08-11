@@ -2,9 +2,9 @@ name: dsjp_community
 type: module
 description: Custom Community related functionalities.
 package: Custom
-core: 8.x
+
 php: 7.3
-core_version_requirement: ^8 || ^9
+core_version_requirement: ^9 || ^10
 dependencies:
   - drupal:comment
   - drupal:content_moderation

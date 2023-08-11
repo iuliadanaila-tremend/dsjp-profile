@@ -3,12 +3,12 @@
 namespace Drupal\dsjp_responsive_background_image;
 
 use Drupal\Core\Entity\ContentEntityBase;
-use Drupal\image\Entity\ImageStyle;
+use Drupal\Core\Render\Markup;
 use Drupal\file\Entity\File;
+use Drupal\image\Entity\ImageStyle;
 use Drupal\media\Entity\Media as MediaAlias;
 use Drupal\media_entity\Entity\Media;
 use Drupal\responsive_image\Entity\ResponsiveImageStyle;
-use Drupal\Core\Render\Markup;
 
 /**
  * ResponsiveBackgroundImage class.
@@ -85,7 +85,7 @@ class ResponsiveBackgroundImage {
         );
       }
       elseif ($moduleHandler->moduleExists('media_entity')) {
-
+        // @phpstan-ignore-next-line
         $media_entity = Media::load(
           $entity->get($field_machine_name)
             ->getValue()[0]['target_id']
@@ -105,6 +105,7 @@ class ResponsiveBackgroundImage {
       return FALSE;
     }
 
+    // @phpstan-ignore-next-line
     $uri = $file_entity->getFileUri();
 
     // Load Responsive Image Style and mappings.
@@ -133,10 +134,8 @@ class ResponsiveBackgroundImage {
         if (!in_array($fallback_image_style, $disallowed_options)) {
           $media_queries_1x .= self::createFallbackMediaQuery(
             $css_selector,
-            file_url_transform_relative(
-              ImageStyle::load($responsiveImageStyle->getFallbackImageStyle())
-                ->buildUrl($uri)
-            )
+            \Drupal::service('file_url_generator')->transformRelative(ImageStyle::load($responsiveImageStyle->getFallbackImageStyle())
+              ->buildUrl($uri))
           );
         }
       }
@@ -145,10 +144,8 @@ class ResponsiveBackgroundImage {
       $media_query = $breakpoints[$image_style_mapping['breakpoint_id']]->getMediaQuery();
 
       // Get path to image using image style.
-      $image_path = file_url_transform_relative(
-        ImageStyle::load($image_style_mapping['image_mapping'])
-          ->buildUrl($uri)
-      );
+      $image_path = \Drupal::service('file_url_generator')->transformRelative(ImageStyle::load($image_style_mapping['image_mapping'])
+        ->buildUrl($uri));
 
       // If multiplier is 1x.
       if ($image_style_mapping['multiplier'] == '1x') {

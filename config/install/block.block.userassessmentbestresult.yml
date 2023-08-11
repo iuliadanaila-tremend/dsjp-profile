@@ -1,0 +1,31 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - dsjp_sat
+    - system
+  theme:
+    - edsjp
+id: userassessmentbestresult
+theme: edsjp
+region: content
+weight: -12
+provider: null
+plugin: dsj_assessment_best_result
+settings:
+  id: dsj_assessment_best_result
+  label: 'Summary of your best results'
+  label_display: visible
+  provider: dsjp_sat
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    context_mapping: {  }
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    context_mapping: {  }
+    pages: '/user/*/assessments'

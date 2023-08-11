@@ -16,18 +16,32 @@ source:
   ids:
     - counter
   column_names:
-    0:
-      counter: 'Identifier'
-    1:
+    -
+      counter: Identifier
+    -
       name: 'Initiative name'
-    2:
+    -
       custom_beneficiary: 'Target number'
-    3:
+    -
       pledge: 'Pledge name'
-    4:
-      field_pillar: 'Pillar'
-    5:
+    -
+      field_pillar: Pillar
+    -
       field_action_type: 'Action Type'
+    -
+      field_description: Description
+    -
+      custom_initiative_performance: Performance
+    -
+      field_special_interest_groups: 'Special Interest'
+    -
+      field_target_sector: 'Target Sector'
+    -
+      custom_field_methodology: Methodology
+    -
+      initiative_kpi_field: 'KPI target values'
+    -
+      custom_quantity_field: 'Quantity Field'
 process:
   title: name
   field_dsj_initiative_beneficiary:
@@ -45,22 +59,74 @@ process:
     plugin: static_map
     source: field_action_type
     map:
-      'Tier 1 - Training': 'training'
-      'Tier 1 - Placement': 'placement'
-      'Tier 2 - Awareness Raising': 'awareness_raising'
-      'Tier 2 - Courses/ Programmes': 'courses_programmes'
-      'Tier 2 - Facilitating Employment': 'facilitating_employment'
-      'Tier 2 - Collaboration': 'collaboration'
-      'Tier 3 - Honorary pledge': 'honorary_pledge'
+      'Tier 1 - Training': training
+      'Tier 1 - Placement': placement
+      'Tier 2 - Awareness Raising': awareness_raising
+      'Tier 2 - Courses / Programmes': courses_programmes
+      'Tier 2 - Facilitating Employment': facilitating_employment
+      'Tier 2 - Collaboration': collaboration
+      'Tier 3 - Honorary pledge': honorary_pledge
+  field_dsj_target_sector:
+    -
+      plugin: explode
+      source: field_target_sector
+      delimiter: ', '
+    -
+      plugin: static_map
+      map:
+        'A - Agriculture, Forestry and Fishing': agriculture
+        'B - Mining and Quarrying': mining
+        'C - Manufacturing': manufacturing
+        'D - Electricity, Gas, Steam and Air Conditioning Supply': electricity
+        'E - Water Supply; Sewerage, Waste Management and Remediation Activities': water_supply
+        'F - Construction': construction
+        'G - Wholesale and Retail Trade; Repair of Motor Vehicles and Motorcycles': wholesale
+        'H - Transportation and Storage': transportation
+        'I - Accommodation and Food Service Activities': accommodation
+        'J - Information and Communication': information
+        'K - Financial and Insurance Activities': financial
+        'L - Real Estate Activities': real_estate
+        'M - Professional, Scientific and Technical Activities': professional_scientific
+        'N - Administrative and Support Service Activities': administrative_support
+        'O - Public Administration and Defence; Compulsory Social Security': public_administration
+        'P - Education': education
+        'Q - Human Health and Social Work Activities': human_health
+        'R - Arts, Entertainment and Recreation': arts
+        'S - Other Service Activities': other
+        'T - Activities of Households as Employers; Undifferentiate Goods and Services Producing Activities of Households for Own Use': household_activities
+        'U - Activities of Extraterritorial Organisations and Bodies': extraterritorial_activities
+      default_value: ''
+  field_dsj_special_interest:
+    -
+      plugin: explode
+      source: field_special_interest_groups
+      delimiter: ', '
+    -
+      plugin: static_map
+      map:
+        Women: women
+        'Young Persons': young_persons
+        SMEs: sme
+        Covid-19: covid
+        'Pact for Skills': pact_for_skills
+        'Digital Volunteers Pilot': digital_volunteers
+      default_value: ''
+  field_dsj_performance: custom_initiative_performance
+  field_dsj_digital_skill_level:
+    plugin: static_map
+    source: field_training_skill_level
+    map:
+      Basic: basic
+      Intermediary: intermediate
+      Advanced: advanced
+    default_value: ''
+  field_dsj_pledge_methodology: custom_field_methodology
+  field_dsj_initiative_status: initiative_kpi_field
+  field_dsj_quantity: custom_quantity_field
+  body: field_description
   uid:
     plugin: default_value
     default_value: 0
-  status:
-    plugin: default_value
-    default_value: 0
-  moderation_state:
-    plugin: default_value
-    default_value: 'ready_for_publication'
 destination:
   plugin: 'entity:node'
   default_bundle: dsj_pledge_initiative

@@ -4,3 +4,18 @@ services:
     arguments: ['@entity_type.manager', '@system.breadcrumb.default', '@entity.repository']
     tags:
       - { name: breadcrumb_builder, priority: 10003 }
+  dsjp_content.action_helper:
+    class: Drupal\dsjp_content\Services\ActionHelper
+    arguments: [ '@current_user', '@entity_type.manager', '@content_moderation.moderation_information', '@content_moderation.state_transition_validation', '@messenger' ]
+  dsj_content.listing_manager:
+    class: Drupal\dsjp_content\Manager\DSJListingManager
+    arguments: [ '@entity_type.manager', '@entity.repository', '@entity_field.manager', '@entity_display.repository']
+  dsjp_content.route_subscriber:
+    class: Drupal\dsjp_content\Routing\RouteSubscriber
+    tags:
+      - { name: event_subscriber }
+  dsjp_content.services_access_checker:
+    class: Drupal\dsjp_content\Access\AccessCheckAddPledge
+    arguments: [ '@dsjp_pledge.group_service' ]
+    tags:
+      - { name: access_check }

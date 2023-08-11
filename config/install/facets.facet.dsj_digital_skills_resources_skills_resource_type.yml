@@ -10,6 +10,8 @@ id: dsj_digital_skills_resources_skills_resource_type
 name: 'Skills resource type'
 weight: -2
 min_count: 1
+missing: false
+missing_label: others
 url_alias: skills_resource_type
 facet_source_id: 'search_api:views_page__dsj_content_listing__digital_skills_resources'
 field_identifier: field_dsj_skills_resource_type
@@ -17,18 +19,28 @@ query_operator: or
 hard_limit: 0
 exclude: false
 use_hierarchy: false
+keep_hierarchy_parents_active: false
+hierarchy:
+  type: taxonomy
+  config: {  }
 expand_hierarchy: false
 enable_parent_when_child_gets_disabled: false
 widget:
-  type: dropdown
+  type: links
   config:
     show_numbers: false
-    default_option_label: Choose
+    soft_limit: 0
+    show_reset_link: false
+    reset_text: 'Show all'
+    hide_reset_when_no_selection: false
+    soft_limit_settings:
+      show_less_label: 'Show less'
+      show_more_label: 'Show more'
 empty_behavior:
   behavior: none
 only_visible_when_facet_source_is_visible: true
 show_only_one_result: false
-show_title: true
+show_title: false
 processor_configs:
   display_value_widget_order:
     processor_id: display_value_widget_order
@@ -36,6 +48,11 @@ processor_configs:
       sort: 40
     settings:
       sort: ASC
+  hierarchy_processor:
+    processor_id: hierarchy_processor
+    weights:
+      build: 100
+    settings: {  }
   list_item:
     processor_id: list_item
     weights:

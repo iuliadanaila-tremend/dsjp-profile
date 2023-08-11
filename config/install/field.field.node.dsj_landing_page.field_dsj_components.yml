@@ -8,6 +8,7 @@ dependencies:
     - paragraphs.paragraphs_type.dsj_blank_cards
     - paragraphs.paragraphs_type.dsj_cards
     - paragraphs.paragraphs_type.dsj_cta_banner
+    - paragraphs.paragraphs_type.dsj_events_community_quotes
     - paragraphs.paragraphs_type.dsj_grouped_cards
     - paragraphs.paragraphs_type.dsj_highlighted_listing
     - paragraphs.paragraphs_type.dsj_info_cards
@@ -15,10 +16,10 @@ dependencies:
     - paragraphs.paragraphs_type.dsj_map
     - paragraphs.paragraphs_type.dsj_small_banner
     - paragraphs.paragraphs_type.dsj_social_media
+    - paragraphs.paragraphs_type.dsj_stories
     - paragraphs.paragraphs_type.dsj_testimonials
     - paragraphs.paragraphs_type.dsj_text
     - paragraphs.paragraphs_type.dsj_top_banner
-    - paragraphs.paragraphs_type.dsj_widget
   module:
     - entity_reference_revisions
     - tmgmt_content
@@ -41,18 +42,19 @@ settings:
     target_bundles:
       dsj_text: dsj_text
       dsj_listing: dsj_listing
-      dsj_top_banner: dsj_top_banner
       dsj_highlighted_listing: dsj_highlighted_listing
+      dsj_top_banner: dsj_top_banner
       dsj_cards: dsj_cards
-      dsj_testimonials: dsj_testimonials
       dsj_grouped_cards: dsj_grouped_cards
+      dsj_testimonials: dsj_testimonials
       dsj_cta_banner: dsj_cta_banner
-      dsj_widget: dsj_widget
       dsj_info_cards: dsj_info_cards
       dsj_blank_cards: dsj_blank_cards
       dsj_map: dsj_map
       dsj_small_banner: dsj_small_banner
       dsj_banner_top_image: dsj_banner_top_image
+      dsj_events_community_quotes: dsj_events_community_quotes
+      dsj_stories: dsj_stories
       dsj_social_media: dsj_social_media
     negate: 0
     target_bundles_drag_drop:
@@ -77,6 +79,9 @@ settings:
       dsj_cta_banner:
         weight: 11
         enabled: true
+      dsj_events_community_quotes:
+        weight: 23
+        enabled: true
       dsj_grouped_cards:
         weight: 10
         enabled: true
@@ -95,11 +100,17 @@ settings:
       dsj_map_component:
         weight: 28
         enabled: false
+      dsj_organisation_contact:
+        weight: 35
+        enabled: false
       dsj_small_banner:
         weight: 20
         enabled: true
       dsj_social_media:
         weight: 25
+        enabled: true
+      dsj_stories:
+        weight: 24
         enabled: true
       dsj_testimonial:
         weight: 16
@@ -115,5 +126,5 @@ settings:
         enabled: true
       dsj_widget:
         weight: 12
-        enabled: true
+        enabled: false
 field_type: entity_reference_revisions

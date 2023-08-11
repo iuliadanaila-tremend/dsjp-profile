@@ -15,6 +15,7 @@ group_type: dsj_national_coalition
 permissions_ui: false
 permissions:
   - 'access group_node overview'
+  - 'invite users to group'
   - 'update any group_node:dsj_article content'
   - 'update any group_node:dsj_article entity'
   - 'update any group_node:dsj_digital_skills_resource content'

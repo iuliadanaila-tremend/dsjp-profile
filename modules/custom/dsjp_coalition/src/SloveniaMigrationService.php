@@ -126,8 +126,7 @@ class SloveniaMigrationService implements MigrationServiceInterface {
       // date.
       if (!empty($response['data'])) {
         $item = $response['data'][0];
-        $updated = strtotime($item['updated_at']);
-        if ($updated < $data['last_imported']) {
+        if (strtotime($item['updated_at']) < strtotime($data['last_imported'])) {
           $totalPages = 0;
         }
       }

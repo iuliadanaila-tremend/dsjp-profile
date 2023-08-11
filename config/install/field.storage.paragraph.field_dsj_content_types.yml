@@ -43,6 +43,12 @@ settings:
     -
       value: dsj_training_offer
       label: 'Training offer'
+    -
+      value: dsj_learning_content
+      label: 'Learning content'
+    -
+      value: dsj_learning_path
+      label: 'Learning path'
   allowed_values_function: ''
 module: options
 locked: false

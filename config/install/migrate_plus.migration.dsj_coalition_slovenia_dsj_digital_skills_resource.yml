@@ -138,8 +138,6 @@ process:
       plugin: get
       source: topology_of_competences
   field_dsj_methodology: methodology
-  field_dsj_publish_in_core:
-    plugin: default_value
     default_value: 1
   field_dsj_website_link/uri:
     -

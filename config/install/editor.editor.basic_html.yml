@@ -29,22 +29,9 @@ settings:
             - BulletedList
             - NumberedList
   plugins:
-    stylescombo:
-      styles: ''
     drupallink:
       linkit_enabled: true
       linkit_profile: default
-    language:
-      language_list: un
-    colorbutton:
-      colors: ''
-    video_embed:
-      defaults:
-        children:
-          autoplay: true
-          responsive: true
-          width: '854'
-          height: '480'
 image_upload:
   status: false
   scheme: public

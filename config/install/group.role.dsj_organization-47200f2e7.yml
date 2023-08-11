@@ -13,4 +13,6 @@ internal: true
 audience: outsider
 group_type: dsj_organization
 permissions_ui: false
-permissions: {  }
+permissions:
+  - 'access group_node overview'
+  - 'administer group'

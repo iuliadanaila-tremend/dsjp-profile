@@ -8,8 +8,10 @@ dependencies:
     - search_api
 id: dsj_training_offers_typology_of_training
 name: 'Typology of training opportunties'
-weight: -5
+weight: -2
 min_count: 1
+missing: false
+missing_label: others
 url_alias: typology_of_training
 facet_source_id: 'search_api:views_page__dsj_content_listing__training_offers'
 field_identifier: field_dsj_typology_of_training
@@ -17,6 +19,10 @@ query_operator: and
 hard_limit: 0
 exclude: false
 use_hierarchy: false
+keep_hierarchy_parents_active: false
+hierarchy:
+  type: taxonomy
+  config: {  }
 expand_hierarchy: false
 enable_parent_when_child_gets_disabled: false
 widget:

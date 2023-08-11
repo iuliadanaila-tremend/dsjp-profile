@@ -1,0 +1,5 @@
+dsjp_learning_states.add_form:
+  route_name: entity.dsjp_learning_states.add_form
+  title: 'Add learning state'
+  appears_on:
+    - entity.dsjp_learning_states.collection

@@ -1,0 +1,78 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - search_api.index.main_content
+    - views.view.dsj_content_listing
+  module:
+    - search_api
+id: dsj_content_listing_events_summary
+name: Summary
+facet_source_id: 'search_api:views_page__dsj_content_listing__events'
+processor_configs:
+  hide_when_not_rendered:
+    processor_id: hide_when_not_rendered
+    weights:
+      build: '-5'
+    settings: {  }
+  reset_facets:
+    processor_id: reset_facets
+    weights:
+      build: '-8'
+    settings:
+      link_text: 'Clear all filters'
+      position: before
+  show_summary_with_reset:
+    processor_id: show_summary_with_reset
+    weights:
+      build: '-7'
+    settings: {  }
+facets:
+  dsj_events_digital_skill_level:
+    checked: true
+    label: 'Digital Skill level'
+    separator: ''
+    show_count: false
+    weight: 0
+  dsj_events_geographic_scope:
+    checked: true
+    label: Country
+    separator: ''
+    show_count: false
+    weight: 0
+  dsj_events_target_language:
+    checked: true
+    label: 'Target language'
+    separator: ''
+    show_count: false
+    weight: 0
+  dsj_events_date:
+    checked: true
+    label: 'Start date'
+    separator: ''
+    show_count: false
+    weight: 0
+  upcoming_date:
+    checked: true
+    label: 'Upcoming Date'
+    separator: ''
+    show_count: false
+    weight: 0
+  dsj_events_digital_technology:
+    checked: true
+    label: Tags
+    separator: ''
+    show_count: false
+    weight: 0
+  dsj_events_event_setting:
+    checked: true
+    label: 'Event setting'
+    separator: ''
+    show_count: false
+    weight: 0
+  dsj_events_date_end_date_value:
+    checked: true
+    label: 'End date'
+    separator: ''
+    show_count: false
+    weight: 0

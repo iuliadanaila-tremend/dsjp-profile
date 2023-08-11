@@ -16,32 +16,32 @@ source:
   ids:
     - counter
   column_names:
-    0:
-      counter: 'Identifier'
-    1:
+    -
+      counter: Identifier
+    -
       field_organisation_name: 'Organization name'
-    2:
-      field_organisation_description: 'Description'
-    3:
+    -
+      field_organisation_description: Description
+    -
       field_operation_sector: 'Target sector'
-    4:
-      field_category: 'Category'
-    5:
-      mail: 'Mail'
-    6:
-      field_countries: 'Country'
-    7:
+    -
+      field_category: Category
+    -
+      mail: Mail
+    -
+      field_countries: Country
+    -
       field_contact_email: 'Contact email'
-    8:
+    -
       field_contact_person: 'Contact person'
-    9:
-      field_town: 'Town'
-    10:
+    -
+      field_town: Town
+    -
       field_number_of_employees: 'Number of employees'
-    11:
-      field_role: 'Role'
-    12:
-      field_logo: 'Logo'
+    -
+      field_role: Role
+    -
+      field_logo: Logo
 process:
   label: field_organisation_name
   field_group_description/value: field_organisation_description
@@ -60,11 +60,11 @@ process:
     plugin: static_map
     source: field_category
     map:
-      'Policy maker': 'policy_maker'
-      'Training provider': 'formal_education_and_training_provider'
-      'Education provider': 'formal_education_and_training_provider'
-      'Industry / Partner': 'public_private_partnership'
-      'Society / Other': 'other'
+      'Policy maker': policy_maker
+      'Training provider': formal_education_and_training_provider
+      'Education provider': formal_education_and_training_provider
+      'Industry / Partner': public_private_partnership
+      'Society / Other': other
   countries:
     -
       plugin: explode
@@ -116,7 +116,7 @@ process:
     default_value: 0
   moderation_state:
     plugin: default_value
-    default_value: 'draft'
+    default_value: draft
 destination:
   plugin: 'entity:group'
   default_bundle: dsj_organization

@@ -20,11 +20,6 @@
         </h1>
         {{ title_suffix }}
         <div class="subscribe-button-wrapper">
-          {% if content.flag_subscribe_node and logged_in %}
-            <div class="subscribe">
-              {{ content.flag_subscribe_node }}
-            </div>
-          {% endif %}
           {% if learning_states_form and logged_in %}
             <div class="subscribe">
               {{ learning_states_form }}
@@ -43,7 +38,7 @@
       {{ content|without('content_moderation_control', 'flag_voting', 'flag_subscribe_node', 'field_dsj_comments') }}
     </div>
 
-    {% if content.flag_voting or socialShare %}
+    {% if content.flag_voting or socialShare or (content.flag_subscribe_node and logged_in) %}
       <div class="voteShare-container">
         {% if content.flag_voting %}
           <div class="voting">{{ content.flag_voting }}</div>
@@ -51,6 +46,12 @@
 
         {% if socialShare %}
           <div class="sharing">{{ socialShare }}</div>
+        {% endif %}
+
+        {% if content.flag_subscribe_node and logged_in %}
+          <div class="subscribe">
+            {{ content.flag_subscribe_node }}
+          </div>
         {% endif %}
       </div>
     {% endif %}

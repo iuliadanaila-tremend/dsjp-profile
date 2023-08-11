@@ -16,9 +16,9 @@ $fonts-path: '../assets/';
   font-style: normal;
 }
 
-
-%icon {
+@mixin icon($icon-name) {
   &::before {
+    content: map_get($icons, $icon-name);
     font-family: 'icomoon-custom' !important;
     speak: none;
     font-style: normal;
@@ -32,16 +32,19 @@ $fonts-path: '../assets/';
   }
 }
 
-@mixin icon($icon-name) {
-  @extend %icon;
-
-  &::before {
-    content: map_get($icons, $icon-name);
-  }
-}
-
 .icon {
-  @extend %icon;
+  &::before {
+    font-family: 'icomoon-custom' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    cursor: inherit;
+    display: inline-block;
+    -webkit-font-smoothing: antialiased;
+  }
 }
 
 @each $icon-name, $icon-value in $icons {

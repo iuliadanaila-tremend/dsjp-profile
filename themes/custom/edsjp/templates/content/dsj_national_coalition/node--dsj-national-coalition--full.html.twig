@@ -11,6 +11,9 @@
   term_type ? node.bundle|clean_class ~ '--' ~ term_type|clean_class,
 ] %}
 <article{{ attributes.addClass(classes) }}>
+  <div class="highlighted-component-wrapper">
+    {{ content.field_dsj_components }}
+  </div>
   <div class="node--content" {{ content_attributes }}>
     {% if content.content_moderation_control %}
       {{ content.content_moderation_control }}
@@ -22,25 +25,18 @@
             {{ node.title.value }}
           </h1>
         {{ title_suffix }}
-        {% if content.flag_subscribe_node %}
-          <div class="subscribe">
-            {{ content.flag_subscribe_node }}
-          </div>
-        {% endif %}
       </div>
-
-      {% include '@edsjp/content/partials/author-extended-info.html.twig' %}
+      {% include '@edsjp/content/partials/posted-time-info.html.twig' %}
     </div>
-
     <div{{ content_attributes }}>
       <div class="field field--name-field-organisation-logo field__item">{{ content.field_dsj_image }}</div>
       {{ content.body }}
       <div class="bordered-field-list">
-        {{ content|without('content_moderation_control', 'body', 'field_dsj_geographic_scope', 'field_dsj_image', 'socialShare', 'flag_voting', 'flag_subscribe_node') }}
+        {{ content|without('content_moderation_control', 'body', 'field_dsj_geographic_scope', 'field_dsj_image', 'socialShare', 'flag_voting', 'flag_subscribe_node', 'field_dsj_components') }}
       </div>
     </div>
 
-    {% if content.flag_voting or socialShare %}
+    {% if content.flag_voting or socialShare or content.field_subscribe_node %}
       <div class="voteShare-container">
         {% if content.flag_voting %}
           <div class="voting">{{ content.flag_voting }}</div>
@@ -48,6 +44,12 @@
 
         {% if socialShare %}
           <div class="sharing">{{ socialShare }}</div>
+        {% endif %}
+
+        {% if content.flag_subscribe_node %}
+          <div class="subscribe">
+            {{ content.flag_subscribe_node }}
+          </div>
         {% endif %}
       </div>
     {% endif %}

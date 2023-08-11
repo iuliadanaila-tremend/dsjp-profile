@@ -41,52 +41,53 @@
 #}
 <div{{ attributes }}>
 
-    {{ title_prefix }}
-    <div class="title-row">
-      <div class="row-wrapper">
-        <h2{{ title_attributes }}>
-          <a href="{{ url }}" rel="bookmark">{{ label }}</a>
-        </h2>
+  {{ title_prefix }}
+  <div class="title-row">
+    <div class="row-wrapper">
+      <h2{{ title_attributes }}>
+        <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+      </h2>
 
-        <div class="is-pledge-badge">
-          {{ content.field_dsj_is_pledger }}
-        </div>
+      <div class="is-pledge-badge">
+        {{ content.field_dsj_is_pledger }}
       </div>
+    </div>
 
-      <div class="group-actions">
-          <div class="membership-request-link">
-          {% if member %}
-              {% if group.bundle() == 'dsj_public_group' %}
-                  {% if logged_in %}
-                      <a href="{{ path('entity.group.join', {'group': group.id()}) }}" class="link-subscribe">{{ 'Join group' | t }}</a>
-                  {% else %}
-                      <a href="{{ url('user.login', {}, {'query': {'returnto': path('entity.group.join', {'group': group.id()})}})|render }}" class="link-subscribe">{{ 'Join group' | t }}</a>
-                  {% endif %}
-              {% else %}
-                  {% if logged_in %}
-                    {% if show_join_link %}
-                      <a href="{{ path('entity.group.group_request_membership', {'group': group.id()}) }}" class="link-subscribe">{{ 'Subscribe to this group' | t }}</a>
-                    {% endif %}
-                  {% else %}
-                      <a href="{{ url('user.login', {}, {'query': {'returnto': path('entity.group.group_request_membership', {'group': group.id()})}})|render }}" class="link-subscribe">{{ 'Subscribe to this group' | t }}</a>
-                  {% endif %}
-              {% endif %}
+    <div class="group-actions">
+      <div class="membership-request-link">
+        {% if member %}
+          {% if logged_in %}
+            {% if has_pending_invitation %}
+              <span>{{ 'Pending approval'|t }}</span>
+            {% elseif show_join_link %}
+              <a href="{{ path('entity.group.group_request_membership', {'group': group.id()}) }}" class="link-subscribe">{{ 'Subscribe to this group' | t }}</a>
+            {% endif %}
           {% else %}
-                  <a href="{{ path('entity.group.leave', {'group': group.id()}) }}" class="link-leave">{{ 'Leave group' | t }}</a>
+            <a href="{{ url('user.login', {}, {'query': {'returnto': path('entity.group.group_request_membership', {'group': group.id()})}})|render }}" class="link-subscribe">{{ 'Subscribe to this group' | t }}</a>
           {% endif %}
-          </div>
+        {% else %}
+          {% if logged_in %}
+            <a href="{{ path('entity.group.leave', {'group': group.id()}) }}" class="link-leave">{{ 'Leave organisation' | t }}</a>
+          {% endif %}
+          {% if add_node_link %}
+            <div class="button-primary">
+              {{ add_node_link }}
+            </div>
+          {% endif %}
+        {% endif %}
       </div>
     </div>
-    {{ title_suffix }}
+  </div>
+  {{ title_suffix }}
 
-    <div class="organisation-description">
-      {{ content.field_group_description }}
-    </div>
+  <div class="organisation-description">
+    {{ content.field_group_description }}
+  </div>
 
-    <div class="organisation-details bordered-field-list">
-      <h2>{{ 'Organisation Details'|t }}</h2>
+  <div class="organisation-details bordered-field-list">
+    <h2>{{ 'Organisation Details'|t }}</h2>
 
-      {{ content|without('field_group_description', 'field_dsj_is_pledger') }}
-    </div>
+    {{ content|without('field_group_description', 'field_dsj_is_pledger') }}
+  </div>
 
 </div>

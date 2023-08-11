@@ -111,7 +111,7 @@ function dsjp_private_message_pm_add_submit(&$form, FormStateInterface $form_sta
     $url = Url::fromRoute('view.dsj_private_messages.private_messages_page', [
       'user' => \Drupal::currentUser()->id(),
       'arg_1' => 'last',
-    ]);
+    ], ['query' => ['scroll']]);
     $response->addCommand(new RedirectCommand($url->toString()));
     Cache::invalidateTags(['config:views.view.dsj_private_messages:' . \Drupal::currentUser()->id()]);
     return $response;

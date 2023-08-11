@@ -12,7 +12,7 @@
 ] %}
 <article{{ attributes.addClass(classes) }}>
   <div class="node--content">
-  
+
     <div class="page-header">
       <div class="upper">
         {{ title_prefix }}
@@ -20,11 +20,6 @@
           {{ label }}
         </h1>
         {{ title_suffix }}
-        {% if content.flag_subscribe_node and logged_in %}
-          <div class="subscribe">
-            {{ content.flag_subscribe_node }}
-          </div>
-        {% endif %}
       </div>
       {% include '@edsjp/content/partials/author-extended-info.html.twig' %}
     </div>
@@ -34,12 +29,14 @@
       {{ content | without('flag_voting', 'flag_subscribe_node', 'field_dsj_comments', 'field_dsj_author') }}
     </div>
 
-    {% if content.flag_voting %}
+    {% if content.flag_voting or (content.flag_subscribe_node and logged_in) %}
       <div class="voteShare-container">
         <div class="voting">{{ content.flag_voting }}</div>
+        <div class="subscribe">
+          {{ content.flag_subscribe_node }}
+        </div>
       </div>
     {% endif %}
-
   </div>
 
   {% include '@edsjp/content/partials/comments-area.html.twig' %}

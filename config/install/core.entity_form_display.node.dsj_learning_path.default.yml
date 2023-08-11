@@ -4,17 +4,21 @@ dependencies:
   config:
     - field.field.node.dsj_learning_path.body
     - field.field.node.dsj_learning_path.field_dsj_advanced_learning
+    - field.field.node.dsj_learning_path.field_dsj_comments
     - field.field.node.dsj_learning_path.field_dsj_digital_skill_level
     - field.field.node.dsj_learning_path.field_dsj_digital_technology
     - field.field.node.dsj_learning_path.field_dsj_image
     - field.field.node.dsj_learning_path.field_dsj_introductory_learning
+    - field.field.node.dsj_learning_path.field_dsj_website_link
     - node.type.dsj_learning_path
     - workflows.workflow.dsj_main_workflow
   module:
+    - comment
     - content_moderation
     - paragraphs
     - path
     - text
+    - typed_link
 id: node.dsj_learning_path.default
 targetEntityType: node
 bundle: dsj_learning_path
@@ -38,6 +42,43 @@ content:
     third_party_settings: {  }
   field_dsj_advanced_learning:
     type: paragraphs
+    weight: 13
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: _none
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+  field_dsj_comments:
+    type: comment_default
+    weight: 26
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_dsj_digital_skill_level:
+    type: options_select
+    weight: 15
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_dsj_digital_technology:
+    type: options_select
+    weight: 16
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_dsj_introductory_learning:
+    type: paragraphs
     weight: 12
     region: content
     settings:
@@ -55,36 +96,13 @@ content:
         collapse_edit_all: collapse_edit_all
         duplicate: duplicate
     third_party_settings: {  }
-  field_dsj_digital_skill_level:
-    type: options_select
-    weight: 13
-    region: content
-    settings: {  }
-    third_party_settings: {  }
-  field_dsj_digital_technology:
-    type: options_select
+  field_dsj_website_link:
+    type: typed_link
     weight: 14
     region: content
-    settings: {  }
-    third_party_settings: {  }
-  field_dsj_introductory_learning:
-    type: paragraphs
-    weight: 11
-    region: content
     settings:
-      title: Paragraph
-      title_plural: Paragraphs
-      edit_mode: open
-      closed_mode: summary
-      autocollapse: none
-      closed_mode_threshold: 0
-      add_mode: dropdown
-      form_display_mode: default
-      default_paragraph_type: _none
-      features:
-        add_above: '0'
-        collapse_edit_all: collapse_edit_all
-        duplicate: duplicate
+      placeholder_url: ''
+      placeholder_title: ''
     third_party_settings: {  }
   langcode:
     type: language_select
@@ -135,7 +153,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
   translation:
-    weight: 10
+    weight: 11
     region: content
     settings: {  }
     third_party_settings: {  }

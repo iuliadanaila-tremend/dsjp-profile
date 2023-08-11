@@ -10,11 +10,11 @@ server:
   verify: 0
   cert: ''
 gateway:
-  check_frequency: -2
   paths:
     id: request_path
     negate: false
     pages: ''
+  check_frequency: -2
 forced_login:
   enabled: false
   paths:

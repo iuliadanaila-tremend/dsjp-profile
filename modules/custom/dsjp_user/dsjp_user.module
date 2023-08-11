@@ -6,12 +6,15 @@
  */
 
 use Drupal\comment\CommentInterface;
+use Drupal\comment\Entity\Comment;
 use Drupal\Component\Render\PlainTextOutput;
+use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Link;
 use Drupal\Core\Render\BubbleableMetadata;
 use Drupal\Core\Render\Markup;
+use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Url;
 use Drupal\legal\AcceptedInterface;
 use Drupal\legal\Entity\Accepted;
@@ -619,23 +622,42 @@ function dsjp_user_cron() {
 }
 
 /**
+ * Implements hook_ENTITY_TYPE_access().
+ */
+function dsjp_user_comment_access(CommentInterface $comment, $operation, AccountInterface $account) {
+  if ($operation === 'delete') {
+    $commentId = $comment->id();
+    if (dsjp_user_can_access_comment_delete($commentId, $account)) {
+      return AccessResult::allowed();
+    }
+  }
+
+  return AccessResult::neutral();
+}
+
+/**
+ * Checks if the user is allowed to delete a comment.
+ */
+function dsjp_user_can_access_comment_delete($commentId, $account) {
+  if ($commentId && $account->isAuthenticated()) {
+    $comment = Comment::load($commentId);
+    if ($comment->getOwnerId() === $account->id() || $account->hasPermission('administer comments')) {
+      return TRUE;
+    }
+  }
+
+  return FALSE;
+}
+
+/**
  * Implements hook_comment_links_alter().
  */
 function dsjp_user_comment_links_alter(array &$links, CommentInterface $entity, array &$context) {
-  // Roles having access to edit & delete comments.
-  $roles_to_check = [
-    'administrator',
-    'community_manager',
-    'dsj_reviewer',
-  ];
-  // If the current user is not the comment owner or it doesn't have one of the
-  // administrator, community manager or reviewer role, remove the delete and
-  // edit links.
-  $intersect = array_intersect($roles_to_check, \Drupal::currentUser()->getRoles());
-  if ($entity->getOwnerId() != \Drupal::currentUser()->id() && count($intersect) == 0) {
+  if (!dsjp_user_can_access_comment_delete($entity->id(), \Drupal::currentUser())) {
     if (isset($links['comment']['#links']['comment-delete'])) {
       unset($links['comment']['#links']['comment-delete']);
     }
+
     if (isset($links['comment']['#links']['comment-edit'])) {
       unset($links['comment']['#links']['comment-edit']);
     }
@@ -663,11 +685,14 @@ function dsjp_user_mail_alter(&$message) {
   }
 }
 
+/**
+ * Implements hook_user_format_name_alter().
+ */
 function dsjp_user_user_format_name_alter(&$name, AccountInterface $account) {
   if (!$account->isAnonymous()) {
     $user = \Drupal::entityTypeManager()->getStorage('user')->load($account->id());
     if ($user instanceof UserInterface) {
-      $composedName = $user->get('field_first_name')->value . ' ' . $user->get('field_last_name')->value;
+      $composedName = $user->get('field_dsj_firstname')->value . ' ' . $user->get('field_dsj_lastname')->value;
       if ($composedName !== " ") {
         $name = $composedName;
       }

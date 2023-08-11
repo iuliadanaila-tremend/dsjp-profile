@@ -4,9 +4,14 @@ var requireDir = require('require-dir');
 
 requireDir('./gulp_tasks');
 
-// DEV CSS builder.
-gulp.task('default', gulp.series('build-icons', 'sass-dev', 'dev-sass-lint'), function (done) {
+// Default CSS builder.
+gulp.task('default', gulp.series('build-icons', 'sass-prod'), function (done) {
     done();
+});
+
+// DEV CSS builder.
+gulp.task('dev', gulp.series('build-icons', 'sass-dev', 'dev-sass-lint'), function (done) {
+  done();
 });
 
 // DEV CSS builder and watcher.

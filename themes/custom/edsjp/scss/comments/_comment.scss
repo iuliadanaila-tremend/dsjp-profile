@@ -108,7 +108,7 @@ $mobile-avatar-size: 30px;
   .created-at {
     @include position(absolute, 0 0 null null);
 
-    @include media-breakpoint-down(sm) {
+    @include media-breakpoint-down(md) {
       position: relative;
     }
   }
@@ -290,11 +290,19 @@ article.js-comment {
         padding-left: $grid-gutter-width * 1.3;
         
         &::before {
-          @include position(absolute, 50% null null $grid-gutter-width/2.6);
+          @include position(absolute, 50% null null $grid-gutter-width / 2.6);
           transform: translateY(-50%);
           font-size: $font-size-lg;
-          height: $grid-gutter-width/1.6;
+          height: $grid-gutter-width / 1.6;
           color: $primary-hover;
+        }
+
+        &:first-child {
+          @include icon(reply);
+          padding-left: $grid-gutter-width / 1.1;
+            &::before {
+            left: 0;
+          }
         }
       }
 

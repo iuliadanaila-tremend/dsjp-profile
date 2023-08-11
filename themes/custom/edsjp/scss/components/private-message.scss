@@ -4,7 +4,8 @@ $user-image-size: 50px;
 
   /* Remove padding amd margins for mobile layout*/
   @include media-breakpoint-down(sm) {
-    .ecl-navigation-list {
+    .ecl-navigation-list,
+    .ecl-navigation {
       display: none;
     }
 
@@ -51,14 +52,14 @@ $user-image-size: 50px;
         }
 
         &::before {
-          height: 20px;
+          height: $grid-gutter-width / 1.6;
           padding-right: $grid-gutter-width;
           position: relative;
           content: '';
           background: url('../assets/images/icons/lock-slash.svg') no-repeat center;
           color: theme-color('third-light');
           font-size: $font-size-sm;
-        } 
+        }
       }
     }
 
@@ -84,7 +85,7 @@ $user-image-size: 50px;
       p {
         &:first-of-type {
           &::before {
-            height: 20px;
+            height: $grid-gutter-width / 1.6;
             padding-right: $grid-gutter-width * 1.13;
             position: relative;
             content: '';
@@ -409,7 +410,7 @@ $user-image-size: 50px;
                         max-width: 200px;
                         max-height: 22px;
                         overflow: hidden;
-                        
+
                         p {
                           text-overflow: ellipsis;
                           color: transparentize($gray-private-message, .5);
@@ -585,7 +586,7 @@ $user-image-size: 50px;
               }
             }
 
-            .user { 
+            .user {
               display: flex;
               flex-direction: column;
               justify-content: space-between;
@@ -815,7 +816,7 @@ $user-image-size: 50px;
                   line-height: $line-height-lg;
                   text-align: center;
                   min-width: 180px;
-                  
+
                   /* Actual message */
                   & ~ .ecl {
                     max-width: 70%;
@@ -841,7 +842,7 @@ $user-image-size: 50px;
                     & ~ .ecl {
                       position: relative;
                       background: $border-white;
-  
+
                       /* Triangle for message bubble */
                       &::after {
                         @include position(absolute, $grid-gutter-width / 2 100% null null);
@@ -872,7 +873,7 @@ $user-image-size: 50px;
                       p {
                         color: $body-bg;
                       }
-  
+
                       /* Triangle for message bubble */
                       &::after {
                         @include position(absolute, $grid-gutter-width / 2 null null 100%);
@@ -984,7 +985,7 @@ $user-image-size: 50px;
 
   /* Empty-state - When the user has no contacts yet*/
   .private-message-view-empty {
-    
+
     @include media-breakpoint-down(lg) {
       width: 100%;
       height: 384px;
@@ -1094,7 +1095,7 @@ $user-image-size: 50px;
               border: 0;
               background-color: $gray;
 
-              
+
               .cke_toolbar {
                 &:last-child {
                   @include media-breakpoint-down(sm) {
@@ -1166,7 +1167,7 @@ $user-image-size: 50px;
   }
 
   /* Confirmation page to delete contact */
-  .views-bulk-operations-confirm-action, 
+  .views-bulk-operations-confirm-action,
   .private-message-thread-confirm-form {
     @include media-breakpoint-down(sm) {
       display: block;
@@ -1636,7 +1637,7 @@ $user-image-size: 50px;
                 color: $white;
               }
             }
-          } 
+          }
 
           &.ui-state-active {
             background: transparent;
@@ -1673,4 +1674,3 @@ $user-image-size: 50px;
     }
   }
 }
-

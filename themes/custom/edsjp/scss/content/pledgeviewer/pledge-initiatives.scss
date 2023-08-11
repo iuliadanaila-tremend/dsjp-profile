@@ -309,7 +309,7 @@
       &#pledge-pillar-education {
         @include icon(education);
 
-        background-color: $education-color;
+        background-color: $pillar-education;
 
         &::before {
           font-size: $font-size-base * 1.1875;
@@ -318,7 +318,7 @@
       &#pledge-pillar-labour_force {
         @include icon(citizens);
 
-        background-color: $labour-force-color;
+        background-color: $pillar-labor-force;
 
         &::before {
           font-size: $font-size-md;
@@ -327,7 +327,7 @@
       &#pledge-pillar-ict_professionals {
         @include icon(ict-professional);
 
-        background-color: $ict-color;
+        background-color: $pillar-ict-professionals;
 
         &::before {
           font-size: $font-size-base;
@@ -336,7 +336,7 @@
       &#pledge-pillar-other {
         @include icon(citizens);
 
-        background-color: $other-color;
+        background-color: $pillar-other;
 
         &::before {
           font-size: $font-size-base;
@@ -355,7 +355,7 @@
     .initiative-header {
       @include icon(education);
 
-      background-color: $education-color;
+      background-color: $pillar-education;
 
       &::before {
         @include media-breakpoint-down(md) {
@@ -364,12 +364,6 @@
 
         font-size: $font-size-3xl;
       }
-
-      .button {
-        &:hover {
-          background-color: tint($education-color, 80%);
-        }
-      }
     }
   }
   &-labour-force,
@@ -377,7 +371,7 @@
     .initiative-header {
       @include icon(labour-force);
 
-      background-color: $labour-force-color;
+      background-color: $pillar-labor-force;
 
       &::before {
         @include media-breakpoint-down(md) {
@@ -399,7 +393,7 @@
     .initiative-header {
       @include icon(ict-professional);
 
-      background-color: $ict-color;
+      background-color: $pillar-ict-professionals;
 
       &::before {
         @include media-breakpoint-down(md) {
@@ -429,7 +423,7 @@
     .initiative-header {
       @include icon(citizens);
 
-      background-color: $other-color;
+      background-color: $pillar-other;
 
       &::before {
         @include media-breakpoint-down(md) {

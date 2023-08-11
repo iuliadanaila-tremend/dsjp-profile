@@ -129,7 +129,7 @@ function dsjp_map_preprocess_paragraph(&$variables) {
  * @return int[]
  *   Return min and max scores for map
  */
-function  dsjp_map_get_scores_interval(array $components, $eu_average): array {
+function dsjp_map_get_scores_interval(array $components, $eu_average): array {
   $minScore = $maxScore = 0;
   $sum = 0;
   $avg = 0;

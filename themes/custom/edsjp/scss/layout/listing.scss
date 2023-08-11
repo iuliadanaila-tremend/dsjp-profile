@@ -131,6 +131,7 @@
             }
           }
 
+          .field--name-field-dsj-digital-skill-level,
           .field--name-field-dsj-digital-technology,
           .node--footer,
           .field--name-body {
@@ -204,8 +205,8 @@
       }
 
       .user--compact {
-        @include media-breakpoint-down(sm) {
-          padding: 0;
+        @include media-breakpoint-down(md) {
+          padding: 0 0 $grid-gutter-width-mobile;
         }
 
         padding: 0 0 $grid-gutter-width / 3;
@@ -269,22 +270,52 @@
 
           .field__item {
             $icon-size: 20px;
-            
+
             display: flex;
             justify-content: flex-start;
 
             a {
               padding-left: $grid-gutter-width / 3;
+              color: $gray-800;
             }
 
-            &::before {
-              background-color: $gray-100;
-              content: '';
-              -webkit-mask: url('../assets/images/icons/funding-icon.svg') no-repeat center;
-              mask: url('../assets/images/icons/funding-icon.svg') no-repeat center;
-              background-size: cover;
-              width: $icon-size;
-              height: $icon-size;
+            ul.shs li {
+              width: auto;
+              padding: 0px;
+              margin: 0px;
+              display: flex;
+              justify-content: flex-start;
+
+              &:first-child {
+                &::before {
+                  background-color: $gray-100;
+                  content: '';
+                  -webkit-mask: url('../assets/images/icons/funding-first.svg') no-repeat center;
+                  mask: url('../assets/images/icons/funding-first.svg') no-repeat center;
+                  background-size: cover;
+                  width: $icon-size;
+                  height: $icon-size;
+                }
+              }
+
+              &:nth-child(2) {
+                padding-left: $grid-gutter-width / 3;
+
+                &::before {
+                  background-color: $gray-100;
+                  content: '';
+                  -webkit-mask: url('../assets/images/icons/funding-second.svg') no-repeat center;
+                  mask: url('../assets/images/icons/funding-second.svg') no-repeat center;
+                  background-size: cover;
+                  width: $icon-size;
+                  height: $icon-size;
+                }
+              }
+            }
+
+            ul.shs li:after {
+              margin: 0px;
+              content: none!important;
             }
           }
         }
@@ -344,7 +375,8 @@
       @include icon(clock);
     }
 
-    &-digital-technology {
+    &-digital-technology,
+    &-digital-skill-level {
       display: flex;
       flex-wrap: wrap;
       font-size: $font-size-sm;
@@ -369,6 +401,20 @@
 
       a {
         color: $gray-100;
+      }
+    }
+
+    &-digital-skill-level {
+      .field__item {
+        margin-right: 0px;
+
+        &:not(:last-child){
+          &::after {
+            content: '|';
+            display: inline-block;
+            padding: 0 $grid-gutter-width / 3;
+          }
+        }
       }
     }
 
@@ -430,24 +476,1000 @@
       @include icon(globe);
     }
 
-    &-digital-technology {
+    &-digital-technology,
+    &-digital-skill-level {
       color: $gray-400;
     }
   }
 }
 
 .view-dsj-discussions,
-.view-dsj-content-listing {
-  padding-top: $grid-gutter-width;
+.view-dsj-content-listing,
+.view-dsj-articles-listing,
+.view-display-id-page {
+  padding-top: 0;
+
+  @include media-breakpoint-down (sm) {
+    padding-top: $grid-gutter-width-mobile * 10;
+  }
 
   .view-header {
-    margin-bottom: $grid-gutter-width;
+    .ecl {
+      margin-bottom: $grid-gutter-width / 2;
+    }
+  }
+
+  .ecl-u-type-heading-2 {
+    @include font($font-size-3xl, $line-height-3xl, $font-ec-square-medium, normal, true);
+
+    display: block;
+    margin-bottom: $grid-gutter-width / 4;
+  }
+
+  .view-rows {
+    .listing-header {
+      display: flex;
+      margin-bottom: 1rem;
+      align-items: center;
+    }
+
+    .listing-more-link {
+      @include media-breakpoint-down (md) {
+        display: none;
+      }
+
+      margin-left: auto;
+      text-align: center;
+      min-width: 110px;
+
+      a {
+        @include border-radius(6px);
+        @include icon(right-arrow);
+
+        font-family: $font-ec-square-medium;
+        padding: $grid-gutter-width / 2 $grid-gutter-width * 1.5 $grid-gutter-width / 2 $grid-gutter-width / 3.2;
+        border: 2px solid !important;
+        font-size: $font-size-sm;
+        font-weight: bold;
+        line-height: $line-height-xl;
+        background-color: $gray;
+        border-color: $primary-default;
+        color: $primary-default;
+
+        &::before {
+          position: relative;
+          top: 1px;
+          left: $grid-gutter-width * 2.5;
+        }
+
+        &:hover {
+          border-color: $primary-hover;
+          color: $primary-hover;
+        }
+
+        &:active {
+          border-color: $primary-active;
+          color: $primary-active;
+        }
+      }
+    }
+  }
+
+  .listing-wrapper-content {
+    @include font($h2-font-size, $line-height-2xl, $font-ec-square-regular, normal, true);
+    margin: 0 0 1.875rem;
+  }
+
+  .field--name-field-dsj-components {
+    .type-pill {
+      display: none;
+    }
+
+    div.more-link {
+      text-align: right;
+      width: 100%;
+
+      a {
+        font-size: $font-size-base;
+        line-height: $line-height-base;
+        font-family: $font-ec-square-medium !important;
+      }
+    }
+
+    .node {
+      .node--title {
+        margin: 0px;
+      }
+
+      &--promoted {
+        h3 {
+          margin-top: 0px;
+        }
+      }
+    }
+  }
+
+  .paragraph--type--dsj-highlighted-listing {
+    .ecl-container {
+      padding: 0;
+
+      .listing-header .listing-more-link {
+        a {
+          display: none;
+        }
+      }
+
+      .hidden-desktop.listing-more-link {
+        display: none;
+      }
+    }
+  }
+
+  .paragraph--type--dsj-listing {
+    .ecl-container {
+      padding: 0;
+    }
+
+    .listing-header .listing-more-link {
+      a {
+        @include border-radius(6px);
+        @include icon(right-arrow);
+
+        font-family: $font-ec-square-medium;
+        padding: $grid-gutter-width / 2 $grid-gutter-width * 1.5 $grid-gutter-width / 2 $grid-gutter-width / 3.2;
+        border: 2px solid !important;
+        font-size: $font-size-sm;
+        font-weight: bold;
+        line-height: $line-height-xl;
+        background-color: $gray;
+        border-color: $primary-default;
+        color: $primary-default;
+
+        &::before {
+          position: relative;
+          top: 1px;
+          left: $grid-gutter-width * 2.5;
+        }
+
+        &:hover {
+          border-color: $primary-hover;
+          color: $primary-hover;
+        }
+
+        &:active {
+          border-color: $primary-active;
+          color: $primary-active;
+        }
+      }
+    }
+
+    .hidden-desktop.listing-more-link {
+      margin-top: $grid-gutter-width-mobile;
+
+      a {
+        background-color: $gray;
+        display:flex;
+        justify-content: center;
+        padding: $grid-gutter-width-mobile $grid-gutter-width-mobile * 1.5 $grid-gutter-width-mobile $grid-gutter-width-mobile / 1.6;
+        font-weight: bold;
+        border: 2px solid !important;
+        @include icon(right-arrow);
+
+        &::before {
+          position: relative;
+          top: 4px;
+          left: $grid-gutter-width * 2.5;
+        }
+      }
+    }
   }
 }
 
 .view-dsj-discussions {
   &.view-display-id-dsj_latest_two {
     padding-top: 0;
+  }
+}
+
+/*New listing cards*/
+.view-dsj-articles-listing,
+.view-dsj-content-listing {
+  .item-list.item--wide {
+    li {
+      .node--content {
+        @include media-breakpoint-down (md) {
+          padding: $grid-gutter-width-mobile;
+        }
+      }
+
+      .image-area {
+        @include media-breakpoint-down (md) {
+          display: unset;
+          padding-right: $grid-gutter-width-mobile * 0.75;
+          width: 64px;
+        }
+
+        padding-right: $grid-gutter-width * 0.75;
+
+        .field--name-field-dsj-image {
+          width: 130px;
+
+          @include media-breakpoint-down (md) {
+            height: 64px;
+            width: 64px;
+          }
+        }
+
+        img {
+          @include media-breakpoint-down (md) {
+            height: 64px;
+            width: 64px;
+          }
+
+          height: 130px;
+          width: 130px;
+        }
+      }
+
+      .text-area {
+        .field--name-field-dsj-digital-skill-level {
+          @include media-breakpoint-between (xxxs, md) {
+            margin-top: 0;
+          }
+        }
+
+        h3 {
+          @include media-breakpoint-down (md) {
+            margin-top: $grid-gutter-width-mobile;
+            font-size: $font-size-base;
+          }
+        }
+
+        .field--name-field-dsj-digital-technology {
+          @include media-breakpoint-down (md) {
+            margin-top: 0;
+          }
+        }
+
+        .load-more-btn {
+          font-weight: bold;
+          position: relative;
+          right: 13px;
+          color: $blue;
+          @include icon(keyboard_arrow_down);
+
+          &::before {
+            font-weight: bold;
+            top: 1px;
+            left: 80px;
+            position: relative;
+          }
+        }
+
+        .view-less-btn {
+          font-weight: bold;
+          position: relative;
+          right: 14px;
+          color: $blue;
+          @include icon(keyboard_arrow_up);
+
+          &::before {
+            font-weight: bold;
+            top: 2px;
+            left: 73px;
+            position: relative;
+          }
+        }
+      }
+
+      .node--footer {
+        @include media-breakpoint-down (md) {
+          display: block;
+        }
+
+        @include media-breakpoint-up (lg) {
+          height: $grid-gutter-width / 1.45;
+        }
+
+        justify-content: right;
+        padding: 0 $grid-gutter-width * 0.75 $grid-gutter-width * 0.5;
+
+        .more-link {
+          @include media-breakpoint-down (md) {
+            display: block;
+            text-align: right;
+            margin: $grid-gutter-width-mobile * 1.25 0 $grid-gutter-width-mobile * 0.5;
+          }
+
+          font-weight: bold;
+          margin-right: 0px;
+          margin-left: auto;
+          width: auto;
+        }
+
+        .field--name-field-dsj-training-duration {
+          @include media-breakpoint-down (md) {
+            display:unset;
+            margin: $grid-gutter-width-mobile * 0.75 0 $grid-gutter-width-mobile * 1.5;
+          }
+        }
+
+        .field--name-field-dsj-assessment-type {
+          display: flex;
+          @include media-breakpoint-down (md) {
+            margin-top: $grid-gutter-width-mobile / 2;
+          }
+
+          @include media-breakpoint-up (lg) {
+            margin-left: $grid-gutter-width * 1.25;
+          }
+
+          .field__item:not(:first-child) {
+            padding-left: $grid-gutter-width-mobile / 4;
+          }
+        }
+
+        .field--name-field-dsj-skills-resource-type {
+          height: $grid-gutter-width / 1.45;
+          @include icon (bookmark);
+
+          @include media-breakpoint-down (md) {
+            right: $grid-gutter-width-mobile / 2;
+          }
+        }
+
+        .field--name-field-dsj-type-of-initiative {
+          @include icon (lightbulb);
+        }
+
+        .field--name-field-dsj-publication-type {
+          padding-left: 0;
+          display: flex;
+
+          @include media-breakpoint-down (md) {
+            flex-direction: column;
+          }
+
+          .field__item:first-child {
+            @include icon (article);
+            &::before {
+              position: relative;
+              top: 3px;
+              padding-right: $grid-gutter-width / 4;
+              color: $gray-100;
+            }
+          }
+
+          .field__item:not(:first-child) {
+            @include media-breakpoint-down (lg) {
+              padding-top: $grid-gutter-width-mobile / 2;
+
+              @include icon (bookmark);
+              &::before {
+              position: relative;
+              top: 3px;
+              padding-right: $grid-gutter-width / 4;
+              color: $gray-100;
+              }
+            }
+
+            &::before {
+              @include media-breakpoint-up (lg) {
+              content: '|';
+              font-size: $font-size-sm;
+              color: $gray-100;
+              padding: 0 $grid-gutter-width / 4;
+              }
+            }
+          }
+        }
+
+        .field--name-field-dsj-organization {
+          @include icon (checked-calendar)
+        }
+      }
+    }
+  }
+}
+
+/*New listing card design for training offers and resources*/
+.view-dsj-content-listing.view-display-id {
+  &-training_offers, &-digital_skills_resources {
+    .item-list.item-list.item--wide li {
+      .image-area {
+        @include media-breakpoint-down (md) {
+          margin-top: $grid-gutter-width * 0.75;
+        }
+      }
+
+      .text-area {
+        @include card-states-wrapper;
+
+        .card-states-wrapper {
+          @include media-breakpoint-down (md) {
+            flex-direction: column-reverse;
+          }
+        }
+
+        h3 {
+          @include media-breakpoint-down (md) {
+            margin: $grid-gutter-width-mobile / 2 0 0;
+          }
+
+          margin: $grid-gutter-width * 0.5 0 $grid-gutter-width / 3;
+        }
+      }
+
+      .node--footer {
+        @include media-breakpoint-down (md) {
+          padding: 0 $grid-gutter-width-mobile $grid-gutter-width-mobile / 2;
+        }
+      }
+    }
+  }
+}
+
+.view-dsj-articles-listing .item-list.item--wide li {
+  .text-area {
+    h3 {
+      margin: 0 0 $grid-gutter-width / 4;
+    }
+  }
+
+  div.more-link {
+    @include media-breakpoint-down (md) {
+      display: unset;
+      margin: 0 $grid-gutter-width-mobile * 1.25 $grid-gutter-width-mobile * 0.75;
+    }
+
+    margin: 0 $grid-gutter-width * 0.75 $grid-gutter-width * 0.5;
+
+    a {
+      font-weight: bold;
+    }
+  }
+}
+
+/*New listing && groups discution design*/
+.view-display-id-dsj {
+  &_discussion_listing,
+  &_group_discussions {
+    @include media-breakpoint-down (sm) {
+      padding-top: $grid-gutter-width-mobile * 6;
+    }
+    .article-header {
+      @include media-breakpoint-down (md) {
+        margin: $grid-gutter-width-mobile * 0.75 $grid-gutter-width-mobile;
+      }
+
+      display: flex;
+      flex-wrap: wrap;
+      margin: $grid-gutter-width * 0.65 $grid-gutter-width * 0.65 0;
+
+      .author-picture {
+        position: relative;
+        @include  media-breakpoint-down (md) {
+          width: 30px;
+          height: 30px;
+        }
+
+        .is-logged-in {
+          &::before {
+            @include media-breakpoint-down (md) {
+              font-size: $font-size-base !important;
+              width: 30px !important;
+              height: 30px !important;
+              line-height: 31px !important;
+            }
+
+            width: 48px;
+            height: 48px;
+          }
+        }
+
+      }
+
+      .left-side {
+        @include media-breakpoint-down (md) {
+          margin-left: $grid-gutter-width-mobile / 2;
+        }
+
+        margin-left: $grid-gutter-width / 2;
+
+        div:first-child {
+          display:flex;
+          font-size: $font-size-sm;
+
+          @include media-breakpoint-down (md) {
+            display: unset;
+          }
+        }
+
+        .started-by {
+          display: inline;
+
+          &::after {
+            display: none;
+            content:'|';
+
+            @include media-breakpoint-down (md) {
+              display: unset;
+              color: $gray-700;
+              margin-left: $grid-gutter-width-mobile / 2;
+            }
+          }
+
+          span:first-child {
+            margin-right: $grid-gutter-width / 8;
+            color: $gray-700;
+
+            @include media-breakpoint-down (md) {
+              display: unset;
+            }
+          }
+
+          a {
+            font-weight: bold;
+          }
+        }
+
+        .ended-by-info {
+          color: $gray-700;
+
+          span:first-child {
+            margin: 0 $grid-gutter-width / 4 0 $grid-gutter-width / 1.6;
+
+            @include media-breakpoint-down (md) {
+              display: none;
+            }
+          }
+        }
+      }
+
+      .page-title {
+        min-height: unset;
+        align-items: unset;
+        position: relative;
+        padding-left: $grid-gutter-width * 2.0625;
+        top: $grid-gutter-width / (-2);
+        width: 100%;
+
+        @include media-breakpoint-down (md) {
+          margin-top: $grid-gutter-width-mobile * 1.5;
+          margin-left: $grid-gutter-width-mobile * 2.1;
+          padding-left: $grid-gutter-width-mobile / 1.066;
+        }
+
+        a {
+          font-weight: bold;
+        }
+      }
+
+      .field--name-field-dsj-digital-technology {
+        padding-left: $grid-gutter-width * 2.0625 !important;
+        width: 100%;
+
+        @include media-breakpoint-down (md) {
+          padding-left: $grid-gutter-width-mobile * 3 !important;
+        }
+
+        .load-more-btn {
+          font-weight: bold;
+          position: relative;
+          right: 13px;
+          color: $blue;
+          @include icon(keyboard_arrow_down);
+
+          &::before {
+            font-weight: bold;
+            top: 1px;
+            left: 80px;
+            position: relative;
+          }
+        }
+
+        .view-less-btn {
+          font-weight: bold;
+          position: relative;
+          right: 14px;
+          color: $blue;
+          @include icon(keyboard_arrow_up);
+
+          &::before {
+            font-weight: bold;
+            top: 2px;
+            left: 73px;
+            position: relative;
+          }
+        }
+      }
+    }
+
+    .content-area {
+      margin-left: $grid-gutter-width * 2.71;
+      margin-right: $grid-gutter-width / 1.6;
+
+      @include media-breakpoint-down (md) {
+        margin: $grid-gutter-width-mobile / (-2) $grid-gutter-width-mobile 0 $grid-gutter-width-mobile * 4 !important;
+      }
+
+      .text-area .ecl {
+        font-size: $font-size-base;
+      }
+    }
+
+    .content-footer {
+      width: 100%;
+      margin-left: $grid-gutter-width / 1.6 !important;
+      margin-right: $grid-gutter-width / 1.6;
+      z-index: 1;
+
+      .left-side {
+        color: $gray-400;
+        font-size: $font-size-base;
+      }
+
+      .right-side .count-vote {
+        &::after{
+          content: '•';
+          font-size: $font-size-4xl;
+          color: $gray-400;
+          margin: 0 $grid-gutter-width / 2 0 $grid-gutter-width / 1.6;
+        }
+      }
+    }
+
+    .node--comments {
+      width: 100%;
+    }
+  }
+}
+
+/*New listing pledges design*/
+.view-pledges,
+.view-display-id-pledges,
+.view-display-id-page_group_pledges {
+  .node--dsj-pledge {
+    padding: $grid-gutter-width / 1.6 $grid-gutter-width / 1.6 0;
+  }
+
+  .listing-header {
+    h2 {
+      @include media-breakpoint-down (md) {
+        margin-right: auto;
+      }
+    }
+
+    .listing-more-link {
+      @include media-breakpoint-down (md) {
+        display: none;
+      }
+    }
+  }
+
+  .node--content {
+    display: flex;
+
+    .image-area {
+      @include media-breakpoint-down (md) {
+        width: 64px;
+        height: 64px;
+        margin-right: $grid-gutter-width-mobile * 0.75;
+      }
+      width: 130px;
+      height: 130px;
+      margin-right: $grid-gutter-width / 1.6;
+
+      img {
+        width: 130px;
+        height: 130px;
+        border-radius: 6px;
+        max-width: unset;
+
+        @include media-breakpoint-down (md) {
+          width: 64px;
+          height: 64px;
+        }
+      }
+    }
+
+    .text-area {
+      h2 {
+        font-size: $font-size-base;
+        font-weight: 600;
+        margin-bottom: $grid-gutter-width / 4;
+      }
+    }
+  }
+
+  .end-date {
+    margin-top: $grid-gutter-width * 3 / 4 !important;
+  }
+
+  .article-footer {
+    .initiatives-type .type-initiative {
+      flex-basis: unset !important;
+
+      @include media-breakpoint-down (md) {
+        padding-bottom: $grid-gutter-width-mobile / 2 !important;
+      }
+    }
+
+    .more-link {
+      @include media-breakpoint-down (md) {
+        align-self: flex-end !important;
+      }
+    }
+  }
+}
+
+/*Shared styling for news and opinions on mobile*/
+.view-dsj-articles-listing.view-display-id-articles {
+  @include media-breakpoint-down (sm) {
+    padding-top: $grid-gutter-width-mobile * 4;
+  }
+}
+
+/*Styling for listing events footer*/
+.view-dsj-content-listing .item-list.item--wide li {
+  .node--dsj-event {
+
+    .image-area .field--name-field-dsj-image {
+      margin-bottom: 5px;
+    }
+
+    .text-area h3 {
+        @include media-breakpoint-down (md) {
+          height: unset;
+          margin-top: $grid-gutter-width-mobile / 4;
+        }
+      }
+
+    .node--footer {
+      @include media-breakpoint-up (xl) {
+        padding: 0 $grid-gutter-width * 0.75 $grid-gutter-width * 1.625;
+        gap: 0 $grid-gutter-width * 0.625;
+        justify-content: left;
+      }
+
+      @include media-breakpoint-between (md, lg) {
+        padding: 0 $grid-gutter-width * 1.25 $grid-gutter-width / 2 $grid-gutter-width * 0.5;
+      }
+
+      @include media-breakpoint-between (lg, xl) {
+        justify-content: flex-start;
+        padding-bottom: $grid-gutter-width * 1.625;
+        gap: 0 $grid-gutter-width-mobile * 0.625;
+      }
+
+      @include media-breakpoint-down (md) {
+        padding-left: $grid-gutter-width-mobile;
+      }
+
+      .more-link {
+        @include media-breakpoint-up (md) {
+          width: 100%;
+          margin-top: $grid-gutter-width / 2;
+        }
+      }
+    }
+  }
+}
+
+/*Shared styling for strategy, good practice, initiative, NC listing*/
+.view-dsj-content-listing .item-list.item--wide li {
+  .node--dsj-strategy, .node--dsj-good-practice,
+  .node--dsj-initiative, .node--dsj-national-coalition {
+    .text-area {
+      h3 {
+        @include media-breakpoint-down (md) {
+          margin-top: 0;
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    .node--footer {
+      @include media-breakpoint-down (md) {
+        display: flex;
+        padding: $grid-gutter-width-mobile;
+        justify-content: space-between;
+      }
+
+      .field--name-field-dsj-type-of-initiative {
+        @include media-breakpoint-down (md) {
+          display: inline
+        }
+      }
+
+      .more-link {
+        @include media-breakpoint-down (md) {
+          display: inline;
+          margin: 0 0 0;
+        }
+      }
+    }
+
+    .more-link {
+      @include media-breakpoint-down (md) {
+        display: inline;
+        margin: 0 $grid-gutter-width-mobile / 2 $grid-gutter-width-mobile;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .node--dsj-strategy, .node--dsj-national-coalition {
+    .image-area {
+      width: 60px;
+
+      .field--name-field-dsj-image img {
+          width: 60px;
+          height: 60px;
+      }
+    }
+  }
+
+  .node--dsj-skills-intelligence {
+    .image-area {
+      @include media-breakpoint-down (md) {
+        margin-top: $grid-gutter-width * 0.75;
+      }
+    }
+
+    .text-area {
+      @include card-states-wrapper;
+
+      .card-states-wrapper {
+        @include media-breakpoint-down (md) {
+          flex-direction: column-reverse;
+        }
+      }
+
+      h3 {
+        @include media-breakpoint-down (md) {
+          margin: 0 0 $grid-gutter-width-mobile / 2;
+        }
+
+        @include media-breakpoint-up (md) {
+          flex-basis: 89%;
+        }
+      }
+    }
+  }
+}
+
+/*Styling for Learning path/content listings*/
+.node--dsj-learning-content, .node--dsj-learning-path {
+  @include card-states-wrapper;
+  .more-link {
+    font-weight: bold;
+  }
+}
+
+.node--dsj-learning-path {
+  .image-area {
+    width: 130px;
+    height: 130px;
+
+    @include media-breakpoint-down(sm) {
+      width: 64px;
+      height: 64px;
+      margin-top: $grid-gutter-width-mobile * 2.75;
+      margin-right: $grid-gutter-width-mobile;
+    }
+  }
+
+  .ecl p {
+    padding: 0;
+  }
+
+  @include media-breakpoint-down(sm) {
+    .card-states-wrapper {
+      flex-direction: column;
+
+      .subscribe {
+        padding-bottom: $grid-gutter-width-mobile;
+      }
+    }
+
+    .text-area h3 {
+      height: unset !important;
+    }
+  }
+
+  .node--footer .more-link {
+    margin-top: 0 !important;
+
+    &::before {
+      position: absolute;
+      top: 2px;
+      right: 0px;
+    }
+  }
+
+
+}
+
+
+
+.dsj-learning-content--listing {
+  .node--content {
+    padding-bottom: 0 !important;
+  }
+
+  .field--name-field-dsj-learning-content-type {
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 87%;
+    gap: 0px $grid-gutter-width / 2;
+    padding-left: 0 !important;
+    @include media-breakpoint-down (md) {
+      flex-direction: column;
+    }
+
+    .assessment .field__item {
+      @include icon(assessment);
+    }
+
+    .demonstration .field__item {
+      @include icon(demonstration);
+    }
+
+    .educational-game .field__item {
+      @include icon(module);
+    }
+
+    .exercise .field__item {
+      @include icon(exercise);
+    }
+
+    .guide .field__item {
+      @include icon(guide);
+    }
+
+    .lecture .field__item {
+      @include icon(lecture);
+    }
+
+    .presentation .field__item {
+      @include icon(video);
+    }
+
+    .textbook .field__item {
+      @include icon(book);
+    }
+
+    .learning-content-type .field__item::before {
+      position: relative;
+      top: 3px;
+      margin-right: $grid-gutter-width / 8;
+      color: $gray-100;
+      font-size: $font-size-2md;
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    .ecl p {
+      padding: 0;
+      margin-top: $grid-gutter-width-mobile * (-1);
+    }
+
+    .image-area {
+      padding-top: $grid-gutter-width-mobile * 2.5;
+    }
+
+    .more-link {
+      display: block !important;
+    }
+
+    .card-states-wrapper {
+      flex-direction: column-reverse;
+
+      h3 {
+        align-items: flex-start !important;
+      }
+    }
   }
 }
 
@@ -461,6 +1483,56 @@
       div.more-link {
         margin: 0;
         width: auto;
+      }
+    }
+  }
+}
+
+.view-dsj-regionally-related-content,
+.view-dsj-search {
+  .item-list {
+    li {
+      .dsj-training-offer--listing-wide {
+        div.more-link {
+          width: 100%;
+          margin: 0 1.33333rem 1.33333rem;
+        }
+      }
+    }
+  }
+}
+
+.path-european-interactive-map {
+  .view-dsj-regionally-related-content {
+    @include media-breakpoint-down(sm) {
+      margin-top: $grid-gutter-width * 5;
+    }
+  }
+}
+
+.path-search {
+  .view-dsj-search {
+    @include media-breakpoint-down(sm) {
+      margin-top: $grid-gutter-width * 5;
+    }
+  }
+}
+
+.page-node-type-dsj-listing {
+  .dsj-listing {
+    @include media-breakpoint-down(sm) {
+      margin-top: $grid-gutter-width * 5;
+    }
+
+    .item-list.item--wide li {
+      .more-link {
+        @include media-breakpoint-down(sm) {
+          display: unset;
+        }
+
+        a {
+          font-weight: bold;
+        }
       }
     }
   }

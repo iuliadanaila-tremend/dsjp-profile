@@ -1,5 +1,5 @@
 var gulp = require('gulp'),
-    sass = require('gulp-sass'),
+    sass = require('gulp-dart-sass'),
     postcss = require('gulp-postcss'),
     sourcemaps = require('gulp-sourcemaps'),
     checkFilesize = require('gulp-check-filesize'),

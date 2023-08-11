@@ -45,7 +45,9 @@
   'paragraph',
   'paragraph--type--' ~ paragraph.bundle|clean_class,
   view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
-  not paragraph.isPublished() ? 'paragraph--unpublished'
+  not paragraph.isPublished() ? 'paragraph--unpublished',
+  content.field_dsj_image | render ? 'paragraph-banner-background',
+  content.field_dsj_title | render ? 'has-title',
 ]
 %}
 {% block paragraph %}
@@ -67,8 +69,8 @@
               </div>
             </div>
             {{ content.field_dsj_featured_content }}
-            <div class="ecl-row">
-              {{ content | without('field_dsj_featured_content', 'field_dsj_title', 'field_dsj_see_more_link') }}
+            <div class="ecl-row dsj-skills-cards">
+              {{ content | without('field_dsj_featured_content', 'field_dsj_title', 'field_dsj_see_more_link', 'field_dsj_image') }}
             </div>
             {% if content.field_dsj_see_more_link | render %}
               <div class="hidden-desktop listing-more-link">

@@ -4,14 +4,15 @@
     {% if content.body %}
       {{ content.body }}
     {% endif %}
+    {% if has_permission %}
     <div class="more-button-wrapper">
       <div class="more-button-tooltip">
         <div>
-          <a href="{{ url('entity.node.edit_form', {"node" : node.id }) }}">{{ 'Edit initiative'|t }}</a>
-          <a href="{{ url('dsjp_pledge.initiative_update', {"node" : node.id }) }}">{{ 'Update status'|t }}</a>
+          {{ operation_links }}
         </div>
       </div>
     </div>
+    {% endif %}
   </div>
   <div class="content-table">
     <div class="table-wrapper">
@@ -73,7 +74,11 @@
       <div class="content-body">
         <div class="body-cell">
           {% if percentage %}
-            {{ percentage }}%
+            {% if percentage|round(0, 'floor') == percentage %}
+              {{ percentage|round(0, 'floor') }}%
+            {% else %}
+              {{ percentage }}%
+            {% endif %}
           {% else %}
             0%
           {% endif %}

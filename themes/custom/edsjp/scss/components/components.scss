@@ -7,6 +7,9 @@
 @import 'assessment';
 @import 'map-banner';
 @import 'private-message';
+@import 'select2';
+@import 'highlighted-component';
+@import 'learning-states';
 
 .type-pill {
   @include pill();

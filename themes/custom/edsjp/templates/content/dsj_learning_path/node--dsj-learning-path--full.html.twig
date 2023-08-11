@@ -11,34 +11,52 @@
 ] %}
 <article{{ attributes.addClass(classes) }}>
 
-  <div class="node--content">
-    <div class="page-header">
-      <div class="upper">
-        {{ title_prefix }}
-        <h1{{ title_attributes }}>
-          {{ node.title.value }}
-        </h1>
-        {{ title_suffix }}
-        <div class="subscribe-button-wrapper">
-          {% if content.flag_subscribe_node and logged_in %}
-            <div class="subscribe">
-              {{ content.flag_subscribe_node }}
-            </div>
-          {% endif %}
-          {% if learning_states_form and logged_in %}
-            <div class="subscribe">
-              {{ learning_states_form }}
-            </div>
-          {% endif %}
-        </div>
+  <header>
+    <div class="upper">
+      {{ title_prefix }}
+      <h1{{ title_attributes }}>
+        {{ node.title.value }}
+      </h1>
+      {{ title_suffix }}
+      <div class="subscribe-button-wrapper">
+        {% if learning_states_form and logged_in %}
+          <div class="subscribe">
+            {{ learning_states_form }}
+          </div>
+        {% endif %}
       </div>
     </div>
+  </header>
+
+  <div class="node--content" {{ content_attributes }}>
+    {% if content.content_moderation_control %}
+      {{ content.content_moderation_control }}
+    {% endif %}
 
     <div{{ content_attributes }}>
-      {{ content | without('flag_voting', 'flag_subscribe_node', 'field_dsj_comments', 'field_dsj_author') }}
+      {{ content | without('content_moderation_control', 'flag_voting', 'flag_subscribe_node', 'field_dsj_comments', 'field_dsj_author') }}
     </div>
 
+    {% if content.flag_voting or socialShare or (content.flag_subscribe_node and logged_in) %}
+      <div class="voteShare-container">
+        {% if content.flag_voting %}
+          <div class="voting">{{ content.flag_voting }}</div>
+        {% endif %}
+
+        {% if socialShare %}
+          <div class="sharing">{{ socialShare }}</div>
+        {% endif %}
+
+        {% if content.flag_subscribe_node and logged_in %}
+          <div class="subscribe">
+            {{ content.flag_subscribe_node }}
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
   </div>
+
+  {% include '@edsjp/content/partials/comments-area.html.twig' %}
 
 </article>
 

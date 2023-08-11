@@ -10,9 +10,9 @@ use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\Core\Url;
 use Drupal\node\Entity\Node;
+use Drupal\node\Entity\NodeType;
 use Drupal\node\NodeInterface;
 use Drupal\node\NodeTypeInterface;
-use Drupal\node\Entity\NodeType;
 use Drupal\user\Entity\User;
 use Drupal\user\UserInterface;
 
@@ -117,13 +117,55 @@ function _edsjp_page_header_add_color_class(array &$variables) {
  */
 function _edsjp_page_header_add_color_class_by_route(array &$variables) {
   $route_match = \Drupal::routeMatch();
-  $extra_classes = [];
+  $extra_classes = $variables['extra_classes'] ? explode(' ', $variables['extra_classes']) : [];
   switch ($route_match->getRouteName()) {
     case 'view.pledges.page':
+    case 'dsjp_pledge.initiative_update':
       $extra_classes[] = 'color-inspiration';
       break;
+
+    case 'entity.group_content.create_form':
+      $plugin_id = $route_match->getRawParameter('plugin_id');
+      if ($plugin_id == 'group_node:dsj_pledge') {
+        $extra_classes[] = 'color-inspiration';
+      }
+      break;
+
+    case 'view.group_nodes.page_group_pledges':
+    case 'view.dsj_pledge_organizations.page_pledger_organization':
+      $extra_classes[] = 'color-community';
+      break;
   }
+  _edsjp_page_header_add_color_class_by_node_route($extra_classes);
   $variables['extra_classes'] = implode(' ', $extra_classes);
+}
+
+/**
+ * Add the page header color class by node route.
+ *
+ * @param array $extra_classes
+ *   Extra classes for the page header.
+ */
+function _edsjp_page_header_add_color_class_by_node_route(array &$extra_classes) {
+  $node_types_pledge = ['dsj_pledge', 'dsj_pledge_initiative'];
+  $route_match = \Drupal::routeMatch();
+  switch ($route_match->getRouteName()) {
+    case 'node.add':
+      $node_type = $route_match->getRawParameter('node_type');
+      if ($node_type == 'dsj_pledge_initiative') {
+        $extra_classes[] = 'color-inspiration';
+      }
+      break;
+
+    case 'entity.node.canonical':
+    case 'entity.node.edit_form':
+      /** @var \Drupal\node\Entity\Node $node */
+      $node = $route_match->getParameter('node');
+      if (in_array($node->bundle(), $node_types_pledge)) {
+        $extra_classes[] = 'color-inspiration';
+      }
+      break;
+  }
 }
 
 /**
@@ -137,12 +179,21 @@ function _edsjp_page_header_add_link(array &$variables) {
 
   switch ($route_match->getRouteName()) {
     case 'view.pledges.page':
-      if (\Drupal::currentUser()->isAuthenticated()) {
-        $url = _dsjp_pledge_get_add_pledge_url() ?? Url::fromRoute('view.pledges.user_pledges', [
-          'user' => \Drupal::currentUser()->id(),
-        ]);
-        $variables['add_node_link'] = Link::fromTextAndUrl(t('Create a new pledge'), $url);
-      }
+      $variables['add_node_link'] = _dsjp_pledge_get_add_pledge_link();
+      break;
+
+    case 'view.group_nodes.page_group_pledges':
+      $variables['add_node_link'] = [
+        '#type' => 'container',
+        '#attributes' => ['class' => 'container-links'],
+        'add_new_pledge' => _dsjp_pledge_get_add_pledge_link(),
+        'add_exist_pledge' => _dsjp_community_add_exist_related_content_link([
+          'administrator',
+          'dsj_reviewer',
+          'dsj_critical_reviewer',
+          'community_manager',
+        ]),
+      ];
       break;
   }
 }

@@ -8,6 +8,7 @@
 @import 'front-page';
 @import 'search-page';
 @import 'contact-form';
+@import 'confirmation-message';
 
 @include media-breakpoint-down(sm) {
   .ecl-container {
@@ -18,4 +19,40 @@
 
 .ecl-row {
   min-width: 100%;
+}
+
+.ecl-row-reverse {
+  flex-direction: row-reverse;
+
+  .sidebar {
+    @include media-breakpoint-up(lg) {
+      & > .region-content {
+        position: sticky;
+        top: 10px;
+        max-height: calc(100vh - 10px);
+        overflow: auto;
+
+        body.toolbar-horizontal & {
+          top: 100px;
+          max-height: calc(100vh - 100px);
+        }
+
+        &::-webkit-scrollbar {
+          width: $grid-gutter-width / 1.7;
+        }
+
+        &::-webkit-scrollbar-track {
+          background-color: transparent;
+          margin-left: $grid-gutter-width;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background-color: $primary;
+          background-clip: content-box;
+          padding: 0;
+          border-left: $grid-gutter-width / 2 solid transparent;
+        }
+      }
+    }
+  }
 }

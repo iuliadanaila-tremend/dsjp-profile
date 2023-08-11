@@ -30,6 +30,10 @@
 
   {# Internal logic - Process properties #}
 
+  {% if _variant is not empty and _variant == 'negative' %}
+    {% set _css_class = _css_class ~ ' ecl-page-header--negative' %}
+  {% endif %}
+
   {% if _background_image %}
     {% set _css_class = _css_class ~ ' ecl-page-header-core--image' %}
   {% endif %}
@@ -56,8 +60,9 @@
   <div class="{{ _css_class }}" {{ _extra_attributes|raw }}>
     <div class="ecl-container">
       {% if _breadcrumb is not empty %}
-        {% include '@ecl/breadcrumb-core/breadcrumb-core.html.twig' with _breadcrumb|merge({
-          extra_classes: 'ecl-page-header-core__breadcrumb',
+        {% include '@ecl/breadcrumb/breadcrumb.html.twig' with _breadcrumb|merge({
+          variant: _variant,
+          extra_classes: 'ecl-page-header-core__breadcrumb ecl-page-header__breadcrumb',
         }) only %}
       {% endif %}
 

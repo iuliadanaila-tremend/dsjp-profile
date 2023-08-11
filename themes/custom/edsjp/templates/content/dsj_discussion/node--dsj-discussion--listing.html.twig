@@ -14,21 +14,10 @@
     <div class="user author-picture">
       {{ author_avatar }}
     </div>
-    <div class="page-title">
-      {{ title_prefix }}
-      {% if not page %}
-        <h2 {{ title_attributes }}>
-          <a href="{{ url }}" rel="bookmark" title="{{ title }}">{{ title }}</a>
-        </h2>
-      {% endif %}
-      {{ title_suffix }}
-    </div>
-  </div>
-  <div {{ content_attributes.addClass('content', 'content-area') }}>
     <div class="left-side">
       <div {{ author_attributes }}>
         <div class="started-by">
-          <span class="hidden-mobile">{{ 'Created by'|t }}</span>
+          <span class="hidden-mobile">{{ 'Started by'|t }}</span>
           {% if node.getOwner.isAnonymous %}
             {{ author_name }}
           {% else %}
@@ -52,17 +41,32 @@
         </div>
       </div>
     </div>
-    {{ content|without('flag_voting', 'field_dsj_comments') }}
+    <div class="page-title">
+      {{ title_prefix }}
+      {% if not page %}
+        <h2 {{ title_attributes }}>
+          <a href="{{ url }}" rel="bookmark" title="{{ title }}">{{ title }}</a>
+        </h2>
+      {% endif %}
+      {{ title_suffix }}
+    </div>
+    {{ content.field_dsj_digital_technology }}
+  </div>
+  <div {{ content_attributes.addClass('content', 'content-area') }}>
+    {{ content|without('flag_voting', 'field_dsj_comments', 'field_dsj_digital_technology') }}
   </div>
 
   {% if display_submitted %}
     <div class="content content-footer">
+      <div class="left-side">
+        {% if comment_count == 0 %} <span>{{ 'No comments'|t }}</span> {% endif %}
+      </div>
       <div class="right-side">
-        <div class="count count-comment{% if comment_count != 0 %} has-comments{% endif %}">
-          <span><a href="{{ comment_form_url }}">{{ comment_count }}</a></span>
-        </div>
         <div class="count count-vote">
           <span>{{ content.flag_voting }}</span>
+        </div>
+        <div class="count count-comment{% if comment_count != 0 %} has-comments{% endif %}">
+          <span><a href="{{ comment_form_url }}">{{ comment_count }}</a></span>
         </div>
       </div>
     </div>

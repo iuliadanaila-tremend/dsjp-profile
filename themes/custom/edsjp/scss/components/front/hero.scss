@@ -79,28 +79,3 @@
     }
   }
 }
-
-
-.paragraph {
-  &.paragraph--type--dsj-grouped-cards {
-    &.paragraph--view-mode--default {
-
-      @include media-breakpoint-down(sm) {
-        margin-top: -76vh !important;
-
-        .tabs {
-          label {
-            min-width: unset;
-          }
-        }
-      }
-
-      @include media-breakpoint-down(xxs) {
-        margin-top: -72vh !important;
-      }
-      @include media-breakpoint-down(xxxs) {
-        margin-top: -68vh !important;
-      }
-    }
-  }
-}

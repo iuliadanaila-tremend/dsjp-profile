@@ -10,7 +10,8 @@
   h2 {
     display: flex;
     justify-content: space-between;
-    margin-bottom: $grid-gutter-width * 1.5;
+    margin-top: $grid-gutter-width * 1.5;
+    margin-bottom: $grid-gutter-width / 2;
 
     .voting {
       white-space: nowrap;
@@ -24,6 +25,10 @@
 
   /* override ecl default style */
   .ecl {
+    h1 {
+      @include font($h1-font-size, $line-height-4xl, $font-ec-square-regular, 700, true)
+    }
+
     h2 {
       @include font($h2-font-size, 1.2, $font-ec-square-regular, 700, true);
     }

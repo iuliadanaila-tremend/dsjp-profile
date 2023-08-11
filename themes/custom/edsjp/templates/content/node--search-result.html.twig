@@ -19,7 +19,7 @@
   {{ title_suffix }}
 
   <div{{ content_attributes }}>
-    <p>{{ content }}</p>
+    <p>{{ content | without('flag_voting', 'flag_subscribe_node', 'field_dsj_comments', 'field_dsj_author') }}</p>
     {{ ct_pill }}
   </div>
 </article>

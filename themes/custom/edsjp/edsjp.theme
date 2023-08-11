@@ -188,6 +188,18 @@ function edsjp_preprocess_page(&$variables) {
   if (\Drupal::routeMatch()->getRouteName() == 'view.dsj_private_messages.private_messages_page') {
     $variables['#attached']['library'][] = 'edsjp/private_message';
   }
+
+  $moduleHandler = \Drupal::service('module_handler');
+  // Check if the page is a listing. The option saved in the block visibility
+  // groups.
+  if ($moduleHandler->moduleExists('block_visibility_groups')) {
+    $group_evaluator = \Drupal::service('block_visibility_groups.group_evaluator');
+    $group_entity = \Drupal::entityTypeManager()->getStorage('block_visibility_group')->load('edsjp_content_listing');
+    if ($group_evaluator->evaluateGroup($group_entity)) {
+      // Put the right column to the left side.
+      $variables['reverse_layout'] = TRUE;
+    }
+  }
 }
 
 /**

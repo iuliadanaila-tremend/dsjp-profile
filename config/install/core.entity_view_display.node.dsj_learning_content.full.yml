@@ -14,13 +14,13 @@ dependencies:
     - field.field.node.dsj_learning_content.field_dsj_linked_content
     - field.field.node.dsj_learning_content.field_dsj_target_audience
     - field.field.node.dsj_learning_content.field_dsj_website_link
+    - image.style.dsj_content_icon
     - node.type.dsj_learning_content
-    - responsive_image.styles.oe_theme_main_content
   module:
     - comment
     - field_group
+    - image
     - options
-    - responsive_image
     - text
     - typed_link
     - user
@@ -90,11 +90,13 @@ content:
     weight: 11
     region: content
   field_dsj_image:
-    type: responsive_image
+    type: image
     label: hidden
     settings:
-      responsive_image_style: oe_theme_main_content
       image_link: ''
+      image_style: dsj_content_icon
+      image_loading:
+        attribute: lazy
     third_party_settings: {  }
     weight: 1
     region: content

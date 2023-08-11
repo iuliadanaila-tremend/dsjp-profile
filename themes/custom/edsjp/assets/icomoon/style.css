@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?nitznv');
-  src:  url('fonts/icomoon.eot?nitznv#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?nitznv') format('truetype'),
-    url('fonts/icomoon.woff?nitznv') format('woff'),
-    url('fonts/icomoon.svg?nitznv#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?g3zvn');
+  src:  url('fonts/icomoon.eot?g3zvn#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?g3zvn') format('truetype'),
+    url('fonts/icomoon.woff?g3zvn') format('woff'),
+    url('fonts/icomoon.svg?g3zvn#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,60 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-danger:before {
+  content: "\e93b";
+}
+.icon-assessment:before {
+  content: "\e935";
+}
+.icon-demonstration:before {
+  content: "\e936";
+}
+.icon-exercise:before {
+  content: "\e937";
+}
+.icon-guide:before {
+  content: "\e939";
+}
+.icon-lecture:before {
+  content: "\e93a";
+}
+.icon-plus:before {
+  content: "\e938";
+}
+.icon-article:before {
+  content: "\e92a";
+}
+.icon-book:before {
+  content: "\e92b";
+}
+.icon-business-focused:before {
+  content: "\e92c";
+}
+.icon-it-focused:before {
+  content: "\e92d";
+}
+.icon-learning-path:before {
+  content: "\e92e";
+}
+.icon-module:before {
+  content: "\e92f";
+}
+.icon-podcast:before {
+  content: "\e930";
+}
+.icon-video:before {
+  content: "\e931";
+}
+.icon-checked-calendar:before {
+  content: "\e932";
+}
+.icon-euro:before {
+  content: "\e933";
+}
+.icon-lightbulb:before {
+  content: "\e934";
+}
 .icon-badge:before {
   content: "\e929";
 }

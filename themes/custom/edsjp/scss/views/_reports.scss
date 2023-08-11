@@ -1,4 +1,5 @@
 .view-dsj-reports,
+.view-dsj-group-report,
 .view-dsj-reports-users,
 .view-dsj-reports-content-proposal-submissions,
 .view-dsj-reports-comments {
@@ -16,8 +17,8 @@
     align-items: flex-end;
     grid-template-columns: 50% 50%;
 
-    .chosen-choices {
-      overflow: auto;
+    .select2-container {
+      @include dropdown-styling(true);
     }
 
     div#edit-created,
@@ -26,12 +27,14 @@
       display: flex;
     }
 
-    #edit-created-wrapper {
+    #edit-created-wrapper,
+    #edit-changed-wrapper {
       .fieldset-wrapper {
         @include make-row(0);
         margin-right: $grid-gutter-width / 2;
 
-        .js-form-item-created {
+        .js-form-item-created,
+        .js-form-item-changed {
           &-min,
           &-max {
             @include make-col(6);
@@ -42,7 +45,6 @@
 
     > div {
       @include media-breakpoint-up(md) {
-        // width: calc(25% - #{$grid-gutter-width} / 2);
         min-width: 50%;
         margin-right: $grid-gutter-width / 2 !important;
 
@@ -79,22 +81,6 @@
         flex-wrap: wrap;
         flex-direction: column;
       }
-    }
-
-    .chosen-container {
-      height: 50px;
-      width: 100% !important;
-    }
-
-    .chosen-single,
-    .chosen-choices {
-      @include border-radius($border-radius-lg);
-      height: 100%;
-      padding: .25rem .5rem;
-    }
-
-    .chosen-single {
-      width: 100%;
     }
 
     input {
@@ -209,4 +195,13 @@
 
 .ecl-form-group > :not(.ecl-form-label--hidden) + * {
   margin-top: unset;
+}
+
+.view-dsj-group-report .view-rows,
+.view-dsj-reports-imported-content .wrapper2 {
+  overflow: auto;
+  height: 75vh;
+  padding: 0;
+  border-radius: $border-radius-default;
+  @include report-tables-styling;
 }

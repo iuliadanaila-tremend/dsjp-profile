@@ -20,6 +20,11 @@
                 <a href="{{ url }}" rel="bookmark" title="{{ title }}">{{ title }}</a>
             </h3>
             {{ title_suffix }}
+            {% if learning_states_form and logged_in %}
+                <div class="subscribe">
+                    {{ learning_states_form }}
+                </div>
+            {% endif %}
             <div class="article-date">{{ node.getCreatedTime|format_date('custom', 'd F Y') }}</div>
             {{ content | without('field_dsj_image') }}
         </div>

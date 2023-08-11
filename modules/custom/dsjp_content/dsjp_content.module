@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Cache\Cache;
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
@@ -54,6 +55,33 @@ function dsjp_content_theme($existing, $type, $theme, $path) {
       ],
     ],
   ];
+}
+
+/**
+ * Implements hook_entity_insert().
+ */
+function dsjp_content_entity_insert(EntityInterface $entity) {
+  if ($entity->bundle() === "dsj_country_page") {
+    Cache::invalidateTags(['paragraph:342']);
+  }
+}
+
+/**
+ * Implements hook_entity_update().
+ */
+function dsjp_content_entity_update(EntityInterface $entity) {
+  if ($entity->bundle() === "dsj_country_page") {
+    Cache::invalidateTags(['paragraph:342']);
+  }
+}
+
+/**
+ * Implements hook_entity_delete().
+ */
+function dsjp_content_entity_delete(EntityInterface $entity) {
+  if ($entity->bundle() === "dsj_country_page") {
+    Cache::invalidateTags(['paragraph:342']);
+  }
 }
 
 /**

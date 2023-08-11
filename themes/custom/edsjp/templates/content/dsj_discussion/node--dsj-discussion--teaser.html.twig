@@ -10,10 +10,10 @@
   term_type ? node.bundle|clean_class ~ '--' ~ term_type|clean_class,
 ] %}
 <article{{ attributes.addClass(classes) }}>
+  {% if display_submitted %}
+    {% include '@edsjp/content/partials/discussion-header-info.html.twig' %}
+  {% endif %}
   <div class="article-header">
-    <div class="user author-picture">
-      {{ author_avatar }}
-    </div>
     <div class="page-title">
       {{ title_prefix }}
       {% if not page %}
@@ -28,7 +28,6 @@
     {{ content|without('comment_count', 'rating_count', 'flag_voting') }}
   </div>
 
-  {% if display_submitted %}
-    {% include '@edsjp/content/partials/discussion-footer-info.html.twig' %}
-  {% endif %}
+  {% include '@edsjp/content/partials/discussion-footer-info.html.twig' %}
+
 </article>

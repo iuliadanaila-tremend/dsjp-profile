@@ -22,7 +22,16 @@
   {{ title_suffix }}
 
   <div{{ content_attributes }}>
-    {{ content }}
+
+    {% if content.content_moderation_control %}
+      <div class="ecl-container">
+        <div class="ecl-row">
+          {{ content.content_moderation_control }}
+        </div>
+      </div>
+    {% endif %}
+
+    {{ content | without('content_moderation_control') }}
   </div>
 
   {% if content.field_dsj_comments %}

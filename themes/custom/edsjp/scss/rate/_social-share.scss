@@ -6,6 +6,7 @@
   }
 
   .ecl-social-media-share {
+    background-color: transparent;
     &__description {
       @include media-breakpoint-down(md) {
         display: none;
@@ -14,7 +15,7 @@
       @include font($font-size-sm, $line-height-sm, $font-family-base, $font-weight: normal, $important: false);
       color: $gray-900;
       margin: 0;
-      padding: 22px 0;
+      padding: 25px 0;
       margin-right: 5px;
     }
 
@@ -33,13 +34,24 @@
         float: none;
 
         a {
+          background-image: url('../assets/images/share.png');
+          background-size: 80px 800px;
           font-size: 0;
           width: auto;
           min-width: 0;
           padding: 0 20px;
           border-radius: 30px;
+
+          &:hover {
+            background-image: url('../assets/images/share.png');
+            background-position-x: -40.4px;
+          }
         }
       }
     }
   }
+}
+
+.wtPopSelect {
+  display: none !important;
 }

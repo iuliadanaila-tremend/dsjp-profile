@@ -7,6 +7,7 @@
   padding-top: 0;
   margin-bottom: $grid-gutter-width;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   border-top: 1px solid $gray-500;
 
@@ -15,6 +16,21 @@
 
     .dsj-pledge & {
       padding: 15px 0;
+      margin-top: 9px;
+    }
+  }
+
+  .subscribe {
+    flex-basis: 100%;
+    margin-left: -4px;
+  }
+
+  @include media-breakpoint-down(md) {
+    .sharing {
+      display: flex;
+      flex-wrap: wrap;
+      flex-basis: 70%;
+      justify-content: flex-end;
     }
   }
 }
@@ -37,6 +53,7 @@
     @include icon(like_2);
     position: relative;
     padding-left: $grid-gutter-width;
+    padding-top: 3px;
 
     .dsj-pledge & {
       padding-left: $grid-gutter-width + $grid-gutter-width / 4;

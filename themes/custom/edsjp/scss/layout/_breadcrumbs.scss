@@ -1,5 +1,5 @@
 /* Breadcrumbs */
-.ecl-breadcrumb-core {
+.ecl-breadcrumb {
   @include media-breakpoint-down(sm) {
     z-index: $zindex-dropdown;
   }

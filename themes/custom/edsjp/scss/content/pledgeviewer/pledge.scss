@@ -9,13 +9,19 @@
 }
 
 .dsj-pledge {
+  @include media-breakpoint-down(md) {
+    padding: $grid-gutter-width / 1.6;
+  }
+
   * {
-    color: $gray-650;
+    &:not(.load-more-btn) {
+      color: $gray-650;
+    }
   }
 
   border-radius: $border-radius * 1.5;
   background: $body-bg;
-  padding: $grid-gutter-width-mobile * 1.5;
+  padding: $grid-gutter-width;
 
   &.dsj-pledge--listing {
     padding-bottom: $grid-gutter-width-mobile / 2;
@@ -62,30 +68,40 @@
         padding-bottom: $grid-gutter-width / 2;
       }
     }
+
+    .field__label {
+      @media (min-width: $min-sm-width) {
+        margin-right: 0;
+        width: 50%;
+      }
+    }
+
+    .field__items {
+      @media (min-width: $min-sm-width) {
+        width: 50%;
+      }
+    }
   }
 
   .pledge-title {
     h2 {
-      color: $blue;
+      margin-top: 0;
+      line-height: 1.2;
+      color: $primary;
+
+      span {
+        color: $primary;
+      }
+    }
+  }
+
+  .pledge-details {
+    h2 {
+      margin-top: 0;
     }
   }
 
   .field--name-field-dsj {
-    &-date {
-      margin-bottom: $grid-gutter-width / 2;
-      font-size: $font-size-base;
-
-      .datetime-label {
-        @include icon(calendar-filled);
-        @extend %pledge-icons-settings;
-        display: inline-block;
-
-        & + time {
-          margin-right: $grid-gutter-width / 1.7;
-        }
-      }
-    }
-
     &-geographic-scope {
       margin-bottom: $grid-gutter-width / 2;
 
@@ -116,6 +132,17 @@
   }
 
   .pledge {
+    &-date {
+      @include icon(calendar-filled);
+      @extend %pledge-icons-settings;
+
+      display: inline-block;
+      margin-bottom: $grid-gutter-width / 2;
+      margin-right: $grid-gutter-width-mobile * 1.5;
+      font-size: $font-size-base;
+      line-height: 1.178;
+    }
+
     &-geographic-scope {
       margin-bottom: $grid-gutter-width / 2;
 
@@ -214,10 +241,17 @@
 
     .entity-moderation-form__item {
       display: inline-block;
+      vertical-align: top;
 
       &:last-child {
         display: block;
       }
+    }
+  }
+
+  .sidebar {
+    #block-views-block-dsj-linked-content-block {
+      margin-top: 2rem;
     }
   }
 }
@@ -230,5 +264,11 @@
         overflow-x: auto;
       }
     }
+  }
+}
+
+.sidebar {
+  #block-views-block-dsj-linked-content-block .dsj-pledge span {
+    color: unset;
   }
 }

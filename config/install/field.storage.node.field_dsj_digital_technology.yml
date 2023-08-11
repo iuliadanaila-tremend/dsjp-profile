@@ -79,6 +79,9 @@ settings:
     -
       value: 'http://data.europa.eu/uxp/5383'
       label: 'Digital transformation'
+    -
+      value: cyber_skills_academy
+      label: 'Cyber Skills Academy'
   allowed_values_function: ''
 module: options
 locked: false

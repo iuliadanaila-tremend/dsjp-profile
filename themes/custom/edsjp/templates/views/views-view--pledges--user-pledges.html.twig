@@ -47,7 +47,9 @@
   {% if header %}
     <div class="view-header">
       {{ 'My Pledges'|t }}
-      <a href="{{ add_pledge_url }}">{{ 'Add pledges'|t }}</a>
+    {% if show_add_pledge_button %}
+        <a href="{{ add_pledge_url }}">{{ "Add Pledges"|t }}</a>
+    {% endif %}
     </div>
   {% endif %}
 
@@ -67,10 +69,14 @@
     <div class="view-rows">
       {{ rows }}
     </div>
-  {% elseif empty %}
+  {% elseif empty and show_add_pledge_button %}
     <div class="view-empty">
       {{ empty }}
     </div>
+    {% else %}
+      <div class="view-empty">
+        {{ "There are no pledges available."|t }}
+      </div>
   {% endif %}
 
   {% if pager %}

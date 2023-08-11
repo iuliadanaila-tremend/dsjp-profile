@@ -45,6 +45,45 @@
     }
   }
 
+  .form-item-field-dsj-endorse-value {
+    .ecl-checkbox__label {
+      font-family: $font-ec-square-medium;
+      font-size: $font-size-2md;
+      line-height: $line-height-lg;
+
+      a {
+        font-family: $font-ec-square-medium !important;
+        color: $primary;
+      }
+    }
+  }
+
+  .ecl-checkbox {
+    &__box {
+      border-radius: $border-radius;
+    }
+
+    &__input {
+      &:checked {
+        &+.ecl-checkbox__label {
+          .ecl-checkbox__box {
+            background-color: $primary-hover;
+            border-color: $primary-hover;
+
+            .ecl-checkbox__icon {
+              width: $grid-gutter-width / 2;
+              height: $grid-gutter-width / 2;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .tabledrag-toggle-weight-wrapper {
+    display: none;
+  }
+
   .field--name-field-dsj-date {
     .ecl-datepicker__icon {
       display: none;
@@ -92,112 +131,8 @@
     @include custom-attachment-form;
   }
 
-  .chosen-container {
-    .chosen-results {
-      li {
-        padding: $grid-gutter-width / 3.2;
-
-        &.highlighted {
-          background-image: unset;
-          background-color: transparentize($primary-disabled, 0.9);
-          color: $gray-650;
-        }
-      }
-    }
-  }
-
-  input,
-  .chosen-choices {
-    background-color: unset !important;
-    padding: $grid-gutter-width / 4 $grid-gutter-width / 2 !important;
-    line-height: $line-height-xl;
-    font-size: $font-size-base;
-    border-color: $gray-400;
-
-    &:-webkit-autofill,
-    &:active {
-      border-color: $gray-400;
-      box-shadow: unset;
-    }
-
-    &:focus {
-      box-shadow: unset;
-    }
-  }
-
-  .chosen-choices {
-    @include icon(keyboard_arrow_down);
-    @include border-radius(6px);
-
-    position: relative;
-    border-color: $gray-400;
-    box-shadow: unset;
-    background-image: unset;
-
-    &:hover {
-      border-color: $primary;
-    }
-
-    &::before {
-      @include position(absolute, 50% $grid-gutter-width / 2 null null);
-
-      transform: translateY(-50%);
-      font-size: $font-size-xl;
-      color: $blue-450;
-    }
-
-    .search-field {
-      height: $line-height-xl;
-
-      input[type="text"] {
-        padding: 0 !important;
-      }
-    }
-  }
-
-  .chosen-container {
-    &.chosen-container-active {
-      .chosen-single {
-        border-color: $gray-400;
-      }
-    }
-
-    &.form-select {
-      width: 100% !important;
-
-      .chosen-single {
-        @include icon(keyboard_arrow_down);
-
-        background-image: unset;
-        box-shadow: unset;
-        height: $line-height-xl * 1.75;
-        padding: $grid-gutter-width / 4 $grid-gutter-width / 2 !important;
-        font-size: $font-size-base;
-        border-color: $gray-400;
-
-        &::before {
-          @include position(absolute, 50% $grid-gutter-width / 2 null null);
-
-          transform: translateY(-50%);
-          font-size: $font-size-xl;
-          color: $blue-450;
-        }
-
-        &:hover {
-          border-color: $primary;
-        }
-
-        > div {
-          b {
-            display: none;
-          }
-        }
-      }
-    }
-  }
-
-  #edit_field_dsj_geographic_scope_chosen {
-    width: 100% !important;
+  .select2-container {
+    @include dropdown-styling(true);
   }
 
   #edit-body-wrapper {
@@ -290,11 +225,6 @@
     }
 
     .menu-parent-select {
-      &:not(#edit_menu_menu_parent_chosen) {
-        padding: $grid-gutter-width / 4 $grid-gutter-width / 2;
-        background: 98% / 22px url('../assets/images/icons/keyboard_arrow_down.svg') no-repeat;
-      }
-
       @include border-radius(4px);
 
       -webkit-appearance: none;
@@ -304,6 +234,8 @@
       line-height: $line-height-xl;
       font-size: $font-size-base;
       outline: none;
+      padding: $grid-gutter-width / 4 $grid-gutter-width / 2;
+      background: 98% / 22px url('../assets/images/icons/keyboard_arrow_down.svg') no-repeat;
 
       &:hover {
         border-color: $primary;
@@ -439,7 +371,6 @@
     flex-basis: calc(50% - #{$grid-gutter-width / 2});
     margin-top: 0 !important;
 
-    .chosen-choices,
     .js-form-item {
       margin-top: 0 !important;
     }

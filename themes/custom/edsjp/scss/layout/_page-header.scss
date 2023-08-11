@@ -55,7 +55,7 @@
     }
   }
 
-  .my-account, 
+  .my-account,
   .log-in {
     a {
       &:not(.private-message-page-link) {
@@ -79,7 +79,7 @@
   }
 
   .log-out,
-  .log-in, 
+  .log-in,
   .my-account {
     a {
       @include media-breakpoint-down(sm) {
@@ -117,6 +117,10 @@
   background-repeat: no-repeat;
   background-position: right top;
   z-index: 0;
+
+  @include media-breakpoint-down (sm) {
+    z-index: 1;
+  }
 
   &::after,
   &::before {
@@ -160,7 +164,7 @@
 
   .ecl-page-header-core {
     @include media-breakpoint-down(sm) {
-      margin-bottom: 80px !important;
+      margin-bottom: 0 !important;
     }
 
     margin: 0 0 $grid-gutter-width * 2 !important;
@@ -168,21 +172,23 @@
     position: relative;
     display: flex;
     align-items: flex-end;
+    min-height: 125px;
 
     /* standard colors */
     background: linear-gradient(269.17deg, rgba(23, 0, 114, .8) -3.97%, rgba(113, 0, 177, .8) 103.42%);
 
-    &.color-default {
-      background: linear-gradient(89.92deg, #cf7391 -1.19%, #9ea3ff 99.93%);
-    }
+    // &.color-default {
+    //   background: linear-gradient(89.92deg, #cf7391 -1.19%, #9ea3ff 99.93%);
+    //   background: url('../assets/images/patterned-header-map.svg') no-repeat;
+    // }
 
     &.color-actions {
       background: linear-gradient(90deg, $actions-hover-color 0%, $yellow 100%);
     }
 
-    &.color-opportunities {
-      background: linear-gradient(90deg, $opportunities-hover-color 0%, $opportunities-category-color 100%);
-    }
+    // &.color-opportunities {
+    //   background: linear-gradient(90deg, $opportunities-hover-color 0%, $opportunities-category-color 100%);
+    // }
 
     &.color-inspiration {
       background: linear-gradient(90deg, $inspiration-hover-color 0%, $inspiration-category-color 100%);
@@ -194,6 +200,10 @@
 
     &.color-community {
       background: linear-gradient(9.05deg, $community-category-color -1.14%, $secondary-hover 99.95%);
+
+      .add-node-link a {
+        background-color: map-get($theme-colors, third-light);
+      }
     }
 
     &.color-about {
@@ -214,13 +224,13 @@
     > .ecl-container {
       @include media-breakpoint-down(sm) {
         min-height: 100px;
-        padding-top: $grid-gutter-width / 1.6;
+        padding-top: 0;
       }
 
       display: flex;
       flex-direction: column;
-      min-height: 180px;
-      padding-top: $grid-gutter-width * 1.5625;
+      height: auto;
+    //  padding-top: $grid-gutter-width * 1.5625;
       justify-content: space-between;
 
       .top-content {
@@ -239,19 +249,22 @@
     font-family: $font-ec-square-regular;
     line-height: $line-height-2xl;
     margin-bottom: 0;
-    margin-top: 0;
+    margin-top: 30px;
     order: 1;
     border-bottom: unset;
   }
 
   .add-node-link {
     @include media-breakpoint-down(sm) {
-      @include position(absolute, null 50% (-70px) $grid-gutter-width / 2);
-      padding-right: $grid-gutter-width / 4;
+      @include position(absolute, null $grid-gutter-width / 2 (-72px) $grid-gutter-width / 2);
     }
     position: relative;
     z-index: $zindex-dropdown;
     order: 3;
+
+    @include media-breakpoint-up(md) {
+      top: $grid-gutter-width / 4;
+    }
 
     a {
       @include border-radius(6px);
@@ -263,6 +276,19 @@
       overflow: hidden;
       cursor: pointer;
       font-weight: bold;
+    }
+
+    .container-links a {
+      display: inline-block;
+
+      &:first-child {
+        @include media-breakpoint-down(sm) {
+          margin-bottom: $grid-gutter-width / 2.3;
+          margin-right: 0;
+        }
+
+        margin-right: $grid-gutter-width / 2.3;;
+      }
     }
   }
 }

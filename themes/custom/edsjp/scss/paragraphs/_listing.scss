@@ -29,6 +29,36 @@
     align-items: center;
   }
 
+.node--card {
+  padding: $grid-gutter-width / 2 $grid-gutter-width / 2 6px;
+
+  .node--content {
+    .node--title {
+      padding: 0px;
+    }
+
+    .node-date {
+      @include icon(calendar);
+
+      &::before {
+        padding-right: 12px;
+      }
+
+      @include font($font-size-sm, $line-height-sm, $font-ec-square-light, normal);
+      color: $gray-700;
+      margin: $grid-gutter-width-mobile * 1.5 0;
+    }
+  }
+
+  .node--footer {
+    padding: 0px !important;
+
+    .type-pill {
+      border-radius: 16px;
+    }
+  }
+}
+
   .listing-more-link {
     @include media-breakpoint-up(lg) {
       &.hidden-desktop {
@@ -48,11 +78,11 @@
       @include border-radius(6px);
 
       font-family: $font-ec-square-medium;
-      padding: $line-height-xl / 2 $line-height-xl;
+      padding: $font-size-md $line-height-xl;
       border: 1px solid !important;
       font-size: $font-size-sm;
       line-height: $line-height-xl;
-
+      background-color: $white;
       border-color: $primary-default;
       color: $primary-default;
 

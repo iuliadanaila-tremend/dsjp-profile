@@ -25,6 +25,14 @@
       padding-bottom: .875rem;
     }
 
+    &.field--name-field-dsj-contact {
+      .field__item {
+        @media (min-width: $min-sm-width) {
+          width: 100%;
+        }
+      }
+    }
+
     @media (min-width: $min-sm-width) {
       display: flex;
     }
@@ -45,6 +53,16 @@
   .field__item {
     @media (min-width: $min-sm-width) {
       width: 67%;
+    }
+  }
+
+  .field:first-of-type {
+    .field__items {
+      overflow: hidden;
+
+      .field__item {
+        overflow-wrap: break-word;
+      }
     }
   }
 }
@@ -292,8 +310,8 @@ img {
       background-color: rgba(23, 0, 114, .1);
       margin-bottom: 1.5rem;
 
-      span {
-        padding-left: .625rem;
+      span:nth-child(2) {
+        padding-left: 0.185rem;
       }
     }
 
@@ -303,6 +321,7 @@ img {
       display: inline-block;
       padding-right: $grid-gutter-width;
       color: $gray-900;
+      font-weight: 600;
 
       a:first-of-type {
         margin-left: .625rem;
@@ -310,12 +329,14 @@ img {
     }
 
     &.facet-summary-item--clear {
-      @include close-filter();
+      // @include close-filter();
       margin-bottom: 0;
       display: block;
 
       a {
         padding: 0;
+        background: none;
+        text-decoration: underline;
       }
     }
   }

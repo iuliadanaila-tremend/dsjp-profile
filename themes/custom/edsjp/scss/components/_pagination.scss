@@ -1,6 +1,6 @@
 .ecl-pagination {
   @include font($font-size-sm, $line-height-sm, $font-ec-square-regular);
-
+  background-color: $gray;
   border-top-width: 0;
 
   .ecl-pagination__list {

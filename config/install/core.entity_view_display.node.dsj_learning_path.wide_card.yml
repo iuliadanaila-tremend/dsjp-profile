@@ -5,10 +5,12 @@ dependencies:
     - core.entity_view_mode.node.wide_card
     - field.field.node.dsj_learning_path.body
     - field.field.node.dsj_learning_path.field_dsj_advanced_learning
+    - field.field.node.dsj_learning_path.field_dsj_comments
     - field.field.node.dsj_learning_path.field_dsj_digital_skill_level
     - field.field.node.dsj_learning_path.field_dsj_digital_technology
     - field.field.node.dsj_learning_path.field_dsj_image
     - field.field.node.dsj_learning_path.field_dsj_introductory_learning
+    - field.field.node.dsj_learning_path.field_dsj_website_link
     - node.type.dsj_learning_path
     - responsive_image.styles.card_image
   module:
@@ -49,9 +51,11 @@ content:
     region: content
 hidden:
   field_dsj_advanced_learning: true
+  field_dsj_comments: true
   field_dsj_digital_skill_level: true
   field_dsj_digital_technology: true
   field_dsj_introductory_learning: true
+  field_dsj_website_link: true
   langcode: true
   links: true
   private_message_link: true

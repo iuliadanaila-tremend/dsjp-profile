@@ -51,9 +51,9 @@ class UserPledgeOrganization extends DefaultSelection {
     $query = $this->database->select('users_field_data', 'u')
       ->fields('u', ['uid'])
       ->where("CONCAT_WS(' ', u.field_dsj_firstname, u.field_dsj_lastname) LIKE :full_name OR u.mail LIKE :mail OR u.uid LIKE :uid", [
-        ':full_name' => '%' . \Drupal::database()->escapeLike($match) . '%',
-        ':mail' => '%' . \Drupal::database()->escapeLike($match) . '%',
-        ':uid' => '%' . \Drupal::database()->escapeLike($match) . '%',
+        ':full_name' => '%' . $this->database->escapeLike($match) . '%',
+        ':mail' => '%' . $this->database->escapeLike($match) . '%',
+        ':uid' => '%' . $this->database->escapeLike($match) . '%',
       ])
       ->condition('u.uid', $this->currentUser->id(), '!=')
       ->range(0, 10)

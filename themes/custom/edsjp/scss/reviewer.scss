@@ -9,18 +9,21 @@
       display: flex;
     }
   }
-}
 
-.field--name-moderation-state {
-  .chosen-container {
-    .chosen-drop {
-      display: flex;
-      flex-direction: column;
+  .form-item-new-state {
+    .select2-container {
+      @include dropdown-styling(false);
 
-      .chosen-results {
+      .select2-selection__rendered {
+        padding-left: 0;
+        padding-right: $grid-gutter-width;
+      }
 
-        li {
-          white-space: nowrap;
+      .select2-selection {
+        .select2-selection__arrow {
+          &::before {
+            right: $grid-gutter-width / 4;
+          }
         }
       }
     }

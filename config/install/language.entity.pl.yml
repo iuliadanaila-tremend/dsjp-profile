@@ -1,8 +1,6 @@
 langcode: en
 status: true
 dependencies: {  }
-_core:
-  default_config_hash: FnfOwYoWjIymeEBpXcMPE7edmlF1sF74akSNlHbyuyE
 id: pl
 label: Polish
 direction: ltr

@@ -3,8 +3,6 @@ status: true
 dependencies:
   module:
     - oe_webtools_media
-_core:
-  default_config_hash: HhhpoJfGk32UTVH4DtD0cv7DaCeE8W9bFzf3zgija3U
 id: webtools_chart
 label: 'Webtools chart'
 description: 'Media type for webtools chart'

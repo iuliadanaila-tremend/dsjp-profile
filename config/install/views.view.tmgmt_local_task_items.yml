@@ -4,8 +4,6 @@ dependencies:
   module:
     - tmgmt
     - tmgmt_local
-_core:
-  default_config_hash: ho5IlSieIFmtj-n14QvTd_Iz5GlimbEOU0B5x2RRecM
 id: tmgmt_local_task_items
 label: 'Translation Task Items'
 module: views

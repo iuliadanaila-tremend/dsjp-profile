@@ -1,8 +1,6 @@
 langcode: en
 status: true
 dependencies: {  }
-_core:
-  default_config_hash: bPnE9JT5k9L_e_spGdMcQCYazPEL6MZxw2APdhPO9M0
 name: media_entity_browser_thumbnail
 label: 'Media Entity Browser thumbnail'
 effects:

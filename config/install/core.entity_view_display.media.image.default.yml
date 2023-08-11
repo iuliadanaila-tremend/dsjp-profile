@@ -7,8 +7,6 @@ dependencies:
     - responsive_image.styles.oe_theme_main_content
   module:
     - responsive_image
-_core:
-  default_config_hash: Io7rEAP7BEHAdpaOQIYMsl7N7Cpqh8MHlFFOf-jQbfI
 id: media.image.default
 targetEntityType: media
 bundle: image

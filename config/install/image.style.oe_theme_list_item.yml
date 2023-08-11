@@ -1,8 +1,6 @@
 langcode: en
 status: true
 dependencies: {  }
-_core:
-  default_config_hash: eAxZ4utXdg7iFfKXLrFlAl8lqVcCZ-kfntSVfzDQFco
 name: oe_theme_list_item
 label: 'List item'
 effects:

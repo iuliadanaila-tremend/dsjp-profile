@@ -3,8 +3,6 @@ status: true
 dependencies:
   module:
     - oe_webtools_media
-_core:
-  default_config_hash: gjJEH7VVGda5ToncZdxYyasg5BFWe7KuXNmhMKpck-Q
 id: webtools_map
 label: 'Webtools map'
 description: 'Media type for webtools map'

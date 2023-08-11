@@ -9,8 +9,6 @@ dependencies:
     - image
     - media_avportal
     - user
-_core:
-  default_config_hash: G2xm8kky8GSjaAiv9EgTaLZGPCLINqV2M_uRt19xm80
 id: media.av_portal_photo.default
 targetEntityType: media
 bundle: av_portal_photo

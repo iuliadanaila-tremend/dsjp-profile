@@ -6,8 +6,6 @@ dependencies:
     - media.type.webtools_map
   module:
     - oe_webtools
-_core:
-  default_config_hash: Z2gv5vRNYRql2HKvxFAvX7ZH9cObLbwDec9bXT-Yk_s
 id: media.webtools_map.default
 targetEntityType: media
 bundle: webtools_map

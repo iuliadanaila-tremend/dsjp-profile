@@ -7,8 +7,6 @@ dependencies:
     - node
     - simplenews
     - user
-_core:
-  default_config_hash: dAqLPwg5B3gOVtNPj7tar1bCuj0F8mjMiC1ctCQiZ8k
 id: simplenews_newsletters
 label: 'Newsletter issues'
 module: views

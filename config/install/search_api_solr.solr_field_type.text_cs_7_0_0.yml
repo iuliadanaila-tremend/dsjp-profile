@@ -1,8 +1,6 @@
 langcode: en
 status: true
 dependencies: {  }
-_core:
-  default_config_hash: 0FEtiKmUZpBNQfMAne3J8pphZMPGTu9Luu6WOt1GGVU
 id: text_cs_7_0_0
 label: 'Czech Text Field'
 minimum_solr_version: 7.0.0

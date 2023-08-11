@@ -73,8 +73,6 @@ third_party_settings:
         attributes: ''
         effect: none
         speed: fast
-_core:
-  default_config_hash: jPK8ZuHxnvOkumlzP6UzBp4--137HOFVFri-YifisW0
 id: node.dsj_digital_skills_resource.full
 targetEntityType: node
 bundle: dsj_digital_skills_resource
@@ -237,8 +235,6 @@ hidden:
   field_dsj_external_id: true
   field_dsj_linked_content: true
   field_dsj_meta_tags: true
-  field_dsj_publish_in_core: true
-  field_dsj_representative_image: true
   field_dsj_target_group: true
   langcode: true
   links: true

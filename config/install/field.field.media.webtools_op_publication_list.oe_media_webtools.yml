@@ -6,8 +6,6 @@ dependencies:
     - media.type.webtools_op_publication_list
   module:
     - json_field
-_core:
-  default_config_hash: _3GxcYqDrE8ksInTquvjVBXg1QF-MbYCMOPvykNxw84
 id: media.webtools_op_publication_list.oe_media_webtools
 field_name: oe_media_webtools
 entity_type: media

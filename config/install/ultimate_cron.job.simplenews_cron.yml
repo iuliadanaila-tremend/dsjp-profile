@@ -3,8 +3,6 @@ status: true
 dependencies:
   module:
     - simplenews
-_core:
-  default_config_hash: S4R8gMB5KRRp4AeUvku-2qpcRuD0o_Lu8UgnSXEHyBw
 title: 'Sends newsletters'
 id: simplenews_cron
 weight: 0

@@ -1,8 +1,6 @@
 langcode: en
 status: true
 dependencies: {  }
-_core:
-  default_config_hash: TmQxDnSiNe-4YX6NvxS9gI7Zm8YMs5YKFhB64bdZ_Zs
 id: text_ga_7_7_0
 label: 'Irish/Gaelic Text Field'
 minimum_solr_version: 7.7.0

@@ -1,8 +1,6 @@
 langcode: en
 status: true
 dependencies: {  }
-_core:
-  default_config_hash: ylfHId2XF8uPT4q6OAj2qVHuwiA-YlU0iaIr7YTSFTY
 id: text_pt-pt_7_0_0
 label: 'Portuguese, Portugal Text Field'
 minimum_solr_version: 7.0.0

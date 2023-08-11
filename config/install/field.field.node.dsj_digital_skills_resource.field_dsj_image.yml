@@ -13,8 +13,6 @@ third_party_settings:
       alt: alt
       title: title
       file: '0'
-_core:
-  default_config_hash: Q7AXJRxX5ArIAl9ySwul6_-Mx_Z_J1SstnBvXzmMmEk
 id: node.dsj_digital_skills_resource.field_dsj_image
 field_name: field_dsj_image
 entity_type: node

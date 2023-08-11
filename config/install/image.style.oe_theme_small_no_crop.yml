@@ -1,8 +1,6 @@
 langcode: en
 status: true
 dependencies: {  }
-_core:
-  default_config_hash: 6ueCxiq0Op2iMEcaj_n6wTpcuKHoYJCgd2_WGmEeArs
 name: oe_theme_small_no_crop
 label: 'Small (no crop)'
 effects:

@@ -74,8 +74,6 @@ hidden:
   field_dsj_linked_content: true
   field_dsj_meta_tags: true
   field_dsj_organization: true
-  field_dsj_publish_in_core: true
-  field_dsj_representative_image: true
   field_dsj_stakeholder: true
   field_dsj_strategy_state_of_play: true
   field_dsj_target_audience: true

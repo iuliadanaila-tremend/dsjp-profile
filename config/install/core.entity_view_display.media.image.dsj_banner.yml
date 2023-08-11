@@ -8,8 +8,6 @@ dependencies:
     - responsive_image.styles.dsj_banner
   module:
     - blazy
-_core:
-  default_config_hash: Io7rEAP7BEHAdpaOQIYMsl7N7Cpqh8MHlFFOf-jQbfI
 id: media.image.dsj_banner
 targetEntityType: media
 bundle: image

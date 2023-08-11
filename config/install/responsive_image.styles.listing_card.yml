@@ -8,8 +8,6 @@ dependencies:
     - image.style.ratio_16_9_small_2x
   theme:
     - oe_theme
-_core:
-  default_config_hash: UJnzGRHPV4nai-nNqm9mtcpMzjvYSb8nk22F_14hCIo
 id: listing_card
 label: 'Listing Card'
 image_style_mappings:

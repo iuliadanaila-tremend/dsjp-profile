@@ -1,8 +1,6 @@
 langcode: en
 status: true
 dependencies: {  }
-_core:
-  default_config_hash: GS7MICqdgTDNTLfV-iohEtR6z-i2UnXhq3YI3otRy2Y
 id: text_phonetic_es_7_0_0
 label: 'Fulltext Phonetic Spanish'
 minimum_solr_version: 7.0.0

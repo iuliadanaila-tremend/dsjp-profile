@@ -3,8 +3,6 @@ status: true
 dependencies:
   module:
     - media_avportal
-_core:
-  default_config_hash: I8Y4oKUw1lFjuctQ-1PE5KwSCKAVZVqY2FXR1M5tkHY
 id: av_portal_video
 label: 'AV Portal Video'
 description: 'Remote video from <em>AV Portal</em> service.'

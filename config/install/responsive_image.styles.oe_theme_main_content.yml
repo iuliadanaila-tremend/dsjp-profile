@@ -8,8 +8,6 @@ dependencies:
     - image.style.oe_theme_small_no_crop
   theme:
     - oe_theme
-_core:
-  default_config_hash: UJnzGRHPV4nai-nNqm9mtcpMzjvYSb8nk22F_14hCIo
 id: oe_theme_main_content
 label: 'Main content'
 image_style_mappings:

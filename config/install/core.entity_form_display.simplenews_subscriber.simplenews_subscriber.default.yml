@@ -3,8 +3,6 @@ status: true
 dependencies:
   module:
     - simplenews
-_core:
-  default_config_hash: 2Nvy8pq5vcEXAV16jh_aQ93MsG3CNQG45VcpztHiT7o
 id: simplenews_subscriber.simplenews_subscriber.default
 targetEntityType: simplenews_subscriber
 bundle: simplenews_subscriber

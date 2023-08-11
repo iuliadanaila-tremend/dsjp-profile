@@ -1,8 +1,6 @@
 langcode: en
 status: true
 dependencies: {  }
-_core:
-  default_config_hash: Gai61rA9vVqySxrgVaAo60hrAMH7Yka0pZKhMo_Yywc
 id: ro
 label: Romanian
 direction: ltr

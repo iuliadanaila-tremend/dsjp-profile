@@ -1,8 +1,6 @@
 langcode: en
 status: true
 dependencies: {  }
-_core:
-  default_config_hash: E6EhIoo9zIX11KZ8VgOK4mFRIIiy3CSzYih2Z2YNRLM
 id: text_bg_7_0_0
 label: 'Bulgarian Text Field'
 minimum_solr_version: 7.0.0

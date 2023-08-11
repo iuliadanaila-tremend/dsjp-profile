@@ -1,8 +1,6 @@
 langcode: en
 status: true
 dependencies: {  }
-_core:
-  default_config_hash: yGEIXtD31XR2K0PZbNxSIUJ7JPlrJg1N-G2P2Unnw30
 id: text_sv_7_0_0
 label: 'Swedish Text Field'
 minimum_solr_version: 7.0.0

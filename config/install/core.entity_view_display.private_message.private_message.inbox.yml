@@ -6,8 +6,6 @@ dependencies:
   module:
     - private_message
     - text
-_core:
-  default_config_hash: T49nARPshtaO8dImQQbA7lsLVPomuhVyR20tprP1s7U
 id: private_message.private_message.inbox
 targetEntityType: private_message
 bundle: private_message

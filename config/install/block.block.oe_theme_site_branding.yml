@@ -5,8 +5,6 @@ dependencies:
     - system
   theme:
     - oe_theme
-_core:
-  default_config_hash: srD-xdd3JdU8nrH08J0aENrUFBrCU-vuGT6BX9FLIpQ
 id: oe_theme_site_branding
 theme: oe_theme
 region: site_header

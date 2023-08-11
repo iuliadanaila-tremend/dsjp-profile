@@ -1,8 +1,6 @@
 langcode: en
 status: true
 dependencies: {  }
-_core:
-  default_config_hash: Fl92R904EL1qyRRmSKZ0qzAdLgoxHKiNU-s_elxrFcY
 id: lt
 label: Lithuanian
 direction: ltr

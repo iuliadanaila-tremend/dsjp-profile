@@ -3,8 +3,6 @@ status: true
 dependencies:
   module:
     - private_message
-_core:
-  default_config_hash: ZfiDSEdeDse0qMWBsb0u9YVhJ05_ySCpkBuBi_DlFd0
 id: private_message.inbox
 label: Inbox
 targetEntityType: private_message

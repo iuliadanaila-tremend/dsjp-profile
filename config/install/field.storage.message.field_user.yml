@@ -4,8 +4,6 @@ dependencies:
   module:
     - message
     - user
-_core:
-  default_config_hash: _c4P5AQa0akZyv7XqazfuMz3CKFeedJDOxtpEaWQYWs
 id: message.field_user
 field_name: field_user
 entity_type: message

@@ -1,8 +1,6 @@
 langcode: en
 status: true
 dependencies: {  }
-_core:
-  default_config_hash: '-XQQ3UMw51kk-ZpSsfRpbM4oytKT1QyR9BPLHQHY1Kk'
 id: text_sk_7_0_0
 label: 'Slovak Text Field'
 minimum_solr_version: 7.0.0

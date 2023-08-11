@@ -4,8 +4,6 @@ dependencies:
   module:
     - node
     - simplenews
-_core:
-  default_config_hash: WH-ddyUo4oWNnk6HaulK2RLdPTM4CV0xBZSj5HFqAnQ
 id: node.simplenews_issue
 field_name: simplenews_issue
 entity_type: node

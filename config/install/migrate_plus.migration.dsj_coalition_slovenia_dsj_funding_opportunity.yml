@@ -114,8 +114,6 @@ process:
     value_field: field_dsj_country_code
     source: geographic_scope_countryy
   field_dsj_type_of_initiative: type_of_initiative
-  field_dsj_publish_in_core:
-    plugin: default_value
     default_value: 1
   field_dsj_website_link/uri:
     -

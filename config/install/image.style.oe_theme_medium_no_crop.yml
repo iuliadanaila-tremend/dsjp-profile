@@ -1,8 +1,6 @@
 langcode: en
 status: true
 dependencies: {  }
-_core:
-  default_config_hash: AgKxxOgudX7TkFXNNmN5lHkj33IZyQGVCbQmLJB_xjA
 name: oe_theme_medium_no_crop
 label: 'Medium (no crop)'
 effects:

@@ -38,8 +38,6 @@ dependencies:
     - path
     - text
     - typed_link
-_core:
-  default_config_hash: rujTlF5LKZyC9sehF7K3ZcyXZWMHoSdJh4qhF_c0DAo
 id: node.dsj_digital_skills_resource.default
 targetEntityType: node
 bundle: dsj_digital_skills_resource
@@ -288,4 +286,3 @@ content:
     third_party_settings: {  }
 hidden:
   field_dsj_external_id: true
-  field_dsj_publish_in_core: true

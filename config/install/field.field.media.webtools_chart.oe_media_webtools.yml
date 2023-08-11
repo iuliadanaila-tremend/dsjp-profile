@@ -6,8 +6,6 @@ dependencies:
     - media.type.webtools_chart
   module:
     - json_field
-_core:
-  default_config_hash: vvWhNPGP82mOIB3bBb0CpQ9CWlNSkzyU1hClWKmVHiw
 id: media.webtools_chart.oe_media_webtools
 field_name: oe_media_webtools
 entity_type: media

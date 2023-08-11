@@ -8,8 +8,6 @@ dependencies:
     - message.template.create_node
   module:
     - user
-_core:
-  default_config_hash: FzEJ-CLqutECYHZpXH5BFHJcBocprtK0iuTSDR-711Y
 id: message.create_node.mail_body
 targetEntityType: message
 bundle: create_node

@@ -33,8 +33,6 @@ dependencies:
     - text
     - typed_link
     - user
-_core:
-  default_config_hash: 7LGQUY9fCU6072af5eoPZJHghNb45zWnrZQ5Yu6f3R4
 id: node.dsj_digital_skills_resource.search_index
 targetEntityType: node
 bundle: dsj_digital_skills_resource
@@ -178,8 +176,6 @@ hidden:
   field_dsj_linked_content: true
   field_dsj_main_file_for_download: true
   field_dsj_meta_tags: true
-  field_dsj_publish_in_core: true
-  field_dsj_representative_image: true
   field_dsj_supporting_document: true
   flag_subscribe_node: true
   flag_voting: true

@@ -1,8 +1,6 @@
 langcode: en
 status: true
 dependencies: {  }
-_core:
-  default_config_hash: aTqq5klP8-o0NALpCYXsAGihL3Epz18ukJIjYzl-g6I
 id: text_it_7_0_0
 label: 'Italian Text Field'
 minimum_solr_version: 7.0.0

@@ -4,8 +4,6 @@ dependencies:
   enforced:
     module:
       - slick
-_core:
-  default_config_hash: R44sHtkxxZrBiHA2kQiOrgfOwXDce6s8fpQCTUoDhf0
 id: default
 name: default
 weight: -10

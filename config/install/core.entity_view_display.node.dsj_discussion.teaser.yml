@@ -15,8 +15,6 @@ dependencies:
   module:
     - smart_trim
     - user
-_core:
-  default_config_hash: aKQqs7vc5_4haOrYRGL3xVdNkkv7z4N_FRjoP23_Ons
 id: node.dsj_discussion.teaser
 targetEntityType: node
 bundle: dsj_discussion
@@ -57,8 +55,6 @@ hidden:
   field_dsj_digital_technology: true
   field_dsj_linked_content: true
   field_dsj_meta_tags: true
-  field_dsj_publish_in_core: true
-  field_dsj_representative_image: true
   flag_subscribe_node: true
   langcode: true
   links: true

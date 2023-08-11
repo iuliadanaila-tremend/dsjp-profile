@@ -4,8 +4,6 @@ dependencies:
   module:
     - tmgmt_language_combination
     - user
-_core:
-  default_config_hash: AbT8K6LAfIQeLFeCzOqbhTCM-mbeUmoWkaBM9Yd5n0c
 id: user.tmgmt_translation_skills
 field_name: tmgmt_translation_skills
 entity_type: user

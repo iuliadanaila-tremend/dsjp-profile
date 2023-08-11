@@ -73,8 +73,6 @@ hidden:
   field_dsj_linked_content: true
   field_dsj_loans_for_upskilling: true
   field_dsj_meta_tags: true
-  field_dsj_publish_in_core: true
-  field_dsj_related_link: true
   field_dsj_representative_image: true
   field_dsj_target_audience: true
   field_dsj_target_group: true

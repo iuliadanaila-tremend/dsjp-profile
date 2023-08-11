@@ -13,8 +13,6 @@ dependencies:
     - simplenews
     - sitemap
     - system
-_core:
-  default_config_hash: j5zLMOdJBqC0bMvSdth5UebkprJB8g_2FXHqhfpJzow
 id: anonymous
 label: 'Anonymous user'
 weight: -10

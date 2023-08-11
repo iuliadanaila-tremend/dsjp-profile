@@ -1,8 +1,6 @@
 langcode: en
 status: true
 dependencies: {  }
-_core:
-  default_config_hash: o8DM-zNrXIMn2nnwZ0Sjm0HLu-hesjnVW3lZzOEG2zo
 id: text_phonetic_it_7_0_0
 label: 'Fulltext Phonetic Italian'
 minimum_solr_version: 7.0.0

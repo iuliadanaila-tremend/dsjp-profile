@@ -8,8 +8,6 @@ third_party_settings:
     available_menus:
       - main
     parent: 'main:'
-_core:
-  default_config_hash: cR0PoLpYUilwX-gC_IjhPJBNdNpYttQz-6QXOm0jbuU
 name: 'Digital skills resource'
 type: dsj_digital_skills_resource
 description: ''

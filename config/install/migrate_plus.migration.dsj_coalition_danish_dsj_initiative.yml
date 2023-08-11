@@ -100,8 +100,6 @@ process:
       source: TypeOfInitiative
       index:
         - Id
-  field_dsj_publish_in_core:
-    plugin: default_value
     default_value: 1
   field_dsj_website_link: WebsiteLinks
   field_dsj_image:

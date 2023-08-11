@@ -1,5 +1,3 @@
 message_notification:
   subject: 'Private message at [site:name]'
   body: "[user:user_fullname],\r\n\r\nYou have received a private message at [site:name] from [private_message:sender_fullname]\r\n\r\nThe message is as follows:\r\n\r\n[private_message:message]\r\n\r\nYou can view the entire thread and reply to this message at:\r\n\r\n[private_message:dsj_thread_url]\r\n\r\n\r\nThank you,\r\n\r\n--  [site:name]"
-_core:
-  default_config_hash: qyQnDXK8qdcDKWys94EoNInu_fKuI8bav22UaZajcvs

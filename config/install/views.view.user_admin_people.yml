@@ -5,8 +5,6 @@ dependencies:
     - field.storage.user.field_dsj_blocked
   module:
     - user
-_core:
-  default_config_hash: J5EbGNdz0YUaSIYKwomyFSOtZjsV9TrBA3qdb3ZwBS0
 id: user_admin_people
 label: People
 module: user

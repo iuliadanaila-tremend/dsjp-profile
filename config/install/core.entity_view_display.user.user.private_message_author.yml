@@ -36,8 +36,6 @@ dependencies:
     - field.field.user.user.tmgmt_translation_skills
   module:
     - user
-_core:
-  default_config_hash: 5VkjdDDe_kM-giLC61z36ACn6Z2eMjaH63Rh6adWWpw
 id: user.user.private_message_author
 targetEntityType: user
 bundle: user

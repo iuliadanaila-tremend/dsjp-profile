@@ -6,8 +6,6 @@ dependencies:
   module:
     - dsjp_private_message
     - private_message
-_core:
-  default_config_hash: UW70Shyu4Z_hAePqer7HsVOLh52E0vjLlb8dJaPT3hg
 id: private_message_thread.private_message_thread.block
 targetEntityType: private_message_thread
 bundle: private_message_thread

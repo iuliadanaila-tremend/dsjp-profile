@@ -5,8 +5,6 @@ dependencies:
     - field.storage.node.field_dsj_organization
     - node.type.dsj_digital_skills_resource
     - node.type.dsj_organization
-_core:
-  default_config_hash: Ru8yevz2S6S--h8NLagOIVK92LKKLumMdRyurPSac-8
 id: node.dsj_digital_skills_resource.field_dsj_organization
 field_name: field_dsj_organization
 entity_type: node

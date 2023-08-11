@@ -4,8 +4,6 @@ dependencies:
   module:
     - entity_browser
     - oe_media_avportal
-_core:
-  default_config_hash: dKhAzAeW2pOhFc7ZXEGXPx3e5LTjBK7OHisTa30cMsU
 id: av_portal_entity_browsers
 label: 'AV Portal Entity Browsers'
 module: views

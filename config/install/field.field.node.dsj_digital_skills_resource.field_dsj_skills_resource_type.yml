@@ -6,8 +6,6 @@ dependencies:
     - node.type.dsj_digital_skills_resource
   module:
     - options
-_core:
-  default_config_hash: H2MTPmBwQBa2ob6_dGtN9V2G1eiUr2Rr4k0aMgv54jo
 id: node.dsj_digital_skills_resource.field_dsj_skills_resource_type
 field_name: field_dsj_skills_resource_type
 entity_type: node

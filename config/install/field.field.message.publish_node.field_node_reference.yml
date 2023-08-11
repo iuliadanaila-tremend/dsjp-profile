@@ -4,8 +4,6 @@ dependencies:
   config:
     - field.storage.message.field_node_reference
     - message.template.publish_node
-_core:
-  default_config_hash: nFa0iKTw_SXQI_Xozf7H72FXeIs543KjLO_y74CtUC4
 id: message.publish_node.field_node_reference
 field_name: field_node_reference
 entity_type: message

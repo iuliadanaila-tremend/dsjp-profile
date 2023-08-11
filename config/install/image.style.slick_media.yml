@@ -4,8 +4,6 @@ dependencies:
   enforced:
     module:
       - slick
-_core:
-  default_config_hash: oQDRoEzxaj4cm4zDtSwzPCliteaNmv5gC-ugL9H_MV0
 name: slick_media
 label: 'Slick media'
 effects:

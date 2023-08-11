@@ -10,8 +10,6 @@ dependencies:
 third_party_settings:
   tmgmt_content:
     excluded: false
-_core:
-  default_config_hash: eQCGtDHTuT9xwXzZ8WVCEMFtRbUjnDQ1iCiKekdv49I
 id: node.dsj_digital_skills_resource.field_dsj_type_of_initiative
 field_name: field_dsj_type_of_initiative
 entity_type: node

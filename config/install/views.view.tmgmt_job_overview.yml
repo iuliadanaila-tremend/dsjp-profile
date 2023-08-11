@@ -5,8 +5,6 @@ dependencies:
     - system.menu.admin
   module:
     - tmgmt
-_core:
-  default_config_hash: vZFV4gb5A2TPJtl6SIsCJNP16rioI9hr7nRFRMU9CXw
 id: tmgmt_job_overview
 label: 'Job overview'
 module: views

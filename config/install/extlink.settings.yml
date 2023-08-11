@@ -1,5 +1,3 @@
-_core:
-  default_config_hash: vOaSYBgSyTzn8_p0MSY8B-ygp9V0Nc6qnX0vy9KYGeo
 extlink_use_external_js_file: false
 extlink_exclude_admin_routes: false
 extlink_target: true

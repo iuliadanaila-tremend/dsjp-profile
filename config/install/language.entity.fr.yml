@@ -1,8 +1,6 @@
 langcode: en
 status: true
 dependencies: {  }
-_core:
-  default_config_hash: H141al0fiLiUQmrjcrWDSQjl1mBnw9eCG9mgd9RJoy0
 id: fr
 label: French
 direction: ltr

@@ -1,8 +1,6 @@
 langcode: en
 status: true
 dependencies: {  }
-_core:
-  default_config_hash: 38s_iJIvvsJI9w9FhacRUmd8dRKoZjjKKA0Kjdr9IJM
 id: text_ro_7_0_0
 label: 'Romanian Text Field'
 minimum_solr_version: 7.0.0

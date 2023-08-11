@@ -1,8 +1,6 @@
 langcode: en
 status: true
 dependencies: {  }
-_core:
-  default_config_hash: dutDzjqD6L095VY8f_t1FlpSzsLDtJNp3EURNygJ3bI
 id: text_hr_7_0_0
 label: 'Croatian Text Field'
 minimum_solr_version: 7.0.0

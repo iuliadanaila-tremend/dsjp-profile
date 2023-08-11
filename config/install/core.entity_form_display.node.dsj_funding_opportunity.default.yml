@@ -275,4 +275,3 @@ content:
     third_party_settings: {  }
 hidden:
   field_dsj_external_id: true
-  field_dsj_publish_in_core: true

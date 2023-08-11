@@ -11,8 +11,6 @@ dependencies:
     - file
     - metatag
     - path
-_core:
-  default_config_hash: NOMIKLa7-ZXYSBxXjcmOlHIj2NofA6rOKhbGpJj6UNM
 id: media.document.default
 targetEntityType: media
 bundle: document

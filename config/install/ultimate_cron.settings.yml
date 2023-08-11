@@ -1,5 +1,3 @@
-_core:
-  default_config_hash: xNvhVNcCJsZiYwYTw9TTnRv1SjLVO7H5BCK1U8Brvfo
 bypass_transactional_safe_connection: false
 queue:
   enabled: false

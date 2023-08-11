@@ -9,8 +9,6 @@ dependencies:
   module:
     - text
     - user
-_core:
-  default_config_hash: 2uFXyR4335F9Qrls0Lx2QTobeBiF6FN1PeDjJEv47Yw
 id: node.simplenews_issue.default
 targetEntityType: node
 bundle: simplenews_issue

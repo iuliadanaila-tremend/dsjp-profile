@@ -5,8 +5,6 @@ dependencies:
     - tmgmt
     - tmgmt_local
     - user
-_core:
-  default_config_hash: 1RSEnK_YJJa1gxTroVS6Bx-AZG2QzYebqQn9AFPJmWU
 id: tmgmt_local_manage_translate_task
 label: 'Manage Tasks'
 module: views

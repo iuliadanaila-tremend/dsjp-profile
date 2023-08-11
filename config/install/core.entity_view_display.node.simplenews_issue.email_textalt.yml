@@ -10,8 +10,6 @@ dependencies:
   module:
     - text
     - user
-_core:
-  default_config_hash: nbS6YErkrJfcf1Lgbd-MEFDZvatGhf9ZYEdg7_phgRU
 id: node.simplenews_issue.email_textalt
 targetEntityType: node
 bundle: simplenews_issue

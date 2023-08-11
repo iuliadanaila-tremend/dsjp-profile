@@ -6,8 +6,6 @@ dependencies:
     - media.type.webtools_op_publication_list
   module:
     - oe_webtools
-_core:
-  default_config_hash: rkBsAEB_N0pUId9mjXtxWYQlJknmrZ9q9aYJ-GHzjAM
 id: media.webtools_op_publication_list.default
 targetEntityType: media
 bundle: webtools_op_publication_list

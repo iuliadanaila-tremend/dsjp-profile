@@ -7,8 +7,6 @@ dependencies:
     - system
     - tmgmt
     - toolbar
-_core:
-  default_config_hash: zfiz9o9HNsyhbkTJPX9QCWNKmCWVKfjqTHDBMmWITjs
 id: oe_translator
 label: 'Translate content'
 weight: 2

@@ -3,8 +3,6 @@ status: true
 dependencies:
   module:
     - media
-_core:
-  default_config_hash: Vo8lAqjtYeoay7LiNsB-43OfOKIEwHFyE7v81fASRiI
 id: media.oe_media_avportal_video
 field_name: oe_media_avportal_video
 entity_type: media

@@ -1,8 +1,6 @@
 langcode: en
 status: true
 dependencies: {  }
-_core:
-  default_config_hash: T6VIVflDJHCj4zghPvOzpt1GVOgievRUipcPwi9aJRw
 id: sk
 label: Slovak
 direction: ltr

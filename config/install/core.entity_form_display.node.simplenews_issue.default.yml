@@ -13,8 +13,6 @@ dependencies:
     - path
     - simplenews
     - text
-_core:
-  default_config_hash: 95gz1Cn7UjP1ED-lgXnR9ucmWPz9TOn1YEuKUllmELo
 id: node.simplenews_issue.default
 targetEntityType: node
 bundle: simplenews_issue

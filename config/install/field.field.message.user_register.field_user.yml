@@ -4,8 +4,6 @@ dependencies:
   config:
     - field.storage.message.field_user
     - message.template.user_register
-_core:
-  default_config_hash: pTs5DcyqA_c3kvz2L2sDA-qvHJ4kUKnTJ-yspz_VISQ
 id: message.user_register.field_user
 field_name: field_user
 entity_type: message

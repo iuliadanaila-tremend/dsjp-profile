@@ -4,8 +4,6 @@ dependencies:
   module:
     - legal
     - user
-_core:
-  default_config_hash: DEtr6ohdTM4jSSocNX_tNGU73aKdabI0n57BvxbTikE
 id: legal_users
 label: legal_users
 module: views

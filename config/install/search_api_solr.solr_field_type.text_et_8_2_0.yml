@@ -1,8 +1,6 @@
 langcode: en
 status: true
 dependencies: {  }
-_core:
-  default_config_hash: N33fADTUCGcPZlyHIK1p3N0uk_0SsYmLn0_wh3iEvtE
 id: text_et_8_2_0
 label: 'Estonian Text Field'
 minimum_solr_version: 8.2.0

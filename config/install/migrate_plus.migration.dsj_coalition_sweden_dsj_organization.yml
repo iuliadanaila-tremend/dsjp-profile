@@ -96,8 +96,6 @@ process:
     source: acf
     index:
       - field_dsj_target_audience
-  field_dsj_publish_in_core:
-    plugin: extract
     source: acf
     index:
       - publish_in_core_platform

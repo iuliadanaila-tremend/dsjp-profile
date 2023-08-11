@@ -376,48 +376,24 @@
             "drupal/message_subscribe": {
                 "Issue #3101137: Fix endless loop": "https://www.drupal.org/files/issues/2019-12-15/3101137-fix-endless-loop.patch"
             },
-            "openeuropa/oe_theme": {
-                "Infinite loop - Maximum call stack size exceeded.": "./patches/oe_theme_ecl_datepicker_infinite_loop.patch",
-                "Pager breaks on ajax requests": "./patches/oe_theme_pager_crash_ajax_pages.patch"
-            },
             "drupal/group": {
                 "Error when trying to set available content.": "https://www.drupal.org/files/issues/2018-08-08/group-error_set_available_content-2991390-2.patch",
                 "Get a token of a node's parent group to create a pathauto pattern": "https://www.drupal.org/files/issues/2020-11-17/group-gnode_tokens-2774827-74.patch",
                 "Joining a group dumps the user on their account page instead of returning them to the group": "https://www.drupal.org/files/issues/2021-03-18/joined_user_redirection-2980034-18.patch",
                 "Fix missing revisions tab" : "https://www.drupal.org/files/issues/2022-08-10/group-2876696-21-and-3256998-51.patch"
             },
-            "drupal/legal": {
-                "Separate extra fields from the main additional checkboxes and add update trigger": "./patches/legal_extra_checkboxes.patch",
-                "Preserve CAS module returnto destiantion": "./patches/legal_cas_returnto.patch"
-            },
             "drupal/views_data_export": {
                 "Hide empty columns for CSV export": "https://www.drupal.org/files/issues/2020-09-04/views_data_export-hide-empty-columns-csv-3169049-2.patch",
                 "Feed icon is displaying irrespective of view access parameter in attached page": "https://www.drupal.org/files/issues/2020-09-25/feed_icon_displayed_irrespective_access-3135831-3.patch"
             },
-            "openeuropa/webtools-geocoding-provider": {
-                "Change webtools geocoding provider endpoint": "./patches/change_geocoding_url.patch"
-            },
             "drupal/webform_views": {
                 "Webform sumission view filter for multivalues": "https://www.drupal.org/files/issues/2022-06-21/webform_view_filter_multivalued_field_3068861_13.patch"
             },
-            "drupal/group_permissions": {
-                "Fix issue when group is missing but there are permissions set.": "./patches/group_permissions_deleted_group.patch"
-            },
             "drupal/views_infinite_scroll": {
-                "Views infinite scroll VBO workaround": "./patches/views_infinite_scroll_vbo.patch",
                 "Any way to Automatically Load Content when scrolling within a DIV?": "https://www.drupal.org/files/issues/2021-02-09/support_for_overflow-_scrolls--2894307-21.patch"
             },
             "drupal/field_group": {
                 "Tabs with invalid input are not focused": "https://www.drupal.org/files/issues/2021-04-18/2894351-23.patch"
-            },
-            "drupal/private_message": {
-                "Fix view mode class wrapper": "./patches/private_message_view_mode.patch"
-            },
-            "openeuropa/oe_authentication": {
-                "Show delete account actions on cancel account page": "./patches/oe_authentication_show_cancel_action.patch"
-            },
-            "drupal/mentions": {
-                "Null argument on MentionsFilter getMentions()": "./patches/mentions_null_argument.patch"
             },
             "drupal/tmgmt": {
                 "Hook to allow modules to alter translation entity being created": "https://www.drupal.org/files/issues/2022-07-19/hook_implementation-3298245-2.patch"
@@ -432,7 +408,6 @@
                 "Upgrade 2.0.1 too few arguments to function": "https://www.drupal.org/files/issues/2022-10-19/3315171-13.patch"
             },
             "easyrdf/easyrdf": {
-                "https://github.com/easyrdf/easyrdf/issues/390": "patches/update_easyrdf.patch",
                 "Fix 8.1 deprecation warnings (https://github.com/easyrdf/easyrdf/pull/398)": "https://patch-diff.githubusercontent.com/raw/easyrdf/easyrdf/pull/398.patch"
             }
         }
